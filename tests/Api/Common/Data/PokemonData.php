@@ -7,7 +7,7 @@ namespace App\Tests\Api\Common\Data;
 final class PokemonData
 {
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getBulbasaurData(): array
     {
@@ -40,13 +40,19 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getIvysaurData(): array
     {
@@ -82,13 +88,19 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getVenusaurData(): array
     {
@@ -124,13 +136,19 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'goldsilvercrystal',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getCaterpieData(): array
     {
@@ -166,13 +184,13 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getMetapodData(): array
     {
@@ -208,13 +226,13 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getButterfreeData(): array
     {
@@ -250,13 +268,13 @@ final class PokemonData
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getDouzeData(): array
     {
@@ -292,13 +310,17 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => 'un,dos,tres',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [
+                'un',
+                'dos',
+                'tres',
+            ],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getCharmanderData(): array
     {
@@ -331,13 +353,13 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getCharmeleonData(): array
     {
@@ -373,13 +395,13 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getCharizardData(): array
     {
@@ -415,13 +437,13 @@ final class PokemonData
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRattataData(): array
     {
@@ -457,13 +479,17 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '999-0019-004',
-            'game_bundle_slugs' => 'ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'ultrasunultramoon',
+            'game_bundles' => [
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRattataFemaleData(): array
     {
@@ -499,13 +525,19 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
             'pokemon_order_number' => '999-0019-005',
-            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRattataAlolanData(): array
     {
@@ -541,13 +573,19 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
             'pokemon_order_number' => '999-0019-006',
-            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRaticateData(): array
     {
@@ -583,13 +621,17 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '999-0020-007',
-            'game_bundle_slugs' => 'ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'ultrasunultramoon',
+            'game_bundles' => [
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRaticateFemaleData(): array
     {
@@ -625,13 +667,19 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
             'pokemon_order_number' => '999-0020-008',
-            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRaticateAlolanData(): array
     {
@@ -667,13 +715,19 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
             'pokemon_order_number' => '999-0020-009',
-            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
-            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundles' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
+            'game_bundles_shiny' => [
+                'redgreenblueyellow',
+                'ultrasunultramoon',
+            ],
         ];
     }
 
     /**
-     * @return string[]|int[]|null[]
+     * @return string[]|string[][]|int[]|null[]
      */
     public static function getRaticateAlolanTotemData(): array
     {
@@ -709,8 +763,8 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'ultrasunultramoon',
             'pokemon_order_number' => '999-0020-010',
-            'game_bundle_slugs' => '',
-            'game_bundle_shiny_slugs' => '',
+            'game_bundles' => [],
+            'game_bundles_shiny' => [],
         ];
     }
 }

@@ -26,14 +26,11 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'redgreenblueyellow',
             AlbumFilters::createFromArray([]),
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(7, $pokedex);
 
@@ -49,7 +46,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -58,9 +55,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(6, $pokedex);
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
@@ -76,7 +70,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -85,9 +79,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(3, $pokedex);
         $this->assertEquals('rattata-alola', $pokedex[0]['pokemon_slug']);
@@ -100,7 +91,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -113,9 +104,6 @@ class PokedexRepositoryListTest extends KernelTestCase
             ])
         );
 
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
-
         $this->assertCount(3, $pokedex);
         $this->assertEquals('butterfree', $pokedex[0]['pokemon_slug']);
         $this->assertEquals('butterfree-f', $pokedex[1]['pokemon_slug']);
@@ -127,7 +115,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -136,9 +124,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(7, $pokedex);
         $this->assertEquals('rattata', $pokedex[0]['pokemon_slug']);
@@ -155,7 +140,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -164,9 +149,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(2, $pokedex);
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
@@ -178,7 +160,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -187,9 +169,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(3, $pokedex);
         $this->assertEquals('rattata-alola', $pokedex[0]['pokemon_slug']);
@@ -202,7 +181,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -211,9 +190,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(2, $pokedex);
         $this->assertEquals('venusaur-gmax', $pokedex[0]['pokemon_slug']);
@@ -225,7 +201,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -235,9 +211,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(3, $pokedex);
         $this->assertEquals('venusaur-mega', $pokedex[0]['pokemon_slug']);
@@ -250,7 +223,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -259,9 +232,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(4, $pokedex);
         $this->assertEquals('venusaur-f', $pokedex[0]['pokemon_slug']);
@@ -275,7 +245,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -284,9 +254,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(3, $pokedex);
         $this->assertEquals('caterpie', $pokedex[0]['pokemon_slug']);
@@ -299,7 +266,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -308,9 +275,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(12, $pokedex);
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
@@ -332,7 +296,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -341,9 +305,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(2, $pokedex);
         $this->assertEquals('rattata-alola', $pokedex[0]['pokemon_slug']);
@@ -355,7 +316,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -364,9 +325,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(4, $pokedex);
         $this->assertEquals('rattata-f', $pokedex[0]['pokemon_slug']);
@@ -380,7 +338,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexIterator = $repo->getListQuery(
+        $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
@@ -389,9 +347,6 @@ class PokedexRepositoryListTest extends KernelTestCase
                 ],
             ])
         );
-
-        /** @var string[][] $pokedex */
-        $pokedex = iterator_to_array($pokedexIterator);
 
         $this->assertCount(6, $pokedex);
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);

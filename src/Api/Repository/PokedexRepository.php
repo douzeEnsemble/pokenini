@@ -26,13 +26,13 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return \Traversable<int, array<mixed, mixed>>
+     * @return string[][]|int[][]
      */
-    public function getListQuery(
+    public function getList(
         string $trainerExternalId,
         string $dexSlug,
         AlbumFilters $filters,
-    ): \Traversable {
+    ): array {
 
         $where = "COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug "
             . $this->getFiltersQuery($filters);
@@ -61,7 +61,8 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        return $this->getEntityManager()->getConnection()->iterateAssociative(
+        /** @var string[][]|int[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
             $types,
