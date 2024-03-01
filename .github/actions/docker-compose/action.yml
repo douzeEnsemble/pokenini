@@ -1,0 +1,38 @@
+name: Docker Compose Pull Up And Check
+description: Use to docker compose pull and up then checks if services are correctly running
+author: Renaud Douze
+runs:
+  using: "composite"
+  steps:
+    - name: Copy .env file
+      shell: bash
+      run: cp .env.ci .env
+      
+    - name: Pull images
+      shell: bash
+      run: docker compose pull --ignore-pull-failures || true
+
+    - uses: satackey/action-docker-layer-caching@v0.0.11
+      continue-on-error: true
+      
+    - name: Generate mock ssl certificates files
+      shell: bash
+      run: mv ./docker/apache/ssl.test ./docker/apache/ssl
+
+    - name: Start services
+      shell: bash
+      run: docker compose --verbose up --build --wait
+
+    - name: Composer install
+      shell: bash
+      run: docker compose exec -T php composer install --prefer-dist --no-progress --no-interaction
+
+    - name: Create test database
+      shell: bash
+      run: |
+        docker compose exec -T php bin/console -e test doctrine:database:create --if-not-exists
+        docker compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
+
+    - name: Doctrine Schema Validator
+      shell: bash
+      run: docker compose exec -T php bin/console doctrine:schema:validate --skip-sync

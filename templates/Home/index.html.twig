@@ -1,0 +1,63 @@
+{% set currentRouteParameters = app.request.get('_route_params') %}
+{% set locale = app.request.locale %}
+
+{% extends 'base.html.twig' %}
+{% use '_nav.html.twig' %}
+
+{% block title %}Pokénini{% endblock %}
+{% block navbarTitle %}Pokénini{% endblock navbarTitle %}
+
+{% block container %}
+<div id="home" class="row">
+    <div class="col-lg-8 mx-auto text-center">
+        <h1>Pokénini</h1>
+
+        <div class="row">
+            {% for item in dex|filter(item => item.is_on_home is same as(true)) %}
+            {{ _self.homeItem(
+                path('app_web_albumindex_index', {'dexSlug': item.slug, 't': connectedUserId is not null ? null : userId}),
+                item.slug,
+                item.name,
+                item.french_name,
+                locale
+            ) }}
+            {% else %}
+            <div class="alert alert-info mt-5" role="alert">
+                <p>{{ 'home.no_dex'|trans|replace({'<a>': '<a href="'~path('app_web_trainerindex_index')~'">'})|raw }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% macro homeItem(url, bannerSlug, name, frenchName, locale, trainerId) %}
+<div class="card col-lg-3 col-sm-6 col-12 home-item">
+    <a href="{{ url }}">
+        {% set bannerUrl = dexBannerUrl|format(bannerSlug) %}
+        <img
+            src="{{ bannerUrl }}"
+            class="card-img"
+            alt=""
+            loading="lazy"
+        >
+    </a>
+    <div class="card-body">
+        {% set titles = (locale is same as('fr') ? frenchName : name)|split("\n") %}
+        {% set title = titles.0 %}
+        {% set subtitle = titles.1 is defined ? titles.1 : '' %}
+        <h5 class="card-title">
+            <a href="{{ url }}">
+                {{ title }}
+            </a>
+        </h5>
+        {% if subtitle is not empty %}
+        <h6 class="card-subtitle mb-2 text-body-secondary">
+            <a href="{{ url }}">
+                {{ subtitle }}
+            </a>
+        </h6>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

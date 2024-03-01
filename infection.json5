@@ -1,0 +1,23 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "mutators": {
+        "@default": true,
+        "global-ignore": [
+            "App\\Api\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
+            "App\\Api\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
+            "App\\Web\\Controller\\ConnectController::googleCheck",
+        ],
+        "global-ignoreSourceCodeByRegex": [
+            "\\$query .= <<<SUBSQL"
+        ]
+    },
+    "tmpDir": "/var/www/html/var/cache/infection",
+    "timeout": 100,
+    "testFramework": "phpunit",
+    "testFrameworkOptions": '--exclude-group="browser-testing"',
+}

@@ -1,0 +1,49 @@
+security:
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
+  
+  providers:
+    api_users:
+      memory:
+        users:
+          web: { password: '%env(WEB_PASSWORD)%', roles: ["ROLE_API"] }
+    web_users:
+        id: App\Web\Security\UserProvider
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    api:
+      pattern: ^/api/
+      stateless: true
+      lazy: false
+      provider: api_users
+      http_basic:
+        realm: Secured Area
+    web:
+      lazy: true
+      provider: web_users
+      logout:
+        path: app_web_connect_logout
+      custom_authenticators:
+        - App\Web\Security\GoogleAuthenticator
+
+  access_control:
+    - { path: ^/api, roles: ROLE_API }
+    - { path: ^/(en|fr)/album, roles: PUBLIC_ACCESS }
+    - { path: ^/(en|fr)/connect, roles: PUBLIC_ACCESS }
+    - { path: ^/(en|fr)/istration, roles: ROLE_ADMIN }
+    - { path: ^/(en|fr)/trainer, roles: ROLE_TRAINER }
+    - { path: ^/(en|fr)/album, roles: ROLE_TRAINER }
+    - { path: ^/(en|fr)/outerroom, roles: ROLE_USER }
+    - { path: ^/, roles: PUBLIC_ACCESS }
+
+when@test:
+  security:            
+    password_hashers:
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4
+        time_cost: 3
+        memory_cost: 10

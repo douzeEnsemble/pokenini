@@ -1,0 +1,88 @@
+version: "3.4"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    expose:
+      - 9000
+    volumes:
+      - .:/var/www/html
+
+  apache:
+    build:
+      context: .
+      dockerfile: ./docker/apache/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - php
+    volumes:
+      - .:/var/www/html
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./docker/apache/ssl:/usr/local/apache2/ssl/
+
+  database:
+    image: postgres:${POSTGRES_VERSION:-14}-alpine
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - target: 5432
+        published: 5451
+        protocol: tcp
+
+  redis:
+    image: redis:7.0-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --requirepass douze
+    volumes:
+      - redis:/data
+
+  api.test.moco:
+    build:
+      context: docker/moco/Api/test
+    volumes:
+      - ./tests/resources/moco/Api:/var/moco:ro
+
+  api.int.moco:
+    build:
+      context: docker/moco/Api/int
+    volumes:
+      - ./tests/resources/moco/Api:/var/moco:ro
+
+  web.test.moco:
+    build:
+      context: docker/moco/Web/test
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+
+  web.dev.moco:
+    build:
+      context: docker/moco/Web/dev
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+     - target: 8080
+       published: 8082
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  db_data:
+  db_data_test:
+###< doctrine/doctrine-bundle ###
+  redis:
+

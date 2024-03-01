@@ -1,0 +1,28 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+            string $spreadsheetId: '%env(SPREADSHEET_ID)%'
+            string $googleApiSheetsUrl: '%env(GOOGLE_API_SHEETS_URL)%'
+            string $appApiUrl: '%env(APP_API_URL)%'
+            string $listAdmin: '%env(LIST_ADMIN)%'
+            string $listTrainer: '%env(LIST_TRAINER)%'
+            string $apiLogin: '%env(API_LOGIN)%'
+            string $apiPassword: '%env(API_PASSWORD)%'
+            string $demoUserId: '%env(DEMO_USER_ID)%'
+
+    App\Api\:
+        resource: '../src/Api/'
+        exclude:
+            - '../src/Api/DependencyInjection/'
+            - '../src/Api/Entity/'
+            - '../src/Api/Kernel.php'
+
+    App\Web\:
+        resource: '../src/Web/'
+        exclude:
+            - '../src/Web/DependencyInjection/'
+            - '../src/Web/Entity/'
+            - '../src/Web/Kernel.php'
+

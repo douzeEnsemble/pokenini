@@ -1,0 +1,73 @@
+{% set currentRouteParameters = app.request.get('_route_params') %}
+
+<div class="report-container">
+    <h2 id="stats">
+        {{ 'title.report'|trans }}
+    </h2>
+
+    <div class="progress mb-2">
+        {% for line in report.detail %}
+            {% set count = line.slug is same as('no') ? report.totalUncaught : line.count %}
+            {% set completion = report.total ? (100 * count / report.total)|round(2) : 0 %}
+            <div class="progress-bar catch-state-{{ line.slug }}"
+                role="progressbar"
+                aria-label="{{ locale is same as('fr') ? line.frenchName : line.name }}"
+                style="width: {{ completion }}%;"
+                aria-valuenow="{{ completion }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+            >
+                {{ line.slug is same as('no') or line.slug is same as('yes') ? completion~'%' : '' }}
+            </div>
+        {% endfor %}
+    </div>
+    <table class="table table-hover table-bordered" id="report">
+        <tbody>
+        {% for line in report.detail %}
+            <tr class="catch-state-{{ line.slug }}">
+                <th>
+                    <a href="{{
+                        path(
+                            'app_web_albumindex_index',
+                            filters
+                                |merge({
+                                    'dexSlug': currentDexSlug,
+                                    't': ((queryTrainerId is not empty) ? queryTrainerId : null),
+                                    'cs': line.slug,
+                                    })
+                                |ksort
+                        )
+                    }}">
+                        {{ locale is same as('fr') ? line.frenchName : line.name }}
+                    </a>
+                </th>
+                <td>
+                    {{ line.slug is same as('no') ? report.totalUncaught : line.count }}
+                </td>
+            </tr>
+        {% endfor %}
+        <tr class="catch-state-total">
+            <th>
+                <a href="{{
+                    path(
+                        'app_web_albumindex_index',
+                        filters
+                            |filter((value, key) => key != 'cs')
+                            |merge({
+                                'dexSlug': currentDexSlug,
+                                't': ((queryTrainerId is not empty) ? queryTrainerId : null),
+                            }
+                            |merge(currentRouteParameters))
+                            |ksort
+                    )
+                }}">
+                    {{ 'stats.total'|trans }}
+                </a>
+            </th>
+            <td>
+                {{ report.total }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

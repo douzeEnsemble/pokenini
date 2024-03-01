@@ -1,0 +1,55 @@
+{% set locale = app.request.locale %}
+
+{% import "Admin/_macros.html.twig" as admin %}
+
+<h2>{{ 'title.admin_actions'|trans }}</h2>
+<div class="row">
+    <div class="col-md-6 col-lg-4">
+        <h3 class="mt-3">{{ 'title.update_data'|trans }}</h3>
+
+        {% set updateItems = {
+            'labels': 'tags-fill',
+            'games_and_dex': 'joystick',
+            'pokemons': 'bug-fill',
+            'regional_dex_numbers': 'globe-asia-australia',
+            'games_availabilities': 'box2',
+            'games_shinies_availabilities': 'box2-fill',
+        } %}
+        <div class="list-group list-group-update">
+            {% for item, icon in updateItems %}
+                {{ admin.action('update', item, icon, updatedItem, updatedAction, updatedState, actionLogsData) }}
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h3 class="mt-3">{{ 'title.calculate_data'|trans }}</h3>
+
+        {% set calculateItems = {
+            'game_bundles_availabilities': 'box-seam',
+            'game_bundles_shinies_availabilities': 'box-seam-fill',
+            'dex_availabilities': 'list-check',
+            'pokemon_availabilities': 'calculator',
+        } %}
+        <div class="list-group list-group-calculate">
+            {% for item, icon in calculateItems %}
+                {{ admin.action('calculate', item, icon, updatedItem, updatedAction, updatedState, actionLogsData) }}
+            {% endfor %}
+        </div>
+
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <h3 class="mt-3">{{ 'title.invalidate_data'|trans }}</h3>
+
+        {% set invalidateItems = {
+            'labels': 'tags-fill',
+            'dex': 'journals',
+            'albums': 'journal-album',
+        } %}
+        <div class="list-group list-group-invalidate">
+            {% for item, icon in invalidateItems %}
+                {{ admin.action('invalidate', item, icon, updatedItem, updatedAction, updatedState, actionLogsData) }}
+            {% endfor %}
+        </div>
+    </div>
+</div>

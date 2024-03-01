@@ -1,0 +1,356 @@
+logout: 'Se déconnecter'
+login: 'Se connecter'
+nav:
+    home: 'Accueil'
+    back_home: "Retour à l'accueil"
+    madebyandfor: 'Fait par et pour'
+    lang:
+        fr: 'Français'
+        en: 'Anglais'
+    admin: 'Administration'
+    connected: 'Connecté'
+    login: 'Se connecter'
+    share: 'Lien de partage'
+    is_private: 'Album privé'
+    open-offcanvas: 'Ouvrir le panneau latéral'
+
+title:
+    home: 'Accueil'
+    report: 'Stats'
+    admin: 'Administration'
+    update_data: 'Mises à jour des données'
+    calculate_data: 'Calculs des données'
+    invalidate_data: 'Invalidation des caches'
+    update:
+        labels: 'Maj des labels'
+        games_and_dex: 'Maj des jeux et dex'
+        pokemons: 'Maj des pokémons'
+        games_availabilities: 'Maj des dispo des jeux'
+        games_shinies_availabilities: 'Maj des dispo des jeux des chromatiques'
+        regional_dex_numbers: 'Maj des numéro des dex régionaux'
+    calculate:
+        game_bundles_availabilities: 'Maj des dispo des bundles de jeux'
+        game_bundles_shinies_availabilities: 'Maj des dispo des bundles de jeux des chromatiques'
+        dex_availabilities: 'Maj des dispo des dex'
+        pokemon_availabilities: 'MAJ des dispo par pokemons'
+    invalidate:
+        catch_states: 'Invalidation du cache des statuts'
+        types: 'Invalidation du cache des types'
+        labels: 'Invalidation du cache des labels'
+        dex: 'Invalidation du cache des dex'
+        albums: 'Invalidation du cache des albums'
+        reports: 'Invalidation du cache des rapports'
+        actions: 'Invalidation du cache des actions'
+    admin_actions: 'Données et caches'
+    admin_reports: 'Rapports'
+    box: 'Boite'
+    empty: ' '
+    connect: 'Connexion'
+    trainer: 'Ton espace de dresseur'
+    outer_room: "Salle d'attente"
+    legals: 'Mentions Légales'
+    policy: 'Politique de confidentialité'
+    cookies: 'Cookies'
+    error:
+        unknown: "Y'a eu une erreur"
+        404: "La page n'a pas été trouvée"
+        500: "Y'a eu une merde. C'est pas toi, c'est nous"
+
+home:
+    no_dex: "Y'a pas d'album à afficher. Tu peux les rajouter sur ton <a>espace dresseur</a>."
+
+stats:
+    total: 'Total'
+
+album:
+    icon:
+        alt:
+            regular: 'Icone de'
+            shiny: 'Icone chromatique de'
+        title:
+            regular: 'Normal'
+            shiny: 'Chromatique'
+            previous: 'Précédent'
+            next: 'Suivant'
+    image:
+        alt:
+            regular: 'Image de'
+            shiny: 'Image chromatique de'
+    update:
+        title: 'Maj'
+        success:
+            prefix: 'Le changement de statut de'
+            radical: '%pokemonName%'
+            suffix: 'a été enregistré'
+        error:
+            prefix: 'Le changement de statut de'
+            radical: '%pokemonName%'
+            suffix: 'a échoué'
+    intro:
+        action:
+            mode:
+                write: 'Modifier tous les statuts'
+                read: 'Passer en mode lecture'
+            goto:
+                box1: "Voir la boîte numéro 1"
+                top_of_the_list: "Voir le haut de la liste"
+            description:
+                collapse: 'Informations'
+            screenshot:
+                enable: Mode capture
+                disable: Revenir à la normale
+        label:
+            version: 'Version'
+            region: 'Région'
+            dex: 'Dex'
+            is_shiny:
+                yes: 'Formes chromatiques'
+                no: 'Formes normales'
+            another_trainer_album: "Album d'un autre dresseur"
+            display_template:
+                box: 'Affichage par boîte de 6 par 5 pokémons comme dans les jeux'
+                list-3: 'Liste de 3 pokémons par lignes'
+                list-5: 'Liste de 5 pokémons par lignes'
+                list-7: 'Liste de 7 pokémons par lignes'
+        value:
+            national: 'National'
+    modal:
+        national_dex_number: Numéro de dex national
+        regional_dex_number: Numéro de dex régional
+        forms: Forme
+        no_forms: Normale
+        link:
+            pokepedia: Fiche Poképédia
+            bulbapedia: Fiche Bulbapedia (anglais)
+            family: Afficher la famille
+    offcanvas:
+        informations:
+            title: Informations
+        filters:
+            title: Filtres
+            open_distinguish_types: Avancées
+            submit:
+                label: Filtrer
+            reset:
+                label: Réinitialier
+            any_type:
+                label: Type
+                value:
+                    empty: Tous
+            primary_type:
+                label: Premier type
+                value:
+                    empty: Tous
+            secondary_type:
+                label: Second type
+                value:
+                    empty: Tous
+                    "null": Aucun
+            category_form:
+                label: Catégorie
+                value:
+                    empty: Toutes
+                    "null": Aucune
+            regional_form:
+                label: Forme régional
+                value:
+                    empty: Toutes
+                    "null": Aucune
+            special_form:
+                label: Forme spéciale
+                value:
+                    empty: Toutes
+                    "null": Aucune
+            variant_form:
+                label: Variante
+                value:
+                    empty: Toutes
+                    "null": Aucune
+           
+
+update:
+    labels:
+        success: 'La maj des labels a été effectuée'
+        error: 'La maj des labels a échouée'
+    games_and_dex:
+        success: 'La maj des jeux et dex a été effectuée'
+        error: 'La maj des jeux et dex a échouée'
+    pokemons:
+        success: 'La maj des pokémons a été effectuée'
+        error: 'La maj des pokémons a échouée'
+    games_availabilities:
+        success: 'La maj des dispo des jeux a été effectuée'
+        error: 'La maj des dispo des jeux a échouée'
+    games_shinies_availabilities:
+        success: 'La maj des dispo des jeux des chromatiques a été effectuée'
+        error: 'La maj des dispo des jeux des chromatiques a échouée'
+    regional_dex_numbers:
+        success: 'La maj des numéros de dex régionaux a été effectuée'
+        error: 'La maj des numéros de dex régionaux a échouée'
+calculate:
+    game_bundles_availabilities:
+        success: 'La maj des dispo des bundles de jeux a été effectuée'
+        error: 'La maj des dispo des bundles de jeux a échouée'
+    game_bundles_shinies_availabilities:
+        success: 'La maj des dispo des bundles de jeux des chromatiques a été effectuée'
+        error: 'La maj des dispo des bundles de jeux des chromatiques a échouée'
+    dex_availabilities:
+        success: 'La maj des dispo des dex a été effectuée'
+        error: 'La maj des dispo des dex a échouée'
+    pokemon_availabilities:
+        success: 'La maj des dispo par pokémons a été effectuée'
+        error: 'La maj des dispo par pokémons a échouée'
+
+connect:
+    disclaimer: |
+        J'utilise la connexion uniquement pour identifier.
+        Je ne garde AUCUNE donnée autre que l'identifiant donnée par le fournisseur.
+    help: |
+        Je supporte que la connexion via Google. Si t'en veut d'autres, dis le moi
+
+trainer:
+    welcome: |
+        Bonjour à toi jeune dresseur.
+        Ceci est ton espace.
+
+        Tu peux y personnaliser tes albums, consulter les données personnelles et te déconnecter.
+        Amuse toi bien.
+    personnal_data:
+        title: 'Données personnelles'
+        intro: "Voici les données personnelles que j'ai te concernant"
+        outro: "Voilà. C'est tout"
+        head:
+            type: 'Type'
+            value: 'Valeur'
+        body:
+            id: 'Identifiant'
+    dex:
+        title: 'Personnalise tes albums'
+        see: 'Voir'
+        attributes:
+            is_private:
+                label: 'Album privé'
+                help: 'Uniquement accessible par toi'
+            is_on_home:
+                label: "Album visible sur la page d'accueil"
+                help: "La page d'accueil n'est visible que par toi. C'est ta page."
+            is_not_released:
+                label: 'Album non déployé'
+                help: "Seul les admins peuvent voir l'album, pour le moment"
+        update:
+            title: 'Maj'
+            success:
+                prefix: 'Le paramétrage de '
+                radical: '%dexName%'
+                suffix: 'a été enregistré'
+            error:
+                prefix: 'Le paramétrage de '
+                radical: '%dexName%'
+                suffix: "n'a pas été enregistré"
+    logout:
+        title: 'Session'
+
+outer_room:
+    message: |
+        Hey, merci de t'être connecté. Pour l'instant, tu n'as pas le droit d'aller plus loin.
+        Ce site est réservé qu'à certaine personne. Je sais c'est décevant.
+
+        Si tu veux y avoir accès, tu peux contacter mon administrateur, Renaud,
+        par email pokenini.app@gmail.com ou par un autre moyen si tu en connais.
+        Il suffit de lui transmettre cet identifiant `%id%`
+
+        Et si tu cliques en dessous, ça te fait l'email tout seul. Je suis pas gentil ?
+
+        (L'email ne sera pas conservé)
+    cancel: |
+        Si tu ne veux pas avoir d'accès, tu n'as rien à faire. Je n'ai rien enregistré.
+        Tu peux te déconnecter avec le lien en dessous.
+        Merci d'être passé
+    mail:
+        link: 'Envoyer une demande'
+        subject: 'Je peux avoir accès à Pokénini stp ?'
+        body: 'Mon identifiant Google OpenId est %id%'
+
+footer:
+    home: 'Accueil'
+    legals: 'Mentions Légales'
+    policy: 'Politique de confidentialité'
+    cookies: 'Cookies'
+
+error:
+    unknown:
+        text: |
+            Merde ! Y'a eu une erreur. Je sais pas où.
+            Mais t'inquiète pas c'est pas toi. C'est nous ...
+            Enfin peut être pas vu qu'on sait pas d'où vient l'erreur.
+
+            N'hésite pas à nous signaler l'erreur. Comment tu l'as rencontrée,
+            une capture, le max d'info.
+    404:
+        text: |
+            La page que tu as demandée est introuvable. Je la trouve pas.
+            Vérifie l'URL ou reviens à la page d'accueil en utilisant le lien juste en dessous.
+    500:
+        text: |
+            Alors là c'est la merde ! Y'a eu une coui**e quelque part.
+            Elle vient de mon côté. Tu n'y es pour rien.
+
+            N'hésite pas à nous signaler l'erreur. Comment tu l'as rencontrée,
+            une capture, le max d'info.
+
+
+admin:
+    update:
+        games_availabilities: "Dispo des jeux"
+        games_shinies_availabilities: "Dispo des jeux des chromatiques"
+        regional_dex_numbers: "Numéros de dex régionaux"
+        game_generations: "Générations"
+        game_bundles: "Bundles de jeux"
+        games: "Jeux"
+        dex: "Dex"
+        catch_states: "Statuts"
+        types: "Types"
+        regions: "Régions"
+        category_forms: "Catégories"
+        regional_forms: "Formes régionales"
+        special_forms: "Formes spéciales"
+        variant_forms: "Variantes"
+        pokemons: "Pokémons"
+
+    calculate:
+        game_bundles_availabilities: "Dispo des bundles"
+        game_bundles_shinies_availabilities: "Dispo des bundles des chromatiques"
+        dex_availabilities: "Dispo des dex"
+        pokemon_availabilities_game_bundle: "Dispo des packs de jeux par pokémons"
+        pokemon_availabilities_game_bundle_shiny: "Dispo des chromatiques des packs de jeux par pokémons "
+    reports:
+        cache:
+            title: "Cache"
+        table:
+            hide: "Cacher la donnée"
+            show: "Afficher la donnée"
+        catch_state_counts_defined_by_trainer:
+            title: "Répartition des statuts de capture définis par les dresseurs"
+            trainer: "Dresseur"
+            nb: "Nb."
+            color: "Couleur"
+            part: "%"
+            toggle: ""
+        dex_usage:
+            title: "Utilisation des dex"
+            dex: "Dex"
+            nb: "Nombre de dresseurs"
+        catch_state_usage:
+            title: "Utilisation des statuts de capture"
+            catch_state: "Statut de capture"
+            nb: "Nb."
+            color: "Couleur"
+            part: "%"
+            toggle: ""
+    action:
+        created_at: "Démarré le"
+        done_at: "Terminé le"
+        execution_time: "Terminé en"
+    toggle:
+        last: "Voir l'action précédente"
+        current: "Voir la dernière action"

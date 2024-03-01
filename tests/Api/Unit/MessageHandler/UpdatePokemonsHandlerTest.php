@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Api\Unit\MessageHandler;
+
+use App\Api\Message\AbstractActionMessage;
+use App\Api\Message\UpdatePokemons;
+use App\Api\MessageHandler\UpdatePokemonsHandler;
+use App\Api\MessageHandler\UpdateHandlerInterface;
+use App\Api\Service\UpdaterService\UpdaterServiceInterface;
+use App\Api\Service\UpdaterService\PokemonsUpdaterService;
+use Doctrine\ORM\EntityManagerInterface;
+
+class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
+{
+    public function getServiceClass(): string
+    {
+        return PokemonsUpdaterService::class;
+    }
+
+    /**
+     * @param PokemonsUpdaterService $updaterService
+    **/
+    public function getHandler(
+        UpdaterServiceInterface $updaterService,
+        EntityManagerInterface $entityManager,
+    ): UpdateHandlerInterface {
+        return new UpdatePokemonsHandler(
+            $updaterService,
+            $entityManager,
+        );
+    }
+
+    public function getMessage(): AbstractActionMessage
+    {
+        return new UpdatePokemons('12');
+    }
+}
