@@ -4,22 +4,192 @@ parameters:
   exclude_files:
     - .*test.*
   layers:
-    - name: Controller
+    - name: ApiActionEnder
       collectors:
         - type: className
-          regex: 'App\\.*Controller.*'
-    - name: Repository
+          regex: 'App\\Api\\ActionEnder\\.*'
+    - name: ApiActionStarter
       collectors:
         - type: className
-          regex: 'App\\.*Repository.*'
-    - name: Service
+          regex: 'App\\Api\\ActionStarter\\.*'
+    - name: ApiCalculator
       collectors:
         - type: className
-          regex: 'App\\.*Service.*'
+          regex: 'App\\Api\\Calculator\\.*'
+    - name: ApiCommand
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Command\\.*'
+    - name: ApiController
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Controller\\.*'
+    - name: ApiDTO
+      collectors:
+        - type: className
+          regex: 'App\\Api\\DTO\\.*'
+    - name: ApiEntity
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Entity\\.*'
+    - name: ApiException
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Exception\\.*'
+    - name: ApiHelper
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Helper\\.*'
+    - name: ApiMessage
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Message\\.*'
+    - name: ApiMessageHandler
+      collectors:
+        - type: className
+          regex: 'App\\Api\\MessageHandler\\.*'
+    - name: ApiRepository
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Repository\\.*'
+    - name: ApiService
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Service\\.*'
+    - name: ApiUpdater
+      collectors:
+        - type: className
+          regex: 'App\\Api\\Updater\\.*'
+    
+    - name: WebAlbumFilters
+      collectors:
+        - type: className
+          regex: 'App\\Web\\AlbumFilters\\.*'
+    - name: WebCache
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Cache\\.*'
+    - name: WebController
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Controller\\.*'
+    - name: WebDTO
+      collectors:
+        - type: className
+          regex: 'App\\Web\\DTO\\.*'
+    - name: WebException
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Exception\\.*'
+    - name: WebSecurity
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Security\\.*'
+    - name: WebService
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Service\\.*'
+    - name: WebTwig
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Twig\\.*'
+    - name: WebUtils
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Utils\\.*'
+    - name: WebValidator
+      collectors:
+        - type: className
+          regex: 'App\\Web\\Validator\\.*'
 
   ruleset:
-    Controller:
-      - Service
-    Service:
-      - Repository
-    Repository: ~
+    ApiActionEnder:
+      - ApiDTO
+      - ApiEntity
+      - ApiMessage
+      - ApiRepository
+    ApiActionStarter:
+      - ApiEntity
+      - ApiMessage
+    ApiCalculator:
+      - ApiCalculator
+      - ApiDTO
+      - ApiEntity
+      - ApiRepository
+      - ApiService
+    ApiCommand:
+      - ApiActionEnder
+      - ApiActionStarter
+      - ApiCalculator
+      - ApiDTO
+      - ApiEntity
+      - ApiMessage
+      - ApiRepository
+      - ApiService
+      - ApiUpdater
+    ApiController:
+      - ApiActionEnder
+      - ApiActionStarter
+      - ApiDTO
+      - ApiEntity
+      - ApiService
+    ApiDTO:
+      - ApiDTO
+    ApiEntity:
+      - ApiEntity
+    ApiHelper:
+      - ApiHelper
+    ApiMessage:
+      - ApiMessage
+    ApiMessageHandler:
+      - ApiActionEnder
+      - ApiCalculator
+      - ApiDTO
+      - ApiEntity
+      - ApiMessage
+      - ApiMessageHandler
+      - ApiService
+      - ApiUpdater
+      - ApiRepository
+    ApiRepository:
+      - ApiDTO
+      - ApiEntity
+      - ApiMessage
+      - ApiRepository
+    ApiService:
+      - ApiCalculator
+      - ApiDTO
+      - ApiEntity
+      - ApiRepository
+      - ApiService
+      - ApiUpdater
+    ApiUpdater:
+      - ApiDTO
+      - ApiEntity
+      - ApiException
+      - ApiHelper
+      - ApiRepository
+      - ApiService
+
+    WebAlbumFilters:
+      - WebAlbumFilters
+    WebCache:
+      - WebService
+    WebController: 
+      - WebAlbumFilters
+      - WebDTO
+      - WebException
+      - WebSecurity
+      - WebService
+      - WebValidator
+    WebDTO:
+      - WebDTO
+    WebSecurity:
+      - WebException
+    WebService:
+      - WebCache
+      - WebDTO
+      - WebUtils
+    WebValidator:
+      - WebService
+      - WebValidator
