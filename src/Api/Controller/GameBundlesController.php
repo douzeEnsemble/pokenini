@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\GameBundlesRepository;
+use App\Api\Service\GameBundlesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ class GameBundlesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(
-        GameBundlesRepository $gameBundlesRepository
+        GameBundlesService $service
     ): JsonResponse {
-        $gameBundles = $gameBundlesRepository->getAll();
+        $gameBundles = $service->getAll();
 
         // Better with serializer ?
         return new JsonResponse($gameBundles);

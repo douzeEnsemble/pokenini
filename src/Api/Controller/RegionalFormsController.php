@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\RegionalFormsRepository;
+use App\Api\Service\RegionalFormsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ class RegionalFormsController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(
-        RegionalFormsRepository $formsRepository
+        RegionalFormsService $service
     ): JsonResponse {
-        $forms = $formsRepository->getAll();
+        $forms = $service->getAll();
 
         // Better with serializer ?
         return new JsonResponse($forms);

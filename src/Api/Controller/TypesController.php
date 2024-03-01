@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\TypesRepository;
+use App\Api\Service\TypesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ class TypesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(
-        TypesRepository $typesRepository
+        TypesService $service
     ): JsonResponse {
-        $types = $typesRepository->getAll();
+        $types = $service->getAll();
 
         // Better with serializer ?
         return new JsonResponse($types);

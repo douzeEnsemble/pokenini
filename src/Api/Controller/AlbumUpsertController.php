@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\PokedexRepository;
-use App\Api\Repository\TrainerDexRepository;
+use App\Api\Service\PokedexService;
+use App\Api\Service\TrainerDexService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,8 +17,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class AlbumUpsertController extends AbstractController
 {
     public function __construct(
-        private readonly PokedexRepository $pokedexRepository,
-        private readonly TrainerDexRepository $trainerDexRepository,
+        private readonly PokedexService $pokedexService,
+        private readonly TrainerDexService $trainerDexService,
     ) {
     }
 
@@ -62,12 +62,12 @@ class AlbumUpsertController extends AbstractController
         $catchStateSlug = $content;
 
         try {
-            $this->trainerDexRepository->insertIfNeeded(
+            $this->trainerDexService->insertIfNeeded(
                 $trainerExternalId,
                 $dexSlug,
             );
 
-            $this->pokedexRepository->upsert(
+            $this->pokedexService->upsert(
                 $trainerExternalId,
                 $dexSlug,
                 $pokemonSlug,

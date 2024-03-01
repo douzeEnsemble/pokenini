@@ -19,7 +19,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help certs build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit_api phpunit_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web quality phpcs phpcbf phpmd psalm phpstan integration newman measures clear-build coverage htmlcoverage infection
+.PHONY        : help certs build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit_api phpunit_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web quality phpcs phpcbf phpmd psalm phpstan deptrac integration newman measures clear-build coverage htmlcoverage infection
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -135,7 +135,7 @@ tests_browser_web: ## Execute browser tests for Web module
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
-quality: phpcs phpmd psalm phpstan
+quality: phpcs phpmd psalm phpstan deptrac
 
 phpcs: ## Execute phpcs
 	@$(PHP) vendor/bin/phpcs
@@ -151,6 +151,9 @@ psalm: ## Execute psalm
 phpstan: ## Execute phpstan analyse
 	@$(PHP) vendor/bin/phpstan clear-result-cache
 	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
+
+deptrac: ## Execute deptrac analyse
+	@$(PHP) vendor/bin/deptrac analyse
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests

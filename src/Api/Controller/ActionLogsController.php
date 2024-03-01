@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\ActionLogsRepository;
+use App\Api\Service\ActionLogsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,9 +17,9 @@ class ActionLogsController extends AbstractController
     }
 
     #[Route(path: '', methods: ['GET'])]
-    public function get(ActionLogsRepository $repo): JsonResponse
+    public function get(ActionLogsService $service): JsonResponse
     {
-        $actionLogs = $repo->getLastests();
+        $actionLogs = $service->getLastests();
 
         array_walk(
             $actionLogs,

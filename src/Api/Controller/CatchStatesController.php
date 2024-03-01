@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\CatchStatesRepository;
+use App\Api\Service\CatchStatesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ class CatchStatesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(
-        CatchStatesRepository $catchStatesRepository
+        CatchStatesService $service
     ): JsonResponse {
-        $catchStates = $catchStatesRepository->getAll();
+        $catchStates = $service->getAll();
 
         // Better with serializer ?
         return new JsonResponse($catchStates);

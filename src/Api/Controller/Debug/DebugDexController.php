@@ -6,7 +6,7 @@ namespace App\Api\Controller\Debug;
 
 use App\Api\Entity\Dex;
 use App\Api\Entity\DexAvailability;
-use App\Api\Repository\DexAvailabilitiesRepository;
+use App\Api\Service\DexAvailabilitiesService;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,9 +29,9 @@ class DebugDexController extends AbstractDebugController
     #[Route(path: '/{slug}/availabilities', methods: ['GET'])]
     public function dexAvailabilities(
         Dex $dex,
-        DexAvailabilitiesRepository $dexAvailabilitiesRepository,
+        DexAvailabilitiesService $dexAvailabilitiesService,
     ): Response {
-        $dexAvailabilities = $dexAvailabilitiesRepository->findBy(['dex' => $dex]);
+        $dexAvailabilities = $dexAvailabilitiesService->getByDex($dex);
 
         $pokemons = [];
         /** @var DexAvailability $dexAvailability */

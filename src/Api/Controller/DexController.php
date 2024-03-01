@@ -8,7 +8,7 @@ use App\Api\DTO\DexQueryOptions;
 use App\Api\DTO\TrainerDexAttributes;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use App\Api\Repository\TrainerDexRepository;
+use App\Api\Service\TrainerDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 class DexController extends AbstractController
 {
     public function __construct(
-        private readonly TrainerDexRepository $trainerDexRepository
+        private readonly TrainerDexService $trainerDexService
     ) {
     }
 
@@ -34,7 +34,7 @@ class DexController extends AbstractController
 
         /** @var string[][]|bool[][] $dex */
         $dex = iterator_to_array(
-            $this->trainerDexRepository->getListQuery($trainerExternalId, $dexQueryOptions)
+            $this->trainerDexService->getListQuery($trainerExternalId, $dexQueryOptions)
         );
 
         // Better with serializer ?
@@ -62,7 +62,7 @@ class DexController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $this->trainerDexRepository->set($trainerExternalId, $dexSlug, $attributes);
+        $this->trainerDexService->set($trainerExternalId, $dexSlug, $attributes);
 
         return new Response();
     }

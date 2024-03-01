@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
-use App\Api\Repository\CategoryFormsRepository;
+use App\Api\Service\CategoryFormsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +14,9 @@ class CategoryFormsController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(
-        CategoryFormsRepository $formsRepository
+        CategoryFormsService $service
     ): JsonResponse {
-        $forms = $formsRepository->getAll();
+        $forms = $service->getAll();
 
         // Better with serializer ?
         return new JsonResponse($forms);
