@@ -9,7 +9,6 @@ use App\Api\ActionStarter\ActionStarterInterface;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Google\Service\Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

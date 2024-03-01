@@ -125,7 +125,7 @@ tests_unit_web: ## Execute unit tests for Web module
 	@$(PHP_CONT) bin/phpunit tests/Web/Unit
 
 tests_functional_api: ## Execute functional tests for Api module
-	@$(PHP_CONT) bin/phpunit tests/ApiFunctional
+	@$(PHP_CONT) bin/phpunit tests/Api/Functional
 
 tests_functional_web: ## Execute functional tests for Web module
 	@$(PHP_CONT) bin/phpunit tests/Web/Functional
