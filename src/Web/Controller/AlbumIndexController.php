@@ -87,6 +87,8 @@ class AlbumIndexController extends AbstractController
         $regionalForms = $this->getLabelsService->getFormsRegional();
         $specialForms = $this->getLabelsService->getFormsSpecial();
         $variantForms = $this->getLabelsService->getFormsVariant();
+        $variantForms = $this->getLabelsService->getFormsVariant();
+        $gameBundles = $this->getLabelsService->getGameBundles();
 
         $pokemons = $pokedex['pokemons'];
 
@@ -101,6 +103,7 @@ class AlbumIndexController extends AbstractController
             'regionalForms' => $regionalForms,
             'specialForms' => $specialForms,
             'variantForms' => $variantForms,
+            'gameBundles' => $gameBundles,
             'mode' => 'read',
             'filters' => $filters,
             'trainerId' => $trainerId,

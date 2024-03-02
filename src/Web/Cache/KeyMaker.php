@@ -13,6 +13,7 @@ class KeyMaker
     private const CACHE_KEY_DEX = 'dex';
     private const CACHE_KEY_CATCH_STATES = 'catch_states';
     private const CACHE_KEY_TYPES = 'types';
+    private const CACHE_KEY_GAME_BUNDLES = 'game_bundles';
     private const CACHE_KEY_FORMS_CATEGORY = 'forms_category';
     private const CACHE_KEY_FORMS_REGIONAL = 'forms_regional';
     private const CACHE_KEY_FORMS_SPECIAL = 'forms_special';
@@ -33,6 +34,11 @@ class KeyMaker
     public static function getTypesKey(): string
     {
         return self::CACHE_KEY_TYPES;
+    }
+
+    public static function getGameBundlesKey(): string
+    {
+        return self::CACHE_KEY_GAME_BUNDLES;
     }
 
     public static function getFormsCategoryKey(): string

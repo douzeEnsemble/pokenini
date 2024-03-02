@@ -314,7 +314,7 @@ class AlbumReportServiceData
     public static function getGamesReportFilteredProvider(): array
     {
         return [
-            'orignal_game_bundles' => [
+            'original_game_bundles' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
@@ -328,7 +328,7 @@ class AlbumReportServiceData
                 6,
                 12,
             ],
-            'orignal_game_bundles_null' => [
+            'original_game_bundles_null' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [

@@ -163,6 +163,62 @@
                 </select>
             </div>
         </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <label for="original_game_bundle" class="form-label">
+                    <i class="bi bi-box"></i>
+                    {{ 'album.offcanvas.filters.original_game_bundle.label'|trans }}
+                </label>
+                {% set filteredOriginalGameBundles = app.request.get('ogb', []) %}
+                <select multiple id="original_game_bundle" name="ogb[]" class="form-select form-select-sm">
+                    <option value="" {{ ((filteredOriginalGameBundles|filter(v => v) is empty) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.original_game_bundle.value.empty'|trans -}}
+                    </option>
+                    {% for gameBundle in gameBundles %}
+                    <option value="{{ gameBundle.slug }}" {{ ((gameBundle.slug in filteredOriginalGameBundles) ? 'selected': '') }}>
+                        {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% if not dex.is_shiny %}
+            <div class="col-6">
+                <label for="game_bundle_availability" class="form-label">
+                    <i class="bi bi-box2"></i>
+                    {{ 'album.offcanvas.filters.game_bundle_availability.label'|trans }}
+                </label>
+                {% set filteredGameBundlesAvailabilities = app.request.get('gba', []) %}
+                <select multiple id="game_bundle_availability" name="gba[]" class="form-select form-select-sm">
+                    <option value="" {{ ((filteredGameBundlesAvailabilities|filter(v => v) is empty) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.game_bundle_availability.value.empty'|trans -}}
+                    </option>
+                    {% for gameBundle in gameBundles %}
+                    <option value="{{ gameBundle.slug }}" {{ ((gameBundle.slug in filteredGameBundlesAvailabilities) ? 'selected': '') }}>
+                        {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% else %}
+            <div class="col-6">
+                <label for="game_bundle_shiny_availability" class="form-label">
+                    <i class="bi bi-box2"></i>
+                    {{ 'album.offcanvas.filters.game_bundle_shiny_availability.label'|trans }}
+                </label>
+                {% set filteredGameBundlesShinyAvailabilities = app.request.get('gbsa', []) %}
+                <select multiple id="game_bundle_shiny_availability" name="gbsa[]" class="form-select form-select-sm">
+                    <option value="" {{ ((filteredGameBundlesShinyAvailabilities|filter(v => v) is empty) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.game_bundle_shiny_availability.value.empty'|trans -}}
+                    </option>
+                    {% for gameBundle in gameBundles %}
+                    <option value="{{ gameBundle.slug }}" {{ ((gameBundle.slug in filteredGameBundlesShinyAvailabilities) ? 'selected': '') }}>
+                        {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+        </div>
         <div hidden>
             <input type="text" name="t" value="{{ queryTrainerId }}">
             <input type="text" name="cs" value="{{ catchState }}">

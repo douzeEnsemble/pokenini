@@ -10,6 +10,7 @@ class GetLabelsService extends AbstractApiService
         private readonly GetCatchStatesService $getCatchStatesService,
         private readonly GetTypesService $getTypesService,
         private readonly GetFormsService $getFormsService,
+        private readonly GetGameBundlesService $getGameBundlesService,
     ) {
     }
 
@@ -59,5 +60,13 @@ class GetLabelsService extends AbstractApiService
     public function getFormsVariant(): array
     {
         return $this->getFormsService->getFormsVariant();
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function getGameBundles(): array
+    {
+        return $this->getGameBundlesService->get();
     }
 }

@@ -166,6 +166,18 @@ album:
                 value:
                     empty: All
                     "null": None
+            original_game_bundle:
+                label: Original game bundle
+                value:
+                    empty: All
+            game_bundle_availability:
+                label: Available in
+                value:
+                    empty: All
+            game_bundle_shiny_availability:
+                label: Available in
+                value:
+                    empty: All
 
 update:
     labels:
