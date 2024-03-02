@@ -43,3 +43,4 @@ build/*
 ###> qossmic/deptrac-shim ###
 /.deptrac.cache
 ###< qossmic/deptrac-shim ###
+tests/last.html
