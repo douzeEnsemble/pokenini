@@ -19,7 +19,14 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help certs build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit_api phpunit_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web quality phpcs phpcbf phpmd psalm phpstan deptrac integration newman measures clear-build coverage htmlcoverage infection
+.PHONY : help
+.PHONY : certs build rebuild up install start stop sh
+.PHONY : data init_db data_app
+.PHONY : composer vendor sf cc
+.PHONY : tests phpunit_api phpunit_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
+.PHONY : quality phpcs phpcbf phpmd psalm phpstan deptrac
+.PHONY : integration newman
+.PHONY : measures clear-build coverage htmlcoverage infection infection_api infection_web
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -181,7 +188,7 @@ newman_execute:
 
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 measures: ## Execute all measures tools
-measures: clear-build coverage infection
+measures: clear-build coverage infection_api infection_web
 
 clear-build: # Clear build directory
 	rm -Rf build/*
@@ -203,8 +210,19 @@ htmlcoverage: ## Execute PHPUnit Coverage in HTML
 		-e XDEBUG_MODE=coverage -T php \
 		php bin/phpunit --coverage-html=build/coverage/coverage-html
 
-infection: ## Execute Infection (Mutation testing)
-infection: build/coverage/coverage-xml 
+infection: ## Execute all Infection testing
+infection: infection_api infection_web
+
+infection_api: ## Execute Infection (Mutation testing) for API module
+infection_api: build/coverage/coverage-xml 
 	@$(PHP) vendor/bin/infection --threads=4 --show-mutations \
 		--min-msi=100 --min-covered-msi=100 \
-		--logger-html='tests/mutation/index.html'
+		--logger-html='tests/mutation/index.html' \
+		--filter=src/Api
+
+infection_web: ## Execute Infection (Mutation testing) for API module
+infection_web: build/coverage/coverage-xml 
+	@$(PHP) vendor/bin/infection --threads=4 --show-mutations \
+		--min-msi=100 --min-covered-msi=100 \
+		--logger-html='tests/mutation/index.html' \
+		--filter=src/Web

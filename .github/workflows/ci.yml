@@ -53,8 +53,8 @@ jobs:
           ./vendor/bin/phpstan clear-result-cache
           ./vendor/bin/phpstan analyse --memory-limit=-1
 
-  phpunit_api:
-    name: Tests / PHPUnit / Api
+  phpunit:
+    name: Tests / PHPUnit
     runs-on: ubuntu-latest
     needs: [phpcs, phpmd, psalm, phpstan]
     steps:
@@ -63,19 +63,9 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/docker-compose
       - name: Run
-        run: docker compose exec -T php php bin/phpunit tests/Api/
-
-  phpunit_web:
-    name: Tests / PHPUnit / Web
-    runs-on: ubuntu-latest
-    needs: [phpcs, phpmd, psalm, phpstan]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Prepare
-        uses: ./.github/actions/docker-compose
-      - name: Run
-        run: docker compose exec -T php php bin/phpunit tests/Web/
+        run: |
+          docker compose exec -T php php bin/phpunit tests/Api/
+          docker compose exec -T php php bin/phpunit tests/Web/
 
   integration:
     name: Integration / Newman
@@ -148,4 +138,10 @@ jobs:
           docker compose exec -T php php vendor/bin/infection \
             --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
-            --show-mutations
+            --show-mutations \
+            --filter=src/Api
+          docker compose exec -T php php vendor/bin/infection \
+            --coverage=build/coverage \
+            --min-msi=100 --min-covered-msi=100 \
+            --show-mutations \
+            --filter=src/Web
