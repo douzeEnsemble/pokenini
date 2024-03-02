@@ -235,8 +235,6 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $crawler = $client->request('GET', '/fr/album/demo');
 
-        file_put_contents('tests/last.html', $crawler->html());
-
         $this->assertCountFilter($crawler, 25, '.album-case-action[hidden]');
         $this->assertCountFilter($crawler, 0, '.album-case-catch-state[hidden]');
         $this->assertCountFilter($crawler, 0, '.album-all-catch-state-edit-action[hidden]');
