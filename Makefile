@@ -23,7 +23,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : certs build rebuild up install start stop sh
 .PHONY : data init_db data_app
 .PHONY : composer vendor sf cc
-.PHONY : tests phpunit_api phpunit_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
+.PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
 .PHONY : quality phpcs phpcbf phpmd psalm phpstan deptrac
 .PHONY : integration newman
 .PHONY : measures clear-build coverage htmlcoverage infection infection_api infection_web
@@ -115,13 +115,13 @@ cc: ## Clear the cache
 
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 tests: ## Execute all tests
-tests: phpunit_api phpunit_web
+tests: tests_api tests_web
 
-phpunit_api: ## Execute unit test for Api module
+tests_api: ## Execute unit test for Api module
 	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
 	$(PHP) bin/phpunit tests/Api
 
-phpunit_web: ## Execute unit test for Web module
+tests_web: ## Execute unit test for Web module
 	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
 	$(PHP) bin/phpunit tests/Web
 
