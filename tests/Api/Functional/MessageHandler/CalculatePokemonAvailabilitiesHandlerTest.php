@@ -49,7 +49,7 @@ class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(33, $this->getTableCount('pokemon_availabilities'));
+        $this->assertEquals(21, $this->getTableCount('pokemon_availabilities'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());

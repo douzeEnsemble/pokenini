@@ -35,16 +35,16 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $commandTester->assertCommandIsSuccessful();
 
         $this->assertStringContainsString(
-            "17 pokemons' availabilities for Game Bundles calculated",
+            "10 pokemons' availabilities for Game Bundles calculated",
             $commandTester->getDisplay()
         );
         $this->assertStringContainsString(
-            "16 pokemons' availabilities for Game Bundles Shiny calculated",
+            "11 pokemons' availabilities for Game Bundles Shiny calculated",
             $commandTester->getDisplay()
         );
 
-        $this->assertEquals(17, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(16, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertEquals(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertEquals(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
@@ -62,16 +62,16 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $commandTester->assertCommandIsSuccessful();
 
         $this->assertStringContainsString(
-            "17 pokemons' availabilities for Game Bundles calculated",
+            "10 pokemons' availabilities for Game Bundles calculated",
             $commandTester->getDisplay()
         );
         $this->assertStringContainsString(
-            "16 pokemons' availabilities for Game Bundles Shiny calculated",
+            "11 pokemons' availabilities for Game Bundles Shiny calculated",
             $commandTester->getDisplay()
         );
 
-        $this->assertEquals(17, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(16, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertEquals(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertEquals(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());

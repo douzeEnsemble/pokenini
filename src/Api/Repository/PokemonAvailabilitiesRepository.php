@@ -43,6 +43,7 @@ class PokemonAvailabilitiesRepository extends ServiceEntityRepository
         FROM        game_bundle_availability AS gba
                 JOIN game_bundle AS gb 
                     ON gba.bundle_id = gb.id
+        WHERE		gba.is_available
         GROUP BY    gba.pokemon_id
         SQL;
 
@@ -67,6 +68,7 @@ class PokemonAvailabilitiesRepository extends ServiceEntityRepository
         FROM        game_bundle_shiny_availability AS gbsa
                 JOIN game_bundle AS gb 
                     ON gbsa.bundle_id = gb.id
+        WHERE		gbsa.is_available
         GROUP BY    gbsa.pokemon_id
         SQL;
 
