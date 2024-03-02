@@ -41,9 +41,9 @@ class AlbumPokemonService
 
         foreach ($pokemons as $pokemon) {
             /** @var string */
-            $gameBundleSlugs = $pokemon['game_bundle_slugs'];
+            $gameBundleSlugs = $pokemon['game_bundle_slugs'] ?? '';
             /** @var string */
-            $gameBundleSShinylugs = $pokemon['game_bundle_shiny_slugs'];
+            $gameBundleSShinylugs = $pokemon['game_bundle_shiny_slugs'] ?? '';
 
             $pokemon['game_bundles'] = array_filter(explode(',', $gameBundleSlugs));
             $pokemon['game_bundles_shiny'] = array_filter(explode(',', $gameBundleSShinylugs));
