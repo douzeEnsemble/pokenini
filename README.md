@@ -221,7 +221,17 @@ WHERE			slug = 'new-slug'
 7. Check into an album if icon is ok by checkinh html source code
 8. Delete original icon name into the icon repository
 
-## Integration
+### Debug 
+
+### Check if json are valid or not
+
+Dans le container (`make sh`)
+
+``` bash
+find tests/resources/moco -type f -name "*.json" -exec vendor/bin/jsonlint {} \;
+```
+
+#### Integration
 
 Get json
 
