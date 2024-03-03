@@ -181,7 +181,7 @@ newman_prepare:
 	@$(SYMFONY) --env=int app:calculate:pokemon_availabilities
 
 newman_execute:
-	$(DOCKER) run --rm --name pokenini-api-newman \
+	$(DOCKER) run --rm --name pokenini-newman \
 		--network=pokenini_default \
 		-v ./tests/Api/Integration:/etc/newman \
 		-t postman/newman:alpine run collection.json
