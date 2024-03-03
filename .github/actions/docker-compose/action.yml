@@ -11,9 +11,6 @@ runs:
     - name: Pull images
       shell: bash
       run: docker compose pull --ignore-pull-failures || true
-
-    - uses: satackey/action-docker-layer-caching@v0.0.11
-      continue-on-error: true
       
     - name: Generate mock ssl certificates files
       shell: bash
