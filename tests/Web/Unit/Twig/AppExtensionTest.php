@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Unit\Utils;
+namespace App\Tests\Web\Unit\Twig;
 
 use App\Web\Twig\AppExtension;
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Functional\Album\Common;
+namespace App\Tests\Web\Functional\Album\Access;
 
 use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;

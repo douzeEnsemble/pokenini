@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Browser\Album;
+namespace App\Tests\Web\Browser\Trainer;
 
 use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;

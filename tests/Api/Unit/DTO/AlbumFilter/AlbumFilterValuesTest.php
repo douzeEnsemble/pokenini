@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Api\Unit\DTO;
+namespace App\Tests\Api\Unit\DTO\AlbumFilter;
 
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\TestCase;

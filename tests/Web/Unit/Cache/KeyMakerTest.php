@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Unit\DTO;
+namespace App\Tests\Web\Unit\Cache;
 
 use App\Web\Cache\KeyMaker;
 use PHPUnit\Framework\TestCase;

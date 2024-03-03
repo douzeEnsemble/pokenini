@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Api\Unit\Service\UpdaterService;
+namespace App\Tests\Api\Unit\Service\CalculatorService;
 
 use App\Api\Calculator\PokemonAvailabilities\GameBundlesCalculator;
 use App\Api\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
