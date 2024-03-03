@@ -19,6 +19,9 @@ class LoadingTimeTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
+        // Initial request to put into caches
+        $client->request('GET', '/fr/album/demo?t=f86cbe805674d85f7806b175b70647a6a9334631');
+
         $stopwatch = new Stopwatch();
         $stopwatch->start('request');
 
@@ -27,7 +30,7 @@ class LoadingTimeTest extends AbstractBrowserTestCase
         $event = $stopwatch->stop('request');
 
         $this->assertLessThanOrEqual(
-            7 * 1000,
+            6 * 1000,
             $event->getDuration()
         );
     }
