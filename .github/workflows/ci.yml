@@ -96,7 +96,10 @@ jobs:
           docker compose exec -T php php bin/console --env=int app:calculate:pokemon_availabilities
       - name: Run
         run: |
-          docker run --network=pokenini_default -v ./tests/Api/Integration:/etc/newman -t postman/newman:alpine run collection.json
+          docker run --rm --name pokenini-newman \
+            --network=pokenini_default \
+            -v ./tests/Api/Integration:/etc/newman \
+            -t postman/newman:alpine run collection.json
 
   measures:
     name: Measures
