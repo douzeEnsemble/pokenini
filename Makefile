@@ -82,6 +82,9 @@ init_db: ## Initialize database data
 	$(SYMFONY) doctrine:database:drop --force --if-exists --env=test
 	$(SYMFONY) doctrine:database:create --env=test
 	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=test
+	$(SYMFONY) doctrine:database:drop --force --if-exists --env=int
+	$(SYMFONY) doctrine:database:create --env=int
+	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=int
 
 data_app: ## Initialize app data
 	$(SYMFONY) app:update:labels
