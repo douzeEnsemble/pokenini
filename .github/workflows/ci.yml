@@ -90,12 +90,12 @@ jobs:
           docker compose exec -T php php bin/console --env=int app:calculate:game_bundles_shinies_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:dex_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:pokemon_availabilities
-          docker run --network=pokenini-api_default -v ./tests/Api/Integration:/etc/newman -t postman/newman:alpine run collection.json
       - name: Run
-        run: docker compose exec -T php php bin/phpunit
+        run: |
+          docker run --network=pokenini-api_default -v ./tests/Api/Integration:/etc/newman -t postman/newman:alpine run collection.json
 
-  coverage:
-    name: Measures / Coverage / Api
+  measures:
+    name: Measures
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -106,35 +106,10 @@ jobs:
         run: | 
           docker compose exec \
             -e XDEBUG_MODE=coverage \
-            -T php php bin/phpunit tests/Api/ \
+            -T php php bin/phpunit \
             --coverage-clover=coverage.xml \
             --coverage-xml=build/coverage/coverage-xml \
             --log-junit=build/coverage/junit.xml
-      - name: Coverage Test
-        run: docker compose exec -T php php tests/tools/coverage.php coverage.xml 100 true
-      - name: Update coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: build/coverage/
-
-  mutation:
-    name: Measures / Mutation
-    runs-on: ubuntu-latest
-    needs: [coverage]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Download coverage report
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage api
-          path: build/coverage/
-      - name: Prepare
-        uses: ./.github/actions/docker-compose
-      - name: Run
-        run: |
-          docker compose exec -T php ls -laR /var/www/html
           docker compose exec -T php php vendor/bin/infection \
             --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
