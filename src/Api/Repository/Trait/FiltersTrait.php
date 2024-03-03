@@ -169,7 +169,10 @@ trait FiltersTrait
 
         if (!empty($filters->catchStates->values)) {
             $query .= ' AND (cs.slug IN(:filter_catch_states)';
-            if ($filters->catchStates->hasNull()) {
+            if (
+                $filters->catchStates->hasNull()
+                || in_array('no', $filters->catchStates->extract())
+            ) {
                 $query .= ' OR cs.slug IS NULL';
             }
             $query .= ')';

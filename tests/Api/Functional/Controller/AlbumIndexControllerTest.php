@@ -81,7 +81,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 1, 2, 0, 7);
+        $this->assertReport($report, 4, 1, 2, 0, 7);
     }
 
     public function testListUser12GoldSilverCrystal(): void
@@ -156,7 +156,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 2, 0, 0, 1, 9);
+        $this->assertReport($report, 8, 0, 0, 1, 9);
     }
 
     public function testListUser13(): void
@@ -229,7 +229,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 0, 0, 1, 7);
+        $this->assertReport($report, 6, 0, 0, 1, 7);
     }
 
     public function testListUserUnknown(): void
@@ -358,7 +358,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 8, 3, 3, 7, 22);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testListHomeShiny(): void
@@ -414,7 +414,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 0, 0, 0, 11);
+        $this->assertReport($report, 11, 0, 0, 0, 11);
     }
 
     public function testListHomePoGo(): void

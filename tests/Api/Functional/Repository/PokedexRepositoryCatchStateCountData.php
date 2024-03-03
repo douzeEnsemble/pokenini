@@ -32,7 +32,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    0,
+                    1,
                     0,
                     0,
                     0,
@@ -58,7 +58,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    0,
+                    1,
                     3,
                     1,
                     4,
@@ -124,7 +124,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    7,
+                    8,
                     3,
                     3,
                     6,
@@ -150,7 +150,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    7,
+                    8,
                     3,
                     1,
                     7,
@@ -176,7 +176,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    4,
+                    5,
                     3,
                     3,
                     7,
@@ -216,7 +216,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    7,
+                    8,
                     1,
                     3,
                     6,
@@ -251,7 +251,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    0,
+                    1,
                     0,
                     0,
                     0,
@@ -287,7 +287,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    3,
+                    4,
                     1,
                     1,
                     6,

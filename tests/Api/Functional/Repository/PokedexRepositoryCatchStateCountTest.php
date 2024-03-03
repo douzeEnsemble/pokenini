@@ -34,7 +34,7 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         $this->assertEquals(
             [
                 [
-                    'count' => 1,
+                    'count' => 4,
                     'slug' => 'no',
                     'name' => 'No',
                     'french_name' => 'Non',

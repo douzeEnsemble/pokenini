@@ -49,7 +49,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 3, 1, 1, 6, 12);
+        $this->assertReport($report, 4, 1, 1, 6, 12);
     }
 
     public function testOriginalGameBundleNull(): void

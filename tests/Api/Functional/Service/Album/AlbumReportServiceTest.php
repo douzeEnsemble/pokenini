@@ -68,34 +68,34 @@ class AlbumReportServiceTest extends KernelTestCase
     public function getReportProvider(): array
     {
         return [
-            [
+            '7b5_redgreenblueyellow' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'redgreenblueyellow',
-                1,
+                4,
                 1,
                 2,
                 0,
                 7,
             ],
-            [
+            '7b5_goldsilvercrystal' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'goldsilvercrystal',
-                2,
+                8,
                 0,
                 0,
                 1,
                 9,
             ],
-            [
+            'bd3_redgreenblueyellow' => [
                 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
                 'redgreenblueyellow',
-                0,
+                6,
                 0,
                 0,
                 1,
                 7,
             ],
-            [
+            '465_redgreenblueyellow' => [
                 '46546542313186',
                 'redgreenblueyellow',
                 0,
@@ -104,19 +104,19 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 7,
             ],
-            [
+            '7b5_home' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
-                8,
+                9,
                 3,
                 3,
                 7,
                 22,
             ],
-            [
+            '7b5_homeshiny' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home_shiny',
-                0,
+                11,
                 0,
                 0,
                 0,

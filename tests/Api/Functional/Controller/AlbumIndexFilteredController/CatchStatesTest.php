@@ -43,6 +43,37 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 0, 3, 0, 0, 3);
     }
 
+    public function testNoCatchStateFilter(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'catch_states' => [
+                    'no',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(9, $pokemons);
+
+        $this->assertArrayHasKey('report', $data);
+        /** @var int[]|int[][][]|string[][][] $report */
+        $report = $data['report'];
+
+        $this->assertReport($report, 9, 0, 0, 0, 9);
+    }
+
     public function testCatchStateFilterNull(): void
     {
         $this->apiRequest(
