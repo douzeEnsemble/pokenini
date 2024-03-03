@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 ## < Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
