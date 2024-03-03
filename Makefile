@@ -197,6 +197,7 @@ build/coverage/coverage-xml: ## Generate coverage report
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php bin/phpunit \
+            --exclude-group="browser-testing" \
 			--coverage-clover=coverage.xml \
 			--coverage-xml=build/coverage/coverage-xml \
 			--log-junit=build/coverage/junit.xml
