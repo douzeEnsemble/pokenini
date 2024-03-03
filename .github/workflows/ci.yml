@@ -48,9 +48,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Prepare
         uses: ./.github/actions/local
-      - name: Run
+      - name: Initialize
         run: |
           ./vendor/bin/phpstan clear-result-cache
+      - name: Run
+        run: |
           ./vendor/bin/phpstan analyse --memory-limit=-1
 
   phpunit:
@@ -62,9 +64,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Prepare
         uses: ./.github/actions/docker-compose
-      - name: Run
+      - name: Run Api
         run: |
           docker compose exec -T php php bin/phpunit tests/Api/
+      - name: Run Web
+        run: |
           docker compose exec -T php php bin/phpunit tests/Web/
 
   integration:
@@ -92,7 +96,7 @@ jobs:
           docker compose exec -T php php bin/console --env=int app:calculate:pokemon_availabilities
       - name: Run
         run: |
-          docker run --network=pokenini-api_default -v ./tests/Api/Integration:/etc/newman -t postman/newman:alpine run collection.json
+          docker run --network=pokenini_default -v ./tests/Api/Integration:/etc/newman -t postman/newman:alpine run collection.json
 
   measures:
     name: Measures
@@ -102,7 +106,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Prepare
         uses: ./.github/actions/docker-compose
-      - name: Run
+      - name: Run Coverage
         run: | 
           docker compose exec \
             -e XDEBUG_MODE=coverage \
@@ -111,11 +115,15 @@ jobs:
             --coverage-clover=coverage.xml \
             --coverage-xml=build/coverage/coverage-xml \
             --log-junit=build/coverage/junit.xml
+      - name: Run Infection Api
+        run: | 
           docker compose exec -T php php vendor/bin/infection \
             --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
             --show-mutations \
             --filter=src/Api
+      - name: Run Infection Web
+        run: | 
           docker compose exec -T php php vendor/bin/infection \
             --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
