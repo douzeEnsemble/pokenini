@@ -37,13 +37,19 @@ help: ## Outputs this help screen
 	touch .env
 .env.dev.local: ## Create .env.dev.local files (not phony to check the file)
 	cp .env.dev .env.dev.local
-	
+
+MKCERT := $(shell command -v mkcert 2> /dev/null)
+
 KEY_FILE := ./docker/apache/ssl/cert-key.pem
 CERT_FILE := ./docker/apache/ssl/cert.pem
 
 certs: ## Create ssl files
 certs:
 	mkdir -p ./docker/apache/ssl
+	@if [ -z "$(MKCERT)" ]; then \
+		echo "mkcert is not installed in your system. Please install it"; \
+		exit 1; \
+	fi
 	@if [ ! -e $(KEY_FILE) ] || [ ! -e $(CERT_FILE) ]; then \
 		mkcert \
 			-key-file $(KEY_FILE) \
