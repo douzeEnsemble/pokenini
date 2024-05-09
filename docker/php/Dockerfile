@@ -67,7 +67,7 @@ RUN mkdir -p $GNUPGHOME \
     && wget -O phive.phar https://phar.io/releases/phive.phar \
     && wget -O phive.phar.asc https://phar.io/releases/phive.phar.asc \    
     && gpg --refresh-keys \
-    && gpg --keyserver keyserver.ubuntu.com --recv-keys 0x9D8A98B29B2D5D79 \
+    && gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x9D8A98B29B2D5D79 \
     && gpg --verify phive.phar.asc phive.phar \
     && chmod +x phive.phar \
     && mv phive.phar /usr/local/bin/phive
