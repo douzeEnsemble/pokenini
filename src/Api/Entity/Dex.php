@@ -53,16 +53,6 @@ class Dex
     #[ORM\Column]
     public bool $isReleased = true;
 
-    #[Gedmo\Timestampable(
-        on: 'change',
-        field: [
-            'selectionRule',
-            'isShiny',
-            'isDisplayForm',
-            'displayTemplate',
-            'region'
-        ]
-    )]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public \DateTime $lastChangedAt;
 }
