@@ -9,13 +9,11 @@ use App\Api\Entity\Traits\FrenchNamedTrait;
 use App\Api\Entity\Traits\NamedTrait;
 use App\Api\Entity\Traits\OrderedTrait;
 use App\Api\Entity\Traits\SlugifiedTrait;
+use App\Api\Entity\Traits\SoftDeleteable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
-#[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Dex
 {
     use BaseEntityTrait;
@@ -23,7 +21,7 @@ class Dex
     use FrenchNamedTrait;
     use SlugifiedTrait;
     use OrderedTrait;
-    use SoftDeleteableEntity;
+    use SoftDeleteable;
 
     #[ORM\Column(length: 13570)]
     public string $selectionRule = '';

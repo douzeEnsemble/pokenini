@@ -9,12 +9,10 @@ use App\Api\Entity\Traits\NamedTrait;
 use App\Api\Entity\Traits\FrenchNamedTrait;
 use App\Api\Entity\Traits\OrderedTrait;
 use App\Api\Entity\Traits\SlugifiedTrait;
+use App\Api\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
-#[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class SpecialForm
 {
     use BaseEntityTrait;
@@ -22,5 +20,5 @@ class SpecialForm
     use FrenchNamedTrait;
     use SlugifiedTrait;
     use OrderedTrait;
-    use SoftDeleteableEntity;
+    use SoftDeleteable;
 }
