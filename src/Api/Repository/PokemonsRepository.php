@@ -34,6 +34,7 @@ class PokemonsRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('p');
 
+        $queryBuilder->where($queryBuilder->expr()->isNull('p.deletedAt'));
         $queryBuilder->orderBy('p.nationalDexNumber, p.familyOrder');
 
         return $queryBuilder->getQuery();

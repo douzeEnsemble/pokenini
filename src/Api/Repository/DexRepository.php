@@ -23,6 +23,7 @@ class DexRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('d');
 
+        $queryBuilder->where($queryBuilder->expr()->isNull('d.deletedAt'));
         $queryBuilder->orderBy('d.orderNumber');
 
         return $queryBuilder->getQuery();
@@ -33,6 +34,7 @@ class DexRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('d');
 
         $queryBuilder->select($queryBuilder->expr()->count('d'));
+        $queryBuilder->where($queryBuilder->expr()->isNull('d.deletedAt'));
 
         /** @var int */
         return $queryBuilder->getQuery()->getSingleScalarResult();
