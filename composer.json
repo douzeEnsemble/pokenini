@@ -15,7 +15,6 @@
         "guzzlehttp/guzzle": "^7.4",
         "knpuniversity/oauth2-client-bundle": "^2.18",
         "league/oauth2-google": "^4.0",
-        "nelmio/cors-bundle": "2.4.*",
         "phpdocumentor/reflection-docblock": "^5.3",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "7.0.*",
