@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d27b209e4030e8a5839baf3b4404cb3d",
+    "content-hash": "55062df6573764b933dddfcdd6391148",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1466,16 +1466,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.353.0",
+            "version": "v0.354.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "fd11c75d0303b3a4237f65482324cf987950b126"
+                "reference": "ea6f4a01c9113cb4661d1243baf5af0f69a926c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/fd11c75d0303b3a4237f65482324cf987950b126",
-                "reference": "fd11c75d0303b3a4237f65482324cf987950b126",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/ea6f4a01c9113cb4661d1243baf5af0f69a926c2",
+                "reference": "ea6f4a01c9113cb4661d1243baf5af0f69a926c2",
                 "shasum": ""
             },
             "require": {
@@ -1504,9 +1504,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.353.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.354.0"
             },
-            "time": "2024-05-07T05:10:51+00:00"
+            "time": "2024-05-10T16:30:18+00:00"
         },
         {
             "name": "google/auth",
@@ -2610,20 +2610,20 @@
         },
         {
             "name": "psr/http-factory",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35"
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
-                "reference": "e616d01114759c4c489f93b099585439f795fe35",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
+                "reference": "2b4765fddfe3b508ac62f829e852b1501d3f6e8a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0.0",
+                "php": ">=7.1",
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "type": "library",
@@ -2647,7 +2647,7 @@
                     "homepage": "https://www.php-fig.org/"
                 }
             ],
-            "description": "Common interfaces for PSR-7 HTTP message factories",
+            "description": "PSR-17: Common interfaces for PSR-7 HTTP message factories",
             "keywords": [
                 "factory",
                 "http",
@@ -2659,9 +2659,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2023-04-10T20:10:41+00:00"
+            "time": "2024-04-15T12:06:14+00:00"
         },
         {
             "name": "psr/http-message",
@@ -7310,16 +7310,16 @@
         },
         {
             "name": "twig/extra-bundle",
-            "version": "v3.9.3",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/twig-extra-bundle.git",
-                "reference": "ef6869adf1fdab66f7e495771a7ba01496ffc0d5"
+                "reference": "cdc6e23aeb7f4953c1039568c3439aab60c56454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/ef6869adf1fdab66f7e495771a7ba01496ffc0d5",
-                "reference": "ef6869adf1fdab66f7e495771a7ba01496ffc0d5",
+                "url": "https://api.github.com/repos/twigphp/twig-extra-bundle/zipball/cdc6e23aeb7f4953c1039568c3439aab60c56454",
+                "reference": "cdc6e23aeb7f4953c1039568c3439aab60c56454",
                 "shasum": ""
             },
             "require": {
@@ -7368,7 +7368,7 @@
                 "twig"
             ],
             "support": {
-                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.9.3"
+                "source": "https://github.com/twigphp/twig-extra-bundle/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -7380,20 +7380,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:24:21+00:00"
+            "time": "2024-05-11T07:35:57+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v3.9.3",
+            "version": "v3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a842d75fed59cdbcbd3a3ad7fb9eb768fc350d58"
+                "reference": "34422f90043aba75e419dd77ee0a86e1688c28ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a842d75fed59cdbcbd3a3ad7fb9eb768fc350d58",
-                "reference": "a842d75fed59cdbcbd3a3ad7fb9eb768fc350d58",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/34422f90043aba75e419dd77ee0a86e1688c28ee",
+                "reference": "34422f90043aba75e419dd77ee0a86e1688c28ee",
                 "shasum": ""
             },
             "require": {
@@ -7447,7 +7447,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.9.3"
+                "source": "https://github.com/twigphp/Twig/tree/v3.10.0"
             },
             "funding": [
                 {
@@ -7459,7 +7459,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T11:59:33+00:00"
+            "time": "2024-05-11T07:44:16+00:00"
         }
     ],
     "packages-dev": [
@@ -12962,7 +12962,14 @@
         "ext-zip": "*"
     },
     "platform-dev": {
-        "ext-dom": "*"
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-simplexml": "*",
+        "ext-tokenizer": "*",
+        "ext-xml": "*",
+        "ext-xmlwriter": "*"
     },
     "plugin-api-version": "2.6.0"
 }
