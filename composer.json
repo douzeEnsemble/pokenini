@@ -63,7 +63,6 @@
         "symfony/browser-kit": "7.0.*",
         "symfony/css-selector": "7.0.*",
         "symfony/debug-bundle": "7.0.*",
-        "symfony/maker-bundle": "^1.44",
         "symfony/panther": "^2.1",
         "symfony/phpunit-bridge": "7.0.*",
         "symfony/stopwatch": "7.0.*",
