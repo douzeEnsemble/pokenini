@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0451c2d01a12dc052dbe01d755c4ae8e",
+    "content-hash": "8bf681634c5dfc536dbe1423dff8cab4",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -10319,60 +10319,49 @@
             "time": "2024-04-05T04:35:58+00:00"
         },
         {
-            "name": "qossmic/deptrac-shim",
-            "version": "1.0.2",
+            "name": "qossmic/deptrac",
+            "version": "2.0.0.beta",
             "source": {
                 "type": "git",
-                "url": "https://github.com/qossmic/deptrac-shim.git",
-                "reference": "3179a2c4978654add865309e3c280ef3d60f0043"
+                "url": "https://github.com/qossmic/deptrac.git",
+                "reference": "5da9063f0192bc1aa43de93e65feb5f46eee274e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/qossmic/deptrac-shim/zipball/3179a2c4978654add865309e3c280ef3d60f0043",
-                "reference": "3179a2c4978654add865309e3c280ef3d60f0043",
+                "url": "https://api.github.com/repos/qossmic/deptrac/zipball/5da9063f0192bc1aa43de93e65feb5f46eee274e",
+                "reference": "5da9063f0192bc1aa43de93e65feb5f46eee274e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "ext-tokenizer": "*",
-                "ext-zlib": "*",
                 "php": "^8.1"
-            },
-            "replace": {
-                "qossmic/deptrac": "self.version"
             },
             "suggest": {
                 "ext-dom": "For using the JUnit output formatter"
             },
             "bin": [
-                "deptrac"
+                "bin/deptrac",
+                "deptrac.phar"
             ],
             "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Qossmic\\Deptrac\\": "src/"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Tim Glabisch"
-                },
-                {
-                    "name": "Simon Mönch",
-                    "email": "simon.moench@qossmic.com"
-                },
-                {
-                    "name": "Denis Brumann",
-                    "email": "denis.brumann@qossmic.com",
-                    "role": "maintainer"
-                }
-            ],
-            "description": "deptrac phar distribution",
+            "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
             "support": {
-                "issues": "https://github.com/qossmic/deptrac-shim/issues",
-                "source": "https://github.com/qossmic/deptrac-shim/tree/1.0.2"
+                "issues": "https://github.com/qossmic/deptrac/issues",
+                "source": "https://github.com/qossmic/deptrac/tree/2.0.0.beta"
             },
-            "abandoned": "qossmic/deptrac",
-            "time": "2022-12-02T11:47:53+00:00"
+            "time": "2024-04-14T08:25:29+00:00"
         },
         {
             "name": "sanmai/later",
@@ -13023,7 +13012,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "qossmic/deptrac": 10
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

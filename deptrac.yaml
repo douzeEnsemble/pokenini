@@ -6,101 +6,101 @@ parameters:
   layers:
     - name: ApiActionEnder
       collectors:
-        - type: className
-          regex: 'App\\Api\\ActionEnder\\.*'
+        - type: classLike
+          value: 'App\\Api\\ActionEnder\\.*'
     - name: ApiActionStarter
       collectors:
-        - type: className
-          regex: 'App\\Api\\ActionStarter\\.*'
+        - type: classLike
+          value: 'App\\Api\\ActionStarter\\.*'
     - name: ApiCalculator
       collectors:
-        - type: className
-          regex: 'App\\Api\\Calculator\\.*'
+        - type: classLike
+          value: 'App\\Api\\Calculator\\.*'
     - name: ApiCommand
       collectors:
-        - type: className
-          regex: 'App\\Api\\Command\\.*'
+        - type: classLike
+          value: 'App\\Api\\Command\\.*'
     - name: ApiController
       collectors:
-        - type: className
-          regex: 'App\\Api\\Controller\\.*'
+        - type: classLike
+          value: 'App\\Api\\Controller\\.*'
     - name: ApiDTO
       collectors:
-        - type: className
-          regex: 'App\\Api\\DTO\\.*'
+        - type: classLike
+          value: 'App\\Api\\DTO\\.*'
     - name: ApiEntity
       collectors:
-        - type: className
-          regex: 'App\\Api\\Entity\\.*'
+        - type: classLike
+          value: 'App\\Api\\Entity\\.*'
     - name: ApiException
       collectors:
-        - type: className
-          regex: 'App\\Api\\Exception\\.*'
+        - type: classLike
+          value: 'App\\Api\\Exception\\.*'
     - name: ApiHelper
       collectors:
-        - type: className
-          regex: 'App\\Api\\Helper\\.*'
+        - type: classLike
+          value: 'App\\Api\\Helper\\.*'
     - name: ApiMessage
       collectors:
-        - type: className
-          regex: 'App\\Api\\Message\\.*'
+        - type: classLike
+          value: 'App\\Api\\Message\\.*'
     - name: ApiMessageHandler
       collectors:
-        - type: className
-          regex: 'App\\Api\\MessageHandler\\.*'
+        - type: classLike
+          value: 'App\\Api\\MessageHandler\\.*'
     - name: ApiRepository
       collectors:
-        - type: className
-          regex: 'App\\Api\\Repository\\.*'
+        - type: classLike
+          value: 'App\\Api\\Repository\\.*'
     - name: ApiService
       collectors:
-        - type: className
-          regex: 'App\\Api\\Service\\.*'
+        - type: classLike
+          value: 'App\\Api\\Service\\.*'
     - name: ApiUpdater
       collectors:
-        - type: className
-          regex: 'App\\Api\\Updater\\.*'
+        - type: classLike
+          value: 'App\\Api\\Updater\\.*'
     
     - name: WebAlbumFilters
       collectors:
-        - type: className
-          regex: 'App\\Web\\AlbumFilters\\.*'
+        - type: classLike
+          value: 'App\\Web\\AlbumFilters\\.*'
     - name: WebCache
       collectors:
-        - type: className
-          regex: 'App\\Web\\Cache\\.*'
+        - type: classLike
+          value: 'App\\Web\\Cache\\.*'
     - name: WebController
       collectors:
-        - type: className
-          regex: 'App\\Web\\Controller\\.*'
+        - type: classLike
+          value: 'App\\Web\\Controller\\.*'
     - name: WebDTO
       collectors:
-        - type: className
-          regex: 'App\\Web\\DTO\\.*'
+        - type: classLike
+          value: 'App\\Web\\DTO\\.*'
     - name: WebException
       collectors:
-        - type: className
-          regex: 'App\\Web\\Exception\\.*'
+        - type: classLike
+          value: 'App\\Web\\Exception\\.*'
     - name: WebSecurity
       collectors:
-        - type: className
-          regex: 'App\\Web\\Security\\.*'
+        - type: classLike
+          value: 'App\\Web\\Security\\.*'
     - name: WebService
       collectors:
-        - type: className
-          regex: 'App\\Web\\Service\\.*'
+        - type: classLike
+          value: 'App\\Web\\Service\\.*'
     - name: WebTwig
       collectors:
-        - type: className
-          regex: 'App\\Web\\Twig\\.*'
+        - type: classLike
+          value: 'App\\Web\\Twig\\.*'
     - name: WebUtils
       collectors:
-        - type: className
-          regex: 'App\\Web\\Utils\\.*'
+        - type: classLike
+          value: 'App\\Web\\Utils\\.*'
     - name: WebValidator
       collectors:
-        - type: className
-          regex: 'App\\Web\\Validator\\.*'
+        - type: classLike
+          value: 'App\\Web\\Validator\\.*'
 
   ruleset:
     ApiActionEnder:
