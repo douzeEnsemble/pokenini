@@ -27,7 +27,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @dataProvider provideInvalidConstraints
+     * @dataProvider providerInvalidConstraints
      */
     public function testTrueIsInvalid(CatchStates $constraint): void
     {
@@ -41,13 +41,13 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return \ArrayIterator<int, CatchStates[]>
      */
-    public function provideInvalidConstraints(): iterable
+    public static function providerInvalidConstraints(): iterable
     {
         yield [new CatchStates()];
     }
 
     /**
-     * @dataProvider provideValidConstraints
+     * @dataProvider providerValidConstraints
      */
     public function testTrueIsValid(CatchStates $constraint): void
     {
@@ -59,7 +59,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return \ArrayIterator<int, CatchStates[]>
      */
-    public function provideValidConstraints(): iterable
+    public static function providerValidConstraints(): iterable
     {
         yield [new CatchStates()];
     }

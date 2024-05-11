@@ -463,7 +463,7 @@ class AlbumPokemonServiceTest extends KernelTestCase
     /**
      * @return string[][]|int[][]
      */
-    public function providerListFilteredNull(): array
+    public static function providerListFilteredNull(): array
     {
         return [
             'primary_types' => [

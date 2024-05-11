@@ -18,7 +18,7 @@ class DexAvailabilitiesRepositoryData
                         'grass',
                     ],
                 ],
-                'totalCount' => 6,
+                'expectedTotalCount' => 6,
             ],
             'primary_type_null' => [
                 'filters' => [
@@ -26,7 +26,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 1,
+                'expectedTotalCount' => 1,
             ],
             'secondary_type' => [
                 'filters' => [
@@ -34,7 +34,7 @@ class DexAvailabilitiesRepositoryData
                         'normal',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'secondary_type_null' => [
                 'filters' => [
@@ -42,7 +42,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 9,
+                'expectedTotalCount' => 9,
             ],
             'primary_and_secondary_types' => [
                 'filters' => [
@@ -53,7 +53,7 @@ class DexAvailabilitiesRepositoryData
                         'flying',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'any_type' => [
                 'filters' => [
@@ -61,7 +61,7 @@ class DexAvailabilitiesRepositoryData
                         'normal',
                     ],
                 ],
-                'totalCount' => 7,
+                'expectedTotalCount' => 7,
             ],
         ];
     }
@@ -78,7 +78,7 @@ class DexAvailabilitiesRepositoryData
                         'starter',
                     ],
                 ],
-                'totalCount' => 2,
+                'expectedTotalCount' => 2,
             ],
             'category_form_null' => [
                 'filters' => [
@@ -86,7 +86,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 20,
+                'expectedTotalCount' => 20,
             ],
             'regional_form' => [
                 'filters' => [
@@ -94,7 +94,7 @@ class DexAvailabilitiesRepositoryData
                         'alolan',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'regional_form_null' => [
                 'filters' => [
@@ -102,7 +102,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 19,
+                'expectedTotalCount' => 19,
             ],
             'special_form' => [
                 'filters' => [
@@ -110,7 +110,7 @@ class DexAvailabilitiesRepositoryData
                         'gigantamax',
                     ],
                 ],
-                'totalCount' => 2,
+                'expectedTotalCount' => 2,
             ],
             'special_form_null' => [
                 'filters' => [
@@ -118,7 +118,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 18,
+                'expectedTotalCount' => 18,
             ],
             'special_forms' => [
                 'filters' => [
@@ -127,7 +127,7 @@ class DexAvailabilitiesRepositoryData
                         'mega',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'variant_form' => [
                 'filters' => [
@@ -135,7 +135,7 @@ class DexAvailabilitiesRepositoryData
                         'gender',
                     ],
                 ],
-                'totalCount' => 4,
+                'expectedTotalCount' => 4,
             ],
             'variant_form_null' => [
                 'filters' => [
@@ -143,7 +143,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 18,
+                'expectedTotalCount' => 18,
             ],
         ];
     }
@@ -160,7 +160,7 @@ class DexAvailabilitiesRepositoryData
                         'maybe',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'catch_state_null' => [
                 'filters' => [
@@ -168,7 +168,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 1,
+                'expectedTotalCount' => 1,
             ],
             'catch_states' => [
                 'filters' => [
@@ -177,7 +177,7 @@ class DexAvailabilitiesRepositoryData
                         'maybenot',
                     ],
                 ],
-                'totalCount' => 6,
+                'expectedTotalCount' => 6,
             ],
         ];
     }
@@ -194,7 +194,7 @@ class DexAvailabilitiesRepositoryData
                         'ultrasunultramoon',
                     ],
                 ],
-                'totalCount' => 1,
+                'expectedTotalCount' => 1,
             ],
             'original_game_bundles_null' => [
                 'filters' => [
@@ -202,7 +202,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 0,
+                'expectedTotalCount' => 0,
             ],
             'game_bundle_availabilities' => [
                 'filters' => [
@@ -210,7 +210,7 @@ class DexAvailabilitiesRepositoryData
                         'ultrasunultramoon',
                     ],
                 ],
-                'totalCount' => 2,
+                'expectedTotalCount' => 2,
             ],
             'game_bundle_availabilities_null' => [
                 'filters' => [
@@ -218,7 +218,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 0,
+                'expectedTotalCount' => 0,
             ],
             'game_bundle_shiny_availabilities' => [
                 'filters' => [
@@ -226,7 +226,7 @@ class DexAvailabilitiesRepositoryData
                         'ultrasunultramoon',
                     ],
                 ],
-                'totalCount' => 4,
+                'expectedTotalCount' => 4,
             ],
             'game_bundle_shiny_availabilities_null' => [
                 'filters' => [
@@ -234,7 +234,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 0,
+                'expectedTotalCount' => 0,
             ],
         ];
     }
@@ -251,7 +251,7 @@ class DexAvailabilitiesRepositoryData
                         'maybe',
                     ],
                 ],
-                'totalCount' => 3,
+                'expectedTotalCount' => 3,
             ],
             'family_null' => [
                 'filters' => [
@@ -259,7 +259,7 @@ class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'totalCount' => 1,
+                'expectedTotalCount' => 1,
             ],
             'families' => [
                 'filters' => [
@@ -268,7 +268,7 @@ class DexAvailabilitiesRepositoryData
                         'maybenot',
                     ],
                 ],
-                'totalCount' => 6,
+                'expectedTotalCount' => 6,
             ],
         ];
     }
@@ -318,7 +318,7 @@ class DexAvailabilitiesRepositoryData
                         '',
                     ],
                 ],
-                'totalCount' => 22,
+                'expectedTotalCount' => 22,
             ],
         ];
     }

@@ -256,7 +256,7 @@ class CacheInvalidatorServiceTest extends TestCase
     /**
      * @return string[][]
      */
-    public function providerInvalidateAlbums(): array
+    public static function providerInvalidateAlbums(): array
     {
         return [
             'regional_dex_numbers' => ['regional_dex_numbers'],

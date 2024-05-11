@@ -128,26 +128,26 @@ tests: tests_api tests_web
 
 tests_api: ## Execute unit test for Api module
 	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
-	$(PHP) bin/phpunit tests/Api
+	$(PHP) vendor/bin/phpunit tests/Api
 
 tests_web: ## Execute unit test for Web module
 	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
-	$(PHP) bin/phpunit tests/Web
+	$(PHP) vendor/bin/phpunit tests/Web
 
 tests_unit_api: ## Execute unit tests for Api module
-	@$(PHP_CONT) bin/phpunit tests/Api/Unit
+	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Unit
 
 tests_unit_web: ## Execute unit tests for Web module
-	@$(PHP_CONT) bin/phpunit tests/Web/Unit
+	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Unit
 
 tests_functional_api: ## Execute functional tests for Api module
-	@$(PHP_CONT) bin/phpunit tests/Api/Functional
+	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Functional
 
 tests_functional_web: ## Execute functional tests for Web module
-	@$(PHP_CONT) bin/phpunit tests/Web/Functional
+	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Functional
 
 tests_browser_web: ## Execute browser tests for Web module
-	@$(PHP_CONT) bin/phpunit tests/Web/Browser
+	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Browser
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
@@ -205,7 +205,7 @@ clear-build: # Clear build directory
 build/coverage/coverage-xml: ## Generate coverage report
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
-		php bin/phpunit \
+		php vendor/bin/phpunit \
             --exclude-group="browser-testing" \
 			--coverage-clover=coverage.xml \
 			--coverage-xml=build/coverage/coverage-xml \
@@ -218,7 +218,7 @@ coverage: build/coverage/coverage-xml
 htmlcoverage: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
-		php bin/phpunit --coverage-html=build/coverage/coverage-html
+		php vendor/bin/phpunit --coverage-html=build/coverage/coverage-html
 
 infection: ## Execute all Infection testing
 infection: infection_api infection_web
