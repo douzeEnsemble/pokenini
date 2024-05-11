@@ -44,6 +44,13 @@
     },
     "require-dev": {
         "ext-dom": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-mbstring": "*",
+        "ext-simplexml": "*",
+        "ext-tokenizer": "*",
+        "ext-xml": "*",
+        "ext-xmlwriter": "*",
         "hautelook/alice-bundle": "2.13.*",
         "infection/infection": "0.27.*",
         "phpmd/phpmd": "^2.12",
