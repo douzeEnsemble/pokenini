@@ -68,7 +68,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
-            "*": "dFist"
+            "*": "dist"
         },
         "sort-packages": true,
         "allow-plugins": {
