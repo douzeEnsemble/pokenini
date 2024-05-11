@@ -8,7 +8,6 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-zip": "*",
-        "cocur/slugify": "^4.1",
         "composer/package-versions-deprecated": "1.11.99.5",
         "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.11",
