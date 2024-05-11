@@ -40,7 +40,4 @@ docker/apache/ssl/cert-key.pem
 docker/apache/ssl/cert.pem
 
 build/*
-###> qossmic/deptrac-shim ###
-/.deptrac.cache
-###< qossmic/deptrac-shim ###
 tests/last.html
