@@ -90,7 +90,7 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     /**
      * @return string[][][][]|int[][][]
      */
-    public function providerGetCatchStatesCountsFilters(): array
+    public static function providerGetCatchStatesCountsFilters(): array
     {
         return array_merge(
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsTypesFilters(),

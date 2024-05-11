@@ -81,7 +81,7 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
     /**
      * @return string[][][][]|int[][]
      */
-    public function providerGetTotalFilters(): array
+    public static function providerGetTotalFilters(): array
     {
         return array_merge(
             DexAvailabilitiesRepositoryData::providerGetTotalTypesFilters(),

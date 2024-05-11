@@ -22,7 +22,7 @@ class AlbumReportServiceTest extends KernelTestCase
     }
 
     /**
-     * @dataProvider getReportProvider
+     * @dataProvider providerGetReport
      */
     public function testGetReport(
         string $trainerId,
@@ -43,7 +43,7 @@ class AlbumReportServiceTest extends KernelTestCase
     /**
      * @param string[][] $filters
      *
-     * @dataProvider getReportFilteredProvider
+     * @dataProvider providerGetReportFiltered
      */
     public function testGetReportFiltered(
         string $trainerId,
@@ -65,7 +65,7 @@ class AlbumReportServiceTest extends KernelTestCase
     /**
      * @return string[][]|int[][]
      */
-    public function getReportProvider(): array
+    public static function providerGetReport(): array
     {
         return [
             '7b5_redgreenblueyellow' => [
@@ -128,7 +128,7 @@ class AlbumReportServiceTest extends KernelTestCase
     /**
      * @return string[][]|string[][][][]|int[][]
      */
-    public function getReportFilteredProvider(): array
+    public static function providerGetReportFiltered(): array
     {
         return array_merge(
             AlbumReportServiceData::getTypesReportFilteredProvider(),

@@ -15,7 +15,7 @@ class ActionInvalidateTest extends WebTestCase
     use TestNavTrait;
 
     /**
-     * @dataProvider invalidateSuccessProvider
+     * @dataProvider providerInvalidateSuccess
      */
     public function testInvalidateSuccess(string $name): void
     {
@@ -34,7 +34,7 @@ class ActionInvalidateTest extends WebTestCase
     }
 
     /**
-     * @dataProvider invalidateNotExistsProvider
+     * @dataProvider providerInvalidateNotExists
      */
     public function testInvalidateNotExists(string $name): void
     {
@@ -68,7 +68,7 @@ class ActionInvalidateTest extends WebTestCase
     /**
      * @return string[][]
      */
-    public function invalidateSuccessProvider(): array
+    public static function providerInvalidateSuccess(): array
     {
         return [
             ['labels'],
@@ -81,7 +81,7 @@ class ActionInvalidateTest extends WebTestCase
     /**
      * @return string[][]
      */
-    public function invalidateNotExistsProvider(): array
+    public static function providerInvalidateNotExists(): array
     {
         return [
             ['catch_states'],

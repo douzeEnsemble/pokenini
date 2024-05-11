@@ -269,9 +269,6 @@
     "sebastian/recursion-context": {
         "version": "4.0.4"
     },
-    "sebastian/resource-operations": {
-        "version": "3.0.3"
-    },
     "sebastian/type": {
         "version": "3.0.0"
     },
@@ -469,7 +466,7 @@
         },
         "files": [
             ".env.test",
-            "bin/phpunit",
+            "vendor/bin/phpunit",
             "phpunit.xml.dist",
             "tests/bootstrap.php"
         ]
