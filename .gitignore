@@ -25,6 +25,7 @@ coverage.xml
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
+.phpunit.cache
 ###< phpunit/phpunit ###
 
 ###> squizlabs/php_codesniffer ###
@@ -41,3 +42,4 @@ docker/apache/ssl/cert.pem
 
 build/*
 tests/last.html
+.phpunit.cache/test-results
