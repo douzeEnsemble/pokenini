@@ -8,10 +8,10 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-zip": "*",
-        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-bundle": "^2.12",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.1",
-        "google/apiclient": "^2.0",
+        "google/apiclient": "^2.16",
         "guzzlehttp/guzzle": "^7.4",
         "knpuniversity/oauth2-client-bundle": "^2.18",
         "league/oauth2-google": "^4.0",
@@ -26,7 +26,7 @@
         "symfony/http-client": "7.0.*",
         "symfony/http-foundation": "7.0.*",
         "symfony/messenger": "7.0.*",
-        "symfony/monolog-bundle": "^3.8",
+        "symfony/monolog-bundle": "^3.10",
         "symfony/options-resolver": "7.0.*",
         "symfony/password-hasher": "7.0.*",
         "symfony/property-access": "7.0.*",
@@ -39,8 +39,8 @@
         "symfony/uid": "7.0.*",
         "symfony/validator": "7.0.*",
         "symfony/yaml": "7.0.*",
-        "twig/extra-bundle": "^3.8",
-        "twig/twig": "^3.8"
+        "twig/extra-bundle": "^3.10",
+        "twig/twig": "^3.10"
     },
     "require-dev": {
         "ext-dom": "*",
