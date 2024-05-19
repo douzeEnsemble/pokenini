@@ -8,6 +8,7 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\DexAvailabilitiesRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class DexAvailabilitiesRepositoryTest extends KernelTestCase
@@ -61,9 +62,8 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
 
     /**
      * @param string[][] $filters
-     *
-     * @dataProvider providerGetTotalFilters
      */
+    #[DataProvider('providerGetTotalFilters')]
     public function testGetTotalFilters(array $filters, int $expectedTotalCount): void
     {
         /** @var DexAvailabilitiesRepository $repo */

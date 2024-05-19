@@ -5,21 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Helper;
 
 use App\Api\Helper\A1Notation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class A1NotationTest extends TestCase
 {
-    /**
-     * @dataProvider providerIndexToLetter
-     */
+    #[DataProvider('providerIndexToLetter')]
     public function testIndexToLetter(int $index, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::indexToLetter($index));
     }
 
-    /**
-     * @dataProvider providerIndexToA1Notation
-     */
+    #[DataProvider('providerIndexToA1Notation')]
     public function testFromIndex(int $rowIndex, int $columnIndex, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));

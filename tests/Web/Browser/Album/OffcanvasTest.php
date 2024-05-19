@@ -7,10 +7,9 @@ namespace App\Tests\Web\Browser\Album;
 use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use PHPUnit\Framework\Attributes\Group;
 
-/**
- * @group browser-testing
- */
+#[Group('browser-testing')]
 class OffcanvasTest extends AbstractBrowserTestCase
 {
     use TestNavTrait;
