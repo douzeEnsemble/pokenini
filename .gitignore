@@ -37,9 +37,10 @@ coverage.xml
 phpstan.neon
 ###< phpstan/phpstan ###
 
+.deptrac.cache
+
 docker/apache/ssl/cert-key.pem
 docker/apache/ssl/cert.pem
 
 build/*
 tests/last.html
-.phpunit.cache/test-results
