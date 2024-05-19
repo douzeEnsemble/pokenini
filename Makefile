@@ -225,14 +225,14 @@ infection: infection_api infection_web
 
 infection_api: ## Execute Infection (Mutation testing) for API module
 infection_api: build/coverage/coverage-xml 
-	@$(PHP) vendor/bin/infection --threads=4 --show-mutations \
+	@$(PHP) vendor/bin/infection --threads=4 --no-progress \
+		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
-		--logger-html='tests/mutation/index.html' \
 		--filter=src/Api
 
 infection_web: ## Execute Infection (Mutation testing) for API module
 infection_web: build/coverage/coverage-xml 
-	@$(PHP) vendor/bin/infection --threads=4 --show-mutations \
+	@$(PHP) vendor/bin/infection --threads=4 --no-progress \
+		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
-		--logger-html='tests/mutation/index.html' \
 		--filter=src/Web

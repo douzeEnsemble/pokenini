@@ -130,14 +130,14 @@ jobs:
       - name: Run Infection Api
         run: | 
           docker compose exec -T php php vendor/bin/infection \
-            --coverage=build/coverage \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
-            --show-mutations \
             --filter=src/Api
       - name: Run Infection Web
         run: | 
           docker compose exec -T php php vendor/bin/infection \
-            --coverage=build/coverage \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
-            --show-mutations \
             --filter=src/Web
