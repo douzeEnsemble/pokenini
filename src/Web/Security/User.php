@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Web\Security;
 
+use PHPUnit\Framework\Attributes\CodeCoverageIgnore;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
@@ -34,9 +35,7 @@ class User implements UserInterface
         $this->roles = array_unique($this->roles);
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
+    #[CodeCoverageIgnore]
     public function eraseCredentials(): void
     {
         // nothing sensitive

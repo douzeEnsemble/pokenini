@@ -7,11 +7,10 @@ namespace App\Tests\Web\Browser\Album;
 use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\Panther\DomCrawler\Field\ChoiceFormField;
 
-/**
- * @group browser-testing
- */
+#[Group('browser-testing')]
 class SelectAndLabelTest extends AbstractBrowserTestCase
 {
     use TestNavTrait;

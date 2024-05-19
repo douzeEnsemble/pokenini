@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Utils;
 
 use App\Web\Utils\JsonDecoder;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class JsonDecoderTest extends TestCase
 {
     /**
      * @param mixed[] $expectedData
-     *
-     * @dataProvider providerDecode
      */
+    #[DataProvider('providerDecode')]
     public function testDecode(string $json, array $expectedData): void
     {
         $this->assertEquals(
@@ -22,9 +22,7 @@ class JsonDecoderTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider providerDecodeException
-     */
+    #[DataProvider('providerDecodeException')]
     public function testDecodeException(string $json): void
     {
         $this->expectException(\JsonException::class);

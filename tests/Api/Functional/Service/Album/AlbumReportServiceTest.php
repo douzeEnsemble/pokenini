@@ -9,6 +9,7 @@ use App\Api\DTO\AlbumReport\Report;
 use App\Api\Service\Album\AlbumReportService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class AlbumReportServiceTest extends KernelTestCase
@@ -21,9 +22,7 @@ class AlbumReportServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    /**
-     * @dataProvider providerGetReport
-     */
+    #[DataProvider('providerGetReport')]
     public function testGetReport(
         string $trainerId,
         string $dexSlug,
@@ -42,9 +41,8 @@ class AlbumReportServiceTest extends KernelTestCase
 
     /**
      * @param string[][] $filters
-     *
-     * @dataProvider providerGetReportFiltered
      */
+    #[DataProvider('providerGetReportFiltered')]
     public function testGetReportFiltered(
         string $trainerId,
         string $dexSlug,

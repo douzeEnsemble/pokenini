@@ -8,6 +8,7 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\PokedexRepository;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class PokedexRepositoryCatchStateCountTest extends KernelTestCase
@@ -65,9 +66,8 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     /**
      * @param string[][] $filters
      * @param string[][][]|int[][][] $expectedCounts
-     *
-     * @dataProvider providerGetCatchStatesCountsFilters
      */
+    #[DataProvider('providerGetCatchStatesCountsFilters')]
     public function testGetCatchStatesCountsFilters(
         array $filters,
         array $expectedCounts

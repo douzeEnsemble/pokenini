@@ -9,6 +9,7 @@ use App\Api\Helper\A1Notation;
 use App\Api\Repository\GamesRepository;
 use App\Api\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CodeCoverageIgnore;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
@@ -176,9 +177,7 @@ SQL;
         $this->statictic->incrementBy($index);
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
+    #[CodeCoverageIgnore]
     protected function upsertRecord(array $record): void
     {
         throw new \RuntimeException(

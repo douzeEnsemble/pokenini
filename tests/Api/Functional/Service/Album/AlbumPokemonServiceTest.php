@@ -9,6 +9,7 @@ use App\Api\Service\Album\AlbumPokemonService;
 use App\Tests\Api\Common\Data\AlbumData;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class AlbumPokemonServiceTest extends KernelTestCase
@@ -439,9 +440,7 @@ class AlbumPokemonServiceTest extends KernelTestCase
         $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
     }
 
-    /**
-     * @dataProvider providerListFilteredNull
-     */
+    #[DataProvider('providerListFilteredNull')]
     public function testListFilteredNull(string $filter, int $expectedCount): void
     {
         /** @var AlbumPokemonService $service */
