@@ -25,6 +25,7 @@ class GamesRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('g');
         $queryBuilder->select('g.slug');
+        $queryBuilder->where($queryBuilder->expr()->isNull('g.deletedAt'));
         $queryBuilder->orderBy('g.orderNumber');
 
         /** @var string[] */
