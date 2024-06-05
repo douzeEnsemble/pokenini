@@ -44,12 +44,18 @@ App\Api\Entity\Game:
         slug: 'sapphire'
         bundle: '@game_bundle_ruby_sapphire_emerald'
         orderNumber: 8
-    game_ed fire:
+    game_redfire:
         name: 'Fire Red'
         slug: 'firered'
         bundle: '@game_bundle_fire_red_leaf_green'
         orderNumber: 9
-    game_leaf green:
+    game_firered:
+        name: 'Red Fire'
+        slug: 'redfire'
+        bundle: '@game_bundle_fire_red_leaf_green'
+        orderNumber: 9
+        deletedAt: '<date_create()>'
+    game_leafgreen:
         name: 'Leaf Green'
         slug: 'leafgreen'
         bundle: '@game_bundle_fire_red_leaf_green'
