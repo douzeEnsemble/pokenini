@@ -9,6 +9,7 @@ use App\Web\Service\ApiService;
 use App\Web\Validator\CatchStates;
 use App\Web\Validator\CatchStatesValidator;
 use DateTime;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
@@ -26,9 +27,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
         $this->assertNoViolation();
     }
 
-    /**
-     * @dataProvider provideInvalidConstraints
-     */
+    #[DataProvider('providerInvalidConstraints')]
     public function testTrueIsInvalid(CatchStates $constraint): void
     {
         $this->validator->validate('douze', $constraint);
@@ -41,14 +40,12 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return \ArrayIterator<int, CatchStates[]>
      */
-    public function provideInvalidConstraints(): iterable
+    public static function providerInvalidConstraints(): iterable
     {
         yield [new CatchStates()];
     }
 
-    /**
-     * @dataProvider provideValidConstraints
-     */
+    #[DataProvider('providerValidConstraints')]
     public function testTrueIsValid(CatchStates $constraint): void
     {
         $this->validator->validate('maybenot', $constraint);
@@ -59,7 +56,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     /**
      * @return \ArrayIterator<int, CatchStates[]>
      */
-    public function provideValidConstraints(): iterable
+    public static function providerValidConstraints(): iterable
     {
         yield [new CatchStates()];
     }

@@ -7,21 +7,19 @@ namespace App\Api\Entity;
 use App\Api\Entity\Traits\BaseEntityTrait;
 use App\Api\Entity\Traits\FrenchNamedTrait;
 use App\Api\Entity\Traits\NamedTrait;
+use App\Api\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
 #[ORM\Entity]
-#[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Pokemon
 {
     use BaseEntityTrait;
     use NamedTrait;
     use FrenchNamedTrait;
-    use SoftDeleteableEntity;
+    use SoftDeleteable;
 
     #[ORM\Column(unique: true)]
     public string $slug;

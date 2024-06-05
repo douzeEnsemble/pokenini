@@ -1,6 +1,7 @@
 App\Api\Entity\Dex:
     dex_redgreenblueyellow:
         name: 'Red / Green / Blue / Yellow'
+        slug: 'redgreenblueyellow'
         frenchName: 'Rouge / Vert / Bleu / Jaune'
         selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
         displayTemplate: 'box'
@@ -11,6 +12,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
+        slug: 'goldsilvercrystal'
         frenchName: 'Or / Argent / Cristal'
         selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
         displayTemplate: 'box'
@@ -22,6 +24,7 @@ App\Api\Entity\Dex:
         isReleased: false
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
+        slug: 'rubysapphireemerald'
         frenchName: 'Rubis / Saphir / Émeraude'
         selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
         displayTemplate: 'box'
@@ -29,6 +32,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<date_create()>'
     dex_rubysapphireemeraldshiny:
         name: 'Ruby / Sapphire / Emerald: Shiny'
+        slug: 'rubysapphireemeraldshiny'
         frenchName: 'Rubis / Saphir / Émeraude: Chromatique'
         selectionRule: "(p.bankable or p.bankableish) and bsa?.rubysapphireemerald"
         displayTemplate: 'box'
@@ -37,6 +41,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<date_create()>'
     dex_home:
         name: 'Home'
+        slug: 'home'
         frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'
@@ -47,6 +52,7 @@ App\Api\Entity\Dex:
         name: |-
             Home
             Shiny
+        slug: 'homeshiny'
         frenchName: |-
             Home
             Chromatique
@@ -58,6 +64,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
     dex_home_pogo:
         name: 'Home PoGo'
+        slug: 'homepogo'
         frenchName: 'Home PoGo'
         selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
         displayTemplate: 'list-7'
@@ -68,6 +75,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
     dex_spoon:
         name: 'Spoon'
+        slug: 'spoon'
         frenchName: 'Cuillière'
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'

@@ -5,21 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Helper;
 
 use App\Api\Helper\A1Notation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class A1NotationTest extends TestCase
 {
-    /**
-     * @dataProvider indexToLetterProvider
-     */
+    #[DataProvider('providerIndexToLetter')]
     public function testIndexToLetter(int $index, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::indexToLetter($index));
     }
 
-    /**
-     * @dataProvider indexToA1NotationProvider
-     */
+    #[DataProvider('providerIndexToA1Notation')]
     public function testFromIndex(int $rowIndex, int $columnIndex, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
@@ -28,7 +25,7 @@ class A1NotationTest extends TestCase
     /**
      * @return int[][]|string[][]
      */
-    public function indexToLetterProvider(): array
+    public static function providerIndexToLetter(): array
     {
         return [
             [
@@ -53,32 +50,32 @@ class A1NotationTest extends TestCase
     /**
      * @return int[][]|string[][]
      */
-    public function indexToA1NotationProvider(): array
+    public static function providerIndexToA1Notation(): array
     {
         return [
             [
-                'row' => 0,
-                'col' => 0,
+                'rowIndex' => 0,
+                'columnIndex' => 0,
                 'expected' => 'A1',
             ],
             [
-                'row' => 2,
-                'col' => 0,
+                'rowIndex' => 2,
+                'columnIndex' => 0,
                 'expected' => 'A3',
             ],
             [
-                'row' => 2,
-                'col' => 2,
+                'rowIndex' => 2,
+                'columnIndex' => 2,
                 'expected' => 'C3',
             ],
             [
-                'row' => 2,
-                'col' => 27,
+                'rowIndex' => 2,
+                'columnIndex' => 27,
                 'expected' => 'AB3',
             ],
             [
-                'row' => 2,
-                'col' => 53,
+                'rowIndex' => 2,
+                'columnIndex' => 53,
                 'expected' => 'BB3',
             ],
         ];

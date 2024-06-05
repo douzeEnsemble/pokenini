@@ -66,10 +66,10 @@ jobs:
         uses: ./.github/actions/docker-compose
       - name: Run Api
         run: |
-          docker compose exec -T php php bin/phpunit tests/Api/
+          docker compose exec -T php php vendor/bin/phpunit tests/Api/
       - name: Run Web
         run: |
-          docker compose exec -T php php bin/phpunit tests/Web/
+          docker compose exec -T php php vendor/bin/phpunit tests/Web/
 
   integration:
     name: Integration / Newman
@@ -122,7 +122,7 @@ jobs:
         run: | 
           docker compose exec \
             -e XDEBUG_MODE=coverage \
-            -T php php bin/phpunit \
+            -T php php vendor/bin/phpunit \
             --exclude-group="browser-testing" \
             --coverage-clover=coverage.xml \
             --coverage-xml=build/coverage/coverage-xml \
@@ -130,14 +130,14 @@ jobs:
       - name: Run Infection Api
         run: | 
           docker compose exec -T php php vendor/bin/infection \
-            --coverage=build/coverage \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
-            --show-mutations \
             --filter=src/Api
       - name: Run Infection Web
         run: | 
           docker compose exec -T php php vendor/bin/infection \
-            --coverage=build/coverage \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
-            --show-mutations \
             --filter=src/Web

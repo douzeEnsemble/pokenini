@@ -35,7 +35,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return int[]
+     * @return ArrayParameterType[]
      */
     protected function getFiltersTypes(): array
     {

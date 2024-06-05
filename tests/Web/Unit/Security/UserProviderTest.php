@@ -39,7 +39,7 @@ class UserProviderTest extends TestCase
         $provider = new UserProvider();
 
         $this->expectException(UnsupportedUserException::class);
-        $this->expectExceptionMessageMatches('/Invalid user class "Mock_UserInterface_.{8}"\./');
+        $this->expectExceptionMessageMatches('/Invalid user class "MockObject_UserInterface_.{8}"\./');
 
         $notUser = $this->createMock(UserInterface::class);
 

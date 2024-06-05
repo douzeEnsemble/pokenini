@@ -6,6 +6,7 @@ namespace App\Tests\Web\Functional\Admin;
 
 use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -14,9 +15,7 @@ class ActionInvalidateTest extends WebTestCase
 {
     use TestNavTrait;
 
-    /**
-     * @dataProvider invalidateSuccessProvider
-     */
+    #[DataProvider('providerInvalidateSuccess')]
     public function testInvalidateSuccess(string $name): void
     {
         $client = static::createClient();
@@ -33,9 +32,7 @@ class ActionInvalidateTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '.list-group-item-success');
     }
 
-    /**
-     * @dataProvider invalidateNotExistsProvider
-     */
+    #[DataProvider('providerInvalidateNotExists')]
     public function testInvalidateNotExists(string $name): void
     {
         $client = static::createClient();
@@ -68,7 +65,7 @@ class ActionInvalidateTest extends WebTestCase
     /**
      * @return string[][]
      */
-    public function invalidateSuccessProvider(): array
+    public static function providerInvalidateSuccess(): array
     {
         return [
             ['labels'],
@@ -81,7 +78,7 @@ class ActionInvalidateTest extends WebTestCase
     /**
      * @return string[][]
      */
-    public function invalidateNotExistsProvider(): array
+    public static function providerInvalidateNotExists(): array
     {
         return [
             ['catch_states'],

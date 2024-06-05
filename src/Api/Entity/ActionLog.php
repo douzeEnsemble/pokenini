@@ -8,14 +8,12 @@ use App\Api\Entity\Traits\BaseEntityTrait;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
 class ActionLog
 {
     use BaseEntityTrait;
 
-    #[Gedmo\Timestampable(on: 'create')]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public DateTime $createdAt;
 
@@ -32,6 +30,7 @@ class ActionLog
         #[ORM\Column]
         private string $type,
     ) {
+        $this->createdAt = new DateTime();
     }
 
     public function getType(): string

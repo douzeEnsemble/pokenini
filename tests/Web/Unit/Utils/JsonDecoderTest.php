@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Utils;
 
 use App\Web\Utils\JsonDecoder;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class JsonDecoderTest extends TestCase
 {
     /**
      * @param mixed[] $expectedData
-     *
-     * @dataProvider decodeProvider
      */
+    #[DataProvider('providerDecode')]
     public function testDecode(string $json, array $expectedData): void
     {
         $this->assertEquals(
@@ -22,9 +22,7 @@ class JsonDecoderTest extends TestCase
         );
     }
 
-    /**
-     * @dataProvider decodeExceptionProvider
-     */
+    #[DataProvider('providerDecodeException')]
     public function testDecodeException(string $json): void
     {
         $this->expectException(\JsonException::class);
@@ -35,11 +33,11 @@ class JsonDecoderTest extends TestCase
     /**
      * @return string[][]|string[][][]|string[][][][]|string[][][][][][]
      */
-    public function decodeProvider(): array
+    public static function providerDecode(): array
     {
         return [
             [
-                $this->getOneColorJson(),
+                self::getOneColorJson(),
                 [
                     'color' => '#66bb6a',
                     'name' => 'Yes',
@@ -58,7 +56,7 @@ class JsonDecoderTest extends TestCase
                 ],
             ],
             [
-                $this->getManyColorsJson(),
+                self::getManyColorsJson(),
                 [
                     [
                         'color' => '#e57373',
@@ -99,7 +97,7 @@ class JsonDecoderTest extends TestCase
                 ],
             ],
             [
-                $this->getMaxDepthJson(),
+                self::getMaxDepthJson(),
                 [
                     'lvl1' => [
                         'lvl2' => [
@@ -116,15 +114,15 @@ class JsonDecoderTest extends TestCase
     /**
      * @return string[][]
      */
-    public function decodeExceptionProvider(): array
+    public static function providerDecodeException(): array
     {
         return [
             [''],
-            [$this->getMaxDepthPlusOneJson()],
+            [self::getMaxDepthPlusOneJson()],
         ];
     }
 
-    private function getOneColorJson(): string
+    private static function getOneColorJson(): string
     {
         return <<<JSON
         {
@@ -136,7 +134,7 @@ class JsonDecoderTest extends TestCase
         JSON;
     }
 
-    private function getManyColorsJson(): string
+    private static function getManyColorsJson(): string
     {
         return <<<JSON
         [
@@ -180,7 +178,7 @@ class JsonDecoderTest extends TestCase
         JSON;
     }
 
-    private function getMaxDepthJson(): string
+    private static function getMaxDepthJson(): string
     {
         return <<<JSON
         {
@@ -195,7 +193,7 @@ class JsonDecoderTest extends TestCase
         JSON;
     }
 
-    private function getMaxDepthPlusOneJson(): string
+    private static function getMaxDepthPlusOneJson(): string
     {
         return <<<JSON
         {

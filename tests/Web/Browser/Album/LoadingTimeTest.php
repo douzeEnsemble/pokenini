@@ -6,11 +6,10 @@ namespace App\Tests\Web\Browser\Album;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-/**
- * @group browser-testing
- */
+#[Group('browser-testing')]
 class LoadingTimeTest extends AbstractBrowserTestCase
 {
     use TestNavTrait;

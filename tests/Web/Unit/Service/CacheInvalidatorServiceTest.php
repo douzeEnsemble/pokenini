@@ -13,6 +13,7 @@ use App\Web\Service\CacheInvalidator\FormsCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\ReportsCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\TypesCacheInvalidatorService;
 use App\Web\Service\CacheInvalidatorService;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class CacheInvalidatorServiceTest extends TestCase
@@ -204,9 +205,7 @@ class CacheInvalidatorServiceTest extends TestCase
         $this->assertTrue(true);
     }
 
-    /**
-     * @dataProvider providerInvalidateAlbums
-     */
+    #[DataProvider('providerInvalidateAlbums')]
     public function testInvalidateAlbums(string $type): void
     {
         $catchStatesCacheInvalidatorService = $this->createMock(CatchStatesCacheInvalidatorService::class);
@@ -256,7 +255,7 @@ class CacheInvalidatorServiceTest extends TestCase
     /**
      * @return string[][]
      */
-    public function providerInvalidateAlbums(): array
+    public static function providerInvalidateAlbums(): array
     {
         return [
             'regional_dex_numbers' => ['regional_dex_numbers'],
