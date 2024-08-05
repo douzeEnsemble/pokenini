@@ -32,7 +32,7 @@ title:
         game_bundles_availabilities: 'Maj des dispo des bundles de jeux'
         game_bundles_shinies_availabilities: 'Maj des dispo des bundles de jeux des chromatiques'
         dex_availabilities: 'Maj des dispo des dex'
-        pokemon_availabilities: 'MAJ des dispo par pokemons'
+        pokemon_availabilities: 'Maj des dispo par pokemons'
     invalidate:
         catch_states: 'Invalidation du cache des statuts'
         types: 'Invalidation du cache des types'
