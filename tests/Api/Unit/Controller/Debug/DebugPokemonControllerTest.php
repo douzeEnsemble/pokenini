@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace unit\Controller\Debug;
+namespace App\Tests\Api\Unit\Controller\Debug;
 
 use App\Api\Controller\Debug\DebugPokemonController;
 use App\Api\Entity\Pokemon;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace unit\Updater;
+namespace App\Tests\Api\Unit\Updater;
 
 use App\Api\Exception\InvalidSheetDataException;
 use App\Api\Service\SpreadsheetService;
