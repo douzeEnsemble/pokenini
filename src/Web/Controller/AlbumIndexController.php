@@ -50,12 +50,12 @@ class AlbumIndexController extends AbstractController
         try {
             $loggedTrainerId = $this->userTokenService->getLoggedUserToken();
 
-            $trainerId = !empty($queryTrainerId) ? $queryTrainerId : $loggedTrainerId;
+            $trainerId = $queryTrainerId ?: $loggedTrainerId;
         } catch (NoLoggedUserException $e) {
             $trainerId = $queryTrainerId;
         }
 
-        if (empty($trainerId)) {
+        if (!$trainerId) {
             throw $this->createNotFoundException();
         }
 

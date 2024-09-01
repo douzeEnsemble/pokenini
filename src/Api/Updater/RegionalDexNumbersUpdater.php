@@ -93,7 +93,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
 
         $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
 
-        if (empty($values)) {
+        if (!$values) {
             throw new InvalidSheetDataException('Spreadsheet is empty');
         }
 

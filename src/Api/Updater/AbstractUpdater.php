@@ -99,7 +99,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     {
         $values = $this->getSheetValues("'{$this->sheetName}'!{$this->headerCellsRange}");
 
-        if (empty($values)) {
+        if (!$values) {
             $this->logger->error(
                 'Spreadsheet is empty',
                 [
@@ -141,7 +141,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     {
         $values = $this->getSheetValues("'{$this->sheetName}'!{$range}");
 
-        if (empty($values)) {
+        if (!$values) {
             $this->logger->error(
                 'There is not data in spreadsheet',
                 [

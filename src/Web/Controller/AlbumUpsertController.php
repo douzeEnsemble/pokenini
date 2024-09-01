@@ -75,7 +75,7 @@ class AlbumUpsertController extends AbstractController
     {
         $content = $request->getContent();
 
-        if (! is_string($content) || empty($content)) {
+        if (! is_string($content) || !$content) {
             throw new ToJsonResponseException(
                 'Content must be a non-empty string',
                 400
