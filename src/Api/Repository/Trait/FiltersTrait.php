@@ -59,21 +59,21 @@ trait FiltersTrait
     {
         $query = '';
 
-        if (!empty($filters->primaryTypes->values)) {
+        if ($filters->primaryTypes->values) {
             $query .= ' AND (pt.slug IN(:filter_primary_types)';
             if ($filters->primaryTypes->hasNull()) {
                 $query .= ' OR pt.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->secondaryTypes->values)) {
+        if ($filters->secondaryTypes->values) {
             $query .= ' AND (st.slug IN(:filter_secondary_types)';
             if ($filters->secondaryTypes->hasNull()) {
                 $query .= ' OR st.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->anyTypes->values)) {
+        if ($filters->anyTypes->values) {
             $query .= ' AND (pt.slug IN(:filter_any_types) or st.slug IN(:filter_any_types)';
             if ($filters->anyTypes->hasNull()) {
                 $query .= ' OR pt.slug IS NULL OR st.slug IS NULL';
@@ -91,13 +91,13 @@ trait FiltersTrait
     {
         $parameters = [];
 
-        if (!empty($filters->primaryTypes->values)) {
+        if ($filters->primaryTypes->values) {
             $parameters['filter_primary_types'] = $filters->primaryTypes->extract();
         }
-        if (!empty($filters->secondaryTypes->values)) {
+        if ($filters->secondaryTypes->values) {
             $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
         }
-        if (!empty($filters->anyTypes->values)) {
+        if ($filters->anyTypes->values) {
             $parameters['filter_any_types'] = $filters->anyTypes->extract();
         }
 
@@ -108,28 +108,28 @@ trait FiltersTrait
     {
         $query = '';
 
-        if (!empty($filters->categoryForms->values)) {
+        if ($filters->categoryForms->values) {
             $query .= ' AND (cf.slug IN(:filter_category_forms)';
             if ($filters->categoryForms->hasNull()) {
                 $query .= ' OR cf.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->regionalForms->values)) {
+        if ($filters->regionalForms->values) {
             $query .= ' AND (rf.slug IN(:filter_regional_forms)';
             if ($filters->regionalForms->hasNull()) {
                 $query .= ' OR rf.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->specialForms->values)) {
+        if ($filters->specialForms->values) {
             $query .= ' AND (sf.slug IN(:filter_special_forms)';
             if ($filters->specialForms->hasNull()) {
                 $query .= ' OR sf.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->variantForms->values)) {
+        if ($filters->variantForms->values) {
             $query .= ' AND (vf.slug IN(:filter_variant_forms)';
             if ($filters->variantForms->hasNull()) {
                 $query .= ' OR vf.slug IS NULL';
@@ -147,16 +147,16 @@ trait FiltersTrait
     {
         $parameters = [];
 
-        if (!empty($filters->categoryForms->values)) {
+        if ($filters->categoryForms->values) {
             $parameters['filter_category_forms'] = $filters->categoryForms->extract();
         }
-        if (!empty($filters->regionalForms->values)) {
+        if ($filters->regionalForms->values) {
             $parameters['filter_regional_forms'] = $filters->regionalForms->extract();
         }
-        if (!empty($filters->specialForms->values)) {
+        if ($filters->specialForms->values) {
             $parameters['filter_special_forms'] = $filters->specialForms->extract();
         }
-        if (!empty($filters->variantForms->values)) {
+        if ($filters->variantForms->values) {
             $parameters['filter_variant_forms'] = $filters->variantForms->extract();
         }
 
@@ -167,7 +167,7 @@ trait FiltersTrait
     {
         $query = '';
 
-        if (!empty($filters->catchStates->values)) {
+        if ($filters->catchStates->values) {
             $query .= ' AND (cs.slug IN(:filter_catch_states)';
             if (
                 $filters->catchStates->hasNull()
@@ -188,7 +188,7 @@ trait FiltersTrait
     {
         $parameters = [];
 
-        if (!empty($filters->catchStates->values)) {
+        if ($filters->catchStates->values) {
             $parameters['filter_catch_states'] = $filters->catchStates->extract();
         }
 
@@ -199,14 +199,14 @@ trait FiltersTrait
     {
         $query = '';
 
-        if (!empty($filters->originalGameBundles->values)) {
+        if ($filters->originalGameBundles->values) {
             $query .= ' AND (ogb.slug IN(:filter_original_game_bundles)';
             if ($filters->originalGameBundles->hasNull()) {
                 $query .= ' OR ogb.slug IS NULL';
             }
             $query .= ')';
         }
-        if (!empty($filters->gameBundleAvailabilities->values)) {
+        if ($filters->gameBundleAvailabilities->values) {
             $query .= <<<SUBSQL
             AND p.id IN (SELECT  gba.pokemon_id
                         FROM    game_bundle_availability AS gba
@@ -217,7 +217,7 @@ trait FiltersTrait
                     )
             SUBSQL;
         }
-        if (!empty($filters->gameBundleShinyAvailabilities->values)) {
+        if ($filters->gameBundleShinyAvailabilities->values) {
             $query .= <<<SUBSQL
             AND p.id IN (SELECT  gbsa.pokemon_id
                         FROM    game_bundle_shiny_availability AS gbsa
@@ -239,13 +239,13 @@ trait FiltersTrait
     {
         $parameters = [];
 
-        if (!empty($filters->originalGameBundles->values)) {
+        if ($filters->originalGameBundles->values) {
             $parameters['filter_original_game_bundles'] = $filters->originalGameBundles->extract();
         }
-        if (!empty($filters->gameBundleAvailabilities->values)) {
+        if ($filters->gameBundleAvailabilities->values) {
             $parameters['filter_game_bundle_availabilities'] = $filters->gameBundleAvailabilities->extract();
         }
-        if (!empty($filters->gameBundleShinyAvailabilities->values)) {
+        if ($filters->gameBundleShinyAvailabilities->values) {
             $parameters['filter_game_bundle_shiny_availabilities'] = $filters->gameBundleShinyAvailabilities->extract();
         }
 
@@ -256,7 +256,7 @@ trait FiltersTrait
     {
         $query = '';
 
-        if (!empty($filters->families->values)) {
+        if ($filters->families->values) {
             $query .= ' AND (pp.slug IN(:filter_families)'
                 . 'OR (p.slug IN(:filter_families) AND 0 = p.family_order)';
             if ($filters->families->hasNull()) {
@@ -275,7 +275,7 @@ trait FiltersTrait
     {
         $parameters = [];
 
-        if (!empty($filters->families->values)) {
+        if ($filters->families->values) {
             $parameters['filter_families'] = $filters->families->extract();
         }
 

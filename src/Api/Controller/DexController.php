@@ -49,7 +49,7 @@ class DexController extends AbstractController
     ): Response {
         $json = $request->getContent();
 
-        if (empty($json)) {
+        if (!($json)) {
             throw new BadRequestHttpException();
         }
 

@@ -167,7 +167,7 @@ class AdminPageTest extends WebTestCase
 
         $this->assertCountFilter(
             $crawler,
-            ((empty($expectedReport)) ?  0 : 1),
+            (!$expectedReport ?  0 : 1),
             ".admin-item-$item .admin-item-$type .admin-item-report"
         );
 
@@ -184,7 +184,7 @@ class AdminPageTest extends WebTestCase
             $index++;
         }
 
-        if (!empty($expectedDateTime)) {
+        if ($expectedDateTime) {
             $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .admin-item-report-date");
 
             $this->assertEquals(
@@ -197,7 +197,7 @@ class AdminPageTest extends WebTestCase
             );
         }
 
-        if (!empty($executionTime)) {
+        if ($executionTime) {
             $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .admin-item-report-execution");
 
             $this->assertEquals(
@@ -210,7 +210,7 @@ class AdminPageTest extends WebTestCase
             );
         }
 
-        if (!empty($errorMessage)) {
+        if ($errorMessage) {
             $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .alert.alert-danger");
 
             $this->assertEquals(

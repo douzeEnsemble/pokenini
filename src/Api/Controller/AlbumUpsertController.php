@@ -54,7 +54,7 @@ class AlbumUpsertController extends AbstractController
     ): void {
         $content = $request->getContent();
 
-        if (empty($content)) {
+        if (!($content)) {
             throw new BadRequestHttpException();
         }
 
