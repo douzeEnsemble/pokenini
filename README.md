@@ -7,9 +7,7 @@
 ```
 make stop build start quality tests integration
 ```
-
-    or
-
+or
 ```
 make quality tests integration
 ```
@@ -160,7 +158,6 @@ make composer c="require gedmo/doctrine-extensions"
 Reset database and redo all migrations
 ```
 make init_db
-'
 ```
 
 Generate full migration as database is empty. You will have to copy to the first one to avoid issues
