@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: ~
+
+jobs:
+  composer-audit:
+    name: Security / Composer Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: composer audit
+
+  symfonycorp-security-checker:
+    name: Security / SymfonyCorp Checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: cache-db
+        with:
+            path: ~/.symfony/cache
+            key: db
+      - uses: symfonycorp/security-checker-action@v5
+  
+  phpcsfixer:
+    name: PHP-CS-Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
+        with:
+          args: check src
+      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
+        with:
+          args: check tests

@@ -27,7 +27,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : quality phpcs phpcbf phpmd psalm phpstan deptrac
 .PHONY : integration newman
 .PHONY : measures clear-build coverage htmlcoverage infection infection_api infection_web
-.PHONY : security composer_audit security_checker
+.PHONY : security composer_audit security_checker phpcsfixer phpcsfixer_fix
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -240,14 +240,26 @@ infection_web: build/coverage/coverage-xml
 
 ## —— Security 🛡️ ———————————————————————————————————————————————————————————————
 security: ## Execute all security commands
-security: composer_audit security_checker
+security: composer_audit security_checker phpcsfixer
 composer_audit: ## Execute Composer Audit
 	@$(COMPOSER) audit
 
 bin/local-php-security-checker: ## Download the file if needed
-	wget -O bin/local-php-security-checker https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64
-	chmod +x bin/local-php-security-checker
+	wget https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64 -O bin/local-php-security-checker
+	chmod a+x bin/local-php-security-checker
 
 security_checker: ## Execute Security Checker
 security_checker: bin/local-php-security-checker
 	bin/local-php-security-checker
+
+bin/php-cs-fixer: ## Download the file if needed
+	wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O bin/php-cs-fixer
+	chmod a+x bin/php-cs-fixer
+
+phpcsfixer: ## Execute PHP CS Fixer "Check"
+phpcsfixer: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer check
+
+phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
+phpcsfixer_fix: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer fix
