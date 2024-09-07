@@ -10,6 +10,11 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GetTypesServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -44,7 +49,7 @@ class GetTypesServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/types",
+                'https://api.domain/types',
                 [
                     'headers' => [
                         'accept' => 'application/json',

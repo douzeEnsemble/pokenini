@@ -10,6 +10,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -38,7 +43,7 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertEquals('Red / Green / Blue / Yellow', $dex[0]->name);
 
         $this->assertEquals(
-            "(p.bankable or p.bankableish) and ba?.rubysapphireemerald",
+            '(p.bankable or p.bankableish) and ba?.rubysapphireemerald',
             $dex[2]->selectionRule
         );
     }
@@ -78,7 +83,7 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertArrayHasKey('selection_rule', $dexGSC);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.goldsilvercrystal '
-            . 'and p.specialForm === null and p.regionalForm === null',
+            .'and p.specialForm === null and p.regionalForm === null',
             $dexGSC['selection_rule']
         );
         $this->assertArrayHasKey('is_private', $dexGSC);

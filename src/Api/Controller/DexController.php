@@ -6,22 +6,21 @@ namespace App\Api\Controller;
 
 use App\Api\DTO\DexQueryOptions;
 use App\Api\DTO\TrainerDexAttributes;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use App\Api\Service\TrainerDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/dex')]
 class DexController extends AbstractController
 {
     public function __construct(
         private readonly TrainerDexService $trainerDexService
-    ) {
-    }
+    ) {}
 
     #[Route(path: '/{trainerExternalId}/list', methods: ['GET'])]
     public function list(
@@ -29,10 +28,10 @@ class DexController extends AbstractController
         Request $request,
     ): JsonResponse {
         $dexQueryOptions = new DexQueryOptions([
-            'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false)
+            'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false),
         ]);
 
-        /** @var string[][]|bool[][] $dex */
+        /** @var bool[][]|string[][] $dex */
         $dex = iterator_to_array(
             $this->trainerDexService->getListQuery($trainerExternalId, $dexQueryOptions)
         );
@@ -49,7 +48,7 @@ class DexController extends AbstractController
     ): Response {
         $json = $request->getContent();
 
-        if (!($json)) {
+        if (!$json) {
             throw new BadRequestHttpException();
         }
 

@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\CalculateDexAvailabilities;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculateDexAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void

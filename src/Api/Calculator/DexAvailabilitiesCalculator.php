@@ -11,6 +11,7 @@ use App\Api\Repository\DexRepository;
 class DexAvailabilitiesCalculator extends AbstractCalculator
 {
     protected string $statisticName = 'dex_availabilities';
+
     public function __construct(
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepo,
         private readonly DexRepository $dexRepository,

@@ -17,17 +17,18 @@ class GetActionLogsService extends AbstractApiService
     {
         $json = $this->requestContent(
             'GET',
-            "/action_logs"
+            '/action_logs'
         );
 
-        /** @var string[][]|int[][]|int[][][] */
+        /** @var int[][]|int[][][]|string[][] */
         $actionLogsData = JsonDecoder::decode($json);
 
         $list = [];
         foreach ($actionLogsData as $item => $data) {
-            /** @var string[]|int[]|int[][] */
+            /** @var int[]|int[][]|string[] */
             $currentData = $data['current'];
-            /** @var string[]|int[]|int[][] */
+
+            /** @var int[]|int[][]|string[] */
             $lastData = $data['last'] ?? null;
 
             $list[$item] = new ActionLogData(

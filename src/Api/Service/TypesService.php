@@ -10,8 +10,7 @@ class TypesService
 {
     public function __construct(
         private readonly TypesRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

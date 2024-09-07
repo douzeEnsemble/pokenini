@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Entity\Trait;
 use App\Api\Entity\Traits\NamedTrait;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class NamedTraitTest extends TestCase
 {
     public function testGetIdentifier(): void

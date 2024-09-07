@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Command;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountRegionalDexNumberTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
 {
     use CountRegionalDexNumberTrait;
@@ -28,7 +33,7 @@ class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("4419 regional dex numbers updated", $commandTester->getDisplay());
+        $this->assertStringContainsString('4419 regional dex numbers updated', $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

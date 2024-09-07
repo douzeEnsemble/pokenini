@@ -13,14 +13,14 @@ trait HasPokemonAvailabilitiesTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        $sql = <<< SQL
-        SELECT  COUNT(*)
-        FROM    pokemon_availabilities AS pa
-            JOIN pokemon AS p
-                ON pa.pokemon_id = p.id
-        WHERE   pa.category = :category
-            AND p.slug = :pokemon_slug
-        SQL;
+        $sql = <<< 'SQL'
+            SELECT  COUNT(*)
+            FROM    pokemon_availabilities AS pa
+                JOIN pokemon AS p
+                    ON pa.pokemon_id = p.id
+            WHERE   pa.category = :category
+                AND p.slug = :pokemon_slug
+            SQL;
 
         /** @var int $count */
         $count = $connection->executeQuery(
@@ -31,6 +31,6 @@ trait HasPokemonAvailabilitiesTrait
             ]
         )->fetchOne();
 
-        return $count != 0;
+        return 0 != $count;
     }
 }

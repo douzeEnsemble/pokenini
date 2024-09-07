@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Display;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CommonTest extends WebTestCase
 {
     use TestNavTrait;
@@ -54,7 +59,7 @@ class CommonTest extends WebTestCase
     }
 
     /**
-     * Brand new dex has an issue with a division by zero
+     * Brand new dex has an issue with a division by zero.
      */
     public function testListVirgin(): void
     {
@@ -67,11 +72,11 @@ class CommonTest extends WebTestCase
     }
 
     /**
-     * Testing with caches cleared
+     * Testing with caches cleared.
      */
     public function testListCachesCleared(): void
     {
-        exec("rm -Rf /var/www/html/var/cache/test/*");
+        exec('rm -Rf /var/www/html/var/cache/test/*');
 
         $this->testListVirgin();
     }

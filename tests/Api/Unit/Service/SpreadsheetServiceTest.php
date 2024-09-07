@@ -14,6 +14,11 @@ use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class SpreadsheetServiceTest extends TestCase
 {
     public function testGet(): void

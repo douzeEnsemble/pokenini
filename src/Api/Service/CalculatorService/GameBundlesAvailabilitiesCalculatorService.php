@@ -11,8 +11,7 @@ class GameBundlesAvailabilitiesCalculatorService extends AbstractCalculatorServi
 {
     public function __construct(
         private readonly GameBundlesAvailabilitiesCalculator $calculator
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

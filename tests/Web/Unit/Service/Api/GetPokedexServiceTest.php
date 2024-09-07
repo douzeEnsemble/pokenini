@@ -10,6 +10,11 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GetPokedexServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -17,7 +22,7 @@ class GetPokedexServiceTest extends TestCase
     public function testGet(): void
     {
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json"
+            '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json'
         );
 
         $pokedex = $this
@@ -30,7 +35,8 @@ class GetPokedexServiceTest extends TestCase
             ->get(
                 'lite',
                 '123'
-            );
+            )
+        ;
 
         $this->assertArrayHasKey('dex', $pokedex);
         $this->assertArrayHasKey('pokemons', $pokedex);
@@ -45,7 +51,7 @@ class GetPokedexServiceTest extends TestCase
         $register = $this->cache->getItem('register_album')->get();
         $this->assertEquals(
             [
-                'album_lite_123'
+                'album_lite_123',
             ],
             $register
         );
@@ -54,7 +60,7 @@ class GetPokedexServiceTest extends TestCase
     public function testGetTwice(): void
     {
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json"
+            '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json'
         );
 
         $pokedex = $this
@@ -67,7 +73,8 @@ class GetPokedexServiceTest extends TestCase
             ->get(
                 'lite',
                 '123'
-            );
+            )
+        ;
 
         $this->assertArrayHasKey('dex', $pokedex);
         $this->assertArrayHasKey('pokemons', $pokedex);
@@ -82,7 +89,7 @@ class GetPokedexServiceTest extends TestCase
         $register = $this->cache->getItem('register_album')->get();
         $this->assertEquals(
             [
-                'album_lite_123'
+                'album_lite_123',
             ],
             $register
         );
@@ -91,7 +98,7 @@ class GetPokedexServiceTest extends TestCase
     public function testGetWithFilters(): void
     {
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123_csyes.json"
+            '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123_csyes.json'
         );
 
         $pokedex = $this
@@ -113,7 +120,8 @@ class GetPokedexServiceTest extends TestCase
                         'yes',
                     ],
                 ],
-            );
+            )
+        ;
 
         $this->assertArrayHasKey('dex', $pokedex);
         $this->assertArrayHasKey('pokemons', $pokedex);
@@ -128,7 +136,7 @@ class GetPokedexServiceTest extends TestCase
         $register = $this->cache->getItem('register_album')->get();
         $this->assertEquals(
             [
-                'album_lite_123_catch_statesyes'
+                'album_lite_123_catch_statesyes',
             ],
             $register
         );
@@ -137,7 +145,7 @@ class GetPokedexServiceTest extends TestCase
     public function testGetWithMultiplesFilters(): void
     {
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json"
+            '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json'
         );
 
         $service = $this->getService(
@@ -207,7 +215,7 @@ class GetPokedexServiceTest extends TestCase
         $register = $this->cache->getItem('register_album')->get();
         $this->assertEquals(
             [
-                'album_lite_123_catch_statesmaybe_catch_statesmaybenot_any_typeswater_any_typesfire_any_typesgrass'
+                'album_lite_123_catch_statesmaybe_catch_statesmaybenot_any_typeswater_any_typesfire_any_typesgrass',
             ],
             $register
         );
@@ -248,7 +256,7 @@ class GetPokedexServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/album/$trainerId/$dexSlug",
+                "https://api.domain/album/{$trainerId}/{$dexSlug}",
                 $options,
             )
             ->willReturn($response)

@@ -6,6 +6,11 @@ namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FormsTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
@@ -24,10 +29,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -36,6 +43,7 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertEquals('charmander', $pokemons[1]['pokemon_slug']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -56,10 +64,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -80,10 +90,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -93,6 +105,7 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertEquals('raticate-alola-totem', $pokemons[2]['pokemon_slug']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -113,10 +126,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -137,10 +152,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -149,6 +166,7 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertEquals('butterfree-gmax', $pokemons[1]['pokemon_slug']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -169,10 +187,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -194,10 +214,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -207,6 +229,7 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -227,10 +250,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -241,6 +266,7 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -261,10 +287,12 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 

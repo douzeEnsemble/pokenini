@@ -11,6 +11,11 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -64,8 +69,8 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     }
 
     /**
-     * @param string[][] $filters
-     * @param string[][][]|int[][][] $expectedCounts
+     * @param string[][]             $filters
+     * @param int[][][]|string[][][] $expectedCounts
      */
     #[DataProvider('providerGetCatchStatesCountsFilters')]
     public function testGetCatchStatesCountsFilters(
@@ -88,7 +93,7 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     }
 
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      */
     public static function providerGetCatchStatesCountsFilters(): array
     {

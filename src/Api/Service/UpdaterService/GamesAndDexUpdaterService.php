@@ -11,8 +11,7 @@ class GamesAndDexUpdaterService extends AbstractUpdaterService
     public function __construct(
         private readonly GamesUpdaterService $gamesUpdaterService,
         private readonly DexUpdaterService $dexUpdaterService,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

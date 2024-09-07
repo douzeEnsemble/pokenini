@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\RegionalDexNumbersUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 12;
@@ -17,12 +22,12 @@ class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var RegionalDexNumbersUpdater */
+        // @var RegionalDexNumbersUpdater
         return static::getContainer()->get(RegionalDexNumbersUpdater::class);
     }
 
     /**
-     * There is no "deleted_at" field in the table
+     * There is no "deleted_at" field in the table.
      */
     protected function getTableDeletedAtCount(): int
     {

@@ -8,6 +8,11 @@ use App\Web\AlbumFilters\FromRequest;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FromRequestTest extends TestCase
 {
     public function testGet(): void

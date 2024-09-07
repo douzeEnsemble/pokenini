@@ -10,6 +10,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TrainerDexRepositorySetTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

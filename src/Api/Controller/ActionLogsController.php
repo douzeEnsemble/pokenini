@@ -12,9 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/action_logs')]
 class ActionLogsController extends AbstractController
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     #[Route(path: '', methods: ['GET'])]
     public function get(ActionLogsService $service): JsonResponse
@@ -29,7 +27,7 @@ class ActionLogsController extends AbstractController
                 }
 
                 if (null !== $actionLog['execution_time'] && is_string($actionLog['execution_time'])) {
-                    list($actionLog['execution_time'], $zero) = explode('.', $actionLog['execution_time']);
+                    [$actionLog['execution_time'], $zero] = explode('.', $actionLog['execution_time']);
                     unset($zero);
                 }
             }
@@ -38,7 +36,7 @@ class ActionLogsController extends AbstractController
         $finalActionLogs = [];
         foreach ($actionLogs as $actionLog) {
             $typeAction = $actionLog['type_action'];
-            $period = $actionLog['row_number'] == 1 ? 'current' : 'last';
+            $period = 1 == $actionLog['row_number'] ? 'current' : 'last';
 
             $finalActionLogs[$typeAction][$period] = $actionLog;
         }

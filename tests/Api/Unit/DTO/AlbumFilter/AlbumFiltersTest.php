@@ -8,6 +8,11 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumFiltersTest extends TestCase
 {
     public function testCreateFromArrayEmpty(): void

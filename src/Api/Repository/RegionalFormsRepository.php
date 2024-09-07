@@ -23,16 +23,16 @@ class RegionalFormsRepository extends ServiceEntityRepository
      */
     public function getAll(): array
     {
-        $sql = <<<SQL
-        SELECT      name,
-                    french_name as "frenchName",
-                    slug
-        FROM        regional_form
-        WHERE       deleted_at IS NULL
-        ORDER BY    order_number
-        SQL;
+        $sql = <<<'SQL'
+            SELECT      name,
+                        french_name as "frenchName",
+                        slug
+            FROM        regional_form
+            WHERE       deleted_at IS NULL
+            ORDER BY    order_number
+            SQL;
 
-        /** @var string[][] */
+        // @var string[][]
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

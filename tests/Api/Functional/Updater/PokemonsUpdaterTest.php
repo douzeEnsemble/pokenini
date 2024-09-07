@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Updater;
 
-use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
-use App\Tests\Api\Common\Traits\GetterTrait\GetPokemonTrait;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\PokemonsUpdater;
+use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
+use App\Tests\Api\Common\Traits\GetterTrait\GetPokemonTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class PokemonsUpdaterTest extends AbstractTestUpdater
 {
     use CountPokemonTrait;
@@ -202,7 +207,7 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var PokemonsUpdater */
+        // @var PokemonsUpdater
         return static::getContainer()->get(PokemonsUpdater::class);
     }
 }

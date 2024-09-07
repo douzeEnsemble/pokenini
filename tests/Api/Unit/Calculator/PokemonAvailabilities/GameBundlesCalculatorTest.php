@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Calculator\PokemonAvailabilities;
 
-use App\Api\Calculator\DexAvailabilitiesCalculator;
-use App\Api\Calculator\DexAvailabilityCalculator;
 use App\Api\Calculator\PokemonAvailabilities\GameBundlesCalculator;
-use App\Api\Entity\Dex;
-use App\Api\Repository\DexAvailabilitiesRepository;
-use App\Api\Repository\DexRepository;
 use App\Api\Repository\PokemonAvailabilitiesRepository;
-use Doctrine\ORM\AbstractQuery;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesCalculatorTest extends TestCase
 {
     public function testExecute(): void

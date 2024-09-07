@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\RegionsUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class RegionsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 10;
@@ -17,7 +22,7 @@ class RegionsUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var RegionsUpdater */
+        // @var RegionsUpdater
         return static::getContainer()->get(RegionsUpdater::class);
     }
 }

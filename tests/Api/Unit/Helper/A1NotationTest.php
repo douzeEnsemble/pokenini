@@ -8,6 +8,11 @@ use App\Api\Helper\A1Notation;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class A1NotationTest extends TestCase
 {
     #[DataProvider('providerIndexToLetter')]

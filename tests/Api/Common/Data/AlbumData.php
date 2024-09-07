@@ -10,7 +10,7 @@ namespace App\Tests\Api\Common\Data;
 final class AlbumData
 {
     /**
-     * @return string[][]|string[][][]|int[][]|null[][]
+     * @return int[][]|null[][]|string[][]|string[][][]
      */
     public static function getExpectedRegGreenBlueYellowContent(
         ?string $bulbasaurCatchState,
@@ -78,8 +78,9 @@ final class AlbumData
             $douzeData,
         ];
     }
+
     /**
-     * @return string[][]|string[][][]|int[][]|null[][]
+     * @return int[][]|null[][]|string[][]|string[][][]
      */
     public static function getExpectedGoldSilverCrystalContent(
         ?string $bulbasaurCatchState,
@@ -175,47 +176,7 @@ final class AlbumData
     }
 
     /**
-     * @return string[]|null[]
-     */
-    private static function getCatchStateDataFromSlug(?string $catchStateSlug): array
-    {
-        switch ($catchStateSlug) {
-            case 'yes':
-                return [
-                    'catch_state_slug' => 'yes',
-                    'catch_state_name' => 'Yes',
-                    'catch_state_french_name' => 'Oui',
-                ];
-            case 'maybe':
-                return [
-                    'catch_state_slug' => 'maybe',
-                    'catch_state_name' => 'Maybe',
-                    'catch_state_french_name' => 'Peut être',
-                ];
-            case 'maybenot':
-                return [
-                    'catch_state_slug' => 'maybenot',
-                    'catch_state_name' => 'Maybe not',
-                    'catch_state_french_name' => 'Peut être pas',
-                ];
-            case 'no':
-                return [
-                    'catch_state_slug' => 'no',
-                    'catch_state_name' => 'No',
-                    'catch_state_french_name' => 'Non',
-                ];
-            case null:
-            default:
-                return [
-                    'catch_state_slug' => null,
-                    'catch_state_name' => null,
-                    'catch_state_french_name' => null,
-                ];
-        }
-    }
-
-    /**
-     * @return string[][]|string[][][]|int[][]|null[][]
+     * @return int[][]|null[][]|string[][]|string[][][]
      */
     public static function getExpectedHomeContent(): array
     {
@@ -482,7 +443,7 @@ final class AlbumData
     }
 
     /**
-     * @return string[][]|string[][][]|int[][]|null[][]
+     * @return int[][]|null[][]|string[][]|string[][][]
      */
     public static function getExpectedHomeShinyContent(): array
     {
@@ -699,5 +660,49 @@ final class AlbumData
                 'game_bundles_shiny' => [],
             ],
         ];
+    }
+
+    /**
+     * @return null[]|string[]
+     */
+    private static function getCatchStateDataFromSlug(?string $catchStateSlug): array
+    {
+        switch ($catchStateSlug) {
+            case 'yes':
+                return [
+                    'catch_state_slug' => 'yes',
+                    'catch_state_name' => 'Yes',
+                    'catch_state_french_name' => 'Oui',
+                ];
+
+            case 'maybe':
+                return [
+                    'catch_state_slug' => 'maybe',
+                    'catch_state_name' => 'Maybe',
+                    'catch_state_french_name' => 'Peut être',
+                ];
+
+            case 'maybenot':
+                return [
+                    'catch_state_slug' => 'maybenot',
+                    'catch_state_name' => 'Maybe not',
+                    'catch_state_french_name' => 'Peut être pas',
+                ];
+
+            case 'no':
+                return [
+                    'catch_state_slug' => 'no',
+                    'catch_state_name' => 'No',
+                    'catch_state_french_name' => 'Non',
+                ];
+
+            case null:
+            default:
+                return [
+                    'catch_state_slug' => null,
+                    'catch_state_name' => null,
+                    'catch_state_french_name' => null,
+                ];
+        }
     }
 }

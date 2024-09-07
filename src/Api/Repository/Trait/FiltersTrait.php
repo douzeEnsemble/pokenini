@@ -6,22 +6,20 @@ namespace App\Api\Repository\Trait;
 
 use App\Api\DTO\AlbumFilter\AlbumFilters;
 use Doctrine\DBAL\ArrayParameterType;
-use Doctrine\DBAL\ParameterType;
 
 trait FiltersTrait
 {
     protected function getFiltersQuery(AlbumFilters $filters): string
     {
         return $this->getFiltersQueryTypes($filters)
-            . $this->getFiltersQueryForms($filters)
-            . $this->getFiltersQueryCatchStates($filters)
-            . $this->getFiltersQueryGames($filters)
-            . $this->getFiltersQueryFamilies($filters)
-        ;
+            .$this->getFiltersQueryForms($filters)
+            .$this->getFiltersQueryCatchStates($filters)
+            .$this->getFiltersQueryGames($filters)
+            .$this->getFiltersQueryFamilies($filters);
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     protected function getFiltersParameters(AlbumFilters $filters): array
     {
@@ -85,7 +83,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     private function getFiltersParametersTypes(AlbumFilters $filters): array
     {
@@ -141,7 +139,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     private function getFiltersParametersForms(AlbumFilters $filters): array
     {
@@ -182,7 +180,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     private function getFiltersParametersCatchStates(AlbumFilters $filters): array
     {
@@ -207,33 +205,33 @@ trait FiltersTrait
             $query .= ')';
         }
         if ($filters->gameBundleAvailabilities->values) {
-            $query .= <<<SUBSQL
-            AND p.id IN (SELECT  gba.pokemon_id
-                        FROM    game_bundle_availability AS gba
-                            LEFT JOIN game_bundle AS gb
-                                ON gba.bundle_id = gb.id
-                        WHERE   gba.is_available = TRUE
-                                AND gb.slug IN(:filter_game_bundle_availabilities)
-                    )
-            SUBSQL;
+            $query .= <<<'SUBSQL'
+                AND p.id IN (SELECT  gba.pokemon_id
+                            FROM    game_bundle_availability AS gba
+                                LEFT JOIN game_bundle AS gb
+                                    ON gba.bundle_id = gb.id
+                            WHERE   gba.is_available = TRUE
+                                    AND gb.slug IN(:filter_game_bundle_availabilities)
+                        )
+                SUBSQL;
         }
         if ($filters->gameBundleShinyAvailabilities->values) {
-            $query .= <<<SUBSQL
-            AND p.id IN (SELECT  gbsa.pokemon_id
-                        FROM    game_bundle_shiny_availability AS gbsa
-                            LEFT JOIN game_bundle AS gb
-                                ON gbsa.bundle_id = gb.id
-                        WHERE   gbsa.is_available = TRUE
-                                AND gb.slug IN(:filter_game_bundle_shiny_availabilities)
-                    )
-            SUBSQL;
+            $query .= <<<'SUBSQL'
+                AND p.id IN (SELECT  gbsa.pokemon_id
+                            FROM    game_bundle_shiny_availability AS gbsa
+                                LEFT JOIN game_bundle AS gb
+                                    ON gbsa.bundle_id = gb.id
+                            WHERE   gbsa.is_available = TRUE
+                                    AND gb.slug IN(:filter_game_bundle_shiny_availabilities)
+                        )
+                SUBSQL;
         }
 
         return $query;
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     private function getFiltersParametersGames(AlbumFilters $filters): array
     {
@@ -258,7 +256,7 @@ trait FiltersTrait
 
         if ($filters->families->values) {
             $query .= ' AND (pp.slug IN(:filter_families)'
-                . 'OR (p.slug IN(:filter_families) AND 0 = p.family_order)';
+                .'OR (p.slug IN(:filter_families) AND 0 = p.family_order)';
             if ($filters->families->hasNull()) {
                 $query .= ' OR (pp.slug IS NULL AND 0 <> p.family_order)';
             }
@@ -269,7 +267,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return null[][]|string[][]
      */
     private function getFiltersParametersFamilies(AlbumFilters $filters): array
     {

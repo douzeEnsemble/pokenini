@@ -46,7 +46,7 @@ class PokemonsRepository extends ServiceEntityRepository
 
         $queryBuilder->select($queryBuilder->expr()->count('p'));
 
-        /** @var int */
+        // @var int
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 }

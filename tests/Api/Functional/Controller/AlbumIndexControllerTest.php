@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Controller;
 use App\Tests\Api\Common\Data\AlbumData;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumIndexControllerTest extends AbstractTestControllerApi
 {
     use AssertReportTrait;
@@ -18,7 +23,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -61,6 +67,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -78,6 +85,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -91,7 +99,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -134,6 +143,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertFalse($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -153,6 +163,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -166,7 +177,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -209,6 +221,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -226,6 +239,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -239,7 +253,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -282,6 +297,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -299,6 +315,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -312,7 +329,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -346,6 +364,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -355,6 +374,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -368,7 +388,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -402,6 +423,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -411,6 +433,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
@@ -424,7 +447,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -465,7 +489,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -506,7 +531,8 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -515,6 +541,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEmpty($data['pokemons']);
 
         $this->assertArrayHasKey('report', $data);
+
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 

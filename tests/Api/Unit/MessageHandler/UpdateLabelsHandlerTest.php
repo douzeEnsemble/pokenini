@@ -6,12 +6,17 @@ namespace App\Tests\Api\Unit\MessageHandler;
 
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdateLabels;
-use App\Api\MessageHandler\UpdateLabelsHandler;
 use App\Api\MessageHandler\UpdateHandlerInterface;
-use App\Api\Service\UpdaterService\UpdaterServiceInterface;
+use App\Api\MessageHandler\UpdateLabelsHandler;
 use App\Api\Service\UpdaterService\LabelsUpdaterService;
+use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 
     /**
      * @param LabelsUpdaterService $updaterService
-    **/
+     */
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,

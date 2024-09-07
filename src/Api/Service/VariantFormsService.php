@@ -10,8 +10,7 @@ class VariantFormsService
 {
     public function __construct(
         private readonly VariantFormsRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

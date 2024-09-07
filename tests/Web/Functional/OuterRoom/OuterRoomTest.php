@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\OuterRoom;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class OuterRoomTest extends WebTestCase
 {
     use TestNavTrait;

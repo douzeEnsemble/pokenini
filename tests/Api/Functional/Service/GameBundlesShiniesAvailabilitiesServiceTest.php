@@ -11,6 +11,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTra
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesShiniesAvailabilitiesServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

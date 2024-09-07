@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Home;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class HomeTest extends WebTestCase
 {
     use TestNavTrait;
@@ -69,15 +74,15 @@ class HomeTest extends WebTestCase
             'totem',
         ];
 
-        for ($i = 0; $i < \count($dex); $i++) {
+        for ($i = 0; $i < \count($dex); ++$i) {
             $dexSlug = $dex[$i];
 
             $this->assertEquals(
-                "/fr/album/$dexSlug?t=0a286c2c78b485e1bcecf68febbda17084d0b2be",
+                "/fr/album/{$dexSlug}?t=0a286c2c78b485e1bcecf68febbda17084d0b2be",
                 $crawler->filter('.home-item')->eq($i)->filter('a')->attr('href')
             );
             $this->assertEquals(
-                "https://icon.pokenini.fr/banner/$dexSlug.png",
+                "https://icon.pokenini.fr/banner/{$dexSlug}.png",
                 $crawler->filter('.home-item')->eq($i)->filter('img')->attr('src')
             );
         }

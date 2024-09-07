@@ -11,10 +11,9 @@ class ModifyDexService extends AbstractApiService
         string $data,
         string $trainerId
     ): void {
-
         $this->request(
             'PUT',
-            "/dex/$trainerId/$dexSlug",
+            "/dex/{$trainerId}/{$dexSlug}",
             [
                 'body' => $data,
             ]

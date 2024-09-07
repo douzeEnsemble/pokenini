@@ -10,6 +10,11 @@ use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\Cache\CacheInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesShiniesAvailabilitiesServiceTest extends TestCase
 {
     public function testCleanCacheFromPokemon(): void
@@ -20,7 +25,7 @@ class GameBundlesShiniesAvailabilitiesServiceTest extends TestCase
         $cache
             ->expects($this->once())
             ->method('delete')
-            ->with($this->equalTo('gbsa-azertyuiop'));
+            ->with($this->equalTo('gbsa-azertyuiop'))
         ;
 
         $service = new GameBundlesShiniesAvailabilitiesService(

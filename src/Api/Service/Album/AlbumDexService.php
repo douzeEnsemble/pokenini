@@ -10,11 +10,10 @@ class AlbumDexService
 {
     public function __construct(
         private readonly DexRepository $dexRepository,
-    ) {
-    }
+    ) {}
 
     /**
-     * @return string[]|bool[]
+     * @return bool[]|string[]
      */
     public function get(string $trainerExternalId, string $dexSlug): array
     {

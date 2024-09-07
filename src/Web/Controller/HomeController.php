@@ -8,8 +8,8 @@ use App\Web\Exception\NoLoggedUserException;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {

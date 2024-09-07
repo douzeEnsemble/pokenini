@@ -11,8 +11,7 @@ class RegionalDexNumbersUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
         private readonly RegionalDexNumbersUpdater $regionalDexNumbersUpdater
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

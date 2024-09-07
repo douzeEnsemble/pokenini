@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Localization;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class EnglishAlbumLocalizationTest extends WebTestCase
 {
     use TestNavTrait;

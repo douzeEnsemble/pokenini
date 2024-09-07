@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
-use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
+use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
@@ -27,7 +32,7 @@ class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("1817 pokémons updated", $commandTester->getDisplay());
+        $this->assertStringContainsString('1817 pokémons updated', $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

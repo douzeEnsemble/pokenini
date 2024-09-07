@@ -12,6 +12,11 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\DexAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 
     /**
      * @param DexAvailabilitiesCalculatorService $calculatorService
-    **/
+     */
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,

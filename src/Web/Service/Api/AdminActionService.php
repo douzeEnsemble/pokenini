@@ -10,7 +10,7 @@ class AdminActionService extends AbstractApiService
     {
         return $this->requestContent(
             'POST',
-            "/istration/update/$type"
+            "/istration/update/{$type}"
         );
     }
 
@@ -18,7 +18,7 @@ class AdminActionService extends AbstractApiService
     {
         return $this->requestContent(
             'POST',
-            "/istration/calculate/$type"
+            "/istration/calculate/{$type}"
         );
     }
 }

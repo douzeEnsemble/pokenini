@@ -18,8 +18,7 @@ class UpdateRegionalDexNumbersHandler implements UpdateHandlerInterface
     public function __construct(
         private readonly RegionalDexNumbersUpdaterService $updaterService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdateRegionalDexNumbers $message): void
     {

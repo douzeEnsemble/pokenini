@@ -7,6 +7,11 @@ namespace App\Tests\Web\Unit\AlbumFilters;
 use App\Web\AlbumFilters\Mapping;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class MappingTest extends TestCase
 {
     public function testGet(): void
@@ -75,10 +80,10 @@ class MappingTest extends TestCase
     {
         return [
             'catch_states' => [
-                'no'
+                'no',
             ],
             'families' => [
-                'pichu'
+                'pichu',
             ],
             'category_forms' => [
                 'cat1',

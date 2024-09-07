@@ -11,6 +11,11 @@ use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class PokemonAvailabilitiesCalculatorServiceTest extends TestCase
 {
     public function testExecute(): void

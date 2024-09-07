@@ -10,8 +10,7 @@ class CategoryFormsService
 {
     public function __construct(
         private readonly CategoryFormsRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

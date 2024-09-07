@@ -18,8 +18,7 @@ class UpdatePokemonsHandler implements UpdateHandlerInterface
     public function __construct(
         private readonly PokemonsUpdaterService $updaterService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdatePokemons $message): void
     {

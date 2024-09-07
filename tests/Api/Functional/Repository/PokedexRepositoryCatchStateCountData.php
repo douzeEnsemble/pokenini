@@ -7,7 +7,7 @@ namespace App\Tests\Api\Functional\Repository;
 class PokedexRepositoryCatchStateCountData
 {
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      */
     public static function providerGetCatchStatesCountsTypesFilters(): array
     {
@@ -97,7 +97,7 @@ class PokedexRepositoryCatchStateCountData
     }
 
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
@@ -226,7 +226,7 @@ class PokedexRepositoryCatchStateCountData
     }
 
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      */
     public static function providerGetCatchStatesCountsCatchStatesFilters(): array
     {
@@ -275,7 +275,7 @@ class PokedexRepositoryCatchStateCountData
     }
 
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      */
     public static function providerGetCatchStatesCountsGamesFilters(): array
     {
@@ -362,7 +362,7 @@ class PokedexRepositoryCatchStateCountData
     }
 
     /**
-     * @return string[][][][]|int[][][]
+     * @return int[][][]|string[][][][]
      */
     public static function providerGetFamiliesCountsCatchStatesFilters(): array
     {

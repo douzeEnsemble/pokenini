@@ -11,12 +11,11 @@ class UserTokenService
 {
     public function __construct(
         private readonly Security $security
-    ) {
-    }
+    ) {}
 
     public function getLoggedUserToken(): string
     {
-        /** @var User|null $user */
+        /** @var null|User $user */
         $user = $this->security->getUser();
 
         if (null === $user) {

@@ -15,6 +15,13 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     protected AbstractBrowser $client;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->client = static::createClient();
+    }
+
     public function assertResponseIsOK(): void
     {
         $this->assertEquals(
@@ -33,7 +40,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     public function getResponse(): Response
     {
-        /** @var Response */
+        // @var Response
         return $this->client->getResponse();
     }
 
@@ -43,11 +50,11 @@ abstract class AbstractTestControllerApi extends WebTestCase
     }
 
     /**
-     * @return string[]|int[]|bool[]
+     * @return bool[]|int[]|string[]
      */
     public function getJsonDecodedResponseContent(): array
     {
-        /** @var string[]|int[]|bool[] */
+        // @var string[]|int[]|bool[]
         return json_decode($this->getResponseContent(), true);
     }
 
@@ -59,21 +66,21 @@ abstract class AbstractTestControllerApi extends WebTestCase
         string $method,
         string $route,
         array $params = [],
-        array $options = null,
-        string $content = null,
+        ?array $options = null,
+        ?string $content = null,
     ): void {
         $urlParams = \http_build_query($params);
 
         $this->client->request(
             $method,
-            "/{$route}?$urlParams",
+            "/{$route}?{$urlParams}",
             [],
             [],
             array_merge(
                 [
                     'headers' => [
-                        'accept' => 'application/json'
-                    ]
+                        'accept' => 'application/json',
+                    ],
                 ],
                 $options ?? ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']
             ),
@@ -82,7 +89,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     }
 
     /**
-     * @param string[] $params
+     * @param string[]            $params
      * @param string[]|string[][] $options
      *
      * @return mixed[]
@@ -94,14 +101,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     ): array {
         $this->apiRequest('GET', $route, $params, $options);
 
-        /** @var mixed[] */
+        // @var mixed[]
         return json_decode((string) $this->getResponse()->getContent(), true);
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->client = static::createClient();
     }
 }

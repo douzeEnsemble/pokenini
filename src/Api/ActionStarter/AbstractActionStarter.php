@@ -12,8 +12,7 @@ abstract class AbstractActionStarter implements ActionStarterInterface
 {
     public function __construct(
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function start(): ActionMessageInterface
     {
@@ -30,5 +29,6 @@ abstract class AbstractActionStarter implements ActionStarterInterface
     }
 
     abstract protected function getMessageClass(): string;
+
     abstract protected function instanciate(string $identifier): ActionMessageInterface;
 }

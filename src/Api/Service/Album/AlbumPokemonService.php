@@ -11,11 +11,10 @@ class AlbumPokemonService
 {
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
-    ) {
-    }
+    ) {}
 
     /**
-     * @return string[][]|string[][][]|int[][]
+     * @return int[][]|string[][]|string[][][]
      */
     public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): array
     {
@@ -25,15 +24,13 @@ class AlbumPokemonService
             $albumFilters,
         );
 
-        $list = $this->explodesFlatList($pokemons);
-
-        return $list;
+        return $this->explodesFlatList($pokemons);
     }
 
     /**
-     * @param string[][]|int[][] &$pokemons
+     * @param int[][]|string[][] &$pokemons
      *
-     * @return string[][]|string[][][]|int[][]
+     * @return int[][]|string[][]|string[][][]
      */
     private function explodesFlatList(array $pokemons): array
     {
@@ -42,14 +39,14 @@ class AlbumPokemonService
         foreach ($pokemons as $pokemon) {
             /** @var string */
             $gameBundleSlugs = $pokemon['game_bundle_slugs'] ?? '';
+
             /** @var string */
             $gameBundleSShinylugs = $pokemon['game_bundle_shiny_slugs'] ?? '';
 
             $pokemon['game_bundles'] = array_filter(explode(',', $gameBundleSlugs));
             $pokemon['game_bundles_shiny'] = array_filter(explode(',', $gameBundleSShinylugs));
 
-            unset($pokemon['game_bundle_slugs']);
-            unset($pokemon['game_bundle_shiny_slugs']);
+            unset($pokemon['game_bundle_slugs'], $pokemon['game_bundle_shiny_slugs']);
 
             $list[] = $pokemon;
         }

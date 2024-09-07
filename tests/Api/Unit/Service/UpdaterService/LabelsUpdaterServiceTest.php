@@ -13,6 +13,11 @@ use App\Api\Updater\RegionsUpdater;
 use App\Api\Updater\TypesUpdater;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class LabelsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 /**
- * Will be calculated from Dex configurations
+ * Will be calculated from Dex configurations.
  */
 class DexAvailability
 {

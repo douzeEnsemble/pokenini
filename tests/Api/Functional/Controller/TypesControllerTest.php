@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TypesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void

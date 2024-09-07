@@ -6,7 +6,5 @@ namespace App\Api\DTO\AlbumFilter;
 
 final class AlbumFilterValue
 {
-    public function __construct(public ?string $value)
-    {
-    }
+    public function __construct(public ?string $value) {}
 }

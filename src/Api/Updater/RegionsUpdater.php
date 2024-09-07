@@ -12,6 +12,7 @@ class RegionsUpdater extends AbstractUpdater
     protected string $tableName = 'region';
     protected string $statisticName = 'regions';
     protected string $headerCellsRange = 'A1:D1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:D'];
 
@@ -38,29 +39,29 @@ class RegionsUpdater extends AbstractUpdater
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        INSERT INTO $tableName(
-          id,
-          slug,
-          name,
-          french_name,
-          order_number
-        )
-        VALUES (
-            :id,
-            :slug,
-            :name,
-            :french_name,
-            :order_number
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET
-            name = excluded.name,
-            french_name = excluded.french_name,
-            order_number = excluded.order_number,
-            deleted_at = NULL
-        SQL;
+            INSERT INTO {$tableName}(
+              id,
+              slug,
+              name,
+              french_name,
+              order_number
+            )
+            VALUES (
+                :id,
+                :slug,
+                :name,
+                :french_name,
+                :order_number
+            )
+            ON CONFLICT (slug)
+            DO
+            UPDATE
+            SET
+                name = excluded.name,
+                french_name = excluded.french_name,
+                order_number = excluded.order_number,
+                deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 

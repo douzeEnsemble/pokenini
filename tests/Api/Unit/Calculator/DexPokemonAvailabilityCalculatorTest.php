@@ -18,6 +18,11 @@ use App\Api\Service\GamesAvailabilitiesService;
 use App\Api\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexPokemonAvailabilityCalculatorTest extends TestCase
 {
     public function testCalculate(): void
@@ -62,11 +67,11 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
         ;
 
         $dex = new Dex();
-        $dex->selectionRule = <<<RULE
-            p.slug == 'douze' 
-            and (ba?.redgreenblueyellow or bsa?.redgreenblueyellow)
-            and (ga?.red or gsa?.blue)
-        RULE;
+        $dex->selectionRule = <<<'RULE'
+                p.slug == 'douze' 
+                and (ba?.redgreenblueyellow or bsa?.redgreenblueyellow)
+                and (ga?.red or gsa?.blue)
+            RULE;
 
         $calculate = new DexPokemonAvailabilityCalculator(
             $gameBundlesAvailabilitiesService,

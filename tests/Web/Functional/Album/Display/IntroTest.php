@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Display;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class IntroTest extends WebTestCase
 {
     use TestNavTrait;
@@ -226,7 +231,7 @@ class IntroTest extends WebTestCase
             $crawler->filter('#album-description')->text()
         );
         $this->assertStringContainsString(
-            "Les pokémons ont des formes différentes en fonction du genre ou pas.",
+            'Les pokémons ont des formes différentes en fonction du genre ou pas.',
             $crawler->filter('#album-description')->text()
         );
 
@@ -275,7 +280,7 @@ class IntroTest extends WebTestCase
             $crawler->filter('#album-description')->text()
         );
         $this->assertStringContainsString(
-            "Pokémons have different shapes depending on the gender or not.",
+            'Pokémons have different shapes depending on the gender or not.',
             $crawler->filter('#album-description')->text()
         );
 

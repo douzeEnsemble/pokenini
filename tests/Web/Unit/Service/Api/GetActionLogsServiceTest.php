@@ -11,6 +11,11 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GetActionLogsServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -59,7 +64,7 @@ class GetActionLogsServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/action_logs",
+                'https://api.domain/action_logs',
                 [
                     'headers' => [
                         'accept' => 'application/json',

@@ -11,8 +11,7 @@ class PokemonsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
         private readonly PokemonsUpdater $pokemonsUpdater
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

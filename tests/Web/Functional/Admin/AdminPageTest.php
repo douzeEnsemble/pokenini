@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Admin;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AdminPageTest extends WebTestCase
 {
     use TestNavTrait;
@@ -86,12 +91,16 @@ class AdminPageTest extends WebTestCase
 
                 /** @var array<string, string> */
                 $reportData = $report['data'] ?? [];
+
                 /** @var array<string, string> */
                 $reportDatatime = $report['datatime'] ?? [];
+
                 /** @var string */
                 $reportExectime = $report['exectime'] ?? '';
+
                 /** @var string */
                 $reportError = $report['error'] ?? '';
+
                 /** @var bool */
                 $reportProgress = $report['progress'] ?? false;
 
@@ -135,7 +144,7 @@ class AdminPageTest extends WebTestCase
         $this->assertCountFilter(
             $crawler,
             0,
-            ".admin-item-$item .admin-item-$type"
+            ".admin-item-{$item} .admin-item-{$type}"
         );
 
         $oppositeType = ('current' == $type) ? 'last' : 'current';
@@ -143,7 +152,7 @@ class AdminPageTest extends WebTestCase
         $this->assertCountFilter(
             $crawler,
             0,
-            ".admin-item-$item .admin-item-$oppositeType .admin-item-toggle"
+            ".admin-item-{$item} .admin-item-{$oppositeType} .admin-item-toggle"
         );
     }
 
@@ -167,63 +176,63 @@ class AdminPageTest extends WebTestCase
 
         $this->assertCountFilter(
             $crawler,
-            (!$expectedReport ?  0 : 1),
-            ".admin-item-$item .admin-item-$type .admin-item-report"
+            !$expectedReport ? 0 : 1,
+            ".admin-item-{$item} .admin-item-{$type} .admin-item-report"
         );
 
         foreach ($expectedReport as $label => $value) {
             $this->assertEquals(
                 $label,
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report dt")->eq($index)->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report dt")->eq($index)->text()
             );
             $this->assertEquals(
                 $value,
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report dd")->eq($index)->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report dd")->eq($index)->text()
             );
 
-            $index++;
+            ++$index;
         }
 
         if ($expectedDateTime) {
-            $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .admin-item-report-date");
+            $this->assertCountFilter($crawler, 1, ".admin-item-{$item} .admin-item-{$type} .admin-item-report-date");
 
             $this->assertEquals(
                 $expectedDateTime['label'],
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report-date strong")->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report-date strong")->text()
             );
             $this->assertEquals(
                 $expectedDateTime['value'],
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report-date em")->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report-date em")->text()
             );
         }
 
         if ($executionTime) {
-            $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .admin-item-report-execution");
+            $this->assertCountFilter($crawler, 1, ".admin-item-{$item} .admin-item-{$type} .admin-item-report-execution");
 
             $this->assertEquals(
                 'Terminé en',
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report-execution strong")->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report-execution strong")->text()
             );
             $this->assertEquals(
                 $executionTime,
-                $crawler->filter(".admin-item-$item .admin-item-$type .admin-item-report-execution em")->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .admin-item-report-execution em")->text()
             );
         }
 
         if ($errorMessage) {
-            $this->assertCountFilter($crawler, 1, ".admin-item-$item .admin-item-$type .alert.alert-danger");
+            $this->assertCountFilter($crawler, 1, ".admin-item-{$item} .admin-item-{$type} .alert.alert-danger");
 
             $this->assertEquals(
                 $errorMessage,
-                $crawler->filter(".admin-item-$item .admin-item-$type .alert.alert-danger")->text()
+                $crawler->filter(".admin-item-{$item} .admin-item-{$type} .alert.alert-danger")->text()
             );
         }
 
-        $this->assertCountFilter($crawler, ($hasProcessBar ? 1 : 0), ".admin-item-$item .admin-item-$type .progress");
+        $this->assertCountFilter($crawler, $hasProcessBar ? 1 : 0, ".admin-item-{$item} .admin-item-{$type} .progress");
     }
 
     /**
-     * @return string[][][][]|string[][][]|null[][]|bool[][][]
+     * @return bool[][][]|null[][]|string[][][]|string[][][][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */

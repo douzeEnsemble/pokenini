@@ -18,6 +18,11 @@ use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void

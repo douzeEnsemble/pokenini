@@ -12,6 +12,7 @@ class GameGenerationsUpdater extends AbstractUpdater
     protected string $tableName = 'game_generation';
     protected string $statisticName = 'game_generations';
     protected string $headerCellsRange = 'A1:B1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:B'];
 
@@ -34,23 +35,23 @@ class GameGenerationsUpdater extends AbstractUpdater
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        INSERT INTO $tableName(
-          id,
-          slug,
-          name
-        )
-        VALUES (
-            :id,
-            :slug,
-            :name
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET
-            name = excluded.name,
-            deleted_at = NULL
-        SQL;
+            INSERT INTO {$tableName}(
+              id,
+              slug,
+              name
+            )
+            VALUES (
+                :id,
+                :slug,
+                :name
+            )
+            ON CONFLICT (slug)
+            DO
+            UPDATE
+            SET
+                name = excluded.name,
+                deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 

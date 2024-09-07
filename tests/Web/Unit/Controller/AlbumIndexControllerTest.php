@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumIndexControllerTest extends TestCase
 {
     public function testIndexApiException(): void

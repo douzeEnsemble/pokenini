@@ -10,6 +10,11 @@ use App\Api\Service\UpdaterService\GamesAndDexUpdaterService;
 use App\Api\Service\UpdaterService\GamesUpdaterService;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesAndDexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

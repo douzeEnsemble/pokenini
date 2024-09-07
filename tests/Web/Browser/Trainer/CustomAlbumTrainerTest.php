@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Browser\Trainer;
 
-use App\Web\Security\User;
-use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\Panther\DomCrawler\Field\ChoiceFormField;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[Group('browser-testing')]
 class CustomAlbumTrainerTest extends AbstractBrowserTestCase
 {
@@ -30,6 +35,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
         $client->executeScript("document.getElementById('trainer-dex-goldsilvercrystal').scrollIntoView();");
 
         $form = $crawler->filter('form[data-dex="goldsilvercrystal"]')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('goldsilvercrystal-is_on_home');
         $field->tick();
@@ -54,6 +60,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
         $client->executeScript("document.getElementById('trainer-dex-goldsilvercrystal').scrollIntoView();");
 
         $form = $crawler->filter('form[data-dex="goldsilvercrystal"]')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('goldsilvercrystal-is_private');
         $field->untick();
@@ -78,6 +85,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
         $client->executeScript("document.getElementById('trainer-dex-redgreenblueyellow').scrollIntoView();");
 
         $form = $crawler->filter('form[data-dex="redgreenblueyellow"]')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('redgreenblueyellow-is_on_home');
         $field->tick();
@@ -102,6 +110,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
         $client->executeScript("document.getElementById('trainer-dex-redgreenblueyellow').scrollIntoView();");
 
         $form = $crawler->filter('form[data-dex="redgreenblueyellow"]')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('redgreenblueyellow-is_private');
         $field->untick();

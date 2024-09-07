@@ -7,6 +7,11 @@ namespace App\Tests\Web\Functional\Album\Action;
 use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateTest extends WebTestCase
 {
     public function testUpdateConnected(): void

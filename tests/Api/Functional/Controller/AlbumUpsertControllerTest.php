@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Controller;
 use App\Tests\Api\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumUpsertControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;

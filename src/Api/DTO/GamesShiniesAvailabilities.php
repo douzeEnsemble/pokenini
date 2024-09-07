@@ -9,9 +9,7 @@ class GamesShiniesAvailabilities
     /**
      * @param bool[] $gamesShiniesAvailabilities
      */
-    public function __construct(private array $gamesShiniesAvailabilities)
-    {
-    }
+    public function __construct(private array $gamesShiniesAvailabilities) {}
 
     public function __get(string $bundle): ?bool
     {
@@ -25,7 +23,7 @@ class GamesShiniesAvailabilities
 
     public function __set(string $bundle, bool $value): void
     {
-        throw new \Exception("Use constructor please");
+        throw new \Exception('Use constructor please');
     }
 
     /**

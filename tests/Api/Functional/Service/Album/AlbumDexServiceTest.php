@@ -9,6 +9,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumDexServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -43,7 +48,7 @@ class AlbumDexServiceTest extends KernelTestCase
         $this->assertArrayHasKey('selection_rule', $dexGSC);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.goldsilvercrystal '
-            . 'and p.specialForm === null and p.regionalForm === null',
+            .'and p.specialForm === null and p.regionalForm === null',
             $dexGSC['selection_rule']
         );
         $this->assertArrayHasKey('is_private', $dexGSC);

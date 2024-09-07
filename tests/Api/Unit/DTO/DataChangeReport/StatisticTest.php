@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\DTO\DataChangeReport;
 use App\Api\DTO\DataChangeReport\Statistic;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class StatisticTest extends TestCase
 {
     public function testConstructor(): void

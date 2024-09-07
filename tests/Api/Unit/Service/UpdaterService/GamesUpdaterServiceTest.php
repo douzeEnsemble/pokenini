@@ -11,6 +11,11 @@ use App\Api\Updater\GameGenerationsUpdater;
 use App\Api\Updater\GamesUpdater;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

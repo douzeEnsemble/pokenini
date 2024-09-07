@@ -18,8 +18,7 @@ class UpdateGamesAvailabilitiesHandler implements UpdateHandlerInterface
     public function __construct(
         private readonly GamesAvailabilitiesUpdaterService $updaterService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdateGamesAvailabilities $message): void
     {

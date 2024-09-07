@@ -6,6 +6,11 @@ namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CommonTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
@@ -57,10 +62,12 @@ class CommonTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertResponseIsOK();
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
+
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 

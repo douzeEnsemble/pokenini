@@ -4,38 +4,34 @@ declare(strict_types=1);
 
 namespace App\Web\Security;
 
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
 use League\OAuth2\Client\Provider\GoogleUser;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
-use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
-use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
+use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
+use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 
-class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationEntrypointInterface
+class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
 {
     public function __construct(
         private readonly ClientRegistry $clientRegistry,
         private readonly RouterInterface $router,
         private readonly string $listAdmin,
         private readonly string $listTrainer,
-    ) {
-    }
+    ) {}
 
     public function supports(Request $request): ?bool
     {
-        return $request->attributes->get('_route') === 'app_web_connect_googlecheck';
+        return 'app_web_connect_googlecheck' === $request->attributes->get('_route');
     }
 
-    /**
-     * @inheritDoc
-     */
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient('google');
@@ -63,9 +59,6 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         );
     }
 
-    /**
-     * @inheritDoc
-     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         /** @var User $user */
@@ -79,9 +72,6 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         return new RedirectResponse($targetUrl);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
@@ -89,13 +79,13 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         return new Response($message, Response::HTTP_FORBIDDEN);
     }
 
-   /**
+    /**
      * Called when authentication is needed, but it's not sent.
      * This redirects to the 'login'.
      *
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function start(Request $request, AuthenticationException $authException = null): Response
+    public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new RedirectResponse(
             $this->router->generate('app_web_home_index'),

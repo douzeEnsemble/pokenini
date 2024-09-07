@@ -13,9 +13,9 @@ trait CountPokemonAvailabilitiesTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        /** @var int */
+        // @var int
         return $connection->executeQuery(
-            "SELECT COUNT(*) FROM pokemon_availabilities WHERE category = '$category'"
+            "SELECT COUNT(*) FROM pokemon_availabilities WHERE category = '{$category}'"
         )->fetchOne();
     }
 }

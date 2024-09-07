@@ -23,7 +23,7 @@ class DebugPokemonController extends AbstractDebugController
             $this->serialize($pokemon),
             Response::HTTP_OK,
             [
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
             ]
         );
     }

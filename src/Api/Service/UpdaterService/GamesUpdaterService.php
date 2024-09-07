@@ -15,8 +15,7 @@ class GamesUpdaterService extends AbstractUpdaterService
         private readonly GameGenerationsUpdater $gameGenerationsUpdater,
         private readonly GameBundlesUpdater $gameBundlesUpdater,
         private readonly GamesUpdater $gamesUpdater,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

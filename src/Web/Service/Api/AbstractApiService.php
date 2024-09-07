@@ -19,8 +19,7 @@ abstract class AbstractApiService implements ApiServiceInterface
         protected readonly CacheInterface $cache,
         protected readonly string $apiLogin,
         protected readonly string $apiPassword
-    ) {
-    }
+    ) {}
 
     /**
      * @param mixed[] $options
@@ -62,7 +61,7 @@ abstract class AbstractApiService implements ApiServiceInterface
             $options,
         );
 
-        /** @var string */
+        // @var string
         return $response->getContent();
     }
 }

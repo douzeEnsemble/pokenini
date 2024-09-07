@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Admin;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionCalculateTest extends WebTestCase
 {
     use TestNavTrait;
@@ -37,8 +42,8 @@ class ActionCalculateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        # For testing purpose, this case will fail in API side
-        $client->request('GET', "/fr/istration/action/calculate/dex_availabilities");
+        // For testing purpose, this case will fail in API side
+        $client->request('GET', '/fr/istration/action/calculate/dex_availabilities');
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
@@ -49,7 +54,7 @@ class ActionCalculateTest extends WebTestCase
         $this->assertSelectorTextSame(
             '.admin-item-calculate_dex_availabilities .alert',
             'HTTP/1.1 500 Internal Server Error returned for'
-                . ' "http://web.test.moco/istration/calculate/dex_availabilities".'
+                .' "http://web.test.moco/istration/calculate/dex_availabilities".'
         );
     }
 
@@ -61,7 +66,7 @@ class ActionCalculateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        # For testing purpose, this case will fail in API side
+        // For testing purpose, this case will fail in API side
         $client->request('GET', '/fr/istration/action/calculate/dex_availabilities');
 
         $this->assertResponseStatusCodeSame(302);
@@ -74,7 +79,7 @@ class ActionCalculateTest extends WebTestCase
         $this->assertSelectorTextSame(
             '.admin-item-calculate_dex_availabilities .alert',
             'HTTP/1.1 500 Internal Server Error returned for'
-                . ' "http://web.test.moco/istration/calculate/dex_availabilities".'
+                .' "http://web.test.moco/istration/calculate/dex_availabilities".'
         );
 
         $crawler = $client->request('GET', '/fr/istration');
@@ -96,7 +101,7 @@ class ActionCalculateTest extends WebTestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        $client->request('GET', "/fr/istration/action/calculate/truc");
+        $client->request('GET', '/fr/istration/action/calculate/truc');
     }
 
     public function testAdminNonAdmin(): void
@@ -110,7 +115,7 @@ class ActionCalculateTest extends WebTestCase
 
         $this->expectException(AccessDeniedException::class);
 
-        $client->request('GET', "/fr/istration/action/calculate/dex_availabilities");
+        $client->request('GET', '/fr/istration/action/calculate/dex_availabilities');
     }
 
     private function testAdminCalculate(string $name): void
@@ -121,7 +126,7 @@ class ActionCalculateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $client->request('GET', "/fr/istration/action/calculate/$name");
+        $client->request('GET', "/fr/istration/action/calculate/{$name}");
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();

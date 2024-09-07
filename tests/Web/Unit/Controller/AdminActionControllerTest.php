@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AdminActionControllerTest extends TestCase
 {
     public function testFailUpdateLogs(): void

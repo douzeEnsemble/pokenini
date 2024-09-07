@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Browser\Album;
 
-use App\Web\Security\User;
-use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\Group;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[Group('browser-testing')]
 class ModalTest extends AbstractBrowserTestCase
 {
@@ -42,10 +47,10 @@ class ModalTest extends AbstractBrowserTestCase
         $crawler = $client->request('GET', '/fr/album/demolite');
 
         // Open the modal
-        $script = <<<SCRIPT
-        const modal = new bootstrap.Modal(document.getElementById('modal-blastoise-mega'));
-        modal.show();
-        SCRIPT;
+        $script = <<<'SCRIPT'
+            const modal = new bootstrap.Modal(document.getElementById('modal-blastoise-mega'));
+            modal.show();
+            SCRIPT;
         $client->executeScript($script);
 
         $this->assertSelectorIsVisible('#modal-blastoise-mega .album-modal-image-container-regular');
@@ -58,9 +63,9 @@ class ModalTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#modal-blastoise-mega .album-modal-icon-shiny')
-            ->link()
+                ->getCrawler()
+                ->filter('#modal-blastoise-mega .album-modal-icon-shiny')
+                ->link()
         );
 
         $this->assertSelectorIsNotVisible('#modal-blastoise-mega .album-modal-image-container-regular');
@@ -73,9 +78,9 @@ class ModalTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#modal-blastoise-mega .album-modal-icon-shiny')
-            ->link()
+                ->getCrawler()
+                ->filter('#modal-blastoise-mega .album-modal-icon-shiny')
+                ->link()
         );
 
         $this->assertSelectorIsNotVisible('#modal-blastoise-mega .album-modal-image-container-regular');
@@ -88,9 +93,9 @@ class ModalTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#modal-blastoise-mega .album-modal-icon-regular')
-            ->link()
+                ->getCrawler()
+                ->filter('#modal-blastoise-mega .album-modal-icon-regular')
+                ->link()
         );
 
         $this->assertSelectorIsVisible('#modal-blastoise-mega .album-modal-image-container-regular');

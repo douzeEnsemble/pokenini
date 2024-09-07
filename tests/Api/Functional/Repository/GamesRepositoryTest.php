@@ -8,6 +8,11 @@ use App\Api\Repository\GamesRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

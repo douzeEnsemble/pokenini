@@ -15,20 +15,19 @@ use Symfony\Component\Uid\Uuid;
 
 class GamesAvailabilitiesUpdater extends AbstractUpdater
 {
+    protected const RANGE_SIZE = 100;
+    protected const BATCH_SIZE = 20;
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
     protected string $statisticName = 'games_availabilities';
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;
 
-    protected const RANGE_SIZE = 100;
-    protected const BATCH_SIZE = 20;
-
     /** @var string[][] */
     private array $records;
 
     /**
-     * @var string[]|null
+     * @var null|string[]
      */
     private ?array $gamesCache = null;
 
@@ -86,7 +85,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $nbBatch = ($rowCount / self::RANGE_SIZE);
 
         $ranges = [];
-        for ($i = 0; $i < $nbBatch; $i++) {
+        for ($i = 0; $i < $nbBatch; ++$i) {
             $startRow = $this->recordsCellsStartRowIndex + (self::RANGE_SIZE * $i);
             $endRow = min($startRow + self::RANGE_SIZE - 1, $rowCount - 1);
 
@@ -138,7 +137,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[][]|bool[][] $records
+     * @param bool[][]|string[][] $records
      */
     protected function upsertRecords(array $records): void
     {
@@ -146,31 +145,30 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $sqlParameters = [];
         $index = 0;
         foreach ($records as $record) {
-            $sqlValues[] = ":id$index"
-                . ", :pokemonSlug$index"
-                . ", (SELECT id FROM game WHERE slug = :game$index)"
-                . ", :availability$index"
-            ;
+            $sqlValues[] = ":id{$index}"
+                .", :pokemonSlug{$index}"
+                .", (SELECT id FROM game WHERE slug = :game{$index})"
+                .", :availability{$index}";
 
-            $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["pokemonSlug$index"] = $record['pokemonSlug'];
-            $sqlParameters["game$index"] = $record['game'];
-            $sqlParameters["availability$index"] = $record['availability'];
+            $sqlParameters["id{$index}"] = Uuid::v4();
+            $sqlParameters["pokemonSlug{$index}"] = $record['pokemonSlug'];
+            $sqlParameters["game{$index}"] = $record['game'];
+            $sqlParameters["availability{$index}"] = $record['availability'];
 
-            $index++;
+            ++$index;
         }
 
         $sqlValuesStr = implode('), (', $sqlValues);
 
         $sql = <<<SQL
-        INSERT INTO $this->tableName (
-            id,
-            pokemon_slug,
-            game_id,
-            availability
-        )
-        VALUES ($sqlValuesStr)
-SQL;
+                    INSERT INTO {$this->tableName} (
+                        id,
+                        pokemon_slug,
+                        game_id,
+                        availability
+                    )
+                    VALUES ({$sqlValuesStr})
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
@@ -190,8 +188,8 @@ SQL;
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-            DELETE FROM $tableName
-        SQL;
+                DELETE FROM {$tableName}
+            SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql);
     }
@@ -208,7 +206,7 @@ SQL;
     }
 
     /**
-     * @param string[]   $record
+     * @param string[] $record
      */
     private function transformRecord(
         array $record
@@ -224,6 +222,7 @@ SQL;
             ];
         }
     }
+
     /**
      * @return string[]
      */

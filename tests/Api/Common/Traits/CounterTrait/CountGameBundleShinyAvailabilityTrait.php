@@ -13,7 +13,7 @@ trait CountGameBundleShinyAvailabilityTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        /** @var int */
+        // @var int
         return $connection->executeQuery('SELECT COUNT(*) FROM game_bundle_shiny_availability')->fetchOne();
     }
 }

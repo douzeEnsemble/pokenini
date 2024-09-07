@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\UpdateLabels;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateLabelsTest extends TestCase
 {
     public function testSerialize(): void

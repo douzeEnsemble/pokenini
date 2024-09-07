@@ -12,6 +12,11 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHan
 
     /**
      * @param PokemonAvailabilitiesCalculatorService $calculatorService
-    **/
+     */
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,

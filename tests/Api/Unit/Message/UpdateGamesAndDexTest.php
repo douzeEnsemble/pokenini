@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\UpdateGamesAndDex;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateGamesAndDexTest extends TestCase
 {
     public function testSerialize(): void

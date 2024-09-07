@@ -9,6 +9,11 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TrainerDexAttributesTest extends TestCase
 {
     public function testOk(): void

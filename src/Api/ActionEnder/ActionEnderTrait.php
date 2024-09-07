@@ -9,7 +9,6 @@ use App\Api\Entity\ActionLog;
 use App\Api\Message\ActionMessageInterface;
 use App\Api\Repository\ActionLogsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use RuntimeException;
 
 trait ActionEnderTrait
 {
@@ -47,7 +46,7 @@ trait ActionEnderTrait
         $actionLog = $repo->find($message->getActionId());
 
         if (null === $actionLog) {
-            throw new RuntimeException("Can't find ActionLog #{$message->getActionId()}");
+            throw new \RuntimeException("Can't find ActionLog #{$message->getActionId()}");
         }
 
         return $actionLog;

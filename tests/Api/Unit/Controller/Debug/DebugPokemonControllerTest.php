@@ -13,6 +13,11 @@ use App\Api\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Serializer;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DebugPokemonControllerTest extends TestCase
 {
     public function testPokemonCleanCaches(): void
@@ -24,28 +29,28 @@ class DebugPokemonControllerTest extends TestCase
         $gamesAvailabilitiesService
             ->expects($this->once())
             ->method('cleanCacheFromPokemon')
-            ->with($pokemon);
+            ->with($pokemon)
         ;
 
         $gamesShiniesAvailabilitiesService = $this->createMock(GamesShiniesAvailabilitiesService::class);
         $gamesShiniesAvailabilitiesService
             ->expects($this->once())
             ->method('cleanCacheFromPokemon')
-            ->with($pokemon);
+            ->with($pokemon)
         ;
 
         $gameBundlesAvailabilitiesService = $this->createMock(GameBundlesAvailabilitiesService::class);
         $gameBundlesAvailabilitiesService
             ->expects($this->once())
             ->method('cleanCacheFromPokemon')
-            ->with($pokemon);
+            ->with($pokemon)
         ;
 
         $gameBundlesShiniesAvailabilitiesService = $this->createMock(GameBundlesShiniesAvailabilitiesService::class);
         $gameBundlesShiniesAvailabilitiesService
             ->expects($this->once())
             ->method('cleanCacheFromPokemon')
-            ->with($pokemon);
+            ->with($pokemon)
         ;
 
         $controller = new DebugPokemonController(new Serializer());

@@ -37,41 +37,41 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
         string $dexSlug,
         AlbumFilters $filters,
     ): int {
-        $where = "COALESCE(td.slug, d.slug) = :dex_slug "
-            . $this->getFiltersQuery($filters);
+        $where = 'COALESCE(td.slug, d.slug) = :dex_slug '
+            .$this->getFiltersQuery($filters);
 
         $sql = <<<SQL
-        SELECT		COUNT(DISTINCT da.pokemon_id)
-        FROM		dex_availability AS da
-                JOIN dex AS d
-                    ON da.dex_id = d.id
-                LEFT JOIN trainer_dex AS td
-                    ON d.id = td.dex_id AND td.trainer_external_id = :trainer_id
-                JOIN pokemon AS p
-                    ON da.pokemon_id = p.id
-                LEFT JOIN category_form AS cf
-                        ON p.category_form_id = cf.id
-                LEFT JOIN regional_form AS rf
-                        ON p.regional_form_id = rf.id
-                LEFT JOIN special_form AS sf
-                    ON p.special_form_id = sf.id
-                LEFT JOIN variant_form AS vf
-                    ON p.variant_form_id = vf.id
-                LEFT JOIN "type" AS pt
-                    ON p.primary_type_id = pt.id
-                LEFT JOIN "type" AS st
-                    ON p.secondary_type_id = st.id
-                LEFT JOIN pokedex AS pd
-                    ON pd.trainer_dex_id = td.id
-                    AND pd.pokemon_id = da.pokemon_id
-                LEFT JOIN catch_state AS cs
-                    ON pd.catch_state_id = cs.id
-                LEFT JOIN game_bundle AS ogb
-                    ON p.original_game_bundle_id = ogb.id
-                LEFT JOIN pokemon AS pp
-                    ON p.family = pp.slug
-        WHERE		$where
-        SQL;
+            SELECT		COUNT(DISTINCT da.pokemon_id)
+            FROM		dex_availability AS da
+                    JOIN dex AS d
+                        ON da.dex_id = d.id
+                    LEFT JOIN trainer_dex AS td
+                        ON d.id = td.dex_id AND td.trainer_external_id = :trainer_id
+                    JOIN pokemon AS p
+                        ON da.pokemon_id = p.id
+                    LEFT JOIN category_form AS cf
+                            ON p.category_form_id = cf.id
+                    LEFT JOIN regional_form AS rf
+                            ON p.regional_form_id = rf.id
+                    LEFT JOIN special_form AS sf
+                        ON p.special_form_id = sf.id
+                    LEFT JOIN variant_form AS vf
+                        ON p.variant_form_id = vf.id
+                    LEFT JOIN "type" AS pt
+                        ON p.primary_type_id = pt.id
+                    LEFT JOIN "type" AS st
+                        ON p.secondary_type_id = st.id
+                    LEFT JOIN pokedex AS pd
+                        ON pd.trainer_dex_id = td.id
+                        AND pd.pokemon_id = da.pokemon_id
+                    LEFT JOIN catch_state AS cs
+                        ON pd.catch_state_id = cs.id
+                    LEFT JOIN game_bundle AS ogb
+                        ON p.original_game_bundle_id = ogb.id
+                    LEFT JOIN pokemon AS pp
+                        ON p.family = pp.slug
+            WHERE		{$where}
+            SQL;
 
         $dynamicParams = $this->getFiltersParameters($filters);
         $params = array_merge(
@@ -90,7 +90,7 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var int */
+        // @var int
         return $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,

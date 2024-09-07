@@ -11,8 +11,7 @@ class GamesShiniesAvailabilitiesUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
         private readonly GamesShiniesAvailabilitiesUpdater $updater
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

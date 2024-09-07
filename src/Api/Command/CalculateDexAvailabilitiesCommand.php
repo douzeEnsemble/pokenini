@@ -25,7 +25,7 @@ class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
     protected function configure(): void
     {
         $this
-            ->setHelp("This command allows you to update dex availabilities")
+            ->setHelp('This command allows you to update dex availabilities')
         ;
     }
 

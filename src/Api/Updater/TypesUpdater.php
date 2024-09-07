@@ -12,6 +12,7 @@ class TypesUpdater extends AbstractUpdater
     protected string $tableName = 'type';
     protected string $statisticName = 'types';
     protected string $headerCellsRange = 'A1:E1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:E'];
 
@@ -40,32 +41,32 @@ class TypesUpdater extends AbstractUpdater
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        INSERT INTO $tableName(
-          id,
-          slug,
-          name,
-          french_name,
-          order_number,
-          color
-        )
-        VALUES (
-            :id,
-            :slug,
-            :name,
-            :french_name,
-            :order_number,
-            :color
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET
-            name = excluded.name,
-            french_name = excluded.french_name,
-            order_number= excluded.order_number,
-            color= excluded.color,
-            deleted_at = NULL
-        SQL;
+            INSERT INTO {$tableName}(
+              id,
+              slug,
+              name,
+              french_name,
+              order_number,
+              color
+            )
+            VALUES (
+                :id,
+                :slug,
+                :name,
+                :french_name,
+                :order_number,
+                :color
+            )
+            ON CONFLICT (slug)
+            DO
+            UPDATE
+            SET
+                name = excluded.name,
+                french_name = excluded.french_name,
+                order_number= excluded.order_number,
+                color= excluded.color,
+                deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 

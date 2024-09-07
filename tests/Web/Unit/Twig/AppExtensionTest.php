@@ -8,11 +8,13 @@ use App\Web\Twig\AppExtension;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFilter;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AppExtensionTest extends TestCase
 {
-    /**
-     *
-     */
     public function testGetFilters(): void
     {
         $extension = new AppExtension();
@@ -26,6 +28,7 @@ class AppExtensionTest extends TestCase
 
         $this->assertInstanceOf(TwigFilter::class, $ksortFilter);
         $this->assertEquals('ksort', $ksortFilter->getName());
+
         /** @var mixed[] $ksortFilterCallable */
         $ksortFilterCallable = $ksortFilter->getCallable();
         $this->assertCount(2, $ksortFilterCallable);

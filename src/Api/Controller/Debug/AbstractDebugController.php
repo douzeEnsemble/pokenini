@@ -12,8 +12,7 @@ abstract class AbstractDebugController extends AbstractController
 {
     public function __construct(
         private readonly SerializerInterface $serializer,
-    ) {
-    }
+    ) {}
 
     protected function serialize(mixed $value): string
     {

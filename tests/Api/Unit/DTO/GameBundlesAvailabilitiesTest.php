@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\DTO;
 use App\Api\DTO\GameBundlesAvailabilities;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesAvailabilitiesTest extends TestCase
 {
     public function testGet(): void

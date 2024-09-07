@@ -18,8 +18,7 @@ class CalculateDexAvailabilitiesHandler implements CalculateHandlerInterface
     public function __construct(
         private readonly DexAvailabilitiesCalculatorService $calculatorService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(CalculateDexAvailabilities $message): void
     {

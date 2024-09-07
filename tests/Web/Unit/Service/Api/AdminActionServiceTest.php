@@ -6,21 +6,26 @@ namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\AdminActionService;
 use PHPUnit\Framework\TestCase;
-use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AdminActionServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
 
     public function testUpdate(): void
     {
-        $json = <<<JSON
-        {
-            "suffix": "update/start"
-        }
-        JSON;
+        $json = <<<'JSON'
+            {
+                "suffix": "update/start"
+            }
+            JSON;
 
         $this->assertEquals(
             $json,
@@ -32,11 +37,11 @@ class AdminActionServiceTest extends TestCase
 
     public function testCalculate(): void
     {
-        $json = <<<JSON
-        {
-            "suffix": "calculate/start"
-        }
-        JSON;
+        $json = <<<'JSON'
+            {
+                "suffix": "calculate/start"
+            }
+            JSON;
 
         $this->assertEquals(
             $json,
@@ -51,10 +56,10 @@ class AdminActionServiceTest extends TestCase
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = <<<JSON
-        {
-            "suffix": "$suffix"
-        }
-        JSON;
+            {
+                "suffix": "{$suffix}"
+            }
+            JSON;
 
         $response = $this->createMock(ResponseInterface::class);
         $response
@@ -68,7 +73,7 @@ class AdminActionServiceTest extends TestCase
             ->method('request')
             ->with(
                 'POST',
-                "https://api.domain/istration/$suffix",
+                "https://api.domain/istration/{$suffix}",
                 [
                     'headers' => [
                         'accept' => 'application/json',

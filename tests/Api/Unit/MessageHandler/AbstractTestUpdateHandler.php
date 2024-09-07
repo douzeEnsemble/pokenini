@@ -79,7 +79,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
                 $this->throwException(
                     new \Exception('Ya un blèm !')
                 )
-            );
+            )
         ;
 
         $actionLog = new ActionLog('douze');

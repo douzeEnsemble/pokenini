@@ -29,9 +29,6 @@ abstract class AbstractCalculateCommand extends Command
 
     abstract protected function getCommandName(): string;
 
-    /**
-     * @inheritdoc
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $message = $this->actionStarter->start();
@@ -46,7 +43,7 @@ abstract class AbstractCalculateCommand extends Command
         foreach ($report->detail as $statistic) {
             $label = $this->translator->trans("calculate.{$statistic->slug}", [], 'api');
 
-            $output->writeln("<info>{$statistic->count} $label calculated</info>");
+            $output->writeln("<info>{$statistic->count} {$label} calculated</info>");
         }
 
         return Command::SUCCESS;

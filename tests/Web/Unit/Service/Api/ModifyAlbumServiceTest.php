@@ -5,11 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\ModifyAlbumService;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ModifyAlbumServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -56,7 +60,7 @@ class ModifyAlbumServiceTest extends TestCase
 
     public function testModifyPost(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         $client = $this->createMock(HttpClientInterface::class);
 
@@ -89,7 +93,7 @@ class ModifyAlbumServiceTest extends TestCase
             ->method('request')
             ->with(
                 $method,
-                "https://api.domain/$suffix",
+                "https://api.domain/{$suffix}",
                 [
                     'headers' => [
                         'accept' => 'application/json',

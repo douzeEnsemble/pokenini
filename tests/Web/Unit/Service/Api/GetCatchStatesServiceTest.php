@@ -10,6 +10,11 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GetCatchStatesServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -87,7 +92,7 @@ class GetCatchStatesServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/catch_states",
+                'https://api.domain/catch_states',
                 [
                     'headers' => [
                         'accept' => 'application/json',

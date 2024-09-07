@@ -8,6 +8,11 @@ use App\Api\Repository\RegionsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class RegionsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

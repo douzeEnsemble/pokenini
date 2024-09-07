@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Browser\Album;
 
-use App\Web\Security\User;
-use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\Group;
 use Symfony\Component\Panther\DomCrawler\Field\ChoiceFormField;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[Group('browser-testing')]
 class SelectAndLabelTest extends AbstractBrowserTestCase
 {
@@ -123,9 +128,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#bulbasaur-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('#bulbasaur-catch-state-edit-action')
+                ->link()
         );
 
         $this->assertSelectorIsNotVisible('#bulbasaur .album-case-catch-state');
@@ -147,9 +152,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#bulbasaur .album-case-catch-state .album-case-catch-state-label')
-            ->link()
+                ->getCrawler()
+                ->filter('#bulbasaur .album-case-catch-state .album-case-catch-state-label')
+                ->link()
         );
 
         $this->assertSelectorIsNotVisible('#bulbasaur .album-case-catch-state');
@@ -173,9 +178,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.album-all-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('.album-all-catch-state-edit-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 0, '.album-case-action[hidden]');
@@ -201,9 +206,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.album-all-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('.album-all-catch-state-edit-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 0, '.album-case-action[hidden]');
@@ -213,9 +218,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.album-all-catch-state-read-action')
-            ->link()
+                ->getCrawler()
+                ->filter('.album-all-catch-state-read-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 25, '.album-case-action[hidden]');
@@ -241,9 +246,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#bulbasaur-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('#bulbasaur-catch-state-edit-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 24, '.album-case-action[hidden]');
@@ -253,9 +258,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.album-all-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('.album-all-catch-state-edit-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 0, '.album-case-action[hidden]');
@@ -265,9 +270,9 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.album-all-catch-state-read-action')
-            ->link()
+                ->getCrawler()
+                ->filter('.album-all-catch-state-read-action')
+                ->link()
         );
 
         $this->assertCountFilter($crawler, 25, '.album-case-action[hidden]');
@@ -295,12 +300,13 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#bulbasaur-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('#bulbasaur-catch-state-edit-action')
+                ->link()
         );
 
         $form = $client->getCrawler()->filter('#album-form')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('catch-state[bulbasaur]');
         $field->setValue('totrade');
@@ -332,12 +338,13 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('#squirtle-catch-state-edit-action')
-            ->link()
+                ->getCrawler()
+                ->filter('#squirtle-catch-state-edit-action')
+                ->link()
         );
 
         $form = $client->getCrawler()->filter('#album-form')->form();
+
         /** @var ChoiceFormField $field */
         $field = $form->get('catch-state[squirtle]');
         $field->setValue('tobreed');

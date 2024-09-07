@@ -15,14 +15,14 @@ class DexAvailabilityCalculator
         private readonly PokemonsRepository $pokemonsRepository,
         private readonly EntityManagerInterface $entityManager,
         private readonly DexPokemonAvailabilityCalculator $dexPokemonAvailabilityCalculator,
-    ) {
-    }
+    ) {}
 
     public function calculate(Dex $dex): int
     {
         $count = 0;
 
         $pokemonQuery = $this->pokemonsRepository->getQueryAll();
+
         /** @var Pokemon $pokemon */
         foreach ($pokemonQuery->toIterable() as $pokemon) {
             $dexAvailability = $this->dexPokemonAvailabilityCalculator->calculate($dex, $pokemon);
@@ -33,7 +33,7 @@ class DexAvailabilityCalculator
 
             $this->entityManager->persist($dexAvailability);
 
-            $count++;
+            ++$count;
         }
 
         $this->entityManager->flush();

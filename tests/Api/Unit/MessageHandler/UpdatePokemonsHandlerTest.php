@@ -6,12 +6,17 @@ namespace App\Tests\Api\Unit\MessageHandler;
 
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdatePokemons;
-use App\Api\MessageHandler\UpdatePokemonsHandler;
 use App\Api\MessageHandler\UpdateHandlerInterface;
-use App\Api\Service\UpdaterService\UpdaterServiceInterface;
+use App\Api\MessageHandler\UpdatePokemonsHandler;
 use App\Api\Service\UpdaterService\PokemonsUpdaterService;
+use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
 
     /**
      * @param PokemonsUpdaterService $updaterService
-    **/
+     */
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,

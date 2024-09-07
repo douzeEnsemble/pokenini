@@ -9,8 +9,7 @@ final class Statistic
     public function __construct(
         public string $slug,
         public int $count = 0,
-    ) {
-    }
+    ) {}
 
     public function increment(): int
     {

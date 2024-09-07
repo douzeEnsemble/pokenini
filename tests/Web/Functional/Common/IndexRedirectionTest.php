@@ -6,6 +6,11 @@ namespace App\Tests\Web\Functional\Common;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class IndexRedirectionTest extends WebTestCase
 {
     public function testRedirection(): void

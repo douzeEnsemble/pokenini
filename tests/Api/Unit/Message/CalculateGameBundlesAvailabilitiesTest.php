@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\CalculateGameBundlesAvailabilities;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculateGameBundlesAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void

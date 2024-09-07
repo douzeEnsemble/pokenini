@@ -10,8 +10,7 @@ class SpecialFormsService
 {
     public function __construct(
         private readonly SpecialFormsRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

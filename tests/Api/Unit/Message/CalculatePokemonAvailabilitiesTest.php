@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\CalculatePokemonAvailabilities;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculatePokemonAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void

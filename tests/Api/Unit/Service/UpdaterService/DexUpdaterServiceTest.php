@@ -9,6 +9,11 @@ use App\Api\Service\UpdaterService\DexUpdaterService;
 use App\Api\Updater\DexUpdater;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

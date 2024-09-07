@@ -16,6 +16,11 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Twig\Environment;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TrainerIndexControllerTest extends TestCase
 {
     public function testIndexTrainer(): void
@@ -178,7 +183,7 @@ class TrainerIndexControllerTest extends TestCase
 
     /**
      * "NoRole is a unit case ony.
-     * Symfony Firewall make sure onlye ROLE_TRAINER access to this controller
+     * Symfony Firewall make sure onlye ROLE_TRAINER access to this controller.
      */
     public function testIndexNoRole(): void
     {
@@ -282,7 +287,7 @@ class TrainerIndexControllerTest extends TestCase
 
         $container = $this->createMock(ContainerInterface::class);
         $container
-        ->expects($this->once())
+            ->expects($this->once())
             ->method('has')
             ->willReturn(true)
         ;

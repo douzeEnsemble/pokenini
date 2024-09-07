@@ -7,6 +7,11 @@ namespace App\Tests\Web\Functional\Connect;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ConnectTest extends WebTestCase
 {
     use TestNavTrait;

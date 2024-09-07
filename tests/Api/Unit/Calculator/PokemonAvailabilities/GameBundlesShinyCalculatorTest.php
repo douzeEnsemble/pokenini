@@ -8,6 +8,11 @@ use App\Api\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
 use App\Api\Repository\PokemonAvailabilitiesRepository;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesShinyCalculatorTest extends TestCase
 {
     public function testExecute(): void

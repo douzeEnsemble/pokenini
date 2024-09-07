@@ -44,6 +44,6 @@ class SpreadsheetService
             }
         }
 
-        throw new \InvalidArgumentException("Cannot find sheet $sheetTitle in spreadsheet $spreadsheetId");
+        throw new \InvalidArgumentException("Cannot find sheet {$sheetTitle} in spreadsheet {$spreadsheetId}");
     }
 }

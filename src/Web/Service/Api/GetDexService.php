@@ -36,13 +36,13 @@ class GetDexService extends AbstractApiService
         $json = $this->cache->get($key, function () use ($trainerId, $queryParams) {
             return $this->requestContent(
                 'GET',
-                "/dex/$trainerId/list" . ($queryParams ? '?' . $queryParams : ''),
+                "/dex/{$trainerId}/list".($queryParams ? '?'.$queryParams : ''),
             );
         });
 
         $this->registerCache(KeyMaker::getDexKey(), $key);
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

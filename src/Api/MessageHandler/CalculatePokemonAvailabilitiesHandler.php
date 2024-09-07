@@ -18,8 +18,7 @@ class CalculatePokemonAvailabilitiesHandler implements CalculateHandlerInterface
     public function __construct(
         private readonly PokemonAvailabilitiesCalculatorService $calculatorService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(CalculatePokemonAvailabilities $message): void
     {

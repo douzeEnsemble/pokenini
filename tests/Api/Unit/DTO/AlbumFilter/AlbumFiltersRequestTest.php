@@ -10,6 +10,11 @@ use App\Api\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumFiltersRequestTest extends TestCase
 {
     public function testAlbumFiltersFromRequestEmpty(): void

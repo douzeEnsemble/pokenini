@@ -14,8 +14,7 @@ class AbstractCacheInvalidatorService
 
     public function __construct(
         protected readonly CacheInterface $cache,
-    ) {
-    }
+    ) {}
 
     protected function invalidateCacheByType(string $type): void
     {
