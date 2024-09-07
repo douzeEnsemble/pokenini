@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater\Forms;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\Forms\SpecialFormsUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
 {
     protected int $initialTotalCount = 4;
@@ -17,7 +22,7 @@ class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var SpecialFormsUpdater */
+        // @var SpecialFormsUpdater
         return static::getContainer()->get(SpecialFormsUpdater::class);
     }
 }

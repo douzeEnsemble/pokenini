@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\UpdatePokemons;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdatePokemonsTest extends TestCase
 {
     public function testSerialize(): void

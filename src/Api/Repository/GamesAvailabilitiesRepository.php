@@ -30,8 +30,6 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Pokemon $pokemon
-     *
      * @return GamesAvailabilities dex slug as property and dex availability as value
      */
     public function getFromPokemon(Pokemon $pokemon): GamesAvailabilities
@@ -54,7 +52,7 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
         $list = [];
         foreach ($result as $line) {
             /** @var bool $isAvailable */
-            $isAvailable =  (
+            $isAvailable = (
                 '—' !== $line['availability']
                 && '-' !== $line['availability']
                 && '' !== $line['availability']

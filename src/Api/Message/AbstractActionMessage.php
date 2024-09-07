@@ -6,9 +6,7 @@ namespace App\Api\Message;
 
 abstract class AbstractActionMessage implements ActionMessageInterface
 {
-    public function __construct(public readonly string $actionId)
-    {
-    }
+    public function __construct(public readonly string $actionId) {}
 
     public function getActionId(): string
     {

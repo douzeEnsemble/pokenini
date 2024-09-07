@@ -23,8 +23,7 @@ class AdminActionController extends AbstractController
         private readonly AdminActionService $adminActionService,
         private readonly RequestStack $requestStack,
         private readonly LoggerInterface $logger,
-    ) {
-    }
+    ) {}
 
     #[Route(
         '/update/{name}',
@@ -126,9 +125,12 @@ class AdminActionController extends AbstractController
         switch ($action) {
             case 'update':
                 $this->adminActionService->update($name);
+
                 break;
+
             case 'calculate':
                 $this->adminActionService->calculate($name);
+
                 break;
         }
 

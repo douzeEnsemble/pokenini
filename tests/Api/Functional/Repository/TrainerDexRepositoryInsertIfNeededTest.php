@@ -6,10 +6,14 @@ namespace App\Tests\Api\Functional\Repository;
 
 use App\Api\Repository\TrainerDexRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountTrainerDexTrait;
-use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

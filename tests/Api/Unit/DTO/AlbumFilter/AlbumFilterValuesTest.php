@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\DTO\AlbumFilter;
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumFilterValuesTest extends TestCase
 {
     public function testConstruct(): void

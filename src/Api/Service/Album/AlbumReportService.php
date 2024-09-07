@@ -15,8 +15,7 @@ class AlbumReportService
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepository,
-    ) {
-    }
+    ) {}
 
     public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): Report
     {

@@ -59,30 +59,6 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $this->assertEquals($this->mustBeDeletedTotalCount, $this->getTableDeletedAtCount());
     }
 
-    abstract protected function getService(): AbstractUpdater;
-
-    protected function getTableCount(): int
-    {
-        /** @var Connection $connection */
-        $connection = static::getContainer()->get(Connection::class);
-
-        /** @var int */
-        return $connection->executeQuery(
-            "SELECT COUNT(*) FROM {$this->tableName}"
-        )->fetchOne();
-    }
-
-    protected function getTableDeletedAtCount(): int
-    {
-        /** @var Connection $connection */
-        $connection = static::getContainer()->get(Connection::class);
-
-        /** @var int */
-        return $connection->executeQuery(
-            "SELECT COUNT(*) FROM {$this->tableName} WHERE deleted_at IS NOT NULL"
-        )->fetchOne();
-    }
-
     public function testExecuteTwice(): void
     {
         $this->getService()->execute($this->sheetName);
@@ -95,5 +71,29 @@ abstract class AbstractTestUpdater extends KernelTestCase
             $firstCount,
             $this->getService()->getStatistic()->count
         );
+    }
+
+    abstract protected function getService(): AbstractUpdater;
+
+    protected function getTableCount(): int
+    {
+        /** @var Connection $connection */
+        $connection = static::getContainer()->get(Connection::class);
+
+        // @var int
+        return $connection->executeQuery(
+            "SELECT COUNT(*) FROM {$this->tableName}"
+        )->fetchOne();
+    }
+
+    protected function getTableDeletedAtCount(): int
+    {
+        /** @var Connection $connection */
+        $connection = static::getContainer()->get(Connection::class);
+
+        // @var int
+        return $connection->executeQuery(
+            "SELECT COUNT(*) FROM {$this->tableName} WHERE deleted_at IS NOT NULL"
+        )->fetchOne();
     }
 }

@@ -10,6 +10,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class PokemonsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

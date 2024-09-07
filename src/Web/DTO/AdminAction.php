@@ -12,6 +12,5 @@ class AdminAction
         public readonly string $state,
         public readonly string $content = '',
         public readonly string $error = '',
-    ) {
-    }
+    ) {}
 }

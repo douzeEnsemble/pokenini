@@ -12,9 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/reports')]
 class ReportsController extends AbstractController
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     #[Route(path: '', methods: ['GET'])]
     public function get(PokedexService $service): JsonResponse

@@ -7,6 +7,11 @@ namespace App\Tests\Web\Unit\DTO;
 use App\Web\DTO\LastRoute;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class LastRouteTest extends TestCase
 {
     public function testConstruct(): void

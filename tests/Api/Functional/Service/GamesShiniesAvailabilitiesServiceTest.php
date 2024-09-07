@@ -6,12 +6,16 @@ namespace App\Tests\Api\Functional\Service;
 
 use App\Api\Entity\Pokemon;
 use App\Api\Repository\PokemonsRepository;
-use App\Api\Service\GamesAvailabilitiesShiniesService;
 use App\Api\Service\GamesShiniesAvailabilitiesService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesShiniesAvailabilitiesServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

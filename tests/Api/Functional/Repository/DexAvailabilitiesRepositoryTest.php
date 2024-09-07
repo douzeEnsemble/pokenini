@@ -11,6 +11,11 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -79,7 +84,7 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalFilters(): array
     {

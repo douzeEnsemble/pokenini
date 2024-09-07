@@ -28,7 +28,7 @@ class GamesRepository extends ServiceEntityRepository
         $queryBuilder->where($queryBuilder->expr()->isNull('g.deletedAt'));
         $queryBuilder->orderBy('g.orderNumber');
 
-        /** @var string[] */
+        // @var string[]
         return $queryBuilder->getQuery()->getSingleColumnResult();
     }
 }

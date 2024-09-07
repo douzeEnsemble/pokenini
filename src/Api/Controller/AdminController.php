@@ -16,16 +16,15 @@ use App\Api\ActionStarter\UpdatePokemonsActionStarter;
 use App\Api\ActionStarter\UpdateRegionalDexNumbersActionStarter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/istration')]
 class AdminController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $bus,
-    ) {
-    }
+    ) {}
 
     #[Route(path: '/update/labels', methods: ['POST'])]
     public function updateLabels(

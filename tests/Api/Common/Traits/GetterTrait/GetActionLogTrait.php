@@ -9,9 +9,6 @@ use Symfony\Component\Uid\Uuid;
 
 trait GetActionLogTrait
 {
-    /**
-     * @return string
-     */
     protected function getIdToProcess(string $type): string
     {
         /** @var Connection $connection */
@@ -19,24 +16,24 @@ trait GetActionLogTrait
 
         $actionLogId = Uuid::v4();
 
-        $sql = <<<SQL
-        INSERT INTO action_log (
-            id,
-            created_at, 
-            done_at, 
-            report_data, 
-            error_trace,
-            "type"
-        )
-        VALUES (
-            :id,
-            NOW(),
-            NULL,
-            NULL,
-            NULL,
-            :type
-        )
-        SQL;
+        $sql = <<<'SQL'
+            INSERT INTO action_log (
+                id,
+                created_at, 
+                done_at, 
+                report_data, 
+                error_trace,
+                "type"
+            )
+            VALUES (
+                :id,
+                NOW(),
+                NULL,
+                NULL,
+                NULL,
+                :type
+            )
+            SQL;
         $parameters = [
             'id' => $actionLogId,
             'type' => $type,

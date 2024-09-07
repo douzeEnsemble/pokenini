@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Admin;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionUpdateTest extends WebTestCase
 {
     use TestNavTrait;
@@ -80,7 +85,7 @@ class ActionUpdateTest extends WebTestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        $client->request('GET', "/fr/istration/action/update/truc");
+        $client->request('GET', '/fr/istration/action/update/truc');
     }
 
     public function testAdminNonAdmin(): void
@@ -94,7 +99,7 @@ class ActionUpdateTest extends WebTestCase
 
         $this->expectException(AccessDeniedException::class);
 
-        $client->request('GET', "/fr/istration/action/update/labels");
+        $client->request('GET', '/fr/istration/action/update/labels');
     }
 
     public function testAdminUpdateThenGoToIndex(): void
@@ -105,7 +110,7 @@ class ActionUpdateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $client->request('GET', "/fr/istration/action/update/labels");
+        $client->request('GET', '/fr/istration/action/update/labels');
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
@@ -113,7 +118,7 @@ class ActionUpdateTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '.list-group-item-success');
         $this->assertCountFilter($crawler, 0, '.list-group-item-warning');
 
-        $crawler = $client->request('GET', "/fr/istration");
+        $crawler = $client->request('GET', '/fr/istration');
 
         $this->assertCountFilter($crawler, 0, '.list-group-item-success');
         $this->assertCountFilter($crawler, 0, '.list-group-item-warning');
@@ -127,7 +132,7 @@ class ActionUpdateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $client->request('GET', "/fr/istration/action/update/$name");
+        $client->request('GET', "/fr/istration/action/update/{$name}");
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();

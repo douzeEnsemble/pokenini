@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Service;
 
-use App\Web\Service\Api\GetCatchStatesService;
-use App\Web\Service\ApiService;
 use App\Web\Service\CacheInvalidator\AlbumsCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\CatchStatesCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
@@ -16,6 +14,11 @@ use App\Web\Service\CacheInvalidatorService;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidateLabels(): void

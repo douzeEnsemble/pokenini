@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater\Forms;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\Forms\CategoryFormsUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
 {
     protected int $initialTotalCount = 3;
@@ -17,7 +22,7 @@ class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var CategoryFormsUpdater */
+        // @var CategoryFormsUpdater
         return static::getContainer()->get(CategoryFormsUpdater::class);
     }
 }

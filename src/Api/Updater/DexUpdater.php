@@ -12,6 +12,7 @@ class DexUpdater extends AbstractUpdater
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
     protected string $headerCellsRange = 'A1:M1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:M'];
 
@@ -56,58 +57,58 @@ class DexUpdater extends AbstractUpdater
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        INSERT INTO $tableName(
-          id,
-          slug,
-          name,
-          french_name,
-          order_number,
-          selection_rule,
-          is_shiny,
-          is_private,
-          is_display_form,
-          display_template,
-          region_id,
-          description,
-          french_description,
-          is_released,
-          last_changed_at
-        )
-        VALUES (
-            :id,
-            :slug,
-            :name,
-            :french_name,
-            :order_number,
-            :selection_rule,
-            :is_shiny,
-            :is_private,
-            :is_display_form,
-            :display_template,
-            (SELECT id FROM region WHERE slug = :region),
-            :description,
-            :french_description,
-            :is_released,
-            NOW()
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET
-            name = excluded.name,
-            french_name = excluded.french_name,
-            order_number = excluded.order_number,
-            selection_rule = excluded.selection_rule,
-            is_shiny = excluded.is_shiny,
-            is_private = excluded.is_private,
-            is_display_form = excluded.is_display_form,
-            display_template = excluded.display_template,
-            region_id = excluded.region_id,
-            description = excluded.description,
-            french_description = excluded.french_description,
-            is_released = excluded.is_released,
-            deleted_at = NULL
-        SQL;
+            INSERT INTO {$tableName}(
+              id,
+              slug,
+              name,
+              french_name,
+              order_number,
+              selection_rule,
+              is_shiny,
+              is_private,
+              is_display_form,
+              display_template,
+              region_id,
+              description,
+              french_description,
+              is_released,
+              last_changed_at
+            )
+            VALUES (
+                :id,
+                :slug,
+                :name,
+                :french_name,
+                :order_number,
+                :selection_rule,
+                :is_shiny,
+                :is_private,
+                :is_display_form,
+                :display_template,
+                (SELECT id FROM region WHERE slug = :region),
+                :description,
+                :french_description,
+                :is_released,
+                NOW()
+            )
+            ON CONFLICT (slug)
+            DO
+            UPDATE
+            SET
+                name = excluded.name,
+                french_name = excluded.french_name,
+                order_number = excluded.order_number,
+                selection_rule = excluded.selection_rule,
+                is_shiny = excluded.is_shiny,
+                is_private = excluded.is_private,
+                is_display_form = excluded.is_display_form,
+                display_template = excluded.display_template,
+                region_id = excluded.region_id,
+                description = excluded.description,
+                french_description = excluded.french_description,
+                is_released = excluded.is_released,
+                deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 

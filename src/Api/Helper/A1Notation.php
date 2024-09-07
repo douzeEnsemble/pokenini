@@ -14,7 +14,7 @@ class A1Notation
 
         $column = self::indexToLetter($columnIndex);
 
-        return $column . $row;
+        return $column.$row;
     }
 
     /**
@@ -27,6 +27,6 @@ class A1Notation
         }
 
         return self::indexToLetter((int) floor($index / strlen(self::LOOKUP)) - 1)
-            . self::indexToLetter($index % strlen(self::LOOKUP));
+            .self::indexToLetter($index % strlen(self::LOOKUP));
     }
 }

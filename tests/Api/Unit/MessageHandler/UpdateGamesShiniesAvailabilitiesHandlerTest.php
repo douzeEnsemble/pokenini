@@ -8,10 +8,15 @@ use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdateGamesShiniesAvailabilities;
 use App\Api\MessageHandler\UpdateGamesShiniesAvailabilitiesHandler;
 use App\Api\MessageHandler\UpdateHandlerInterface;
-use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use App\Api\Service\UpdaterService\GamesShiniesAvailabilitiesUpdaterService;
+use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHand
 
     /**
      * @param GamesShiniesAvailabilitiesUpdaterService $updaterService
-    **/
+     */
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,

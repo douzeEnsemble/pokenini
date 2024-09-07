@@ -10,6 +10,11 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GetDexServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -68,6 +73,7 @@ class GetDexServiceTest extends TestCase
             $value,
         );
     }
+
     public function testGetWithUnreleased(): void
     {
         $expectedResult = [
@@ -78,9 +84,9 @@ class GetDexServiceTest extends TestCase
                 'is_display_form' => true,
                 'display_template' => 'box',
                 'region' => [
-                  'name' => 'Kanto',
-                  'french_name' => 'Kanto',
-                  'slug' => 'kanto'
+                    'name' => 'Kanto',
+                    'french_name' => 'Kanto',
+                    'slug' => 'kanto',
                 ],
                 'name' => 'Red, Green, Blue, Yellow',
                 'french_name' => 'Rouge, Vert, Bleu, Jaune',
@@ -155,7 +161,7 @@ class GetDexServiceTest extends TestCase
 
         return $this->getMockService(
             $json,
-            "dex/$trainerId/list",
+            "dex/{$trainerId}/list",
         );
     }
 
@@ -167,7 +173,7 @@ class GetDexServiceTest extends TestCase
 
         return $this->getMockService(
             $json,
-            "dex/$trainerId/list?include_unreleased_dex=1",
+            "dex/{$trainerId}/list?include_unreleased_dex=1",
         );
     }
 
@@ -175,7 +181,6 @@ class GetDexServiceTest extends TestCase
         string $json,
         string $endpoint,
     ): GetDexService {
-
         $client = $this->createMock(HttpClientInterface::class);
 
         $response = $this->createMock(ResponseInterface::class);
@@ -190,7 +195,7 @@ class GetDexServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/$endpoint",
+                "https://api.domain/{$endpoint}",
                 [
                     'headers' => [
                         'accept' => 'application/json',

@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Validator;
 
 use App\Web\Service\Api\GetCatchStatesService;
-use App\Web\Service\ApiService;
 use App\Web\Validator\CatchStates;
 use App\Web\Validator\CatchStatesValidator;
-use DateTime;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -17,6 +15,10 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
  * @extends ConstraintValidatorTestCase<CatchStatesValidator>
+ *
+ * @internal
+ *
+ * @coversNothing
  */
 class CatchStatesValidatorTest extends ConstraintValidatorTestCase
 {
@@ -34,7 +36,8 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
 
         $this->buildViolation('"{{ string }}" is not a valid catch state')
             ->setParameter('{{ string }}', 'douze')
-            ->assertRaised();
+            ->assertRaised()
+        ;
     }
 
     /**
@@ -72,7 +75,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     {
         $this->expectException(UnexpectedValueException::class);
 
-        $this->validator->validate(new DateTime(), new CatchStates());
+        $this->validator->validate(new \DateTime(), new CatchStates());
     }
 
     protected function createValidator(): CatchStatesValidator
@@ -83,30 +86,30 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
             ->method('get')
             ->willReturn([
                 [
-                  'name' => 'No',
-                  'frenchName' => 'Non',
-                  'slug' => 'no',
-                  'color' => '#e57373',
+                    'name' => 'No',
+                    'frenchName' => 'Non',
+                    'slug' => 'no',
+                    'color' => '#e57373',
                 ],
                 [
-                  'name' => 'Maybe',
-                  'frenchName' => 'Peut être',
-                  'slug' => 'maybe',
-                  'color' => '#9575cd',
+                    'name' => 'Maybe',
+                    'frenchName' => 'Peut être',
+                    'slug' => 'maybe',
+                    'color' => '#9575cd',
                 ],
                 [
-                  'name' => 'Maybe not',
-                  'frenchName' => 'Peut être pas',
-                  'slug' => 'maybenot',
-                  'color' => '#9575cd',
+                    'name' => 'Maybe not',
+                    'frenchName' => 'Peut être pas',
+                    'slug' => 'maybenot',
+                    'color' => '#9575cd',
                 ],
                 [
-                  'name' => 'Yes',
-                  'frenchName' => 'Oui',
-                  'slug' => 'yes',
-                  'color' => '#66bb6a',
+                    'name' => 'Yes',
+                    'frenchName' => 'Oui',
+                    'slug' => 'yes',
+                    'color' => '#66bb6a',
                 ],
-              ])
+            ])
         ;
 
         return new CatchStatesValidator($getService);

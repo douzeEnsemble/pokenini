@@ -8,6 +8,11 @@ use App\Api\Calculator\GameBundlesShiniesAvailabilitiesCalculator;
 use App\Api\Repository\GameBundlesShiniesAvailabilitiesRepository;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void

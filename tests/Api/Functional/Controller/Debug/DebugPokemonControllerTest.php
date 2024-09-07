@@ -6,6 +6,11 @@ namespace App\Tests\Api\Functional\Controller\Debug;
 
 use App\Tests\Api\Functional\Controller\AbstractTestControllerApi;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DebugPokemonControllerTest extends AbstractTestControllerApi
 {
     public function testPokemon(): void
@@ -20,8 +25,7 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-
-        /** @var string[][]|int[][]|bool[][]|string[][][]|int[][][]|bool[][][]|string[][][][]|int[][][][]|bool[][][][] $data */
+        /** @var bool[][]|bool[][][]|bool[][][][]|int[][]|int[][][]|int[][][][]|string[][]|string[][][]|string[][][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);

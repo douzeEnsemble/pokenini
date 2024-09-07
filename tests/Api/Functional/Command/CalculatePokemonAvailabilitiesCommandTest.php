@@ -5,11 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Command;
 
 use App\Api\Repository\PokemonsRepository;
-use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
+use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Api\Common\Traits\HasserTrait\HasPokemonAvailabilitiesTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;

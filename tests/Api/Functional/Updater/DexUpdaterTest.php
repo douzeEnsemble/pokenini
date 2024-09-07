@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Updater;
 
-use App\Tests\Api\Common\Traits\GetterTrait\GetDexTrait;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\DexUpdater;
+use App\Tests\Api\Common\Traits\GetterTrait\GetDexTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexUpdaterTest extends AbstractTestUpdater
 {
     use GetDexTrait;
@@ -18,12 +23,6 @@ class DexUpdaterTest extends AbstractTestUpdater
     protected int $mustBeDeletedTotalCount = 3;
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
-
-    protected function getService(): AbstractUpdater
-    {
-        /** @var DexUpdater */
-        return static::getContainer()->get(DexUpdater::class);
-    }
 
     public function testDexRegion(): void
     {
@@ -57,5 +56,11 @@ class DexUpdaterTest extends AbstractTestUpdater
 
         $this->assertFalse($redGreenBlueYellowAfter['is_released']);
         $this->assertTrue($rubySapphireEmeraldAfter['is_released']);
+    }
+
+    protected function getService(): AbstractUpdater
+    {
+        // @var DexUpdater
+        return static::getContainer()->get(DexUpdater::class);
     }
 }

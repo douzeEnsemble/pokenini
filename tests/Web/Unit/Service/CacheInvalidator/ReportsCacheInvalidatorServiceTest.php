@@ -8,13 +8,18 @@ use App\Web\Service\CacheInvalidator\ReportsCacheInvalidatorService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ReportsCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
     {
         $cache = new ArrayAdapter();
-        $cache->get('douze', fn() => 'DouZe');
-        $cache->get('reports', fn() => 'whatever');
+        $cache->get('douze', fn () => 'DouZe');
+        $cache->get('reports', fn () => 'whatever');
 
         $service = new ReportsCacheInvalidatorService($cache);
         $service->invalidate();

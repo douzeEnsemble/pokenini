@@ -20,11 +20,11 @@ class GetCatchStatesService extends AbstractApiService
         $json = $this->cache->get($key, function () {
             return $this->requestContent(
                 'GET',
-                "/catch_states"
+                '/catch_states'
             );
         });
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

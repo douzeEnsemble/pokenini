@@ -12,6 +12,5 @@ class LastRoute
     public function __construct(
         public readonly string $route,
         public readonly array $routeParams
-    ) {
-    }
+    ) {}
 }

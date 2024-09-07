@@ -7,13 +7,18 @@ namespace App\Tests\Api\Functional\Repository;
 use App\Api\Entity\GameBundle;
 use App\Api\Entity\GameBundleShinyAvailability;
 use App\Api\Entity\Pokemon;
-use App\Api\Repository\GameBundlesShiniesAvailabilitiesRepository;
 use App\Api\Repository\GameBundlesRepository;
+use App\Api\Repository\GameBundlesShiniesAvailabilitiesRepository;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -21,6 +26,7 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
 
     /** @var GameBundle[] */
     private array $gameBundles;
+
     /** @var Pokemon[] */
     private array $pokemons;
 
@@ -35,11 +41,14 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         // Using temp variables is for avoid typing conflict
         /** @var GameBundlesShiniesAvailabilitiesRepository $gameBundleShinyAvailabilityRepo */
         $gameBundleShinyAvailabilityRepo = static::getContainer()
-            ->get(GameBundlesShiniesAvailabilitiesRepository::class);
+            ->get(GameBundlesShiniesAvailabilitiesRepository::class)
+        ;
         $this->gameBundleShinyAvailabilityRepo = $gameBundleShinyAvailabilityRepo;
+
         /** @var GameBundlesRepository $gameBundlesRepo */
         $gameBundlesRepo = static::getContainer()->get(GameBundlesRepository::class);
         $this->gameBundlesRepo = $gameBundlesRepo;
+
         /** @var PokemonsRepository $pokemonsRepo */
         $pokemonsRepo = static::getContainer()->get(PokemonsRepository::class);
         $this->pokemonsRepo = $pokemonsRepo;
@@ -134,7 +143,7 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
 
         return $this->gameBundleShinyAvailabilityRepo->findOneBy([
             'pokemon' => $pokemon,
-            'bundle' => $bundle
+            'bundle' => $bundle,
         ]);
     }
 

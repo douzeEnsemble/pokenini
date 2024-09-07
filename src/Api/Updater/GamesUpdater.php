@@ -12,6 +12,7 @@ class GamesUpdater extends AbstractUpdater
     protected string $tableName = 'game';
     protected string $statisticName = 'games';
     protected string $headerCellsRange = 'A1:D1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:D'];
 
@@ -38,29 +39,29 @@ class GamesUpdater extends AbstractUpdater
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        INSERT INTO $tableName(
-          id,
-          slug,
-          name,
-          order_number,
-          bundle_id
-        )
-        VALUES (
-            :id,
-            :slug,
-            :name,
-            :order_number,
-            (SELECT id FROM game_bundle WHERE slug = :game_bundle_slug)
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET
-            name = excluded.name,
-            order_number = excluded.order_number,
-            bundle_id = excluded.bundle_id,
-            deleted_at = NULL
-        SQL;
+            INSERT INTO {$tableName}(
+              id,
+              slug,
+              name,
+              order_number,
+              bundle_id
+            )
+            VALUES (
+                :id,
+                :slug,
+                :name,
+                :order_number,
+                (SELECT id FROM game_bundle WHERE slug = :game_bundle_slug)
+            )
+            ON CONFLICT (slug)
+            DO
+            UPDATE
+            SET
+                name = excluded.name,
+                order_number = excluded.order_number,
+                bundle_id = excluded.bundle_id,
+                deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 

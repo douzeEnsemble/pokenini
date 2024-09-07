@@ -10,8 +10,7 @@ class PokedexService
 {
     public function __construct(
         private readonly PokedexRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return int[]|string[]

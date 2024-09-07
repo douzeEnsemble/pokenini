@@ -11,8 +11,7 @@ class GetLabelsService extends AbstractApiService
         private readonly GetTypesService $getTypesService,
         private readonly GetFormsService $getFormsService,
         private readonly GetGameBundlesService $getGameBundlesService,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

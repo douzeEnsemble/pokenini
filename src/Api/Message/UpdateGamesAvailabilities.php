@@ -4,6 +4,4 @@ declare(strict_types=1);
 
 namespace App\Api\Message;
 
-final class UpdateGamesAvailabilities extends AbstractActionMessage
-{
-}
+final class UpdateGamesAvailabilities extends AbstractActionMessage {}

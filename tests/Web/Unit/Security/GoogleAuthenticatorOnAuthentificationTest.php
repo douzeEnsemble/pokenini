@@ -15,6 +15,11 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 {
     public function testOnAuthenticationSuccessNotATrainer(): void
@@ -32,7 +37,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             '',
             '',
             [
-                '/success-but-not-a-trainer'
+                '/success-but-not-a-trainer',
             ]
         );
 
@@ -44,7 +49,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 
         $this->assertInstanceOf(RedirectResponse::class, $response);
 
-        /** @var $response RedirectResponse */
+        // @var $response RedirectResponse
         $this->assertEquals('/success-but-not-a-trainer', $response->getTargetUrl());
     }
 
@@ -65,7 +70,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             '',
             [
                 '/success-but-not-a-trainer',
-                '/success-trainer'
+                '/success-trainer',
             ]
         );
 
@@ -77,7 +82,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 
         $this->assertInstanceOf(RedirectResponse::class, $response);
 
-        /** @var $response RedirectResponse */
+        // @var $response RedirectResponse
         $this->assertEquals('/success-trainer', $response->getTargetUrl());
     }
 

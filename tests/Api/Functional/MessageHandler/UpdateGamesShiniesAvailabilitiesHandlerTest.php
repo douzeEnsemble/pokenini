@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\MessageHandler;
 
 use App\Api\Message\UpdateGamesShiniesAvailabilities;
-use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
+use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
-use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -65,7 +69,7 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 
         $transport->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");
 
         $transport->process(1);

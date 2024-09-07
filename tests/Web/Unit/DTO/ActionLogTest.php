@@ -7,6 +7,11 @@ namespace App\Tests\Web\Unit\DTO;
 use App\Web\DTO\ActionLog;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionLogTest extends TestCase
 {
     public function testFullCreateFromArray(): void

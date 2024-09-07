@@ -23,8 +23,7 @@ class GetPokedexService extends AbstractApiService
 
         /** @var string $json */
         $json = $this->cache->get($key, function () use ($dexSlug, $trainerId, $filters) {
-
-            $url = "/album/$trainerId/$dexSlug";
+            $url = "/album/{$trainerId}/{$dexSlug}";
 
             return $this->requestContent(
                 'GET',
@@ -37,7 +36,7 @@ class GetPokedexService extends AbstractApiService
 
         $this->registerCache(KeyMaker::getAlbumKey(), $key);
 
-        /** @var string[][][] */
+        // @var string[][][]
         return JsonDecoder::decode($json);
     }
 }

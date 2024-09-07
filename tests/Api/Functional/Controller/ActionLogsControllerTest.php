@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Controller;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionLogsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
@@ -20,19 +25,20 @@ class ActionLogsControllerTest extends WebTestCase
             'api/action_logs',
             [
                 'headers' => [
-                    'accept' => 'application/json'
-                ]
+                    'accept' => 'application/json',
+                ],
             ],
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
         $this->assertResponseIsSuccessful();
 
         $content = (string) $client->getResponse()->getContent();
+
         /** @var string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 

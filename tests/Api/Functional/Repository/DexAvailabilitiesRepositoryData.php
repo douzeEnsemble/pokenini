@@ -7,7 +7,7 @@ namespace App\Tests\Api\Functional\Repository;
 class DexAvailabilitiesRepositoryData
 {
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalTypesFilters(): array
     {
@@ -67,7 +67,7 @@ class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalFormsFilters(): array
     {
@@ -149,7 +149,7 @@ class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalCatchStatesFilters(): array
     {
@@ -183,7 +183,7 @@ class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalGamesFilters(): array
     {
@@ -240,7 +240,7 @@ class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalFamiliesFilters(): array
     {
@@ -274,7 +274,7 @@ class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return string[][][][]|int[][]
+     * @return int[][]|string[][][][]
      */
     public static function providerGetTotalEmptyFilters(): array
     {

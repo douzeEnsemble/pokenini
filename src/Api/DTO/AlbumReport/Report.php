@@ -14,6 +14,5 @@ class Report
         public int $totalCaught,
         public int $totalUncaught,
         public array $detail
-    ) {
-    }
+    ) {}
 }

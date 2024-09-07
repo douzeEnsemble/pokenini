@@ -18,8 +18,7 @@ class AdminController extends AbstractController
     public function __construct(
         private readonly GetReportsService $getReportsService,
         private readonly GetActionLogsService $getActionLogsService,
-    ) {
-    }
+    ) {}
 
     #[Route('', methods: ['GET'])]
     public function index(RequestStack $requestStack): Response

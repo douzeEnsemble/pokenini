@@ -18,8 +18,7 @@ class CalculateGameBundlesAvailabilitiesHandler implements CalculateHandlerInter
     public function __construct(
         private readonly GameBundlesAvailabilitiesCalculatorService $calculatorService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(CalculateGameBundlesAvailabilities $message): void
     {

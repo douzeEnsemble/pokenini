@@ -11,6 +11,11 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UserProviderTest extends TestCase
 {
     public function testLoadUserByIdentifier(): void

@@ -71,7 +71,7 @@ trait TestNavTrait
         Crawler $crawler,
         int $expectedValue,
         string $selector,
-        int $index = null,
+        ?int $index = null,
         string $innerSelector = ''
     ): void {
         if (null === $index) {
@@ -91,16 +91,16 @@ trait TestNavTrait
 
     /**
      * @param string[] $selectedValues
-    **/
+     */
     private function assertSelectedOptions(
         Crawler $crawler,
         string $selectSelector,
         array $selectedValues,
     ): void {
-        $this->assertCountFilter($crawler, count($selectedValues), "$selectSelector option[selected]");
+        $this->assertCountFilter($crawler, count($selectedValues), "{$selectSelector} option[selected]");
 
         foreach ($selectedValues as $selectedValue) {
-            $this->assertCountFilter($crawler, 1, "$selectSelector option[value='$selectedValue'][selected]");
+            $this->assertCountFilter($crawler, 1, "{$selectSelector} option[value='{$selectedValue}'][selected]");
         }
     }
 }

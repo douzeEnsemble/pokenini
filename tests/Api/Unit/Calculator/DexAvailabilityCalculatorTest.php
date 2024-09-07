@@ -14,6 +14,11 @@ use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexAvailabilityCalculatorTest extends TestCase
 {
     public function testCalculate(): void

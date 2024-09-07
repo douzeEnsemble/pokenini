@@ -62,11 +62,11 @@ class GetFormsService extends AbstractApiService
         $json = $this->cache->get($key, function () use ($type) {
             return $this->requestContent(
                 'GET',
-                "/forms/$type",
+                "/forms/{$type}",
             );
         });
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

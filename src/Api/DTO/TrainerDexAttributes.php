@@ -12,7 +12,7 @@ final class TrainerDexAttributes
     public bool $isOnHome;
 
     /**
-     * @param string[]|bool[] $values
+     * @param bool[]|string[] $values
      */
     public function __construct(array $values = [])
     {

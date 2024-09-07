@@ -12,6 +12,7 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
     protected string $headerCellsRange = 'A1:AC1';
+
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:AC'];
 
@@ -56,77 +57,77 @@ class PokemonsUpdater extends AbstractUpdater
 
         $sqlParameters = $this->getSqlParametersFromPokemon($newRecord);
 
-        $sql = <<<SQL
-        INSERT INTO pokemon (
-            id,
-            name,
-            simplified_name,
-            forms_label,
-            french_name,
-            simplified_french_name,
-            forms_french_label,
-            national_dex_number,
-            family,
-            family_order,
-            bankable,
-            bankableish,
-            original_game_bundle_id,
-            variant_form_id,
-            regional_form_id,
-            special_form_id,
-            category_form_id,
-            primary_type_id,
-            secondary_type_id,
-            icon_name,
-            slug
-        )
-        VALUES (
-            :id,
-            :name,
-            :simplifiedName,
-            :formsLabel,
-            :frenchName,
-            :simplifiedFrenchName,
-            :formsFrenchLabel,
-            :nationalDexNumber,
-            :family,
-            :familyOrder,
-            :bankable,
-            :bankableish,
-            (SELECT id FROM game_bundle WHERE slug = :originalGameBundle),
-            (SELECT id FROM variant_form WHERE slug = :variantForm),
-            (SELECT id FROM regional_form WHERE slug = :regionalForm),
-            (SELECT id FROM special_form WHERE slug = :specialForm),
-            (SELECT id FROM category_form WHERE slug = :categoryForm),
-            (SELECT id FROM "type" WHERE slug = :primaryType),
-            (SELECT id FROM "type" WHERE slug = :secondaryType),
-            :iconName,
-            :slug
-        )
-        ON CONFLICT (slug)
-        DO
-        UPDATE
-        SET name = excluded.name,
-            simplified_name = excluded.simplified_name,
-            forms_label = excluded.forms_label,
-            french_name = excluded.french_name,
-            simplified_french_name = excluded.simplified_french_name,
-            forms_french_label = excluded.forms_french_label,
-            national_dex_number = excluded.national_dex_number,
-            family = excluded.family,
-            family_order = excluded.family_order,
-            bankable = excluded.bankable,
-            bankableish = excluded.bankableish,
-            original_game_bundle_id = excluded.original_game_bundle_id,
-            variant_form_id = excluded.variant_form_id,
-            regional_form_id = excluded.regional_form_id,
-            special_form_id = excluded.special_form_id,
-            category_form_id = excluded.category_form_id,
-            primary_type_id = excluded.primary_type_id,
-            secondary_type_id = excluded.secondary_type_id,
-            icon_name = excluded.icon_name,
-            deleted_at = NULL
-SQL;
+        $sql = <<<'SQL'
+                    INSERT INTO pokemon (
+                        id,
+                        name,
+                        simplified_name,
+                        forms_label,
+                        french_name,
+                        simplified_french_name,
+                        forms_french_label,
+                        national_dex_number,
+                        family,
+                        family_order,
+                        bankable,
+                        bankableish,
+                        original_game_bundle_id,
+                        variant_form_id,
+                        regional_form_id,
+                        special_form_id,
+                        category_form_id,
+                        primary_type_id,
+                        secondary_type_id,
+                        icon_name,
+                        slug
+                    )
+                    VALUES (
+                        :id,
+                        :name,
+                        :simplifiedName,
+                        :formsLabel,
+                        :frenchName,
+                        :simplifiedFrenchName,
+                        :formsFrenchLabel,
+                        :nationalDexNumber,
+                        :family,
+                        :familyOrder,
+                        :bankable,
+                        :bankableish,
+                        (SELECT id FROM game_bundle WHERE slug = :originalGameBundle),
+                        (SELECT id FROM variant_form WHERE slug = :variantForm),
+                        (SELECT id FROM regional_form WHERE slug = :regionalForm),
+                        (SELECT id FROM special_form WHERE slug = :specialForm),
+                        (SELECT id FROM category_form WHERE slug = :categoryForm),
+                        (SELECT id FROM "type" WHERE slug = :primaryType),
+                        (SELECT id FROM "type" WHERE slug = :secondaryType),
+                        :iconName,
+                        :slug
+                    )
+                    ON CONFLICT (slug)
+                    DO
+                    UPDATE
+                    SET name = excluded.name,
+                        simplified_name = excluded.simplified_name,
+                        forms_label = excluded.forms_label,
+                        french_name = excluded.french_name,
+                        simplified_french_name = excluded.simplified_french_name,
+                        forms_french_label = excluded.forms_french_label,
+                        national_dex_number = excluded.national_dex_number,
+                        family = excluded.family,
+                        family_order = excluded.family_order,
+                        bankable = excluded.bankable,
+                        bankableish = excluded.bankableish,
+                        original_game_bundle_id = excluded.original_game_bundle_id,
+                        variant_form_id = excluded.variant_form_id,
+                        regional_form_id = excluded.regional_form_id,
+                        special_form_id = excluded.special_form_id,
+                        category_form_id = excluded.category_form_id,
+                        primary_type_id = excluded.primary_type_id,
+                        secondary_type_id = excluded.secondary_type_id,
+                        icon_name = excluded.icon_name,
+                        deleted_at = NULL
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
@@ -134,9 +135,9 @@ SQL;
     }
 
     /**
-     * @param string[]|int[]|bool[] $pokemon
+     * @param bool[]|int[]|string[] $pokemon
      *
-     * @return string[]|int[]
+     * @return int[]|string[]
      */
     private function getSqlParametersFromPokemon(array $pokemon): array
     {
@@ -168,12 +169,13 @@ SQL;
     /**
      * @param string[] $record
      *
-     * @return string[]|int[]|bool[]
+     * @return bool[]|int[]|string[]
      */
     private function transformRecord(array $record): array
     {
         /** @var bool $isBankable */
         $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
+
         /** @var bool $isBankableish */
         $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
 

@@ -28,8 +28,7 @@ class AlbumUpsertController extends AbstractController
         private readonly ValidatorInterface $validator,
         private readonly ModifyAlbumService $modifyAlbumService,
         private readonly AlbumsCacheInvalidatorService $albumsCacheInvalidatorService,
-    ) {
-    }
+    ) {}
 
     #[Route('/{dexSlug}/{pokemonSlug}', methods: ['PATCH', 'PUT'])]
     public function upsert(
@@ -48,7 +47,7 @@ class AlbumUpsertController extends AbstractController
         } catch (ToJsonResponseException $e) {
             return new JsonResponse(
                 [
-                    'error' => $e->getMessage()
+                    'error' => $e->getMessage(),
                 ],
                 $e->getCode()
             );
@@ -64,7 +63,7 @@ class AlbumUpsertController extends AbstractController
             );
 
             $this->albumsCacheInvalidatorService->invalidate();
-        } catch (HttpExceptionInterface | TransportExceptionInterface $e) {
+        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
             return new JsonResponse(['error' => $e->getMessage()], 500);
         }
 
@@ -75,7 +74,7 @@ class AlbumUpsertController extends AbstractController
     {
         $content = $request->getContent();
 
-        if (! is_string($content) || !$content) {
+        if (!is_string($content) || !$content) {
             throw new ToJsonResponseException(
                 'Content must be a non-empty string',
                 400

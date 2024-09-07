@@ -12,6 +12,11 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AlbumReportServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -61,7 +66,7 @@ class AlbumReportServiceTest extends KernelTestCase
     }
 
     /**
-     * @return string[][]|int[][]
+     * @return int[][]|string[][]
      */
     public static function providerGetReport(): array
     {
@@ -119,12 +124,12 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 0,
                 11,
-            ]
+            ],
         ];
     }
 
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      */
     public static function providerGetReportFiltered(): array
     {

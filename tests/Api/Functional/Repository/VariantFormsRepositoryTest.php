@@ -8,6 +8,11 @@ use App\Api\Repository\VariantFormsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class VariantFormsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

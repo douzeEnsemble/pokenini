@@ -12,6 +12,11 @@ use App\Api\Repository\DexRepository;
 use Doctrine\ORM\AbstractQuery;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void

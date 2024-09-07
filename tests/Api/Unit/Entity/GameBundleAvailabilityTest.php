@@ -9,6 +9,11 @@ use App\Api\Entity\GameBundleAvailability;
 use App\Api\Entity\Pokemon;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundleAvailabilityTest extends TestCase
 {
     public function testCreateAvailable(): void

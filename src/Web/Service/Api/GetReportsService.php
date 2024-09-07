@@ -20,11 +20,11 @@ class GetReportsService extends AbstractApiService
         $json = $this->cache->get($key, function () {
             return $this->requestContent(
                 'GET',
-                "/reports",
+                '/reports',
             );
         });
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

@@ -11,9 +11,7 @@ abstract class AbstractCalculator implements CalculatorInterface
     protected string $statisticName;
     protected Statistic $statictic;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function init(): void
     {

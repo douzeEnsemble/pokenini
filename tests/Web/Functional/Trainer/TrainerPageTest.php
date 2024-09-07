@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Trainer;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TrainerPageTest extends WebTestCase
 {
     use TestNavTrait;
@@ -33,7 +38,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCustomizeAlbumSection($crawler);
 
         $this->assertStringContainsString(
-            "/connect/logout",
+            '/connect/logout',
             $crawler->filter('.accordion-item')->last()->filter('a')->attr('href') ?? ''
         );
 
@@ -63,7 +68,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCustomizeAlbumSection($crawler);
 
         $this->assertStringContainsString(
-            "/connect/logout",
+            '/connect/logout',
             $crawler->filter('.accordion-item')->last()->filter('a')->attr('href') ?? ''
         );
 

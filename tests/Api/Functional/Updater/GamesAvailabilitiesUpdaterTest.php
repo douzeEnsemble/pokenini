@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Updater;
 
-use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\GamesAvailabilitiesUpdater;
+use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameAvailabilityTrait;
@@ -20,12 +25,12 @@ class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var GamesAvailabilitiesUpdater */
+        // @var GamesAvailabilitiesUpdater
         return static::getContainer()->get(GamesAvailabilitiesUpdater::class);
     }
 
     /**
-     * There is no "deleted_at" field in the table
+     * There is no "deleted_at" field in the table.
      */
     protected function getTableDeletedAtCount(): int
     {

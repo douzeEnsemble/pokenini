@@ -12,8 +12,7 @@ class TrainerDexService
 {
     public function __construct(
         private readonly TrainerDexRepository $repository,
-    ) {
-    }
+    ) {}
 
     public function insertIfNeeded(
         string $trainerExternalId,

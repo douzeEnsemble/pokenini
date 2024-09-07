@@ -12,8 +12,7 @@ class DexAvailabilitiesService
 {
     public function __construct(
         private readonly DexAvailabilitiesRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return DexAvailability[]

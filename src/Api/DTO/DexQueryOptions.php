@@ -11,7 +11,7 @@ final class DexQueryOptions
     public bool $includeUnreleasedDex;
 
     /**
-     * @param string[]|bool[] $values
+     * @param bool[]|string[] $values
      */
     public function __construct(array $values = [])
     {

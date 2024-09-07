@@ -13,8 +13,7 @@ class PokemonAvailabilitiesCalculatorService extends AbstractCalculatorService
     public function __construct(
         private readonly GameBundlesCalculator $gameBundlesCalculator,
         private readonly GameBundlesShinyCalculator $gameBundlesShinyCalculator,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

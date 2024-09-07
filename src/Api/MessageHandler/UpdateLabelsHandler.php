@@ -18,8 +18,7 @@ class UpdateLabelsHandler implements UpdateHandlerInterface
     public function __construct(
         private readonly LabelsUpdaterService $updaterService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdateLabels $message): void
     {

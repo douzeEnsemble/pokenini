@@ -16,14 +16,13 @@ class GameBundlesAvailabilitiesService
     public function __construct(
         private readonly GameBundlesAvailabilitiesRepository $repository,
         private readonly CacheInterface $cache
-    ) {
-    }
+    ) {}
 
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
-        $key = self::CACHE_PREFIX . $pokemon->slug;
+        $key = self::CACHE_PREFIX.$pokemon->slug;
 
-        /** @var GameBundlesAvailabilities */
+        // @var GameBundlesAvailabilities
         return $this->cache->get($key, function () use ($pokemon) {
             return $this->repository->getFromPokemon($pokemon);
         });
@@ -36,6 +35,6 @@ class GameBundlesAvailabilitiesService
 
     private function getCacheKey(Pokemon $pokemon): string
     {
-        return self::CACHE_PREFIX . $pokemon->slug;
+        return self::CACHE_PREFIX.$pokemon->slug;
     }
 }

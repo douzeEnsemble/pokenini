@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Entity;
 use App\Api\Entity\ActionLog;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionLogTest extends TestCase
 {
     public function testConstructorAndGetters(): void

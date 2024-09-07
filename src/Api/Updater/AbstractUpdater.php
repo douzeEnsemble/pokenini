@@ -17,6 +17,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     protected string $tableName;
     protected string $statisticName;
     protected string $headerCellsRange;
+
     /** @var string[] */
     protected array $recordsCellsRanges;
 
@@ -27,8 +28,7 @@ abstract class AbstractUpdater implements UpdaterInterface
         protected readonly EntityManagerInterface $entityManager,
         protected readonly LoggerInterface $logger,
         protected readonly string $spreadsheetId
-    ) {
-    }
+    ) {}
 
     public function execute(?string $sheetName = null): void
     {
@@ -88,6 +88,7 @@ abstract class AbstractUpdater implements UpdaterInterface
                     'expectedHeader' => $expectedHeader,
                 ]
             );
+
             throw new InvalidSheetDataException('This is not a valid data spreadsheet');
         }
     }
@@ -106,6 +107,7 @@ abstract class AbstractUpdater implements UpdaterInterface
                     'spreadsheet' => "'{$this->sheetName}'!{$this->headerCellsRange}",
                 ]
             );
+
             throw new InvalidSheetDataException('Spreadsheet is empty');
         }
 
@@ -123,6 +125,7 @@ abstract class AbstractUpdater implements UpdaterInterface
 
     /**
      * @param string[] $header
+     *
      * @return string[][]
      */
     protected function getRecords(array $header, string $range): array
@@ -133,8 +136,6 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string $range
-     *
      * @return string[][]
      */
     protected function getRecordsData(string $range): array
@@ -148,6 +149,7 @@ abstract class AbstractUpdater implements UpdaterInterface
                     'spreadsheet' => "'{$this->sheetName}'!{$range}",
                 ]
             );
+
             throw new InvalidSheetDataException("There is not data in spreadsheet ('{$this->sheetName}'!{$range})");
         }
 
@@ -156,7 +158,7 @@ abstract class AbstractUpdater implements UpdaterInterface
 
     /**
      * @param string[][] $values
-     * @param string[] $header
+     * @param string[]   $header
      *
      * @return string[][]
      */
@@ -189,12 +191,13 @@ abstract class AbstractUpdater implements UpdaterInterface
             return $response->getValues();
         } catch (GoogleServiceException $e) {
             $this->logger->error(
-                "Can't get data for range $range",
+                "Can't get data for range {$range}",
                 [
                     'exception' => $e,
                 ]
             );
-            throw new InvalidSheetDataException("Can't get data for range $range");
+
+            throw new InvalidSheetDataException("Can't get data for range {$range}");
         }
     }
 
@@ -203,7 +206,7 @@ abstract class AbstractUpdater implements UpdaterInterface
      */
     protected function upsertRecords(array $records): void
     {
-        array_walk($records, fn($record) => $this->upsertRecord($record));
+        array_walk($records, fn ($record) => $this->upsertRecord($record));
     }
 
     protected function removeExistingRecords(): void
@@ -211,10 +214,10 @@ abstract class AbstractUpdater implements UpdaterInterface
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-        UPDATE  $tableName
-        SET     deleted_at = NOW()
-        WHERE   deleted_at IS NULL
-        SQL;
+            UPDATE  {$tableName}
+            SET     deleted_at = NOW()
+            WHERE   deleted_at IS NULL
+            SQL;
 
         $this->executeQuery($sql);
     }

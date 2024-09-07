@@ -27,7 +27,7 @@ class RegionsRepository extends ServiceEntityRepository
         $queryBuilder->select('r.slug');
         $queryBuilder->orderBy('r.orderNumber');
 
-        /** @var string[] */
+        // @var string[]
         return $queryBuilder->getQuery()->getSingleColumnResult();
     }
 }

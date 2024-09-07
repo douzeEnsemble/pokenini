@@ -20,11 +20,11 @@ class GetGameBundlesService extends AbstractApiService
         $json = $this->cache->get($key, function () {
             return $this->requestContent(
                 'GET',
-                "/game_bundles",
+                '/game_bundles',
             );
         });
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

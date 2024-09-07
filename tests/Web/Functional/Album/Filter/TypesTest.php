@@ -7,6 +7,11 @@ namespace App\Tests\Web\Functional\Album\Filter;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class TypesTest extends WebTestCase
 {
     use TestNavTrait;
@@ -127,12 +132,12 @@ class TypesTest extends WebTestCase
         $this->assertCountFilter($crawler, 7, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&t=7b52009b64fd0a2a49e6d8a939753077792b0554'
-            . '&t1%5B0%5D=fighting&t2%5B0%5D=fire&t2%5B1%5D=water',
+            .'&t1%5B0%5D=fighting&t2%5B0%5D=fire&t2%5B1%5D=water',
             $crawler->filter('table a')->first()->attr('href')
         );
         $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554'
-            . '&t1%5B0%5D=fighting&t2%5B0%5D=fire&t2%5B1%5D=water',
+            .'&t1%5B0%5D=fighting&t2%5B0%5D=fire&t2%5B1%5D=water',
             $crawler->filter('table a')->last()->attr('href')
         );
 
@@ -175,12 +180,12 @@ class TypesTest extends WebTestCase
         $this->assertCountFilter($crawler, 7, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&t=7b52009b64fd0a2a49e6d8a939753077792b0554'
-             . '&t1%5B0%5D=fighting&t2%5B0%5D=null&t2%5B1%5D=fire&t2%5B2%5D=water',
+             .'&t1%5B0%5D=fighting&t2%5B0%5D=null&t2%5B1%5D=fire&t2%5B2%5D=water',
             $crawler->filter('table a')->first()->attr('href')
         );
         $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554'
-             . '&t1%5B0%5D=fighting&t2%5B0%5D=null&t2%5B1%5D=fire&t2%5B2%5D=water',
+             .'&t1%5B0%5D=fighting&t2%5B0%5D=null&t2%5B1%5D=fire&t2%5B2%5D=water',
             $crawler->filter('table a')->last()->attr('href')
         );
 

@@ -6,6 +6,11 @@ namespace App\Tests\Api\Functional\Controller;
 
 use App\Tests\Api\Common\Traits\GetterTrait\GetTrainerDexTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;
@@ -17,7 +22,8 @@ class DexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -39,7 +45,8 @@ class DexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -55,7 +62,8 @@ class DexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -71,7 +79,8 @@ class DexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
 
         $content = $this->getResponseContent();
-        /** @var string[][]|string[][][]|int[][][] $data */
+
+        /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(

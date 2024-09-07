@@ -10,8 +10,7 @@ class GameBundlesService
 {
     public function __construct(
         private readonly GameBundlesRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

@@ -5,10 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Command;
 
 use App\Api\Repository\GamesAvailabilitiesRepository;
+use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
-use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameAvailabilityTrait;

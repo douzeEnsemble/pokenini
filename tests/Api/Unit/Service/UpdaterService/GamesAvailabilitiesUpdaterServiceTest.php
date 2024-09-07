@@ -9,6 +9,11 @@ use App\Api\Service\UpdaterService\GamesAvailabilitiesUpdaterService;
 use App\Api\Updater\GamesAvailabilitiesUpdater;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesAvailabilitiesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

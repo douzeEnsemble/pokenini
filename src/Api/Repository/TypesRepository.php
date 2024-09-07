@@ -23,17 +23,17 @@ class TypesRepository extends ServiceEntityRepository
      */
     public function getAll(): array
     {
-        $sql = <<<SQL
-        SELECT      name,
-                    french_name as "frenchName",
-                    slug,
-                    color
-        FROM        type
-        WHERE       deleted_at IS NULL
-        ORDER BY    order_number
-        SQL;
+        $sql = <<<'SQL'
+            SELECT      name,
+                        french_name as "frenchName",
+                        slug,
+                        color
+            FROM        type
+            WHERE       deleted_at IS NULL
+            ORDER BY    order_number
+            SQL;
 
-        /** @var string[][] */
+        // @var string[][]
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

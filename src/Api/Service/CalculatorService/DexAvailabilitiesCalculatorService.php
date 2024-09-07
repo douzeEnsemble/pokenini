@@ -13,8 +13,7 @@ class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
     public function __construct(
         private readonly DexAvailabilitiesCalculator $calculator,
         private readonly CacheInterface $cache
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

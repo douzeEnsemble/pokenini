@@ -12,9 +12,7 @@ class User implements UserInterface
     /** @var string[] */
     private array $roles = ['ROLE_USER'];
 
-    public function __construct(private readonly string $identifier)
-    {
-    }
+    public function __construct(private readonly string $identifier) {}
 
     public function getRoles(): array
     {

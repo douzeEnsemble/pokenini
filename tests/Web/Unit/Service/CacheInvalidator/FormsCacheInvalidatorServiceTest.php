@@ -8,16 +8,21 @@ use App\Web\Service\CacheInvalidator\FormsCacheInvalidatorService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FormsCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
     {
         $cache = new ArrayAdapter();
-        $cache->get('douze', fn() => 'DouZe');
-        $cache->get('forms_category', fn() => 'whatever');
-        $cache->get('forms_regional', fn() => 'whatever');
-        $cache->get('forms_special', fn() => 'whatever');
-        $cache->get('forms_variant', fn() => 'whatever');
+        $cache->get('douze', fn () => 'DouZe');
+        $cache->get('forms_category', fn () => 'whatever');
+        $cache->get('forms_regional', fn () => 'whatever');
+        $cache->get('forms_special', fn () => 'whatever');
+        $cache->get('forms_variant', fn () => 'whatever');
 
         $service = new FormsCacheInvalidatorService($cache);
         $service->invalidate();
@@ -30,10 +35,10 @@ class FormsCacheInvalidatorServiceTest extends TestCase
     public function testInvalidateWithAMissingOne(): void
     {
         $cache = new ArrayAdapter();
-        $cache->get('douze', fn() => 'DouZe');
-        $cache->get('forms_category', fn() => 'whatever');
-        $cache->get('forms_regional', fn() => 'whatever');
-        $cache->get('forms_variant', fn() => 'whatever');
+        $cache->get('douze', fn () => 'DouZe');
+        $cache->get('forms_category', fn () => 'whatever');
+        $cache->get('forms_regional', fn () => 'whatever');
+        $cache->get('forms_variant', fn () => 'whatever');
 
         $service = new FormsCacheInvalidatorService($cache);
         $service->invalidate();

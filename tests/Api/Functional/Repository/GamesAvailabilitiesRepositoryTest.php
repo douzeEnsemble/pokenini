@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Repository;
 
-use App\Api\Entity\Game;
-use App\Api\Entity\GameAvailability;
 use App\Api\Entity\Pokemon;
 use App\Api\Repository\GamesAvailabilitiesRepository;
-use App\Api\Repository\GamesRepository;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -33,6 +35,7 @@ class GamesAvailabilitiesRepositoryTest extends KernelTestCase
         /** @var GamesAvailabilitiesRepository $gamesAvailabilitiesRepo */
         $gamesAvailabilitiesRepo = static::getContainer()->get(GamesAvailabilitiesRepository::class);
         $this->gamesAvailabilitiesRepo = $gamesAvailabilitiesRepo;
+
         /** @var PokemonsRepository $pokemonsRepo */
         $pokemonsRepo = static::getContainer()->get(PokemonsRepository::class);
         $this->pokemonsRepo = $pokemonsRepo;

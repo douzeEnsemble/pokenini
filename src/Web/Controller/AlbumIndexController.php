@@ -12,7 +12,6 @@ use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokedexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -30,8 +29,7 @@ class AlbumIndexController extends AbstractController
         private readonly ValidatorInterface $validator,
         private readonly GetPokedexService $getPokedexService,
         private readonly GetLabelsService $getLabelsService,
-    ) {
-    }
+    ) {}
 
     #[Route(
         '/{dexSlug}',
@@ -64,7 +62,7 @@ class AlbumIndexController extends AbstractController
 
         try {
             $pokedex = $this->getPokedexService->get($dexSlug, $trainerId, $apiFilters);
-        } catch (HttpExceptionInterface | TransportExceptionInterface $e) {
+        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
             throw $this->createNotFoundException();
         }
 

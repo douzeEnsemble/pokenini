@@ -17,16 +17,16 @@ trait GetPokedexTrait
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<<'SQL'
-        SELECT      cs.*
-        FROM        pokedex AS pd
-            JOIN pokemon AS p
-                ON pd.pokemon_id = p.id AND p.slug = :pokemon_slug
-            JOIN trainer_dex AS td
-                ON pd.trainer_dex_id = td.id
-            JOIN catch_state AS cs
-                ON pd.catch_state_id = cs.id
-        WHERE   td.slug = :dex_slug
-        SQL;
+            SELECT      cs.*
+            FROM        pokedex AS pd
+                JOIN pokemon AS p
+                    ON pd.pokemon_id = p.id AND p.slug = :pokemon_slug
+                JOIN trainer_dex AS td
+                    ON pd.trainer_dex_id = td.id
+                JOIN catch_state AS cs
+                    ON pd.catch_state_id = cs.id
+            WHERE   td.slug = :dex_slug
+            SQL;
 
         $parameters = [
             'dex_slug' => $dexSlug,

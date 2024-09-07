@@ -10,8 +10,7 @@ class RegionalFormsService
 {
     public function __construct(
         private readonly RegionalFormsRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

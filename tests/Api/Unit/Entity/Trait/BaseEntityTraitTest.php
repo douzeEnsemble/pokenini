@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Entity\Trait;
 use App\Api\Entity\Traits\BaseEntityTrait;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class BaseEntityTraitTest extends TestCase
 {
     public function testGetIdentifierDefault(): void

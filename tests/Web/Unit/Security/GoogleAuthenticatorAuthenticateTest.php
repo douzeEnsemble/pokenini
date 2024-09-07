@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GoogleAuthenticatorAuthenticateTest extends TestCase
 {
     public function testAuthenticateUser(): void

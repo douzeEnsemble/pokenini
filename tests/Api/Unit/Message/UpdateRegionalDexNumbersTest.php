@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Message;
 use App\Api\Message\UpdateRegionalDexNumbers;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateRegionalDexNumbersTest extends TestCase
 {
     public function testSerialize(): void

@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
-use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
+use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateLabelsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
@@ -41,12 +46,12 @@ class UpdateLabelsCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("4 category forms updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("4 regional forms updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("5 special forms updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("8 variant forms updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("10 regions updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("18 types updated", $commandTester->getDisplay());
+        $this->assertStringContainsString('4 category forms updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('4 regional forms updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('5 special forms updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('8 variant forms updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('10 regions updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('18 types updated', $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

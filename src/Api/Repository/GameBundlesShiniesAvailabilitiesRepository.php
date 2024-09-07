@@ -31,36 +31,34 @@ class GameBundlesShiniesAvailabilitiesRepository extends ServiceEntityRepository
 
     public function calculate(): int
     {
-        $sql = <<<SQL
-        INSERT INTO game_bundle_shiny_availability (id, pokemon_id, bundle_id, is_available)
-        SELECT		gen_random_uuid(), pokemon_id, bundle_id, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
-        FROM		(
-                        SELECT		gb.id as bundle_id, p.id as pokemon_id,
-                                    SUM(CASE
-                                        WHEN gsa.availability = '—' OR gsa.availability = '-' OR gsa.availability = ''
-                                        THEN 0
-                                        ELSE 1
-                                    END) AS availability_count
-                        FROM		game_bundle AS gb
-                                JOIN game AS g
-                                    ON gb.id = g.bundle_id
-                                JOIN game_shiny_availability AS gsa
-                                    ON g.id = gsa.game_id
-                                JOIN pokemon AS p
-                                    ON gsa.pokemon_slug = p.slug
-                        GROUP BY	gb.id, p.id
-                    ) AS sub
-        SQL;
+        $sql = <<<'SQL'
+            INSERT INTO game_bundle_shiny_availability (id, pokemon_id, bundle_id, is_available)
+            SELECT		gen_random_uuid(), pokemon_id, bundle_id, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
+            FROM		(
+                            SELECT		gb.id as bundle_id, p.id as pokemon_id,
+                                        SUM(CASE
+                                            WHEN gsa.availability = '—' OR gsa.availability = '-' OR gsa.availability = ''
+                                            THEN 0
+                                            ELSE 1
+                                        END) AS availability_count
+                            FROM		game_bundle AS gb
+                                    JOIN game AS g
+                                        ON gb.id = g.bundle_id
+                                    JOIN game_shiny_availability AS gsa
+                                        ON g.id = gsa.game_id
+                                    JOIN pokemon AS p
+                                        ON gsa.pokemon_slug = p.slug
+                            GROUP BY	gb.id, p.id
+                        ) AS sub
+            SQL;
 
         $result = $this->getEntityManager()->getConnection()->executeQuery($sql);
 
-        /** @var int */
+        // @var int
         return $result->rowCount();
     }
 
     /**
-     * @param Pokemon $pokemon
-     *
      * @return GameBundlesShiniesAvailabilities dex slug as property and dex availability as value
      */
     public function getFromPokemon(Pokemon $pokemon): GameBundlesShiniesAvailabilities

@@ -26,16 +26,15 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[][]|int[][]
+     * @return int[][]|string[][]
      */
     public function getList(
         string $trainerExternalId,
         string $dexSlug,
         AlbumFilters $filters,
     ): array {
-
         $where = "COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug "
-            . $this->getFiltersQuery($filters);
+            .$this->getFiltersQuery($filters);
 
         $sql = $this->getListQuerySQL($where);
 
@@ -43,10 +42,8 @@ class PokedexRepository extends ServiceEntityRepository
             [
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
-                'pokemon_availabilities_game_bundle_category'
-                    => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
-                'pokemon_availabilities_game_bundle_shiny_category'
-                    => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
+                'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
+                'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
             $this->getFiltersParameters($filters),
         );
@@ -61,7 +58,7 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var string[][]|int[][] */
+        // @var string[][]|int[][]
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
@@ -77,8 +74,7 @@ class PokedexRepository extends ServiceEntityRepository
         string $dexSlug,
         AlbumFilters $filters,
     ): array {
-
-        $where = 'td.slug = :dex_slug ' . $this->getFiltersQuery($filters);
+        $where = 'td.slug = :dex_slug '.$this->getFiltersQuery($filters);
 
         $sql = <<<SQL
             SELECT  COUNT(dex_availability_id) AS count, 
@@ -120,7 +116,7 @@ class PokedexRepository extends ServiceEntityRepository
                             ON p.original_game_bundle_id = ogb.id
                         LEFT JOIN pokemon AS pp
                             ON p.family = pp.slug
-                    WHERE   $where
+                    WHERE   {$where}
                 ) AS t
                         ON cs.id = t.catch_state_id
             WHERE   cs.deleted_at IS NULL
@@ -131,7 +127,7 @@ class PokedexRepository extends ServiceEntityRepository
         $params = array_merge(
             [
                 'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug
+                'dex_slug' => $dexSlug,
             ],
             $this->getFiltersParameters($filters),
         );
@@ -144,7 +140,7 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var int[][]|string[][] */
+        // @var int[][]|string[][]
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
@@ -158,7 +154,7 @@ class PokedexRepository extends ServiceEntityRepository
         string $pokemonSlug,
         string $catchStateSlug,
     ): void {
-        $sql = <<<SQL
+        $sql = <<<'SQL'
             INSERT INTO pokedex (
                 id,
                 pokemon_id,
@@ -200,7 +196,7 @@ class PokedexRepository extends ServiceEntityRepository
      */
     public function getCatchStateCountsDefinedByTrainer(): array
     {
-        $sql = <<<SQL
+        $sql = <<<'SQL'
             SELECT      COUNT(*) AS nb,
                         td.trainer_external_id as trainer
             FROM        pokedex AS p
@@ -218,7 +214,7 @@ class PokedexRepository extends ServiceEntityRepository
      */
     public function getDexUsage(): array
     {
-        $sql = <<<SQL
+        $sql = <<<'SQL'
             SELECT      COUNT(DISTINCT td.trainer_external_id) AS nb,
                             d.name, d.french_name
             FROM        dex AS d
@@ -236,7 +232,7 @@ class PokedexRepository extends ServiceEntityRepository
      */
     public function getCatchStateUsage(): array
     {
-        $sql = <<<SQL
+        $sql = <<<'SQL'
             SELECT      COUNT(*) AS nb,
                         cs.name, cs.french_name, cs.color
             FROM        pokedex AS p
@@ -254,93 +250,93 @@ class PokedexRepository extends ServiceEntityRepository
      */
     private function getReportsResult(string $sql): array
     {
-        /** @var int[]|string[] */
+        // @var int[]|string[]
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 
     private function getListQuerySQL(string $where): string
     {
         return <<<SQL
-        SELECT  p.slug AS pokemon_slug,
-                p.name AS pokemon_name,
-                p.national_dex_number AS pokemon_national_dex_number,
-                p.simplified_name AS pokemon_simplified_name,
-                p.forms_label AS pokemon_forms_label,
-                p.french_name AS pokemon_french_name,
-                p.simplified_french_name AS pokemon_simplified_french_name,
-                p.forms_french_label AS pokemon_forms_french_label,
-                p.icon_name AS pokemon_icon,
-                p.family_order AS pokemon_family_order,
-                pp.slug AS family_lead_slug,
-                cf.slug as category_form_slug,
-                cf.name as category_form_name,
-                rf.slug as regional_form_slug,
-                rf.name as regional_form_name,
-                sf.slug as special_form_slug,
-                sf.name as special_form_name,
-                vf.slug as variant_form_slug,
-                vf.name as variant_form_name,
-                cs.slug AS catch_state_slug,
-                cs.name AS catch_state_name,
-                cs.french_name AS catch_state_french_name,
-                rdn.dex_number AS pokemon_regional_dex_number,
-                pt.slug AS primary_type_slug,
-                pt.name AS primary_type_name,
-                pt.french_name AS primary_type_french_name,
-                st.slug AS secondary_type_slug,
-                st.name AS secondary_type_name,
-                st.french_name AS secondary_type_french_name,
-                ogb.slug AS original_game_bundle_slug,
-                pagb.items AS game_bundle_slugs,
-                pagbs.items AS game_bundle_shiny_slugs,
-                CONCAT(
-                    LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
-                    '-',
-                    LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
-                    '-',
-                    LPAD(CAST(p.family_order AS varchar), 3, '0')
-                ) as pokemon_order_number
-        FROM    dex_availability AS da
-            JOIN pokemon AS p
-                ON da.pokemon_id = p.id
-            JOIN dex AS d
-                ON da.dex_id = d.id
-            LEFT JOIN trainer_dex AS td
-                ON d.id = td.dex_id
-                    AND td.trainer_external_id = :trainer_external_id
-            LEFT JOIN region AS r
-                ON d.region_id = r.id
-            LEFT JOIN pokedex AS pd
-                ON pd.trainer_dex_id = td.id
-                AND pd.pokemon_id = da.pokemon_id
-            LEFT JOIN catch_state AS cs
-                ON pd.catch_state_id = cs.id
-            LEFT JOIN category_form AS cf
-                ON p.category_form_id = cf.id
-            LEFT JOIN regional_form AS rf
-                ON p.regional_form_id = rf.id
-            LEFT JOIN special_form AS sf
-                ON p.special_form_id = sf.id
-            LEFT JOIN variant_form AS vf
-                ON p.variant_form_id = vf.id
-            LEFT JOIN "type" AS pt
-                ON p.primary_type_id = pt.id
-            LEFT JOIN "type" AS st
-                ON p.secondary_type_id = st.id
-            LEFT JOIN regional_dex_number AS rdn
-                ON r.id IS NOT NULL
-                    AND r.id = rdn.region_id
-                    AND p.slug = rdn.pokemon_slug
-            LEFT JOIN pokemon AS pp
-                ON p.family = pp.slug
-            LEFT JOIN game_bundle AS ogb
-                ON p.original_game_bundle_id = ogb.id
-            LEFT JOIN pokemon_availabilities AS pagb
-                ON p.id = pagb.pokemon_id AND pagb.category = :pokemon_availabilities_game_bundle_category
-            LEFT JOIN pokemon_availabilities AS pagbs
-                ON p.id = pagbs.pokemon_id AND pagbs.category = :pokemon_availabilities_game_bundle_shiny_category
-        WHERE   $where
-        ORDER BY pokemon_order_number
-        SQL;
+            SELECT  p.slug AS pokemon_slug,
+                    p.name AS pokemon_name,
+                    p.national_dex_number AS pokemon_national_dex_number,
+                    p.simplified_name AS pokemon_simplified_name,
+                    p.forms_label AS pokemon_forms_label,
+                    p.french_name AS pokemon_french_name,
+                    p.simplified_french_name AS pokemon_simplified_french_name,
+                    p.forms_french_label AS pokemon_forms_french_label,
+                    p.icon_name AS pokemon_icon,
+                    p.family_order AS pokemon_family_order,
+                    pp.slug AS family_lead_slug,
+                    cf.slug as category_form_slug,
+                    cf.name as category_form_name,
+                    rf.slug as regional_form_slug,
+                    rf.name as regional_form_name,
+                    sf.slug as special_form_slug,
+                    sf.name as special_form_name,
+                    vf.slug as variant_form_slug,
+                    vf.name as variant_form_name,
+                    cs.slug AS catch_state_slug,
+                    cs.name AS catch_state_name,
+                    cs.french_name AS catch_state_french_name,
+                    rdn.dex_number AS pokemon_regional_dex_number,
+                    pt.slug AS primary_type_slug,
+                    pt.name AS primary_type_name,
+                    pt.french_name AS primary_type_french_name,
+                    st.slug AS secondary_type_slug,
+                    st.name AS secondary_type_name,
+                    st.french_name AS secondary_type_french_name,
+                    ogb.slug AS original_game_bundle_slug,
+                    pagb.items AS game_bundle_slugs,
+                    pagbs.items AS game_bundle_shiny_slugs,
+                    CONCAT(
+                        LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
+                        '-',
+                        LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
+                        '-',
+                        LPAD(CAST(p.family_order AS varchar), 3, '0')
+                    ) as pokemon_order_number
+            FROM    dex_availability AS da
+                JOIN pokemon AS p
+                    ON da.pokemon_id = p.id
+                JOIN dex AS d
+                    ON da.dex_id = d.id
+                LEFT JOIN trainer_dex AS td
+                    ON d.id = td.dex_id
+                        AND td.trainer_external_id = :trainer_external_id
+                LEFT JOIN region AS r
+                    ON d.region_id = r.id
+                LEFT JOIN pokedex AS pd
+                    ON pd.trainer_dex_id = td.id
+                    AND pd.pokemon_id = da.pokemon_id
+                LEFT JOIN catch_state AS cs
+                    ON pd.catch_state_id = cs.id
+                LEFT JOIN category_form AS cf
+                    ON p.category_form_id = cf.id
+                LEFT JOIN regional_form AS rf
+                    ON p.regional_form_id = rf.id
+                LEFT JOIN special_form AS sf
+                    ON p.special_form_id = sf.id
+                LEFT JOIN variant_form AS vf
+                    ON p.variant_form_id = vf.id
+                LEFT JOIN "type" AS pt
+                    ON p.primary_type_id = pt.id
+                LEFT JOIN "type" AS st
+                    ON p.secondary_type_id = st.id
+                LEFT JOIN regional_dex_number AS rdn
+                    ON r.id IS NOT NULL
+                        AND r.id = rdn.region_id
+                        AND p.slug = rdn.pokemon_slug
+                LEFT JOIN pokemon AS pp
+                    ON p.family = pp.slug
+                LEFT JOIN game_bundle AS ogb
+                    ON p.original_game_bundle_id = ogb.id
+                LEFT JOIN pokemon_availabilities AS pagb
+                    ON p.id = pagb.pokemon_id AND pagb.category = :pokemon_availabilities_game_bundle_category
+                LEFT JOIN pokemon_availabilities AS pagbs
+                    ON p.id = pagbs.pokemon_id AND pagbs.category = :pokemon_availabilities_game_bundle_shiny_category
+            WHERE   {$where}
+            ORDER BY pokemon_order_number
+            SQL;
     }
 }

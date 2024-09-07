@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Browser\Album;
 
-use App\Web\Security\User;
-use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
+use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\Group;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[Group('browser-testing')]
 class ScreenshotModeTest extends AbstractBrowserTestCase
 {
@@ -30,9 +35,9 @@ class ScreenshotModeTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.screenshot-mode-on')
-            ->link()
+                ->getCrawler()
+                ->filter('.screenshot-mode-on')
+                ->link()
         );
 
         $this->assertSelectorWillBeVisible('.screenshot-mode-off');
@@ -41,9 +46,9 @@ class ScreenshotModeTest extends AbstractBrowserTestCase
 
         $client->click(
             $client
-            ->getCrawler()
-            ->filter('.screenshot-mode-off')
-            ->link()
+                ->getCrawler()
+                ->filter('.screenshot-mode-off')
+                ->link()
         );
 
         $this->assertSelectorWillBeVisible('.screenshot-mode-on');

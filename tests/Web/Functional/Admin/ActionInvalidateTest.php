@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Admin;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ActionInvalidateTest extends WebTestCase
 {
     use TestNavTrait;
@@ -24,7 +28,7 @@ class ActionInvalidateTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $client->request('GET', "/fr/istration/action/invalidate/$name");
+        $client->request('GET', "/fr/istration/action/invalidate/{$name}");
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
@@ -45,7 +49,7 @@ class ActionInvalidateTest extends WebTestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        $client->request('GET', "/fr/istration/action/invalidate/$name");
+        $client->request('GET', "/fr/istration/action/invalidate/{$name}");
     }
 
     public function testAdminNonAdmin(): void
@@ -59,7 +63,7 @@ class ActionInvalidateTest extends WebTestCase
 
         $this->expectException(NotFoundHttpException::class);
 
-        $client->request('GET', "/fr/istration/action/invalidate/catch_states");
+        $client->request('GET', '/fr/istration/action/invalidate/catch_states');
     }
 
     /**

@@ -8,6 +8,11 @@ use App\Api\Repository\CategoryFormsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CategoryFormsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

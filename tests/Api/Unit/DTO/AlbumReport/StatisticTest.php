@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\DTO\AlbumReport;
 use App\Api\DTO\AlbumReport\Statistic;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class StatisticTest extends TestCase
 {
     public function testConstructor(): void

@@ -7,6 +7,11 @@ namespace App\Tests\Web\Functional\Common;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ErrorPageTest extends WebTestCase
 {
     use TestNavTrait;

@@ -10,6 +10,11 @@ use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ConnectControllerTest extends TestCase
 {
     public function testLogout(): void

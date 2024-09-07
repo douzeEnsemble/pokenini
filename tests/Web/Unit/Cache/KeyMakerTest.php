@@ -7,6 +7,11 @@ namespace App\Tests\Web\Unit\Cache;
 use App\Web\Cache\KeyMaker;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class KeyMakerTest extends TestCase
 {
     public function testGetDexKey(): void

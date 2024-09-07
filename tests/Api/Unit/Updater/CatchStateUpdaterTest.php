@@ -14,6 +14,11 @@ use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CatchStateUpdaterTest extends TestCase
 {
     public function testGettingSpreasheetLog(): void
@@ -100,7 +105,7 @@ class CatchStateUpdaterTest extends TestCase
             [
                 'a',
                 'b',
-            ]
+            ],
         ];
 
         $spreadsheetService = $this->createMock(SpreadsheetService::class);
@@ -157,7 +162,7 @@ class CatchStateUpdaterTest extends TestCase
                 'Name',
                 'Order',
                 'Slug',
-            ]
+            ],
         ];
 
         $recordRange = new ValueRange();

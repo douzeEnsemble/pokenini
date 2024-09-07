@@ -4,6 +4,4 @@ declare(strict_types=1);
 
 namespace App\Api\Message;
 
-final class CalculateGameBundlesShiniesAvailabilities extends AbstractActionMessage
-{
-}
+final class CalculateGameBundlesShiniesAvailabilities extends AbstractActionMessage {}

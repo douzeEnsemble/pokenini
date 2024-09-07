@@ -10,6 +10,11 @@ use App\Web\Security\UserTokenService;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UserTokenServiceTest extends TestCase
 {
     public function testGetLoggedUserToken(): void

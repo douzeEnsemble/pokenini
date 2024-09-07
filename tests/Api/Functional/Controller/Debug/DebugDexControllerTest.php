@@ -6,6 +6,11 @@ namespace App\Tests\Api\Functional\Controller\Debug;
 
 use App\Tests\Api\Functional\Controller\AbstractTestControllerApi;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class DebugDexControllerTest extends AbstractTestControllerApi
 {
     public function testDex(): void
@@ -20,7 +25,7 @@ class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var string[][]|int[][]|bool[][]|string[][][]|int[][][]|bool[][][] $data */
+        /** @var bool[][]|bool[][][]|int[][]|int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);

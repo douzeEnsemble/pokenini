@@ -7,7 +7,7 @@ namespace App\Tests\Api\Functional\Service\Album;
 class AlbumReportServiceData
 {
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
@@ -119,7 +119,7 @@ class AlbumReportServiceData
     }
 
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
@@ -257,7 +257,7 @@ class AlbumReportServiceData
     }
 
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      */
     public static function getCatchStatesReportFilteredProvider(): array
     {
@@ -309,7 +309,7 @@ class AlbumReportServiceData
     }
 
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      */
     public static function getGamesReportFilteredProvider(): array
     {
@@ -402,7 +402,7 @@ class AlbumReportServiceData
     }
 
     /**
-     * @return string[][]|string[][][][]|int[][]
+     * @return int[][]|string[][]|string[][][][]
      */
     public static function getFamiliesReportFilteredProvider(): array
     {

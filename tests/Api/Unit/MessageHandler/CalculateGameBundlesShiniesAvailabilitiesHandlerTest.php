@@ -12,6 +12,11 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\GameBundlesShiniesAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestC
 
     /**
      * @param GameBundlesShiniesAvailabilitiesCalculatorService $calculatorService
-    **/
+     */
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,

@@ -7,7 +7,7 @@ namespace App\Tests\Api\Common\Data;
 final class PokemonData
 {
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getBulbasaurData(): array
     {
@@ -52,7 +52,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getIvysaurData(): array
     {
@@ -100,7 +100,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getVenusaurData(): array
     {
@@ -148,7 +148,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getCaterpieData(): array
     {
@@ -190,7 +190,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getMetapodData(): array
     {
@@ -232,7 +232,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getButterfreeData(): array
     {
@@ -274,11 +274,11 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getDouzeData(): array
     {
-        return  [
+        return [
             'pokemon_national_dex_number' => 9912,
             'pokemon_regional_dex_number' => null,
             'pokemon_order_number' => '999-9912-000',
@@ -320,7 +320,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getCharmanderData(): array
     {
@@ -359,7 +359,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getCharmeleonData(): array
     {
@@ -401,7 +401,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getCharizardData(): array
     {
@@ -443,7 +443,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRattataData(): array
     {
@@ -489,7 +489,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRattataFemaleData(): array
     {
@@ -537,7 +537,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRattataAlolanData(): array
     {
@@ -585,7 +585,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRaticateData(): array
     {
@@ -631,7 +631,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRaticateFemaleData(): array
     {
@@ -679,7 +679,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRaticateAlolanData(): array
     {
@@ -727,7 +727,7 @@ final class PokemonData
     }
 
     /**
-     * @return string[]|string[][]|int[]|null[]
+     * @return int[]|null[]|string[]|string[][]
      */
     public static function getRaticateAlolanTotemData(): array
     {

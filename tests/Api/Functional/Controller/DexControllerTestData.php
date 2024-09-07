@@ -10,7 +10,7 @@ namespace App\Tests\Api\Functional\Controller;
 final class DexControllerTestData
 {
     /**
-     * @return string[][]|bool[][]
+     * @return bool[][]|string[][]
      */
     public static function getUser12Content(): array
     {
@@ -127,7 +127,7 @@ final class DexControllerTestData
     }
 
     /**
-     * @return string[][]|bool[][]
+     * @return bool[][]|string[][]
      */
     public static function getUser12ContentWithUnreleased(): array
     {
@@ -256,7 +256,7 @@ final class DexControllerTestData
     }
 
     /**
-     * @return string[][]|bool[][]
+     * @return bool[][]|string[][]
      */
     public static function getUser13Content(): array
     {
@@ -337,7 +337,7 @@ final class DexControllerTestData
     }
 
     /**
-     * @return string[][]|bool[][]
+     * @return bool[][]|string[][]
      */
     public static function getUserUnknownContent(): array
     {

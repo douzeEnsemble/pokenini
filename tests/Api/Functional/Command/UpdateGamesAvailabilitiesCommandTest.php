@@ -4,9 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
-use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
+use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateGamesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameAvailabilityTrait;

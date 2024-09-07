@@ -6,12 +6,17 @@ namespace App\Tests\Api\Unit\MessageHandler;
 
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdateRegionalDexNumbers;
-use App\Api\MessageHandler\UpdateRegionalDexNumbersHandler;
 use App\Api\MessageHandler\UpdateHandlerInterface;
-use App\Api\Service\UpdaterService\UpdaterServiceInterface;
+use App\Api\MessageHandler\UpdateRegionalDexNumbersHandler;
 use App\Api\Service\UpdaterService\RegionalDexNumbersUpdaterService;
+use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
@@ -21,7 +26,7 @@ class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 
     /**
      * @param RegionalDexNumbersUpdaterService $updaterService
-    **/
+     */
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,

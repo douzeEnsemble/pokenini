@@ -11,8 +11,7 @@ class Statistic
         public string $name,
         public string $frenchName,
         public int $count = 0,
-    ) {
-    }
+    ) {}
 
     public function increment(): int
     {

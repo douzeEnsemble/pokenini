@@ -10,7 +10,7 @@ final class AlbumFilterValues
     public array $values = [];
 
     /**
-     * @param string[]|null[] $values
+     * @param null[]|string[] $values
      */
     public function __construct(array $values)
     {
@@ -20,7 +20,7 @@ final class AlbumFilterValues
     }
 
     /**
-     * @return string[]|null[]
+     * @return null[]|string[]
      */
     public function extract(): array
     {

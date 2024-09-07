@@ -7,6 +7,11 @@ namespace App\Tests\Web\Functional\Album\Filter;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FormsTest extends WebTestCase
 {
     use TestNavTrait;

@@ -7,6 +7,11 @@ namespace App\Tests\Api\Unit\Entity;
 use App\Api\Entity\GameGeneration;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameGenerationTest extends TestCase
 {
     public function testGetNumber(): void

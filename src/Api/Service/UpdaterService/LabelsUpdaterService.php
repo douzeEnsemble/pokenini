@@ -16,8 +16,7 @@ class LabelsUpdaterService extends AbstractUpdaterService
         private readonly FormsUpdaterService $formsUpdaterService,
         private readonly RegionsUpdater $regionsUpdater,
         private readonly TypesUpdater $typesUpdater,
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

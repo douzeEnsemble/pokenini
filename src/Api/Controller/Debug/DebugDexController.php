@@ -21,7 +21,7 @@ class DebugDexController extends AbstractDebugController
             $this->serialize($dex),
             Response::HTTP_OK,
             [
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
             ]
         );
     }
@@ -34,6 +34,7 @@ class DebugDexController extends AbstractDebugController
         $dexAvailabilities = $dexAvailabilitiesService->getByDex($dex);
 
         $pokemons = [];
+
         /** @var DexAvailability $dexAvailability */
         foreach ($dexAvailabilities as $dexAvailability) {
             $pokemons[] = $dexAvailability->pokemon->slug;
@@ -43,7 +44,7 @@ class DebugDexController extends AbstractDebugController
             $this->serialize($pokemons),
             Response::HTTP_OK,
             [
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
             ]
         );
     }

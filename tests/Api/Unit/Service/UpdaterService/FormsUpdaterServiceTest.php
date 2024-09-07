@@ -12,6 +12,11 @@ use App\Api\Updater\Forms\SpecialFormsUpdater;
 use App\Api\Updater\Forms\VariantFormsUpdater;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FormsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

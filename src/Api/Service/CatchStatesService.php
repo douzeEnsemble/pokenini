@@ -10,8 +10,7 @@ class CatchStatesService
 {
     public function __construct(
         private readonly CatchStatesRepository $repository,
-    ) {
-    }
+    ) {}
 
     /**
      * @return string[][]

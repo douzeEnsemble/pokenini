@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Access;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AccessPrivateTest extends WebTestCase
 {
     use TestNavTrait;

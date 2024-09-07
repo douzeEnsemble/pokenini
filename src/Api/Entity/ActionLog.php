@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Api\Entity;
 
 use App\Api\Entity\Traits\BaseEntityTrait;
-use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,10 +14,10 @@ class ActionLog
     use BaseEntityTrait;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public DateTime $createdAt;
+    public \DateTime $createdAt;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?DateTime $doneAt = null;
+    public ?\DateTime $doneAt = null;
 
     #[ORM\Column(nullable: true)]
     public ?string $reportData = null;
@@ -30,7 +29,7 @@ class ActionLog
         #[ORM\Column]
         private string $type,
     ) {
-        $this->createdAt = new DateTime();
+        $this->createdAt = new \DateTime();
     }
 
     public function getType(): string

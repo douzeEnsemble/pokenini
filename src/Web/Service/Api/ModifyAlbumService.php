@@ -21,7 +21,7 @@ class ModifyAlbumService extends AbstractApiService
 
         $this->request(
             $method,
-            "/album/$trainerId/$dexSlug/$pokemonSlug",
+            "/album/{$trainerId}/{$dexSlug}/{$pokemonSlug}",
             [
                 'body' => $catchStateSlug,
             ]

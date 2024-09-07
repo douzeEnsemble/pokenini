@@ -9,9 +9,7 @@ use App\Api\Updater\DexUpdater;
 
 class DexUpdaterService extends AbstractUpdaterService
 {
-    public function __construct(private readonly DexUpdater $dexUpdater)
-    {
-    }
+    public function __construct(private readonly DexUpdater $dexUpdater) {}
 
     public function execute(): void
     {

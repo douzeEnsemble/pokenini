@@ -8,8 +8,8 @@ use App\Api\Service\PokedexService;
 use App\Api\Service\TrainerDexService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,8 +19,7 @@ class AlbumUpsertController extends AbstractController
     public function __construct(
         private readonly PokedexService $pokedexService,
         private readonly TrainerDexService $trainerDexService,
-    ) {
-    }
+    ) {}
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
     public function update(
@@ -54,7 +53,7 @@ class AlbumUpsertController extends AbstractController
     ): void {
         $content = $request->getContent();
 
-        if (!($content)) {
+        if (!$content) {
             throw new BadRequestHttpException();
         }
 

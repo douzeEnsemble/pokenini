@@ -6,6 +6,11 @@ namespace App\Tests\Web\Functional\StaticPage;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class StaticPageTest extends WebTestCase
 {
     public function testFrenchLegals(): void

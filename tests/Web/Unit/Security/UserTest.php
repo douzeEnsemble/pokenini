@@ -7,6 +7,11 @@ namespace App\Tests\Web\Unit\Security;
 use App\Web\Security\User;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UserTest extends TestCase
 {
     public function testConstructor(): void

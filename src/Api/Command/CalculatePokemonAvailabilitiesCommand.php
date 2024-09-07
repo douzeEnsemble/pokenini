@@ -25,7 +25,7 @@ class CalculatePokemonAvailabilitiesCommand extends AbstractCalculateCommand
     protected function configure(): void
     {
         $this
-            ->setHelp("This command allows you to update pokemon availabilities")
+            ->setHelp('This command allows you to update pokemon availabilities')
         ;
     }
 

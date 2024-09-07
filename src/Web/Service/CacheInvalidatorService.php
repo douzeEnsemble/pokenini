@@ -23,8 +23,7 @@ class CacheInvalidatorService
         private readonly DexCacheInvalidatorService $dexCacheInvalidatorService,
         private readonly AlbumsCacheInvalidatorService $albumsCacheInvalidatorService,
         private readonly ReportsCacheInvalidatorService $reportsCacheInvalidatorService,
-    ) {
-    }
+    ) {}
 
     public function invalidate(string $type): void
     {
@@ -33,11 +32,13 @@ class CacheInvalidatorService
                 $this->catchStatesCacheInvalidatorService->invalidate();
                 $this->typesCacheInvalidatorService->invalidate();
                 $this->formsCacheInvalidatorService->invalidate();
+
                 return;
 
             case 'games_and_dex':
             case 'dex':
                 $this->dexCacheInvalidatorService->invalidate();
+
                 return;
 
             case 'pokemons':
@@ -51,15 +52,18 @@ class CacheInvalidatorService
             case 'pokemon_availabilities':
             case 'albums':
                 $this->albumsCacheInvalidatorService->invalidate();
+
                 return;
 
             case 'dex_availabilities':
                 $this->dexCacheInvalidatorService->invalidate();
                 $this->albumsCacheInvalidatorService->invalidate();
+
                 return;
 
             case 'reports':
                 $this->reportsCacheInvalidatorService->invalidate();
+
                 return;
         }
 

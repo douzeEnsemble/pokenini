@@ -25,8 +25,7 @@ final class AlbumFilters
         public AlbumFilterValues $gameBundleAvailabilities,
         public AlbumFilterValues $gameBundleShinyAvailabilities,
         public AlbumFilterValues $families,
-    ) {
-    }
+    ) {}
 
     /**
      * @param string[][] $data
@@ -89,7 +88,7 @@ final class AlbumFilters
 
         // Replace string null to null
         $newData = array_map(
-            fn($value) => (('null' == $value) ? null : $value),
+            fn ($value) => ('null' == $value) ? null : $value,
             $cleanData
         );
 

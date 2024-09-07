@@ -13,7 +13,7 @@ trait CountPokemonTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        /** @var int */
+        // @var int
         return $connection->executeQuery('SELECT COUNT(*) FROM pokemon')->fetchOne();
     }
 
@@ -22,7 +22,7 @@ trait CountPokemonTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        /** @var int */
+        // @var int
         return $connection->executeQuery('SELECT COUNT(*) FROM pokemon WHERE deleted_at IS NULL')->fetchOne();
     }
 
@@ -31,7 +31,7 @@ trait CountPokemonTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        /** @var int */
+        // @var int
         return $connection->executeQuery('SELECT COUNT(*) FROM pokemon WHERE deleted_at IS NOT NULL')->fetchOne();
     }
 }

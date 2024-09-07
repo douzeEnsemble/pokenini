@@ -18,8 +18,7 @@ class UpdateGamesAndDexHandler implements UpdateHandlerInterface
     public function __construct(
         private readonly GamesAndDexUpdaterService $updaterService,
         private readonly EntityManagerInterface $entityManager
-    ) {
-    }
+    ) {}
 
     public function __invoke(UpdateGamesAndDex $message): void
     {

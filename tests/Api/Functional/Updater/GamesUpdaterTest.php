@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\GamesUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GamesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 39;
@@ -18,7 +23,7 @@ class GamesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var GamesUpdater */
+        // @var GamesUpdater
         return static::getContainer()->get(GamesUpdater::class);
     }
 }

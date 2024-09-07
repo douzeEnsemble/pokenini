@@ -21,8 +21,7 @@ class TrainerIndexController extends AbstractController
         private readonly UserTokenService $userTokenService,
         private readonly ValidatorInterface $validator,
         private readonly GetDexService $getDexService,
-    ) {
-    }
+    ) {}
 
     #[Route('')]
     public function index(): Response

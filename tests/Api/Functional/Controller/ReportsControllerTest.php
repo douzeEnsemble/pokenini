@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Controller;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ReportsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
@@ -20,19 +25,20 @@ class ReportsControllerTest extends WebTestCase
             'api/reports',
             [
                 'headers' => [
-                    'accept' => 'application/json'
-                ]
+                    'accept' => 'application/json',
+                ],
             ],
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
         $this->assertResponseIsSuccessful();
 
         $content = (string) $client->getResponse()->getContent();
+
         /** @var int[][]|string[][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -48,7 +54,7 @@ class ReportsControllerTest extends WebTestCase
             'catch_state_counts_defined_by_trainer' => [
                 [
                     'nb' => 28,
-                    'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554'
+                    'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 ],
                 [
                     'nb' => 3,
@@ -112,7 +118,7 @@ class ReportsControllerTest extends WebTestCase
                     'french_name' => 'Oui',
                     'color' => '#66bb6a',
                 ],
-            ]
+            ],
         ];
     }
 }

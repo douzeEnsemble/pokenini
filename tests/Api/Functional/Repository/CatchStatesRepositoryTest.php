@@ -8,6 +8,11 @@ use App\Api\Repository\CatchStatesRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CatchStatesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

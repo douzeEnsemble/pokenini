@@ -14,8 +14,7 @@ class CatchStatesValidator extends ConstraintValidator
 {
     public function __construct(
         private readonly GetCatchStatesService $getCatchStatesService,
-    ) {
-    }
+    ) {}
 
     /**
      * @param mixed $value
@@ -37,13 +36,14 @@ class CatchStatesValidator extends ConstraintValidator
         if (!in_array($value, $this->getCatchStateSlugs())) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
-                ->addViolation();
+                ->addViolation()
+            ;
         }
     }
 
     /**
      * @return string[]
-    **/
+     */
     private function getCatchStateSlugs(): array
     {
         $catchStates = $this->getCatchStatesService->get();

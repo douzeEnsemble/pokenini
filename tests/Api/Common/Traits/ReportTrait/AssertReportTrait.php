@@ -18,6 +18,7 @@ trait AssertReportTrait
         int $countTotal
     ): void {
         $this->assertArrayHasKey('detail', $report);
+
         /** @var int[][]|string[][] $reportDetail */
         $reportDetail = $report['detail'];
 

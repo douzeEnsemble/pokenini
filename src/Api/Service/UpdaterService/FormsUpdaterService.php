@@ -17,8 +17,7 @@ class FormsUpdaterService extends AbstractUpdaterService
         private readonly RegionalFormsUpdater $regionalFormsUpdater,
         private readonly SpecialFormsUpdater $specialFormsUpdater,
         private readonly VariantFormsUpdater $variantFormsUpdater
-    ) {
-    }
+    ) {}
 
     public function execute(): void
     {

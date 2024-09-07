@@ -9,6 +9,11 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ModifyDexServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
@@ -41,7 +46,7 @@ class ModifyDexServiceTest extends TestCase
             ->method('request')
             ->with(
                 'PUT',
-                "https://api.domain/$suffix",
+                "https://api.domain/{$suffix}",
                 [
                     'headers' => [
                         'accept' => 'application/json',

@@ -8,6 +8,11 @@ use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ReportTest extends TestCase
 {
     public function testConstructor(): void

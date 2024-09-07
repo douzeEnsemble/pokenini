@@ -15,17 +15,16 @@ use Symfony\Component\Uid\Uuid;
 
 class RegionalDexNumbersUpdater extends AbstractUpdater
 {
+    protected const RANGE_SIZE = 100;
+    protected const BATCH_SIZE = 20;
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
     protected string $statisticName = 'regional_dex_numbers';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
-    protected const RANGE_SIZE = 100;
-    protected const BATCH_SIZE = 20;
-
     /**
-     * @var string[]|null
+     * @var null|string[]
      */
     private ?array $regionsCache = null;
 
@@ -58,7 +57,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         $nbBatch = ($rowCount / self::RANGE_SIZE);
 
         $ranges = [];
-        for ($i = 0; $i < $nbBatch; $i++) {
+        for ($i = 0; $i < $nbBatch; ++$i) {
             $startRow = $this->recordsCellsStartRowIndex + (self::RANGE_SIZE * $i);
             $endRow = min($startRow + self::RANGE_SIZE - 1, $rowCount - 1);
 
@@ -139,7 +138,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[][]|bool[][] $records
+     * @param bool[][]|string[][] $records
      */
     protected function upsertRecords(array $records): void
     {
@@ -147,31 +146,30 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         $sqlParameters = [];
         $index = 0;
         foreach ($records as $record) {
-            $sqlValues[] = ":id$index"
-                . ", :pokemonSlug$index"
-                . ", (SELECT id FROM region WHERE slug = :regionSlug$index)"
-                . ", :dexNumber$index"
-            ;
+            $sqlValues[] = ":id{$index}"
+                .", :pokemonSlug{$index}"
+                .", (SELECT id FROM region WHERE slug = :regionSlug{$index})"
+                .", :dexNumber{$index}";
 
-            $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["pokemonSlug$index"] = $record['pokemonSlug'];
-            $sqlParameters["regionSlug$index"] = $record['regionSlug'];
-            $sqlParameters["dexNumber$index"] = $record['dexNumber'];
+            $sqlParameters["id{$index}"] = Uuid::v4();
+            $sqlParameters["pokemonSlug{$index}"] = $record['pokemonSlug'];
+            $sqlParameters["regionSlug{$index}"] = $record['regionSlug'];
+            $sqlParameters["dexNumber{$index}"] = $record['dexNumber'];
 
-            $index++;
+            ++$index;
         }
 
         $sqlValuesStr = implode('), (', $sqlValues);
 
         $sql = <<<SQL
-        INSERT INTO regional_dex_number (
-            id,
-            pokemon_slug,
-            region_id,
-            dex_number
-        )
-        VALUES ($sqlValuesStr)
-SQL;
+                    INSERT INTO regional_dex_number (
+                        id,
+                        pokemon_slug,
+                        region_id,
+                        dex_number
+                    )
+                    VALUES ({$sqlValuesStr})
+            SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
@@ -191,8 +189,8 @@ SQL;
         $tableName = $this->tableName;
 
         $sql = <<<SQL
-            DELETE FROM $tableName
-        SQL;
+                DELETE FROM {$tableName}
+            SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql);
     }
@@ -215,11 +213,10 @@ SQL;
         array $record
     ): void {
         $slug = $record['#Pokemon'];
-        unset($record['#Pokemon']);
-        unset($record['National']);
+        unset($record['#Pokemon'], $record['National']);
 
         foreach ($record as $regionSlug => $dexNumber) {
-            if (! is_numeric($dexNumber)) {
+            if (!is_numeric($dexNumber)) {
                 continue;
             }
 

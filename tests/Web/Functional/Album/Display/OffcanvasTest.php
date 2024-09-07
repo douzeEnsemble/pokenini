@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Display;
 
-use App\Web\Security\User;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Security\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class OffcanvasTest extends WebTestCase
 {
     use TestNavTrait;
@@ -219,7 +224,7 @@ class OffcanvasTest extends WebTestCase
             $crawler->filter('#album-description')->text()
         );
         $this->assertStringContainsString(
-            "Les pokémons ont des formes différentes en fonction du genre ou pas.",
+            'Les pokémons ont des formes différentes en fonction du genre ou pas.',
             $crawler->filter('#album-description')->text()
         );
 
@@ -270,7 +275,7 @@ class OffcanvasTest extends WebTestCase
             $crawler->filter('#album-description')->text()
         );
         $this->assertStringContainsString(
-            "Pokémons have different shapes depending on the gender or not.",
+            'Pokémons have different shapes depending on the gender or not.',
             $crawler->filter('#album-description')->text()
         );
 
@@ -353,11 +358,11 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#primary_type'));
         $this->assertCount(19, $crawler->filter('select#primary_type option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Tous' : 'All'),
+            'fr' === $lang ? 'Tous' : 'All',
             $crawler->filter('select#primary_type option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Normal' : 'Normal'),
+            'fr' === $lang ? 'Normal' : 'Normal',
             $crawler->filter('select#primary_type option')->eq(1)->text()
         );
     }
@@ -367,15 +372,15 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#secondary_type'));
         $this->assertCount(20, $crawler->filter('select#secondary_type option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Tous' : 'All'),
+            'fr' === $lang ? 'Tous' : 'All',
             $crawler->filter('select#secondary_type option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Aucun' : 'None'),
+            'fr' === $lang ? 'Aucun' : 'None',
             $crawler->filter('select#secondary_type option')->eq(1)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Normal' : 'Normal'),
+            'fr' === $lang ? 'Normal' : 'Normal',
             $crawler->filter('select#secondary_type option')->eq(2)->text()
         );
     }
@@ -385,15 +390,15 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#category_form'));
         $this->assertCount(8, $crawler->filter('select#category_form option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Toutes' : 'All'),
+            'fr' === $lang ? 'Toutes' : 'All',
             $crawler->filter('select#category_form option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Aucune' : 'None'),
+            'fr' === $lang ? 'Aucune' : 'None',
             $crawler->filter('select#category_form option')->eq(1)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'de Départ' : 'Starter'),
+            'fr' === $lang ? 'de Départ' : 'Starter',
             $crawler->filter('select#category_form option')->eq(2)->text()
         );
     }
@@ -403,15 +408,15 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#regional_form'));
         $this->assertCount(6, $crawler->filter('select#regional_form option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Toutes' : 'All'),
+            'fr' === $lang ? 'Toutes' : 'All',
             $crawler->filter('select#regional_form option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Aucune' : 'None'),
+            'fr' === $lang ? 'Aucune' : 'None',
             $crawler->filter('select#regional_form option')->eq(1)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? "d'Alola" : 'Alolan'),
+            'fr' === $lang ? "d'Alola" : 'Alolan',
             $crawler->filter('select#regional_form option')->eq(2)->text()
         );
     }
@@ -421,15 +426,15 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#special_form'));
         $this->assertCount(9, $crawler->filter('select#special_form option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Toutes' : 'All'),
+            'fr' === $lang ? 'Toutes' : 'All',
             $crawler->filter('select#special_form option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Aucune' : 'None'),
+            'fr' === $lang ? 'Aucune' : 'None',
             $crawler->filter('select#special_form option')->eq(1)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Mega' : 'Mega'),
+            'fr' === $lang ? 'Mega' : 'Mega',
             $crawler->filter('select#special_form option')->eq(2)->text()
         );
     }
@@ -439,15 +444,15 @@ class OffcanvasTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('select#variant_form'));
         $this->assertCount(9, $crawler->filter('select#variant_form option'));
         $this->assertEquals(
-            ('fr' === $lang ? 'Toutes' : 'All'),
+            'fr' === $lang ? 'Toutes' : 'All',
             $crawler->filter('select#variant_form option')->eq(0)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Aucune' : 'None'),
+            'fr' === $lang ? 'Aucune' : 'None',
             $crawler->filter('select#variant_form option')->eq(1)->text()
         );
         $this->assertEquals(
-            ('fr' === $lang ? 'Genre' : 'Gender'),
+            'fr' === $lang ? 'Genre' : 'Gender',
             $crawler->filter('select#variant_form option')->eq(2)->text()
         );
     }

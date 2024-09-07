@@ -11,8 +11,8 @@ use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Json;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -30,8 +30,7 @@ class TrainerUpsertController extends AbstractController
         private readonly ModifyDexService $modifyDexService,
         private readonly AlbumCacheInvalidatorService $albumCacheInvalidatorService,
         private readonly DexCacheInvalidatorService $dexCacheInvalidatorService,
-    ) {
-    }
+    ) {}
 
     #[Route('/dex/{dexSlug}', methods: ['PUT'])]
     public function upsert(
@@ -49,7 +48,7 @@ class TrainerUpsertController extends AbstractController
         } catch (ToJsonResponseException $e) {
             return new JsonResponse(
                 [
-                    'error' => $e->getMessage()
+                    'error' => $e->getMessage(),
                 ],
                 $e->getCode()
             );
@@ -64,7 +63,7 @@ class TrainerUpsertController extends AbstractController
 
             $this->albumCacheInvalidatorService->invalidate($dexSlug, $trainerId);
             $this->dexCacheInvalidatorService->invalidateByTrainerId($trainerId);
-        } catch (HttpExceptionInterface | TransportExceptionInterface $e) {
+        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
             return new JsonResponse(['error' => $e->getMessage()], 500);
         }
 
@@ -75,7 +74,7 @@ class TrainerUpsertController extends AbstractController
     {
         $content = $request->getContent();
 
-        if (! is_string($content) || !$content) {
+        if (!is_string($content) || !$content) {
             throw new ToJsonResponseException(
                 'Content must be a non-empty string',
                 400

@@ -7,6 +7,11 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\CatchStatesUpdater;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class CatchStatesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 5;
@@ -18,7 +23,7 @@ class CatchStatesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        /** @var CatchStatesUpdater */
+        // @var CatchStatesUpdater
         return static::getContainer()->get(CatchStatesUpdater::class);
     }
 }

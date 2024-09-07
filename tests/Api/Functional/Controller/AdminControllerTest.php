@@ -18,6 +18,11 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AdminControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
@@ -36,7 +41,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -58,7 +63,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -80,7 +85,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -102,7 +107,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -124,7 +129,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -146,7 +151,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -168,7 +173,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -190,7 +195,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -212,7 +217,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -234,7 +239,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'douze',
+                'PHP_AUTH_PW' => 'douze',
             ],
         );
 
@@ -254,7 +259,7 @@ class AdminControllerTest extends WebTestCase
             [],
             [
                 'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW'   => 'treize',
+                'PHP_AUTH_PW' => 'treize',
             ],
         );
 

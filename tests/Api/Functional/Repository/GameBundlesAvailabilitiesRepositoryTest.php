@@ -14,6 +14,11 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -21,6 +26,7 @@ class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
 
     /** @var GameBundle[] */
     private array $gameBundles;
+
     /** @var Pokemon[] */
     private array $pokemons;
 
@@ -36,9 +42,11 @@ class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
         /** @var GameBundlesAvailabilitiesRepository $gameBundleAvailabilityRepo */
         $gameBundleAvailabilityRepo = static::getContainer()->get(GameBundlesAvailabilitiesRepository::class);
         $this->gameBundleAvailabilityRepo = $gameBundleAvailabilityRepo;
+
         /** @var GameBundlesRepository $gameBundlesRepo */
         $gameBundlesRepo = static::getContainer()->get(GameBundlesRepository::class);
         $this->gameBundlesRepo = $gameBundlesRepo;
+
         /** @var PokemonsRepository $pokemonsRepo */
         $pokemonsRepo = static::getContainer()->get(PokemonsRepository::class);
         $this->pokemonsRepo = $pokemonsRepo;
@@ -131,7 +139,7 @@ class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
 
         return $this->gameBundleAvailabilityRepo->findOneBy([
             'pokemon' => $pokemon,
-            'bundle' => $bundle
+            'bundle' => $bundle,
         ]);
     }
 

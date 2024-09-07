@@ -20,11 +20,11 @@ class GetTypesService extends AbstractApiService
         $json = $this->cache->get($key, function () {
             return $this->requestContent(
                 'GET',
-                "/types",
+                '/types',
             );
         });
 
-        /** @var string[][] */
+        // @var string[][]
         return JsonDecoder::decode($json);
     }
 }

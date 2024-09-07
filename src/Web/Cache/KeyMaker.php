@@ -73,7 +73,7 @@ class KeyMaker
 
     public static function getDexKeyForTrainer(string $trainerId, string $alt = ''): string
     {
-        return self::CACHE_KEY_DEX . self::CACHE_KEY_SEPARATOR . $trainerId . $alt;
+        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId.$alt;
     }
 
     /**
@@ -82,28 +82,27 @@ class KeyMaker
     public static function getPokedexKey(string $dexSlug, string $trainerId, array $filters = []): string
     {
         $prefix = self::CACHE_KEY_ALBUM
-            . self::CACHE_KEY_SEPARATOR . $dexSlug
-            . self::CACHE_KEY_SEPARATOR . $trainerId
-        ;
+            .self::CACHE_KEY_SEPARATOR.$dexSlug
+            .self::CACHE_KEY_SEPARATOR.$trainerId;
 
         $strFilters = '';
         foreach ($filters as $key => $value) {
             if (!is_array($value)) {
-                $strFilters .= self::CACHE_KEY_SEPARATOR . $key . $value;
+                $strFilters .= self::CACHE_KEY_SEPARATOR.$key.$value;
 
                 continue;
             }
 
             foreach ($value as $subValue) {
-                $strFilters .= self::CACHE_KEY_SEPARATOR . $key . $subValue;
+                $strFilters .= self::CACHE_KEY_SEPARATOR.$key.$subValue;
             }
         }
 
-        return $prefix . $strFilters;
+        return $prefix.$strFilters;
     }
 
     public static function getRegisterTypeKey(string $type): string
     {
-        return self::CACHE_KEY_CACHE_REGISTER . self::CACHE_KEY_SEPARATOR . $type;
+        return self::CACHE_KEY_CACHE_REGISTER.self::CACHE_KEY_SEPARATOR.$type;
     }
 }
