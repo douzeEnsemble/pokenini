@@ -45,3 +45,5 @@ docker/apache/ssl/cert.pem
 build/*
 tests/last.html
 bin/local-php-security-checker
+.php-cs-fixer.cache
+bin/php-cs-fixer
