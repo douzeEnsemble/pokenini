@@ -27,7 +27,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm phpstan deptrac
 .PHONY : integration newman
 .PHONY : measures clear-build coverage coverage_html infection infection_api infection_web
-.PHONY : security composer_audit security_checker
+.PHONY : security composer_audit security_checker dependency_check
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -260,3 +260,25 @@ bin/local-php-security-checker: ## Download the file if needed
 security_checker: ## Execute Security Checker
 security_checker: bin/local-php-security-checker
 	bin/local-php-security-checker
+
+bin/php-cs-fixer: ## Download the file if needed
+	wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O bin/php-cs-fixer
+	chmod a+x bin/php-cs-fixer
+
+phpcsfixer: ## Execute PHP CS Fixer "Check"
+phpcsfixer: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer check
+
+phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
+phpcsfixer_fix: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer fix
+
+dependency-check/bin/dependency-check.sh: dependency-check/bin/dependency-check.sh
+	wget https://github.com/jeremylong/DependencyCheck/releases/download/v10.0.4/dependency-check-10.0.4-release.zip -O dependency-check-release.zip
+	unzip dependency-check-release.zip
+
+dependency_check: ## Execute OWASP Dependency Check
+dependency_check: dependency-check/bin/dependency-check.sh
+	dependency-check/bin/dependency-check.sh
+
+	

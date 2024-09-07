@@ -47,3 +47,6 @@ bin/php-cs-fixer
 ###< qossmic/deptrac ###
 infection_summary.log
 infection_text.log
+
+dependency-check-release.zip
+dependency-check/
