@@ -90,7 +90,7 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        // @var int
+        /** @var int */
         return $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,

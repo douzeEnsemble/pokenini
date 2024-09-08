@@ -13,7 +13,7 @@ trait CountActionLogTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             'SELECT COUNT(*) FROM action_log'
         )->fetchOne();
@@ -24,7 +24,7 @@ trait CountActionLogTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             'SELECT COUNT(*) FROM action_log WHERE done_at IS NULL'
         )->fetchOne();
@@ -35,7 +35,7 @@ trait CountActionLogTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             'SELECT COUNT(*) FROM action_log WHERE done_at IS NOT NULL'
         )->fetchOne();

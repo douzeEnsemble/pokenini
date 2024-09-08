@@ -22,7 +22,7 @@ class VariantFormsUpdaterTest extends AbstractTestFormsUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var VariantFormsUpdater
+        /** @var VariantFormsUpdater */
         return static::getContainer()->get(VariantFormsUpdater::class);
     }
 }

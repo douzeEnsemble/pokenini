@@ -22,7 +22,7 @@ class GameBundlesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var GameBundlesUpdater
+        /** @var GameBundlesUpdater */
         return static::getContainer()->get(GameBundlesUpdater::class);
     }
 }

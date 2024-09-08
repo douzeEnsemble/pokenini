@@ -32,6 +32,9 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         return 'app_web_connect_googlecheck' === $request->attributes->get('_route');
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient('google');
@@ -59,6 +62,9 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         );
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         /** @var User $user */
@@ -72,6 +78,9 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         return new RedirectResponse($targetUrl);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());

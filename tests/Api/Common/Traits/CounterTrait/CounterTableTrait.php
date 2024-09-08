@@ -13,7 +13,7 @@ trait CounterTableTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             "SELECT COUNT(*) FROM {$tableName}"
         )->fetchOne();

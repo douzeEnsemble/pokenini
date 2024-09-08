@@ -23,7 +23,7 @@ class TypesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var TypesUpdater
+        /** @var TypesUpdater */
         return static::getContainer()->get(TypesUpdater::class);
     }
 }

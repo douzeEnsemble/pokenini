@@ -22,7 +22,7 @@ class GamesShiniesAvailabilitiesService
     {
         $key = self::CACHE_PREFIX.$pokemon->slug;
 
-        // @var GamesShiniesAvailabilities
+        /** @var GamesShiniesAvailabilities */
         return $this->cache->get($key, function () use ($pokemon) {
             return $this->repository->getFromPokemon($pokemon);
         });

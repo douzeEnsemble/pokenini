@@ -36,7 +36,7 @@ class DexRepository extends ServiceEntityRepository
         $queryBuilder->select($queryBuilder->expr()->count('d'));
         $queryBuilder->where($queryBuilder->expr()->isNull('d.deletedAt'));
 
-        // @var int
+        /** @var int */
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
@@ -80,7 +80,7 @@ class DexRepository extends ServiceEntityRepository
             ]
         );
 
-        // @var string[]|bool[]
+        /** @var bool[]|string[] */
         return $data[0] ?? [];
     }
 }

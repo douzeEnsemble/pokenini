@@ -20,7 +20,7 @@ class GamesAvailabilitiesService
 
     public function getFromPokemon(Pokemon $pokemon): GamesAvailabilities
     {
-        // @var GamesAvailabilities
+        /** @var GamesAvailabilities */
         return $this->cache->get(
             $this->getCacheKey($pokemon),
             function () use ($pokemon) {

@@ -25,7 +25,7 @@ class GamesShiniesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var GamesShiniesAvailabilitiesUpdater
+        /** @var GamesShiniesAvailabilitiesUpdater */
         return static::getContainer()->get(GamesShiniesAvailabilitiesUpdater::class);
     }
 

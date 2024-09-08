@@ -36,7 +36,7 @@ class GetPokedexService extends AbstractApiService
 
         $this->registerCache(KeyMaker::getAlbumKey(), $key);
 
-        // @var string[][][]
+        /** @var string[][][] */
         return JsonDecoder::decode($json);
     }
 }

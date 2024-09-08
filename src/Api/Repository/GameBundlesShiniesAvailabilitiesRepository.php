@@ -54,7 +54,7 @@ class GameBundlesShiniesAvailabilitiesRepository extends ServiceEntityRepository
 
         $result = $this->getEntityManager()->getConnection()->executeQuery($sql);
 
-        // @var int
+        /** @var int */
         return $result->rowCount();
     }
 

@@ -54,7 +54,7 @@ class PokemonAvailabilitiesRepository extends ServiceEntityRepository
             ]
         );
 
-        // @var int
+        /** @var int */
         return $result->rowCount();
     }
 
@@ -80,7 +80,7 @@ class PokemonAvailabilitiesRepository extends ServiceEntityRepository
             ]
         );
 
-        // @var int
+        /** @var int */
         return $result->rowCount();
     }
 }

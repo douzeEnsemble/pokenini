@@ -66,7 +66,7 @@ class GetFormsService extends AbstractApiService
             );
         });
 
-        // @var string[][]
+        /** @var string[][] */
         return JsonDecoder::decode($json);
     }
 }

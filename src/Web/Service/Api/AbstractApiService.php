@@ -61,7 +61,7 @@ abstract class AbstractApiService implements ApiServiceInterface
             $options,
         );
 
-        // @var string
+        /** @var string */
         return $response->getContent();
     }
 }

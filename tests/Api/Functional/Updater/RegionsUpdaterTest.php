@@ -22,7 +22,7 @@ class RegionsUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var RegionsUpdater
+        /** @var RegionsUpdater */
         return static::getContainer()->get(RegionsUpdater::class);
     }
 }
