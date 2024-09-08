@@ -224,3 +224,8 @@ parameters:
 			message: "#^Unable to resolve the template type RealInstanceType in call to method PHPUnit\\\\Framework\\\\TestCase\\:\\:createMock\\(\\)$#"
 			count: 2
 			path: tests/Api/Unit/MessageHandler/AbstractTestUpdateHandler.php
+
+		-
+			message: "#^Class App\\\\Tests\\\\Web\\\\Unit\\\\Validator\\\\CatchStatesValidatorTest extends generic class Symfony\\\\Component\\\\Validator\\\\Test\\\\ConstraintValidatorTestCase but does not specify its types\\: T$#"
+			count: 1
+			path: tests/Web/Unit/Validator/CatchStatesValidatorTest.php
