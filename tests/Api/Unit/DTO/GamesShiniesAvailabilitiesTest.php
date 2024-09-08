@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\DTO;
 
 use App\Api\DTO\GamesShiniesAvailabilities;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GamesShiniesAvailabilities::class)]
 class GamesShiniesAvailabilitiesTest extends TestCase
 {
     public function testGet(): void

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\DTO;
 
 use App\Web\DTO\LastRoute;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(LastRoute::class)]
 class LastRouteTest extends TestCase
 {
     public function testConstruct(): void

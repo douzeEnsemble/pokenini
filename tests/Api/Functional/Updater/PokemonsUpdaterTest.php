@@ -8,12 +8,12 @@ use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\PokemonsUpdater;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokemonTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokemonsUpdater::class)]
 class PokemonsUpdaterTest extends AbstractTestUpdater
 {
     use CountPokemonTrait;

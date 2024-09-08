@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\DTO;
 
 use App\Api\DTO\DexQueryOptions;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexQueryOptions::class)]
 class DexQueryOptionsTest extends TestCase
 {
     public function testOk(): void

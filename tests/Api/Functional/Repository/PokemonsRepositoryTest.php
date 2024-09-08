@@ -8,13 +8,13 @@ use App\Api\Entity\Pokemon;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokemonsRepository::class)]
 class PokemonsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\CacheInvalidator;
 
 use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumCacheInvalidatorService::class)]
 class AlbumCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void

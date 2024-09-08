@@ -4,16 +4,21 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Common;
 
+use App\Api\Controller\AdminController;
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\ConnectController;
+use App\Web\Controller\HomeController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(HomeController::class)]
+#[CoversClass(ConnectController::class)]
+#[CoversClass(AdminController::class)]
 class CommonItemsTest extends WebTestCase
 {
     use TestNavTrait;

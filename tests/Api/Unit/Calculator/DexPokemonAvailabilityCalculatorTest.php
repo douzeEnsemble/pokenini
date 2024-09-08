@@ -16,13 +16,13 @@ use App\Api\Service\GameBundlesAvailabilitiesService;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Api\Service\GamesAvailabilitiesService;
 use App\Api\Service\GamesShiniesAvailabilitiesService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexPokemonAvailabilityCalculator::class)]
 class DexPokemonAvailabilityCalculatorTest extends TestCase
 {
     public function testCalculate(): void

@@ -6,6 +6,7 @@ namespace App\Tests\Web\Unit\Security;
 
 use App\Web\Security\User;
 use App\Web\Security\UserProvider;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -13,9 +14,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UserProvider::class)]
 class UserProviderTest extends TestCase
 {
     public function testLoadUserByIdentifier(): void

@@ -9,14 +9,14 @@ use App\Api\Service\Album\AlbumPokemonService;
 use App\Tests\Api\Common\Data\AlbumData;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumPokemonService::class)]
 class AlbumPokemonServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

@@ -11,12 +11,12 @@ use App\Api\MessageHandler\UpdateRegionalDexNumbersHandler;
 use App\Api\Service\UpdaterService\RegionalDexNumbersUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateRegionalDexNumbers::class)]
 class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

@@ -7,13 +7,13 @@ namespace App\Tests\Api\Unit\Service\UpdaterService;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\RegionalDexNumbersUpdaterService;
 use App\Api\Updater\RegionalDexNumbersUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(RegionalDexNumbersUpdaterService::class)]
 class RegionalDexNumbersUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

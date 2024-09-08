@@ -11,12 +11,12 @@ use App\Api\MessageHandler\UpdateHandlerInterface;
 use App\Api\Service\UpdaterService\GamesShiniesAvailabilitiesUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateGamesShiniesAvailabilities::class)]
 class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

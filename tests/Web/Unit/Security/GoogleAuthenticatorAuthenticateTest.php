@@ -10,6 +10,7 @@ use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
 use League\OAuth2\Client\Provider\GoogleUser;
 use League\OAuth2\Client\Token\AccessToken;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -17,9 +18,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GoogleAuthenticator::class)]
 class GoogleAuthenticatorAuthenticateTest extends TestCase
 {
     public function testAuthenticateUser(): void

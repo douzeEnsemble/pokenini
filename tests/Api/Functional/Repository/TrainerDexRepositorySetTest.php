@@ -8,13 +8,13 @@ use App\Api\DTO\TrainerDexAttributes;
 use App\Api\Repository\TrainerDexRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TrainerDexRepository::class)]
 class TrainerDexRepositorySetTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

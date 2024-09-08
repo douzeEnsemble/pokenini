@@ -7,13 +7,13 @@ namespace App\Tests\Api\Unit\Entity;
 use App\Api\Entity\GameBundle;
 use App\Api\Entity\GameBundleShinyAvailability;
 use App\Api\Entity\Pokemon;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameBundleShinyAvailability::class)]
 class GameBundleShinyAvailabilityTest extends TestCase
 {
     public function testCreateAvailable(): void

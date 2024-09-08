@@ -8,14 +8,14 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\DexAvailabilitiesRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexAvailabilitiesRepository::class)]
 class DexAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

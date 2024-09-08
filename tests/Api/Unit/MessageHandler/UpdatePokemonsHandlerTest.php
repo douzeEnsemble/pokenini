@@ -11,12 +11,12 @@ use App\Api\MessageHandler\UpdatePokemonsHandler;
 use App\Api\Service\UpdaterService\PokemonsUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdatePokemons::class)]
 class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

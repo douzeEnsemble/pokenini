@@ -7,14 +7,14 @@ namespace App\Tests\Web\Unit\Security;
 use App\Web\Exception\NoLoggedUserException;
 use App\Web\Security\User;
 use App\Web\Security\UserTokenService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UserTokenService::class)]
 class UserTokenServiceTest extends TestCase
 {
     public function testGetLoggedUserToken(): void

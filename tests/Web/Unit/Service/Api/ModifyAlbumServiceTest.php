@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\ModifyAlbumService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(ModifyAlbumService::class)]
 class ModifyAlbumServiceTest extends TestCase
 {
     private ArrayAdapter $cache;

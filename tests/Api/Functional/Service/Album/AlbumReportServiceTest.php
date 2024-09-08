@@ -9,14 +9,14 @@ use App\Api\DTO\AlbumReport\Report;
 use App\Api\Service\Album\AlbumReportService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumReportService::class)]
 class AlbumReportServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

@@ -6,12 +6,12 @@ namespace App\Tests\Api\Functional\Command;
 
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountRegionalDexNumberTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateRegionalDexNumbersCommandTest::class)]
 class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
 {
     use CountRegionalDexNumberTrait;

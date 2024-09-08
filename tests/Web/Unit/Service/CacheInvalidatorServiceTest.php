@@ -11,14 +11,14 @@ use App\Web\Service\CacheInvalidator\FormsCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\ReportsCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\TypesCacheInvalidatorService;
 use App\Web\Service\CacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CacheInvalidatorService::class)]
 class CacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidateLabels(): void

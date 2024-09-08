@@ -7,13 +7,13 @@ namespace App\Tests\Api\Unit\Service\UpdaterService;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\PokemonsUpdaterService;
 use App\Api\Updater\PokemonsUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokemonsUpdaterService::class)]
 class PokemonsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

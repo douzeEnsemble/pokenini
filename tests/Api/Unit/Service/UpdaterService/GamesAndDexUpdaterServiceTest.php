@@ -8,13 +8,13 @@ use App\Api\DTO\DataChangeReport\Report;
 use App\Api\Service\UpdaterService\DexUpdaterService;
 use App\Api\Service\UpdaterService\GamesAndDexUpdaterService;
 use App\Api\Service\UpdaterService\GamesUpdaterService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GamesAndDexUpdaterService::class)]
 class GamesAndDexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

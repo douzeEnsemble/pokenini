@@ -6,13 +6,13 @@ namespace App\Tests\Api\Unit\DTO\AlbumFilter;
 
 use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumFilters::class)]
 class AlbumFiltersTest extends TestCase
 {
     public function testCreateFromArrayEmpty(): void

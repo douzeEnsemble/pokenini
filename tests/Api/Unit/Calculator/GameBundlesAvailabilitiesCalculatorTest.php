@@ -6,13 +6,13 @@ namespace App\Tests\Api\Unit\Calculator;
 
 use App\Api\Calculator\GameBundlesAvailabilitiesCalculator;
 use App\Api\Repository\GameBundlesAvailabilitiesRepository;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameBundlesAvailabilitiesCalculator::class)]
 class GameBundlesAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void

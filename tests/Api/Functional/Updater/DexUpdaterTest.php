@@ -7,12 +7,12 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\DexUpdater;
 use App\Tests\Api\Common\Traits\GetterTrait\GetDexTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexUpdater::class)]
 class DexUpdaterTest extends AbstractTestUpdater
 {
     use GetDexTrait;

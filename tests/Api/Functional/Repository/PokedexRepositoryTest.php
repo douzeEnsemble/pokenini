@@ -7,13 +7,13 @@ namespace App\Tests\Api\Functional\Repository;
 use App\Api\Repository\PokedexRepository;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokedexRepository::class)]
 class PokedexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

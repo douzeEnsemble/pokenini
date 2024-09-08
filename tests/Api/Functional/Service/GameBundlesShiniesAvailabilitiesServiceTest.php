@@ -9,13 +9,13 @@ use App\Api\Repository\PokemonsRepository;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameBundlesShiniesAvailabilitiesService::class)]
 class GameBundlesShiniesAvailabilitiesServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

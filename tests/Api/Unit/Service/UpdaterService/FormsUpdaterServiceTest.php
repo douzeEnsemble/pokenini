@@ -10,13 +10,13 @@ use App\Api\Updater\Forms\CategoryFormsUpdater;
 use App\Api\Updater\Forms\RegionalFormsUpdater;
 use App\Api\Updater\Forms\SpecialFormsUpdater;
 use App\Api\Updater\Forms\VariantFormsUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(FormsUpdaterService::class)]
 class FormsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
+use App\Api\Controller\DexController;
 use App\Tests\Api\Common\Traits\GetterTrait\GetTrainerDexTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexController::class)]
 class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;

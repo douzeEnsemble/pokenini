@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\CacheInvalidator;
 
 use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexCacheInvalidatorService::class)]
 class DexCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void

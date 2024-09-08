@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
+use App\Api\Controller\AlbumUpsertController;
 use App\Tests\Api\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumUpsertController::class)]
 class AlbumUpsertControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;

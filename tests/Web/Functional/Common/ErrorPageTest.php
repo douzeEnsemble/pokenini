@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Common;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversNothing]
 class ErrorPageTest extends WebTestCase
 {
     use TestNavTrait;

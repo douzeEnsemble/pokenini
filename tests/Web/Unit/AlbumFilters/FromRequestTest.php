@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\AlbumFilters;
 
 use App\Web\AlbumFilters\FromRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(FromRequest::class)]
 class FromRequestTest extends TestCase
 {
     public function testGet(): void

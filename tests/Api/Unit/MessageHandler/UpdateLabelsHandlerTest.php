@@ -11,12 +11,12 @@ use App\Api\MessageHandler\UpdateLabelsHandler;
 use App\Api\Service\UpdaterService\LabelsUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateLabels::class)]
 class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

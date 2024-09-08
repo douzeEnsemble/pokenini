@@ -11,14 +11,14 @@ use Google\Service\Sheets\Sheet;
 use Google\Service\Sheets\SheetProperties;
 use Google\Service\Sheets\Spreadsheet;
 use Google\Service\Sheets\ValueRange;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(SpreadsheetService::class)]
 class SpreadsheetServiceTest extends TestCase
 {
     public function testGet(): void

@@ -6,13 +6,13 @@ namespace App\Tests\Api\Functional\Repository;
 
 use App\Api\Repository\TypesRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TypesRepository::class)]
 class TypesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

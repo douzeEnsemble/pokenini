@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Admin;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\AdminActionController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AdminActionController::class)]
 class ActionInvalidateTest extends WebTestCase
 {
     use TestNavTrait;

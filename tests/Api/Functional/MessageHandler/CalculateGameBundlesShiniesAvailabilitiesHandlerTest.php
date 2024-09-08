@@ -9,14 +9,14 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CalculateGameBundlesShiniesAvailabilities::class)]
 class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

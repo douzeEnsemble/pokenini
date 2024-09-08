@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\Command\CalculatePokemonAvailabilitiesCommand;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Api\Common\Traits\HasserTrait\HasPokemonAvailabilitiesTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CalculatePokemonAvailabilitiesCommand::class)]
 class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;

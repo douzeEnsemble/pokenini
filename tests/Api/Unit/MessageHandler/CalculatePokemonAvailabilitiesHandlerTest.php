@@ -11,12 +11,12 @@ use App\Api\MessageHandler\CalculatePokemonAvailabilitiesHandler;
 use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CalculatePokemonAvailabilities::class)]
 class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string

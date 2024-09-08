@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Controller;
 use App\Web\Controller\AdminActionController;
 use App\Web\Service\Api\AdminActionService;
 use App\Web\Service\CacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
@@ -17,9 +18,8 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AdminActionController::class)]
 class AdminActionControllerTest extends TestCase
 {
     public function testFailUpdateLogs(): void

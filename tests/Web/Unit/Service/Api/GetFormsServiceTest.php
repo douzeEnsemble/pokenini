@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetFormsService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -12,9 +13,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GetFormsService::class)]
 class GetFormsServiceTest extends TestCase
 {
     private ArrayAdapter $cache;

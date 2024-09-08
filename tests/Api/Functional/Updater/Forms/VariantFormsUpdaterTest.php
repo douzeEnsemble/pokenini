@@ -6,12 +6,12 @@ namespace App\Tests\Api\Functional\Updater\Forms;
 
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\Forms\VariantFormsUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(VariantFormsUpdater::class)]
 class VariantFormsUpdaterTest extends AbstractTestFormsUpdater
 {
     protected int $initialTotalCount = 7;

@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Album\Localization;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\AlbumIndexController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumIndexController::class)]
 class FrenchAlbumLocalizationTest extends WebTestCase
 {
     use TestNavTrait;

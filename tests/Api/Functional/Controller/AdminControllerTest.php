@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
+use App\Api\Controller\AdminController;
 use App\Api\Message\CalculateDexAvailabilities;
 use App\Api\Message\CalculateGameBundlesAvailabilities;
 use App\Api\Message\CalculateGameBundlesShiniesAvailabilities;
@@ -15,14 +16,14 @@ use App\Api\Message\UpdateLabels;
 use App\Api\Message\UpdatePokemons;
 use App\Api\Message\UpdateRegionalDexNumbers;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AdminController::class)]
 class AdminControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;

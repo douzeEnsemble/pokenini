@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Trainer;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\TrainerIndexController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TrainerIndexController::class)]
 class TrainerPageTest extends WebTestCase
 {
     use TestNavTrait;

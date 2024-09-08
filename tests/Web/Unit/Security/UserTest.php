@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Security;
 
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(User::class)]
 class UserTest extends TestCase
 {
     public function testConstructor(): void
