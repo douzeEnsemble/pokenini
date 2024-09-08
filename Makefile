@@ -128,11 +128,11 @@ tests: ## Execute all tests
 tests: tests_api tests_web
 
 tests_api: ## Execute unit test for Api module
-	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
+	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/Api
 
 tests_web: ## Execute unit test for Web module
-	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
+	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/Web
 
 tests_unit_api: ## Execute unit tests for Api module
