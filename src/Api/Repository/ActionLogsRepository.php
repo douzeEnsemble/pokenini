@@ -58,7 +58,7 @@ class ActionLogsRepository extends ServiceEntityRepository
             ORDER BY    "type" ASC, created_at DESC
             SQL;
 
-        // @var string[][]|null[][]
+        /** @var null[][]|string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

@@ -15,6 +15,9 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
  */
 class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
 {
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
         throw new \RuntimeException('Not use in this project');
@@ -34,6 +37,9 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
         return User::class === $class;
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         // nothing

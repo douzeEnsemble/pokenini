@@ -42,7 +42,7 @@ class GetDexService extends AbstractApiService
 
         $this->registerCache(KeyMaker::getDexKey(), $key);
 
-        // @var string[][]
+        /** @var string[][] */
         return JsonDecoder::decode($json);
     }
 }

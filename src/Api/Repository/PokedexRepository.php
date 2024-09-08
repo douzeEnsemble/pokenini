@@ -58,7 +58,7 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        // @var string[][]|int[][]
+        /** @var int[][]|string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
@@ -140,7 +140,7 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        // @var int[][]|string[][]
+        /** @var int[][]|string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
@@ -250,7 +250,7 @@ class PokedexRepository extends ServiceEntityRepository
      */
     private function getReportsResult(string $sql): array
     {
-        // @var int[]|string[]
+        /** @var int[]|string[] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 

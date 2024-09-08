@@ -32,7 +32,7 @@ class SpecialFormsRepository extends ServiceEntityRepository
             ORDER BY    order_number
             SQL;
 
-        // @var string[][]
+        /** @var string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

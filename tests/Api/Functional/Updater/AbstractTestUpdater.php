@@ -80,7 +80,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             "SELECT COUNT(*) FROM {$this->tableName}"
         )->fetchOne();
@@ -91,7 +91,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
-        // @var int
+        /** @var int */
         return $connection->executeQuery(
             "SELECT COUNT(*) FROM {$this->tableName} WHERE deleted_at IS NOT NULL"
         )->fetchOne();

@@ -22,7 +22,7 @@ class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 
     protected function getService(): AbstractUpdater
     {
-        // @var RegionalDexNumbersUpdater
+        /** @var RegionalDexNumbersUpdater */
         return static::getContainer()->get(RegionalDexNumbersUpdater::class);
     }
 

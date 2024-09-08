@@ -29,6 +29,9 @@ abstract class AbstractCalculateCommand extends Command
 
     abstract protected function getCommandName(): string;
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $message = $this->actionStarter->start();

@@ -40,7 +40,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     public function getResponse(): Response
     {
-        // @var Response
+        /** @var Response */
         return $this->client->getResponse();
     }
 
@@ -54,7 +54,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
      */
     public function getJsonDecodedResponseContent(): array
     {
-        // @var string[]|int[]|bool[]
+        /** @var bool[]|int[]|string[] */
         return json_decode($this->getResponseContent(), true);
     }
 
@@ -101,7 +101,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     ): array {
         $this->apiRequest('GET', $route, $params, $options);
 
-        // @var mixed[]
+        /** @var mixed[] */
         return json_decode((string) $this->getResponse()->getContent(), true);
     }
 }
