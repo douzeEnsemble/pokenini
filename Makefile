@@ -26,7 +26,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
 .PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm phpstan deptrac
 .PHONY : integration newman
-.PHONY : measures clear-build coverage htmlcoverage infection infection_api infection_web
+.PHONY : measures clear-build coverage coverage_html infection infection_api infection_web
 .PHONY : security composer_audit security_checker
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
@@ -223,7 +223,7 @@ coverage: ## Execute PHPUnit Coverage to check the score
 coverage: build/coverage/coverage-xml
 	@$(PHP_CONT) php tests/tools/coverage.php coverage.xml 100 true
 
-htmlcoverage: ## Execute PHPUnit Coverage in HTML
+coverage_html: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit --coverage-html=build/coverage/coverage-html
