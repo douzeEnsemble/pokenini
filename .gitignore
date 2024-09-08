@@ -27,12 +27,6 @@ coverage.xml
 .phpunit.result.cache
 .phpunit.cache
 ###< phpunit/phpunit ###
-
-###> squizlabs/php_codesniffer ###
-/.phpcs-cache
-/phpcs.xml
-###< squizlabs/php_codesniffer ###
-
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
@@ -47,3 +41,7 @@ tests/last.html
 bin/local-php-security-checker
 .php-cs-fixer.cache
 bin/php-cs-fixer
+
+###> qossmic/deptrac ###
+/.deptrac.cache
+###< qossmic/deptrac ###

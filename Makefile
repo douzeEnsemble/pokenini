@@ -24,7 +24,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : data init_db data_app
 .PHONY : composer vendor sf cc
 .PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
-.PHONY : quality phpcs phpcsfixer phpcsfixer_fix phpcbf phpmd psalm phpstan deptrac
+.PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm phpstan deptrac
 .PHONY : integration newman
 .PHONY : measures clear-build coverage htmlcoverage infection infection_api infection_web
 .PHONY : security composer_audit security_checker
@@ -152,12 +152,19 @@ tests_browser_web: ## Execute browser tests for Web module
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
-quality: phpcs phpcsfixer phpmd psalm phpstan deptrac
+quality: phpcsfixer phpmd psalm phpstan deptrac
 
-phpcs: ## Execute phpcs
-	@$(PHP) vendor/bin/phpcs
-phpcbf: ## Execute phpcbf (code beautifier) /!\ This could edit your code
-	@$(PHP) vendor/bin/phpcbf
+bin/php-cs-fixer: ## Download the file if needed
+	wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O bin/php-cs-fixer
+	chmod a+x bin/php-cs-fixer
+
+phpcsfixer: ## Execute PHP CS Fixer "Check"
+phpcsfixer: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer check --diff
+
+phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
+phpcsfixer_fix: bin/php-cs-fixer
+	@$(PHP) bin/php-cs-fixer fix
 
 phpmd: ## Execute phpmd
 	@$(PHP) vendor/bin/phpmd src,tests text ruleset.xml
@@ -171,19 +178,6 @@ phpstan: ## Execute phpstan analyse
 
 deptrac: ## Execute deptrac analyse
 	@$(PHP) vendor/bin/deptrac analyse
-
-bin/php-cs-fixer: ## Download the file if needed
-	wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O bin/php-cs-fixer
-	chmod a+x bin/php-cs-fixer
-
-phpcsfixer: ## Execute PHP CS Fixer "Check"
-phpcsfixer: bin/php-cs-fixer
-	@$(PHP) bin/php-cs-fixer check
-
-phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
-phpcsfixer_fix: bin/php-cs-fixer
-	@$(PHP) bin/php-cs-fixer fix
-
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests
