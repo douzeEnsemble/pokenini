@@ -25,14 +25,3 @@ jobs:
             path: ~/.symfony/cache
             key: db
       - uses: symfonycorp/security-checker-action@v5
-  
-  phpcsfixer:
-    name: PHP-CS-Fixer
-    runs-on: ubuntu-latest
-    steps:
-      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
-        with:
-          args: check src
-      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
-        with:
-          args: check tests
