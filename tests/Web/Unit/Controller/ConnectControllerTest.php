@@ -7,14 +7,14 @@ namespace App\Tests\Web\Unit\Controller;
 use App\Web\Controller\ConnectController;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(ConnectController::class)]
 class ConnectControllerTest extends TestCase
 {
     public function testLogout(): void

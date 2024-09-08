@@ -9,13 +9,13 @@ use App\Api\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
 use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokemonAvailabilitiesCalculatorService::class)]
 class PokemonAvailabilitiesCalculatorServiceTest extends TestCase
 {
     public function testExecute(): void

@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Connect;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\ConnectController;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(ConnectController::class)]
 class ConnectTest extends WebTestCase
 {
     use TestNavTrait;

@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\OuterRoom;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\OuterRoomController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(OuterRoomController::class)]
 class OuterRoomTest extends WebTestCase
 {
     use TestNavTrait;

@@ -6,12 +6,12 @@ namespace App\Tests\Api\Functional\Updater;
 
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\RegionsUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(RegionsUpdater::class)]
 class RegionsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 10;

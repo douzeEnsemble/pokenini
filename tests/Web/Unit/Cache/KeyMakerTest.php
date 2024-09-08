@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Cache;
 
 use App\Web\Cache\KeyMaker;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(KeyMaker::class)]
 class KeyMakerTest extends TestCase
 {
     public function testGetDexKey(): void

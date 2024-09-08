@@ -8,6 +8,7 @@ use App\Web\Controller\AlbumUpsertController;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ModifyAlbumService;
 use App\Web\Service\CacheInvalidator\AlbumsCacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpClient\Exception\TransportException;
@@ -20,9 +21,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumUpsertController::class)]
 class AlbumUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void

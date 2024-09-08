@@ -7,14 +7,14 @@ namespace App\Tests\Api\Unit\Service;
 use App\Api\Entity\Pokemon;
 use App\Api\Repository\GamesShiniesAvailabilitiesRepository;
 use App\Api\Service\GamesShiniesAvailabilitiesService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\Cache\CacheInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GamesShiniesAvailabilitiesService::class)]
 class GamesShiniesAvailabilitiesServiceTest extends TestCase
 {
     public function testCleanCacheFromPokemon(): void

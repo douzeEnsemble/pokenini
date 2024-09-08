@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Message;
 
 use App\Api\Message\UpdateGamesAvailabilities;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateGamesAvailabilities::class)]
 class UpdateGamesAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void

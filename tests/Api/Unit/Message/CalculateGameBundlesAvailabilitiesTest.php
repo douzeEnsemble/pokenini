@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Message;
 
 use App\Api\Message\CalculateGameBundlesAvailabilities;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CalculateGameBundlesAvailabilities::class)]
 class CalculateGameBundlesAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void

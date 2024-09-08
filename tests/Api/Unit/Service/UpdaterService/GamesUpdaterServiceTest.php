@@ -9,13 +9,13 @@ use App\Api\Service\UpdaterService\GamesUpdaterService;
 use App\Api\Updater\GameBundlesUpdater;
 use App\Api\Updater\GameGenerationsUpdater;
 use App\Api\Updater\GamesUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GamesUpdaterService::class)]
 class GamesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

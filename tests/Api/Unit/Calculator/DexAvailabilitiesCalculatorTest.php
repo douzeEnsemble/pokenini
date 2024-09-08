@@ -10,13 +10,13 @@ use App\Api\Entity\Dex;
 use App\Api\Repository\DexAvailabilitiesRepository;
 use App\Api\Repository\DexRepository;
 use Doctrine\ORM\AbstractQuery;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexAvailabilitiesCalculator::class)]
 class DexAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void

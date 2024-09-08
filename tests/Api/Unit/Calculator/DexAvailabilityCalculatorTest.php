@@ -12,13 +12,13 @@ use App\Api\Entity\Pokemon;
 use App\Api\Repository\PokemonsRepository;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexAvailabilityCalculator::class)]
 class DexAvailabilityCalculatorTest extends TestCase
 {
     public function testCalculate(): void

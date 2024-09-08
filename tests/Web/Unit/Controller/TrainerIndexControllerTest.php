@@ -8,6 +8,7 @@ use App\Web\Controller\TrainerIndexController;
 use App\Web\Security\User;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetDexService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +19,8 @@ use Twig\Environment;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TrainerIndexController::class)]
 class TrainerIndexControllerTest extends TestCase
 {
     public function testIndexTrainer(): void

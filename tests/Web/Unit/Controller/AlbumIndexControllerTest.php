@@ -8,6 +8,7 @@ use App\Web\Controller\AlbumIndexController;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokedexService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpFoundation\InputBag;
@@ -17,9 +18,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumIndexController::class)]
 class AlbumIndexControllerTest extends TestCase
 {
     public function testIndexApiException(): void

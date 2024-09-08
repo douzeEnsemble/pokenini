@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\DTO;
 
 use App\Api\DTO\TrainerDexAttributes;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TrainerDexAttributes::class)]
 class TrainerDexAttributesTest extends TestCase
 {
     public function testOk(): void

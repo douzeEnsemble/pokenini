@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
+use App\Api\Controller\ReportsController;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(ReportsController::class)]
 class ReportsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;

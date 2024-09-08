@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\DTO\AlbumReport;
 
 use App\Api\DTO\AlbumReport\Statistic;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(Statistic::class)]
 class StatisticTest extends TestCase
 {
     public function testConstructor(): void

@@ -7,14 +7,14 @@ namespace App\Tests\Api\Unit\DTO\AlbumFilter;
 use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\DTO\AlbumFilter\AlbumFiltersRequest;
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumFiltersRequest::class)]
 class AlbumFiltersRequestTest extends TestCase
 {
     public function testAlbumFiltersFromRequestEmpty(): void

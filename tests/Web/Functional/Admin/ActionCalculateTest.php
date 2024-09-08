@@ -5,16 +5,17 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Admin;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
+use App\Web\Controller\AdminActionController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AdminActionController::class)]
 class ActionCalculateTest extends WebTestCase
 {
     use TestNavTrait;

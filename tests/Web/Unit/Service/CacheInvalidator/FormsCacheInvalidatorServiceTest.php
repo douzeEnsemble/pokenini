@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\CacheInvalidator;
 
 use App\Web\Service\CacheInvalidator\FormsCacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(FormsCacheInvalidatorService::class)]
 class FormsCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void

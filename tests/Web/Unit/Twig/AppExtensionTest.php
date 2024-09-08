@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Twig;
 
 use App\Web\Twig\AppExtension;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFilter;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AppExtension::class)]
 class AppExtensionTest extends TestCase
 {
     public function testGetFilters(): void

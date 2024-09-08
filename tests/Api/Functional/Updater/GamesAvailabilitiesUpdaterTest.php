@@ -7,12 +7,12 @@ namespace App\Tests\Api\Functional\Updater;
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\GamesAvailabilitiesUpdater;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GamesAvailabilitiesUpdater::class)]
 class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameAvailabilityTrait;

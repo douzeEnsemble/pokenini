@@ -7,13 +7,13 @@ namespace App\Tests\Web\Browser\Album;
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversNothing]
 #[Group('browser-testing')]
 class ScreenshotModeTest extends AbstractBrowserTestCase
 {

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Action;
 
+use App\Web\Controller\AlbumUpsertController;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumUpsertController::class)]
 class UpdateTest extends WebTestCase
 {
     public function testUpdateConnected(): void

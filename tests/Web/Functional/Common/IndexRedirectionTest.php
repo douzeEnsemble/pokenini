@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Common;
 
+use App\Web\Controller\HomeController;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(HomeController::class)]
 class IndexRedirectionTest extends WebTestCase
 {
     public function testRedirection(): void

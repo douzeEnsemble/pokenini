@@ -7,13 +7,13 @@ namespace App\Tests\Api\Functional\Service\Album;
 use App\Api\Service\Album\AlbumDexService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumDexService::class)]
 class AlbumDexServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

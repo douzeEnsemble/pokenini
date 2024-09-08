@@ -8,13 +8,13 @@ use App\Api\Repository\PokemonAvailabilitiesRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokemonAvailabilitiesRepository::class)]
 class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

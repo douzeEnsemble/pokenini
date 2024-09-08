@@ -6,13 +6,13 @@ namespace App\Tests\Api\Unit\Calculator\PokemonAvailabilities;
 
 use App\Api\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
 use App\Api\Repository\PokemonAvailabilitiesRepository;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameBundlesShinyCalculator::class)]
 class GameBundlesShinyCalculatorTest extends TestCase
 {
     public function testExecute(): void

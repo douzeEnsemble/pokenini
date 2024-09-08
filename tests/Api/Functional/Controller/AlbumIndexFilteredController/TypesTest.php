@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
+use App\Api\Controller\AlbumIndexController;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(AlbumIndexController::class)]
 class TypesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;

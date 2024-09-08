@@ -6,12 +6,12 @@ namespace App\Tests\Api\Functional\Updater;
 
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\GameGenerationsUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameGenerationsUpdater::class)]
 class GameGenerationsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 9;

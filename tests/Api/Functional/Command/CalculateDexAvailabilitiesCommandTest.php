@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\Command\CalculateDexAvailabilitiesCommand;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Api\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CalculateDexAvailabilitiesCommand::class)]
 class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;

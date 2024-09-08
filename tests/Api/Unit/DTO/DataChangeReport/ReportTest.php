@@ -6,13 +6,13 @@ namespace App\Tests\Api\Unit\DTO\DataChangeReport;
 
 use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(Report::class)]
 class ReportTest extends TestCase
 {
     public function testConstructor(): void

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Message;
 
 use App\Api\Message\UpdateLabels;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(UpdateLabels::class)]
 class UpdateLabelsTest extends TestCase
 {
     public function testSerialize(): void

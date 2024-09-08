@@ -11,15 +11,15 @@ use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Exception as GoogleServiceException;
 use Google\Service\Sheets\ValueRange;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
-class CatchStateUpdaterTest extends TestCase
+#[CoversClass(CatchStatesUpdater::class)]
+class CatchStatesUpdaterTest extends TestCase
 {
     public function testGettingSpreasheetLog(): void
     {

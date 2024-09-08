@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\StaticPage;
 
+use App\Web\Controller\StaticPageController;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(StaticPageController::class)]
 class StaticPageTest extends WebTestCase
 {
     public function testFrenchLegals(): void

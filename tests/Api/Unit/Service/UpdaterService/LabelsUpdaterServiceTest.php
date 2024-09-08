@@ -11,13 +11,13 @@ use App\Api\Service\UpdaterService\LabelsUpdaterService;
 use App\Api\Updater\CatchStatesUpdater;
 use App\Api\Updater\RegionsUpdater;
 use App\Api\Updater\TypesUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(LabelsUpdaterService::class)]
 class LabelsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void

@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller\Debug;
 
+use App\Api\Controller\Debug\DebugDexController;
 use App\Tests\Api\Functional\Controller\AbstractTestControllerApi;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DebugDexController::class)]
 class DebugDexControllerTest extends AbstractTestControllerApi
 {
     public function testDex(): void

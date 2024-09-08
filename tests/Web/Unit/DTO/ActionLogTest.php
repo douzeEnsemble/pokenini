@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\DTO;
 
 use App\Web\DTO\ActionLog;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(ActionLog::class)]
 class ActionLogTest extends TestCase
 {
     public function testFullCreateFromArray(): void

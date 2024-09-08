@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Security;
 use App\Web\Security\GoogleAuthenticator;
 use App\Web\Security\User;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +18,8 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GoogleAuthenticator::class)]
 class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 {
     public function testOnAuthenticationSuccessNotATrainer(): void

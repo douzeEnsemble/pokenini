@@ -8,13 +8,13 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\PokedexRepository;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(PokedexRepository::class)]
 class PokedexRepositoryListTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

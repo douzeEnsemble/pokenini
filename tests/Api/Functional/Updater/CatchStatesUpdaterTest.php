@@ -6,12 +6,12 @@ namespace App\Tests\Api\Functional\Updater;
 
 use App\Api\Updater\AbstractUpdater;
 use App\Api\Updater\CatchStatesUpdater;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(CatchStatesUpdater::class)]
 class CatchStatesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 5;

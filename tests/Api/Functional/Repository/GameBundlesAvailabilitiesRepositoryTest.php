@@ -12,13 +12,13 @@ use App\Api\Repository\GameBundlesRepository;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(GameBundlesAvailabilitiesRepository::class)]
 class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

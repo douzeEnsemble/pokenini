@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Utils;
 
 use App\Web\Utils\JsonDecoder;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(JsonDecoder::class)]
 class JsonDecoderTest extends TestCase
 {
     /**

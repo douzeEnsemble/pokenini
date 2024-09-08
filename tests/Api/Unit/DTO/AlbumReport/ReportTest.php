@@ -6,13 +6,13 @@ namespace App\Tests\Api\Unit\DTO\AlbumReport;
 
 use App\Api\DTO\AlbumReport\Report;
 use App\Api\DTO\AlbumReport\Statistic;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(Report::class)]
 class ReportTest extends TestCase
 {
     public function testConstructor(): void

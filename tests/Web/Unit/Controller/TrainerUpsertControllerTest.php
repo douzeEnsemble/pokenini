@@ -9,6 +9,7 @@ use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ModifyDexService;
 use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
 use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpClient\Exception\TransportException;
@@ -20,9 +21,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(TrainerUpsertController::class)]
 class TrainerUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void

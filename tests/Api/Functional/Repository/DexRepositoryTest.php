@@ -8,13 +8,13 @@ use App\Api\Entity\Dex;
 use App\Api\Repository\DexRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(DexRepository::class)]
 class DexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

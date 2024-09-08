@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\AlbumFilters;
 
 use App\Web\AlbumFilters\Mapping;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversClass(Mapping::class)]
 class MappingTest extends TestCase
 {
     public function testGet(): void
