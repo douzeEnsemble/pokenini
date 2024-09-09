@@ -2,9 +2,6 @@
     "composer/pcre": {
         "version": "1.0.0"
     },
-    "composer/semver": {
-        "version": "3.2.7"
-    },
     "composer/xdebug-handler": {
         "version": "2.0.4"
     },
@@ -155,15 +152,6 @@
     },
     "phar-io/version": {
         "version": "3.2.1"
-    },
-    "phpdocumentor/reflection-common": {
-        "version": "2.2.0"
-    },
-    "phpdocumentor/reflection-docblock": {
-        "version": "5.3.0"
-    },
-    "phpdocumentor/type-resolver": {
-        "version": "1.6.0"
     },
     "phpstan/phpstan": {
         "version": "1.10",
