@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\MessageHandler;
 
+use App\Api\ActionEnder\ActionEnderTrait;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdateLabels;
+use App\Api\MessageHandler\Traits\CalculateHandlerTrait;
 use App\Api\MessageHandler\UpdateHandlerInterface;
 use App\Api\MessageHandler\UpdateLabelsHandler;
 use App\Api\Service\UpdaterService\LabelsUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -20,6 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdateLabelsHandler::class)]
 #[UsesClass(LabelsUpdaterService::class)]
 #[UsesClass(UpdateLabels::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
