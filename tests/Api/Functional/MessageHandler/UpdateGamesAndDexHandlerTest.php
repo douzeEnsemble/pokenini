@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\MessageHandler;
 
 use App\Api\Message\UpdateGamesAndDex;
+use App\Api\MessageHandler\UpdateGamesAndDexHandler;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -16,7 +17,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(UpdateGamesAndDex::class)]
+#[CoversClass(UpdateGamesAndDexHandler::class)]
 class UpdateGamesAndDexHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

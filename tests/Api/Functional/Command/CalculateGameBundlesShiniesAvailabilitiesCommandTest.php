@@ -4,7 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\ActionStarter\AbstractActionStarter;
+use App\Api\ActionStarter\CalculateGameBundlesShiniesAvailabilitiesActionStarter;
+use App\Api\Command\AbstractCalculateCommand;
 use App\Api\Command\CalculateGameBundlesShiniesAvailabilitiesCommand;
+use App\Api\Message\AbstractActionMessage;
+use App\Api\Message\CalculateGameBundlesShiniesAvailabilities;
+use App\Api\MessageHandler\CalculateGameBundlesShiniesAvailabilitiesHandler;
 use App\Api\Repository\GamesShiniesAvailabilitiesRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
@@ -15,6 +21,12 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesCommand::class)]
+#[CoversClass(AbstractCalculateCommand::class)]
+#[CoversClass(CalculateGameBundlesShiniesAvailabilitiesActionStarter::class)]
+#[CoversClass(AbstractActionStarter::class)]
+#[CoversClass(CalculateGameBundlesShiniesAvailabilities::class)]
+#[CoversClass(AbstractActionMessage::class)]
+#[CoversClass(CalculateGameBundlesShiniesAvailabilitiesHandler::class)]
 class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameShinyAvailabilityTrait;

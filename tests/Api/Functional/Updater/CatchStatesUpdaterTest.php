@@ -12,6 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(CatchStatesUpdater::class)]
+#[CoversClass(AbstractUpdater::class)]
 class CatchStatesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 5;

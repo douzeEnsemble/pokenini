@@ -103,6 +103,7 @@ abstract class AbstractTestCalculateHandler extends TestCase
         ;
 
         /** @var CalculatorServiceInterface $calculatorService */
+        /** @var EntityManagerInterface $entityManager */
         $handler = $this->getHandler($calculatorService, $entityManager);
 
         $message = $this->getMessage();

@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\ActionStarter\AbstractActionStarter;
+use App\Api\ActionStarter\CalculateDexAvailabilitiesActionStarter;
+use App\Api\Command\AbstractCalculateCommand;
 use App\Api\Command\CalculateDexAvailabilitiesCommand;
+use App\Api\Message\AbstractActionMessage;
+use App\Api\Message\CalculateDexAvailabilities;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
@@ -16,6 +21,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(CalculateDexAvailabilitiesCommand::class)]
+#[CoversClass(AbstractCalculateCommand::class)]
+#[CoversClass(CalculateDexAvailabilitiesActionStarter::class)]
+#[CoversClass(AbstractActionStarter::class)]
+#[CoversClass(CalculateDexAvailabilities::class)]
+#[CoversClass(AbstractActionMessage::class)]
 class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;

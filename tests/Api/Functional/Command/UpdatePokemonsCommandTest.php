@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\ActionStarter\AbstractActionStarter;
+use App\Api\ActionStarter\UpdatePokemonsActionStarter;
+use App\Api\Command\AbstractUpdateCommand;
 use App\Api\Command\UpdatePokemonsCommand;
+use App\Api\Message\AbstractActionMessage;
+use App\Api\Message\UpdatePokemons;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -13,6 +18,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(UpdatePokemonsCommand::class)]
+#[CoversClass(AbstractUpdateCommand::class)]
+#[CoversClass(UpdatePokemonsActionStarter::class)]
+#[CoversClass(AbstractActionStarter::class)]
+#[CoversClass(UpdatePokemons::class)]
+#[CoversClass(AbstractActionMessage::class)]
 class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;

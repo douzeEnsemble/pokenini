@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\TypesController;
+use App\Api\Service\TypesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(TypesController::class)]
+#[CoversClass(TypesService::class)]
 class TypesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void

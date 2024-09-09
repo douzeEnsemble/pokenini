@@ -12,6 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(GamesUpdater::class)]
+#[CoversClass(AbstractUpdater::class)]
 class GamesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 39;

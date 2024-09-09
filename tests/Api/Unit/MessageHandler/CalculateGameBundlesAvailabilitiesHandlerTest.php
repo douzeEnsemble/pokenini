@@ -12,11 +12,14 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
  * @internal
  */
-#[CoversClass(CalculateGameBundlesAvailabilities::class)]
+#[CoversClass(CalculateGameBundlesAvailabilitiesHandler::class)]
+#[UsesClass(GameBundlesAvailabilitiesCalculatorService::class)]
+#[UsesClass(CalculateGameBundlesAvailabilities::class)]
 class CalculateGameBundlesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Calculator;
 
+use App\Api\Calculator\AbstractCalculator;
 use App\Api\Calculator\DexAvailabilitiesCalculator;
 use App\Api\Calculator\DexAvailabilityCalculator;
+use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Entity\Dex;
 use App\Api\Repository\DexAvailabilitiesRepository;
 use App\Api\Repository\DexRepository;
@@ -17,8 +19,28 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(DexAvailabilitiesCalculator::class)]
+#[CoversClass(AbstractCalculator::class)]
 class DexAvailabilitiesCalculatorTest extends TestCase
 {
+    public function testInit(): void
+    {
+        $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
+
+        $dexRepository = $this->createMock(DexRepository::class);
+
+        $dexAvailabilityCalculator = $this->createMock(DexAvailabilityCalculator::class);
+
+        $service = new DexAvailabilitiesCalculator(
+            $dexAvailabilitiesRepository,
+            $dexRepository,
+            $dexAvailabilityCalculator,
+        );
+
+        $service->init();
+
+        $this->assertInstanceOf(Statistic::class, $service->getStatistic());
+    }
+
     public function testExecute(): void
     {
         $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);

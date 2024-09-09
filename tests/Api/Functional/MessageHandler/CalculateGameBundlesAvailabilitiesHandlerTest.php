@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\MessageHandler;
 
 use App\Api\Message\CalculateGameBundlesAvailabilities;
+use App\Api\MessageHandler\CalculateGameBundlesAvailabilitiesHandler;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -16,7 +17,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(CalculateGameBundlesAvailabilities::class)]
+#[CoversClass(CalculateGameBundlesAvailabilitiesHandler::class)]
 class CalculateGameBundlesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

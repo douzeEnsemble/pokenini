@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Controller;
 
+use App\Api\Service\TrainerDexService;
 use App\Web\Controller\AlbumUpsertController;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ModifyAlbumService;
@@ -23,6 +24,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @internal
  */
 #[CoversClass(AlbumUpsertController::class)]
+#[CoversClass(TrainerDexService::class)]
 class AlbumUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void

@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\RegionalFormsController;
+use App\Api\Service\RegionalFormsService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(RegionalFormsController::class)]
+#[CoversClass(RegionalFormsService::class)]
 class RegionalFormsControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\MessageHandler;
 
 use App\Api\Message\UpdatePokemons;
+use App\Api\MessageHandler\UpdatePokemonsHandler;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -16,7 +17,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(UpdatePokemons::class)]
+#[CoversClass(UpdatePokemonsHandler::class)]
 class UpdatePokemonsHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

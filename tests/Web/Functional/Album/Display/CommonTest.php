@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Album\Display;
 
+use App\Api\Service\PokedexService;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Controller\AlbumIndexController;
 use App\Web\Security\User;
@@ -15,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @internal
  */
 #[CoversClass(AlbumIndexController::class)]
+#[CoversClass(PokedexService::class)]
 class CommonTest extends WebTestCase
 {
     use TestNavTrait;

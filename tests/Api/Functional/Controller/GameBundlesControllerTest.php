@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\GameBundlesController;
+use App\Api\Service\GameBundlesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(GameBundlesController::class)]
+#[CoversClass(GameBundlesService::class)]
 class GameBundlesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
