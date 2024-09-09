@@ -12,6 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(RegionalDexNumbersUpdater::class)]
+#[CoversClass(AbstractUpdater::class)]
 class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 12;

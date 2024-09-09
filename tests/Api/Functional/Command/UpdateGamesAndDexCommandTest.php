@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Command;
 
+use App\Api\ActionStarter\AbstractActionStarter;
+use App\Api\ActionStarter\UpdateGamesAndDexActionStarter;
+use App\Api\Command\AbstractUpdateCommand;
 use App\Api\Command\UpdateGamesAndDexCommand;
+use App\Api\Message\AbstractActionMessage;
+use App\Api\Message\UpdateGamesAndDex;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -13,6 +18,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(UpdateGamesAndDexCommand::class)]
+#[CoversClass(AbstractUpdateCommand::class)]
+#[CoversClass(UpdateGamesAndDexActionStarter::class)]
+#[CoversClass(AbstractActionStarter::class)]
+#[CoversClass(UpdateGamesAndDex::class)]
+#[CoversClass(AbstractActionMessage::class)]
 class UpdateGamesAndDexCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;

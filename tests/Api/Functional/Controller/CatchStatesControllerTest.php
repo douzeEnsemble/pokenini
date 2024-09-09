@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\CatchStatesController;
+use App\Api\Service\CatchStatesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(CatchStatesController::class)]
+#[CoversClass(CatchStatesService::class)]
 class CatchStatesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void

@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\VariantFormsController;
+use App\Api\Service\VariantFormsService;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(VariantFormsController::class)]
+#[CoversClass(VariantFormsService::class)]
 class VariantFormsControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
