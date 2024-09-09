@@ -170,7 +170,7 @@ phpmd: ## Execute phpmd
 	@$(PHP) vendor/bin/phpmd src,tests text ruleset.xml
 
 psalm: ## Execute psalm
-	@$(PHP) vendor/bin/psalm --show-info=false
+	@$(PHP) vendor/bin/psalm.phar --show-info=false
 
 phpstan: ## Execute phpstan analyse
 	@$(PHP) vendor/bin/phpstan clear-result-cache
