@@ -52,7 +52,7 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "hautelook/alice-bundle": "2.14.*",
-        "infection/infection": "0.27.*",
+        "infection/infection": "0.29.*",
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-doctrine": "^1.3",
