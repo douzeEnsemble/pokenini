@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\MessageHandler;
 
+use App\Api\ActionEnder\ActionEnderTrait;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\CalculateGameBundlesShiniesAvailabilities;
 use App\Api\MessageHandler\CalculateGameBundlesShiniesAvailabilitiesHandler;
 use App\Api\MessageHandler\CalculateHandlerInterface;
+use App\Api\MessageHandler\Traits\CalculateHandlerTrait;
 use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\GameBundlesShiniesAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -20,6 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesHandler::class)]
 #[UsesClass(GameBundlesShiniesAvailabilitiesCalculatorService::class)]
 #[UsesClass(CalculateGameBundlesShiniesAvailabilities::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string

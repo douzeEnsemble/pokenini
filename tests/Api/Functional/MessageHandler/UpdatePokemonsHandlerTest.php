@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\MessageHandler;
 
+use App\Api\ActionEnder\ActionEnderTrait;
 use App\Api\Message\UpdatePokemons;
 use App\Api\MessageHandler\UpdatePokemonsHandler;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
@@ -11,6 +12,7 @@ use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -18,6 +20,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  * @internal
  */
 #[CoversClass(UpdatePokemonsHandler::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdatePokemonsHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

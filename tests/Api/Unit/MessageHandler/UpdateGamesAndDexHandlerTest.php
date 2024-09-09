@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\MessageHandler;
 
+use App\Api\ActionEnder\ActionEnderTrait;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\UpdateGamesAndDex;
+use App\Api\MessageHandler\Traits\CalculateHandlerTrait;
 use App\Api\MessageHandler\UpdateGamesAndDexHandler;
 use App\Api\MessageHandler\UpdateHandlerInterface;
 use App\Api\Service\UpdaterService\GamesAndDexUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -20,6 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdateGamesAndDexHandler::class)]
 #[UsesClass(GamesAndDexUpdaterService::class)]
 #[UsesClass(UpdateGamesAndDex::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateGamesAndDexHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string
