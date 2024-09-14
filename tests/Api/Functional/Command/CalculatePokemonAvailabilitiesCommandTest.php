@@ -12,6 +12,7 @@ use App\Api\Command\CalculatePokemonAvailabilitiesCommand;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\CalculatePokemonAvailabilities;
 use App\Api\Repository\PokemonsRepository;
+use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
@@ -23,6 +24,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
  * @internal
  */
 #[CoversClass(CalculatePokemonAvailabilitiesCommand::class)]
+#[CoversClass(PokemonAvailabilitiesCalculatorService::class)]
 #[CoversClass(AbstractCalculateCommand::class)]
 #[CoversClass(CalculatePokemonAvailabilitiesActionStarter::class)]
 #[CoversClass(AbstractActionStarter::class)]

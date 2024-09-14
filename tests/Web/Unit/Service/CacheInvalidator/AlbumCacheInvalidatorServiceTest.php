@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\CacheInvalidator;
 
 use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
+use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
@@ -13,6 +15,7 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
  * @internal
  */
 #[CoversClass(AlbumCacheInvalidatorService::class)]
+#[CoversTrait(CacheRegisterTrait::class)]
 class AlbumCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
@@ -24,6 +27,7 @@ class AlbumCacheInvalidatorServiceTest extends TestCase
         $cache->get('register_album', fn () => ['album_home_123', 'album_home_456']);
 
         $service = new AlbumCacheInvalidatorService($cache);
+        $service->invalidate('unknown', '123');
         $service->invalidate('home', '123');
 
         $values = $cache->getValues();
@@ -35,5 +39,27 @@ class AlbumCacheInvalidatorServiceTest extends TestCase
         /** @var string[] $register */
         $register = $cache->getItem('register_album')->get();
         $this->assertCount(1, $register);
+    }
+
+    public function testInvalidateMock(): void
+    {
+        $cache = $this->createMock(ArrayAdapter::class);
+        $cache
+            ->expects($this->exactly(2))
+            ->method('get')
+            ->with('register_album')
+            ->willReturnCallback(function ($key, $callback) {
+                unset($key); // To remove PHPMD.UnusedFormalParameter warning
+
+                return $callback();
+            })
+        ;
+        $cache
+            ->expects($this->exactly(2))
+            ->method('delete')
+        ;
+
+        $service = new AlbumCacheInvalidatorService($cache);
+        $service->invalidate('unknown', '123');
     }
 }

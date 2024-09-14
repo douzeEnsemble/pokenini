@@ -20,7 +20,7 @@ class GamesShiniesAvailabilitiesService
 
     public function getFromPokemon(Pokemon $pokemon): GamesShiniesAvailabilities
     {
-        $key = self::CACHE_PREFIX.$pokemon->slug;
+        $key = $this->getCacheKey($pokemon);
 
         /** @var GamesShiniesAvailabilities */
         return $this->cache->get($key, function () use ($pokemon) {

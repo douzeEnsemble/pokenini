@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Service\UpdaterService;
 
+use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\FormsUpdaterService;
 use App\Api\Updater\Forms\CategoryFormsUpdater;
@@ -20,6 +21,25 @@ use PHPUnit\Framework\TestCase;
 class FormsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertIsArray($report->detail);
+        $this->assertInstanceOf(Statistic::class, $report->detail[0]);
+    }
+
+    private function getService(): FormsUpdaterService
     {
         $categoryFormUpdater = $this->createMock(CategoryFormsUpdater::class);
         $categoryFormUpdater
@@ -65,13 +85,11 @@ class FormsUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('var'))
         ;
 
-        $service = new FormsUpdaterService(
+        return new FormsUpdaterService(
             $categoryFormUpdater,
             $regionalFormUpdater,
             $specialFormUpdater,
             $variantFormUpdater
         );
-
-        $service->execute();
     }
 }

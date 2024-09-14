@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Repository;
 
 use App\Api\Repository\PokedexRepository;
+use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
  */
 #[CoversClass(PokedexRepository::class)]
+#[CoversTrait(FiltersTrait::class)]
 class PokedexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -57,5 +60,49 @@ class PokedexRepositoryTest extends KernelTestCase
 
         $this->assertEquals('Maybe not', $pokedexAfter['name']);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
+    }
+
+    public function testGetDexUsage(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $counts = $repo->getDexUsage();
+
+        $this->assertEquals(
+            [
+                [
+                    'nb' => 2,
+                    'name' => 'Red / Green / Blue / Yellow',
+                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
+                ],
+                [
+                    'nb' => 2,
+                    'name' => 'Gold / Silver / Crystal',
+                    'french_name' => 'Or / Argent / Cristal',
+                ],
+                [
+                    'nb' => 2,
+                    'name' => 'Home',
+                    'french_name' => 'Home',
+                ],
+                [
+                    'nb' => 1,
+                    'name' => 'Ruby / Sapphire / Emerald',
+                    'french_name' => 'Rubis / Saphir / Émeraude',
+                ],
+                [
+                    'nb' => 1,
+                    'name' => "Home\nShiny",
+                    'french_name' => "Home\nChromatique",
+                ],
+                [
+                    'nb' => 1,
+                    'name' => 'Home PoGo',
+                    'french_name' => 'Home PoGo',
+                ],
+            ],
+            $counts
+        );
     }
 }

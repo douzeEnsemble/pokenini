@@ -12,6 +12,7 @@ use App\Api\Command\CalculateDexAvailabilitiesCommand;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\CalculateDexAvailabilities;
 use App\Api\Repository\PokemonsRepository;
+use App\Api\Service\CalculatorService\DexAvailabilitiesCalculatorService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
@@ -23,6 +24,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
  * @internal
  */
 #[CoversClass(CalculateDexAvailabilitiesCommand::class)]
+#[CoversClass(DexAvailabilitiesCalculatorService::class)]
 #[CoversClass(AbstractCalculateCommand::class)]
 #[CoversClass(CalculateDexAvailabilitiesActionStarter::class)]
 #[CoversClass(AbstractActionStarter::class)]

@@ -61,4 +61,12 @@ class UserProviderTest extends TestCase
 
         $this->assertSame($initialUser, $user);
     }
+
+    public function testSupportsClass(): void
+    {
+        $provider = new UserProvider();
+
+        $this->assertTrue($provider->supportsClass('App\Web\Security\User'));
+        $this->assertFalse($provider->supportsClass('App\Web\Entity\User'));
+    }
 }

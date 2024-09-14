@@ -12,6 +12,7 @@ use App\Api\Command\CalculateGameBundlesAvailabilitiesCommand;
 use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\CalculateGameBundlesAvailabilities;
 use App\Api\Repository\GamesAvailabilitiesRepository;
+use App\Api\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
@@ -22,6 +23,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
  * @internal
  */
 #[CoversClass(CalculateGameBundlesAvailabilitiesCommand::class)]
+#[CoversClass(GameBundlesAvailabilitiesCalculatorService::class)]
 #[CoversClass(AbstractCalculateCommand::class)]
 #[CoversClass(CalculateGameBundlesAvailabilitiesActionStarter::class)]
 #[CoversClass(AbstractActionStarter::class)]

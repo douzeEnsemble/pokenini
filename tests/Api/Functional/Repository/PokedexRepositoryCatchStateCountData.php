@@ -93,6 +93,19 @@ class PokedexRepositoryCatchStateCountData
                     2,
                 ],
             ],
+            'any_types_null' => [
+                [
+                    'anyTypes' => [
+                        'null',
+                    ],
+                ],
+                [
+                    1,
+                    3,
+                    1,
+                    4,
+                ],
+            ],
         ];
     }
 

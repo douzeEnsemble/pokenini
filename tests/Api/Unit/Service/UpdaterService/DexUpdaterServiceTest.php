@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Service\UpdaterService;
 
+use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\DexUpdaterService;
 use App\Api\Updater\DexUpdater;
@@ -18,6 +19,25 @@ class DexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertIsArray($report->detail);
+        $this->assertInstanceOf(Statistic::class, $report->detail[0]);
+    }
+
+    private function getService(): DexUpdaterService
+    {
         $dexUpdater = $this->createMock(DexUpdater::class);
         $dexUpdater
             ->expects($this->once())
@@ -29,10 +49,6 @@ class DexUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('d'))
         ;
 
-        $service = new DexUpdaterService(
-            $dexUpdater,
-        );
-
-        $service->execute();
+        return new DexUpdaterService($dexUpdater);
     }
 }

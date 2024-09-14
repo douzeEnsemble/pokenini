@@ -9,7 +9,6 @@ use App\Api\Helper\A1Notation;
 use App\Api\Repository\GamesRepository;
 use App\Api\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Framework\Attributes\CodeCoverageIgnore;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
@@ -175,13 +174,14 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $this->statictic->incrementBy($index);
     }
 
-    #[CodeCoverageIgnore]
+    // @codeCoverageIgnoreStart
     protected function upsertRecord(array $record): void
     {
         throw new \RuntimeException(
             "Don't use this method."
         );
     }
+    // @codeCoverageIgnoreEnd
 
     protected function removeExistingRecords(): void
     {

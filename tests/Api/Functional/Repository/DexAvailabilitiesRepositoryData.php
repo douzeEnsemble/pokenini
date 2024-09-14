@@ -63,6 +63,14 @@ class DexAvailabilitiesRepositoryData
                 ],
                 'expectedTotalCount' => 7,
             ],
+            'any_type_null' => [
+                'filters' => [
+                    'anyTypes' => [
+                        'null',
+                    ],
+                ],
+                'expectedTotalCount' => 9,
+            ],
         ];
     }
 

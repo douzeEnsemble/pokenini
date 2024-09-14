@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetPokedexService;
+use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -15,6 +17,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  * @internal
  */
 #[CoversClass(GetPokedexService::class)]
+#[CoversTrait(CacheRegisterTrait::class)]
 class GetPokedexServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
