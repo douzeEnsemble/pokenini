@@ -226,7 +226,9 @@ coverage: build/coverage/coverage-xml
 coverage_html: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
-		php vendor/bin/phpunit --coverage-html=build/coverage/coverage-html
+		php vendor/bin/phpunit \
+            --exclude-group="browser-testing" \
+			--coverage-html=build/coverage/coverage-html
 
 infection: ## Execute all Infection testing
 infection: infection_api infection_web
