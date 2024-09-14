@@ -20,7 +20,7 @@ class GameBundlesAvailabilitiesService
 
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
-        $key = self::CACHE_PREFIX.$pokemon->slug;
+        $key = $this->getCacheKey($pokemon);
 
         /** @var GameBundlesAvailabilities */
         return $this->cache->get($key, function () use ($pokemon) {

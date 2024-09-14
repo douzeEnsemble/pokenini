@@ -6,9 +6,11 @@ namespace App\Tests\Api\Functional\Repository;
 
 use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\PokedexRepository;
+use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -16,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(PokedexRepository::class)]
+#[CoversTrait(FiltersTrait::class)]
 class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
@@ -103,6 +106,66 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsCatchStatesFilters(),
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsGamesFilters(),
             PokedexRepositoryCatchStateCountData::providerGetFamiliesCountsCatchStatesFilters(),
+        );
+    }
+
+    public function testGetCatchStateCountsDefinedByTrainer(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $counts = $repo->getCatchStateCountsDefinedByTrainer();
+
+        $this->assertEquals(
+            [
+                [
+                    'nb' => 28,
+                    'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                ],
+                [
+                    'nb' => 3,
+                    'trainer' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
+                ],
+            ],
+            $counts
+        );
+    }
+
+    public function testGetCatchStateUsage(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $counts = $repo->getCatchStateUsage();
+
+        $this->assertEquals(
+            [
+                [
+                    'nb' => 11,
+                    'name' => 'No',
+                    'french_name' => 'Non',
+                    'color' => '#e57373',
+                ],
+                [
+                    'nb' => 4,
+                    'name' => 'Maybe',
+                    'french_name' => 'Peut être',
+                    'color' => 'blue',
+                ],
+                [
+                    'nb' => 5,
+                    'name' => 'Maybe not',
+                    'french_name' => 'Peut être pas',
+                    'color' => 'yellow',
+                ],
+                [
+                    'nb' => 11,
+                    'name' => 'Yes',
+                    'french_name' => 'Oui',
+                    'color' => '#66bb6a',
+                ],
+            ],
+            $counts
         );
     }
 }

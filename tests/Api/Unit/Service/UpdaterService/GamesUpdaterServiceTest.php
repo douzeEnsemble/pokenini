@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Service\UpdaterService;
 
+use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\GamesUpdaterService;
 use App\Api\Updater\GameBundlesUpdater;
@@ -19,6 +20,25 @@ use PHPUnit\Framework\TestCase;
 class GamesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertIsArray($report->detail);
+        $this->assertInstanceOf(Statistic::class, $report->detail[0]);
+    }
+
+    private function getService(): GamesUpdaterService
     {
         $gameGenerationsUpdater = $this->createMock(GameGenerationsUpdater::class);
         $gameGenerationsUpdater
@@ -53,12 +73,10 @@ class GamesUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('g'))
         ;
 
-        $service = new GamesUpdaterService(
+        return new GamesUpdaterService(
             $gameGenerationsUpdater,
             $gameBundlesUpdater,
             $gamesUpdater
         );
-
-        $service->execute();
     }
 }

@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace App\Web\Service\Api;
 
-use App\Web\Service\Trait\CacheRegisterTrait;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class AbstractApiService implements ApiServiceInterface
 {
-    use CacheRegisterTrait;
-
     public function __construct(
         protected readonly HttpClientInterface $client,
         protected readonly string $appApiUrl,

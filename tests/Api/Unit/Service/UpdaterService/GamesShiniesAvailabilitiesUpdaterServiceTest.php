@@ -6,16 +6,16 @@ namespace App\Tests\Api\Unit\Service\UpdaterService;
 
 use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
-use App\Api\Service\UpdaterService\GamesAvailabilitiesUpdaterService;
-use App\Api\Updater\GamesAvailabilitiesUpdater;
+use App\Api\Service\UpdaterService\GamesShiniesAvailabilitiesUpdaterService;
+use App\Api\Updater\GamesShiniesAvailabilitiesUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  */
-#[CoversClass(GamesAvailabilitiesUpdaterService::class)]
-class GamesAvailabilitiesUpdaterServiceTest extends TestCase
+#[CoversClass(GamesShiniesAvailabilitiesUpdaterService::class)]
+class GamesShiniesAvailabilitiesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
@@ -36,21 +36,21 @@ class GamesAvailabilitiesUpdaterServiceTest extends TestCase
         $this->assertInstanceOf(Statistic::class, $report->detail[0]);
     }
 
-    private function getService(): GamesAvailabilitiesUpdaterService
+    private function getService(): GamesShiniesAvailabilitiesUpdaterService
     {
-        $gamesAvailabilitiesUpdater = $this->createMock(GamesAvailabilitiesUpdater::class);
-        $gamesAvailabilitiesUpdater
+        $gamesShiniesAvailabilitiesUpdater = $this->createMock(GamesShiniesAvailabilitiesUpdater::class);
+        $gamesShiniesAvailabilitiesUpdater
             ->expects($this->once())
             ->method('execute')
         ;
-        $gamesAvailabilitiesUpdater
+        $gamesShiniesAvailabilitiesUpdater
             ->expects($this->once())
             ->method('getStatistic')
             ->willReturn(new Statistic('ga'))
         ;
 
-        return new GamesAvailabilitiesUpdaterService(
-            $gamesAvailabilitiesUpdater
+        return new GamesShiniesAvailabilitiesUpdaterService(
+            $gamesShiniesAvailabilitiesUpdater
         );
     }
 }

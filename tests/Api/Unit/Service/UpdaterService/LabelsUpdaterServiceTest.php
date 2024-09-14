@@ -22,6 +22,25 @@ class LabelsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertIsArray($report->detail);
+        $this->assertInstanceOf(Statistic::class, $report->detail[0]);
+    }
+
+    public function getService(): LabelsUpdaterService
+    {
         $formsUpdaterService = $this->createMock(FormsUpdaterService::class);
         $formsUpdaterService
             ->expects($this->once())
@@ -66,13 +85,11 @@ class LabelsUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('t'))
         ;
 
-        $service = new LabelsUpdaterService(
+        return new LabelsUpdaterService(
             $catchStatesUpdater,
             $formsUpdaterService,
             $regionsUpdater,
             $typesUpdater,
         );
-
-        $service->execute();
     }
 }

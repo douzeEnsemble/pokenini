@@ -19,6 +19,24 @@ class GamesAndDexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertEmpty($report->detail);
+    }
+
+    private function getService(): GamesAndDexUpdaterService
+    {
         $gamesUpdaterService = $this->createMock(GamesUpdaterService::class);
         $gamesUpdaterService
             ->expects($this->once())
@@ -41,11 +59,9 @@ class GamesAndDexUpdaterServiceTest extends TestCase
             ->willReturn(new Report([]))
         ;
 
-        $service = new GamesAndDexUpdaterService(
+        return new GamesAndDexUpdaterService(
             $gamesUpdaterService,
             $dexUpdaterService
         );
-
-        $service->execute();
     }
 }

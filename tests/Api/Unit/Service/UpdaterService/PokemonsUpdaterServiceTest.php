@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Service\UpdaterService;
 
+use App\Api\DTO\DataChangeReport\Report;
 use App\Api\DTO\DataChangeReport\Statistic;
 use App\Api\Service\UpdaterService\PokemonsUpdaterService;
 use App\Api\Updater\PokemonsUpdater;
@@ -18,6 +19,25 @@ class PokemonsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
+        $service = $this->getService();
+
+        $service->execute();
+    }
+
+    public function testGetReport(): void
+    {
+        $service = $this->getService();
+
+        $service->execute();
+        $report = $service->getReport();
+
+        $this->assertInstanceOf(Report::class, $report);
+        $this->assertIsArray($report->detail);
+        $this->assertInstanceOf(Statistic::class, $report->detail[0]);
+    }
+
+    private function getService(): PokemonsUpdaterService
+    {
         $pokemonsUpdater = $this->createMock(PokemonsUpdater::class);
         $pokemonsUpdater
             ->expects($this->once())
@@ -29,10 +49,8 @@ class PokemonsUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('p'))
         ;
 
-        $service = new PokemonsUpdaterService(
+        return new PokemonsUpdaterService(
             $pokemonsUpdater
         );
-
-        $service->execute();
     }
 }

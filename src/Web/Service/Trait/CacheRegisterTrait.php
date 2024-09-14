@@ -32,9 +32,7 @@ trait CacheRegisterTrait
 
         /** @var string[] $list */
         $list = $this->cache->get($registerKey, function () {
-            // @codeCoverageIgnoreStart
             return [];
-            // @codeCoverageIgnoreEnd
         });
 
         $listKey = array_search($key, $list, true);
@@ -58,9 +56,7 @@ trait CacheRegisterTrait
         });
 
         if (!is_array($list)) {
-            // @codeCoverageIgnoreStart
             return [];
-            // @codeCoverageIgnoreEnd
         }
 
         return $list;

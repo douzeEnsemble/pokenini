@@ -24,6 +24,36 @@ class KeyMakerTest extends TestCase
         $this->assertEquals('catch_states', KeyMaker::getCatchStatesKey());
     }
 
+    public function testGetTypesKey(): void
+    {
+        $this->assertEquals('types', KeyMaker::getTypesKey());
+    }
+
+    public function testGetGameBundlesKey(): void
+    {
+        $this->assertEquals('game_bundles', KeyMaker::getGameBundlesKey());
+    }
+
+    public function testGetFormsCategoryKey(): void
+    {
+        $this->assertEquals('forms_category', KeyMaker::getFormsCategoryKey());
+    }
+
+    public function testGetFormsRegionalKey(): void
+    {
+        $this->assertEquals('forms_regional', KeyMaker::getFormsRegionalKey());
+    }
+
+    public function testGetFormsSpecialKey(): void
+    {
+        $this->assertEquals('forms_special', KeyMaker::getFormsSpecialKey());
+    }
+
+    public function testGetFormsVariantKey(): void
+    {
+        $this->assertEquals('forms_variant', KeyMaker::getFormsVariantKey());
+    }
+
     public function testGetAlbumKey(): void
     {
         $this->assertEquals('album', KeyMaker::getAlbumKey());

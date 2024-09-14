@@ -20,13 +20,12 @@ class GamesAvailabilitiesService
 
     public function getFromPokemon(Pokemon $pokemon): GamesAvailabilities
     {
+        $key = $this->getCacheKey($pokemon);
+
         /** @var GamesAvailabilities */
-        return $this->cache->get(
-            $this->getCacheKey($pokemon),
-            function () use ($pokemon) {
-                return $this->repository->getFromPokemon($pokemon);
-            }
-        );
+        return $this->cache->get($key, function () use ($pokemon) {
+            return $this->repository->getFromPokemon($pokemon);
+        });
     }
 
     public function cleanCacheFromPokemon(Pokemon $pokemon): void

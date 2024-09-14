@@ -13,6 +13,7 @@ use App\Api\Message\AbstractActionMessage;
 use App\Api\Message\CalculateGameBundlesShiniesAvailabilities;
 use App\Api\MessageHandler\CalculateGameBundlesShiniesAvailabilitiesHandler;
 use App\Api\Repository\GamesShiniesAvailabilitiesRepository;
+use App\Api\Service\CalculatorService\GameBundlesShiniesAvailabilitiesCalculatorService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
@@ -23,6 +24,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
  * @internal
  */
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesCommand::class)]
+#[CoversClass(GameBundlesShiniesAvailabilitiesCalculatorService::class)]
 #[CoversClass(AbstractCalculateCommand::class)]
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesActionStarter::class)]
 #[CoversClass(AbstractActionStarter::class)]

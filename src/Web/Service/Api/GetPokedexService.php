@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace App\Web\Service\Api;
 
 use App\Web\Cache\KeyMaker;
+use App\Web\Service\Trait\CacheRegisterTrait;
 use App\Web\Utils\JsonDecoder;
 
 class GetPokedexService extends AbstractApiService
 {
+    use CacheRegisterTrait;
+
     /**
      * @param string[]|string[][] $filters
      *

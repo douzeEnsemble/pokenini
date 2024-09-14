@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
-use App\Api\ActionEnder\ActionEnderTrait;
 use App\Api\Controller\AdminController;
 use App\Api\Message\CalculateDexAvailabilities;
 use App\Api\Message\CalculateGameBundlesAvailabilities;
@@ -16,13 +15,8 @@ use App\Api\Message\UpdateGamesShiniesAvailabilities;
 use App\Api\Message\UpdateLabels;
 use App\Api\Message\UpdatePokemons;
 use App\Api\Message\UpdateRegionalDexNumbers;
-use App\Api\Service\CalculatorService\AbstractCalculatorService;
-use App\Api\Service\CalculatorService\DexAvailabilitiesCalculatorService;
-use App\Api\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
-use App\Api\Service\CalculatorService\GameBundlesShiniesAvailabilitiesCalculatorService;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -30,11 +24,6 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  * @internal
  */
 #[CoversClass(AdminController::class)]
-#[CoversClass(AbstractCalculatorService::class)]
-#[CoversClass(DexAvailabilitiesCalculatorService::class)]
-#[CoversClass(GameBundlesAvailabilitiesCalculatorService::class)]
-#[CoversClass(GameBundlesShiniesAvailabilitiesCalculatorService::class)]
-#[CoversTrait(ActionEnderTrait::class)]
 class AdminControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
