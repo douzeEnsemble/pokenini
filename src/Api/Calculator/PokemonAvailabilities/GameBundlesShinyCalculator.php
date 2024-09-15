@@ -14,9 +14,7 @@ class GameBundlesShinyCalculator extends AbstractCalculator
 
     public function __construct(
         private readonly PokemonAvailabilitiesRepository $repository,
-    ) {
-        parent::__construct();
-    }
+    ) {}
 
     public function execute(): void
     {

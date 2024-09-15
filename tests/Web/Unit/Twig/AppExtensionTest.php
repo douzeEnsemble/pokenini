@@ -46,10 +46,13 @@ class AppExtensionTest extends TestCase
             'c' => 3,
         ];
 
-        $this->assertEquals([
-            'a' => 2,
-            'b' => 1,
-            'c' => 3,
-        ], $extension->ksort($data));
+        $this->assertSame(
+            [
+                'a' => 2,
+                'b' => 1,
+                'c' => 3,
+            ],
+            $extension->ksort($data)
+        );
     }
 }

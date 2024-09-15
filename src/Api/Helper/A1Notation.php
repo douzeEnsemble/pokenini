@@ -22,7 +22,7 @@ class A1Notation
      */
     public static function indexToLetter(int $index): string
     {
-        if ($index < strlen(self::LOOKUP)) {
+        if (isset(self::LOOKUP[$index])) {
             return self::LOOKUP[$index];
         }
 

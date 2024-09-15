@@ -75,4 +75,17 @@ class ActionLogTest extends TestCase
             $actionLog->errorTrace,
         );
     }
+
+    public function testExecutionTimeCasting(): void
+    {
+        $actionLog = ActionLog::createFromArray([
+            'created_at' => '2023-03-21 08:34:47+00',
+            'execution_time' => '2',
+        ]);
+
+        $this->assertEquals(
+            2,
+            $actionLog->executionTime,
+        );
+    }
 }

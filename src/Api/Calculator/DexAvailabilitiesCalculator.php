@@ -16,9 +16,7 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepo,
         private readonly DexRepository $dexRepository,
         private readonly DexAvailabilityCalculator $dexAvailabilityCalculator,
-    ) {
-        parent::__construct();
-    }
+    ) {}
 
     public function execute(): void
     {

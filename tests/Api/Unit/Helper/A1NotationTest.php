@@ -42,12 +42,28 @@ class A1NotationTest extends TestCase
                 'expected' => 'C',
             ],
             [
+                'index' => 25,
+                'expected' => 'Z',
+            ],
+            [
+                'index' => 26,
+                'expected' => 'AA',
+            ],
+            [
                 'index' => 27,
                 'expected' => 'AB',
             ],
             [
+                'index' => 39,
+                'expected' => 'AN',
+            ],
+            [
                 'index' => 53,
                 'expected' => 'BB',
+            ],
+            [
+                'index' => 65,
+                'expected' => 'BN',
             ],
         ];
     }
@@ -72,6 +88,16 @@ class A1NotationTest extends TestCase
                 'rowIndex' => 2,
                 'columnIndex' => 2,
                 'expected' => 'C3',
+            ],
+            [
+                'rowIndex' => 2,
+                'columnIndex' => 25,
+                'expected' => 'Z3',
+            ],
+            [
+                'rowIndex' => 2,
+                'columnIndex' => 26,
+                'expected' => 'AA3',
             ],
             [
                 'rowIndex' => 2,

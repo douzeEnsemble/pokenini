@@ -159,6 +159,52 @@ class CacheInvalidatorServiceTest extends TestCase
         $cacheInvalidator->invalidate('games_and_dex');
     }
 
+    public function testInvalidateDex(): void
+    {
+        $catchStatesCacheInvalidatorService = $this->createMock(CatchStatesCacheInvalidatorService::class);
+        $typesCacheInvalidatorService = $this->createMock(TypesCacheInvalidatorService::class);
+        $formsCacheInvalidatorService = $this->createMock(FormsCacheInvalidatorService::class);
+        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
+        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
+        $reportCacheInvalidatorService = $this->createMock(ReportsCacheInvalidatorService::class);
+
+        $catchStatesCacheInvalidatorService
+            ->expects($this->never())
+            ->method('invalidate')
+        ;
+        $typesCacheInvalidatorService
+            ->expects($this->never())
+            ->method('invalidate')
+        ;
+        $formsCacheInvalidatorService
+            ->expects($this->never())
+            ->method('invalidate')
+        ;
+        $dexCacheInvalidatorService
+            ->expects($this->once())
+            ->method('invalidate')
+        ;
+        $albumsCacheInvalidatorService
+            ->expects($this->never())
+            ->method('invalidate')
+        ;
+        $reportCacheInvalidatorService
+            ->expects($this->never())
+            ->method('invalidate')
+        ;
+
+        $cacheInvalidator = new CacheInvalidatorService(
+            $catchStatesCacheInvalidatorService,
+            $typesCacheInvalidatorService,
+            $formsCacheInvalidatorService,
+            $dexCacheInvalidatorService,
+            $albumsCacheInvalidatorService,
+            $reportCacheInvalidatorService,
+        );
+
+        $cacheInvalidator->invalidate('dex');
+    }
+
     public function testInvalidatePokemons(): void
     {
         $catchStatesCacheInvalidatorService = $this->createMock(CatchStatesCacheInvalidatorService::class);
