@@ -44,6 +44,12 @@ class TrainerDexAttributesTest extends TestCase
         new TrainerDexAttributes(['is_private' => 'yes', 'is_on_home' => false]);
     }
 
+    public function testWrongValueBis(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new TrainerDexAttributes(['is_private' => true, 'is_on_home' => 'no']);
+    }
+
     public function testAnotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);

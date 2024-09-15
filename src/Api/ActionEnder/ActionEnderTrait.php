@@ -14,17 +14,6 @@ trait ActionEnderTrait
 {
     private readonly EntityManagerInterface $entityManager;
 
-    protected function endActionLog(
-        ActionMessageInterface $message,
-        Report $report,
-    ): void {
-        $actionLog = $this->findActionLog($message);
-
-        $actionLog->reportData = (string) json_encode($report);
-
-        $this->crimpActionLog($actionLog);
-    }
-
     protected function endInErrorActionLog(
         ActionMessageInterface $message,
         string $errorTrace,
@@ -32,6 +21,17 @@ trait ActionEnderTrait
         $actionLog = $this->findActionLog($message);
 
         $actionLog->errorTrace = $errorTrace;
+
+        $this->crimpActionLog($actionLog);
+    }
+
+    private function endActionLog(
+        ActionMessageInterface $message,
+        Report $report,
+    ): void {
+        $actionLog = $this->findActionLog($message);
+
+        $actionLog->reportData = (string) json_encode($report);
 
         $this->crimpActionLog($actionLog);
     }

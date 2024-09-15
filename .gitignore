@@ -45,3 +45,5 @@ bin/php-cs-fixer
 ###> qossmic/deptrac ###
 /.deptrac.cache
 ###< qossmic/deptrac ###
+infection_summary.log
+infection_text.log

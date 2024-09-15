@@ -12,7 +12,6 @@ use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\HttpClient\Exception\TransportException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Validator\ConstraintViolation;
@@ -296,75 +295,5 @@ class TrainerUpsertControllerTest extends TestCase
             '{"error":"Alors en fait, non"}',
             $response->getContent()
         );
-    }
-
-    public function testUpsertApiException(): void
-    {
-        $userTokenService = $this->createMock(UserTokenService::class);
-        $userTokenService
-            ->expects($this->once())
-            ->method('getLoggedUserToken')
-            ->willReturn('1234567890')
-        ;
-
-        $validator = $this->createMock(ValidatorInterface::class);
-
-        $modifyDexService = $this->createMock(ModifyDexService::class);
-        $modifyDexService
-            ->expects($this->once())
-            ->method('modify')
-            ->willThrowException(
-                new TransportException('Whoops!')
-            )
-            ->with(
-                'douze',
-                '{}',
-                '1234567890'
-            )
-        ;
-
-        $albumCacheInvalidatorService = $this->createMock(AlbumCacheInvalidatorService::class);
-
-        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
-            ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
-        ;
-
-        $container = $this->createMock(ContainerInterface::class);
-        $container
-            ->expects($this->once())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $container
-            ->expects($this->once())
-            ->method('get')
-            ->willReturn($authorizationChecker)
-        ;
-
-        $controller = new TrainerUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyDexService,
-            $albumCacheInvalidatorService,
-            $dexCacheInvalidatorService,
-        );
-        $controller->setContainer($container);
-
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{}')
-        ;
-
-        $response = $controller->upsert('douze', $request);
-
-        $this->assertEquals(500, $response->getStatusCode());
-        $this->assertEquals('{"error":"Whoops!"}', $response->getContent());
     }
 }

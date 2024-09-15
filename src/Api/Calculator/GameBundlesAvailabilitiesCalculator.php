@@ -12,9 +12,7 @@ class GameBundlesAvailabilitiesCalculator extends AbstractCalculator
 
     public function __construct(
         private readonly GameBundlesAvailabilitiesRepository $repository,
-    ) {
-        parent::__construct();
-    }
+    ) {}
 
     public function execute(): void
     {

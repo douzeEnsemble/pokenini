@@ -60,7 +60,7 @@ class DexPokemonAvailabilityCalculator
      */
     private function setPokemonValues(array &$values, string $rule, Pokemon $pokemon): void
     {
-        if (false !== strpos($rule, 'p.') || false !== strpos($rule, 'p?.')) {
+        if (str_contains($rule, 'p.') || str_contains($rule, 'p?.')) {
             $values['p'] = $pokemon;
         }
     }
@@ -70,11 +70,11 @@ class DexPokemonAvailabilityCalculator
      */
     private function setBundlesValues(array &$values, string $rule, Pokemon $pokemon): void
     {
-        if (false !== strpos($rule, 'ba.') || false !== strpos($rule, 'ba?.')) {
+        if (str_contains($rule, 'ba.') || str_contains($rule, 'ba?.')) {
             $values['ba'] = $this->gameBundlesAvailabilitiesService->getFromPokemon($pokemon);
         }
 
-        if (false !== strpos($rule, 'bsa.') || false !== strpos($rule, 'bsa?.')) {
+        if (str_contains($rule, 'bsa.') || str_contains($rule, 'bsa?.')) {
             $values['bsa'] = $this->gameBundlesShiniesAvailabilitiesService->getFromPokemon($pokemon);
         }
     }
@@ -84,11 +84,11 @@ class DexPokemonAvailabilityCalculator
      */
     private function setGamesValues(array &$values, string $rule, Pokemon $pokemon): void
     {
-        if (false !== strpos($rule, 'ga.') || false !== strpos($rule, 'ga?.')) {
+        if (str_contains($rule, 'ga.') || str_contains($rule, 'ga?.')) {
             $values['ga'] = $this->gamesAvailabilitiesService->getFromPokemon($pokemon);
         }
 
-        if (false !== strpos($rule, 'gsa.') || false !== strpos($rule, 'gsa?.')) {
+        if (str_contains($rule, 'gsa.') || str_contains($rule, 'gsa?.')) {
             $values['gsa'] = $this->gamesShiniesAvailabilitiesService->getFromPokemon($pokemon);
         }
     }

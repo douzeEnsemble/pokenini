@@ -23,6 +23,7 @@ class FromRequestTest extends TestCase
             'fc' => [
                 'cat1',
                 'cat2',
+                null,
             ],
             'fr' => [
                 'reg1',
@@ -35,6 +36,7 @@ class FromRequestTest extends TestCase
             'fv' => [
                 'var1',
                 'var2',
+                null,
             ],
             'at' => [
                 'typ-a.1',
