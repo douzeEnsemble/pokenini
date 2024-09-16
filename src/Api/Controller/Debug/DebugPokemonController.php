@@ -9,6 +9,7 @@ use App\Api\Service\GameBundlesAvailabilitiesService;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Api\Service\GamesAvailabilitiesService;
 use App\Api\Service\GamesShiniesAvailabilitiesService;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,6 +18,7 @@ class DebugPokemonController extends AbstractDebugController
 {
     #[Route(path: '/{slug}', methods: ['GET'])]
     public function pokemon(
+        #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
     ): Response {
         return new Response(
@@ -34,6 +36,7 @@ class DebugPokemonController extends AbstractDebugController
         GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
         GameBundlesAvailabilitiesService $gameBundlesAvailabilitiesService,
         GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
+        #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
     ): Response {
         $gamesAvailabilitiesService->cleanCacheFromPokemon($pokemon);
@@ -50,6 +53,7 @@ class DebugPokemonController extends AbstractDebugController
         GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
         GameBundlesAvailabilitiesService $gameBundlesAvailabilitiesService,
         GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
+        #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
     ): Response {
         $gamesAvailabilities = $gamesAvailabilitiesService->getFromPokemon($pokemon);
