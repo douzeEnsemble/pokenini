@@ -2,6 +2,17 @@
 
 ## To Begin
 
+### Prerequistes
+
+#### NVD API KEY
+
+In order to update OWAP records, you need an NVD API Key. You can request one on https://nvd.nist.gov/developers/request-an-api-key.
+Then define it to your env with
+
+```
+export NVD_API_KEY=374dc342-3ca3-47a7-8133-794cb256e581
+```
+
 ### TL;DR
 
 ```
