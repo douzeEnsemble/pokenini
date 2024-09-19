@@ -174,10 +174,12 @@ album:
                 label: Dispo dans
                 value:
                     empty: Tous
+                    negative: "Pas dans "
             game_bundle_shiny_availability:
                 label: Dispo dans
                 value:
                     empty: Tous
+                    negative: "Pas dans "
            
 
 update:

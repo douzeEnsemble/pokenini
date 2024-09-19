@@ -174,10 +174,12 @@ album:
                 label: Available in
                 value:
                     empty: All
+                    negative: "Not in "
             game_bundle_shiny_availability:
                 label: Available in
                 value:
                     empty: All
+                    negative: "Not in "
 
 update:
     labels:

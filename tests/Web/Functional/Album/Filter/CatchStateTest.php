@@ -30,6 +30,7 @@ class CatchStateTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '#bulbasaur');
         $this->assertCountFilter($crawler, 0, '#venusaur-f');
         $this->assertCountFilter($crawler, 0, '#charmander');
+        $this->assertCountFilter($crawler, 1, '#charizard');
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
@@ -56,6 +57,7 @@ class CatchStateTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '#bulbasaur');
         $this->assertCountFilter($crawler, 0, '#venusaur-f');
         $this->assertCountFilter($crawler, 1, '#charmander');
+        $this->assertCountFilter($crawler, 0, '#charizard');
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
@@ -86,6 +88,7 @@ class CatchStateTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '#bulbasaur');
         $this->assertCountFilter($crawler, 0, '#venusaur-f');
         $this->assertCountFilter($crawler, 1, '#charmander');
+        $this->assertCountFilter($crawler, 0, '#charizard');
 
         $this->assertCountFilter($crawler, 4, '.toast');
         $this->assertCountFilter($crawler, 2, '.toast.text-bg-success');
@@ -111,6 +114,33 @@ class CatchStateTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.album-case');
 
         $this->assertCountFilter($crawler, 0, 'h2.box');
+
+        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertEquals(
+            '/fr/album/demo?cs=no&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
+            $crawler->filter('table a')->first()->attr('href')
+        );
+        $this->assertEquals(
+            '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
+            $crawler->filter('table a')->last()->attr('href')
+        );
+    }
+
+    public function testFilterCatchStateNegativeNo(): void
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/fr/album/demo?cs=!no&t=7b52009b64fd0a2a49e6d8a939753077792b0554');
+
+        $this->assertCountFilter($crawler, 9, '.album-case');
+
+        $this->assertCountFilter($crawler, 0, 'h2.box');
+        $this->assertCountFilter($crawler, 0, '#bulbasaur');
+        $this->assertCountFilter($crawler, 1, '#venusaur-f');
+        $this->assertCountFilter($crawler, 1, '#charmander');
+        $this->assertCountFilter($crawler, 0, '#charizard');
+
+        $this->assertCountFilter($crawler, 0, '.toast');
 
         $this->assertCountFilter($crawler, 7, 'table a');
         $this->assertEquals(

@@ -114,4 +114,50 @@ class FromRequestTest extends TestCase
             $expectedData,
         );
     }
+
+    public function testGetWithNegatives(): void
+    {
+        $request = new Request([
+            'cs' => '!no',
+            'f' => 'pichu',
+            'ogb' => [
+                'ogb1',
+                'ogb2',
+            ],
+            'gba' => [
+                'gba1',
+                'gba2',
+                '!gba3',
+            ],
+            'gbsa' => [
+                'gbsa1',
+                'gbsa2',
+                '!gbsa3',
+            ],
+        ]);
+
+        $expectedData = [
+            'cs' => '!no',
+            'f' => 'pichu',
+            'ogb' => [
+                'ogb1',
+                'ogb2',
+            ],
+            'gba' => [
+                'gba1',
+                'gba2',
+                '!gba3',
+            ],
+            'gbsa' => [
+                'gbsa1',
+                'gbsa2',
+                '!gbsa3',
+            ],
+        ];
+
+        $this->assertEquals(
+            FromRequest::get($request),
+            $expectedData,
+        );
+    }
 }

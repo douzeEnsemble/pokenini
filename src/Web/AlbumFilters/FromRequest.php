@@ -8,11 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FromRequest
 {
-    private const ALPHA_FILTERS = [
-        'cs',
-    ];
-
     private const STRING_FILTERS = [
+        'cs',
         'f',
     ];
 
@@ -35,12 +32,6 @@ class FromRequest
     public static function get(Request $request): array
     {
         $filters = [];
-
-        foreach (self::ALPHA_FILTERS as $filterName) {
-            if ($request->query->has($filterName)) {
-                $filters[$filterName] = $request->query->getAlpha($filterName);
-            }
-        }
 
         foreach (self::STRING_FILTERS as $filterName) {
             if ($request->query->has($filterName)) {

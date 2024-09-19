@@ -224,6 +224,60 @@ class GetPokedexServiceTest extends TestCase
         );
     }
 
+    public function testGetWithMultiplesNegativeFilters(): void
+    {
+        
+        $json = (string) file_get_contents(
+            '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json'
+        );
+
+        $pokedex = $this
+            ->getService(
+                'lite',
+                '123',
+                $json,
+                [
+                    'catch_states' => [
+                        '!yes',
+                    ],
+                    'game_bundle_availabilities' => [
+                        '!swordshield',
+                    ],
+                ],
+            )
+            ->get(
+                'lite',
+                '123',
+                [
+                    'catch_states' => [
+                        '!yes',
+                    ],
+                    'game_bundle_availabilities' => [
+                        '!swordshield',
+                    ],
+                ],
+            )
+        ;
+
+        $this->assertArrayHasKey('dex', $pokedex);
+        $this->assertArrayHasKey('pokemons', $pokedex);
+        $this->assertCount(41, $pokedex['pokemons']);
+        $this->assertArrayHasKey('report', $pokedex);
+
+        /** @var string $value */
+        $value = $this->cache->getItem('album_lite_123_catch_states!yes_game_bundle_availabilities!swordshield')->get();
+        $this->assertNotEmpty($value);
+        $this->assertJson($value);
+
+        $register = $this->cache->getItem('register_album')->get();
+        $this->assertEquals(
+            [
+                'album_lite_123_catch_states!yes_game_bundle_availabilities!swordshield',
+            ],
+            $register
+        );
+    }
+
     /**
      * @param string[][]|string[][][] $queryParams
      */

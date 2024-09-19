@@ -197,6 +197,12 @@
                         {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
                     </option>
                     {% endfor %}
+                    {% for gameBundle in gameBundles %}
+                    <option value="!{{ gameBundle.slug }}" {{ (('!'~gameBundle.slug in filteredGameBundlesAvailabilities) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.game_bundle_availability.value.negative'|trans -}}
+                        {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
+                    </option>
+                    {% endfor %}
                 </select>
             </div>
             {% else %}
@@ -212,6 +218,12 @@
                     </option>
                     {% for gameBundle in gameBundles %}
                     <option value="{{ gameBundle.slug }}" {{ ((gameBundle.slug in filteredGameBundlesShinyAvailabilities) ? 'selected': '') }}>
+                        {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
+                    </option>
+                    {% endfor %}
+                    {% for gameBundle in gameBundles %}
+                    <option value="!{{ gameBundle.slug }}" {{ (('!'~gameBundle.slug in filteredGameBundlesShinyAvailabilities) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.game_bundle_shiny_availability.value.negative'|trans -}}
                         {{- (locale is same as('fr') ? gameBundle.frenchName : gameBundle.name) -}}
                     </option>
                     {% endfor %}
