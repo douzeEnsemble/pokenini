@@ -65,10 +65,12 @@ class MappingTest extends TestCase
             'gba' => [
                 'gba1',
                 'gba2',
+                '!gba3',
             ],
             'gbsa' => [
                 'gbsa1',
                 'gbsa2',
+                '!gbsa3',
             ],
         ];
     }
@@ -120,10 +122,12 @@ class MappingTest extends TestCase
             'game_bundle_availabilities' => [
                 'gba1',
                 'gba2',
+                '!gba3',
             ],
             'game_bundle_shiny_availabilities' => [
                 'gbsa1',
                 'gbsa2',
+                '!gbsa3',
             ],
         ];
     }
