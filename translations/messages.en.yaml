@@ -29,10 +29,10 @@ title:
         games_shinies_availabilities: "Update games' shinies' availabilities"
         regional_dex_numbers: 'Update regional dex numbers'
     calculate:
-        game_bundles_availabilities: "Update game bundles' availabilities"
-        game_bundles_shinies_availabilities: "Update game bundles' shinies' availabilities"
-        dex_availabilities: 'Update dex availabilities'
-        pokemon_availabilities: 'Update pokemons availabilities'
+        game_bundles_availabilities: "Calculate game bundles' availabilities"
+        game_bundles_shinies_availabilities: "Calculate game bundles' shinies' availabilities"
+        dex_availabilities: 'Calculate dex availabilities'
+        pokemon_availabilities: 'Calculate pokemons availabilities'
     invalidate:
         catch_states: 'Invalidate status cache'
         types: 'Invalidate types cache'
