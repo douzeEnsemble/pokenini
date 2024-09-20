@@ -25,28 +25,3 @@ jobs:
             path: ~/.symfony/cache
             key: db
       - uses: symfonycorp/security-checker-action@v5
-
-  dependency-check:
-    name: Security / OWASP Dependency Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build project with Maven
-        run: mvn clean install
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'test'
-          path: '.'
-          format: 'HTML'
-          out: 'reports' # this is the default, no need to specify unless you wish to override it
-          args: >
-            --failOnCVSS 7
-            --enableRetired
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
-        with:
-            name: Depcheck report
-            path: ${{github.workspace}}/reports
