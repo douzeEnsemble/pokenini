@@ -36,7 +36,7 @@ class ManyTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&f=bulbasaur&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -66,7 +66,7 @@ class ManyTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&f=charmander&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
