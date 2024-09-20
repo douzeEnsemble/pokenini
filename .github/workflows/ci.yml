@@ -11,9 +11,11 @@ jobs:
     name: Quality / PHP-CS-Fixer
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
         with:
-          args: check --diff --config /home/runner/work/pokenini/pokenini/.php-cs-fixer.dist.php
+          args: check --diff
 
   phpmd:
     name: Quality / PHPMD
@@ -35,7 +37,7 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/local
       - name: Run
-        run: ./vendor/bin/psalm --output-format=github
+        run: php vendor/bin/psalm.phar --show-info=false
 
   phpstan:
     name: Tests / PHPStan
