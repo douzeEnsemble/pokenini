@@ -16,21 +16,43 @@ class AlbumFilterValuesTest extends TestCase
 {
     public function testConstruct(): void
     {
-        $albumFilterValues = new AlbumFilterValues(['douze', 'treize']);
+        $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
 
         $this->assertCount(2, $albumFilterValues->values);
+        $this->assertCount(1, $albumFilterValues->negativeValues);
 
         $this->assertEquals('douze', $albumFilterValues->values[0]->value);
         $this->assertEquals('treize', $albumFilterValues->values[1]->value);
+        $this->assertEquals('quatorze', $albumFilterValues->negativeValues[0]->value);
     }
 
     public function testExtract(): void
     {
-        $albumFilterValues = new AlbumFilterValues(['douze', 'treize']);
+        $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
 
         $this->assertEquals(
             ['douze', 'treize'],
             $albumFilterValues->extract()
+        );
+    }
+
+    public function testExtractNegatives(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
+
+        $this->assertEquals(
+            ['quatorze'],
+            $albumFilterValues->extractNegatives()
+        );
+    }
+
+    public function testExtractManyNegatives(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['!douze', '!treize', '!quatorze']);
+
+        $this->assertEquals(
+            ['douze', 'treize', 'quatorze'],
+            $albumFilterValues->extractNegatives()
         );
     }
 

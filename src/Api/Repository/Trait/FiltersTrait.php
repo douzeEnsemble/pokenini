@@ -46,9 +46,12 @@ trait FiltersTrait
             'filter_special_forms' => ArrayParameterType::STRING,
             'filter_variant_forms' => ArrayParameterType::STRING,
             'filter_catch_states' => ArrayParameterType::STRING,
+            'filter_catch_states_negative' => ArrayParameterType::STRING,
             'filter_original_game_bundles' => ArrayParameterType::STRING,
             'filter_game_bundle_availabilities' => ArrayParameterType::STRING,
+            'filter_game_bundle_availabilities_negative' => ArrayParameterType::STRING,
             'filter_game_bundle_shiny_availabilities' => ArrayParameterType::STRING,
+            'filter_game_bundle_shiny_availabilities_negative' => ArrayParameterType::STRING,
             'filter_families' => ArrayParameterType::STRING,
         ];
     }
@@ -175,6 +178,13 @@ trait FiltersTrait
             }
             $query .= ')';
         }
+        if ($filters->catchStates->negativeValues) {
+            $query .= ' AND (cs.slug NOT IN(:filter_catch_states_negative)';
+            if (in_array('no', $filters->catchStates->extractNegatives())) {
+                $query .= ' AND cs.slug IS NOT NULL';
+            }
+            $query .= ')';
+        }
 
         return $query;
     }
@@ -188,6 +198,9 @@ trait FiltersTrait
 
         if ($filters->catchStates->values) {
             $parameters['filter_catch_states'] = $filters->catchStates->extract();
+        }
+        if ($filters->catchStates->negativeValues) {
+            $parameters['filter_catch_states_negative'] = $filters->catchStates->extractNegatives();
         }
 
         return $parameters;
@@ -215,6 +228,17 @@ trait FiltersTrait
                         )
                 SUBSQL;
         }
+        if ($filters->gameBundleAvailabilities->negativeValues) {
+            $query .= <<<'SUBSQL'
+                AND p.id NOT IN (SELECT  gba.pokemon_id
+                            FROM    game_bundle_availability AS gba
+                                LEFT JOIN game_bundle AS gb
+                                    ON gba.bundle_id = gb.id
+                            WHERE   gba.is_available = TRUE
+                                    AND gb.slug IN(:filter_game_bundle_availabilities_negative)
+                        )
+                SUBSQL;
+        }
         if ($filters->gameBundleShinyAvailabilities->values) {
             $query .= <<<'SUBSQL'
                 AND p.id IN (SELECT  gbsa.pokemon_id
@@ -223,6 +247,17 @@ trait FiltersTrait
                                     ON gbsa.bundle_id = gb.id
                             WHERE   gbsa.is_available = TRUE
                                     AND gb.slug IN(:filter_game_bundle_shiny_availabilities)
+                        )
+                SUBSQL;
+        }
+        if ($filters->gameBundleShinyAvailabilities->negativeValues) {
+            $query .= <<<'SUBSQL'
+                AND p.id NOT IN (SELECT  gbsa.pokemon_id
+                            FROM    game_bundle_shiny_availability AS gbsa
+                                LEFT JOIN game_bundle AS gb
+                                    ON gbsa.bundle_id = gb.id
+                            WHERE   gbsa.is_available = TRUE
+                                    AND gb.slug IN(:filter_game_bundle_shiny_availabilities_negative)
                         )
                 SUBSQL;
         }
@@ -243,8 +278,14 @@ trait FiltersTrait
         if ($filters->gameBundleAvailabilities->values) {
             $parameters['filter_game_bundle_availabilities'] = $filters->gameBundleAvailabilities->extract();
         }
+        if ($filters->gameBundleAvailabilities->negativeValues) {
+            $parameters['filter_game_bundle_availabilities_negative'] = $filters->gameBundleAvailabilities->extractNegatives();
+        }
         if ($filters->gameBundleShinyAvailabilities->values) {
             $parameters['filter_game_bundle_shiny_availabilities'] = $filters->gameBundleShinyAvailabilities->extract();
+        }
+        if ($filters->gameBundleShinyAvailabilities->negativeValues) {
+            $parameters['filter_game_bundle_shiny_availabilities_negative'] = $filters->gameBundleShinyAvailabilities->extractNegatives();
         }
 
         return $parameters;

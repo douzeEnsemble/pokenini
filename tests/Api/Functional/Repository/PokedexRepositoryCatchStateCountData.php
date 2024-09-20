@@ -284,13 +284,26 @@ class PokedexRepositoryCatchStateCountData
                     0,
                 ],
             ],
+            'catch_state_negative' => [
+                [
+                    'catchStates' => [
+                        '!maybe',
+                    ],
+                ],
+                [
+                    8,
+                    0,
+                    3,
+                    7,
+                ],
+            ],
         ];
     }
 
     /**
      * @return int[][][]|string[][][][]
      */
-    public static function providerGetCatchStatesCountsGamesFilters(): array
+    public static function providerGetCatchStatesCountsOriginalGamesFilters(): array
     {
         return [
             'original_game_bundle' => [
@@ -319,6 +332,15 @@ class PokedexRepositoryCatchStateCountData
                     0,
                 ],
             ],
+        ];
+    }
+
+    /**
+     * @return int[][][]|string[][][][]
+     */
+    public static function providerGetCatchStatesCountGamesBundlesFilters(): array
+    {
+        return [
             'game_bundle_availabilities' => [
                 [
                     'gameBundleAvailabilities' => [
@@ -345,6 +367,19 @@ class PokedexRepositoryCatchStateCountData
                     0,
                 ],
             ],
+            'game_bundle_availabilities_negative' => [
+                [
+                    'gameBundleAvailabilities' => [
+                        '!ultrasunultramoon',
+                    ],
+                ],
+                [
+                    9,
+                    3,
+                    1,
+                    7,
+                ],
+            ],
             'game_bundle_shiny_availabilities' => [
                 [
                     'gameBundleShinyAvailabilities' => [
@@ -369,6 +404,19 @@ class PokedexRepositoryCatchStateCountData
                     0,
                     0,
                     0,
+                ],
+            ],
+            'game_bundle_shiny_availabilities_negative' => [
+                [
+                    'gameBundleShinyAvailabilities' => [
+                        '!ultrasunultramoon',
+                    ],
+                ],
+                [
+                    9,
+                    1,
+                    2,
+                    6,
                 ],
             ],
         ];

@@ -305,13 +305,27 @@ class AlbumReportServiceData
                 0,
                 6,
             ],
+            'catch_state_negative' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'catchStates' => [
+                        '!maybe',
+                    ],
+                ],
+                8,
+                0,
+                3,
+                7,
+                18,
+            ],
         ];
     }
 
     /**
      * @return int[][]|string[][]|string[][][][]
      */
-    public static function getGamesReportFilteredProvider(): array
+    public static function getOriginalGamesReportFilteredProvider(): array
     {
         return [
             'original_game_bundles' => [
@@ -342,6 +356,15 @@ class AlbumReportServiceData
                 0,
                 0,
             ],
+        ];
+    }
+
+    /**
+     * @return int[][]|string[][]|string[][][][]
+     */
+    public static function getGamesBundlesReportFilteredProvider(): array
+    {
+        return [
             'game_bundle_availabilities' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -370,6 +393,20 @@ class AlbumReportServiceData
                 0,
                 0,
             ],
+            'game_bundle_availabilities_negative' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'gameBundleAvailabilities' => [
+                        '!ultrasunultramoon',
+                    ],
+                ],
+                9,
+                3,
+                1,
+                7,
+                20,
+            ],
             'game_bundle_shiny_availabilities' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -397,6 +434,20 @@ class AlbumReportServiceData
                 0,
                 0,
                 0,
+            ],
+            'game_bundle_shiny_availabilities_negative' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'gameBundleShinyAvailabilities' => [
+                        '!ultrasunultramoon',
+                    ],
+                ],
+                9,
+                1,
+                2,
+                6,
+                18,
             ],
         ];
     }

@@ -9,13 +9,23 @@ final class AlbumFilterValues
     /** @var AlbumFilterValue[] */
     public array $values = [];
 
+    /** @var AlbumFilterValue[] */
+    public array $negativeValues = [];
+
     /**
      * @param null[]|string[] $values
      */
     public function __construct(array $values)
     {
-        foreach ($values as $value) {
+        $positivesValues = array_filter($values, fn ($value) => !is_string($value) || !str_contains($value, '!'));
+        $negativesValues = array_filter($values, fn ($value) => is_string($value) && str_contains($value, '!'));
+
+        foreach ($positivesValues as $value) {
             $this->values[] = new AlbumFilterValue($value);
+        }
+
+        foreach ($negativesValues as $value) {
+            $this->negativeValues[] = new AlbumFilterValue(str_replace('!', '', $value));
         }
     }
 
@@ -26,6 +36,19 @@ final class AlbumFilterValues
     {
         $values = [];
         foreach ($this->values as $value) {
+            $values[] = $value->value;
+        }
+
+        return $values;
+    }
+
+    /**
+     * @return null[]|string[]
+     */
+    public function extractNegatives(): array
+    {
+        $values = [];
+        foreach ($this->negativeValues as $value) {
             $values[] = $value->value;
         }
 
