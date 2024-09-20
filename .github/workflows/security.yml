@@ -25,29 +25,28 @@ jobs:
             path: ~/.symfony/cache
             key: db
       - uses: symfonycorp/security-checker-action@v5
-  
-  phpcsfixer:
-    name: Security / PHP-CS-Fixer
-    runs-on: ubuntu-latest
-    steps:
-      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
-        with:
-          args: check
 
   dependency-check:
     name: Security / OWASP Dependency Check
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Install OWASP Dependency-Check
-        run: |
-          wget https://github.com/jeremylong/DependencyCheck/releases/download/v7.0.5/dependency-check-7.0.5-release.zip
-          unzip dependency-check-7.0.5-release.zip
-      - name: Run Dependency-Check
-        run: ./dependency-check/bin/dependency-check.sh --project "mon-projet" --scan . --format "HTML" --out ./dependency-check-report.html
-      - name: Upload report
-        uses: actions/upload-artifact@v2
+      - name: Build project with Maven
+        run: mvn clean install
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
         with:
-          name: dependency-check-report
-          path: ./dependency-check-report.html
+          project: 'test'
+          path: '.'
+          format: 'HTML'
+          out: 'reports' # this is the default, no need to specify unless you wish to override it
+          args: >
+            --failOnCVSS 7
+            --enableRetired
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+            name: Depcheck report
+            path: ${{github.workspace}}/reports
