@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
         with:
-          args: check --diff
+          args: check --diff --config /home/runner/work/pokenini/pokenini/.php-cs-fixer.dist.php
 
   phpmd:
     name: Quality / PHPMD
