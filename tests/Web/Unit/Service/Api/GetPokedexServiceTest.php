@@ -226,7 +226,6 @@ class GetPokedexServiceTest extends TestCase
 
     public function testGetWithMultiplesNegativeFilters(): void
     {
-        
         $json = (string) file_get_contents(
             '/var/www/html/tests/resources/Web/unit/service/api/pokedex_lite_123.json'
         );
