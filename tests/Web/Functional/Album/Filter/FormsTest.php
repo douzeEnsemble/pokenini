@@ -38,7 +38,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fc%5B0%5D=starter&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -81,7 +81,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B0%5D=mega&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -127,7 +127,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B0%5D=mega&fs%5B1%5D=gigantamax&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -173,7 +173,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fr%5B0%5D=paldean&fv%5B0%5D=alternate&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -216,7 +216,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B0%5D=null&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -262,7 +262,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B0%5D=null&fs%5B1%5D=mega&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -305,7 +305,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.toast');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B1%5D=mega&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')
@@ -337,7 +337,7 @@ class FormsTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, 'h2.box');
 
-        $this->assertCountFilter($crawler, 7, 'table a');
+        $this->assertCountFilter($crawler, 13, 'table a');
         $this->assertEquals(
             '/fr/album/demo?cs=no&fs%5B0%5D=unknown&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->first()->attr('href')

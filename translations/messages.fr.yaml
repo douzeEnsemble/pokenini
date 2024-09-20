@@ -180,6 +180,10 @@ album:
                 value:
                     empty: Tous
                     negative: "Pas dans "
+            catch_states:
+                total: "Toute la collection"
+                positive: "Filtre les '%cs%'"
+                negative: "Filtre tous sauf les '%cs%'"
            
 
 update:
