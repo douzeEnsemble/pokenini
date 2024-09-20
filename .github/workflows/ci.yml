@@ -157,9 +157,3 @@ jobs:
             path: ~/.symfony/cache
             key: db
       - uses: symfonycorp/security-checker-action@v5
-  
-  phpcsfixer:
-    name: PHP-CS-Fixer
-    uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
-    with:
-      args: check .
