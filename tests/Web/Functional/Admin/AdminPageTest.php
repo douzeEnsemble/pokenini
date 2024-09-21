@@ -62,11 +62,11 @@ class AdminPageTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, 'h2');
         $this->assertCountFilter($crawler, 7, 'h3');
-        $this->assertCountFilter($crawler, 14, '.admin-item a.admin-item-cta');
-        $this->assertCountFilter($crawler, 14, '.admin-item a.admin-item-cta i.bi');
+        $this->assertCountFilter($crawler, 16, '.admin-item a.admin-item-cta');
+        $this->assertCountFilter($crawler, 16, '.admin-item a.admin-item-cta i.bi');
 
-        $this->assertCountFilter($crawler, 6, '.list-group-update .admin-item a.admin-item-cta');
-        $this->assertCountFilter($crawler, 4, '.list-group-calculate .admin-item a.admin-item-cta');
+        $this->assertCountFilter($crawler, 7, '.list-group-update .admin-item a.admin-item-cta');
+        $this->assertCountFilter($crawler, 5, '.list-group-calculate .admin-item a.admin-item-cta');
         $this->assertCountFilter($crawler, 3, '.list-group-invalidate .admin-item a.admin-item-cta');
         $this->assertCountFilter($crawler, 2, 'table.report-table');
         $this->assertCountFilter($crawler, 1, '.list-group-report-invalidate .admin-item a.admin-item-cta');
@@ -351,6 +351,28 @@ class AdminPageTest extends WebTestCase
                     'exectime' => '00:34:38',
                 ],
             ],
+            'update_collections' => [
+                'current' => [
+                    'data' => [
+                        'Collections' => '12',
+                    ],
+                    'datatime' => [
+                        'label' => 'Terminé le',
+                        'value' => '21/09/2024 10:35:47',
+                    ],
+                    'exectime' => '00:01:00',
+                ],
+                'last' => [
+                    'data' => [
+                        'Collections' => '11',
+                    ],
+                    'datatime' => [
+                        'label' => 'Terminé le',
+                        'value' => '21/09/2024 10:01:00',
+                    ],
+                    'exectime' => '00:01:00',
+                ],
+            ],
             'calculate_game_bundles_availabilities' => [
                 'current' => [
                     'datatime' => [
@@ -378,6 +400,28 @@ class AdminPageTest extends WebTestCase
                     'datatime' => [
                         'label' => 'Terminé le',
                         'value' => '20/04/2023 17:28:18',
+                    ],
+                    'exectime' => '00:03:20',
+                ],
+            ],
+            'calculate_collections_availabilities' => [
+                'current' => [
+                    'data' => [
+                        'Dispo des collections' => '1 234',
+                    ],
+                    'datatime' => [
+                        'label' => 'Terminé le',
+                        'value' => '21/09/2024 11:27:18',
+                    ],
+                    'exectime' => '00:03:00',
+                ],
+                'last' => [
+                    'data' => [
+                        'Dispo des collections' => '321',
+                    ],
+                    'datatime' => [
+                        'label' => 'Terminé le',
+                        'value' => '20/09/2024 11:28:18',
                     ],
                     'exectime' => '00:03:20',
                 ],

@@ -36,6 +36,7 @@ class AdminActionController extends AbstractController
                 'games_availabilities',
                 'games_shinies_availabilities',
                 'regional_dex_numbers',
+                'collections',
             ]"
     )]
     public function update(
@@ -51,6 +52,7 @@ class AdminActionController extends AbstractController
             in [
                 'game_bundles_availabilities',
                 'game_bundles_shinies_availabilities',
+                'collections_availabilities',
                 'dex_availabilities',
                 'pokemon_availabilities',
             ]"

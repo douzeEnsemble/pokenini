@@ -74,6 +74,11 @@ class ActionUpdateTest extends WebTestCase
         $this->assertStringNotContainsString('const types = JSON.parse', $crawler->outerHtml());
     }
 
+    public function testAdminUpdateCollections(): void
+    {
+        $this->testAdminUpdate('collections');
+    }
+
     public function testAdminUpdateUnknown(): void
     {
         $client = static::createClient();
@@ -137,6 +142,8 @@ class ActionUpdateTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
+
+        file_put_contents('tests/last.html', $client->getCrawler()->html());
 
         $this->assertCountFilter($crawler, 1, '.list-group-item-success');
 
