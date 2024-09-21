@@ -1661,6 +1661,20 @@
   {
     "request": {
       "uri": {
+        "match": "/istration/update/collections"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/istration/calculate/game_bundles_availabilities"
       },
       "method": "post",
@@ -1676,6 +1690,20 @@
     "request": {
       "uri": {
         "match": "/istration/calculate/game_bundles_shinies_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/collections_availabilities"
       },
       "method": "post",
       "headers": {

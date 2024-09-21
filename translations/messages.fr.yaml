@@ -28,9 +28,11 @@ title:
         games_availabilities: 'Mise à jour des dispo des jeux'
         games_shinies_availabilities: 'Mise à jour des dispo des jeux des chromatiques'
         regional_dex_numbers: 'Mise à jour des numéro des dex régionaux'
+        collections: 'Mise à jour collections'
     calculate:
         game_bundles_availabilities: 'Calculs des dispo des bundles de jeux'
         game_bundles_shinies_availabilities: 'Calculs des dispo des bundles de jeux des chromatiques'
+        collections_availabilities: 'Calculs des dispo des collections'
         dex_availabilities: 'Calculs des dispo des dex'
         pokemon_availabilities: 'Calculs des dispo par pokemons'
     invalidate:
@@ -205,6 +207,9 @@ update:
     regional_dex_numbers:
         success: 'La maj des numéros de dex régionaux a été effectuée'
         error: 'La maj des numéros de dex régionaux a échouée'
+    collections:
+        success: 'La maj des collections a été effectuée'
+        error: 'La maj des collections a échouée'
 calculate:
     game_bundles_availabilities:
         success: 'La maj des dispo des bundles de jeux a été effectuée'
@@ -212,6 +217,9 @@ calculate:
     game_bundles_shinies_availabilities:
         success: 'La maj des dispo des bundles de jeux des chromatiques a été effectuée'
         error: 'La maj des dispo des bundles de jeux des chromatiques a échouée'
+    collections_availabilities:
+        success: 'La maj des dispo des collections a été effectuée'
+        error: 'La maj des dispo des collections a échouée'
     dex_availabilities:
         success: 'La maj des dispo des dex a été effectuée'
         error: 'La maj des dispo des dex a échouée'
@@ -321,6 +329,7 @@ admin:
     update:
         games_availabilities: "Dispo des jeux"
         games_shinies_availabilities: "Dispo des jeux des chromatiques"
+        collections: "Collections"
         regional_dex_numbers: "Numéros de dex régionaux"
         game_generations: "Générations"
         game_bundles: "Bundles de jeux"
@@ -338,6 +347,7 @@ admin:
     calculate:
         game_bundles_availabilities: "Dispo des bundles"
         game_bundles_shinies_availabilities: "Dispo des bundles des chromatiques"
+        collections_availabilities: "Dispo des collections"
         dex_availabilities: "Dispo des dex"
         pokemon_availabilities_game_bundle: "Dispo des packs de jeux par pokémons"
         pokemon_availabilities_game_bundle_shiny: "Dispo des chromatiques des packs de jeux par pokémons "

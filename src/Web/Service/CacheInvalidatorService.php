@@ -37,6 +37,7 @@ class CacheInvalidatorService
 
             case 'games_and_dex':
             case 'dex':
+            case 'collections':
                 $this->dexCacheInvalidatorService->invalidate();
 
                 return;
@@ -49,6 +50,7 @@ class CacheInvalidatorService
             case 'games_shinies_availabilities':
             case 'game_bundles_availabilities':
             case 'game_bundles_shinies_availabilities':
+            case 'collections_availabilities':
             case 'pokemon_availabilities':
             case 'albums':
                 $this->albumsCacheInvalidatorService->invalidate();

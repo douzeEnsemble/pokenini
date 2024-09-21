@@ -1662,10 +1662,7 @@
       }
     },
     "response": {
-      "status": "200",
-      "json": {
-        "pokemons": 1815
-      }
+      "status": "201"
     }
   },
   {
@@ -1713,6 +1710,20 @@
   {
     "request": {
       "uri": {
+        "match": "/istration/update/collections"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/istration/calculate/game_bundles_availabilities"
       },
       "method": "post",
@@ -1728,6 +1739,20 @@
     "request": {
       "uri": {
         "match": "/istration/calculate/game_bundles_shinies_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/collections_availabilities"
       },
       "method": "post",
       "headers": {
