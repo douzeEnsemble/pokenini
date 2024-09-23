@@ -1860,6 +1860,28 @@
           }
         }
       }
+    },
+    {
+      "properties": {
+        "sheetId": 1293377463,
+        "title": "Collections Availability",
+        "index": 14,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 122,
+          "columnCount": 9
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1
+          }
+        }
+      }
     }
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/edit"

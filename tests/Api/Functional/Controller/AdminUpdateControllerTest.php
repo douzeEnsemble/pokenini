@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
-use App\Api\Controller\AdminController;
-use App\Api\Message\CalculateDexAvailabilities;
-use App\Api\Message\CalculateGameBundlesAvailabilities;
-use App\Api\Message\CalculateGameBundlesShiniesAvailabilities;
-use App\Api\Message\CalculatePokemonAvailabilities;
+use App\Api\Controller\AdminUpdateController;
+use App\Api\Message\UpdateCollectionsAvailabilities;
 use App\Api\Message\UpdateGamesAndDex;
 use App\Api\Message\UpdateGamesAvailabilities;
 use App\Api\Message\UpdateGamesShiniesAvailabilities;
@@ -23,8 +20,8 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(AdminController::class)]
-class AdminControllerTest extends WebTestCase
+#[CoversClass(AdminUpdateController::class)]
+class AdminUpdateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
@@ -139,6 +136,28 @@ class AdminControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
     }
 
+    public function testUpdateCollectionsAvailabilities(): void
+    {
+        $client = static::createClient();
+
+        $this->transport('async')->queue()->assertEmpty();
+
+        $client->request(
+            'POST',
+            'api/istration/update/collections_availabilities',
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW' => 'douze',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(201);
+
+        $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
+    }
+
     public function testUpdateRegionalDexNumbers(): void
     {
         $client = static::createClient();
@@ -161,7 +180,7 @@ class AdminControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateRegionalDexNumbers::class, 1);
     }
 
-    public function testCalculateGameBundlesAvailabilities(): void
+    public function testUpdateCollections(): void
     {
         $client = static::createClient();
 
@@ -169,7 +188,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            'api/istration/calculate/game_bundles_availabilities',
+            'api/istration/update/collections_availabilities',
             [],
             [],
             [
@@ -180,73 +199,7 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(CalculateGameBundlesAvailabilities::class, 1);
-    }
-
-    public function testCalculateGameBundlesShiniesAvailabilities(): void
-    {
-        $client = static::createClient();
-
-        $this->transport('async')->queue()->assertEmpty();
-
-        $client->request(
-            'POST',
-            'api/istration/calculate/game_bundles_shinies_availabilities',
-            [],
-            [],
-            [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
-            ],
-        );
-
-        $this->assertResponseStatusCodeSame(201);
-
-        $this->transport('async')->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
-    }
-
-    public function testCalculateDexAvailabilities(): void
-    {
-        $client = static::createClient();
-
-        $this->transport('async')->queue()->assertEmpty();
-
-        $client->request(
-            'POST',
-            'api/istration/calculate/dex_availabilities',
-            [],
-            [],
-            [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
-            ],
-        );
-
-        $this->assertResponseStatusCodeSame(201);
-
-        $this->transport('async')->queue()->assertContains(CalculateDexAvailabilities::class, 1);
-    }
-
-    public function testCalculatePokemonAvailabilities(): void
-    {
-        $client = static::createClient();
-
-        $this->transport('async')->queue()->assertEmpty();
-
-        $client->request(
-            'POST',
-            'api/istration/calculate/pokemon_availabilities',
-            [],
-            [],
-            [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
-            ],
-        );
-
-        $this->assertResponseStatusCodeSame(201);
-
-        $this->transport('async')->queue()->assertContains(CalculatePokemonAvailabilities::class, 1);
+        $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
     }
 
     public function testUpdateBadAuth(): void

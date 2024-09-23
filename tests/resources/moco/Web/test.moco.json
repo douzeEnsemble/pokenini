@@ -1710,7 +1710,7 @@
   {
     "request": {
       "uri": {
-        "match": "/istration/update/collections"
+        "match": "/istration/update/collections_availabilities"
       },
       "method": "post",
       "headers": {

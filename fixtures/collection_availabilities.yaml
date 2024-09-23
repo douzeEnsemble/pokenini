@@ -1,0 +1,17 @@
+App\Api\Entity\CollectionAvailability:
+    collectionavailability_douze_swshdens:
+        pokemonSlug: 'douze'
+        collectionSlug: 'swshdens'
+        availability: 'Y'
+    collectionavailability_douze_pogoshadow:
+        pokemonSlug: 'douze'
+        collectionSlug: 'pogoshadow'
+        availability: '-'
+    collectionavailability_bulbasaur_swshdens:
+        pokemonSlug: 'bulbasaur'
+        collectionSlug: 'swshdens'
+        availability: ''
+    collectionavailability_bulbasaur_pogoshadow:
+        pokemonSlug: 'bulbasaur'
+        collectionSlug: 'pogoshadow'
+        availability: 'Y'

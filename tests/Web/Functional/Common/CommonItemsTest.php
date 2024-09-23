@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Functional\Common;
 
-use App\Api\Controller\AdminController;
+use App\Api\Controller\AdminCalculateController;
+use App\Api\Controller\AdminUpdateController;
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Controller\ConnectController;
 use App\Web\Controller\HomeController;
@@ -18,7 +19,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 #[CoversClass(HomeController::class)]
 #[CoversClass(ConnectController::class)]
-#[CoversClass(AdminController::class)]
+#[CoversClass(AdminUpdateController::class)]
+#[CoversClass(AdminCalculateController::class)]
 class CommonItemsTest extends WebTestCase
 {
     use TestNavTrait;

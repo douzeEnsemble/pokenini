@@ -1,9 +1,84 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/Command/AbstractCalculateCommand.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/Command/AbstractUpdateCommand.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/CalculateDexAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/CalculateGameBundlesAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/CalculatePokemonAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdateGamesAndDexHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdateGamesAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdateGamesShiniesAvailabilitiesHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdateLabelsHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdatePokemonsHandler.php
+
+		-
+			message: "#^Property App\\\\Api\\\\Entity\\\\ActionLog\\:\\:\\$reportData \\(string\\|null\\) does not accept string\\|false\\.$#"
+			count: 1
+			path: src/Api/MessageHandler/UpdateRegionalDexNumbersHandler.php
+
+		-
 			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
 			count: 1
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$nexistepas\\.$#"
+			count: 2
+			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
+			count: 2
+			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$swshdens\\.$#"
+			count: 2
+			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
@@ -66,6 +141,16 @@ parameters:
 			path: tests/Api/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
+			count: 3
+			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$swshdens\\.$#"
+			count: 3
+			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
 			path: tests/Api/Functional/Service/GameBundlesAvailabilitiesServiceTest.php
@@ -124,6 +209,21 @@ parameters:
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
 			count: 1
 			path: tests/Api/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$a\\.$#"
+			count: 1
+			path: tests/Api/Unit/DTO/CollectionsAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$b\\.$#"
+			count: 1
+			path: tests/Api/Unit/DTO/CollectionsAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$c\\.$#"
+			count: 1
+			path: tests/Api/Unit/DTO/CollectionsAvailabilitiesTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"
