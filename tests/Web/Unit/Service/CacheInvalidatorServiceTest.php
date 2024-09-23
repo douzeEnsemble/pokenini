@@ -313,6 +313,7 @@ class CacheInvalidatorServiceTest extends TestCase
             'game_bundles_availabilities' => ['game_bundles_availabilities'],
             'game_bundles_shinies_availabilities' => ['game_bundles_shinies_availabilities'],
             'pokemon_availabilities' => ['pokemon_availabilities'],
+            'collections_availabilities' => ['collections_availabilities'],
             'albums' => ['albums'],
         ];
     }

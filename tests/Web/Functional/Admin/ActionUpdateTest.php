@@ -76,7 +76,7 @@ class ActionUpdateTest extends WebTestCase
 
     public function testAdminUpdateCollections(): void
     {
-        $this->testAdminUpdate('collections');
+        $this->testAdminUpdate('collections_availabilities');
     }
 
     public function testAdminUpdateUnknown(): void

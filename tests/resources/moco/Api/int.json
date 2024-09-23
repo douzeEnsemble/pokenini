@@ -646,5 +646,32 @@
       "status": 200,
       "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_type%27%21A2%3AAC.json"
     }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collections Availability'!A1:J1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A1%3AJ1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collections Availability'!A2:I101"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A2%3AI101.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collections Availability'!A102:I122"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A102%3AI122.json"
+    }
   }
 ]

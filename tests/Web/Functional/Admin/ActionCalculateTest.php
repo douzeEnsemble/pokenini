@@ -30,12 +30,6 @@ class ActionCalculateTest extends WebTestCase
         $this->testAdminCalculate('game_bundles_shinies_availabilities');
     }
 
-
-    public function testAdminCalculateCollectionsAvailabilities(): void
-    {
-        $this->testAdminCalculate('collections_availabilities');
-    }
-
     public function testAdminCalculatePokemonAvailabilities(): void
     {
         $this->testAdminCalculate('pokemon_availabilities');

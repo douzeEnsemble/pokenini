@@ -7,6 +7,7 @@ namespace App\Api\Calculator;
 use App\Api\Entity\Dex;
 use App\Api\Entity\DexAvailability;
 use App\Api\Entity\Pokemon;
+use App\Api\Service\CollectionsAvailabilitiesService;
 use App\Api\Service\GameBundlesAvailabilitiesService;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Api\Service\GamesAvailabilitiesService;
@@ -22,6 +23,7 @@ class DexPokemonAvailabilityCalculator
         private readonly GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
         private readonly GamesAvailabilitiesService $gamesAvailabilitiesService,
         private readonly GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
+        private readonly CollectionsAvailabilitiesService $collectionsAvailabilitiesService,
     ) {
         $this->expressionLanguage = new ExpressionLanguage();
     }
@@ -51,6 +53,7 @@ class DexPokemonAvailabilityCalculator
         $this->setPokemonValues($values, $rule, $pokemon);
         $this->setBundlesValues($values, $rule, $pokemon);
         $this->setGamesValues($values, $rule, $pokemon);
+        $this->setCollectionsValues($values, $rule, $pokemon);
 
         return $values;
     }
@@ -90,6 +93,16 @@ class DexPokemonAvailabilityCalculator
 
         if (str_contains($rule, 'gsa.') || str_contains($rule, 'gsa?.')) {
             $values['gsa'] = $this->gamesShiniesAvailabilitiesService->getFromPokemon($pokemon);
+        }
+    }
+
+    /**
+     * @param mixed[] $values
+     */
+    private function setCollectionsValues(array &$values, string $rule, Pokemon $pokemon): void
+    {
+        if (str_contains($rule, 'ca.') || str_contains($rule, 'ca?.')) {
+            $values['ca'] = $this->collectionsAvailabilitiesService->getFromPokemon($pokemon);
         }
     }
 }

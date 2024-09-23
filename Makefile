@@ -100,10 +100,9 @@ data_app: ## Initialize app data
 	$(SYMFONY) app:update:regional_dex_numbers
 	$(SYMFONY) app:update:games_availabilities
 	$(SYMFONY) app:update:games_shinies_availabilities
-	$(SYMFONY) app:update:collections
+	$(SYMFONY) app:update:collections_availabilities
 	$(SYMFONY) app:calculate:game_bundles_availabilities
 	$(SYMFONY) app:calculate:game_bundles_shinies_availabilities
-	$(SYMFONY) app:calculate:collections_availabilities
 	$(SYMFONY) app:calculate:dex_availabilities
 	$(SYMFONY) app:calculate:pokemon_availabilities
 
@@ -194,7 +193,7 @@ newman_prepare:
 	@$(SYMFONY) --env=int app:update:regional_dex_numbers
 	@$(SYMFONY) --env=int app:update:games_availabilities
 	@$(SYMFONY) --env=int app:update:games_shinies_availabilities
-	@$(SYMFONY) --env=int app:update:collections
+	@$(SYMFONY) --env=int app:update:collections_availabilities
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:game_bundles_shinies_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities

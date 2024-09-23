@@ -13,6 +13,7 @@
             ]
         },
         "global-ignore": [
+            "App\\Api\\Updater\\CollectionsAvailabilitiesUpdater::upsertRecord",
             "App\\Api\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
             "App\\Api\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
             "App\\Web\\Controller\\ConnectController::googleCheck",
