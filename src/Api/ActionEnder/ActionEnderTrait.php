@@ -31,7 +31,8 @@ trait ActionEnderTrait
     ): void {
         $actionLog = $this->findActionLog($message);
 
-        $actionLog->reportData = json_encode($report);
+        $json = json_encode($report);
+        $actionLog->reportData = false === $json ? '' : $json;
 
         $this->crimpActionLog($actionLog);
     }
