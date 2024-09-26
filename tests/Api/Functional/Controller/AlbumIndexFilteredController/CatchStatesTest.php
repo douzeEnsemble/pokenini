@@ -75,14 +75,14 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(18, $pokemons);
+        $this->assertCount(19, $pokemons);
 
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 8, 0, 3, 7, 18);
+        $this->assertReport($report, 9, 0, 3, 7, 19);
     }
 
     public function testNoCatchStateFilter(): void

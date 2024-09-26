@@ -313,11 +313,11 @@ class AlbumReportServiceData
                         '!maybe',
                     ],
                 ],
-                8,
+                9,
                 0,
                 3,
                 7,
-                18,
+                19,
             ],
         ];
     }

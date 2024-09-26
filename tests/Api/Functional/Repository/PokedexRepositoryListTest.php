@@ -284,7 +284,7 @@ class PokedexRepositoryListTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(18, $pokedex);
+        $this->assertCount(19, $pokedex);
 
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
         $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
@@ -304,6 +304,7 @@ class PokedexRepositoryListTest extends KernelTestCase
         $this->assertEquals('raticate', $pokedex[15]['pokemon_slug']);
         $this->assertEquals('raticate-alola', $pokedex[16]['pokemon_slug']);
         $this->assertEquals('raticate-alola-totem', $pokedex[17]['pokemon_slug']);
+        $this->assertEquals('douze', $pokedex[18]['pokemon_slug']);
     }
 
     public function testGetListQueryCatchStatesNegativeNo(): void
