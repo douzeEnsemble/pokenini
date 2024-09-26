@@ -180,8 +180,8 @@ trait FiltersTrait
         }
         if ($filters->catchStates->negativeValues) {
             $query .= ' AND (cs.slug NOT IN(:filter_catch_states_negative)';
-            if (in_array('no', $filters->catchStates->extractNegatives())) {
-                $query .= ' AND cs.slug IS NOT NULL';
+            if (!in_array('no', $filters->catchStates->extractNegatives())) {
+                $query .= ' OR cs.slug IS NULL';
             }
             $query .= ')';
         }
