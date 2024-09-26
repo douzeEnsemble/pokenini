@@ -22,4 +22,3 @@ php bin/console app:calculate:dex_availabilities
 php bin/console app:calculate:pokemon_availabilities
 
 echo "End post_build scripts"
-App\Api\Message\UpdateCollectionsAvailabilities
