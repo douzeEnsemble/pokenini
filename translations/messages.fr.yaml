@@ -28,7 +28,7 @@ title:
         games_availabilities: 'Mise à jour des dispo des jeux'
         games_shinies_availabilities: 'Mise à jour des dispo des jeux des chromatiques'
         regional_dex_numbers: 'Mise à jour des numéro des dex régionaux'
-        collections_availabilities: 'Mise à jour collections'
+        collections_availabilities: 'Mise à jour des dispo des collections'
     calculate:
         game_bundles_availabilities: 'Calculs des dispo des bundles de jeux'
         game_bundles_shinies_availabilities: 'Calculs des dispo des bundles de jeux des chromatiques'
