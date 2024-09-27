@@ -35,7 +35,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         EntityManagerInterface $entityManager,
         LoggerInterface $logger,
         string $spreadsheetId,
-        protected readonly GamesRepository $gamesRepository
+        protected readonly GamesRepository $gamesRepository,
     ) {
         parent::__construct(
             $spreadsheetService,
@@ -106,7 +106,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
             [
                 '#Pokemon',
             ],
-            $games
+            $games,
         );
     }
 

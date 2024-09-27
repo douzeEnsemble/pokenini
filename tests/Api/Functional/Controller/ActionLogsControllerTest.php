@@ -54,8 +54,8 @@ class ActionLogsControllerTest extends WebTestCase
         $this->assertThereIsNoLast($data, 'calculate_game_bundles_shinies_availabilities');
         $this->assertCurrentIsFailed($data, 'calculate_game_bundles_shinies_availabilities');
 
-        $this->assertLastIsDone($data, 'update_games_and_dex');
-        $this->assertCurrentIsNotDone($data, 'update_games_and_dex');
+        $this->assertLastIsDone($data, 'update_games_collections_and_dex');
+        $this->assertCurrentIsNotDone($data, 'update_games_collections_and_dex');
 
         $this->assertLastIsDone($data, 'update_games_availabilities');
         $this->assertCurrentIsFailed($data, 'update_games_availabilities');

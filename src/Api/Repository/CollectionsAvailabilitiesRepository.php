@@ -37,12 +37,14 @@ class CollectionsAvailabilitiesRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('ca');
 
         $queryBuilder->select('ca.availability');
-        $queryBuilder->addSelect('ca.collectionSlug AS slug');
+        $queryBuilder->addSelect('c.slug');
+
+        $queryBuilder->join('ca.collection', 'c');
 
         $queryBuilder->where($queryBuilder->expr()->eq('ca.pokemonSlug', ':pokemonSlug'));
         $queryBuilder->setParameter('pokemonSlug', $pokemon->slug);
 
-        $queryBuilder->orderBy('ca.collectionSlug');
+        $queryBuilder->orderBy('c.orderNumber');
 
         /** @var string[][] $result */
         $result = $queryBuilder->getQuery()->getArrayResult();

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Api\Controller;
 
 use App\Api\ActionStarter\UpdateCollectionsAvailabilitiesActionStarter;
-use App\Api\ActionStarter\UpdateGamesAndDexActionStarter;
 use App\Api\ActionStarter\UpdateGamesAvailabilitiesActionStarter;
+use App\Api\ActionStarter\UpdateGamesCollectionsAndDexActionStarter;
 use App\Api\ActionStarter\UpdateGamesShiniesAvailabilitiesActionStarter;
 use App\Api\ActionStarter\UpdateLabelsActionStarter;
 use App\Api\ActionStarter\UpdatePokemonsActionStarter;
@@ -34,9 +34,9 @@ class AdminUpdateController extends AbstractController
         return new Response('', Response::HTTP_CREATED);
     }
 
-    #[Route(path: '/games_and_dex', methods: ['POST'])]
-    public function updateGamesAndDex(
-        UpdateGamesAndDexActionStarter $actionStarter
+    #[Route(path: '/games_collections_and_dex', methods: ['POST'])]
+    public function updateGamesCollectionsAndDex(
+        UpdateGamesCollectionsAndDexActionStarter $actionStarter
     ): Response {
         $message = $actionStarter->start();
 

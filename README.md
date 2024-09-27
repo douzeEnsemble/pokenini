@@ -69,7 +69,7 @@ file_put_contents('tests/last.html', $crawler->html());
 
 ```
 php bin/console app:update:labels
-php bin/console app:update:games_and_dex
+php bin/console app:update:games_collections_and_dex
 ```
 
 ## Pokémons

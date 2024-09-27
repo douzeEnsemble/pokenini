@@ -1,17 +1,17 @@
 App\Api\Entity\CollectionAvailability:
     collectionavailability_douze_swshdens:
         pokemonSlug: 'douze'
-        collectionSlug: 'swshdens'
+        collection: '@collection_pogodynamax'
         availability: 'Y'
     collectionavailability_douze_pogoshadow:
         pokemonSlug: 'douze'
-        collectionSlug: 'pogoshadow'
+        collection: '@collection_pogoshadow'
         availability: '-'
     collectionavailability_bulbasaur_swshdens:
         pokemonSlug: 'bulbasaur'
-        collectionSlug: 'swshdens'
+        collection: '@collection_pogodynamax'
         availability: ''
     collectionavailability_bulbasaur_pogoshadow:
         pokemonSlug: 'bulbasaur'
-        collectionSlug: 'pogoshadow'
+        collection: '@collection_pogoshadow'
         availability: 'Y'

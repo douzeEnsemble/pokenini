@@ -1591,7 +1591,7 @@
   {
     "request": {
       "uri": {
-        "match": "/istration/update/games_and_dex"
+        "match": "/istration/update/games_collections_and_dex"
       },
       "method": "post",
       "headers": {

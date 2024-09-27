@@ -649,11 +649,11 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collections Availability'!A1:J1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collections Availability'!A1:I1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A1%3AJ1.json"
+      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A1%3AI1.json"
     }
   },
   {
@@ -672,6 +672,24 @@
     "response": {
       "status": 200,
       "file": "/var/moco/test/values_%27Collections%20Availability%27%21A102%3AI122.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collection'!A1:D1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Collection%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Collection'!A2:D"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Collection%27%21A2%3AD.json"
     }
   }
 ]

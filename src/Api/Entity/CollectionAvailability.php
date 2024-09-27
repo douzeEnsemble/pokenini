@@ -16,8 +16,9 @@ class CollectionAvailability
     #[ORM\Column]
     public string $pokemonSlug;
 
-    #[ORM\Column]
-    public string $collectionSlug;
+    #[ORM\ManyToOne(targetEntity: Collection::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    public Collection $collection;
 
     #[ORM\Column]
     #[Assert\NotBlank]

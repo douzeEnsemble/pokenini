@@ -25,9 +25,9 @@ class ActionUpdateTest extends WebTestCase
         $this->testAdminUpdate('labels');
     }
 
-    public function testAdminUpdateGamesAndDex(): void
+    public function testAdminUpdateGamesCollectionsAndDex(): void
     {
-        $this->testAdminUpdate('games_and_dex');
+        $this->testAdminUpdate('games_collections_and_dex');
     }
 
     public function testAdminUpdatePokemons(): void

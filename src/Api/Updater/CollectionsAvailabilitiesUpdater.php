@@ -6,6 +6,7 @@ namespace App\Api\Updater;
 
 use App\Api\Exception\InvalidSheetDataException;
 use App\Api\Helper\A1Notation;
+use App\Api\Repository\CollectionsRepository;
 use App\Api\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
@@ -24,11 +25,17 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     /** @var string[][] */
     private array $records;
 
+    /**
+     * @var null|string[]
+     */
+    private ?array $collectionsCache = null;
+
     public function __construct(
         SpreadsheetService $spreadsheetService,
         EntityManagerInterface $entityManager,
         LoggerInterface $logger,
         string $spreadsheetId,
+        protected readonly CollectionsRepository $collectionsRepository,
     ) {
         parent::__construct(
             $spreadsheetService,
@@ -43,7 +50,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
      */
     protected function getHeader(): array
     {
-        $columnCount = $this->spreadsheetService->getSheetColumnCount($this->spreadsheetId, $this->sheetName);
+        $collections = $this->getCollections();
 
         $headerCellsRange = sprintf(
             '%s:%s',
@@ -53,11 +60,9 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
             ),
             A1Notation::fromIndex(
                 0,
-                $columnCount,
+                count($collections)
             ),
         );
-
-        // dd($this->spreadsheetId, $this->sheetName, $columnCount, $headerCellsRange);
 
         $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
 
@@ -95,32 +100,14 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
 
     protected function getExpectedHeader(): array
     {
-        return [
-            '#Pokemon',
-        ];
-    }
+        $collections = $this->getCollections();
 
-    /**
-     * @param string[] $header
-     */
-    protected function validateHeader(array $header): void
-    {
-        $expectedHeader = $this->getExpectedHeader();
-
-        sort($header);
-        sort($expectedHeader);
-
-        if (!empty(array_diff($expectedHeader, $header))) {
-            $this->logger->error(
-                'This is not a valid data spreadsheet',
-                [
-                    'header' => $header,
-                    'expectedHeader' => $expectedHeader,
-                ]
-            );
-
-            throw new InvalidSheetDataException('This is not a valid data spreadsheet');
-        }
+        return array_merge(
+            [
+                '#Pokemon',
+            ],
+            $collections,
+        );
     }
 
     protected function getRecords(array $header, string $range): array
@@ -159,7 +146,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
         foreach ($records as $record) {
             $sqlValues[] = ":id{$index}"
                 .", :pokemonSlug{$index}"
-                .", :collectionSlug{$index}"
+                .", (SELECT id FROM collection WHERE slug = :collectionSlug{$index})"
                 .", :availability{$index}";
 
             $sqlParameters["id{$index}"] = Uuid::v4();
@@ -176,7 +163,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
                     INSERT INTO {$this->tableName} (
                         id,
                         pokemon_slug,
-                        collection_slug,
+                        collection_id,
                         availability
                     )
                     VALUES ({$sqlValuesStr})
@@ -234,5 +221,19 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
                 'availability' => $availability,
             ];
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getCollections(): array
+    {
+        if (null != $this->collectionsCache) {
+            return $this->collectionsCache;
+        }
+
+        $this->collectionsCache = $this->collectionsRepository->getAllSlugs();
+
+        return $this->collectionsCache;
     }
 }
