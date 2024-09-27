@@ -15,7 +15,8 @@ trait FiltersTrait
             .$this->getFiltersQueryForms($filters)
             .$this->getFiltersQueryCatchStates($filters)
             .$this->getFiltersQueryGames($filters)
-            .$this->getFiltersQueryFamilies($filters);
+            .$this->getFiltersQueryFamilies($filters)
+            .$this->getFiltersQueryCollections($filters);
     }
 
     /**
@@ -29,6 +30,7 @@ trait FiltersTrait
             $this->getFiltersParametersCatchStates($filters),
             $this->getFiltersParametersGames($filters),
             $this->getFiltersParametersFamilies($filters),
+            $this->getFiltersParametersCollections($filters),
         );
     }
 
@@ -53,6 +55,7 @@ trait FiltersTrait
             'filter_game_bundle_shiny_availabilities' => ArrayParameterType::STRING,
             'filter_game_bundle_shiny_availabilities_negative' => ArrayParameterType::STRING,
             'filter_families' => ArrayParameterType::STRING,
+            'filter_collection_availabilities' => ArrayParameterType::STRING,
         ];
     }
 
@@ -316,6 +319,39 @@ trait FiltersTrait
 
         if ($filters->families->values) {
             $parameters['filter_families'] = $filters->families->extract();
+        }
+
+        return $parameters;
+    }
+
+    private function getFiltersQueryCollections(AlbumFilters $filters): string
+    {
+        $query = '';
+
+        if ($filters->collectionAvailabilities->values) {
+            $query .= <<<'SUBSQL'
+                AND p.slug IN (SELECT ca.pokemon_slug
+                            FROM    collection_availability AS ca
+                                LEFT JOIN collection AS c
+                                    ON ca.collection_id = c.id
+                            WHERE   ca.availability NOT IN ('—', '-', '')
+                                    AND c.slug IN(:filter_collection_availabilities)
+                        )
+                SUBSQL;
+        }
+
+        return $query;
+    }
+
+    /**
+     * @return null[][]|string[][]
+     */
+    private function getFiltersParametersCollections(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if ($filters->collectionAvailabilities->values) {
+            $parameters['filter_collection_availabilities'] = $filters->collectionAvailabilities->extract();
         }
 
         return $parameters;

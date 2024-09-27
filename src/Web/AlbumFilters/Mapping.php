@@ -19,6 +19,7 @@ class Mapping
         'ogb' => 'original_game_bundles',
         'gba' => 'game_bundle_availabilities',
         'gbsa' => 'game_bundle_shiny_availabilities',
+        'ca' => 'collection_availabilities',
     ];
 
     /**

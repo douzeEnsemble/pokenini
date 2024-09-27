@@ -39,7 +39,7 @@ class UpdateCollectionsAvailabilitiesHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(4, $this->getTableCount('collection_availability'));
+        $this->assertEquals(6, $this->getTableCount('collection_availability'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();

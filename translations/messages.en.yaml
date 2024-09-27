@@ -185,6 +185,10 @@ album:
                 total: "All the collection"
                 positive: "Filter all '%cs%'"
                 negative: "Filter all excepts '%cs%'"
+            collections:
+                label: Collection
+                value:
+                    empty: Whatever
 
 update:
     labels:

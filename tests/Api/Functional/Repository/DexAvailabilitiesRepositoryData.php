@@ -250,6 +250,31 @@ class DexAvailabilitiesRepositoryData
     /**
      * @return int[][]|string[][][][]
      */
+    public static function providerGetTotalCollectionsFilters(): array
+    {
+        return [
+            'collection_availabilities' => [
+                'filters' => [
+                    'collectionAvailabilities' => [
+                        'pogoshadow',
+                    ],
+                ],
+                'expectedTotalCount' => 1,
+            ],
+            'collection_availabilities_null' => [
+                'filters' => [
+                    'collectionAvailabilities' => [
+                        'null',
+                    ],
+                ],
+                'expectedTotalCount' => 0,
+            ],
+        ];
+    }
+
+    /**
+     * @return int[][]|string[][][][]
+     */
     public static function providerGetTotalFamiliesFilters(): array
     {
         return [

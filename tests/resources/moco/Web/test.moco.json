@@ -85,6 +85,18 @@
   },
   {
     "request": {
+      "uri": "/collections",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/collections.json"
+    }
+  },
+  {
+    "request": {
       "uri": "/dex/f86cbe805674d85f7806b175b70647a6a9334631/list",
       "headers": {
         "accept": "application/json",
@@ -830,6 +842,22 @@
     },
     "response": {
       "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0unknown.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "collection_availabilities[0]": "pogoshadow"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_collectionavailabilities0pogoshadow.json"
     }
   },
   {

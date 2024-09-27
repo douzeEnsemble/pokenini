@@ -18,7 +18,7 @@ class CollectionsAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountCollectionAvailabilityTrait;
 
-    protected int $initialTotalCount = 4;
+    protected int $initialTotalCount = 6;
     protected int $finalTotalCount = 968;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Collections Availability';

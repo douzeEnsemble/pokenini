@@ -15,3 +15,11 @@ App\Api\Entity\CollectionAvailability:
         pokemonSlug: 'bulbasaur'
         collection: '@collection_pogoshadow'
         availability: 'Y'
+    collectionavailability_charmander_swshdens:
+        pokemonSlug: 'charmander'
+        collection: '@collection_pogodynamax'
+        availability: ''
+    collectionavailability_charmander_pogoshadow:
+        pokemonSlug: 'charmander'
+        collection: '@collection_pogoshadow'
+        availability: ''

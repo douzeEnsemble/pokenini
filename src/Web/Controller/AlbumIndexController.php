@@ -87,6 +87,7 @@ class AlbumIndexController extends AbstractController
         $variantForms = $this->getLabelsService->getFormsVariant();
         $variantForms = $this->getLabelsService->getFormsVariant();
         $gameBundles = $this->getLabelsService->getGameBundles();
+        $collections = $this->getLabelsService->getCollections();
 
         $pokemons = $pokedex['pokemons'];
 
@@ -102,6 +103,7 @@ class AlbumIndexController extends AbstractController
             'specialForms' => $specialForms,
             'variantForms' => $variantForms,
             'gameBundles' => $gameBundles,
+            'collections' => $collections,
             'mode' => 'read',
             'filters' => $filters,
             'trainerId' => $trainerId,
