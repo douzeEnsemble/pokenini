@@ -19,7 +19,7 @@ final class Version20240927070221 extends AbstractMigration
         $this->addSql('CREATE TABLE collection (id UUID NOT NULL, name VARCHAR(255) NOT NULL, french_name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_FC4D65325E237E06 ON collection (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_FC4D6532989D9B62 ON collection (slug)');
-        $this->addSql('DELETE * FROM collection_availability');
+        $this->addSql('DELETE FROM collection_availability');
         $this->addSql('ALTER TABLE collection_availability ADD collection_id UUID NOT NULL');
         $this->addSql('ALTER TABLE collection_availability DROP collection_slug');
         $this->addSql('ALTER TABLE collection_availability ADD CONSTRAINT FK_A594BB95514956FD FOREIGN KEY (collection_id) REFERENCES collection (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
