@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetCatchStatesService;
+use App\Web\Service\Api\GetCollectionsService;
 use App\Web\Service\Api\GetFormsService;
 use App\Web\Service\Api\GetGameBundlesService;
 use App\Web\Service\Api\GetLabelsService;
@@ -53,6 +54,14 @@ class GetLabelsServiceTest extends TestCase
         $this->getService('game_bundles')->getGameBundles();
     }
 
+    public function testGetCollections(): void
+    {
+        $this->getService('collections')->getCollections();
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
     private function getService(string $type): GetLabelsService
     {
         $getCatchStatesService = $this->createMock(GetCatchStatesService::class);
@@ -98,11 +107,19 @@ class GetLabelsServiceTest extends TestCase
             ->willReturn([])
         ;
 
+        $getCollectionsService = $this->createMock(GetCollectionsService::class);
+        $getCollectionsService
+            ->expects($this->exactly('collections' === $type ? 1 : 0))
+            ->method('get')
+            ->willReturn([])
+        ;
+
         return new GetLabelsService(
             $getCatchStatesService,
             $getTypesService,
             $getFormsService,
             $getGameBundlesService,
+            $getCollectionsService,
         );
     }
 }

@@ -22,7 +22,7 @@ class CollectionsRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetAll(): void
+    public function testGetAllSlug(): void
     {
         /** @var CollectionsRepository $repo */
         $repo = static::getContainer()->get(CollectionsRepository::class);
@@ -42,5 +42,15 @@ class CollectionsRepositoryTest extends KernelTestCase
             ],
             $list
         );
+    }
+
+    public function testGetAll(): void
+    {
+        /** @var CollectionsRepository $repo */
+        $repo = static::getContainer()->get(CollectionsRepository::class);
+
+        $list = $repo->getAll();
+
+        $this->assertCount(8, $list);
     }
 }

@@ -24,6 +24,7 @@ class FromRequest
         'ogb',
         'gba',
         'gbsa',
+        'ca',
     ];
 
     /**

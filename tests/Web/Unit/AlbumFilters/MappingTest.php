@@ -72,6 +72,10 @@ class MappingTest extends TestCase
                 'gbsa2',
                 '!gbsa3',
             ],
+            'ca' => [
+                'ca1',
+                'ca2',
+            ],
         ];
     }
 
@@ -128,6 +132,10 @@ class MappingTest extends TestCase
                 'gbsa1',
                 'gbsa2',
                 '!gbsa3',
+            ],
+            'collection_availabilities' => [
+                'ca1',
+                'ca2',
             ],
         ];
     }

@@ -32,6 +32,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->collectionAvailabilities);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -45,6 +46,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->gameBundleAvailabilities->values);
         $this->assertEmpty($filters->gameBundleShinyAvailabilities->values);
         $this->assertEmpty($filters->families->values);
+        $this->assertEmpty($filters->collectionAvailabilities->values);
 
         $this->assertEmpty($filters->primaryTypes->negativeValues);
         $this->assertEmpty($filters->secondaryTypes->negativeValues);
@@ -58,6 +60,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->gameBundleAvailabilities->negativeValues);
         $this->assertEmpty($filters->gameBundleShinyAvailabilities->negativeValues);
         $this->assertEmpty($filters->families->negativeValues);
+        $this->assertEmpty($filters->collectionAvailabilities->negativeValues);
     }
 
     public function testCreateFromArray(): void
@@ -75,6 +78,7 @@ class AlbumFiltersTest extends TestCase
             'gameBundleAvailabilities' => ['sunmoon'],
             'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
+            'collectionAvailabilities' => ['swshdens'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -90,6 +94,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->collectionAvailabilities);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -103,6 +108,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(1, $filters->gameBundleAvailabilities->values);
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
         $this->assertCount(2, $filters->families->values);
+        $this->assertCount(1, $filters->collectionAvailabilities->values);
 
         $this->assertEmpty($filters->primaryTypes->negativeValues);
         $this->assertEmpty($filters->secondaryTypes->negativeValues);
@@ -116,6 +122,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->gameBundleAvailabilities->negativeValues);
         $this->assertEmpty($filters->gameBundleShinyAvailabilities->negativeValues);
         $this->assertEmpty($filters->families->negativeValues);
+        $this->assertEmpty($filters->collectionAvailabilities->negativeValues);
     }
 
     public function testCreateFromArrayWithNegative(): void
@@ -133,6 +140,7 @@ class AlbumFiltersTest extends TestCase
             'gameBundleAvailabilities' => ['!sunmoon'],
             'gameBundleShinyAvailabilities' => ['!ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
+            'collectionAvailabilities' => ['swshdens'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -148,6 +156,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->collectionAvailabilities);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -161,6 +170,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(0, $filters->gameBundleAvailabilities->values);
         $this->assertCount(0, $filters->gameBundleShinyAvailabilities->values);
         $this->assertCount(2, $filters->families->values);
+        $this->assertCount(1, $filters->collectionAvailabilities->values);
 
         $this->assertCount(0, $filters->primaryTypes->negativeValues);
         $this->assertCount(0, $filters->secondaryTypes->negativeValues);
@@ -174,6 +184,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(1, $filters->gameBundleAvailabilities->negativeValues);
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->negativeValues);
         $this->assertCount(0, $filters->families->negativeValues);
+        $this->assertCount(0, $filters->collectionAvailabilities->negativeValues);
     }
 
     public function testNormalizer(): void

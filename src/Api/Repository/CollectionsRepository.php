@@ -31,4 +31,22 @@ class CollectionsRepository extends ServiceEntityRepository
         /** @var string[] */
         return $queryBuilder->getQuery()->getSingleColumnResult();
     }
+
+    /**
+     * @return string[][]
+     */
+    public function getAll(): array
+    {
+        $sql = <<<'SQL'
+            SELECT      name,
+                        french_name as "frenchName",
+                        slug
+            FROM        collection
+            WHERE       deleted_at IS NULL
+            ORDER BY    order_number
+            SQL;
+
+        /** @var string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+    }
 }

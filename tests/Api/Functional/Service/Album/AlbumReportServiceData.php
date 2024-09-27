@@ -503,4 +503,56 @@ class AlbumReportServiceData
             ],
         ];
     }
+
+    /**
+     * @return int[][]|string[][]|string[][][][]
+     */
+    public static function getCollectionsReportFilteredProvider(): array
+    {
+        return [
+            'collection_availalibities' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'collectionAvailabilities' => [
+                        'pogoshadow',
+                    ],
+                ],
+                1,
+                0,
+                0,
+                0,
+                1,
+            ],
+            'collection_availalibities_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'collectionAvailabilities' => [
+                        'null',
+                    ],
+                ],
+                0,
+                0,
+                0,
+                0,
+                0,
+            ],
+            'collections_availalibities' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'collectionAvailabilities' => [
+                        'pogoshadow',
+                        'pogoshadowshiny',
+                    ],
+                ],
+                1,
+                0,
+                0,
+                0,
+                1,
+            ],
+        ];
+    }
 }

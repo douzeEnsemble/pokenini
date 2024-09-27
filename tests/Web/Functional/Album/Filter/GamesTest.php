@@ -61,6 +61,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['swordshield']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSwordShieldAndXYOriginalGame(): void
@@ -107,6 +108,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['swordshield', 'xy']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterOriginalGameUnknown(): void
@@ -139,6 +141,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', []);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSwordShieldGameBundle(): void
@@ -185,6 +188,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['swordshield']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSwordShieldGameBundleShiny(): void
@@ -231,6 +235,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_availability'));
         $this->assertSelectedOptions($crawler, 'select#game_bundle_shiny_availability', ['swordshield']);
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterNotSwordShieldGameBundle(): void
@@ -277,6 +282,7 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['!swordshield']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterNotSwordShieldGameBundleShiny(): void
@@ -323,5 +329,6 @@ class GamesTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_availability'));
         $this->assertSelectedOptions($crawler, 'select#game_bundle_shiny_availability', ['!swordshield']);
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 }

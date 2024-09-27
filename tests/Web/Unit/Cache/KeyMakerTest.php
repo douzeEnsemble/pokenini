@@ -34,6 +34,11 @@ class KeyMakerTest extends TestCase
         $this->assertEquals('game_bundles', KeyMaker::getGameBundlesKey());
     }
 
+    public function testGetCollectionsKey(): void
+    {
+        $this->assertEquals('collections', KeyMaker::getCollectionsKey());
+    }
+
     public function testGetFormsCategoryKey(): void
     {
         $this->assertEquals('forms_category', KeyMaker::getFormsCategoryKey());

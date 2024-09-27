@@ -58,6 +58,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialMega(): void
@@ -101,6 +102,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialMegaAndGigantamax(): void
@@ -147,6 +149,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterRegionalPaldeanAndVariantAlternate(): void
@@ -193,6 +196,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialNull(): void
@@ -236,6 +240,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialNullAndMega(): void
@@ -282,6 +287,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialAllAndMega(): void
@@ -325,6 +331,7 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 
     public function testFilterSpecialUnknown(): void
@@ -357,5 +364,6 @@ class FormsTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#original_game_bundle', ['']);
         $this->assertSelectedOptions($crawler, 'select#game_bundle_availability', ['']);
         $this->assertCount(0, $crawler->filter('select#game_bundle_shiny_availability'));
+        $this->assertSelectedOptions($crawler, 'select#collection_availability', ['']);
     }
 }

@@ -231,6 +231,25 @@
             </div>
             {% endif %}
         </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <label for="collection" class="form-label">
+                    <i class="bi bi-collection"></i>
+                    {{ 'album.offcanvas.filters.collection.label'|trans }}
+                </label>
+                {% set filteredCollections = app.request.get('ca', []) %}
+                <select multiple id="collection_availability" name="ca[]" class="form-select form-select-sm">
+                    <option value="" {{ ((filteredCollections|filter(v => v) is empty) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.collection.value.empty'|trans -}}
+                    </option>
+                    {% for collection in collections %}
+                    <option value="{{ collection.slug }}" {{ ((collection.slug in filteredCollections) ? 'selected': '') }}>
+                        {{- (locale is same as('fr') ? collection.frenchName : collection.name) -}}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
         <div hidden>
             <input type="text" name="t" value="{{ queryTrainerId }}">
             <input type="text" name="cs" value="{{ catchState }}">

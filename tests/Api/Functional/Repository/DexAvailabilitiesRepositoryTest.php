@@ -96,6 +96,7 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
             DexAvailabilitiesRepositoryData::providerGetTotalFormsFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalCatchStatesFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalGamesFilters(),
+            DexAvailabilitiesRepositoryData::providerGetTotalCollectionsFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalEmptyFilters(),
         );
     }
