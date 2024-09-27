@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Api\Unit\Service\UpdaterService;
 
 use App\Api\DTO\DataChangeReport\Report;
+use App\Api\Service\UpdaterService\CollectionsUpdaterService;
 use App\Api\Service\UpdaterService\DexUpdaterService;
-use App\Api\Service\UpdaterService\GamesAndDexUpdaterService;
+use App\Api\Service\UpdaterService\GamesCollectionsAndDexUpdaterService;
 use App\Api\Service\UpdaterService\GamesUpdaterService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -14,8 +15,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  */
-#[CoversClass(GamesAndDexUpdaterService::class)]
-class GamesAndDexUpdaterServiceTest extends TestCase
+#[CoversClass(GamesCollectionsAndDexUpdaterService::class)]
+class GamesCollectionsAndDexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {
@@ -35,7 +36,7 @@ class GamesAndDexUpdaterServiceTest extends TestCase
         $this->assertEmpty($report->detail);
     }
 
-    private function getService(): GamesAndDexUpdaterService
+    private function getService(): GamesCollectionsAndDexUpdaterService
     {
         $gamesUpdaterService = $this->createMock(GamesUpdaterService::class);
         $gamesUpdaterService
@@ -59,9 +60,21 @@ class GamesAndDexUpdaterServiceTest extends TestCase
             ->willReturn(new Report([]))
         ;
 
-        return new GamesAndDexUpdaterService(
+        $collectionsUpdaterService = $this->createMock(CollectionsUpdaterService::class);
+        $collectionsUpdaterService
+            ->expects($this->once())
+            ->method('execute')
+        ;
+        $collectionsUpdaterService
+            ->expects($this->once())
+            ->method('getReport')
+            ->willReturn(new Report([]))
+        ;
+
+        return new GamesCollectionsAndDexUpdaterService(
             $gamesUpdaterService,
-            $dexUpdaterService
+            $dexUpdaterService,
+            $collectionsUpdaterService,
         );
     }
 }

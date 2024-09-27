@@ -39,20 +39,20 @@ class CollectionsAvailabilitiesServiceTest extends KernelTestCase
 
         $listDouze = $service->getFromPokemon($pokemonDouze);
         $this->assertFalse($listDouze->pogoshadow);
-        $this->assertTrue($listDouze->swshdens);
+        $this->assertTrue($listDouze->pogodynamax);
 
         /** @var Pokemon $pokemonBulbasaur */
         $pokemonBulbasaur = $pokemonsRepo->findOneBy(['name' => 'Bulbasaur']);
 
         $listBulbasaur = $service->getFromPokemon($pokemonBulbasaur);
         $this->assertTrue($listBulbasaur->pogoshadow);
-        $this->assertFalse($listBulbasaur->swshdens);
+        $this->assertFalse($listBulbasaur->pogodynamax);
 
         /** @var Pokemon $pokemonDeoxys */
         $pokemonDeoxys = $pokemonsRepo->findOneBy(['name' => 'Deoxys']);
 
         $listDeoxys = $service->getFromPokemon($pokemonDeoxys);
         $this->assertNull($listDeoxys->pogoshadow);
-        $this->assertNull($listDeoxys->swshdens);
+        $this->assertNull($listDeoxys->pogodynamax);
     }
 }

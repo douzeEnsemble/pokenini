@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\MessageHandler;
 
 use App\Api\ActionEnder\ActionEnderTrait;
-use App\Api\Message\UpdateGamesAndDex;
-use App\Api\MessageHandler\UpdateGamesAndDexHandler;
+use App\Api\Message\UpdateGamesCollectionsAndDex;
+use App\Api\MessageHandler\UpdateGamesCollectionsAndDexHandler;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -19,9 +19,9 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(UpdateGamesAndDexHandler::class)]
+#[CoversClass(UpdateGamesCollectionsAndDexHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateGamesAndDexHandlerTest extends KernelTestCase
+class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
@@ -43,18 +43,19 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
         $this->assertEquals(8, $this->getTableCount('dex'));
+        $this->assertEquals(8, $this->getTableCount('collection'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
         $beforeDoneCount = $this->getActionLogDoneCount();
 
         $transport->send(
-            new UpdateGamesAndDex(
-                $this->getIdToProcess(UpdateGamesAndDex::class)
+            new UpdateGamesCollectionsAndDex(
+                $this->getIdToProcess(UpdateGamesCollectionsAndDex::class)
             )
         );
 
-        $transport->queue()->assertContains(UpdateGamesAndDex::class, 1);
+        $transport->queue()->assertContains(UpdateGamesCollectionsAndDex::class, 1);
 
         $transport->process(1);
 
@@ -64,6 +65,7 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
         $this->assertEquals(24, $this->getTableCount('dex'));
+        $this->assertEquals(9, $this->getTableCount('collection'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
@@ -75,9 +77,9 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $transport->send(new UpdateGamesAndDex('0a35b132-fa1d-4528-b866-dadac5876e1c'));
+        $transport->send(new UpdateGamesCollectionsAndDex('0a35b132-fa1d-4528-b866-dadac5876e1c'));
 
-        $transport->queue()->assertContains(UpdateGamesAndDex::class, 1);
+        $transport->queue()->assertContains(UpdateGamesCollectionsAndDex::class, 1);
 
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");

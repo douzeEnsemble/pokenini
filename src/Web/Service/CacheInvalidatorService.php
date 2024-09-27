@@ -35,7 +35,7 @@ class CacheInvalidatorService
 
                 return;
 
-            case 'games_and_dex':
+            case 'games_collections_and_dex':
             case 'dex':
                 $this->dexCacheInvalidatorService->invalidate();
 

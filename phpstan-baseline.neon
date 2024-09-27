@@ -16,7 +16,7 @@ parameters:
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$swshdens\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 2
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
@@ -86,7 +86,7 @@ parameters:
 			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$swshdens\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 3
 			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
 

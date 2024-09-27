@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace App\Api\ActionStarter;
 
 use App\Api\Message\ActionMessageInterface;
-use App\Api\Message\UpdateGamesAndDex;
+use App\Api\Message\UpdateGamesCollectionsAndDex;
 
-final class UpdateGamesAndDexActionStarter extends AbstractActionStarter
+final class UpdateGamesCollectionsAndDexActionStarter extends AbstractActionStarter
 {
     protected function getMessageClass(): string
     {
-        return UpdateGamesAndDex::class;
+        return UpdateGamesCollectionsAndDex::class;
     }
 
     protected function instanciate(string $identifier): ActionMessageInterface
     {
-        return new UpdateGamesAndDex($identifier);
+        return new UpdateGamesCollectionsAndDex($identifier);
     }
 }

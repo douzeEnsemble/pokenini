@@ -95,7 +95,7 @@ init_db: ## Initialize database data
 
 data_app: ## Initialize app data
 	$(SYMFONY) app:update:labels
-	$(SYMFONY) app:update:games_and_dex
+	$(SYMFONY) app:update:games_collections_and_dex
 	$(SYMFONY) app:update:pokemons
 	$(SYMFONY) app:update:regional_dex_numbers
 	$(SYMFONY) app:update:games_availabilities
@@ -188,7 +188,7 @@ newman: newman_prepare newman_execute## Execute newman
 
 newman_prepare:
 	@$(SYMFONY) --env=int app:update:labels
-	@$(SYMFONY) --env=int app:update:games_and_dex
+	@$(SYMFONY) --env=int app:update:games_collections_and_dex
 	@$(SYMFONY) --env=int app:update:pokemons
 	@$(SYMFONY) --env=int app:update:regional_dex_numbers
 	@$(SYMFONY) --env=int app:update:games_availabilities

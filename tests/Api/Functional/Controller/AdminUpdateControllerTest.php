@@ -6,8 +6,8 @@ namespace App\Tests\Api\Functional\Controller;
 
 use App\Api\Controller\AdminUpdateController;
 use App\Api\Message\UpdateCollectionsAvailabilities;
-use App\Api\Message\UpdateGamesAndDex;
 use App\Api\Message\UpdateGamesAvailabilities;
+use App\Api\Message\UpdateGamesCollectionsAndDex;
 use App\Api\Message\UpdateGamesShiniesAvailabilities;
 use App\Api\Message\UpdateLabels;
 use App\Api\Message\UpdatePokemons;
@@ -48,7 +48,7 @@ class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateLabels::class, 1);
     }
 
-    public function testUpdateGamesAndDex(): void
+    public function testUpdateGamesCollectionsAndDex(): void
     {
         $client = static::createClient();
 
@@ -56,7 +56,7 @@ class AdminUpdateControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            'api/istration/update/games_and_dex',
+            'api/istration/update/games_collections_and_dex',
             [],
             [],
             [
@@ -67,7 +67,7 @@ class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateGamesAndDex::class, 1);
+        $this->transport('async')->queue()->assertContains(UpdateGamesCollectionsAndDex::class, 1);
     }
 
     public function testUpdatePokemons(): void

@@ -113,7 +113,7 @@ class CacheInvalidatorServiceTest extends TestCase
         $cacheInvalidator->invalidate('types');
     }
 
-    public function testInvalidateGamesAndDex(): void
+    public function testInvalidateGamesCollectionsAndDex(): void
     {
         $catchStatesCacheInvalidatorService = $this->createMock(CatchStatesCacheInvalidatorService::class);
         $typesCacheInvalidatorService = $this->createMock(TypesCacheInvalidatorService::class);
@@ -156,7 +156,7 @@ class CacheInvalidatorServiceTest extends TestCase
             $reportCacheInvalidatorService,
         );
 
-        $cacheInvalidator->invalidate('games_and_dex');
+        $cacheInvalidator->invalidate('games_collections_and_dex');
     }
 
     public function testInvalidateDex(): void

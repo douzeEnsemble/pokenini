@@ -1882,6 +1882,30 @@
           }
         }
       }
+    },
+    {
+      "properties": {
+        "sheetId": 1501224559,
+        "title": "Collection",
+        "index": 32,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 10,
+          "columnCount": 4
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      }
     }
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/edit"

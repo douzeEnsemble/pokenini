@@ -32,7 +32,7 @@ class GetActionLogsServiceTest extends TestCase
             'calculate_pokemon_availabilities',
             'calculate_game_bundles_availabilities',
             'calculate_game_bundles_shinies_availabilities',
-            'update_games_and_dex',
+            'update_games_collections_and_dex',
             'update_games_availabilities',
             'update_games_shinies_availabilities',
             'update_labels',

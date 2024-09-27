@@ -56,14 +56,14 @@ class CollectionsAvailabilitiesRepositoryTest extends KernelTestCase
 
         $listDouze = $this->collectionsAvailabilitiesRepo->getFromPokemon($pokemonDouze);
         $this->assertNull($listDouze->nexistepas);
-        $this->assertTrue($listDouze->swshdens);
+        $this->assertTrue($listDouze->pogodynamax);
         $this->assertFalse($listDouze->pogoshadow);
 
         $pokemonBulbasaur = $this->getPokemon('Bulbasaur');
 
         $listBulbasaur = $this->collectionsAvailabilitiesRepo->getFromPokemon($pokemonBulbasaur);
         $this->assertNull($listBulbasaur->nexistepas);
-        $this->assertFalse($listBulbasaur->swshdens);
+        $this->assertFalse($listBulbasaur->pogodynamax);
         $this->assertTrue($listBulbasaur->pogoshadow);
     }
 

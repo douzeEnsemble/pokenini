@@ -31,7 +31,7 @@ class AdminActionController extends AbstractController
         condition: "params['name']
             in [
                 'labels',
-                'games_and_dex',
+                'games_collections_and_dex',
                 'pokemons',
                 'games_availabilities',
                 'games_shinies_availabilities',

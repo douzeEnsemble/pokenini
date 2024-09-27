@@ -23,7 +23,7 @@ title:
     invalidate_data: 'Invalidation des caches'
     update:
         labels: 'Mise à jour des labels'
-        games_and_dex: 'Mise à jour des jeux et dex'
+        games_collections_and_dex: 'Mise à jour des jeux, des collections et des dex'
         pokemons: 'Mise à jour des pokémons'
         games_availabilities: 'Mise à jour des dispo des jeux'
         games_shinies_availabilities: 'Mise à jour des dispo des jeux des chromatiques'
@@ -191,9 +191,9 @@ update:
     labels:
         success: 'La maj des labels a été effectuée'
         error: 'La maj des labels a échouée'
-    games_and_dex:
-        success: 'La maj des jeux et dex a été effectuée'
-        error: 'La maj des jeux et dex a échouée'
+    games_collections_and_dex:
+        success: 'La maj des jeux, collections et dex a été effectuée'
+        error: 'La maj des jeux, collections et dex a échouée'
     pokemons:
         success: 'La maj des pokémons a été effectuée'
         error: 'La maj des pokémons a échouée'

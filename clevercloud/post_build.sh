@@ -8,7 +8,7 @@ chmod -R ugo+r ./resources/auth
 ./bin/console doctrine:migrations:migrate --no-interaction
 
 php bin/console app:update:labels
-php bin/console app:update:games_and_dex
+php bin/console app:update:games_collections_and_dex
 php bin/console app:update:pokemons
 php bin/console app:update:regional_dex_numbers
 echo "Pause 1 60s" && sleep 60s && echo "Resume 1 "

@@ -272,7 +272,7 @@ class AdminPageTest extends WebTestCase
                     'exectime' => '00:00:08',
                 ],
             ],
-            'update_games_and_dex' => [
+            'update_games_collections_and_dex' => [
                 'current' => [
                     'datatime' => [
                         'label' => 'Démarré le',

@@ -88,7 +88,7 @@ class ActionInvalidateTest extends WebTestCase
         return [
             ['catch_states'],
             ['types'],
-            ['games_and_dex'],
+            ['games_collections_and_dex'],
             ['pokemons'],
             ['regional_dex_numbers'],
             ['games_availabilities'],

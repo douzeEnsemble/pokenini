@@ -6,6 +6,7 @@ update:
   game_generations: "game's generations"
   game_bundles: "game's bundles"
   games: "games"
+  collections: "collections"
   dex: "dex"
   catch_states: "catch's states"
   regions: "regions"
