@@ -510,7 +510,7 @@ class PokedexRepositoryCatchStateCountData
                     ],
                 ],
                 [
-                    9,
+                    8,
                     3,
                     3,
                     7,

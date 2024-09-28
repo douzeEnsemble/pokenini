@@ -561,11 +561,11 @@ class AlbumReportServiceData
                         '!pogoshadow',
                     ],
                 ],
-                9,
+                8,
                 3,
                 3,
                 7,
-                22,
+                21,
             ],
         ];
     }

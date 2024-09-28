@@ -56,6 +56,7 @@ trait FiltersTrait
             'filter_game_bundle_shiny_availabilities_negative' => ArrayParameterType::STRING,
             'filter_families' => ArrayParameterType::STRING,
             'filter_collection_availabilities' => ArrayParameterType::STRING,
+            'filter_collection_availabilities_negative' => ArrayParameterType::STRING,
         ];
     }
 
