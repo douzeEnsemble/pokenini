@@ -50,3 +50,4 @@ infection_text.log
 
 dependency-check-release.zip
 dependency-check/
+.clever.json
