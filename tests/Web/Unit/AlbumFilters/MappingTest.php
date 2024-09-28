@@ -74,7 +74,7 @@ class MappingTest extends TestCase
             ],
             'ca' => [
                 'ca1',
-                'ca2',
+                '!ca2',
             ],
         ];
     }
@@ -135,7 +135,7 @@ class MappingTest extends TestCase
             ],
             'collection_availabilities' => [
                 'ca1',
-                'ca2',
+                '!ca2',
             ],
         ];
     }

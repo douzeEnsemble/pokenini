@@ -189,6 +189,7 @@ album:
                 label: Collection
                 value:
                     empty: Whatever
+                    negative: "Not in "
 
 update:
     labels:

@@ -247,6 +247,12 @@
                         {{- (locale is same as('fr') ? collection.frenchName : collection.name) -}}
                     </option>
                     {% endfor %}
+                    {% for collection in collections %}
+                    <option value="!{{ collection.slug }}" {{ (('!'~collection.slug in filteredCollections) ? 'selected': '') }}>
+                        {{- 'album.offcanvas.filters.collection.value.negative'|trans -}}
+                        {{- (locale is same as('fr') ? collection.frenchName : collection.name) -}}
+                    </option>
+                    {% endfor %}
                 </select>
             </div>
         </div>

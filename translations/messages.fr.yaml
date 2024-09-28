@@ -189,6 +189,7 @@ album:
                 label: Collection
                 value:
                     empty: Peu importe
+                    negative: "Pas dans "
 
 update:
     labels:

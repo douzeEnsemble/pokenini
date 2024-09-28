@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Api\Functional\Repository;
+namespace App\Tests\Api\Functional\Repository\PokedexRepositoryList;
 
-trait PokedexRepositoryListDataTrait
+trait DataTrait
 {
     /**
      * @param int[][]|string[][] $pokedex

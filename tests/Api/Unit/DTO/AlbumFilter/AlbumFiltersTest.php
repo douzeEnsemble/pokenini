@@ -140,7 +140,7 @@ class AlbumFiltersTest extends TestCase
             'gameBundleAvailabilities' => ['!sunmoon'],
             'gameBundleShinyAvailabilities' => ['!ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
-            'collectionAvailabilities' => ['swshdens'],
+            'collectionAvailabilities' => ['!swshdens'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -170,7 +170,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(0, $filters->gameBundleAvailabilities->values);
         $this->assertCount(0, $filters->gameBundleShinyAvailabilities->values);
         $this->assertCount(2, $filters->families->values);
-        $this->assertCount(1, $filters->collectionAvailabilities->values);
+        $this->assertCount(0, $filters->collectionAvailabilities->values);
 
         $this->assertCount(0, $filters->primaryTypes->negativeValues);
         $this->assertCount(0, $filters->secondaryTypes->negativeValues);
@@ -184,7 +184,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(1, $filters->gameBundleAvailabilities->negativeValues);
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->negativeValues);
         $this->assertCount(0, $filters->families->negativeValues);
-        $this->assertCount(0, $filters->collectionAvailabilities->negativeValues);
+        $this->assertCount(1, $filters->collectionAvailabilities->negativeValues);
     }
 
     public function testNormalizer(): void
