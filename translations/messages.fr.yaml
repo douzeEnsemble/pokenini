@@ -334,6 +334,7 @@ admin:
         game_bundles: "Bundles de jeux"
         games: "Jeux"
         dex: "Dex"
+        collections: "Collections"
         catch_states: "Statuts"
         types: "Types"
         regions: "Régions"
