@@ -553,6 +553,20 @@ class AlbumReportServiceData
                 0,
                 1,
             ],
+            'collection_availalibities_negative' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'collectionAvailabilities' => [
+                        '!pogoshadow',
+                    ],
+                ],
+                9,
+                3,
+                3,
+                7,
+                22,
+            ],
         ];
     }
 }

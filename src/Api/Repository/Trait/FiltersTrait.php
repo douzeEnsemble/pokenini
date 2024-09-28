@@ -340,6 +340,18 @@ trait FiltersTrait
                 SUBSQL;
         }
 
+        if ($filters->collectionAvailabilities->negativeValues) {
+            $query .= <<<'SUBSQL'
+                AND p.slug NOT IN (SELECT ca.pokemon_slug
+                            FROM    collection_availability AS ca
+                                LEFT JOIN collection AS c
+                                    ON ca.collection_id = c.id
+                            WHERE   ca.availability NOT IN ('—', '-', '')
+                                    AND c.slug IN(:filter_collection_availabilities_negative)
+                        )
+                SUBSQL;
+        }
+
         return $query;
     }
 
@@ -352,6 +364,9 @@ trait FiltersTrait
 
         if ($filters->collectionAvailabilities->values) {
             $parameters['filter_collection_availabilities'] = $filters->collectionAvailabilities->extract();
+        }
+        if ($filters->collectionAvailabilities->negativeValues) {
+            $parameters['filter_collection_availabilities_negative'] = $filters->collectionAvailabilities->extractNegatives();
         }
 
         return $parameters;

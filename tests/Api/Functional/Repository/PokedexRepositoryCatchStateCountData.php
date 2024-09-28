@@ -425,7 +425,7 @@ class PokedexRepositoryCatchStateCountData
     /**
      * @return int[][][]|string[][][][]
      */
-    public static function providerGetFamiliesCountsCatchStatesFilters(): array
+    public static function providerGetCatchStatesCountsFamiliesFilters(): array
     {
         return [
             'family' => [
@@ -466,6 +466,54 @@ class PokedexRepositoryCatchStateCountData
                     0,
                     0,
                     3,
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @return int[][][]|string[][][][]
+     */
+    public static function providerGetCatchStatesCountCollectionsFilters(): array
+    {
+        return [
+            'collection_availabilities' => [
+                [
+                    'collectionAvailabilities' => [
+                        'pogoshadow',
+                    ],
+                ],
+                [
+                    1,
+                    0,
+                    0,
+                    0,
+                ],
+            ],
+            'collection_availabilities_null' => [
+                [
+                    'collectionAvailabilities' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                ],
+            ],
+            'collection_availabilities_negative' => [
+                [
+                    'collectionAvailabilities' => [
+                        '!pogoshadow',
+                    ],
+                ],
+                [
+                    9,
+                    3,
+                    3,
+                    7,
                 ],
             ],
         ];

@@ -44,6 +44,10 @@ class FromRequestTest extends TestCase
                 'gbsa2',
                 '!gbsa3',
             ],
+            'ca' => [
+                'ca1',
+                '!ca2',
+            ],
         ]);
 
         $expectedData = [
@@ -62,6 +66,10 @@ class FromRequestTest extends TestCase
                 'gbsa1',
                 'gbsa2',
                 '!gbsa3',
+            ],
+            'ca' => [
+                'ca1',
+                '!ca2',
             ],
         ];
 
