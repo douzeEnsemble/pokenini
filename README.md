@@ -189,7 +189,7 @@ docker-compose exec php sh -c '
 
 ```
 make sf c="messenger:stop-workers" && \
-curl -X POST --insecure  "https://localhost:4431/api/istration/calculate/dex_availabilities" \
+curl -X POST --insecure  "http://localhost/api/istration/update/labels" \
   -H 'Authorization: Basic d2ViOmRvdXpl' \
   -H 'cache-control: no-cache' && \
 make sf c="messenger:consume async -vv --limit=1"
