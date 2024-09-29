@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Api\Controller\AlbumIndexController;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 class FormsTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
+    use PokemonListTrait;
 
     public function testCategoryForm(): void
     {
@@ -39,9 +41,13 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'charmander',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -100,10 +106,14 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -162,9 +172,13 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('venusaur-gmax', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -224,10 +238,14 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('venusaur-mega', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-mega',
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -260,11 +278,15 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(4, $pokemons);
-        $this->assertEquals('venusaur-f', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-f',
+                'butterfree-f',
+                'rattata-f',
+                'raticate-f',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 

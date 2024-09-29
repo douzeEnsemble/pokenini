@@ -8,6 +8,7 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\PokedexRepository;
 use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
@@ -23,6 +24,7 @@ class FamiliesTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use GetPokedexTrait;
     use DataTrait;
+    use PokemonListTrait;
 
     public function setUp(): void
     {
@@ -44,12 +46,16 @@ class FamiliesTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(6, $pokedex);
-        $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokedex[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokedex[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokedex[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokedex[5]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+            ],
+        );
     }
 }
