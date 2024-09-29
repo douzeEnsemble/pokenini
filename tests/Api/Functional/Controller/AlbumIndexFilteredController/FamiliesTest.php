@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Api\Controller\AlbumIndexController;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 class FamiliesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
+    use PokemonListTrait;
 
     public function testFamilyFilter(): void
     {
@@ -39,13 +41,17 @@ class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(6, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -105,16 +111,20 @@ class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(9, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[6]['pokemon_slug']);
-        $this->assertEquals('charmeleon', $pokemons[7]['pokemon_slug']);
-        $this->assertEquals('charizard', $pokemons[8]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+                'charmander',
+                'charmeleon',
+                'charizard',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 

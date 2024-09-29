@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Api\Controller\AlbumIndexController;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 class TypesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
+    use PokemonListTrait;
 
     public function testPrimaryTypeFilter(): void
     {
@@ -39,13 +41,17 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(6, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -103,10 +109,14 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -168,10 +178,14 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('butterfree', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'butterfree',
+                'butterfree-f',
+                'butterfree-gmax',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -204,14 +218,18 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(7, $pokemons);
-        $this->assertEquals('rattata', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('rattata-alola', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[6]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata',
+                'rattata-f',
+                'rattata-alola',
+                'raticate',
+                'raticate-f',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 

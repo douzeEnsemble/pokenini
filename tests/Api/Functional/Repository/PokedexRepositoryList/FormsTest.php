@@ -8,6 +8,7 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Repository\PokedexRepository;
 use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
@@ -23,6 +24,7 @@ class FormsTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use GetPokedexTrait;
     use DataTrait;
+    use PokemonListTrait;
 
     public function setUp(): void
     {
@@ -44,9 +46,13 @@ class FormsTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(2, $pokedex);
-        $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokedex[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'bulbasaur',
+                'charmander',
+            ],
+        );
     }
 
     public function testGetListQueryRegionalForm(): void
@@ -64,10 +70,14 @@ class FormsTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(3, $pokedex);
-        $this->assertEquals('rattata-alola', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokedex[1]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokedex[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'rattata-alola',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
     }
 
     public function testGetListQuerySpecialForm(): void
@@ -85,9 +95,13 @@ class FormsTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(2, $pokedex);
-        $this->assertEquals('venusaur-gmax', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokedex[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
     }
 
     public function testGetListQuerySpecialsForm(): void
@@ -106,10 +120,14 @@ class FormsTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(3, $pokedex);
-        $this->assertEquals('venusaur-mega', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokedex[1]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokedex[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'venusaur-mega',
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
     }
 
     public function testGetListQueryVariantForm(): void
@@ -127,10 +145,14 @@ class FormsTest extends KernelTestCase
             ])
         );
 
-        $this->assertCount(4, $pokedex);
-        $this->assertEquals('venusaur-f', $pokedex[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokedex[1]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokedex[2]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokedex[3]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokedex,
+            [
+                'venusaur-f',
+                'butterfree-f',
+                'rattata-f',
+                'raticate-f',
+            ],
+        );
     }
 }

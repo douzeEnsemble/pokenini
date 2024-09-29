@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Api\Controller\AlbumIndexController;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 class GamesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
+    use PokemonListTrait;
 
     public function testOriginalGameBundle(): void
     {
@@ -39,19 +41,23 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(12, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('charmeleon', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('charizard', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('caterpie', $pokemons[6]['pokemon_slug']);
-        $this->assertEquals('metapod', $pokemons[7]['pokemon_slug']);
-        $this->assertEquals('butterfree', $pokemons[8]['pokemon_slug']);
-        $this->assertEquals('rattata', $pokemons[9]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[10]['pokemon_slug']);
-        $this->assertEquals('douze', $pokemons[11]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'charmander',
+                'charmeleon',
+                'charizard',
+                'caterpie',
+                'metapod',
+                'butterfree',
+                'rattata',
+                'raticate',
+                'douze',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -110,9 +116,13 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -171,28 +181,31 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(20, $pokemons);
-
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[6]['pokemon_slug']);
-        $this->assertEquals('charmeleon', $pokemons[7]['pokemon_slug']);
-        $this->assertEquals('charizard', $pokemons[8]['pokemon_slug']);
-        $this->assertEquals('caterpie', $pokemons[9]['pokemon_slug']);
-        $this->assertEquals('metapod', $pokemons[10]['pokemon_slug']);
-        $this->assertEquals('butterfree', $pokemons[11]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[12]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[13]['pokemon_slug']);
-        $this->assertEquals('rattata', $pokemons[14]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[15]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[16]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[17]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[18]['pokemon_slug']);
-        $this->assertEquals('douze', $pokemons[19]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+                'charmander',
+                'charmeleon',
+                'charizard',
+                'caterpie',
+                'metapod',
+                'butterfree',
+                'butterfree-f',
+                'butterfree-gmax',
+                'rattata',
+                'rattata-f',
+                'raticate',
+                'raticate-f',
+                'raticate-alola-totem',
+                'douze',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -225,11 +238,15 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(4, $pokemons);
-        $this->assertEquals('rattata-f', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-f',
+                'rattata-alola',
+                'raticate',
+                'raticate-f',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -288,26 +305,29 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(18, $pokemons);
-
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[6]['pokemon_slug']);
-        $this->assertEquals('charmeleon', $pokemons[7]['pokemon_slug']);
-        $this->assertEquals('charizard', $pokemons[8]['pokemon_slug']);
-        $this->assertEquals('caterpie', $pokemons[9]['pokemon_slug']);
-        $this->assertEquals('metapod', $pokemons[10]['pokemon_slug']);
-        $this->assertEquals('butterfree', $pokemons[11]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[12]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[13]['pokemon_slug']);
-        $this->assertEquals('rattata', $pokemons[14]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[15]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[16]['pokemon_slug']);
-        $this->assertEquals('douze', $pokemons[17]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+                'charmander',
+                'charmeleon',
+                'charizard',
+                'caterpie',
+                'metapod',
+                'butterfree',
+                'butterfree-f',
+                'butterfree-gmax',
+                'rattata',
+                'raticate-alola',
+                'raticate-alola-totem',
+                'douze',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 

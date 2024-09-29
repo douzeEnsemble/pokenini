@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Api\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Api\Controller\AlbumIndexController;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use App\Tests\Api\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -15,6 +16,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
+    use PokemonListTrait;
 
     public function testCatchStateFilter(): void
     {
@@ -39,10 +41,14 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('caterpie', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'caterpie',
+                'rattata-f',
+                'raticate-f',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 
@@ -201,13 +207,17 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(6, $pokemons);
-        $this->assertEquals('caterpie', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('metapod', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('rattata-alola', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[5]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'caterpie',
+                'metapod',
+                'rattata-f',
+                'rattata-alola',
+                'raticate-f',
+                'raticate-alola',
+            ],
+        );
 
         $this->assertArrayHasKey('report', $data);
 

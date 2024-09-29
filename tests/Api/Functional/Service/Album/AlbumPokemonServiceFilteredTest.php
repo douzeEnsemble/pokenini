@@ -7,6 +7,7 @@ namespace App\Tests\Api\Functional\Service\Album;
 use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Service\Album\AlbumPokemonService;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
+use App\Tests\Api\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -20,6 +21,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountGameBundleAvailabilityTrait;
+    use PokemonListTrait;
 
     public function setUp(): void
     {
@@ -42,12 +44,18 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
 
         $this->assertCount(6, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
+
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+            ],
+        );
     }
 
     public function testListFilteredSecondaryType(): void
@@ -65,10 +73,14 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
     }
 
     public function testListFilteredPrimaryAndSecondaryType(): void
@@ -89,10 +101,14 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('butterfree', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'butterfree',
+                'butterfree-f',
+                'butterfree-gmax',
+            ],
+        );
     }
 
     public function testListFilteredAnyType(): void
@@ -110,14 +126,18 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(7, $pokemons);
-        $this->assertEquals('rattata', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('rattata-alola', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[6]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata',
+                'rattata-f',
+                'rattata-alola',
+                'raticate',
+                'raticate-f',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
     }
 
     public function testListFilteredCategoryType(): void
@@ -135,9 +155,13 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'charmander',
+            ],
+        );
     }
 
     public function testListFilteredRegionalType(): void
@@ -155,10 +179,14 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-alola-totem', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+                'raticate-alola-totem',
+            ],
+        );
     }
 
     public function testListFilteredSpecialType(): void
@@ -176,9 +204,13 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('venusaur-gmax', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
     }
 
     public function testListFilteredSpecialsType(): void
@@ -197,10 +229,14 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('venusaur-mega', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-mega',
+                'venusaur-gmax',
+                'butterfree-gmax',
+            ],
+        );
     }
 
     public function testListFilteredVariantType(): void
@@ -218,11 +254,15 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(4, $pokemons);
-        $this->assertEquals('venusaur-f', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('butterfree-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'venusaur-f',
+                'butterfree-f',
+                'rattata-f',
+                'raticate-f',
+            ],
+        );
     }
 
     public function testListFilteredCatchStates(): void
@@ -240,10 +280,14 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(3, $pokemons);
-        $this->assertEquals('caterpie', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[2]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'caterpie',
+                'rattata-f',
+                'raticate-f',
+            ],
+        );
     }
 
     public function testListFilteredOriginalGameBundle(): void
@@ -261,19 +305,23 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(12, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('charmander', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('charmeleon', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('charizard', $pokemons[5]['pokemon_slug']);
-        $this->assertEquals('caterpie', $pokemons[6]['pokemon_slug']);
-        $this->assertEquals('metapod', $pokemons[7]['pokemon_slug']);
-        $this->assertEquals('butterfree', $pokemons[8]['pokemon_slug']);
-        $this->assertEquals('rattata', $pokemons[9]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[10]['pokemon_slug']);
-        $this->assertEquals('douze', $pokemons[11]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'charmander',
+                'charmeleon',
+                'charizard',
+                'caterpie',
+                'metapod',
+                'butterfree',
+                'rattata',
+                'raticate',
+                'douze',
+            ],
+        );
     }
 
     public function testListFilteredGameBundleAvailabilities(): void
@@ -291,9 +339,13 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(2, $pokemons);
-        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-alola',
+                'raticate-alola',
+            ],
+        );
     }
 
     public function testListFilteredGameBundleShinyAvailabilities(): void
@@ -311,11 +363,15 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(4, $pokemons);
-        $this->assertEquals('rattata-f', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('rattata-alola', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('raticate', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'rattata-f',
+                'rattata-alola',
+                'raticate',
+                'raticate-f',
+            ],
+        );
     }
 
     public function testListFilteredFamilies(): void
@@ -333,13 +389,17 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(6, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
-        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+                'ivysaur',
+                'venusaur',
+                'venusaur-f',
+                'venusaur-mega',
+                'venusaur-gmax',
+            ],
+        );
     }
 
     public function testListFilteredCollections(): void
@@ -357,8 +417,12 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             ]),
         );
 
-        $this->assertCount(1, $pokemons);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
+        $this->assertSameSlugs(
+            $pokemons,
+            [
+                'bulbasaur',
+            ],
+        );
     }
 
     #[DataProvider('providerListFilteredNull')]
