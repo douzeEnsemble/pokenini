@@ -36,11 +36,19 @@ abstract class AbstractUpdateCommand extends Command
     {
         $message = $this->actionStarter->start();
 
-        $this->updaterService->execute();
+        try {
+            $this->updaterService->execute();
 
-        $report = $this->updaterService->getReport();
+            $report = $this->updaterService->getReport();
 
-        $this->endActionLog($message, $report);
+            $this->endActionLog($message, $report);
+        } catch (\Exception $e) {
+            $this->endInErrorActionLog($message, $e->getMessage());
+
+            $output->writeln("<error>{$e->getMessage()}</error>");
+
+            return Command::FAILURE;
+        }
 
         /** @var Statistic $statistic */
         foreach ($report->detail as $statistic) {
