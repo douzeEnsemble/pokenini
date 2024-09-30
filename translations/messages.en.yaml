@@ -19,6 +19,7 @@ title:
     report: 'Report'
     admin: 'Backoffice'
     update_data: 'Update data'
+    update_availabilities: "Update availabilities' data"
     calculate_data: 'Calculate data'
     invalidate_data: 'Invalidate caches'
     update:

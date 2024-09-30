@@ -61,7 +61,7 @@ class AdminPageTest extends WebTestCase
         $crawler = $this->getAdminHomeConnected();
 
         $this->assertCountFilter($crawler, 2, 'h2');
-        $this->assertCountFilter($crawler, 7, 'h3');
+        $this->assertCountFilter($crawler, 8, 'h3');
         $this->assertCountFilter($crawler, 15, '.admin-item a.admin-item-cta');
         $this->assertCountFilter($crawler, 15, '.admin-item a.admin-item-cta i.bi');
 
@@ -342,7 +342,7 @@ class AdminPageTest extends WebTestCase
                 ],
                 'last' => [
                     'data' => [
-                        'Dispo des jeux des chromatiques' => '41 691',
+                        'Disponibilités des jeux des chromatiques' => '41 691',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -354,7 +354,7 @@ class AdminPageTest extends WebTestCase
             'update_collections_availabilities' => [
                 'current' => [
                     'data' => [
-                        'Dispo des collections' => '1 234',
+                        'Disponibilités des collections' => '1 234',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -364,7 +364,7 @@ class AdminPageTest extends WebTestCase
                 ],
                 'last' => [
                     'data' => [
-                        'Dispo des collections' => '312',
+                        'Disponibilités des collections' => '312',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -385,7 +385,7 @@ class AdminPageTest extends WebTestCase
             'calculate_game_bundles_shinies_availabilities' => [
                 'current' => [
                     'data' => [
-                        'Dispo des bundles des chromatiques' => '1 234',
+                        'Disponibilités des bundles des chromatiques' => '1 234',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -395,7 +395,7 @@ class AdminPageTest extends WebTestCase
                 ],
                 'last' => [
                     'data' => [
-                        'Dispo des bundles des chromatiques' => '321',
+                        'Disponibilités des bundles des chromatiques' => '321',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -414,7 +414,7 @@ class AdminPageTest extends WebTestCase
                 ],
                 'last' => [
                     'data' => [
-                        'Dispo des dex' => '22 472',
+                        'Disponibilités des dex' => '22 472',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -426,8 +426,8 @@ class AdminPageTest extends WebTestCase
             'calculate_pokemon_availabilities' => [
                 'current' => [
                     'data' => [
-                        'Dispo des packs de jeux par pokémons' => '1',
-                        'Dispo des chromatiques des packs de jeux par pokémons' => '0',
+                        'Disponibilités des packs de jeux par pokémons' => '1',
+                        'Disponibilités des chromatiques des packs de jeux par pokémons' => '0',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
@@ -437,8 +437,8 @@ class AdminPageTest extends WebTestCase
                 ],
                 'last' => [
                     'data' => [
-                        'Dispo des packs de jeux par pokémons' => '1',
-                        'Dispo des chromatiques des packs de jeux par pokémons' => '0',
+                        'Disponibilités des packs de jeux par pokémons' => '1',
+                        'Disponibilités des chromatiques des packs de jeux par pokémons' => '0',
                     ],
                     'datatime' => [
                         'label' => 'Terminé le',
