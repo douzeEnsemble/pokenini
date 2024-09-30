@@ -12,6 +12,18 @@
             'games_collections_and_dex': 'joystick',
             'pokemons': 'bug-fill',
             'regional_dex_numbers': 'globe-asia-australia',
+        } %}
+        <div class="list-group list-group-update">
+            {% for item, icon in updateItems %}
+                {{ admin.action('update', item, icon, updatedItem, updatedAction, updatedState, actionLogsData) }}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+        <h3 class="mt-3">{{ 'title.update_availabilities'|trans }}</h3>
+
+        {% set updateItems = {
             'games_availabilities': 'box2',
             'games_shinies_availabilities': 'box2-fill',
             'collections_availabilities': 'collection-fill',
@@ -21,8 +33,8 @@
                 {{ admin.action('update', item, icon, updatedItem, updatedAction, updatedState, actionLogsData) }}
             {% endfor %}
         </div>
-
     </div>
+
     <div class="col-md-6 col-lg-4">
         <h3 class="mt-3">{{ 'title.calculate_data'|trans }}</h3>
 

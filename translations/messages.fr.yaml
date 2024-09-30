@@ -19,21 +19,22 @@ title:
     report: 'Stats'
     admin: 'Administration'
     update_data: 'Mises à jour des données'
+    update_availabilities: 'Mises à jour des données de disponibilités'
     calculate_data: 'Calculs des données'
     invalidate_data: 'Invalidation des caches'
     update:
         labels: 'Mise à jour des labels'
         games_collections_and_dex: 'Mise à jour des jeux, des collections et des dex'
         pokemons: 'Mise à jour des pokémons'
-        games_availabilities: 'Mise à jour des dispo des jeux'
-        games_shinies_availabilities: 'Mise à jour des dispo des jeux des chromatiques'
+        games_availabilities: 'Mise à jour des disponibilités des jeux'
+        games_shinies_availabilities: 'Mise à jour des disponibilités des jeux des chromatiques'
         regional_dex_numbers: 'Mise à jour des numéro des dex régionaux'
-        collections_availabilities: 'Mise à jour des dispo des collections'
+        collections_availabilities: 'Mise à jour des disponibilités des collections'
     calculate:
-        game_bundles_availabilities: 'Calculs des dispo des bundles de jeux'
-        game_bundles_shinies_availabilities: 'Calculs des dispo des bundles de jeux des chromatiques'
-        dex_availabilities: 'Calculs des dispo des dex'
-        pokemon_availabilities: 'Calculs des dispo par pokemons'
+        game_bundles_availabilities: 'Calculs des disponibilités des bundles de jeux'
+        game_bundles_shinies_availabilities: 'Calculs des disponibilités des bundles de jeux des chromatiques'
+        dex_availabilities: 'Calculs des disponibilités des dex'
+        pokemon_availabilities: 'Calculs des disponibilités par pokemons'
     invalidate:
         catch_states: 'Invalidation du cache des statuts'
         types: 'Invalidation du cache des types'
@@ -172,12 +173,12 @@ album:
                 value:
                     empty: Tous
             game_bundle_availability:
-                label: Dispo dans
+                label: Disponibilités dans
                 value:
                     empty: Tous
                     negative: "Pas dans "
             game_bundle_shiny_availability:
-                label: Dispo dans
+                label: Disponibilités dans
                 value:
                     empty: Tous
                     negative: "Pas dans "
@@ -202,11 +203,11 @@ update:
         success: 'La maj des pokémons a été effectuée'
         error: 'La maj des pokémons a échouée'
     games_availabilities:
-        success: 'La maj des dispo des jeux a été effectuée'
-        error: 'La maj des dispo des jeux a échouée'
+        success: 'La maj des disponibilités des jeux a été effectuée'
+        error: 'La maj des disponibilités des jeux a échouée'
     games_shinies_availabilities:
-        success: 'La maj des dispo des jeux des chromatiques a été effectuée'
-        error: 'La maj des dispo des jeux des chromatiques a échouée'
+        success: 'La maj des disponibilités des jeux des chromatiques a été effectuée'
+        error: 'La maj des disponibilités des jeux des chromatiques a échouée'
     regional_dex_numbers:
         success: 'La maj des numéros de dex régionaux a été effectuée'
         error: 'La maj des numéros de dex régionaux a échouée'
@@ -215,17 +216,17 @@ update:
         error: 'La maj des collections a échouée'
 calculate:
     game_bundles_availabilities:
-        success: 'La maj des dispo des bundles de jeux a été effectuée'
-        error: 'La maj des dispo des bundles de jeux a échouée'
+        success: 'La maj des disponibilités des bundles de jeux a été effectuée'
+        error: 'La maj des disponibilités des bundles de jeux a échouée'
     game_bundles_shinies_availabilities:
-        success: 'La maj des dispo des bundles de jeux des chromatiques a été effectuée'
-        error: 'La maj des dispo des bundles de jeux des chromatiques a échouée'
+        success: 'La maj des disponibilités des bundles de jeux des chromatiques a été effectuée'
+        error: 'La maj des disponibilités des bundles de jeux des chromatiques a échouée'
     dex_availabilities:
-        success: 'La maj des dispo des dex a été effectuée'
-        error: 'La maj des dispo des dex a échouée'
+        success: 'La maj des disponibilités des dex a été effectuée'
+        error: 'La maj des disponibilités des dex a échouée'
     pokemon_availabilities:
-        success: 'La maj des dispo par pokémons a été effectuée'
-        error: 'La maj des dispo par pokémons a échouée'
+        success: 'La maj des disponibilités par pokémons a été effectuée'
+        error: 'La maj des disponibilités par pokémons a échouée'
 
 connect:
     disclaimer: |
@@ -324,12 +325,11 @@ error:
             N'hésite pas à nous signaler l'erreur. Comment tu l'as rencontrée,
             une capture, le max d'info.
 
-
 admin:
     update:
-        games_availabilities: "Dispo des jeux"
-        games_shinies_availabilities: "Dispo des jeux des chromatiques"
-        collections_availabilities: "Dispo des collections"
+        games_availabilities: "Disponibilités des jeux"
+        games_shinies_availabilities: "Disponibilités des jeux des chromatiques"
+        collections_availabilities: "Disponibilités des collections"
         regional_dex_numbers: "Numéros de dex régionaux"
         game_generations: "Générations"
         game_bundles: "Bundles de jeux"
@@ -346,11 +346,11 @@ admin:
         pokemons: "Pokémons"
 
     calculate:
-        game_bundles_availabilities: "Dispo des bundles"
-        game_bundles_shinies_availabilities: "Dispo des bundles des chromatiques"
-        dex_availabilities: "Dispo des dex"
-        pokemon_availabilities_game_bundle: "Dispo des packs de jeux par pokémons"
-        pokemon_availabilities_game_bundle_shiny: "Dispo des chromatiques des packs de jeux par pokémons "
+        game_bundles_availabilities: "Disponibilités des bundles"
+        game_bundles_shinies_availabilities: "Disponibilités des bundles des chromatiques"
+        dex_availabilities: "Disponibilités des dex"
+        pokemon_availabilities_game_bundle: "Disponibilités des packs de jeux par pokémons"
+        pokemon_availabilities_game_bundle_shiny: "Disponibilités des chromatiques des packs de jeux par pokémons "
     reports:
         cache:
             title: "Cache"
