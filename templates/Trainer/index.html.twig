@@ -13,10 +13,11 @@
     </div>
 
 	<div class="row">
-		<div class="col-md-10 mx-auto row">
+		<div class="col-md-12 mx-auto row">
 
 			<p class="text-secondary">{{ 'trainer.welcome'|trans|nl2br }}</p>
 
+            {{ include('Trainer/Section/_dex.html.twig') }}
             {{ include('Trainer/_section.html.twig') }}
 		</div>
 	</div>
