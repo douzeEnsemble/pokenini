@@ -274,6 +274,23 @@ trainer:
                 prefix: "Le paramétrage de "
                 radical: "%dexName%"
                 suffix: "n'a pas été enregistré"
+    filters:
+        attributes:
+            privacy:
+                label: "Filtrer les albums privées/publics"
+                all: "Tous"
+                "on": "Privés seulement"
+                "off": "Publics seulement"
+            spotlight:
+                label: "Filtrer les albums sur l'accueil ou non"
+                all: "Tous"
+                "on": "Sur l'accueil"
+                "off": "Pas sur l'accueil"
+            released:
+                label: "Filtrer les albums disponibles, pour tout le monde"
+                all: "Tous"
+                "on": "Disponible"
+                "off": "Non disponible"
     logout:
         title: "Session"
 

@@ -8,6 +8,9 @@
 } %}
 <h2>{{ ('trainer.dex.title')|trans }}</h2>
 <div class="card mb-5">
+    <div class="card-header row">
+        {{ include('Trainer/Section/_dex_filters.html.twig') }}
+    </div>
     <div class="card-body">
         <div class="row">
             {% for dex in trainerDex %}
