@@ -273,6 +273,23 @@ trainer:
                 prefix: ""
                 radical: "%dexName%"
                 suffix: "setting have not been saved"
+    filters:
+        attributes:
+            privacy:
+                label: "Filter private/public albums"
+                all: "All"
+                "on": "Private only"
+                "off": "Public only"
+            spotlight:
+                label: "Filter on home or not albums"
+                all: "All"
+                "on": "On home"
+                "off": "Not on home"
+            released:
+                label: "Filter on released or not albums"
+                all: "All"
+                "on": "Released"
+                "off": "Not released"
     logout:
         title: "Session"
 

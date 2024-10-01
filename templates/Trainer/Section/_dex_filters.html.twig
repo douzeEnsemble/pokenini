@@ -1,0 +1,30 @@
+<form id="dexFilters" class="row">
+{% set filters = [
+    'privacy',
+    'spotlight',
+    'released',
+] %}
+{% set filtersIcons = {
+    'privacy': 'incognito',
+    'spotlight': 'house',
+    'released': 'lock',
+ } %}
+{% for item in filters %}
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+        <div class="form-floating">
+            <select 
+                class="form-select" 
+                name="{{ item }}"
+                id="filter-{{ item }}"
+            >
+                <option selected value="">{{ ('trainer.filters.attributes.'~item~'.all')|trans }}</option>
+                <option value="1">{{ ('trainer.filters.attributes.'~item~'.on')|trans }}</option>
+                <option value="0">{{ ('trainer.filters.attributes.'~item~'.off')|trans }}</option>
+            </select>
+            <label for="filter-{{ item }}">
+                <i class="bi bi-{{ filtersIcons[item] }}"></i>&nbsp;{{ ('trainer.filters.attributes.'~item~'.label')|trans }}
+            </label>
+        </div>
+    </div>
+{% endfor %}
+</form>
