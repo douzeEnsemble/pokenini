@@ -92,6 +92,15 @@ class TrainerPageTest extends WebTestCase
 
     private function assertCustomizeAlbumSection(Crawler $crawler): void
     {
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters');
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters', 0, 'select');
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-privacy');
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-privacy', 0, 'option');
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-spotlight');
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-spotlight', 0, 'option');
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-released');
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-released', 0, 'option');
+
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item');
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item img');
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item a');

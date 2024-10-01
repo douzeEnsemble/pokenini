@@ -1,6 +1,5 @@
 <div class="accordion" id="trainerSection">
 {% set sections = [
-    'dex',
     'personnal_data',
     'logout',
 ] %}
@@ -9,7 +8,7 @@
         <h2 class="accordion-header" id="heading_{{ section }}">
             <button 
                 class="accordion-button" 
-                type="button{{ loop.index0 ? ' collapsed' : ''}}" 
+                type="button collapsed" 
                 data-bs-toggle="collapse" 
                 data-bs-target="#collapse_{{ section }}" 
                 aria-expanded="true" 
@@ -20,7 +19,7 @@
         </h2>
         <div 
             id="collapse_{{ section }}" 
-            class="accordion-collapse collapse{{ loop.index0 ? '' : ' show'}}" 
+            class="accordion-collapse collapse" 
             aria-labelledby="heading_{{ section }}" 
         >
             <div class="accordion-body">
