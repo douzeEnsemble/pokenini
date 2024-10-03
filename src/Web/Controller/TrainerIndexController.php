@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
+use App\Web\DTO\DexFilters;
+use App\Web\DTO\DexFiltersRequest;
 use App\Web\Security\User;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -24,7 +27,7 @@ class TrainerIndexController extends AbstractController
     ) {}
 
     #[Route('')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         /** @var ?User $user */
         $user = $this->getUser();
@@ -39,11 +42,64 @@ class TrainerIndexController extends AbstractController
             ? $this->getDexService->getWithUnreleased($userToken)
             : $this->getDexService->get($userToken);
 
+        $filters = DexFiltersRequest::dexFiltersFromRequest($request);
+
+        $filteredTrainerDex = $this->filtersTrainerDex($trainerDex, $filters);
+
         return $this->render(
             'Trainer/index.html.twig',
             [
-                'trainerDex' => $trainerDex,
+                'trainerDex' => $filteredTrainerDex,
+                'filters' => $filters,
             ]
         );
+    }
+
+    /**
+     * @param string[][] $trainerDex
+     *
+     * @return string[][]
+     */
+    private function filtersTrainerDex(array $trainerDex, DexFilters $filters): array
+    {
+        $dex = $trainerDex;
+
+        if (null !== $filters->privacy->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->privacy->value == $item['is_private'];
+                }
+            );
+        }
+
+        if (null !== $filters->homepaged->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->homepaged->value == $item['is_on_home'];
+                }
+            );
+        }
+
+        if (null !== $filters->released->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->released->value == $item['is_released'];
+                }
+            );
+        }
+
+        if (null !== $filters->shiny->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->shiny->value == $item['is_shiny'];
+                }
+            );
+        }
+
+        return $dex;
     }
 }

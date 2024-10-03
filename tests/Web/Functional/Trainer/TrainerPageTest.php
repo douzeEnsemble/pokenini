@@ -36,7 +36,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table tbody tr');
         $this->assertEquals('789465465489', $crawler->filter('table tbody tr td')->last()->text());
 
-        $this->assertCustomizeAlbumSection($crawler);
+        $this->assertCustomizeAlbumSection($crawler, false);
 
         $this->assertStringContainsString(
             '/connect/logout',
@@ -66,7 +66,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table tbody tr');
         $this->assertEquals('8764532', $crawler->filter('table tbody tr td')->last()->text());
 
-        $this->assertCustomizeAlbumSection($crawler);
+        $this->assertCustomizeAlbumSection($crawler, true);
 
         $this->assertStringContainsString(
             '/connect/logout',
@@ -90,16 +90,23 @@ class TrainerPageTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    private function assertCustomizeAlbumSection(Crawler $crawler): void
+    private function assertCustomizeAlbumSection(Crawler $crawler, bool $isAdmin): void
     {
         $this->assertCountFilter($crawler, 1, 'form#dexFilters');
-        $this->assertCountFilter($crawler, 3, 'form#dexFilters', 0, 'select');
+        $this->assertCountFilter($crawler, $isAdmin ? 4 : 3, 'form#dexFilters', 0, 'select');
         $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-privacy');
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-privacy', 0, 'option');
-        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-spotlight');
-        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-spotlight', 0, 'option');
-        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-released');
-        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-released', 0, 'option');
+        $this->assertSelectedOptions($crawler, 'select#filter-privacy', ['']);
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-homepaged');
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-homepaged', 0, 'option');
+        $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
+        $this->assertCountFilter($crawler, $isAdmin ? 1 : 0, 'form#dexFilters', 0, '#filter-released');
+        if ($isAdmin) {
+            $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-released', 0, 'option');
+            $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
+        }
+        $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-shiny', 0, 'option');
+        $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
 
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item');
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item img');
@@ -108,8 +115,8 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item h6');
         $this->assertCountFilter($crawler, 42, '.trainer-dex-item input[type="checkbox"]');
 
-        $this->assertEmpty($crawler->filter('#redgreenblueyellow-is_private')->attr('checked'));
-        $this->assertNull($crawler->filter('#redgreenblueyellow-is_on_home')->attr('checked'));
+        $this->assertEmpty($crawler->filter('#goldsilvercrystal-is_private')->attr('checked'));
+        $this->assertNull($crawler->filter('#goldsilvercrystal-is_on_home')->attr('checked'));
 
         $this->assertNull($crawler->filter('#home-is_private')->attr('checked'));
         $this->assertEmpty($crawler->filter('#home-is_on_home')->attr('checked'));

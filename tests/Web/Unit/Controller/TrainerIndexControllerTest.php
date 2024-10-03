@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Controller;
 
 use App\Web\Controller\TrainerIndexController;
+use App\Web\DTO\DexFilters;
 use App\Web\Security\User;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetDexService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
@@ -69,6 +71,7 @@ class TrainerIndexControllerTest extends TestCase
                 'Trainer/index.html.twig',
                 [
                     'trainerDex' => ['douze'],
+                    'filters' => DexFilters::createFromArray([]),
                 ]
             )
         ;
@@ -95,7 +98,9 @@ class TrainerIndexControllerTest extends TestCase
         );
         $controller->setContainer($container);
 
-        $response = $controller->index();
+        $request = new Request();
+
+        $response = $controller->index($request);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->getStatusCode());
@@ -148,6 +153,7 @@ class TrainerIndexControllerTest extends TestCase
                 'Trainer/index.html.twig',
                 [
                     'trainerDex' => ['treize'],
+                    'filters' => DexFilters::createFromArray([]),
                 ]
             )
         ;
@@ -174,7 +180,9 @@ class TrainerIndexControllerTest extends TestCase
         );
         $controller->setContainer($container);
 
-        $response = $controller->index();
+        $request = new Request();
+
+        $response = $controller->index($request);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->getStatusCode());
@@ -230,6 +238,7 @@ class TrainerIndexControllerTest extends TestCase
                 'Trainer/index.html.twig',
                 [
                     'trainerDex' => [],
+                    'filters' => DexFilters::createFromArray([]),
                 ]
             )
         ;
@@ -256,7 +265,9 @@ class TrainerIndexControllerTest extends TestCase
         );
         $controller->setContainer($container);
 
-        $response = $controller->index();
+        $request = new Request();
+
+        $response = $controller->index($request);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->getStatusCode());
@@ -304,7 +315,9 @@ class TrainerIndexControllerTest extends TestCase
         );
         $controller->setContainer($container);
 
-        $response = $controller->index();
+        $request = new Request();
+
+        $response = $controller->index($request);
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(401, $response->getStatusCode());
