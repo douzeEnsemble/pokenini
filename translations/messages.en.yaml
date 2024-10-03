@@ -280,7 +280,7 @@ trainer:
                 all: "All"
                 "on": "Private only"
                 "off": "Public only"
-            spotlight:
+            homepaged:
                 label: "Filter on home or not albums"
                 all: "All"
                 "on": "On home"
@@ -290,6 +290,11 @@ trainer:
                 all: "All"
                 "on": "Released"
                 "off": "Not released"
+            shiny:
+                label: "Filter on shiny or not albums"
+                all: "All"
+                "on": "Shiny"
+                "off": "Regular"
     logout:
         title: "Session"
 

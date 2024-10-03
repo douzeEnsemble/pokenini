@@ -1,8 +1,8 @@
 [
   {
-    "is_shiny": false,
+    "is_shiny": true,
     "is_private": true,
-    "is_on_home": false,
+    "is_on_home": true,
     "is_display_form": true,
     "display_template": "box",
     "region": {
@@ -19,7 +19,7 @@
   {
     "is_shiny": false,
     "is_private": false,
-    "is_on_home": true,
+    "is_on_home": false,
     "is_display_form": true,
     "display_template": "box",
     "region": {

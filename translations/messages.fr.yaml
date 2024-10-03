@@ -281,7 +281,7 @@ trainer:
                 all: "Tous"
                 "on": "Privés seulement"
                 "off": "Publics seulement"
-            spotlight:
+            homepaged:
                 label: "Filtrer les albums sur l'accueil ou non"
                 all: "Tous"
                 "on": "Sur l'accueil"
@@ -291,6 +291,11 @@ trainer:
                 all: "Tous"
                 "on": "Disponible"
                 "off": "Non disponible"
+            shiny:
+                label: "Filter les albums chromatiques ou non"
+                all: "Tous"
+                "on": "Chromatiques"
+                "off": "Normaux"
     logout:
         title: "Session"
 
