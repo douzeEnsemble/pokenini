@@ -50,7 +50,7 @@ class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
         $this->assertEquals(24, $this->getTableCount('dex'));
-        $this->assertEquals(9, $this->getTableCount('collection'));
+        $this->assertEquals(8, $this->getTableCount('collection'));
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
@@ -59,7 +59,7 @@ class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString("18 game's bundles updated", $commandTester->getDisplay());
         $this->assertStringContainsString('36 games updated', $commandTester->getDisplay());
         $this->assertStringContainsString('21 dex updated', $commandTester->getDisplay());
-        $this->assertStringContainsString('9 collections updated', $commandTester->getDisplay());
+        $this->assertStringContainsString('8 collections updated', $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string
