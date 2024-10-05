@@ -91,11 +91,12 @@ album:
     intro:
         action:
             mode:
-                write: "Modifier tous les statuts"
+                write: "Passer en mode modification globale"
                 read: "Passer en mode lecture"
             goto:
                 box1: "Voir la boîte numéro 1"
                 top_of_the_list: "Voir le haut de la liste"
+                top_of_the_page: "Voir le haut de la page"
             description:
                 collapse: "Informations"
             screenshot:
