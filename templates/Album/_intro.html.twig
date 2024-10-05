@@ -2,8 +2,7 @@
 {% set currentRoute = app.request.get('_route') %}
 {% set currentRouteParameters = app.request.get('_route_params') ?? [] %}
 {% set displayTemplateName = dex.display_template is defined ? dex.display_template : 'box' %}
-<div
-    id="intro">
+<div id="intro">
 
     {# Top icons #}
     <div class="top-icons text-end">
@@ -45,7 +44,7 @@
             <a
                 href="#"
                 class="list-group-item list-group-item-action flex-fill list-group-item-primary album-all-catch-state-read-action"
-                title="{{ (('album.intro.action.mode.write'))|trans }}"
+                title="{{ (('album.intro.action.mode.read'))|trans }}"
                 data-bs-toggle="tooltip"
                 hidden
             >
@@ -54,7 +53,7 @@
             <a
                 href="#"
                 class="list-group-item list-group-item-action flex-fill list-group-item-primary album-all-catch-state-edit-action"
-                title="{{ (('album.intro.action.mode.read'))|trans }}" 
+                title="{{ (('album.intro.action.mode.write'))|trans }}" 
                 data-bs-toggle="tooltip"
             >
                 <i class="bi bi-book"></i>
