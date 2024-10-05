@@ -36,7 +36,7 @@ class BoxTest extends WebTestCase
         $this->assertCountFilter($crawler, 7, 'div.row.album-line');
         $this->assertCountFilter($crawler, 2, '.box');
         $this->assertCountFilter($crawler, 2, '.box .box-title h2');
-        $this->assertCountFilter($crawler, 2, '.box .box-title a');
+        $this->assertCountFilter($crawler, 4, '.box .box-title a');
 
         $this->assertEquals(
             '#box-1',
@@ -46,10 +46,24 @@ class BoxTest extends WebTestCase
                 ->attr('href')
         );
         $this->assertEquals(
-            '#box-2',
+            '#',
             $crawler
                 ->filter('.box .box-title a')
                 ->eq(1)
+                ->attr('href')
+        );
+        $this->assertEquals(
+            '#box-2',
+            $crawler
+                ->filter('.box .box-title a')
+                ->eq(2)
+                ->attr('href')
+        );
+        $this->assertEquals(
+            '#',
+            $crawler
+                ->filter('.box .box-title a')
+                ->eq(3)
                 ->attr('href')
         );
     }
