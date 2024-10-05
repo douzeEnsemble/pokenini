@@ -50,10 +50,15 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
                 $user = new User($userId);
 
-                if (in_array($user->getUserIdentifier(), explode(',', $this->listAdmin))) {
+                $listAdmins = explode(',', $this->listAdmin);
+                $listAdmins = array_map(fn ($value) => trim($value), $listAdmins);
+                $listTrainers = explode(',', $this->listTrainer);
+                $listTrainers = array_map(fn ($value) => trim($value), $listTrainers);
+
+                if (in_array($user->getUserIdentifier(), $listAdmins)) {
                     $user->addAdminRole();
                 }
-                if (in_array($user->getUserIdentifier(), explode(',', $this->listTrainer))) {
+                if (in_array($user->getUserIdentifier(), $listTrainers)) {
                     $user->addTrainerRole();
                 }
 
