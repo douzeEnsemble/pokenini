@@ -39,15 +39,15 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         $user = $validationPassport->getUser();
         $this->assertFalse($user->isAnAdmin());
         $this->assertFalse($user->isATrainer());
-        $this->assertEquals('1212121212', $user->getId());
-        $this->assertEquals('1212121212', $user->getUserIdentifier());
+        $this->assertEquals('1212121212000000000000012', $user->getId());
+        $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
     public function testAuthenticateTrainer(): void
     {
         $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313',
-            '2121212121,1313131313,1212121212'
+            '2121212121,1313131313,1212121212000000000000012'
         );
 
         $request = $this->createMock(Request::class);
@@ -60,14 +60,14 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         $user = $validationPassport->getUser();
         $this->assertFalse($user->isAnAdmin());
         $this->assertTrue($user->isATrainer());
-        $this->assertEquals('1212121212', $user->getId());
-        $this->assertEquals('1212121212', $user->getUserIdentifier());
+        $this->assertEquals('1212121212000000000000012', $user->getId());
+        $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
     public function testAuthenticateAdmin(): void
     {
         $googleAuthenticator = $this->getGoogleAuthenticator(
-            '1313131313,1212121212',
+            '1313131313,1212121212000000000000012',
             '2121212121,1313131313'
         );
 
@@ -81,15 +81,15 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         $user = $validationPassport->getUser();
         $this->assertTrue($user->isAnAdmin());
         $this->assertFalse($user->isATrainer());
-        $this->assertEquals('1212121212', $user->getId());
-        $this->assertEquals('1212121212', $user->getUserIdentifier());
+        $this->assertEquals('1212121212000000000000012', $user->getId());
+        $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
     public function testAuthenticateAdminTrainer(): void
     {
         $googleAuthenticator = $this->getGoogleAuthenticator(
-            '1313131313,1212121212',
-            '2121212121,1313131313,1212121212'
+            '1313131313,1212121212000000000000012',
+            '2121212121,1313131313,1212121212000000000000012'
         );
 
         $request = $this->createMock(Request::class);
@@ -102,8 +102,42 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         $user = $validationPassport->getUser();
         $this->assertTrue($user->isAnAdmin());
         $this->assertTrue($user->isATrainer());
-        $this->assertEquals('1212121212', $user->getId());
-        $this->assertEquals('1212121212', $user->getUserIdentifier());
+        $this->assertEquals('1212121212000000000000012', $user->getId());
+        $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
+    }
+
+    public function testAuthenticateAdminTrainerWithEndlines(): void
+    {
+        $listAdmin = <<<'LIST'
+            toto,
+
+            1212121212000000000000012,
+
+            01234567890123456789011
+            LIST;
+        $listTrainer = <<<'LIST'
+            titi,
+
+            1212121212000000000000012,
+
+            0123456789012345678901,
+            11655986856658439236105875191
+            LIST;
+
+        $googleAuthenticator = $this->getGoogleAuthenticator($listAdmin, $listTrainer);
+
+        $request = $this->createMock(Request::class);
+
+        $validationPassport = $googleAuthenticator->authenticate($request);
+
+        $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
+
+        /** @var User $user */
+        $user = $validationPassport->getUser();
+        $this->assertTrue($user->isAnAdmin());
+        $this->assertTrue($user->isATrainer());
+        $this->assertEquals('1212121212000000000000012', $user->getId());
+        $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
     private function getGoogleAuthenticator(string $listAdmin, string $listTrainer): GoogleAuthenticator
@@ -120,7 +154,7 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
             ->expects($this->once())
             ->method('fetchUserFromToken')
             ->willReturn(new GoogleUser([
-                'sub' => '1212121212',
+                'sub' => '1212121212000000000000012',
                 'name' => 'Douze',
             ]))
         ;
