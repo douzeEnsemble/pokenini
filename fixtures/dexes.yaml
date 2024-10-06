@@ -46,7 +46,6 @@ App\Api\Entity\Dex:
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'
         orderNumber: 4
-        isPrivate: false
         lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
     dex_home_shiny:
         name: |-
@@ -60,7 +59,6 @@ App\Api\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 5
         isShiny: true
-        isPrivate: false
         lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
     dex_home_pogo:
         name: 'Home PoGo'
@@ -70,7 +68,6 @@ App\Api\Entity\Dex:
         displayTemplate: 'list-7'
         orderNumber: 6
         isShiny: false
-        isPrivate: false
         isDisplayForm: false
         lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
     dex_spoon:
@@ -81,7 +78,6 @@ App\Api\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 3
         isShiny: false
-        isPrivate: false
         isDisplayForm: true
         deletedAt: '<date_create()>'
         lastChangedAt: '<date_create()>'

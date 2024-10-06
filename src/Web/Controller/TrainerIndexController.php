@@ -82,20 +82,20 @@ class TrainerIndexController extends AbstractController
             );
         }
 
-        if (null !== $filters->released->value) {
-            $dex = array_filter(
-                $dex,
-                function ($item) use ($filters) {
-                    return $filters->released->value == $item['is_released'];
-                }
-            );
-        }
-
         if (null !== $filters->shiny->value) {
             $dex = array_filter(
                 $dex,
                 function ($item) use ($filters) {
                     return $filters->shiny->value == $item['is_shiny'];
+                }
+            );
+        }
+
+        if (null !== $filters->released->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->released->value == $item['is_released'];
                 }
             );
         }
