@@ -30,6 +30,9 @@ class Dex
     public bool $isShiny = false;
 
     #[ORM\Column]
+    public bool $isPremium = true;
+
+    #[ORM\Column]
     public bool $isDisplayForm = true;
 
     #[ORM\Column(options: ['default' => 'box'])]

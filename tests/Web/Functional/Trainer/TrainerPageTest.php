@@ -93,7 +93,7 @@ class TrainerPageTest extends WebTestCase
     private function assertCustomizeAlbumSection(Crawler $crawler, bool $isAdmin): void
     {
         $this->assertCountFilter($crawler, 1, 'form#dexFilters');
-        $this->assertCountFilter($crawler, $isAdmin ? 4 : 3, 'form#dexFilters', 0, 'select');
+        $this->assertCountFilter($crawler, $isAdmin ? 5 : 3, 'form#dexFilters', 0, 'select');
         $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-privacy');
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-privacy', 0, 'option');
         $this->assertSelectedOptions($crawler, 'select#filter-privacy', ['']);
@@ -104,6 +104,8 @@ class TrainerPageTest extends WebTestCase
         if ($isAdmin) {
             $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-released', 0, 'option');
             $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
+            $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-premium', 0, 'option');
+            $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
         }
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-shiny', 0, 'option');
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);

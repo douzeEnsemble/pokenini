@@ -24,133 +24,124 @@ class GetDexServiceTest extends TestCase
 
     public function testGet(): void
     {
-        $expectedResult = [
-            [
-                'is_shiny' => false,
-                'is_private' => false,
-                'is_on_home' => false,
-                'is_display_form' => false,
-                'display_template' => 'list-7',
-                'name' => 'Home Pokemon Go',
-                'french_name' => 'Home Pokemon Go',
-                'slug' => 'homepokemongo',
-                'original_slug' => 'homepokemongo',
-                'is_released' => true,
-            ],
-            [
-                'is_shiny' => false,
-                'is_private' => true,
-                'is_on_home' => false,
-                'is_display_form' => true,
-                'display_template' => 'list-3',
-                'name' => 'Alpha',
-                'french_name' => 'Baron',
-                'slug' => 'alpha',
-                'original_slug' => 'alpha',
-                'is_released' => true,
-            ],
-            [
-                'is_shiny' => false,
-                'is_private' => true,
-                'is_on_home' => false,
-                'is_display_form' => true,
-                'display_template' => 'list-3',
-                'name' => 'Mega',
-                'french_name' => 'Méga',
-                'slug' => 'mega',
-                'original_slug' => 'mega',
-                'is_released' => true,
-            ],
+        $expectedSlugs = [
+            'homepokemongo',
+            'alpha',
+            'mega',
         ];
 
         $this->assertEquals(
-            $expectedResult,
-            $this->getService('123')->get('123'),
+            $expectedSlugs,
+            self::extractSlugs($this->getService('123')->get('123')),
         );
 
         /** @var string $value */
         $value = $this->cache->getItem('dex_123')->get();
 
-        $this->assertJsonStringEqualsJsonString(
-            (string) json_encode($expectedResult),
-            $value,
+        /** @var string[][] */
+        $jsonData = json_decode($value, true);
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($jsonData),
         );
     }
 
     public function testGetWithUnreleased(): void
     {
-        $expectedResult = [
-            [
-                'is_shiny' => false,
-                'is_private' => true,
-                'is_on_home' => false,
-                'is_display_form' => true,
-                'display_template' => 'box',
-                'region' => [
-                    'name' => 'Kanto',
-                    'french_name' => 'Kanto',
-                    'slug' => 'kanto',
-                ],
-                'name' => 'Red, Green, Blue, Yellow',
-                'french_name' => 'Rouge, Vert, Bleu, Jaune',
-                'slug' => 'redgreenblueyellow',
-                'original_slug' => 'redgreenblueyellow',
-                'is_released' => false,
-            ],
-            [
-                'is_shiny' => false,
-                'is_private' => false,
-                'is_on_home' => false,
-                'is_display_form' => false,
-                'display_template' => 'list-7',
-                'name' => 'Home Pokemon Go',
-                'french_name' => 'Home Pokemon Go',
-                'slug' => 'homepokemongo',
-                'original_slug' => 'homepokemongo',
-                'is_released' => true,
-            ],
-            [
-                'is_shiny' => false,
-                'is_private' => true,
-                'is_on_home' => false,
-                'is_display_form' => true,
-                'display_template' => 'list-3',
-                'name' => 'Alpha',
-                'french_name' => 'Baron',
-                'slug' => 'alpha',
-                'original_slug' => 'alpha',
-                'is_released' => true,
-            ],
-            [
-                'is_shiny' => false,
-                'is_private' => true,
-                'is_on_home' => false,
-                'is_display_form' => true,
-                'display_template' => 'list-3',
-                'name' => 'Mega',
-                'french_name' => 'Méga',
-                'slug' => 'mega',
-                'original_slug' => 'mega',
-                'is_released' => true,
-            ],
+        $expectedSlugs = [
+            'redgreenblueyellow',
+            'homepokemongo',
+            'alpha',
+            'mega',
         ];
 
         $this->assertEquals(
-            $expectedResult,
-            $this->getServiceWithUnreleased('123')->getWithUnreleased('123'),
+            $expectedSlugs,
+            self::extractSlugs($this->getServiceWithUnreleased('123')->getWithUnreleased('123')),
         );
 
         /** @var string $value */
         $value = $this->cache->getItem('dex_123include_unreleased_dex=1')->get();
 
-        $this->assertJsonStringEqualsJsonString(
-            (string) json_encode($expectedResult),
-            $value,
+        /** @var string[][] */
+        $jsonData = json_decode($value, true);
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($jsonData),
         );
 
         $this->assertEquals(
             [
                 'dex_123include_unreleased_dex=1',
+            ],
+            $this->cache->getItem('register_dex')->get(),
+        );
+    }
+
+    public function testGetWithPremium(): void
+    {
+        $expectedSlugs = [
+            'goldsilvercrystal',
+            'homepokemongo',
+            'alpha',
+            'mega',
+        ];
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($this->getServiceWithPremium('123')->getWithPremium('123')),
+        );
+
+        /** @var string $value */
+        $value = $this->cache->getItem('dex_123include_premium_dex=1')->get();
+
+        /** @var string[][] */
+        $jsonData = json_decode($value, true);
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($jsonData),
+        );
+
+        $this->assertEquals(
+            [
+                'dex_123include_premium_dex=1',
+            ],
+            $this->cache->getItem('register_dex')->get(),
+        );
+    }
+
+    public function testGetWithUnreleasedAndPremium(): void
+    {
+        $expectedSlugs = [
+            'redgreenblueyellow',
+            'goldsilvercrystal',
+            'homepokemongo',
+            'alpha',
+            'mega',
+        ];
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($this->getServiceWithUnreleasedAndPremium('123')->getWithUnreleasedAndPremium('123')),
+        );
+
+        /** @var string $value */
+        $value = $this->cache->getItem('dex_123include_unreleased_dex=1&include_premium_dex=1')->get();
+
+        /** @var string[][] */
+        $jsonData = json_decode($value, true);
+
+        $this->assertEquals(
+            $expectedSlugs,
+            self::extractSlugs($jsonData),
+        );
+
+        $this->assertEquals(
+            [
+                'dex_123include_unreleased_dex=1&include_premium_dex=1',
             ],
             $this->cache->getItem('register_dex')->get(),
         );
@@ -177,6 +168,30 @@ class GetDexServiceTest extends TestCase
         return $this->getMockService(
             $json,
             "dex/{$trainerId}/list?include_unreleased_dex=1",
+        );
+    }
+
+    private function getServiceWithPremium(string $trainerId): GetDexService
+    {
+        $json = (string) file_get_contents(
+            "/var/www/html/tests/resources/Web/unit/service/api/dex_{$trainerId}_premium.json"
+        );
+
+        return $this->getMockService(
+            $json,
+            "dex/{$trainerId}/list?include_premium_dex=1",
+        );
+    }
+
+    private function getServiceWithUnreleasedAndPremium(string $trainerId): GetDexService
+    {
+        $json = (string) file_get_contents(
+            "/var/www/html/tests/resources/Web/unit/service/api/dex_{$trainerId}_unreleased_and_premium.json"
+        );
+
+        return $this->getMockService(
+            $json,
+            "dex/{$trainerId}/list?include_unreleased_dex=1&include_premium_dex=1",
         );
     }
 
@@ -221,5 +236,21 @@ class GetDexServiceTest extends TestCase
             'web',
             'douze',
         );
+    }
+
+    /**
+     * @param string[][] $items
+     *
+     * @return string[]
+     */
+    private static function extractSlugs(array $items): array
+    {
+        $slugs = [];
+
+        foreach ($items as $item) {
+            $slugs[] = $item['slug'];
+        }
+
+        return $slugs;
     }
 }

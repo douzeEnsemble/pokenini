@@ -34,6 +34,10 @@ class TrainerDexRepository extends ServiceEntityRepository
             $where = ' AND d.is_released = true ';
         }
 
+        if (!$options->includePremiumDex) {
+            $where = ' AND d.is_premium = true ';
+        }
+
         $sql = <<<SQL
             SELECT
                     d.slug as dex_slug,
@@ -45,7 +49,9 @@ class TrainerDexRepository extends ServiceEntityRepository
                     COALESCE(td.is_on_home, false) as is_on_home,
                     d.is_display_form as is_display_form,
                     d.display_template as display_template,
-                    d.is_released as is_released
+                    d.is_released as is_released,
+                    CASE WHEN td.slug <> d.slug THEN true ELSE d.is_premium END AS is_premium,
+                    CASE WHEN td.slug <> d.slug THEN true ELSE false END AS is_custom
             FROM    dex AS d
                 LEFT JOIN trainer_dex AS td
                     ON td.dex_id = d.id

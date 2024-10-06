@@ -265,6 +265,9 @@ trainer:
             is_not_released:
                 label: "Album non déployé"
                 help: "Seul les admins peuvent voir l'album, pour le moment"
+            is_premium:
+                label: "Album premium"
+                help: "Seulement pour les utilisateurs premium"
         update:
             title: "Maj"
             success:
@@ -297,6 +300,11 @@ trainer:
                 all: "Tous"
                 "on": "Chromatiques"
                 "off": "Normaux"
+            premium:
+                label: "Filter les albums premiums ou gratuits"
+                all: "Tous"
+                "on": "Premiums"
+                "off": "Gratuits"
     logout:
         title: "Session"
 

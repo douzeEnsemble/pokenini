@@ -9,7 +9,9 @@
     "french_name": "Home Pokemon Go",
     "slug": "homepokemongo",
     "original_slug": "homepokemongo",
-    "is_released": true
+    "is_released": true,
+    "is_premium": false,
+    "is_custom": false
   },
   {
     "is_shiny": false,
@@ -21,7 +23,9 @@
     "french_name": "Baron",
     "slug": "alpha",
     "original_slug": "alpha",
-    "is_released": true
+    "is_released": true,
+    "is_premium": false,
+    "is_custom": false
   },
   {
     "is_shiny": false,
@@ -33,6 +37,8 @@
     "french_name": "M\u00e9ga",
     "slug": "mega",
     "original_slug": "mega",
-    "is_released": true
+    "is_released": true,
+    "is_premium": false,
+    "is_custom": false
   }
 ]

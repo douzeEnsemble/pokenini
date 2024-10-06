@@ -39,7 +39,7 @@ class TrainerIndexController extends AbstractController
         $userToken = $this->userTokenService->getLoggedUserToken();
 
         $trainerDex = $user->isAnAdmin()
-            ? $this->getDexService->getWithUnreleased($userToken)
+            ? $this->getDexService->getWithUnreleasedAndPremium($userToken)
             : $this->getDexService->get($userToken);
 
         $filters = DexFiltersRequest::dexFiltersFromRequest($request);
@@ -96,6 +96,15 @@ class TrainerIndexController extends AbstractController
                 $dex,
                 function ($item) use ($filters) {
                     return $filters->released->value == $item['is_released'];
+                }
+            );
+        }
+
+        if (null !== $filters->premium->value) {
+            $dex = array_filter(
+                $dex,
+                function ($item) use ($filters) {
+                    return $filters->premium->value == $item['is_premium'];
                 }
             );
         }

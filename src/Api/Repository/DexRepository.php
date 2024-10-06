@@ -61,7 +61,9 @@ class DexRepository extends ServiceEntityRepository
                         d.description AS "description",
                         d.french_description AS "french_description",
                         TO_CHAR(last_changed_at, 'YYYYMMDD.HHMISS') AS "version",
-                        d.is_released AS "is_released"
+                        d.is_released AS "is_released",
+                        CASE WHEN td.slug <> d.slug THEN true ELSE d.is_premium END AS "is_premium",
+                        CASE WHEN td.slug <> d.slug THEN true ELSE false END AS "is_custom"
             FROM        dex AS d
                     LEFT JOIN region AS r
                         ON d.region_id = r.id

@@ -121,7 +121,7 @@ class TrainerIndexControllerTest extends TestCase
         $getDexService = $this->createMock(GetDexService::class);
         $getDexService
             ->expects($this->once())
-            ->method('getWithUnreleased')
+            ->method('getWithUnreleasedAndPremium')
             ->with(
                 '1234567890'
             )

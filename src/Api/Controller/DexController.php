@@ -29,6 +29,7 @@ class DexController extends AbstractController
     ): JsonResponse {
         $dexQueryOptions = new DexQueryOptions([
             'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false),
+            'include_premium_dex' => $request->query->getBoolean('include_premium_dex', false),
         ]);
 
         /** @var bool[][]|string[][] $dex */
