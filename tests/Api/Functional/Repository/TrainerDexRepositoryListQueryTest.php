@@ -35,7 +35,7 @@ class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
 
         $this->assertInstanceOf(\Generator::class, $list);
-        $this->assertCount(9, iterator_to_array($list, false));
+        $this->assertCount(3, iterator_to_array($list, false));
     }
 
     public function testGetListQueryWithUnreleased(): void
@@ -44,6 +44,35 @@ class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
         $dexQueryOptions = new DexQueryOptions(['include_unreleased_dex' => true]);
+
+        $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
+
+        $this->assertInstanceOf(\Generator::class, $list);
+        $this->assertCount(3, iterator_to_array($list, false));
+    }
+
+    public function testGetListQueryWithPremium(): void
+    {
+        /** @var TrainerDexRepository $repo */
+        $repo = static::getContainer()->get(TrainerDexRepository::class);
+
+        $dexQueryOptions = new DexQueryOptions(['include_premium_dex' => true]);
+
+        $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
+
+        $this->assertInstanceOf(\Generator::class, $list);
+        $this->assertCount(9, iterator_to_array($list, false));
+    }
+
+    public function testGetListQueryWithUnreleasedAndPremium(): void
+    {
+        /** @var TrainerDexRepository $repo */
+        $repo = static::getContainer()->get(TrainerDexRepository::class);
+
+        $dexQueryOptions = new DexQueryOptions([
+            'include_unreleased_dex' => true,
+            'include_premium_dex' => true,
+        ]);
 
         $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
 

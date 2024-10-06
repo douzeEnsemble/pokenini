@@ -17,6 +17,7 @@ final class DexFilters
         public DexFilterValue $homepaged,
         public DexFilterValue $released,
         public DexFilterValue $shiny,
+        public DexFilterValue $premium,
     ) {}
 
     /**
@@ -31,6 +32,7 @@ final class DexFilters
             'homepaged' => '',
             'released' => '',
             'shiny' => '',
+            'premium' => '',
         ];
 
         $resolver->setDefaults($defaultsValues);
@@ -51,6 +53,7 @@ final class DexFilters
             $options['homepaged'],
             $options['released'],
             $options['shiny'],
+            $options['premium'],
         );
     }
 

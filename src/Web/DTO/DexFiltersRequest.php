@@ -18,6 +18,7 @@ final class DexFiltersRequest
             'h' => '',
             'r' => '',
             's' => '',
+            'm' => '',
         ]);
 
         $options = $resolver->resolve($request->query->all());
@@ -27,6 +28,7 @@ final class DexFiltersRequest
             'homepaged' => $options['h'],
             'released' => $options['r'],
             'shiny' => $options['s'],
+            'premium' => $options['m'],
         ]);
     }
 }

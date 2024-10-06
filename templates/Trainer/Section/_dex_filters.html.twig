@@ -4,24 +4,28 @@
     'homepaged',
     'released',
     'shiny',
+    'premium',
 ] %}
 {% set filtersName = {
     'privacy': 'p',
     'homepaged': 'h',
     'released': 'r',
     'shiny': 's',
+    'premium': 'm',
  } %}
 {% set filtersIcons = {
     'privacy': 'incognito',
     'homepaged': 'house',
     'released': 'lock',
     'shiny': 'stars',
+    'premium': 'patch-plus',
  } %}
 {% set filtersRole = {
     'privacy': 'ROLE_TRAINER',
     'homepaged': 'ROLE_TRAINER',
     'released': 'ROLE_ADMIN',
     'shiny': 'ROLE_TRAINER',
+    'premium': 'ROLE_ADMIN',
  } %}
 {% for item in filtersItems %}
 {% if is_granted(filtersRole[item]) %}

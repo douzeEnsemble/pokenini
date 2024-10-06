@@ -24,11 +24,13 @@ class DexFiltersTest extends TestCase
         $this->assertInstanceOf(DexFilterValue::class, $filters->homepaged);
         $this->assertInstanceOf(DexFilterValue::class, $filters->released);
         $this->assertInstanceOf(DexFilterValue::class, $filters->shiny);
+        $this->assertInstanceOf(DexFilterValue::class, $filters->premium);
 
         $this->assertNull($filters->privacy->value);
         $this->assertNull($filters->homepaged->value);
         $this->assertNull($filters->released->value);
         $this->assertNull($filters->shiny->value);
+        $this->assertNull($filters->premium->value);
     }
 
     public function testCreateFromArray(): void
@@ -38,6 +40,7 @@ class DexFiltersTest extends TestCase
             'homepaged' => '1',
             'released' => '0',
             'shiny' => '0',
+            'premium' => '0',
         ]);
 
         $this->assertInstanceOf(DexFilters::class, $filters);
@@ -45,11 +48,13 @@ class DexFiltersTest extends TestCase
         $this->assertInstanceOf(DexFilterValue::class, $filters->homepaged);
         $this->assertInstanceOf(DexFilterValue::class, $filters->released);
         $this->assertInstanceOf(DexFilterValue::class, $filters->shiny);
+        $this->assertInstanceOf(DexFilterValue::class, $filters->premium);
 
         $this->assertTrue($filters->privacy->value);
         $this->assertTrue($filters->homepaged->value);
         $this->assertFalse($filters->released->value);
         $this->assertFalse($filters->shiny->value);
+        $this->assertFalse($filters->premium->value);
     }
 
     public function testNormalizerTrue(): void

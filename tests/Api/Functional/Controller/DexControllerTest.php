@@ -56,6 +56,53 @@ class DexControllerTest extends AbstractTestControllerApi
         );
     }
 
+    public function testListUser12WithPremium(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/list',
+            [
+                'include_premium_dex' => '1',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getResponseContent();
+
+        /** @var int[][][]|string[][]|string[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertEquals(
+            DexControllerTestData::getUser12ContentWithPremium(),
+            $data
+        );
+    }
+
+    public function testListUser12WithUnreleasedAndPremium(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/list',
+            [
+                'include_unreleased_dex' => '1',
+                'include_premium_dex' => '1',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getResponseContent();
+
+        /** @var int[][][]|string[][]|string[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertEquals(
+            DexControllerTestData::getUser12ContentWithUnreleasedAndPremium(),
+            $data
+        );
+    }
+
     public function testListUser13(): void
     {
         $this->apiRequest('GET', 'api/dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/list');
@@ -115,7 +162,7 @@ class DexControllerTest extends AbstractTestControllerApi
         $trainerDexAfter = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
-        $this->assertFalse($trainerDexAfter['is_private']);
+        $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_on_home']);
         $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexAfter['name']);

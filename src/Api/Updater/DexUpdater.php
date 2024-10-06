@@ -25,13 +25,13 @@ class DexUpdater extends AbstractUpdater
             'Order',
             'Selection rule',
             'Is Shiny',
-            'Is Private',
             'Is Display Form',
             'Display template',
             '#Region',
             'French description',
             'Description',
             'Is released',
+            'Is Premium',
         ];
     }
 
@@ -51,6 +51,7 @@ class DexUpdater extends AbstractUpdater
             'description' => $record['Description'],
             'french_description' => $record['French description'],
             'is_released' => $record['Is released'],
+            'is_premium' => $record['Is Premium'],
         ];
 
         $tableName = $this->tableName;
@@ -70,6 +71,7 @@ class DexUpdater extends AbstractUpdater
               description,
               french_description,
               is_released,
+              is_premium,
               last_changed_at
             )
             VALUES (
@@ -86,6 +88,7 @@ class DexUpdater extends AbstractUpdater
                 :description,
                 :french_description,
                 :is_released,
+                :is_premium,
                 NOW()
             )
             ON CONFLICT (slug)
@@ -103,6 +106,7 @@ class DexUpdater extends AbstractUpdater
                 description = excluded.description,
                 french_description = excluded.french_description,
                 is_released = excluded.is_released,
+                is_premium = excluded.is_premium,
                 deleted_at = NULL
             SQL;
 

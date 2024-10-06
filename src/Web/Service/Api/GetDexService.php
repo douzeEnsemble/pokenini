@@ -31,6 +31,22 @@ class GetDexService extends AbstractApiService
     /**
      * @return string[][]
      */
+    public function getWithPremium(string $trainerId): array
+    {
+        return $this->getDexWithParam($trainerId, 'include_premium_dex=1');
+    }
+
+    /**
+     * @return string[][]
+     */
+    public function getWithUnreleasedAndPremium(string $trainerId): array
+    {
+        return $this->getDexWithParam($trainerId, 'include_unreleased_dex=1&include_premium_dex=1');
+    }
+
+    /**
+     * @return string[][]
+     */
     private function getDexWithParam(string $trainerId, string $queryParams = ''): array
     {
         $key = KeyMaker::getDexKeyForTrainer($trainerId, $queryParams);

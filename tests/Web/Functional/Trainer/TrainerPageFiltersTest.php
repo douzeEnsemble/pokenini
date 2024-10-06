@@ -35,6 +35,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 15, '.trainer-dex-item');
     }
@@ -56,6 +57,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 6, '.trainer-dex-item');
     }
@@ -77,6 +79,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['1']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 6, '.trainer-dex-item');
     }
@@ -98,6 +101,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['0']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 15, '.trainer-dex-item');
     }
@@ -119,6 +123,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['1']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 20, '.trainer-dex-item');
     }
@@ -140,6 +145,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['0']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 1, '.trainer-dex-item');
     }
@@ -161,6 +167,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['1']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 2, '.trainer-dex-item');
     }
@@ -182,8 +189,53 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['0']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
         $this->assertCountFilter($crawler, 19, '.trainer-dex-item');
+    }
+
+    public function testPremiumFilterOn(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/trainer?m=1');
+
+        $this->assertResponseStatusCodeSame(200);
+
+        $this->assertSelectedOptions($crawler, 'select#filter-privacy', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['1']);
+
+        $this->assertCountFilter($crawler, 0, '.trainer-dex-item');
+    }
+
+    public function testPremiumFilterOff(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/trainer?m=0');
+
+        $this->assertResponseStatusCodeSame(200);
+
+        $this->assertSelectedOptions($crawler, 'select#filter-privacy', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['0']);
+
+        $this->assertCountFilter($crawler, 21, '.trainer-dex-item');
     }
 
     public function testAllFilterOff(): void
@@ -195,7 +247,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $crawler = $client->request('GET', '/fr/trainer?p=0&h=0&r=0&s=0');
+        $crawler = $client->request('GET', '/fr/trainer?p=0&h=0&r=0&s=0&m=0');
 
         $this->assertResponseStatusCodeSame(200);
 
@@ -203,6 +255,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['0']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['0']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['0']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['0']);
 
         $this->assertCountFilter($crawler, 1, '.trainer-dex-item');
     }
@@ -216,7 +269,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
-        $crawler = $client->request('GET', '/fr/trainer?p=1&h=1&r=1&s=1');
+        $crawler = $client->request('GET', '/fr/trainer?p=1&h=1&r=1&s=1&m=1');
 
         $this->assertResponseStatusCodeSame(200);
 
@@ -224,7 +277,8 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['1']);
         $this->assertSelectedOptions($crawler, 'select#filter-released', ['1']);
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['1']);
+        $this->assertSelectedOptions($crawler, 'select#filter-premium', ['1']);
 
-        $this->assertCountFilter($crawler, 1, '.trainer-dex-item');
+        $this->assertCountFilter($crawler, 0, '.trainer-dex-item');
     }
 }
