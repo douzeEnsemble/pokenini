@@ -56,7 +56,7 @@ class DexRepository extends ServiceEntityRepository
                         r.name AS "region_name",
                         r.french_name AS "region_french_name",
                         d.selection_rule AS "selection_rule",
-                        COALESCE(td.is_private, d.is_private) AS "is_private",
+                        COALESCE(td.is_private, true) AS "is_private",
                         COALESCE(td.is_on_home, false) AS "is_on_home",
                         d.description AS "description",
                         d.french_description AS "french_description",

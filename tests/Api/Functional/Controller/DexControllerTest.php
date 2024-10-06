@@ -115,7 +115,7 @@ class DexControllerTest extends AbstractTestControllerApi
         $trainerDexAfter = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
-        $this->assertTrue($trainerDexAfter['is_private']);
+        $this->assertFalse($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_on_home']);
         $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexAfter['name']);

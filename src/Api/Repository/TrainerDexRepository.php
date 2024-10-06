@@ -41,7 +41,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                     COALESCE(td.french_name, d.french_name) as french_name,
                     COALESCE(NULLIF(td.slug, ''), d.slug) as slug,
                     d.is_shiny as is_shiny,
-                    COALESCE(td.is_private, d.is_private) as is_private,
+                    COALESCE(td.is_private, true) as is_private,
                     COALESCE(td.is_on_home, false) as is_on_home,
                     d.is_display_form as is_display_form,
                     d.display_template as display_template,

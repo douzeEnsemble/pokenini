@@ -78,9 +78,11 @@ App\Api\Entity\TrainerDex:
         name: 'Gold / Silver / Crystal'
         frenchName: 'Or / Argent / Cristal'
         slug: 'goldsilvercrystal'
+        isPrivate: true
     trainerdex_u13_home:
         trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
         dex: '@dex_home'
         name: 'Home'
         frenchName: 'Home'
         slug: 'home'
+        isPrivate: true
