@@ -10,7 +10,7 @@
         'app_web_albumindex_index', 
         {
             'dexSlug': currentDexSlug, 
-            't': ((queryTrainerId is not empty) ? queryTrainerId : null)
+            't': ((requestedTrainerId is not empty) ? requestedTrainerId : null)
         }
     ) }}
 {%- endblock navbarTitleLink -%}

@@ -43,6 +43,16 @@ class UserTest extends TestCase
         $this->assertEquals(['ROLE_USER', 'ROLE_TRAINER'], $user->getRoles());
     }
 
+    public function testAddCollectorRole(): void
+    {
+        $user = new User('12');
+        $this->assertEquals(['ROLE_USER'], $user->getRoles());
+
+        $user->addCollectorRole();
+
+        $this->assertEquals(['ROLE_USER', 'ROLE_COLLECTOR'], $user->getRoles());
+    }
+
     public function testAddTrainerAndAdminRole(): void
     {
         $user = new User('12');
@@ -52,6 +62,17 @@ class UserTest extends TestCase
         $user->addAdminRole();
 
         $this->assertEquals(['ROLE_USER', 'ROLE_TRAINER', 'ROLE_ADMIN'], $user->getRoles());
+    }
+
+    public function testAddTrainerAndCollectorRole(): void
+    {
+        $user = new User('12');
+        $this->assertEquals(['ROLE_USER'], $user->getRoles());
+
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+
+        $this->assertEquals(['ROLE_USER', 'ROLE_TRAINER', 'ROLE_COLLECTOR'], $user->getRoles());
     }
 
     public function testAddTrainerRoleTwice(): void
@@ -76,6 +97,17 @@ class UserTest extends TestCase
         $this->assertEquals(['ROLE_USER', 'ROLE_ADMIN'], $user->getRoles());
     }
 
+    public function testAddCollectorRoleTwice(): void
+    {
+        $user = new User('12');
+        $this->assertEquals(['ROLE_USER'], $user->getRoles());
+
+        $user->addCollectorRole();
+        $user->addCollectorRole();
+
+        $this->assertEquals(['ROLE_USER', 'ROLE_COLLECTOR'], $user->getRoles());
+    }
+
     public function testIsATrainer(): void
     {
         $user = new User('12');
@@ -85,6 +117,17 @@ class UserTest extends TestCase
         $user->addTrainerRole();
 
         $this->assertTrue($user->isATrainer());
+    }
+
+    public function testIsACollector(): void
+    {
+        $user = new User('12');
+
+        $this->assertFalse($user->isACollector());
+
+        $user->addCollectorRole();
+
+        $this->assertTrue($user->isACollector());
     }
 
     public function testIsAnAdmin(): void
@@ -104,11 +147,29 @@ class UserTest extends TestCase
 
         $this->assertFalse($user->isATrainer());
         $this->assertFalse($user->isAnAdmin());
+        $this->assertFalse($user->isACollector());
 
         $user->addTrainerRole();
         $user->addAdminRole();
 
         $this->assertTrue($user->isATrainer());
         $this->assertTrue($user->isAnAdmin());
+        $this->assertFalse($user->isACollector());
+    }
+
+    public function testIsATrainerAndACollector(): void
+    {
+        $user = new User('12');
+
+        $this->assertFalse($user->isATrainer());
+        $this->assertFalse($user->isACollector());
+        $this->assertFalse($user->isAnAdmin());
+
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+
+        $this->assertTrue($user->isATrainer());
+        $this->assertTrue($user->isACollector());
+        $this->assertFalse($user->isAnAdmin());
     }
 }

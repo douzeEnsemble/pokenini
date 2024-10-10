@@ -6,28 +6,21 @@ namespace App\Web\Controller;
 
 use App\Web\AlbumFilters\FromRequest;
 use App\Web\AlbumFilters\Mapping;
-use App\Web\Exception\NoLoggedUserException;
 use App\Web\Security\User;
-use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetLabelsService;
-use App\Web\Service\Api\GetPokedexService;
+use App\Web\Service\GetTrainerPokedexService;
+use App\Web\Service\TrainerIdsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 #[Route('/album')]
 class AlbumIndexController extends AbstractController
 {
-    use ValidatorJsonResponseTrait;
-
     public function __construct(
-        private readonly UserTokenService $userTokenService,
-        private readonly ValidatorInterface $validator,
-        private readonly GetPokedexService $getPokedexService,
+        private readonly TrainerIdsService $trainerIdsService,
+        private readonly GetTrainerPokedexService $getTrainerPokedexService,
         private readonly GetLabelsService $getLabelsService,
     ) {}
 
@@ -42,16 +35,9 @@ class AlbumIndexController extends AbstractController
         Request $request,
         string $dexSlug,
     ): Response {
-        $loggedTrainerId = null;
-        $queryTrainerId = $request->query->getAlnum('t');
+        $this->trainerIdsService->init();
 
-        try {
-            $loggedTrainerId = $this->userTokenService->getLoggedUserToken();
-
-            $trainerId = $queryTrainerId ?: $loggedTrainerId;
-        } catch (NoLoggedUserException $e) {
-            $trainerId = $queryTrainerId;
-        }
+        $trainerId = $this->trainerIdsService->getTrainerId();
 
         if (!$trainerId) {
             throw $this->createNotFoundException();
@@ -60,24 +46,13 @@ class AlbumIndexController extends AbstractController
         $filters = FromRequest::get($request);
         $apiFilters = Mapping::get($filters);
 
-        try {
-            $pokedex = $this->getPokedexService->get($dexSlug, $trainerId, $apiFilters);
-        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
+        $pokedex = $this->getTrainerPokedexService->getPokedexDataByTrainerId($dexSlug, $apiFilters, $trainerId);
+        if (null === $pokedex || empty($pokedex['dex'])) {
             throw $this->createNotFoundException();
         }
 
         $dex = $pokedex['dex'];
-
-        if ($dex['is_private'] && $trainerId != $loggedTrainerId) {
-            throw $this->createNotFoundException();
-        }
-
-        /** @var User $user */
-        $user = $this->getUser();
-
-        if (!$dex['is_released'] && !$user->isAnAdmin()) {
-            throw $this->createNotFoundException();
-        }
+        $this->dexIsGranted($dex);
 
         $catchStates = $this->getLabelsService->getCatchStates();
         $types = $this->getLabelsService->getTypes();
@@ -90,6 +65,8 @@ class AlbumIndexController extends AbstractController
         $collections = $this->getLabelsService->getCollections();
 
         $pokemons = $pokedex['pokemons'];
+
+        $loggedTrainerId = $this->trainerIdsService->getLoggedTrainerId();
 
         return $this->render('Album/index.html.twig', [
             'currentDexSlug' => $dexSlug,
@@ -108,8 +85,31 @@ class AlbumIndexController extends AbstractController
             'filters' => $filters,
             'trainerId' => $trainerId,
             'loggedTrainerId' => $loggedTrainerId,
-            'queryTrainerId' => $queryTrainerId,
+            'requestedTrainerId' => $this->trainerIdsService->getRequestedTrainerId(),
             'allowedToEdit' => $trainerId === $loggedTrainerId,
         ]);
+    }
+
+    /**
+     * @param string[]|string[][] $dex
+     */
+    private function dexIsGranted(array $dex): void
+    {
+        if ($dex['is_private']
+            && $this->trainerIdsService->getTrainerId() != $this->trainerIdsService->getLoggedTrainerId()
+        ) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($dex['is_premium'] && !$this->isGranted('ROLE_COLLECTOR')) {
+            throw $this->createNotFoundException();
+        }
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if (!$dex['is_released'] && !$user->isAnAdmin()) {
+            throw $this->createNotFoundException();
+        }
     }
 }

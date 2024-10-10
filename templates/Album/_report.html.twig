@@ -35,7 +35,7 @@
                                 filters
                                     |merge({
                                         'dexSlug': currentDexSlug,
-                                        't': ((queryTrainerId is not empty) ? queryTrainerId : null),
+                                        't': ((requestedTrainerId is not empty) ? requestedTrainerId : null),
                                         'cs': line.slug,
                                         })
                                     |ksort
@@ -52,7 +52,7 @@
                                 filters
                                     |merge({
                                         'dexSlug': currentDexSlug,
-                                        't': ((queryTrainerId is not empty) ? queryTrainerId : null),
+                                        't': ((requestedTrainerId is not empty) ? requestedTrainerId : null),
                                         'cs': '!'~line.slug,
                                         })
                                     |ksort
@@ -81,7 +81,7 @@
                                 |filter((value, key) => key != 'cs')
                                 |merge({
                                     'dexSlug': currentDexSlug,
-                                    't': ((queryTrainerId is not empty) ? queryTrainerId : null),
+                                    't': ((requestedTrainerId is not empty) ? requestedTrainerId : null),
                                 }
                                 |merge(currentRouteParameters))
                                 |ksort

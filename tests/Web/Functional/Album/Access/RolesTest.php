@@ -49,6 +49,19 @@ class RolesTest extends WebTestCase
         $this->assertTrainerAlbumNavBar($crawler);
     }
 
+    public function testReadCollector(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addCollectorRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/album/home');
+
+        $this->assertTrainerAlbumNavBar($crawler);
+    }
+
     public function testReadAdmin(): void
     {
         $client = static::createClient();
@@ -73,6 +86,19 @@ class RolesTest extends WebTestCase
     }
 
     public function testWriteTrainer(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/album/home');
+
+        $this->assertTrainerAlbumNavBar($crawler);
+    }
+
+    public function testWriteCollector(): void
     {
         $client = static::createClient();
 

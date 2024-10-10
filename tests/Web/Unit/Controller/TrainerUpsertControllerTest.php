@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Controller;
 
 use App\Web\Controller\TrainerUpsertController;
-use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\ModifyDexService;
-use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
-use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
+use App\Web\Exception\EmptyContentException;
+use App\Web\Exception\InvalidJsonException;
+use App\Web\Exception\ModifyFailedException;
+use App\Web\Service\GetTrainerPokedexService;
+use App\Web\Service\ModifyTrainerDexService;
+use App\Web\Service\RequestedContentService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Validator\ConstraintViolation;
-use Symfony\Component\Validator\ConstraintViolationList;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Constraints\Json;
 
 /**
  * @internal
@@ -26,56 +26,43 @@ class TrainerUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
-        $userTokenService
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
             ->expects($this->once())
-            ->method('getLoggedUserToken')
-            ->willReturn('1234567890')
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'dex' => [
+                    'slug' => 'douze',
+                    'is_premium' => true,
+                ],
+                'pokemons' => [],
+            ])
         ;
 
-        $validator = $this->createMock(ValidatorInterface::class);
-        $validator
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
             ->expects($this->once())
-            ->method('validate')
-            ->willReturn(
-                new ConstraintViolationList([])
-            )
-        ;
-
-        $modifyDexService = $this->createMock(ModifyDexService::class);
-        $modifyDexService
-            ->expects($this->once())
-            ->method('modify')
+            ->method('modifyDex')
             ->with(
                 'douze',
-                '{}',
-                '1234567890'
+                '{"key": "value"}',
             )
         ;
 
-        $albumCacheInvalidatorService = $this->createMock(AlbumCacheInvalidatorService::class);
-        $albumCacheInvalidatorService
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
-            ->method('invalidate')
-            ->with(
-                'douze',
-                '1234567890'
-            )
-        ;
-
-        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
-        $dexCacheInvalidatorService
-            ->expects($this->once())
-            ->method('invalidateByTrainerId')
-            ->with(
-                '1234567890'
-            )
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
         ;
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $authorizationChecker
             ->expects($this->once())
             ->method('isGranted')
+            ->with('ROLE_COLLECTOR')
             ->willReturn(true)
         ;
 
@@ -92,171 +79,367 @@ class TrainerUpsertControllerTest extends TestCase
         ;
 
         $controller = new TrainerUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyDexService,
-            $albumCacheInvalidatorService,
-            $dexCacheInvalidatorService,
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{}')
-        ;
-
-        $response = $controller->upsert('douze', $request);
+        $response = $controller->upsert('douze');
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
     }
 
-    public function testUpsertBadContent(): void
+    public function testUpsertEmptyContentException(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->never())
+            ->method('getPokedexData')
+        ;
 
-        $validator = $this->createMock(ValidatorInterface::class);
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->never())
+            ->method('modifyDex')
+        ;
 
-        $modifyDexService = $this->createMock(ModifyDexService::class);
-
-        $albumCacheInvalidatorService = $this->createMock(AlbumCacheInvalidatorService::class);
-
-        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
+            ->method('getContent')
+            ->with(new Json())
+            ->willThrowException(new EmptyContentException())
         ;
 
         $container = $this->createMock(ContainerInterface::class);
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('has')
             ->willReturn(true)
         ;
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('get')
-            ->willReturn($authorizationChecker)
         ;
 
         $controller = new TrainerUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyDexService,
-            $albumCacheInvalidatorService,
-            $dexCacheInvalidatorService,
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn([])
-        ;
+        $response = $controller->upsert('douze');
 
-        $response = $controller->upsert('douze', $request);
-
+        $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Content must be a non-empty string"}',
-            $response->getContent()
-        );
+        $this->assertSame('{"error":"Content cannot be empty"}', $response->getContent());
     }
 
-    public function testUpsertEmptyContent(): void
+    public function testUpsertInvalidJsonException(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->never())
+            ->method('getPokedexData')
+        ;
 
-        $validator = $this->createMock(ValidatorInterface::class);
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->never())
+            ->method('modifyDex')
+        ;
 
-        $modifyDexService = $this->createMock(ModifyDexService::class);
-
-        $albumCacheInvalidatorService = $this->createMock(AlbumCacheInvalidatorService::class);
-
-        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
+            ->method('getContent')
+            ->with(new Json())
+            ->willThrowException(new InvalidJsonException())
         ;
 
         $container = $this->createMock(ContainerInterface::class);
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('has')
             ->willReturn(true)
         ;
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('get')
-            ->willReturn($authorizationChecker)
         ;
 
         $controller = new TrainerUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyDexService,
-            $albumCacheInvalidatorService,
-            $dexCacheInvalidatorService,
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('')
-        ;
-
-        $response = $controller->upsert('douze', $request);
+        $response = $controller->upsert('douze');
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Content must be a non-empty string"}',
-            $response->getContent()
-        );
+        $this->assertSame('{"error":"Json is invalid"}', $response->getContent());
     }
 
-    public function testUpsertInvalidContent(): void
+    public function testUpsertPokedexNull(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
-
-        $validator = $this->createMock(ValidatorInterface::class);
-        $validator
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
             ->expects($this->once())
-            ->method('validate')
-            ->willReturn(
-                new ConstraintViolationList([
-                    new ConstraintViolation(
-                        'Alors en fait, non',
-                        null,
-                        [],
-                        'douze',
-                        null,
-                        'what?'
-                    ),
-                ])
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn(null)
+        ;
+
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->never())
+            ->method('modifyDex')
+        ;
+
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        $controller = new TrainerUpsertController(
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertSame('[]', $response->getContent());
+    }
+
+    public function testUpsertDexNotDefined(): void
+    {
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'pokemons' => [],
+            ])
+        ;
+
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->never())
+            ->method('modifyDex')
+        ;
+
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        $controller = new TrainerUpsertController(
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertSame('[]', $response->getContent());
+    }
+
+    public function testUpsertNonPremiumDex(): void
+    {
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'dex' => [
+                    'slug' => 'douze',
+                    'is_premium' => false,
+                ],
+                'pokemons' => [],
+            ])
+        ;
+
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->once())
+            ->method('modifyDex')
+            ->with(
+                'douze',
+                '{"key": "value"}',
             )
         ;
 
-        $modifyDexService = $this->createMock(ModifyDexService::class);
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
+        ;
 
-        $albumCacheInvalidatorService = $this->createMock(AlbumCacheInvalidatorService::class);
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
 
-        $dexCacheInvalidatorService = $this->createMock(DexCacheInvalidatorService::class);
+        $controller = new TrainerUpsertController(
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze');
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEmpty($response->getContent());
+    }
+
+    public function testUpsertPremiumDexNotCollector(): void
+    {
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'dex' => [
+                    'slug' => 'douze',
+                    'is_premium' => true,
+                ],
+                'pokemons' => [],
+            ])
+        ;
+
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->never())
+            ->method('modifyDex')
+        ;
+
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
+        ;
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
         $authorizationChecker
             ->expects($this->once())
             ->method('isGranted')
+            ->with('ROLE_COLLECTOR')
+            ->willReturn(false)
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->once())
+            ->method('has')
+            ->willReturn(true)
+        ;
+        $container
+            ->expects($this->once())
+            ->method('get')
+            ->willReturn($authorizationChecker)
+        ;
+
+        $controller = new TrainerUpsertController(
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertSame('[]', $response->getContent());
+    }
+
+    public function testUpsertModifyFail(): void
+    {
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'dex' => [
+                    'slug' => 'douze',
+                    'is_premium' => true,
+                ],
+                'pokemons' => [],
+            ])
+        ;
+
+        $modifyTrainerDexService = $this->createMock(ModifyTrainerDexService::class);
+        $modifyTrainerDexService
+            ->expects($this->once())
+            ->method('modifyDex')
+            ->with(
+                'douze',
+                '{"key": "value"}',
+            )
+            ->willThrowException(new ModifyFailedException())
+        ;
+
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new Json())
+            ->willReturn('{"key": "value"}')
+        ;
+
+        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
+        $authorizationChecker
+            ->expects($this->once())
+            ->method('isGranted')
+            ->with('ROLE_COLLECTOR')
             ->willReturn(true)
         ;
 
@@ -273,27 +456,15 @@ class TrainerUpsertControllerTest extends TestCase
         ;
 
         $controller = new TrainerUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyDexService,
-            $albumCacheInvalidatorService,
-            $dexCacheInvalidatorService,
+            $getTrainerPokedexService,
+            $modifyTrainerDexService,
+            $requestedContentService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{not": "a valid, json')
-        ;
+        $response = $controller->upsert('douze');
 
-        $response = $controller->upsert('douze', $request);
-
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Alors en fait, non"}',
-            $response->getContent()
-        );
+        $this->assertEquals(500, $response->getStatusCode());
+        $this->assertSame('{"error":"Fail to modify resources"}', $response->getContent());
     }
 }

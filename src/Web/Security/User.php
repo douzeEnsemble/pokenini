@@ -32,6 +32,13 @@ class User implements UserInterface
         $this->roles = array_unique($this->roles);
     }
 
+    public function addCollectorRole(): void
+    {
+        $this->roles[] = 'ROLE_COLLECTOR';
+
+        $this->roles = array_unique($this->roles);
+    }
+
     // @codeCoverageIgnoreStart
     public function eraseCredentials(): void
     {
@@ -52,6 +59,11 @@ class User implements UserInterface
     public function isATrainer(): bool
     {
         return in_array('ROLE_TRAINER', $this->getRoles());
+    }
+
+    public function isACollector(): bool
+    {
+        return in_array('ROLE_COLLECTOR', $this->getRoles());
     }
 
     public function isAnAdmin(): bool

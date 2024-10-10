@@ -189,6 +189,8 @@ parameters:
     WebService:
       - WebCache
       - WebDTO
+      - WebException
+      - WebSecurity
       - WebUtils
     WebValidator:
       - WebService

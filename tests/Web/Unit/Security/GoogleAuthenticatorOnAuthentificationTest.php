@@ -33,13 +33,9 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $googleAuthenticator = $this->getGoogleAuthenticator(
-            '',
-            '',
-            [
-                '/success-but-not-a-trainer',
-            ]
-        );
+        $googleAuthenticator = $this->getGoogleAuthenticator([
+            '/success-but-not-a-trainer',
+        ]);
 
         $response = $googleAuthenticator->onAuthenticationSuccess(
             $this->createMock(Request::class),
@@ -65,14 +61,10 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $googleAuthenticator = $this->getGoogleAuthenticator(
-            '',
-            '',
-            [
-                '/success-but-not-a-trainer',
-                '/success-trainer',
-            ]
-        );
+        $googleAuthenticator = $this->getGoogleAuthenticator([
+            '/success-but-not-a-trainer',
+            '/success-trainer',
+        ]);
 
         $response = $googleAuthenticator->onAuthenticationSuccess(
             $this->createMock(Request::class),
@@ -88,7 +80,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 
     public function testOnAuthenticationFailure(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator('', '', []);
+        $googleAuthenticator = $this->getGoogleAuthenticator([]);
 
         $response = $googleAuthenticator->onAuthenticationFailure(
             $this->createMock(Request::class),
@@ -105,8 +97,6 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
      * @param string[] $routes
      */
     private function getGoogleAuthenticator(
-        string $listAdmin,
-        string $listTrainer,
         array $routes = []
     ): GoogleAuthenticator {
         $router = $this->createMock(RouterInterface::class);
@@ -119,8 +109,9 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
         return new GoogleAuthenticator(
             $this->createMock(ClientRegistry::class),
             $router,
-            $listAdmin,
-            $listTrainer
+            '',
+            '',
+            '',
         );
     }
 }

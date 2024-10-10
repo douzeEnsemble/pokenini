@@ -4,83 +4,61 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
-use App\Web\Exception\ToJsonResponseException;
-use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\ModifyAlbumService;
-use App\Web\Service\CacheInvalidator\AlbumsCacheInvalidatorService;
+use App\Web\Exception\EmptyContentException;
+use App\Web\Exception\InvalidJsonException;
+use App\Web\Exception\ModifyFailedException;
+use App\Web\Service\GetTrainerPokedexService;
+use App\Web\Service\ModifyTrainerAlbumService;
+use App\Web\Service\RequestedContentService;
 use App\Web\Validator\CatchStates;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/album')]
 class AlbumUpsertController extends AbstractController
 {
-    use ValidatorJsonResponseTrait;
-
     public function __construct(
-        private readonly UserTokenService $userTokenService,
-        private readonly ValidatorInterface $validator,
-        private readonly ModifyAlbumService $modifyAlbumService,
-        private readonly AlbumsCacheInvalidatorService $albumsCacheInvalidatorService,
+        private readonly RequestedContentService $requestedContentService,
+        private readonly GetTrainerPokedexService $getTrainerPokedexService,
+        private readonly ModifyTrainerAlbumService $modifyTrainerAlbumService,
     ) {}
 
     #[Route('/{dexSlug}/{pokemonSlug}', methods: ['PATCH', 'PUT'])]
+    #[IsGranted('ROLE_TRAINER')]
     public function upsert(
         string $dexSlug,
         string $pokemonSlug,
-        Request $request,
     ): Response {
-        $this->denyAccessUnlessGranted('ROLE_TRAINER');
-
         try {
-            $content = $this->getContentFromRequest($request);
+            $content = $this->requestedContentService->getContent(new CatchStates());
+        } catch (EmptyContentException|InvalidJsonException $e) {
+            return new JsonResponse(['error' => $e->getMessage()], 400);
+        }
 
-            $trainerId = $this->userTokenService->getLoggedUserToken();
+        $pokedex = $this->getTrainerPokedexService->getPokedexData($dexSlug, []);
+        if (null === $pokedex || empty($pokedex['dex'])) {
+            return new JsonResponse([], 404);
+        }
 
-            $this->validate($content, new CatchStates());
-        } catch (ToJsonResponseException $e) {
-            return new JsonResponse(
-                [
-                    'error' => $e->getMessage(),
-                ],
-                $e->getCode()
-            );
+        $dex = $pokedex['dex'];
+
+        if ($dex['is_premium'] && !$this->isGranted('ROLE_COLLECTOR')) {
+            return new JsonResponse([], 404);
         }
 
         try {
-            $this->modifyAlbumService->modify(
-                $request->getMethod(),
+            $this->modifyTrainerAlbumService->modifyAlbum(
                 $dexSlug,
                 $pokemonSlug,
                 $content,
-                $trainerId
             );
-
-            $this->albumsCacheInvalidatorService->invalidate();
-        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
+        } catch (ModifyFailedException $e) {
             return new JsonResponse(['error' => $e->getMessage()], 500);
         }
 
         return new Response();
-    }
-
-    private function getContentFromRequest(Request $request): string
-    {
-        $content = $request->getContent();
-
-        if (!is_string($content) || !$content) {
-            throw new ToJsonResponseException(
-                'Content must be a non-empty string',
-                400
-            );
-        }
-
-        return $content;
     }
 }

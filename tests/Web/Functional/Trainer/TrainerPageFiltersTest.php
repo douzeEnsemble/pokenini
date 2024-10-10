@@ -24,6 +24,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -46,6 +47,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -68,6 +70,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -90,6 +93,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -112,6 +116,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -134,6 +139,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -156,6 +162,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -178,6 +185,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -200,6 +208,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -222,6 +231,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -244,6 +254,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -266,6 +277,7 @@ class TrainerPageFiltersTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 

@@ -36,7 +36,37 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table tbody tr');
         $this->assertEquals('789465465489', $crawler->filter('table tbody tr td')->last()->text());
 
-        $this->assertCustomizeAlbumSection($crawler, false);
+        $this->assertCustomizeAlbumSection($crawler, false, false);
+
+        $this->assertStringContainsString(
+            '/connect/logout',
+            $crawler->filter('.accordion-item')->last()->filter('a')->attr('href') ?? ''
+        );
+
+        $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
+
+        $this->assertCountFilter($crawler, 0, '.dex_not_released');
+    }
+
+    public function testCollectorPage(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/trainer');
+
+        $this->assertResponseStatusCodeSame(200);
+
+        $this->assertCountFilter($crawler, 1, 'h1');
+        $this->assertCountFilter($crawler, 2, 'table thead th');
+        $this->assertCountFilter($crawler, 1, 'table tbody tr');
+        $this->assertEquals('789465465489', $crawler->filter('table tbody tr td')->last()->text());
+
+        $this->assertCustomizeAlbumSection($crawler, false, true);
 
         $this->assertStringContainsString(
             '/connect/logout',
@@ -54,6 +84,7 @@ class TrainerPageTest extends WebTestCase
 
         $user = new User('8764532');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -66,7 +97,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table tbody tr');
         $this->assertEquals('8764532', $crawler->filter('table tbody tr td')->last()->text());
 
-        $this->assertCustomizeAlbumSection($crawler, true);
+        $this->assertCustomizeAlbumSection($crawler, true, true);
 
         $this->assertStringContainsString(
             '/connect/logout',
@@ -90,23 +121,31 @@ class TrainerPageTest extends WebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
-    private function assertCustomizeAlbumSection(Crawler $crawler, bool $isAdmin): void
+    private function assertCustomizeAlbumSection(Crawler $crawler, bool $isAdmin, bool $isCollector): void
     {
         $this->assertCountFilter($crawler, 1, 'form#dexFilters');
-        $this->assertCountFilter($crawler, $isAdmin ? 5 : 3, 'form#dexFilters', 0, 'select');
+
         $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-privacy');
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-privacy', 0, 'option');
         $this->assertSelectedOptions($crawler, 'select#filter-privacy', ['']);
+
         $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-homepaged');
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-homepaged', 0, 'option');
         $this->assertSelectedOptions($crawler, 'select#filter-homepaged', ['']);
+
         $this->assertCountFilter($crawler, $isAdmin ? 1 : 0, 'form#dexFilters', 0, '#filter-released');
         if ($isAdmin) {
             $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-released', 0, 'option');
             $this->assertSelectedOptions($crawler, 'select#filter-released', ['']);
+        }
+
+        $this->assertCountFilter($crawler, $isCollector ? 1 : 0, 'form#dexFilters', 0, '#filter-premium');
+        if ($isCollector) {
             $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-premium', 0, 'option');
             $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
         }
+
+        $this->assertCountFilter($crawler, 1, 'form#dexFilters', 0, '#filter-shiny');
         $this->assertCountFilter($crawler, 3, 'form#dexFilters #filter-shiny', 0, 'option');
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
 

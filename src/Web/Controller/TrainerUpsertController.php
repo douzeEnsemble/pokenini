@@ -4,83 +4,59 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
-use App\Web\Exception\ToJsonResponseException;
-use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\ModifyDexService;
-use App\Web\Service\CacheInvalidator\AlbumCacheInvalidatorService;
-use App\Web\Service\CacheInvalidator\DexCacheInvalidatorService;
+use App\Web\Exception\EmptyContentException;
+use App\Web\Exception\InvalidJsonException;
+use App\Web\Exception\ModifyFailedException;
+use App\Web\Service\GetTrainerPokedexService;
+use App\Web\Service\ModifyTrainerDexService;
+use App\Web\Service\RequestedContentService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Validator\Constraints\Json;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Contracts\HttpClient\Exception\HttpExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 #[Route('/trainer')]
 class TrainerUpsertController extends AbstractController
 {
-    use ValidatorJsonResponseTrait;
-
     public function __construct(
-        private readonly UserTokenService $userTokenService,
-        private readonly ValidatorInterface $validator,
-        private readonly ModifyDexService $modifyDexService,
-        private readonly AlbumCacheInvalidatorService $albumCacheInvalidatorService,
-        private readonly DexCacheInvalidatorService $dexCacheInvalidatorService,
+        private readonly GetTrainerPokedexService $getTrainerPokedexService,
+        private readonly ModifyTrainerDexService $modifyTrainerDexService,
+        private readonly RequestedContentService $requestedContentService,
     ) {}
 
     #[Route('/dex/{dexSlug}', methods: ['PUT'])]
+    #[IsGranted('ROLE_TRAINER')]
     public function upsert(
         string $dexSlug,
-        Request $request,
     ): Response {
-        $this->denyAccessUnlessGranted('ROLE_TRAINER');
-
         try {
-            $content = $this->getContentFromRequest($request);
+            $content = $this->requestedContentService->getContent(new Json());
+        } catch (EmptyContentException|InvalidJsonException $e) {
+            return new JsonResponse(['error' => $e->getMessage()], 400);
+        }
 
-            $trainerId = $this->userTokenService->getLoggedUserToken();
+        $pokedex = $this->getTrainerPokedexService->getPokedexData($dexSlug, []);
+        if (null === $pokedex || empty($pokedex['dex'])) {
+            return new JsonResponse([], 404);
+        }
 
-            $this->validate($content, new Json());
-        } catch (ToJsonResponseException $e) {
-            return new JsonResponse(
-                [
-                    'error' => $e->getMessage(),
-                ],
-                $e->getCode()
-            );
+        $dex = $pokedex['dex'];
+
+        if ($dex['is_premium'] && !$this->isGranted('ROLE_COLLECTOR')) {
+            return new JsonResponse([], 404);
         }
 
         try {
-            $this->modifyDexService->modify(
+            $this->modifyTrainerDexService->modifyDex(
                 $dexSlug,
                 $content,
-                $trainerId
             );
-
-            $this->albumCacheInvalidatorService->invalidate($dexSlug, $trainerId);
-            $this->dexCacheInvalidatorService->invalidateByTrainerId($trainerId);
-        } catch (HttpExceptionInterface|TransportExceptionInterface $e) {
+        } catch (ModifyFailedException $e) {
             return new JsonResponse(['error' => $e->getMessage()], 500);
         }
 
         return new Response();
-    }
-
-    private function getContentFromRequest(Request $request): string
-    {
-        $content = $request->getContent();
-
-        if (!is_string($content) || !$content) {
-            throw new ToJsonResponseException(
-                'Content must be a non-empty string',
-                400
-            );
-        }
-
-        return $content;
     }
 }

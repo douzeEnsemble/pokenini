@@ -12,7 +12,9 @@
     "region_french_name":null,
     "french_description": "",
     "version": 0,
-    "is_released": true
+    "is_released": true,
+    "is_premium": false,
+    "is_custom": false
   },
   "pokemons": [
     {

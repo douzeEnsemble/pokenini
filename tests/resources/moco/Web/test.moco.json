@@ -931,6 +931,19 @@
   {
     "request": {
       "uri": {
+        "match": "/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/album/[\\w\\d]*/demo"
       },
       "headers": {

@@ -58,7 +58,7 @@ make composer c="require gedmo/doctrine-extensions"
 To save html into a file that you can open with your browser
 
 ```php
-file_put_contents('tests/last.html', $crawler->html());
+file_put_contents('tests/last.html', $client->getCrawler()->html());
 ```
 
 ### Adminer

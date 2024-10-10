@@ -850,6 +850,19 @@
   {
     "request": {
       "uri": {
+        "match": "/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "file": "/var/moco/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/album/[\\w\\d]*/demo"
       },
       "headers": {
