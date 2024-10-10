@@ -25,6 +25,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
         private readonly RouterInterface $router,
         private readonly string $listAdmin,
         private readonly string $listTrainer,
+        private readonly string $listCollector,
     ) {}
 
     public function supports(Request $request): ?bool
@@ -54,12 +55,17 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
                 $listAdmins = array_map(fn ($value) => trim($value), $listAdmins);
                 $listTrainers = explode(',', $this->listTrainer);
                 $listTrainers = array_map(fn ($value) => trim($value), $listTrainers);
+                $listCollectors = explode(',', $this->listCollector);
+                $listCollectors = array_map(fn ($value) => trim($value), $listCollectors);
 
                 if (in_array($user->getUserIdentifier(), $listAdmins)) {
                     $user->addAdminRole();
                 }
                 if (in_array($user->getUserIdentifier(), $listTrainers)) {
                     $user->addTrainerRole();
+                }
+                if (in_array($user->getUserIdentifier(), $listCollectors)) {
+                    $user->addCollectorRole();
                 }
 
                 return $user;

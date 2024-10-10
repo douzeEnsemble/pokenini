@@ -29,6 +29,7 @@ class GoogleAuthenticatorTest extends TestCase
             $router,
             'listAdmin',
             'listTrainer',
+            'listCollector',
         );
 
         $this->assertTrue(
@@ -60,6 +61,7 @@ class GoogleAuthenticatorTest extends TestCase
             $router,
             'listAdmin',
             'listTrainer',
+            'listCollector',
         );
 
         $request = new Request();

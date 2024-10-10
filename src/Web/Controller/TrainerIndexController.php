@@ -6,41 +6,25 @@ namespace App\Web\Controller;
 
 use App\Web\DTO\DexFilters;
 use App\Web\DTO\DexFiltersRequest;
-use App\Web\Security\User;
-use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\GetDexService;
+use App\Web\Service\GetDexByRoleService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/trainer')]
 class TrainerIndexController extends AbstractController
 {
-    use ValidatorJsonResponseTrait;
-
     public function __construct(
-        private readonly UserTokenService $userTokenService,
-        private readonly ValidatorInterface $validator,
-        private readonly GetDexService $getDexService,
+        private readonly GetDexByRoleService $getDexByRoleService,
     ) {}
 
     #[Route('')]
+    #[IsGranted('ROLE_TRAINER')]
     public function index(Request $request): Response
     {
-        /** @var ?User $user */
-        $user = $this->getUser();
-
-        if (null === $user) {
-            return new Response('', Response::HTTP_UNAUTHORIZED);
-        }
-
-        $userToken = $this->userTokenService->getLoggedUserToken();
-
-        $trainerDex = $user->isAnAdmin()
-            ? $this->getDexService->getWithUnreleasedAndPremium($userToken)
-            : $this->getDexService->get($userToken);
+        $trainerDex = $this->getDexByRoleService->getUserDex();
 
         $filters = DexFiltersRequest::dexFiltersFromRequest($request);
 

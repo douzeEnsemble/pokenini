@@ -143,8 +143,6 @@ class ActionUpdateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        file_put_contents('tests/last.html', $client->getCrawler()->html());
-
         $this->assertCountFilter($crawler, 1, '.list-group-item-success');
 
         $this->assertConnectedNavBar($crawler);

@@ -6,19 +6,16 @@ namespace App\Tests\Web\Unit\Controller;
 
 use App\Api\Service\TrainerDexService;
 use App\Web\Controller\AlbumUpsertController;
-use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\ModifyAlbumService;
-use App\Web\Service\CacheInvalidator\AlbumsCacheInvalidatorService;
+use App\Web\Exception\EmptyContentException;
+use App\Web\Exception\InvalidJsonException;
+use App\Web\Service\GetTrainerPokedexService;
+use App\Web\Service\ModifyTrainerAlbumService;
+use App\Web\Service\RequestedContentService;
+use App\Web\Validator\CatchStates;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Symfony\Component\HttpClient\Exception\TransportException;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
-use Symfony\Component\Validator\ConstraintViolation;
-use Symfony\Component\Validator\ConstraintViolationList;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @internal
@@ -29,39 +26,33 @@ class AlbumUpsertControllerTest extends TestCase
 {
     public function testUpsert(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
-        $userTokenService
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
-            ->method('getLoggedUserToken')
-            ->willReturn('1234567890')
+            ->method('getContent')
+            ->with(new CatchStates())
+            ->willReturn('{"key": "value"}')
         ;
 
-        $validator = $this->createMock(ValidatorInterface::class);
-        $validator
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
             ->expects($this->once())
-            ->method('validate')
-            ->willReturn(
-                new ConstraintViolationList([])
-            )
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'dex' => [
+                    'slug' => 'douze',
+                    'is_premium' => true,
+                ],
+                'pokemons' => [],
+            ])
         ;
 
-        $modifyAlbumService = $this->createMock(ModifyAlbumService::class);
-        $modifyAlbumService
+        $modifyTrainerAlbumService = $this->createMock(ModifyTrainerAlbumService::class);
+        $modifyTrainerAlbumService
             ->expects($this->once())
-            ->method('modify')
-            ->with(
-                'PATCH',
-                'douze',
-                'machi',
-                '{}',
-                '1234567890'
-            )
-        ;
-
-        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
-        $albumsCacheInvalidatorService
-            ->expects($this->once())
-            ->method('invalidate')
+            ->method('modifyAlbum')
+            ->with('douze', 'machi', '{"key": "value"}')
         ;
 
         $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
@@ -84,292 +75,201 @@ class AlbumUpsertControllerTest extends TestCase
         ;
 
         $controller = new AlbumUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyAlbumService,
-            $albumsCacheInvalidatorService,
+            $requestedContentService,
+            $getTrainerPokedexService,
+            $modifyTrainerAlbumService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{}')
-        ;
-        $request
-            ->expects($this->once())
-            ->method('getMethod')
-            ->willReturn('PATCH')
-        ;
+        $response = $controller->upsert('douze', 'machi');
 
-        $response = $controller->upsert('douze', 'machi', $request);
-
-        $this->assertInstanceOf(Response::class, $response);
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEmpty($response->getContent());
     }
 
-    public function testUpsertBadContent(): void
+    public function testUpsertEmptyContentException(): void
     {
-        $userTokenService = $this->createMock(UserTokenService::class);
-
-        $validator = $this->createMock(ValidatorInterface::class);
-
-        $modifyAlbumService = $this->createMock(ModifyAlbumService::class);
-
-        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
-            ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
-        ;
-
-        $container = $this->createMock(ContainerInterface::class);
-        $container
-            ->expects($this->once())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $container
-            ->expects($this->once())
-            ->method('get')
-            ->willReturn($authorizationChecker)
-        ;
-
-        $controller = new AlbumUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyAlbumService,
-            $albumsCacheInvalidatorService,
-        );
-        $controller->setContainer($container);
-
-        $request = $this->createMock(Request::class);
-        $request
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
             ->method('getContent')
-            ->willReturn([])
+            ->with(new CatchStates())
+            ->willThrowException(new EmptyContentException())
         ;
 
-        $response = $controller->upsert('douze', 'machi', $request);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Content must be a non-empty string"}',
-            $response->getContent()
-        );
-    }
-
-    public function testUpsertEmptyContent(): void
-    {
-        $userTokenService = $this->createMock(UserTokenService::class);
-
-        $validator = $this->createMock(ValidatorInterface::class);
-
-        $modifyAlbumService = $this->createMock(ModifyAlbumService::class);
-
-        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
-            ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
-        ;
-
-        $container = $this->createMock(ContainerInterface::class);
-        $container
-            ->expects($this->once())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $container
-            ->expects($this->once())
-            ->method('get')
-            ->willReturn($authorizationChecker)
-        ;
-
-        $controller = new AlbumUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyAlbumService,
-            $albumsCacheInvalidatorService,
-        );
-        $controller->setContainer($container);
-
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('')
-        ;
-
-        $response = $controller->upsert('douze', 'machi', $request);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Content must be a non-empty string"}',
-            $response->getContent()
-        );
-    }
-
-    public function testUpsertInvalidContent(): void
-    {
-        $userTokenService = $this->createMock(UserTokenService::class);
-
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
-            ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
-        ;
-
-        $validator = $this->createMock(ValidatorInterface::class);
-        $validator
-            ->expects($this->once())
-            ->method('validate')
-            ->willReturn(
-                new ConstraintViolationList([
-                    new ConstraintViolation(
-                        'Alors en fait, non',
-                        null,
-                        [],
-                        'douze',
-                        null,
-                        'what?'
-                    ),
-                ])
-            )
-        ;
-
-        $modifyAlbumService = $this->createMock(ModifyAlbumService::class);
-
-        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
-
-        $container = $this->createMock(ContainerInterface::class);
-        $container
-            ->expects($this->once())
-            ->method('has')
-            ->willReturn(true)
-        ;
-        $container
-            ->expects($this->once())
-            ->method('get')
-            ->willReturn($authorizationChecker)
-        ;
-
-        $controller = new AlbumUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyAlbumService,
-            $albumsCacheInvalidatorService,
-        );
-        $controller->setContainer($container);
-
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('something')
-        ;
-
-        $response = $controller->upsert('douze', 'machi', $request);
-
-        $this->assertInstanceOf(Response::class, $response);
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertEquals(
-            '{"error":"Alors en fait, non"}',
-            $response->getContent()
-        );
-    }
-
-    public function testUpsertApiException(): void
-    {
-        $userTokenService = $this->createMock(UserTokenService::class);
-        $userTokenService
-            ->expects($this->once())
-            ->method('getLoggedUserToken')
-            ->willReturn('1234567890')
-        ;
-
-        $validator = $this->createMock(ValidatorInterface::class);
-        $validator
-            ->expects($this->once())
-            ->method('validate')
-            ->willReturn(
-                new ConstraintViolationList([])
-            )
-        ;
-
-        $modifyAlbumService = $this->createMock(ModifyAlbumService::class);
-        $modifyAlbumService
-            ->expects($this->once())
-            ->method('modify')
-            ->willThrowException(
-                new TransportException('Whoops!')
-            )
-            ->with(
-                'PATCH',
-                'douze',
-                'machi',
-                '{}',
-                '1234567890'
-            )
-        ;
-
-        $albumsCacheInvalidatorService = $this->createMock(AlbumsCacheInvalidatorService::class);
-        $albumsCacheInvalidatorService
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
             ->expects($this->never())
-            ->method('invalidate')
+            ->method('getPokedexData')
         ;
 
-        $authorizationChecker = $this->createMock(AuthorizationCheckerInterface::class);
-        $authorizationChecker
-            ->expects($this->once())
-            ->method('isGranted')
-            ->willReturn(true)
+        $modifyTrainerAlbumService = $this->createMock(ModifyTrainerAlbumService::class);
+        $modifyTrainerAlbumService
+            ->expects($this->never())
+            ->method('modifyAlbum')
         ;
 
         $container = $this->createMock(ContainerInterface::class);
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('has')
-            ->willReturn(true)
         ;
         $container
-            ->expects($this->once())
+            ->expects($this->never())
             ->method('get')
-            ->willReturn($authorizationChecker)
         ;
 
         $controller = new AlbumUpsertController(
-            $userTokenService,
-            $validator,
-            $modifyAlbumService,
-            $albumsCacheInvalidatorService,
+            $requestedContentService,
+            $getTrainerPokedexService,
+            $modifyTrainerAlbumService,
         );
         $controller->setContainer($container);
 
-        $request = $this->createMock(Request::class);
-        $request
+        $response = $controller->upsert('douze', 'machi');
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertSame('{"error":"Content cannot be empty"}', $response->getContent());
+    }
+
+    public function testUpsertInvalidJsonException(): void
+    {
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
             ->method('getContent')
-            ->willReturn('{}')
+            ->with(new CatchStates())
+            ->willThrowException(new InvalidJsonException())
         ;
-        $request
+
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->never())
+            ->method('getPokedexData')
+        ;
+
+        $modifyTrainerAlbumService = $this->createMock(ModifyTrainerAlbumService::class);
+        $modifyTrainerAlbumService
+            ->expects($this->never())
+            ->method('modifyAlbum')
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        $controller = new AlbumUpsertController(
+            $requestedContentService,
+            $getTrainerPokedexService,
+            $modifyTrainerAlbumService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze', 'machi');
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertSame('{"error":"Json is invalid"}', $response->getContent());
+    }
+
+    public function testUpsertPokedexNull(): void
+    {
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
             ->expects($this->once())
-            ->method('getMethod')
-            ->willReturn('PATCH')
+            ->method('getContent')
+            ->with(new CatchStates())
+            ->willReturn('{"key": "value"}')
         ;
 
-        $response = $controller->upsert('douze', 'machi', $request);
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn(null)
+        ;
 
-        $this->assertEquals(500, $response->getStatusCode());
-        $this->assertEquals('{"error":"Whoops!"}', $response->getContent());
+        $modifyTrainerAlbumService = $this->createMock(ModifyTrainerAlbumService::class);
+        $modifyTrainerAlbumService
+            ->expects($this->never())
+            ->method('modifyAlbum')
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        $controller = new AlbumUpsertController(
+            $requestedContentService,
+            $getTrainerPokedexService,
+            $modifyTrainerAlbumService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze', 'machi');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertSame('[]', $response->getContent());
+    }
+
+    public function testUpsertDexNotDefined(): void
+    {
+        $requestedContentService = $this->createMock(RequestedContentService::class);
+        $requestedContentService
+            ->expects($this->once())
+            ->method('getContent')
+            ->with(new CatchStates())
+            ->willReturn('{"key": "value"}')
+        ;
+
+        $getTrainerPokedexService = $this->createMock(GetTrainerPokedexService::class);
+        $getTrainerPokedexService
+            ->expects($this->once())
+            ->method('getPokedexData')
+            ->with('douze', [])
+            ->willReturn([
+                'pokemons' => [],
+            ])
+        ;
+
+        $modifyTrainerAlbumService = $this->createMock(ModifyTrainerAlbumService::class);
+        $modifyTrainerAlbumService
+            ->expects($this->never())
+            ->method('modifyAlbum')
+        ;
+
+        $container = $this->createMock(ContainerInterface::class);
+        $container
+            ->expects($this->never())
+            ->method('has')
+        ;
+        $container
+            ->expects($this->never())
+            ->method('get')
+        ;
+
+        $controller = new AlbumUpsertController(
+            $requestedContentService,
+            $getTrainerPokedexService,
+            $modifyTrainerAlbumService,
+        );
+        $controller->setContainer($container);
+
+        $response = $controller->upsert('douze', 'machi');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertSame('[]', $response->getContent());
     }
 }

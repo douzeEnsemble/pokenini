@@ -39,6 +39,7 @@ class FormTest extends WebTestCase
 
         $user = new User('12');
         $user->addTrainerRole();
+        $user->addCollectorRole();
         $client->loginUser($user, 'web');
 
         $client->request('GET', '/fr/album/homepokemongo?t=7b52009b64fd0a2a49e6d8a939753077792b0554');

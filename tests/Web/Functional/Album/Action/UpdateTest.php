@@ -59,6 +59,47 @@ class UpdateTest extends WebTestCase
         $this->assertEquals('http://localhost/fr', $crawler->getBaseHref());
     }
 
+    public function testUpdatePremiumCollector(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'PATCH',
+            '/fr/album/homepokemongo/bulbasaur',
+            [],
+            [],
+            [],
+            'yes'
+        );
+
+        $this->assertResponseIsSuccessful();
+    }
+
+    public function testUpdatePremiumNonCollector(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'PATCH',
+            '/fr/album/homepokemongo/bulbasaur',
+            [],
+            [],
+            [],
+            'yes'
+        );
+
+        $this->assertEquals(404, $client->getResponse()->getStatusCode());
+    }
+
     public function testUpdateFailed(): void
     {
         $client = static::createClient();
@@ -79,7 +120,6 @@ class UpdateTest extends WebTestCase
         $this->assertEquals(500, $client->getResponse()->getStatusCode());
 
         $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('HTTP\/1.1 500 Internal Server Error', $content);
-        $this->assertStringContainsString('\/demo\/blastoise', $content);
+        $this->assertSame('{"error":"Fail to modify resources"}', $content);
     }
 }

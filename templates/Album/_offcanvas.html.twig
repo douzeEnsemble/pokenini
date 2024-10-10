@@ -257,7 +257,7 @@
             </div>
         </div>
         <div hidden>
-            <input type="text" name="t" value="{{ queryTrainerId }}">
+            <input type="text" name="t" value="{{ requestedTrainerId }}">
             <input type="text" name="cs" value="{{ catchState }}">
         </div>
         <div class="mb-3 d-flex justify-content-between">
@@ -266,7 +266,7 @@
                         'app_web_albumindex_index', 
                         {
                             'dexSlug': currentDexSlug, 
-                            't': ((queryTrainerId is not empty) ? queryTrainerId : null)
+                            't': ((requestedTrainerId is not empty) ? requestedTrainerId : null)
                         }
                     ) }}" 
                     class="form-filter-reset btn btn-outline-warning btn-sm"

@@ -78,6 +78,47 @@ class ActionTest extends WebTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
+    public function testActionOnPremiumAsCollector(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'PUT',
+            '/fr/trainer/dex/homepokemongo',
+            [],
+            [],
+            [],
+            '{"is_private": true, "is_on_home": true}'
+        );
+
+        $this->assertResponseStatusCodeSame(200);
+    }
+
+    public function testActionOnPremiumAsNonCollector(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'PUT',
+            '/fr/trainer/dex/homepokemongo',
+            [],
+            [],
+            [],
+            '{"is_private": true, "is_on_home": true}'
+        );
+
+        $this->assertResponseStatusCodeSame(404);
+    }
+
     public function testActionNotConnected(): void
     {
         $client = static::createClient();
@@ -116,11 +157,7 @@ class ActionTest extends WebTestCase
         $this->assertResponseStatusCodeSame(500);
 
         $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('HTTP\/1.1 400 Bad Request returned', $content);
-        $this->assertStringContainsString(
-            '\/dex\/6c33064427a5b419ca8eb3f7d11a0807f66cab22\/redgreenblueyellow',
-            $content
-        );
+        $this->assertSame('{"error":"Fail to modify resources"}', $content);
     }
 
     public function testActionFail(): void
@@ -145,10 +182,6 @@ class ActionTest extends WebTestCase
         $this->assertResponseStatusCodeSame(500);
 
         $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('HTTP\/1.1 500 Internal Server Error', $content);
-        $this->assertStringContainsString(
-            '\/dex\/6c33064427a5b419ca8eb3f7d11a0807f66cab22\/redgreenblueyellow',
-            $content
-        );
+        $this->assertSame('{"error":"Fail to modify resources"}', $content);
     }
 }

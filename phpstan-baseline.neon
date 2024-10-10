@@ -6,17 +6,32 @@ parameters:
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
+			message: "#^Property App\\\\Web\\\\Exception\\\\EmptyContentException\\:\\:\\$message has no type specified\\.$#"
+			count: 1
+			path: src/Web/Exception/EmptyContentException.php
+
+		-
+			message: "#^Property App\\\\Web\\\\Exception\\\\InvalidJsonException\\:\\:\\$message has no type specified\\.$#"
+			count: 1
+			path: src/Web/Exception/InvalidJsonException.php
+
+		-
+			message: "#^Property App\\\\Web\\\\Exception\\\\ModifyFailedException\\:\\:\\$message has no type specified\\.$#"
+			count: 1
+			path: src/Web/Exception/ModifyFailedException.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$nexistepas\\.$#"
 			count: 2
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 2
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
 			count: 2
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
@@ -81,12 +96,12 @@ parameters:
 			path: tests/Api/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 3
 			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
+			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
 			count: 3
 			path: tests/Api/Functional/Service/CollectionsAvailabilitiesServiceTest.php
 
