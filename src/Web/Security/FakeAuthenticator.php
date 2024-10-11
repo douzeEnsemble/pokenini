@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Web\Security;
 
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
-use League\OAuth2\Client\Provider\GoogleUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
@@ -14,12 +12,11 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 
-class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
+class FakeAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
 {
     use AuthenticatorTrait;
 
     public function __construct(
-        private readonly ClientRegistry $clientRegistry,
         private readonly RouterInterface $router,
         private readonly string $listAdmin,
         private readonly string $listTrainer,
@@ -28,7 +25,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function supports(Request $request): ?bool
     {
-        return 'app_web_connect_googlecheck' === $request->attributes->get('_route');
+        return 'app_web_connect_fakecheck' === $request->attributes->get('_route');
     }
 
     /**
@@ -36,18 +33,11 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
      */
     public function authenticate(Request $request): Passport
     {
-        $client = $this->clientRegistry->getClient('google');
-        $accessToken = $this->fetchAccessToken($client);
+        $identifier = $request->query->getString('t');
 
         return new SelfValidatingPassport(
-            new UserBadge($accessToken->getToken(), function () use ($accessToken, $client) {
-                /** @var GoogleUser $authUser */
-                $authUser = $client->fetchUserFromToken($accessToken);
-
-                /** @var string $userId */
-                $userId = $authUser->getId();
-
-                return $this->loadUserFromLists($userId);
+            new UserBadge($identifier, function () use ($identifier) {
+                return $this->loadUserFromLists($identifier);
             })
         );
     }

@@ -37,6 +37,14 @@ make stop start
 
 ## Tips
 
+### Fake authentication
+
+Id dev environnement only, you can use a fake authenticator to avoid using Oauth2.  
+Go to 
+* http://localhost/fr/connect/f/c?t=admin to set an *admin* session
+* http://localhost/fr/connect/f/c?t=collector to set a *collector* session
+* http://localhost/fr/connect/f/c?t=trainer to set a *trainer* session
+
 ### Open bash into php  container
 
 ```

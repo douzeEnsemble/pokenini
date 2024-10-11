@@ -15,7 +15,6 @@ class ConnectController extends AbstractController
     #[Route('/logout', methods: ['GET'])]
     public function logout(): void
     {
-        // controller can be blank: it will never be called!
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
 
@@ -37,6 +36,18 @@ class ConnectController extends AbstractController
     // @codeCoverageIgnoreStart
     #[Route('/g/c', methods: ['GET'])]
     public function googleCheck(): void
+    {
+        // noting, all done by the authenticator
+    }
+    // @codeCoverageIgnoreEnd
+
+    // @codeCoverageIgnoreStart
+    #[Route(
+        '/f/c',
+        methods: ['GET'],
+        condition: "'dev' === env('APP_ENV')"
+    )]
+    public function fakeCheck(): void
     {
         // noting, all done by the authenticator
     }

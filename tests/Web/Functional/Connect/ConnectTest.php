@@ -49,4 +49,13 @@ class ConnectTest extends WebTestCase
             (string) $crawler->getUri()
         );
     }
+
+    public function testFakeConnectPage(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/fr/connect/f/c');
+
+        $this->assertResponseStatusCodeSame(404);
+    }
 }
