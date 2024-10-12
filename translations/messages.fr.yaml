@@ -262,12 +262,19 @@ trainer:
             is_on_home:
                 label: "Album visible sur la page d'accueil"
                 help: "La page d'accueil n'est visible que par toi. C'est ta page."
-            is_not_released:
-                label: "Album non déployé"
-                help: "Seul les admins peuvent voir l'album, pour le moment"
             is_premium:
                 label: "Album premium"
                 help: "Seulement pour les utilisateurs premium"
+            is_shiny:
+                label: "Album chromatique"
+                help: "Plein de pokemons chromatiques"
+            is_custom:
+                label: "Album personnalisé"
+                help: "Rien que pour toi"
+            not:
+                is_released:
+                    label: "Album non déployé"
+                    help: "Seul les admins peuvent voir l'album, pour le moment"
         update:
             title: "Maj"
             success:

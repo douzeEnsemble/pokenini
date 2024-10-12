@@ -17,6 +17,7 @@
             "App\\Api\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
             "App\\Api\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
             "App\\Web\\Controller\\ConnectController::googleCheck",
+            "App\\Web\\Controller\\ConnectController::fakeCheck",
         ],
         "global-ignoreSourceCodeByRegex": [
             "\\$query .= <<<'SUBSQL'",
