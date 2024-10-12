@@ -10,30 +10,6 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 trait AuthenticatorTrait
 {
-    public function loadUserFromLists(string $identifier): User
-    {
-        $user = new User($identifier);
-
-        $listAdmins = explode(',', $this->listAdmin);
-        $listAdmins = array_map(fn ($value) => trim($value), $listAdmins);
-        $listTrainers = explode(',', $this->listTrainer);
-        $listTrainers = array_map(fn ($value) => trim($value), $listTrainers);
-        $listCollectors = explode(',', $this->listCollector);
-        $listCollectors = array_map(fn ($value) => trim($value), $listCollectors);
-
-        if (in_array($user->getUserIdentifier(), $listAdmins)) {
-            $user->addAdminRole();
-        }
-        if (in_array($user->getUserIdentifier(), $listTrainers)) {
-            $user->addTrainerRole();
-        }
-        if (in_array($user->getUserIdentifier(), $listCollectors)) {
-            $user->addCollectorRole();
-        }
-
-        return $user;
-    }
-
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
@@ -72,5 +48,29 @@ trait AuthenticatorTrait
             $this->router->generate('app_web_home_index'),
             Response::HTTP_TEMPORARY_REDIRECT
         );
+    }
+
+    private function loadUserFromLists(string $identifier): User
+    {
+        $user = new User($identifier);
+
+        $listAdmins = explode(',', $this->listAdmin);
+        $listAdmins = array_map(fn ($value) => trim($value), $listAdmins);
+        $listTrainers = explode(',', $this->listTrainer);
+        $listTrainers = array_map(fn ($value) => trim($value), $listTrainers);
+        $listCollectors = explode(',', $this->listCollector);
+        $listCollectors = array_map(fn ($value) => trim($value), $listCollectors);
+
+        if (in_array($user->getUserIdentifier(), $listAdmins)) {
+            $user->addAdminRole();
+        }
+        if (in_array($user->getUserIdentifier(), $listTrainers)) {
+            $user->addTrainerRole();
+        }
+        if (in_array($user->getUserIdentifier(), $listCollectors)) {
+            $user->addCollectorRole();
+        }
+
+        return $user;
     }
 }

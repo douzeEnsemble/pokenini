@@ -45,7 +45,10 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
 
-        $this->assertCountFilter($crawler, 0, '.dex_not_released');
+        $this->assertCountFilter($crawler, 1, '.dex_is_shiny');
+        $this->assertCountFilter($crawler, 0, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
     }
 
     public function testCollectorPage(): void
@@ -75,7 +78,10 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
 
-        $this->assertCountFilter($crawler, 0, '.dex_not_released');
+        $this->assertCountFilter($crawler, 1, '.dex_is_shiny');
+        $this->assertCountFilter($crawler, 0, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
     }
 
     public function testAdminTrainerPage(): void
@@ -106,7 +112,10 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
 
-        $this->assertCountFilter($crawler, 1, '.dex_not_released');
+        $this->assertCountFilter($crawler, 2, '.dex_is_shiny');
+        $this->assertCountFilter($crawler, 3, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 1, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
     }
 
     public function testTrainerPageNotAllowed(): void
@@ -153,7 +162,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item img');
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item a');
         $this->assertCountFilter($crawler, 21, '.trainer-dex-item h5');
-        $this->assertCountFilter($crawler, 21, '.trainer-dex-item h6');
+        $this->assertCountFilter($crawler, 0, '.trainer-dex-item h6');
         $this->assertCountFilter($crawler, 42, '.trainer-dex-item input[type="checkbox"]');
 
         $this->assertEmpty($crawler->filter('#goldsilvercrystal-is_private')->attr('checked'));

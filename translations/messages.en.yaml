@@ -261,12 +261,19 @@ trainer:
             is_on_home:
                 label: "Album visible on the homepage"
                 help: "The home page is only visible to you. This is your page."
-            is_not_released:
-                label: "Album can be seen only for admin user"
-                help: "The album is not released yet for public"
             is_premium:
                 label: "Album can be seen only for premium user"
                 help: "Only for premium user"
+            is_shiny:
+                label: "Shiny album"
+                help: "Full of shiny pokemons"
+            is_custom:
+                label: "Custom album"
+                help: "Only for you"
+            not:
+                is_released:
+                    label: "Album can be seen only for admin user"
+                    help: "The album is not released yet for public"
         update:
             title: "Maj"
             success:

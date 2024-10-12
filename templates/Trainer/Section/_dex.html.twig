@@ -15,9 +15,32 @@
         <div class="row">
             {% for dex in trainerDex %}
             <div
-                class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mb-sm-3 trainer-dex-item border rounded border-opacity-50"
+                class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mb-sm-3 trainer-dex-item border rounded border-opacity-50 position-relative"
                 id="trainer-dex-{{ dex.slug }}"
             >
+                <div class="position-absolute top-0 end-0 me-2">
+                    {% if dex.is_shiny %}
+                    <span class="dex_is_shiny badge text-bg-warning" data-bs-toggle="tooltip" data-bs-title="{{ ('trainer.dex.attributes.is_shiny.label')|trans }}">
+                        <i class="bi bi-stars"></i>
+                    </span>
+                    {% endif %}
+                    {% if dex.is_premium %}
+                    <span class="dex_is_premium badge text-bg-success" data-bs-toggle="tooltip" data-bs-title="{{ ('trainer.dex.attributes.is_premium.label')|trans }}">
+                        <i class="bi bi-patch-plus"></i>
+                    </span>
+                    {% endif %}
+                    {% if not dex.is_released %}
+                    <span class="dex_not_is_released badge text-bg-danger" data-bs-toggle="tooltip" data-bs-title="{{ ('trainer.dex.attributes.not.is_released.label')|trans }}">
+                        <i class="bi bi-lock"></i>
+                    </span>
+                    {% endif %}
+                    {% if dex.is_custom %}
+                    <span class="dex_is_custom badge text-bg-info" data-bs-toggle="tooltip" data-bs-title="{{ ('trainer.dex.attributes.is_custom.label')|trans }}">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    {% endif %}
+                </div>
+
                 {% set bannerUrl = dexBannerUrl|format(dex.slug) %}
                 <img
                     src="{{ bannerUrl }}"
@@ -26,7 +49,7 @@
                     loading="lazy"
                 >
                 <a
-                    class="float-end btn btn-link"
+                    class="float-end btn btn-light btn-sm"
                     href="{{ path('app_web_albumindex_index', {'dexSlug': dex.slug}) }}"
                     title="{{ 'trainer.dex.see'|trans }}"
                 >
@@ -36,21 +59,6 @@
                 <h5>
                     {{ locale is same as('fr') ? dex.french_name : dex.name }}
                 </h5>
-                <h6 class="mb-2 text-muted">
-                    <i class="bi bi-translate"></i>
-                    {{ locale is not same as('fr') ? dex.french_name : dex.name }}
-                </h6>
-                {% if not dex.is_released %}
-                <div class="dex_not_released">
-                    <span>
-                        <i class="bi bi-lock"></i>
-                        {{ ('trainer.dex.attributes.is_not_released.label')|trans }}
-                    </span>
-                    <p class="form-text">
-                        {{ ('trainer.dex.attributes.is_not_released.help')|trans }}
-                    </p>
-                </div>
-                {% endif %}
                 <hr>
                 <form data-dex="{{ dex.slug }}">
                     {% for attribute in attributes %}
