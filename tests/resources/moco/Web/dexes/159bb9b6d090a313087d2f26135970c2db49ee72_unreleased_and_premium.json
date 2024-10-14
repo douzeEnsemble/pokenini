@@ -20,6 +20,25 @@
   },
   {
     "is_shiny": false,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "box",
+    "region": {
+      "name": "Johto",
+      "french_name": "Johto",
+      "slug": "johto"
+    },
+    "name": "Gold, Silver, Crystal",
+    "french_name": "Or, Argent, Cristal",
+    "slug": "goldsilvercrystal",
+    "original_slug": "goldsilvercrystal",
+    "is_released": false,
+    "is_premium": false,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
     "is_private": true,
     "is_on_home": false,
     "is_display_form": true,
@@ -299,17 +318,59 @@
     "is_custom": false
   },
   {
-    "is_shiny": false,
+    "is_shiny": true,
     "is_private": false,
     "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "box",
+    "name": "Home Shiny",
+    "french_name": "Home Chromatique",
+    "slug": "homeshiny",
+    "original_slug": "homeshiny",
+    "is_released": true,
+    "is_premium": true,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
+    "is_private": false,
+    "is_on_home": false,
     "is_display_form": false,
     "display_template": "list-7",
     "name": "Home Pokemon Go",
     "french_name": "Home Pokemon Go",
     "slug": "homepokemongo",
     "original_slug": "homepokemongo",
-    "is_released": true,
+    "is_released": false,
     "is_premium": false,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "list-3",
+    "name": "Alpha",
+    "french_name": "Baron",
+    "slug": "alpha",
+    "original_slug": "alpha",
+    "is_released": true,
+    "is_premium": true,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "list-3",
+    "name": "Mega",
+    "french_name": "M\u00e9ga",
+    "slug": "mega",
+    "original_slug": "mega",
+    "is_released": true,
+    "is_premium": true,
     "is_custom": false
   }
 ]

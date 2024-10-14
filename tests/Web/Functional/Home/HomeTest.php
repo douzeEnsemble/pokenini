@@ -36,6 +36,10 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 6, '.home-item h5');
         $this->assertCountFilter($crawler, 1, '.home-item h6');
 
+        $this->assertCountFilter($crawler, 2, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 1, '.dex_is_custom');
+
         $firstAlbum = $crawler->filter('.home-item')->first();
         $this->assertEquals('Épée, Bouclier', $firstAlbum->text());
         $this->assertEquals('/fr/album/swordshield', $firstAlbum->filter('a')->attr('href'));
@@ -71,15 +75,19 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 6, '.home-item h5');
         $this->assertCountFilter($crawler, 0, '.home-item h6');
 
+        $this->assertCountFilter($crawler, 3, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 1, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
+
         $firstAlbum = $crawler->filter('.home-item')->first();
         $this->assertEquals('Rouge, Vert, Bleu, Jaune', $firstAlbum->text());
         $this->assertEquals('/fr/album/redgreenblueyellow', $firstAlbum->filter('a')->attr('href'));
         $this->assertEquals('https://icon.pokenini.fr/banner/redgreenblueyellow.png', $firstAlbum->filter('img')->attr('src'));
 
-        $secondAlbum = $crawler->filter('.home-item')->eq(2);
-        $this->assertEquals('Home Chromatique', $secondAlbum->text());
-        $this->assertEquals('/fr/album/homeshiny', $secondAlbum->filter('a')->attr('href'));
-        $this->assertEquals('https://icon.pokenini.fr/banner/homeshiny.png', $secondAlbum->filter('img')->attr('src'));
+        $thirdAlbum = $crawler->filter('.home-item')->eq(3);
+        $this->assertEquals('Home Chromatique', $thirdAlbum->text());
+        $this->assertEquals('/fr/album/homeshiny', $thirdAlbum->filter('a')->attr('href'));
+        $this->assertEquals('https://icon.pokenini.fr/banner/homeshiny.png', $thirdAlbum->filter('img')->attr('src'));
 
         $this->assertCountFilter($crawler, 0, 'script[src="/js/album.js"]');
 
@@ -98,6 +106,10 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 8, '.home-item');
         $this->assertCountFilter($crawler, 8, '.home-item h5');
         $this->assertCountFilter($crawler, 1, '.home-item h6');
+
+        $this->assertCountFilter($crawler, 1, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
 
         $dex = [
             'home',

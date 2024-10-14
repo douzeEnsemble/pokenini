@@ -114,7 +114,7 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, '.dex_is_shiny');
         $this->assertCountFilter($crawler, 3, '.dex_is_premium');
-        $this->assertCountFilter($crawler, 1, '.dex_not_is_released');
+        $this->assertCountFilter($crawler, 2, '.dex_not_is_released');
         $this->assertCountFilter($crawler, 0, '.dex_is_custom');
     }
 
@@ -166,7 +166,7 @@ class TrainerPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 42, '.trainer-dex-item input[type="checkbox"]');
 
         $this->assertEmpty($crawler->filter('#goldsilvercrystal-is_private')->attr('checked'));
-        $this->assertNull($crawler->filter('#goldsilvercrystal-is_on_home')->attr('checked'));
+        $this->assertEmpty($crawler->filter('#goldsilvercrystal-is_on_home')->attr('checked'));
 
         $this->assertNull($crawler->filter('#home-is_private')->attr('checked'));
         $this->assertEmpty($crawler->filter('#home-is_on_home')->attr('checked'));

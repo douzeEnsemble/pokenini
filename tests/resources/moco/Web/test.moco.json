@@ -159,8 +159,51 @@
     "request": {
       "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
       "queries": {
+        "include_unreleased_dex": "1",
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_unreleased_and_premium.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_premium.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "queries": {
         "include_unreleased_dex": "1"
       },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "file": "/var/moco/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_unreleased.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
       "headers": {
         "accept": "application/json",
         "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
