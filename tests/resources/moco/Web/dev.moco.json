@@ -185,6 +185,21 @@
   {
     "request": {
       "uri": "/dex/d033e22ae348aeb5660fc2140aec35850c4da997/list",
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "file": "/var/moco/dexes/d033e22ae348aeb5660fc2140aec35850c4da997_premium.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/dex/d033e22ae348aeb5660fc2140aec35850c4da997/list",
       "headers": {
         "accept": "application/json",
         "Authorization": "Basic d2ViOmRvdXpl"
