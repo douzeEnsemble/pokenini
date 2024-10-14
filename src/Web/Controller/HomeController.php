@@ -27,7 +27,9 @@ class HomeController extends AbstractController
             $userId = $demoUserId;
         }
 
-        $dex = $getDexService->get($userId);
+        $dex = $this->isGranted('ROLE_ADMIN')
+            ? $getDexService->getWithUnreleasedAndPremium($userId)
+            : $getDexService->getWithPremium($userId);
 
         return $this->render(
             'Home/index.html.twig',

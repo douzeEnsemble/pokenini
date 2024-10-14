@@ -52,6 +52,41 @@ class HomeTest extends WebTestCase
         $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
     }
 
+    public function testHomeAsAdmin(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertFrenchLangSwitch($crawler);
+
+        $this->assertCountFilter($crawler, 6, '.home-item');
+        $this->assertCountFilter($crawler, 6, '.home-item h5');
+        $this->assertCountFilter($crawler, 0, '.home-item h6');
+
+        $firstAlbum = $crawler->filter('.home-item')->first();
+        $this->assertEquals('Rouge, Vert, Bleu, Jaune', $firstAlbum->text());
+        $this->assertEquals('/fr/album/redgreenblueyellow', $firstAlbum->filter('a')->attr('href'));
+        $this->assertEquals('https://icon.pokenini.fr/banner/redgreenblueyellow.png', $firstAlbum->filter('img')->attr('src'));
+
+        $secondAlbum = $crawler->filter('.home-item')->eq(2);
+        $this->assertEquals('Home Chromatique', $secondAlbum->text());
+        $this->assertEquals('/fr/album/homeshiny', $secondAlbum->filter('a')->attr('href'));
+        $this->assertEquals('https://icon.pokenini.fr/banner/homeshiny.png', $secondAlbum->filter('img')->attr('src'));
+
+        $this->assertCountFilter($crawler, 0, 'script[src="/js/album.js"]');
+
+        $this->assertStringNotContainsString('const catchStates = JSON.parse', $crawler->outerHtml());
+        $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
+    }
+
     public function testNonConnectedHome(): void
     {
         $client = static::createClient();
