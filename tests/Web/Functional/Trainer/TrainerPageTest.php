@@ -46,9 +46,9 @@ class TrainerPageTest extends WebTestCase
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
 
         $this->assertCountFilter($crawler, 1, '.dex_is_shiny');
-        $this->assertCountFilter($crawler, 0, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 2, '.dex_is_premium');
         $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
-        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
+        $this->assertCountFilter($crawler, 1, '.dex_is_custom');
     }
 
     public function testCollectorPage(): void
@@ -79,9 +79,9 @@ class TrainerPageTest extends WebTestCase
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
 
         $this->assertCountFilter($crawler, 1, '.dex_is_shiny');
-        $this->assertCountFilter($crawler, 0, '.dex_is_premium');
+        $this->assertCountFilter($crawler, 2, '.dex_is_premium');
         $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
-        $this->assertCountFilter($crawler, 0, '.dex_is_custom');
+        $this->assertCountFilter($crawler, 1, '.dex_is_custom');
     }
 
     public function testAdminTrainerPage(): void

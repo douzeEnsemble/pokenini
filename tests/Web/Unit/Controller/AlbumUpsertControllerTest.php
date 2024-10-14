@@ -59,6 +59,7 @@ class AlbumUpsertControllerTest extends TestCase
         $authorizationChecker
             ->expects($this->once())
             ->method('isGranted')
+            ->with('ROLE_COLLECTOR')
             ->willReturn(true)
         ;
 

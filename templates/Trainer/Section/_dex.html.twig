@@ -14,6 +14,7 @@
     <div class="card-body">
         <div class="row">
             {% for dex in trainerDex %}
+            {% set canEdit = dex.is_premium == false or is_granted('ROLE_COLLECTOR') %}
             <div
                 class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 mb-sm-3 trainer-dex-item border rounded border-opacity-50 position-relative"
                 id="trainer-dex-{{ dex.slug }}"
@@ -42,6 +43,7 @@
                 </div>
 
                 {% set bannerUrl = dexBannerUrl|format(dex.slug) %}
+                {% set defaultBannerUrl = dexBannerUrl|format('default') %}
                 <img
                     src="{{ bannerUrl }}"
                     class="img-fluid"
@@ -71,6 +73,7 @@
                             name="{{ dex.slug }}-{{ attribute }}"
                             id="{{ dex.slug }}-{{ attribute }}"
                             {{ dex[attribute] ? 'checked' : '' }}
+                            {{ canEdit ? '' : 'disabled' }}
                         >
                         <label class="form-check-label" for="{{ dex.slug }}-{{ attribute }}">
                             <i class="bi bi-{{ attributesIcons[attribute] }}"></i>

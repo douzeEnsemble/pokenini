@@ -41,9 +41,10 @@ class AccessPremiumTest extends WebTestCase
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
-        $client->request('GET', '/fr/album/homepokemongo');
+        $crawler = $client->request('GET', '/fr/album/homepokemongo');
 
-        $this->assertResponseStatusCodeSame(404);
+        $this->assertCountFilter($crawler, 0, '.navbar-nav #share-link');
+        $this->assertCountFilter($crawler, 0, '.navbar-nav #private-tag');
     }
 
     public function testAdminAccessPremiumAlbum(): void

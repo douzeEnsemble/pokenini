@@ -101,10 +101,6 @@ class AlbumIndexController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        if ($dex['is_premium'] && !$this->isGranted('ROLE_COLLECTOR')) {
-            throw $this->createNotFoundException();
-        }
-
         /** @var User $user */
         $user = $this->getUser();
 

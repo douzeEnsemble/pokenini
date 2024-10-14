@@ -33,6 +33,6 @@ class GetDexByRoleService
 
         return $user->isAnAdmin()
             ? $this->getDexService->getWithUnreleasedAndPremium($userToken)
-            : $this->getDexService->get($userToken);
+            : $this->getDexService->getWithPremium($userToken);
     }
 }
