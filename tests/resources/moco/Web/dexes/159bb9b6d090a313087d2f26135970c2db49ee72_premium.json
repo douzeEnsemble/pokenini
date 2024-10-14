@@ -299,6 +299,20 @@
     "is_custom": false
   },
   {
+    "is_shiny": true,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "box",
+    "name": "Home Shiny",
+    "french_name": "Home Chromatique",
+    "slug": "homeshiny",
+    "original_slug": "homeshiny",
+    "is_released": true,
+    "is_premium": true,
+    "is_custom": false
+  },
+  {
     "is_shiny": false,
     "is_private": false,
     "is_on_home": true,
@@ -310,6 +324,34 @@
     "original_slug": "homepokemongo",
     "is_released": true,
     "is_premium": false,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "list-3",
+    "name": "Alpha",
+    "french_name": "Baron",
+    "slug": "alpha",
+    "original_slug": "alpha",
+    "is_released": true,
+    "is_premium": true,
+    "is_custom": false
+  },
+  {
+    "is_shiny": false,
+    "is_private": false,
+    "is_on_home": true,
+    "is_display_form": true,
+    "display_template": "list-3",
+    "name": "Mega",
+    "french_name": "M\u00e9ga",
+    "slug": "mega",
+    "original_slug": "mega",
+    "is_released": true,
+    "is_premium": true,
     "is_custom": false
   }
 ]

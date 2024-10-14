@@ -130,7 +130,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
-        $this->assertCountFilter($crawler, 20, '.trainer-dex-item');
+        $this->assertCountFilter($crawler, 19, '.trainer-dex-item');
     }
 
     public function testReleasedFilterOff(): void
@@ -153,7 +153,7 @@ class TrainerPageFiltersTest extends WebTestCase
         $this->assertSelectedOptions($crawler, 'select#filter-shiny', ['']);
         $this->assertSelectedOptions($crawler, 'select#filter-premium', ['']);
 
-        $this->assertCountFilter($crawler, 1, '.trainer-dex-item');
+        $this->assertCountFilter($crawler, 2, '.trainer-dex-item');
     }
 
     public function testShinyFilterOn(): void
