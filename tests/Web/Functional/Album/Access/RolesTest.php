@@ -47,6 +47,10 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/home');
 
         $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 
     public function testReadCollector(): void
@@ -60,6 +64,10 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/home');
 
         $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 
     public function testReadAdmin(): void
@@ -74,6 +82,10 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/demolite');
 
         $this->assertAdminAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 
     public function testWriteNonConnected(): void
@@ -96,6 +108,10 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/home');
 
         $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 
     public function testWriteCollector(): void
@@ -109,6 +125,10 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/home');
 
         $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 
     public function testWriteAdmin(): void
@@ -123,5 +143,63 @@ class RolesTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/album/demolite');
 
         $this->assertAdminAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
+    }
+
+    public function testWriteTrainerOnPremiumDex(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/album/homepokemongo');
+
+        $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 0, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 0, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 0, '.album-all-catch-state-edit-action');
+    }
+
+    public function testWriteCollectorOnPremiumDex(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/album/homepokemongo');
+
+        $this->assertTrainerAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
+    }
+
+    public function testWriteAdminOnPremiumDex(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $user->addCollectorRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/album/homepokemongo');
+
+        $this->assertAdminAlbumNavBar($crawler);
+
+        $this->assertCountFilter($crawler, 1, 'script[src="/js/album-edit.js"]');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-read-action');
+        $this->assertCountFilter($crawler, 1, '.album-all-catch-state-edit-action');
     }
 }

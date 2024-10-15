@@ -52,7 +52,9 @@ class AlbumIndexController extends AbstractController
         }
 
         $dex = $pokedex['dex'];
-        $this->dexIsGranted($dex);
+        if (!$this->accessDexIsGranted($dex)) {
+            throw $this->createNotFoundException();
+        }
 
         $catchStates = $this->getLabelsService->getCatchStates();
         $types = $this->getLabelsService->getTypes();
@@ -86,26 +88,50 @@ class AlbumIndexController extends AbstractController
             'trainerId' => $trainerId,
             'loggedTrainerId' => $loggedTrainerId,
             'requestedTrainerId' => $this->trainerIdsService->getRequestedTrainerId(),
-            'allowedToEdit' => $trainerId === $loggedTrainerId,
+            'allowedToEdit' => $this->editDexIsGranted($dex),
         ]);
     }
 
     /**
      * @param string[]|string[][] $dex
      */
-    private function dexIsGranted(array $dex): void
+    private function accessDexIsGranted(array $dex): bool
     {
         if ($dex['is_private']
             && $this->trainerIdsService->getTrainerId() != $this->trainerIdsService->getLoggedTrainerId()
         ) {
-            throw $this->createNotFoundException();
+            return false;
         }
 
         /** @var User $user */
         $user = $this->getUser();
 
         if (!$dex['is_released'] && !$user->isAnAdmin()) {
-            throw $this->createNotFoundException();
+            return false;
         }
+
+        return true;
+    }
+
+    /**
+     * @param string[]|string[][] $dex
+     */
+    private function editDexIsGranted(array $dex): bool
+    {
+        $trainerId = $this->trainerIdsService->getTrainerId();
+        $loggedTrainerId = $this->trainerIdsService->getLoggedTrainerId();
+
+        if ($trainerId !== $loggedTrainerId) {
+            return false;
+        }
+
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if ($dex['is_premium'] && !$user->isACollector()) {
+            return false;
+        }
+
+        return true;
     }
 }
