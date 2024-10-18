@@ -208,34 +208,50 @@ make sf c="messenger:consume async -vv --limit=1"
 #### Change a pokemon slug
 
 1. Look, in "Dex" sheet, for the slug. Replace it by the new one
-2. Look, in "Pokémons" sheet, for the slug.
+2. Look, in "Games Availability" sheet, for the slug. Replace it by the new one
+3. Look, in "Games Shinies Availability" sheet, for the slug. Replace it by the new one
+4. Look, in "Collections Availability" sheet, for the slug. Replace it by the new one
+5. Look, in "Regional Dex Number" sheet, for the slug. Replace it by the new one
+6. Look, in "Pokémons" sheet, for the slug.
     a. For icon name,
         1. you will need to change it into the sheet into "Icon" column
         2. if not automatically updated, change it into "Sprites url"
         3. if not automatically updated, change it into "Shiny Sprites url"
-        4. and into the icon repository, use the copy method to avoid missing image
-3. Check if the new slug is not used
+        4. if not automatically updated, change it into "PokemonDB icon name"
+        5. and into the icon repository, use the copy method to avoid missing image
+```
+mv images/big/regular/pumpkaboo.png images/big/regular/pumpkaboo-average.png
+mv images/big/regular/pumpkaboo.webp images/big/regular/pumpkaboo-average.webp
+mv images/big/shiny/pumpkaboo.png images/big/shiny/pumpkaboo-average.png
+mv images/big/shiny/pumpkaboo.webp images/big/shiny/pumpkaboo-average.webp
+mv images/small/regular/pumpkaboo.png images/small/regular/pumpkaboo-average.png
+mv images/small/regular/pumpkaboo.webp images/small/regular/pumpkaboo-average.webp
+mv images/small/shiny/pumpkaboo.png images/small/shiny/pumpkaboo-average.png
+mv images/small/shiny/pumpkaboo.webp images/small/shiny/pumpkaboo-average.webp
+```
+
+1. Check if the new slug is not used
 ```sql
 SELECT		*
 FROM			pokemon
 WHERE			slug = 'new-slug'
 ```
-4. Execute this query to change the slug
+1. Execute this query to change the slug
 ```sql
 UPDATE 	pokemon
 SET		slug = 'new-slug'
 WHERE 	slug = 'old-slug'
 ```
-5. Check that the new slug is uptodate
+1. Check that the new slug is uptodate
 ```sql
 SELECT		*
 FROM			pokemon
 WHERE			slug = 'new-slug'
 ```
-6. Update pokemons data in https://www.pokenini.fr/fr/istration page
-7. Check into an album if slug is ok by checkinh html source code
-7. Check into an album if icon is ok by checkinh html source code
-8. Delete original icon name into the icon repository
+1. Update pokemons data in https://www.pokenini.fr/fr/istration page
+2. Check into an album if slug is ok by checking html source code
+3. Check into an album if icon is ok by checking html source code
+4. Delete original icon name into the icon repository
 
 ### Debug 
 
