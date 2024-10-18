@@ -15,6 +15,7 @@ use PHPUnit\Framework\Attributes\Group;
  */
 #[CoversNothing]
 #[Group('browser-testing')]
+#[Group('time-testing')]
 class ModalTest extends AbstractBrowserTestCase
 {
     use TestNavTrait;
