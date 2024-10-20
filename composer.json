@@ -52,7 +52,6 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "hautelook/alice-bundle": "2.14.*",
-        "infection/infection": "0.29.*",
         "phpunit/phpunit": "11.3.*",
         "qossmic/deptrac": "^2.0",
         "symfony/browser-kit": "7.1.*",

@@ -187,8 +187,7 @@ phpstan: tools/phpstan/vendor/bin/phpstan
 	@$(PHP) tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
 
 deptrac: ## Execute deptrac analyse
-deptrac: tools/deptrac/vendor/bin/deptrac
-	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse
+	@$(PHP) ./vendor/bin/deptrac analyse
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests
@@ -291,9 +290,6 @@ tools/psalm/vendor/bin/psalm:
 
 tools/phpstan/vendor/bin/phpstan:
 	@$(COMPOSER) install --working-dir=tools/phpstan
-
-tools/deptrac/vendor/bin/deptrac:
-	@$(COMPOSER) install --working-dir=tools/deptrac
 
 tools/infection/vendor/bin/infection:
 	@$(COMPOSER) install --working-dir=tools/infection
