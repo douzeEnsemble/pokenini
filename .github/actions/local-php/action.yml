@@ -12,6 +12,19 @@ runs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
-        extensions: apcu, ctype, iconv, intl, zip, dom, json, libxml, mbstring, simplexml, tokenizer, xml, xmlwriter
+        extensions: 
+          - apcu
+          - ctype
+          - dom
+          - iconv
+          - intl
+          - json
+          - libxml
+          - mbstring
+          - simplexml
+          - tokenizer
+          - xml
+          - xmlwriter
+          - zip
         tools: none
         coverage: none 
