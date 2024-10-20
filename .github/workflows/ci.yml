@@ -76,7 +76,7 @@ jobs:
           ./tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
 
   deptract:
-    name: Tests / Deptrac
+    name: Tests / Deptract
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -85,13 +85,21 @@ jobs:
         uses: ./.github/actions/local-tools-composer
         with:
           dir: deptrac
-      - name: Debug
-        run: |
-          ls -lR ./tools/deptrac
-          ls ./tools/deptrac/vendor/qossmic/deptrac/vendor/scoper-autoload.php
       - name: Run
         run: |
           ./tools/deptrac/vendor/bin/deptrac analyse --config-file=./deptrac.yaml
+
+  deptrac:
+    name: Tests / Deptrac
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install
+        uses: ./.github/actions/local-composer
+      - name: Run
+        run: |
+          ./vendor/bin/deptrac analyse --config-file=./deptrac.yaml
 
   phpunit:
     name: Tests / PHPUnit
