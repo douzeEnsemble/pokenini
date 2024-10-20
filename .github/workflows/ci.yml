@@ -52,9 +52,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install
-        uses: ./.github/actions/local-composer
+        uses: ./.github/actions/local-tools-composer
+        with:
+          dir: psalm
       - name: Run
-        run: php vendor/bin/psalm.phar --show-info=false
+        run: ./tools/psalm/vendor/bin/psalm --show-info=false
 
   phpstan:
     name: Tests / PHPStan

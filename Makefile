@@ -159,6 +159,8 @@ tools/php-cs-fixer/vendor/bin/php-cs-fixer:
 	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
 tools/phpmd/vendor/bin/phpmd:
 	@$(COMPOSER) install --working-dir=tools/phpmd
+tools/psalm/vendor/bin/psalm:
+	@$(COMPOSER) install --working-dir=tools/psalm
 
 phpcsfixer: ## Execute PHP CS Fixer "Check"
 phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
@@ -173,7 +175,8 @@ phpmd: tools/phpmd/vendor/bin/phpmd
 	@$(PHP) tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
 
 psalm: ## Execute psalm
-	@$(PHP) vendor/bin/psalm.phar --show-info=false
+psalm: tools/psalm/vendor/bin/psalm
+	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false
 
 phpstan: ## Execute phpstan analyse
 	@$(PHP) vendor/bin/phpstan clear-result-cache
