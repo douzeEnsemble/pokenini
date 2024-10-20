@@ -65,13 +65,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install
-        uses: ./.github/actions/local-composer
+        uses: ./.github/actions/local-tools-composer
+        with:
+          dir: phpstan
       - name: Initialize
         run: |
-          ./vendor/bin/phpstan clear-result-cache
+          ./tools/phpstan/vendor/bin/phpstan clear-result-cache
       - name: Run
         run: |
-          ./vendor/bin/phpstan analyse --memory-limit=-1
+          ./tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
+
+  deptract:
+    name: Tests / Deptrac
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install
+        uses: ./.github/actions/local-tools-composer
+        with:
+          dir: deptrac
+      - name: Run
+        run: |
+          ./tools/deptrac/vendor/bin/deptrac analyse
 
   phpunit:
     name: Tests / PHPUnit

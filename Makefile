@@ -161,6 +161,10 @@ tools/phpmd/vendor/bin/phpmd:
 	@$(COMPOSER) install --working-dir=tools/phpmd
 tools/psalm/vendor/bin/psalm:
 	@$(COMPOSER) install --working-dir=tools/psalm
+tools/phpstan/vendor/bin/phpstan:
+	@$(COMPOSER) install --working-dir=tools/phpstan
+tools/deptrac/vendor/bin/deptrac:
+	@$(COMPOSER) install --working-dir=tools/deptrac
 
 phpcsfixer: ## Execute PHP CS Fixer "Check"
 phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
@@ -179,11 +183,13 @@ psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false
 
 phpstan: ## Execute phpstan analyse
-	@$(PHP) vendor/bin/phpstan clear-result-cache
-	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
+phpstan: tools/phpstan/vendor/bin/phpstan
+	@$(PHP) tools/phpstan/vendor/bin/phpstan clear-result-cache
+	@$(PHP) tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
 
 deptrac: ## Execute deptrac analyse
-	@$(PHP) vendor/bin/deptrac analyse
+deptrac: tools/deptrac/vendor/bin/deptrac
+	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests
