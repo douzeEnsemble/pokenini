@@ -155,17 +155,16 @@ tests_browser_web: ## Execute browser tests for Web module
 quality: ## Execute all quality analyses
 quality: phpcsfixer phpmd psalm phpstan deptrac
 
-bin/php-cs-fixer: ## Download the file if needed
-	wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O bin/php-cs-fixer
-	chmod a+x bin/php-cs-fixer
+tools/php-cs-fixer/vendor/bin/php-cs-fixer:
+	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
 
 phpcsfixer: ## Execute PHP CS Fixer "Check"
-phpcsfixer: bin/php-cs-fixer
-	@$(PHP) bin/php-cs-fixer check --diff
+phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
+	@$(PHP) tools/php-cs-fixer/vendor/bin/php-cs-fixer check --diff
 
 phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
-phpcsfixer_fix: bin/php-cs-fixer
-	@$(PHP) bin/php-cs-fixer fix
+phpcsfixer_fix: tools/php-cs-fixer/vendor/bin/php-cs-fixer
+	@$(PHP) tools/php-cs-fixer/vendor/bin/php-cs-fixer fix
 
 phpmd: ## Execute phpmd
 	@$(PHP) vendor/bin/phpmd src,tests text ruleset.xml
