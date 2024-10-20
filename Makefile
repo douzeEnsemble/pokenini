@@ -157,6 +157,8 @@ quality: phpcsfixer phpmd psalm phpstan deptrac
 
 tools/php-cs-fixer/vendor/bin/php-cs-fixer:
 	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
+tools/phpmd/vendor/bin/phpmd:
+	@$(COMPOSER) install --working-dir=tools/phpmd
 
 phpcsfixer: ## Execute PHP CS Fixer "Check"
 phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
@@ -167,7 +169,8 @@ phpcsfixer_fix: tools/php-cs-fixer/vendor/bin/php-cs-fixer
 	@$(PHP) tools/php-cs-fixer/vendor/bin/php-cs-fixer fix
 
 phpmd: ## Execute phpmd
-	@$(PHP) vendor/bin/phpmd src,tests text ruleset.xml
+phpmd: tools/phpmd/vendor/bin/phpmd
+	@$(PHP) tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
 
 psalm: ## Execute psalm
 	@$(PHP) vendor/bin/psalm.phar --show-info=false

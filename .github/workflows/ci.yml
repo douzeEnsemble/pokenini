@@ -39,9 +39,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install
-        uses: ./.github/actions/local-composer
+        uses: ./.github/actions/local-tools-composer
+        with:
+          dir: phpmd
       - name: Run
-        run: ./vendor/bin/phpmd src,tests text ruleset.xml
+        run: ./tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
 
   psalm:
     name: Quality / Psalm
