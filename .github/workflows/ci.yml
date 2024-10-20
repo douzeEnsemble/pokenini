@@ -85,6 +85,9 @@ jobs:
         uses: ./.github/actions/local-tools-composer
         with:
           dir: deptrac
+      - name: Debug
+        run: |
+          ls -lR ./tools/deptrac
       - name: Run
         run: |
           ./tools/deptrac/vendor/bin/deptrac analyse
