@@ -27,10 +27,6 @@ coverage.xml
 .phpunit.result.cache
 .phpunit.cache
 ###< phpunit/phpunit ###
-###> phpstan/phpstan ###
-phpstan.neon
-###< phpstan/phpstan ###
-
 .deptrac.cache
 
 docker/apache/ssl/cert-key.pem
@@ -41,10 +37,6 @@ tests/last.html
 bin/local-php-security-checker
 .php-cs-fixer.cache
 bin/php-cs-fixer
-
-###> qossmic/deptrac ###
-/.deptrac.cache
-###< qossmic/deptrac ###
 infection_summary.log
 infection_text.log
 
