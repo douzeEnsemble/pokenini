@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "348ff8a2765062b2037c23b6706f268c",
+    "content-hash": "760f34169aa2bf1909d744a1e50ecaf2",
     "packages": [
         {
             "name": "qossmic/deptrac",
@@ -58,7 +58,14 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=8.3",
+        "ext-apcu": "*",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-intl": "*",
+        "ext-zip": "*"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

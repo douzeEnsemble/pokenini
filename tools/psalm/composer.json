@@ -1,5 +1,11 @@
 {
     "require": {
+        "php": ">=8.3",
+        "ext-apcu": "*",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-intl": "*",
+        "ext-zip": "*",
         "vimeo/psalm": "^5.26"
     }
 }

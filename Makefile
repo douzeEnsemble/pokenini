@@ -115,6 +115,15 @@ vendor: ## Install vendors according to the current composer.lock file
 	@$(COMPOSER) install --prefer-dist --no-progress --no-interaction
 	@$(COMPOSER) clear-cache
 
+updates: ## Updates all composer
+	@$(COMPOSER) update
+	@$(COMPOSER) update --working-dir=tools/php-cs-fixer
+	@$(COMPOSER) update --working-dir=tools/phpmd
+	@$(COMPOSER) update --working-dir=tools/psalm
+	@$(COMPOSER) update --working-dir=tools/phpstan
+	@$(COMPOSER) update --working-dir=tools/deptrac
+
+
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 sf: ## List all Symfony commands or pass the parameter "c=" to run a given command, example: make sf c=about
 	@$(eval c ?=)
