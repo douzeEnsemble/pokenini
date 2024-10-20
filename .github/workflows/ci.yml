@@ -161,16 +161,19 @@ jobs:
             --coverage-clover=coverage.xml \
             --coverage-xml=build/coverage/coverage-xml \
             --log-junit=build/coverage/junit.xml
+      - name: Composer install Infection
+        shell: bash
+        run: docker compose exec -T php composer install --working-dir=tools/infection --prefer-dist --no-progress --no-interaction
       - name: Run Infection Api
         run: | 
-          docker compose exec -T php php vendor/bin/infection \
+          docker compose exec -T php php tools/infection/vendor/bin/infection \
             --threads=4 --no-progress \
             --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \
             --filter=src/Api
       - name: Run Infection Web
         run: | 
-          docker compose exec -T php php vendor/bin/infection \
+          docker compose exec -T php php tools/infection/vendor/bin/infection \
             --threads=4 --no-progress \
             --skip-initial-tests --coverage=build/coverage \
             --min-msi=100 --min-covered-msi=100 \

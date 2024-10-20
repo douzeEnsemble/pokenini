@@ -122,6 +122,7 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --working-dir=tools/psalm
 	@$(COMPOSER) update --working-dir=tools/phpstan
 	@$(COMPOSER) update --working-dir=tools/deptrac
+	@$(COMPOSER) update --working-dir=tools/infection
 
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
@@ -163,17 +164,6 @@ tests_browser_web: ## Execute browser tests for Web module
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
 quality: phpcsfixer phpmd psalm phpstan deptrac
-
-tools/php-cs-fixer/vendor/bin/php-cs-fixer:
-	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
-tools/phpmd/vendor/bin/phpmd:
-	@$(COMPOSER) install --working-dir=tools/phpmd
-tools/psalm/vendor/bin/psalm:
-	@$(COMPOSER) install --working-dir=tools/psalm
-tools/phpstan/vendor/bin/phpstan:
-	@$(COMPOSER) install --working-dir=tools/phpstan
-tools/deptrac/vendor/bin/deptrac:
-	@$(COMPOSER) install --working-dir=tools/deptrac
 
 phpcsfixer: ## Execute PHP CS Fixer "Check"
 phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
@@ -256,15 +246,15 @@ infection: ## Execute all Infection testing
 infection: infection_api infection_web
 
 infection_api: ## Execute Infection (Mutation testing) for API module
-infection_api: build/coverage/coverage-xml 
-	@$(PHP) vendor/bin/infection --threads=4 --no-progress \
+infection_api: build/coverage/coverage-xml tools/infection/vendor/bin/infection
+	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
 		--filter=src/Api
 
 infection_web: ## Execute Infection (Mutation testing) for API module
-infection_web: build/coverage/coverage-xml 
-	@$(PHP) vendor/bin/infection --threads=4 --no-progress \
+infection_web: build/coverage/coverage-xml tools/infection/vendor/bin/infection
+	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
 		--filter=src/Web
@@ -288,4 +278,22 @@ dependency_check:
 	@bin/dependency-check.sh ${NVD_API_KEY}
 
 
-	
+
+## —— Tools 🔧 ———————————————————————————————————————————————————————————————
+tools/php-cs-fixer/vendor/bin/php-cs-fixer:
+	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
+
+tools/phpmd/vendor/bin/phpmd:
+	@$(COMPOSER) install --working-dir=tools/phpmd
+
+tools/psalm/vendor/bin/psalm:
+	@$(COMPOSER) install --working-dir=tools/psalm
+
+tools/phpstan/vendor/bin/phpstan:
+	@$(COMPOSER) install --working-dir=tools/phpstan
+
+tools/deptrac/vendor/bin/deptrac:
+	@$(COMPOSER) install --working-dir=tools/deptrac
+
+tools/infection/vendor/bin/infection:
+	@$(COMPOSER) install --working-dir=tools/infection
