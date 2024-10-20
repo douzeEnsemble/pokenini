@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f416663b40c623c7e42bee2a52032456",
+    "content-hash": "78ff15cf4c7b6746a748d378e9b19c87",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -9380,6 +9380,51 @@
             "time": "2024-09-19T10:54:28+00:00"
         },
         {
+            "name": "qossmic/deptrac",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qossmic/deptrac.git",
+                "reference": "f646695c1468051138e1347d89590f9084fa6256"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qossmic/deptrac/zipball/f646695c1468051138e1347d89590f9084fa6256",
+                "reference": "f646695c1468051138e1347d89590f9084fa6256",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^8.1"
+            },
+            "suggest": {
+                "ext-dom": "For using the JUnit output formatter"
+            },
+            "bin": [
+                "bin/deptrac",
+                "deptrac.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Qossmic\\Deptrac\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Deptrac is a static code analysis tool that helps to enforce rules for dependencies between software layers.",
+            "support": {
+                "issues": "https://github.com/qossmic/deptrac/issues",
+                "source": "https://github.com/qossmic/deptrac/tree/2.0.1"
+            },
+            "time": "2024-06-17T10:43:11+00:00"
+        },
+        {
             "name": "sanmai/later",
             "version": "0.1.4",
             "source": {
@@ -11495,7 +11540,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
