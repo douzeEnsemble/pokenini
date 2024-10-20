@@ -88,9 +88,10 @@ jobs:
       - name: Debug
         run: |
           ls -lR ./tools/deptrac
+          ls ./tools/deptrac/vendor/qossmic/deptrac/vendor/scoper-autoload.php
       - name: Run
         run: |
-          ./tools/deptrac/vendor/bin/deptrac analyse
+          ./tools/deptrac/vendor/bin/deptrac analyse --config-file=./deptrac.yaml
 
   phpunit:
     name: Tests / PHPUnit
