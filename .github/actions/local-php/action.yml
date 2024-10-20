@@ -12,5 +12,6 @@ runs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
-        extensions: ctype, iconv, redis
-        coverage: xdebug
+        extensions: apcu, ctype, iconv, intl, zip, dom, json, libxml, mbstring, simplexml, tokenizer, xml, xmlwriter
+        tools: none
+        coverage: none 
