@@ -25,9 +25,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: docker://ghcr.io/php-cs-fixer/php-cs-fixer:3-php8.3
-        with:
-          args: check --diff
+      - name: Install
+        uses: ./.github/actions/local-tools-composer
+      - name: Run
+        run: ./vendor/bin/phpmd src,tests text ruleset.xml
 
   phpmd:
     name: Quality / PHPMD
@@ -35,8 +36,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Prepare
-        uses: ./.github/actions/local
+      - name: Install
+        uses: ./.github/actions/local-composer
       - name: Run
         run: ./vendor/bin/phpmd src,tests text ruleset.xml
 
@@ -46,8 +47,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Prepare
-        uses: ./.github/actions/local
+      - name: Install
+        uses: ./.github/actions/local-composer
       - name: Run
         run: php vendor/bin/psalm.phar --show-info=false
 
@@ -57,8 +58,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Prepare
-        uses: ./.github/actions/local
+      - name: Install
+        uses: ./.github/actions/local-composer
       - name: Initialize
         run: |
           ./vendor/bin/phpstan clear-result-cache
