@@ -1,10 +1,4 @@
 {
-    "composer/pcre": {
-        "version": "1.0.0"
-    },
-    "composer/xdebug-handler": {
-        "version": "2.0.4"
-    },
     "doctrine/cache": {
         "version": "2.1.1"
     },
@@ -110,9 +104,6 @@
             "config/packages/hautelook_alice.yaml",
             "fixtures/.gitignore"
         ]
-    },
-    "justinrainbow/json-schema": {
-        "version": "5.2.12"
     },
     "knpuniversity/oauth2-client-bundle": {
         "version": "2.18",
