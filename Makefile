@@ -121,7 +121,6 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --working-dir=tools/phpmd
 	@$(COMPOSER) update --working-dir=tools/psalm
 	@$(COMPOSER) update --working-dir=tools/phpstan
-	@$(COMPOSER) update --working-dir=tools/deptrac
 	@$(COMPOSER) update --working-dir=tools/infection
 
 
