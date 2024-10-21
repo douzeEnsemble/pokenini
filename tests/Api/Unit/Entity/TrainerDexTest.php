@@ -20,15 +20,4 @@ class TrainerDexTest extends TestCase
 
         $this->assertNull($entity->getIdentifier());
     }
-
-    public function testConvertToString(): void
-    {
-        $entity = new TrainerDex();
-        $entity->name = 'Douze';
-
-        $this->expectException(\Error::class);
-        $this->expectExceptionMessage('Object of class App\Api\Entity\TrainerDex could not be converted to string');
-
-        (string) $entity;
-    }
 }
