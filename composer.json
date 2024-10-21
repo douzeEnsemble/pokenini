@@ -8,11 +8,11 @@
         "ext-iconv": "*",
         "ext-intl": "*",
         "ext-zip": "*",
-        "doctrine/doctrine-bundle": "^2.12",
+        "doctrine/doctrine-bundle": "^2.13",
         "doctrine/doctrine-migrations-bundle": "^3.3",
-        "doctrine/orm": "^3.1",
-        "google/apiclient": "^2.16",
-        "guzzlehttp/guzzle": "^7.4",
+        "doctrine/orm": "^3.3.0",
+        "google/apiclient": "^2.18.0",
+        "guzzlehttp/guzzle": "^7.9.2",
         "knpuniversity/oauth2-client-bundle": "^2.18",
         "league/oauth2-google": "^4.0",
         "symfony/apache-pack": "^1.0",
@@ -21,7 +21,7 @@
         "symfony/doctrine-messenger": "7.1.*",
         "symfony/dotenv": "7.1.*",
         "symfony/expression-language": "7.1.*",
-        "symfony/flex": "^2.2",
+        "symfony/flex": "^2.4.7",
         "symfony/framework-bundle": "7.1.*",
         "symfony/http-client": "7.1.*",
         "symfony/http-foundation": "7.1.*",
@@ -39,8 +39,8 @@
         "symfony/uid": "7.1.*",
         "symfony/validator": "7.1.*",
         "symfony/yaml": "7.1.*",
-        "twig/extra-bundle": "^3.10",
-        "twig/twig": "^3.10"
+        "twig/extra-bundle": "^3.13.0",
+        "twig/twig": "^3.14.0"
     },
     "require-dev": {
         "ext-dom": "*",
@@ -52,7 +52,7 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "hautelook/alice-bundle": "2.14.*",
-        "phpunit/phpunit": "11.3.*",
+        "phpunit/phpunit": "^11.4.2",
         "qossmic/deptrac": "^2.0",
         "symfony/browser-kit": "7.1.*",
         "symfony/css-selector": "7.1.*",
@@ -62,7 +62,7 @@
         "symfony/stopwatch": "7.1.*",
         "symfony/var-dumper": "7.1.*",
         "symfony/web-profiler-bundle": "7.1.*",
-        "zenstruck/messenger-test": "^1.9"
+        "zenstruck/messenger-test": "^1.11.0"
     },
     "config": {
         "optimize-autoloader": true,
