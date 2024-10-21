@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Api\Unit\Entity\Trait;
+namespace App\Tests\Api\Unit\Entity;
 
-use App\Api\Entity\Traits\BaseEntityTrait;
+use App\Api\Entity\Pokedex;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  */
-#[CoversClass(BaseEntityTrait::class)]
-class BaseEntityTraitTest extends TestCase
+#[CoversClass(Pokedex::class)]
+class PokedexTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {
-        $entity = $this->getObjectForTrait(BaseEntityTrait::class);
+        $entity = new Pokedex();
 
         $this->assertNull($entity->getIdentifier());
     }

@@ -53,4 +53,21 @@ class GameBundleShinyAvailabilityTest extends TestCase
         $this->assertEquals($gameBundle, $gameBundleShinyAvailability->bundle);
         $this->assertFalse($gameBundleShinyAvailability->isAvailable);
     }
+
+    public function testGetIdentifierDefault(): void
+    {
+        $pokemon = new Pokemon();
+        $pokemon->slug = 'Douze';
+
+        $gameBundle = new GameBundle();
+        $gameBundle->slug = 'Tic,Tac';
+
+        $gameBundleShinyAvailability = GameBundleShinyAvailability::create(
+            $pokemon,
+            $gameBundle,
+            true
+        );
+
+        $this->assertNull($gameBundleShinyAvailability->getIdentifier());
+    }
 }

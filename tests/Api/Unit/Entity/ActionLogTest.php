@@ -16,8 +16,15 @@ class ActionLogTest extends TestCase
 {
     public function testConstructorAndGetters(): void
     {
-        $messageAction = new ActionLog('alpha');
+        $entity = new ActionLog('alpha');
 
-        $this->assertSame('alpha', $messageAction->getType());
+        $this->assertSame('alpha', $entity->getType());
+    }
+
+    public function testGetIdentifierDefault(): void
+    {
+        $entity = new ActionLog('alpha');
+
+        $this->assertNull($entity->getIdentifier());
     }
 }

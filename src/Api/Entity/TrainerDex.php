@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Entity;
 
 use App\Api\Entity\Traits\BaseEntityTrait;
+use App\Api\Entity\Traits\FrenchNamedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 class TrainerDex
 {
     use BaseEntityTrait;
+    use FrenchNamedTrait;
 
     #[ORM\Column]
     public string $trainerExternalId = '';
@@ -29,9 +31,6 @@ class TrainerDex
 
     #[ORM\Column]
     public string $name;
-
-    #[ORM\Column]
-    public string $frenchName;
 
     #[ORM\Column]
     public string $slug;

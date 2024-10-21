@@ -21,4 +21,20 @@ class GameGenerationTest extends TestCase
 
         $this->assertSame(12, $generation->getNumber());
     }
+
+    public function testGetIdentifierDefault(): void
+    {
+        $generation = new GameGeneration();
+
+        $this->assertNull($generation->getIdentifier());
+    }
+
+    public function testGetIdentifier(): void
+    {
+        $generation = new GameGeneration();
+        $generation->name = 'Douze';
+
+        $this->assertEquals('Douze', (string) $generation);
+        $this->assertEquals('Douze', $generation->__toString());
+    }
 }
