@@ -15,6 +15,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
  */
 #[CoversNothing]
 #[Group('browser-testing')]
+#[Group('time-testing')]
 class LoadingTimeTest extends AbstractBrowserTestCase
 {
     use TestNavTrait;
