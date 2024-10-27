@@ -25,21 +25,22 @@ class ActionLog
         /** @var string */
         $createdAt = $data['created_at'];
 
-        /** @var string */
-        $doneAt = $data['done_at'] ?? null;
+        /** @var ?string */
+        $doneAtStr = $data['done_at'] ?? null;
+        $doneAt = null !== $doneAtStr ? new \DateTime($doneAtStr) : null;
 
-        /** @var int */
+        /** @var ?int */
         $executionTime = (isset($data['execution_time'])) ? (int) $data['execution_time'] : null;
 
         /** @var int[] */
         $details = $data['details'] ?? [];
 
-        /** @var string */
+        /** @var ?string */
         $errorTrace = $data['error_trace'] ?? null;
 
         return new self(
             new \DateTime($createdAt),
-            $doneAt ? new \DateTime($doneAt) : null,
+            $doneAt,
             $executionTime,
             $details,
             $errorTrace,

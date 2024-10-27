@@ -15,7 +15,7 @@ class GetPokedexService extends AbstractApiService
     /**
      * @param string[]|string[][] $filters
      *
-     * @return string[][][]
+     * @return string[][]
      */
     public function get(
         string $dexSlug,
@@ -39,7 +39,7 @@ class GetPokedexService extends AbstractApiService
 
         $this->registerCache(KeyMaker::getAlbumKey(), $key);
 
-        /** @var string[][][] */
+        /** @var string[][] */
         return JsonDecoder::decode($json);
     }
 }

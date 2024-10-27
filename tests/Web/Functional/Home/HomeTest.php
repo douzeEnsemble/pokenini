@@ -122,7 +122,7 @@ class HomeTest extends WebTestCase
             'totem',
         ];
 
-        for ($i = 0; $i < \count($dex); ++$i) {
+        for ($i = 0; $i < 7; ++$i) {
             $dexSlug = $dex[$i];
 
             $this->assertEquals(

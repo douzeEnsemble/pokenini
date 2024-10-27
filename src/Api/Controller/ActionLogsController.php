@@ -21,7 +21,7 @@ class ActionLogsController extends AbstractController
 
         array_walk(
             $actionLogs,
-            function (&$actionLog) {
+            function (array &$actionLog): void {
                 if (null !== $actionLog['details']) {
                     $actionLog['details'] = json_decode($actionLog['details'], true);
                 }

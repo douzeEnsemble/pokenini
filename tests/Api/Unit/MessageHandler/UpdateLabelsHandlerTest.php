@@ -14,7 +14,6 @@ use App\Api\Service\UpdaterService\LabelsUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -23,8 +22,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdateLabelsHandler::class)]
 #[UsesClass(LabelsUpdaterService::class)]
 #[UsesClass(UpdateLabels::class)]
-#[CoversTrait(CalculateHandlerTrait::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(CalculateHandlerTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

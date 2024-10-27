@@ -25,7 +25,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -101,7 +101,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -179,7 +179,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -255,7 +255,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
@@ -331,7 +331,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -390,7 +390,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -449,7 +449,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -491,7 +491,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
@@ -533,7 +533,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);

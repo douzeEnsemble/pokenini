@@ -1,16 +1,73 @@
 <?xml version="1.0"?>
 <psalm
-    errorBaseline="psalm-baseline.xml"
-    errorLevel="5"
-    resolveFromConfigFile="true"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
+    errorLevel="5"
+    resolveFromConfigFile="true"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
 >
     <projectFiles>
         <directory name="src" />
+        <directory name="tests" />
         <ignoreFiles>
             <directory name="vendor" />
+            <directory name="tests/tools" />
+            <file name="tests/bootstrap.php" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="tests/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
+            </errorLevel>
+        </ArgumentTypeCoercion>
+        <DocblockTypeContradiction>
+            <errorLevel type="suppress">
+                <file name="src/Web/Service/Trait/CacheRegisterTrait.php" />
+            </errorLevel>
+        </DocblockTypeContradiction>
+        <MoreSpecificImplementedParamType>
+            <errorLevel type="suppress">
+                <file name="tests/Api/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateGamesAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateLabelsHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdatePokemonsHandlerTest.php" />
+                <file name="tests/Api/Unit/MessageHandler/UpdateRegionalDexNumbersHandlerTest.php" />
+            </errorLevel>
+        </MoreSpecificImplementedParamType>
+        <PropertyNotSetInConstructor errorLevel="suppress" />
+        <RiskyCast>
+            <errorLevel type="suppress">
+                <file name="src/Web/DTO/ActionLog.php" />
+            </errorLevel>
+        </RiskyCast>
+        <RiskyTruthyFalsyComparison>
+            <errorLevel type="suppress">
+                <file name="src/Api/Updater/AbstractUpdater.php" />
+                <file name="src/Api/Updater/AbstractUpdater.php" />
+                <file name="src/Api/Updater/CollectionsAvailabilitiesUpdater.php" />
+                <file name="src/Api/Updater/GamesAvailabilitiesUpdater.php" />
+                <file name="src/Api/Updater/RegionalDexNumbersUpdater.php" />
+                <file name="src/Web/Controller/AlbumIndexController.php" />
+                <file name="src/Web/Controller/AlbumUpsertController.php" />
+                <file name="src/Web/Controller/TrainerUpsertController.php" />
+                <file name="src/Web/Service/TrainerIdsService.php" />
+            </errorLevel>
+        </RiskyTruthyFalsyComparison>
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <file name="src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>        
+    </issueHandlers>
 </psalm>

@@ -14,7 +14,6 @@ use App\Api\Message\UpdateCollectionsAvailabilities;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountCollectionAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -25,7 +24,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(UpdateCollectionsAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class UpdateCollectionsAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountCollectionAvailabilityTrait;

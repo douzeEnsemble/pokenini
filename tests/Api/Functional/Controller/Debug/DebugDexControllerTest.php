@@ -28,7 +28,7 @@ class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var bool[][]|bool[][][]|int[][]|int[][][]|string[][]|string[][][] $data */
+        /** @var null|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);
@@ -60,7 +60,7 @@ class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var string[] $data */
+        /** @var null|string[] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);

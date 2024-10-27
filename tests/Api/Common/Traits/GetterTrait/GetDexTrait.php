@@ -9,7 +9,7 @@ use Doctrine\DBAL\Connection;
 trait GetDexTrait
 {
     /**
-     * @return string[]
+     * @return bool[]|null[]|string[]
      */
     protected function getDexFromSlug(string $slug): array
     {

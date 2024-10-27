@@ -66,7 +66,7 @@ class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
             return $this->pokemons[$name];
         }
 
-        /** @var Pokemon $pokemon */
+        /** @var ?Pokemon $pokemon */
         $pokemon = $this->pokemonsRepo->findOneBy(['name' => $name]);
 
         $this->assertNotNull($pokemon);

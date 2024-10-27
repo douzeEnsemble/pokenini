@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/istration/action')]
 class AdminActionController extends AbstractController
 {
-    public const SESSION_ACTION_DATA = 'admin.action.response.content';
+    public const string SESSION_ACTION_DATA = 'admin.action.response.content';
 
     public function __construct(
         private readonly CacheInvalidatorService $cacheInvalidatorService,

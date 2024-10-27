@@ -143,11 +143,12 @@ class ActionLogsControllerTest extends WebTestCase
     }
 
     /**
-     * @param string[] $data
+     * @param null[]|string[] $data
      */
     private function assertIsNotDone(array $data): void
     {
         $this->assertArrayHasKey('created_at', $data);
+        $this->assertIsString($data['created_at']);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
             $data['created_at']
@@ -167,23 +168,26 @@ class ActionLogsControllerTest extends WebTestCase
     }
 
     /**
-     * @param string[] $data
+     * @param null[]|null[][]|string[]|string[][] $data
      */
     private function assertIsDone(array $data): void
     {
         $this->assertArrayHasKey('created_at', $data);
+        $this->assertIsString($data['created_at']);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
             $data['created_at']
         );
 
         $this->assertArrayHasKey('done_at', $data);
+        $this->assertIsString($data['done_at']);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
             $data['done_at']
         );
 
         $this->assertArrayHasKey('execution_time', $data);
+        $this->assertIsString($data['execution_time']);
         $this->assertMatchesRegularExpression(
             '/^\d*$/',
             $data['execution_time']
@@ -198,23 +202,26 @@ class ActionLogsControllerTest extends WebTestCase
     }
 
     /**
-     * @param string[] $data
+     * @param null[]|string[] $data
      */
     private function assertIsFailed(array $data): void
     {
         $this->assertArrayHasKey('created_at', $data);
+        $this->assertIsString($data['created_at']);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
             $data['created_at']
         );
 
         $this->assertArrayHasKey('done_at', $data);
+        $this->assertIsString($data['done_at']);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
             $data['done_at']
         );
 
         $this->assertArrayHasKey('execution_time', $data);
+        $this->assertIsString($data['execution_time']);
         $this->assertMatchesRegularExpression(
             '/^\d*$/',
             $data['execution_time']

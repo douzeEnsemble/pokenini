@@ -17,7 +17,6 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -29,7 +28,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(CalculateGameBundlesAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameAvailabilityTrait;

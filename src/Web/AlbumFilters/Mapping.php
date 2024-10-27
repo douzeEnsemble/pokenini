@@ -6,7 +6,7 @@ namespace App\Web\AlbumFilters;
 
 class Mapping
 {
-    private const FILTERS = [
+    private const array FILTERS = [
         'cs' => 'catch_states',
         'f' => 'families',
         'fc' => 'category_forms',

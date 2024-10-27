@@ -14,7 +14,6 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\DexAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -23,8 +22,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(CalculateDexAvailabilitiesHandler::class)]
 #[UsesClass(DexAvailabilitiesCalculatorService::class)]
 #[UsesClass(CalculateDexAvailabilities::class)]
-#[CoversTrait(CalculateHandlerTrait::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(CalculateHandlerTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     public function getServiceClass(): string

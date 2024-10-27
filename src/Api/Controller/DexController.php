@@ -54,7 +54,7 @@ class DexController extends AbstractController
         }
 
         /** @var bool[] */
-        $content = json_decode((string) $json, true);
+        $content = json_decode($json, true);
 
         try {
             $attributes = new TrainerDexAttributes($content);

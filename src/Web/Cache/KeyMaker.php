@@ -6,21 +6,21 @@ namespace App\Web\Cache;
 
 class KeyMaker
 {
-    private const CACHE_KEY_SEPARATOR = '_';
+    private const string CACHE_KEY_SEPARATOR = '_';
 
-    private const CACHE_KEY_CACHE_REGISTER = 'register';
+    private const string CACHE_KEY_CACHE_REGISTER = 'register';
 
-    private const CACHE_KEY_DEX = 'dex';
-    private const CACHE_KEY_CATCH_STATES = 'catch_states';
-    private const CACHE_KEY_TYPES = 'types';
-    private const CACHE_KEY_GAME_BUNDLES = 'game_bundles';
-    private const CACHE_KEY_COLLECTIONS = 'collections';
-    private const CACHE_KEY_FORMS_CATEGORY = 'forms_category';
-    private const CACHE_KEY_FORMS_REGIONAL = 'forms_regional';
-    private const CACHE_KEY_FORMS_SPECIAL = 'forms_special';
-    private const CACHE_KEY_FORMS_VARIANT = 'forms_variant';
-    private const CACHE_KEY_ALBUM = 'album';
-    private const CACHE_KEY_REPORTS = 'reports';
+    private const string CACHE_KEY_DEX = 'dex';
+    private const string CACHE_KEY_CATCH_STATES = 'catch_states';
+    private const string CACHE_KEY_TYPES = 'types';
+    private const string CACHE_KEY_GAME_BUNDLES = 'game_bundles';
+    private const string CACHE_KEY_COLLECTIONS = 'collections';
+    private const string CACHE_KEY_FORMS_CATEGORY = 'forms_category';
+    private const string CACHE_KEY_FORMS_REGIONAL = 'forms_regional';
+    private const string CACHE_KEY_FORMS_SPECIAL = 'forms_special';
+    private const string CACHE_KEY_FORMS_VARIANT = 'forms_variant';
+    private const string CACHE_KEY_ALBUM = 'album';
+    private const string CACHE_KEY_REPORTS = 'reports';
 
     public static function getDexKey(): string
     {

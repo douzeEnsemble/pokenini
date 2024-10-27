@@ -34,7 +34,7 @@ class RequestedContentService
 
         $content = $request->getContent();
 
-        if (!is_string($content) || !$content) {
+        if (!$content) {
             throw new EmptyContentException();
         }
 

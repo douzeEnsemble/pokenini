@@ -14,8 +14,8 @@ use Symfony\Component\Uid\Uuid;
 
 class GamesAvailabilitiesUpdater extends AbstractUpdater
 {
-    protected const RANGE_SIZE = 100;
-    protected const BATCH_SIZE = 20;
+    protected const int RANGE_SIZE = 100;
+    protected const int BATCH_SIZE = 20;
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
     protected string $statisticName = 'games_availabilities';

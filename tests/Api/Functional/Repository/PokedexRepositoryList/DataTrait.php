@@ -7,7 +7,7 @@ namespace App\Tests\Api\Functional\Repository\PokedexRepositoryList;
 trait DataTrait
 {
     /**
-     * @param int[][]|string[][] $pokedex
+     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
      */
     public function assertPokedexBulbasaur(array $pokedex): void
     {
@@ -35,7 +35,7 @@ trait DataTrait
     }
 
     /**
-     * @param int[][]|string[][] $pokedex
+     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
      */
     public function assertPokedexIvysaur(array $pokedex): void
     {
@@ -56,7 +56,7 @@ trait DataTrait
     }
 
     /**
-     * @param int[][]|string[][] $pokedex
+     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
      */
     public function assertPokedexVenusaur(array $pokedex): void
     {
@@ -77,7 +77,7 @@ trait DataTrait
     }
 
     /**
-     * @param int[][]|string[][] $pokedex
+     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
      */
     public function assertPokedexCaterpie(array $pokedex): void
     {
@@ -104,7 +104,7 @@ trait DataTrait
     }
 
     /**
-     * @param int[][]|string[][] $pokedex
+     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
      */
     public function assertPokedexDouze(array $pokedex): void
     {

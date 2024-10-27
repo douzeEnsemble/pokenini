@@ -14,7 +14,6 @@ use App\Api\Message\UpdatePokemons;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -25,7 +24,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(UpdatePokemons::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;

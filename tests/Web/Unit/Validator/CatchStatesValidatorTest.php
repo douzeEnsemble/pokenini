@@ -17,6 +17,8 @@ use Symfony\Component\Validator\Test\ConstraintValidatorTestCase;
 
 /**
  * @internal
+ *
+ * @extends ConstraintValidatorTestCase<CatchStatesValidator>
  */
 #[CoversClass(CatchStatesValidator::class)]
 #[UsesClass(CatchStates::class)]
@@ -41,11 +43,13 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @return \ArrayIterator<int, CatchStates[]>
+     * @return CatchStates[][]
      */
     public static function providerInvalidConstraints(): iterable
     {
-        yield [new CatchStates()];
+        return [
+            [new CatchStates()],
+        ];
     }
 
     #[DataProvider('providerValidConstraints')]
@@ -57,11 +61,13 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
     }
 
     /**
-     * @return \ArrayIterator<int, CatchStates[]>
+     * @return CatchStates[][]
      */
     public static function providerValidConstraints(): iterable
     {
-        yield [new CatchStates()];
+        return [
+            [new CatchStates()],
+        ];
     }
 
     public function testUnexpectedType(): void

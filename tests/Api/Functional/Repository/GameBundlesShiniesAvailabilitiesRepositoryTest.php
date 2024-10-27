@@ -153,7 +153,7 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
             return $this->gameBundles[$name];
         }
 
-        /** @var GameBundle $gameBundle */
+        /** @var ?GameBundle $gameBundle */
         $gameBundle = $this->gameBundlesRepo->findOneBy(['name' => $name]);
 
         $this->assertNotNull($gameBundle);
@@ -169,7 +169,7 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
             return $this->pokemons[$slug];
         }
 
-        /** @var Pokemon $pokemon */
+        /** @var ?Pokemon $pokemon */
         $pokemon = $this->pokemonsRepo->findOneBy(['slug' => $slug]);
 
         $this->assertNotNull($pokemon);

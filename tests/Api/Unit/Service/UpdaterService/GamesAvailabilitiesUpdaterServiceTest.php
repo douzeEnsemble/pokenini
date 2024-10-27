@@ -32,7 +32,6 @@ class GamesAvailabilitiesUpdaterServiceTest extends TestCase
         $report = $service->getReport();
 
         $this->assertInstanceOf(Report::class, $report);
-        $this->assertIsArray($report->detail);
         $this->assertInstanceOf(Statistic::class, $report->detail[0]);
     }
 

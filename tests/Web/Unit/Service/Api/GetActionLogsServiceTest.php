@@ -24,7 +24,6 @@ class GetActionLogsServiceTest extends TestCase
     {
         $actionLogs = $this->getService()->get();
 
-        $this->assertIsArray($actionLogs);
         $this->assertCount(9, $actionLogs);
 
         $expectedLogs = [

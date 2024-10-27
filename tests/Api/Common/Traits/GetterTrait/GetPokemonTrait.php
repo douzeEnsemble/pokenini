@@ -9,7 +9,7 @@ use Doctrine\DBAL\Connection;
 trait GetPokemonTrait
 {
     /**
-     * @return string[]
+     * @return bool[]|null[]|string[]
      */
     protected function getPokemonFromName(string $name): array
     {
