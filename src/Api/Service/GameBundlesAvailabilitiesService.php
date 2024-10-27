@@ -11,7 +11,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class GameBundlesAvailabilitiesService
 {
-    private const CACHE_PREFIX = 'gba-';
+    private const string CACHE_PREFIX = 'gba-';
 
     public function __construct(
         private readonly GameBundlesAvailabilitiesRepository $repository,

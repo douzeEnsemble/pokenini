@@ -47,7 +47,7 @@ class AlbumIndexController extends AbstractController
         $apiFilters = Mapping::get($filters);
 
         $pokedex = $this->getTrainerPokedexService->getPokedexDataByTrainerId($dexSlug, $apiFilters, $trainerId);
-        if (null === $pokedex || empty($pokedex['dex'])) {
+        if (null === $pokedex || !isset($pokedex['dex']) || empty($pokedex['dex'])) {
             throw $this->createNotFoundException();
         }
 

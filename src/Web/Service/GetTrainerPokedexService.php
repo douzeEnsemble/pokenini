@@ -17,7 +17,7 @@ class GetTrainerPokedexService
     /**
      * @param string[]|string[][] $filters
      *
-     * @return string[][][]
+     * @return null|string[][]
      */
     public function getPokedexData(string $dexSlug, array $filters): ?array
     {
@@ -29,7 +29,7 @@ class GetTrainerPokedexService
     /**
      * @param string[]|string[][] $filters
      *
-     * @return string[][][]
+     * @return null|string[][]
      */
     public function getPokedexDataByTrainerId(string $dexSlug, array $filters, string $trainerId): ?array
     {

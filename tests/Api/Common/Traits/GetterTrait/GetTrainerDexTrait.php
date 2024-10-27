@@ -9,7 +9,7 @@ use Doctrine\DBAL\Connection;
 trait GetTrainerDexTrait
 {
     /**
-     * @return string[]
+     * @return bool[]|null[]|string[]
      */
     protected function getTrainerDex(string $trainerExternalId, string $dexSlug): array
     {

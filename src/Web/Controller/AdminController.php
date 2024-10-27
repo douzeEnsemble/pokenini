@@ -25,7 +25,7 @@ class AdminController extends AbstractController
     {
         $session = $requestStack->getSession();
 
-        /** @var AdminAction $adminAction */
+        /** @var ?AdminAction $adminAction */
         $adminAction = $session->get(AdminActionController::SESSION_ACTION_DATA);
         $session->remove(AdminActionController::SESSION_ACTION_DATA);
 

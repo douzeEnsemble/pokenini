@@ -206,7 +206,7 @@ abstract class AbstractUpdater implements UpdaterInterface
      */
     protected function upsertRecords(array $records): void
     {
-        array_walk($records, fn ($record) => $this->upsertRecord($record));
+        array_walk($records, fn (array $record) => $this->upsertRecord($record));
     }
 
     protected function removeExistingRecords(): void

@@ -53,7 +53,7 @@ class GamesShiniesAvailabilitiesServiceTest extends TestCase
         $cache = $this->createMock(CacheInterface::class);
         $cache->method('get')
             ->with('gsa-charizard')
-            ->willReturnCallback(function ($key, $callback) {
+            ->willReturnCallback(function (string $key, callable $callback): mixed {
                 unset($key); // To remove PHPMD.UnusedFormalParameter warning
 
                 return $callback();

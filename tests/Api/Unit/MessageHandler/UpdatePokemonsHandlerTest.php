@@ -14,7 +14,6 @@ use App\Api\Service\UpdaterService\PokemonsUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -23,8 +22,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdatePokemonsHandler::class)]
 #[UsesClass(PokemonsUpdaterService::class)]
 #[UsesClass(UpdatePokemons::class)]
-#[CoversTrait(CalculateHandlerTrait::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(CalculateHandlerTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
 {
     public function getServiceClass(): string

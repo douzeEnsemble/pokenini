@@ -15,6 +15,9 @@ use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestCalculateHandler extends TestCase
 {
+    /**
+     * @return class-string
+     */
     abstract public function getServiceClass(): string;
 
     abstract public function getHandler(

@@ -14,8 +14,8 @@ use Symfony\Component\Uid\Uuid;
 
 class RegionalDexNumbersUpdater extends AbstractUpdater
 {
-    protected const RANGE_SIZE = 100;
-    protected const BATCH_SIZE = 20;
+    protected const int RANGE_SIZE = 100;
+    protected const int BATCH_SIZE = 20;
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
     protected string $statisticName = 'regional_dex_numbers';

@@ -6,7 +6,7 @@ namespace App\Api\Helper;
 
 class A1Notation
 {
-    private const LOOKUP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    private const string LOOKUP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     public static function fromIndex(int $rowIndex, int $columnIndex): string
     {

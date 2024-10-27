@@ -11,7 +11,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class GamesShiniesAvailabilitiesService
 {
-    private const CACHE_PREFIX = 'gsa-';
+    private const string CACHE_PREFIX = 'gsa-';
 
     public function __construct(
         private readonly GamesShiniesAvailabilitiesRepository $repository,

@@ -27,8 +27,8 @@
       "bulbasaur",
       "",
       "bulbasaur",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "Yes",
@@ -55,8 +55,8 @@
       "ivysaur",
       "",
       "ivysaur",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "Yes",
@@ -83,8 +83,8 @@
       "venusaur",
       "",
       "venusaur",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "Yes",
@@ -111,8 +111,8 @@
       "venusaur",
       "",
       "venusaur-f",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "No",
@@ -139,8 +139,8 @@
       "venusaur-mega",
       "Yes",
       "venusaur-mega",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "Yes",
@@ -167,8 +167,8 @@
       "venusaur-gmax",
       "",
       "venusaur-gmax",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ],
     [
       "No",
@@ -195,8 +195,8 @@
       "douze",
       "",
       "douze",
-      "Grass",
-      "Poison"
+      "grass",
+      "poison"
     ]
   ]
 }

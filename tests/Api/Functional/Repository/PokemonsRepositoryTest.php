@@ -46,10 +46,8 @@ class PokemonsRepositoryTest extends KernelTestCase
         /** @var PokemonsRepository $repo */
         $repo = static::getContainer()->get(PokemonsRepository::class);
 
-        $pokemonsIterator = $repo->getQueryAll()->toIterable();
-
         /** @var Pokemon[] $pokemons */
-        $pokemons = [...$pokemonsIterator];
+        $pokemons = $repo->getQueryAll()->getResult();
 
         $this->assertCount($this->getPokemonCount(), $pokemons);
 

@@ -12,7 +12,6 @@ use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetActionLogTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -20,7 +19,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  * @internal
  */
 #[CoversClass(UpdateGamesShiniesAvailabilitiesHandler::class)]
-#[CoversTrait(ActionEnderTrait::class)]
+#[CoversClass(ActionEnderTrait::class)]
 class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

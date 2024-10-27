@@ -93,14 +93,19 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $bulbasaurAfter = $this->getPokemonFromName('Bulbasaur');
         $ivysaurAfter = $this->getPokemonFromName('Ivysaur');
 
+        $this->assertNull($bulbasaurAfter['deleted_at']);
+        $this->assertNull($ivysaurAfter['deleted_at']);
+
         $this->assertEquals('bulbasaur', $bulbasaurAfter['family']);
         $this->assertEquals('bulbasaur', $ivysaurAfter['family']);
 
         $this->assertNotNull($bulbasaurAfter['category_form_id']);
         $this->assertNull($ivysaurAfter['category_form_id']);
 
-        $this->assertNotNull($bulbasaurBefore['primary_type_id']);
-        $this->assertNotNull($bulbasaurBefore['secondary_type_id']);
+        $this->assertNotNull($bulbasaurAfter['primary_type_id']);
+        $this->assertNotNull($bulbasaurAfter['secondary_type_id']);
+        $this->assertNotNull($ivysaurAfter['primary_type_id']);
+        $this->assertNotNull($ivysaurAfter['secondary_type_id']);
     }
 
     public function testImportNewAndExistingPokemons(): void

@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FromRequest
 {
-    private const STRING_FILTERS = [
+    private const array STRING_FILTERS = [
         'cs',
         'f',
     ];
 
-    private const MULTIPLE_FILTERS = [
+    private const array MULTIPLE_FILTERS = [
         'fc',
         'fr',
         'fs',
@@ -42,8 +42,9 @@ class FromRequest
 
         foreach (self::MULTIPLE_FILTERS as $filterName) {
             if ($request->query->has($filterName)) {
-                /** @var string[] $values */
-                $values = $request->get($filterName, []);
+                /** @var null|string[] $values */
+                $values = $request->query->all()[$filterName];
+                $values ??= [];
                 $filters[$filterName] = array_filter($values);
             }
         }

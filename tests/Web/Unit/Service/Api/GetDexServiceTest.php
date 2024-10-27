@@ -7,7 +7,6 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\GetDexService;
 use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -17,7 +16,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  * @internal
  */
 #[CoversClass(GetDexService::class)]
-#[CoversTrait(CacheRegisterTrait::class)]
+#[CoversClass(CacheRegisterTrait::class)]
 class GetDexServiceTest extends TestCase
 {
     private ArrayAdapter $cache;

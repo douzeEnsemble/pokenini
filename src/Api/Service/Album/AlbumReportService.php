@@ -48,7 +48,7 @@ class AlbumReportService
             }
 
             if ('no' !== $catchStatesCount['slug']) {
-                $totalUncaught -= $catchStatesCount['count'];
+                $totalUncaught -= (int) $catchStatesCount['count'];
             }
         }
 

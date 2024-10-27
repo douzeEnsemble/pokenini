@@ -10,7 +10,6 @@ use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -18,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(DexAvailabilitiesRepository::class)]
-#[CoversTrait(FiltersTrait::class)]
+#[CoversClass(FiltersTrait::class)]
 class DexAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

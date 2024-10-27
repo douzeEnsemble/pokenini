@@ -14,8 +14,8 @@ use Symfony\Component\Uid\Uuid;
 
 class CollectionsAvailabilitiesUpdater extends AbstractUpdater
 {
-    protected const RANGE_SIZE = 100;
-    protected const BATCH_SIZE = 20;
+    protected const int RANGE_SIZE = 100;
+    protected const int BATCH_SIZE = 20;
     protected string $sheetName = 'Collections Availability';
     protected string $tableName = 'collection_availability';
     protected string $statisticName = 'collections_availabilities';

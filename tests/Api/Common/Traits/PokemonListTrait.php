@@ -11,7 +11,7 @@ trait PokemonListTrait
     public function assertSameSlugs(array $list, array $slugs): void
     {
         $items = $list;
-        array_walk($items, fn (&$item) => $item = $item['pokemon_slug']);
+        array_walk($items, fn (array &$item): mixed => $item = $item['pokemon_slug']);
 
         $this->assertSame($items, $slugs);
     }

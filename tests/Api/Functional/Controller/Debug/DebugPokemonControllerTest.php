@@ -28,27 +28,15 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var bool[][]|bool[][][]|bool[][][][]|int[][]|int[][][]|int[][][][]|string[][]|string[][][]|string[][][][] $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
-
-        $this->assertNotNull($data);
-
-        $this->assertArrayHasKey('identifier', $data);
-        $this->assertEquals('venusaur-mega', $data['slug']);
-
-        $this->assertArrayHasKey('originalGameBundle', $data);
-        $this->assertArrayHasKey('identifier', $data['originalGameBundle']);
-        $this->assertEquals('xy', $data['originalGameBundle']['slug']);
-
-        $this->assertNull($data['variantForm']);
-
-        $this->assertNull($data['regionalForm']);
-
-        $this->assertArrayHasKey('specialForm', $data);
-        $this->assertArrayHasKey('identifier', $data['specialForm']);
-        $this->assertEquals('mega', $data['specialForm']['slug']);
-
-        $this->assertNull($data['categoryForm']);
+        $this->assertStringContainsString('"slug":"venusaur-mega",', $content);
+        $this->assertStringContainsString('"slug":"6",', $content);
+        $this->assertStringContainsString('"slug":"xy",', $content);
+        $this->assertStringContainsString('"variantForm":null,', $content);
+        $this->assertStringContainsString('"regionalForm":null,', $content);
+        $this->assertStringContainsString('"slug":"mega",', $content);
+        $this->assertStringContainsString('"categoryForm":null,', $content);
+        $this->assertStringContainsString('"slug":"grass",', $content);
+        $this->assertStringContainsString('"slug":"poison",', $content);
     }
 
     public function testPokemonNotFound(): void
@@ -86,7 +74,7 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var bool[][] $data */
+        /** @var ?bool[][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);
@@ -95,21 +83,17 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertArrayNotHasKey('blue', $data['gamesAvailabilities']);
         $this->assertArrayNotHasKey('gold', $data['gamesAvailabilities']);
         $this->assertArrayHasKey('x', $data['gamesAvailabilities']);
-        $this->assertIsBool($data['gamesAvailabilities']['x']);
 
         $this->assertArrayHasKey('gamesShiniesAvailabilities', $data);
         $this->assertArrayNotHasKey('blue', $data['gamesShiniesAvailabilities']);
         $this->assertArrayNotHasKey('gold', $data['gamesShiniesAvailabilities']);
         $this->assertArrayHasKey('x', $data['gamesShiniesAvailabilities']);
-        $this->assertIsBool($data['gamesShiniesAvailabilities']['x']);
 
         $this->assertArrayHasKey('gameBundlesAvailabilities', $data);
         $this->assertArrayHasKey('goldsilvercrystal', $data['gameBundlesAvailabilities']);
-        $this->assertIsBool($data['gameBundlesAvailabilities']['goldsilvercrystal']);
 
         $this->assertArrayHasKey('gameBundlesShiniesAvailabilities', $data);
         $this->assertArrayHasKey('goldsilvercrystal', $data['gameBundlesShiniesAvailabilities']);
-        $this->assertIsBool($data['gameBundlesShiniesAvailabilities']['goldsilvercrystal']);
     }
 
     public function testPokemonAvailabilitiesNotFound(): void

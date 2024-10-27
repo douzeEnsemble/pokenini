@@ -24,7 +24,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : data init_db data_app
 .PHONY : composer vendor sf cc
 .PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
-.PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm phpstan deptrac
+.PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm psalm_fix phpstan deptrac
 .PHONY : integration newman
 .PHONY : measures clear-build coverage coverage_html infection infection_api infection_web
 .PHONY : security composer_audit security_checker dependency_check
@@ -178,7 +178,12 @@ phpmd: tools/phpmd/vendor/bin/phpmd
 
 psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
-	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false
+	@$(PHP_CONT) rm -Rf ~/.cache/psalm
+	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=true
+
+psalm_fix: ## Execute psalm auto fixing
+psalm_fix: tools/psalm/vendor/bin/psalm
+	@$(PHP) tools/psalm/vendor/bin/psalm --alter --issues=UnnecessaryVarAnnotation,UnusedVariable,PossiblyUnusedMethod,MissingParamType
 
 phpstan: ## Execute phpstan analyse
 phpstan: tools/phpstan/vendor/bin/phpstan

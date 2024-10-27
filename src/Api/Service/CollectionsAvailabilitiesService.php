@@ -11,7 +11,7 @@ use Symfony\Contracts\Cache\CacheInterface;
 
 class CollectionsAvailabilitiesService
 {
-    private const CACHE_PREFIX = 'ca-';
+    private const string CACHE_PREFIX = 'ca-';
 
     public function __construct(
         private readonly CollectionsAvailabilitiesRepository $repository,

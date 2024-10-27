@@ -14,8 +14,8 @@ class PokemonAvailabilities
 {
     use BaseEntityTrait;
 
-    public const CATEGORY_GAME_BUNDLE = 'game_bundle';
-    public const CATEGORY_GAME_BUNDLE_SHINY = 'game_bundle_shiny';
+    public const string CATEGORY_GAME_BUNDLE = 'game_bundle';
+    public const string CATEGORY_GAME_BUNDLE_SHINY = 'game_bundle_shiny';
 
     #[ORM\ManyToOne(targetEntity: Pokemon::class)]
     #[ORM\JoinColumn(nullable: false)]
