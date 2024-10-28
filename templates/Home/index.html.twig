@@ -34,7 +34,7 @@
 <div class="card col-lg-3 col-sm-6 col-12 home-item position-relative">
     <a href="{{ url }}">
         {% set bannerUrl = dexBannerUrl|format(dex.slug) %}
-        {% set defaultBannerUrl = dexBannerUrl|format('default') %}
+        {% set defaultBannerUrl = '/img/banner/default.webp' %}
         <img
             src="{{ bannerUrl }}"
             class="card-img"
