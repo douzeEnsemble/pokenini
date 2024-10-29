@@ -116,8 +116,6 @@ function adjustSelectSizes() {
   const selects = document.querySelectorAll(".offcanvas select[multiple]");
   const breakpoint = 768;
 
-  console.debug(selects);
-  console.log(window.innerWidth);
   selects.forEach(function (select) {
     if (window.innerWidth <= breakpoint) {
       select.size = 1;
