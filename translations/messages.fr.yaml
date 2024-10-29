@@ -79,15 +79,24 @@ album:
             regular: "Image de"
             shiny: "Image chromatique de"
     update:
-        title: "Maj"
-        success:
-            prefix: "Le changement de statut de"
-            radical: "%pokemonName%"
-            suffix: "a été enregistré"
-        error:
-            prefix: "Le changement de statut de"
-            radical: "%pokemonName%"
-            suffix: "a échoué"
+        catch_state:
+            success:
+                prefix: "Le changement de statut de"
+                radical: "%pokemonName%"
+                suffix: "a été enregistré"
+            error:
+                prefix: "Le changement de statut de"
+                radical: "%pokemonName%"
+                suffix: "a échoué"
+        counter:
+            success:
+                prefix: "L'enregistrement du compteur de"
+                radical: "%pokemonName%"
+                suffix: "a réussi"
+            error:
+                prefix: "L'enregistrement du compteur de"
+                radical: "%pokemonName%"
+                suffix: "a échoué"
     intro:
         action:
             mode:

@@ -11,12 +11,21 @@
 .album-case-catch-state {
     font-size: .7rem;
 }
+.album-case-counter {
+    font-size: .7rem;
+    background: whitesmoke;
+}
 .album-case-forms {
     font-size: .6rem;
 }
+.album-case-catch-state {
+    height: 20px;
+    max-height: 20px;
+}
 .album-case-action {
     font-size: .6rem;
-    padding-bottom: .125rem;
+    height: 20px;
+    max-height: 20px;
 }
 .album-case-action select {
     width: 100%;
@@ -27,10 +36,14 @@
     font-size: .3rem;
     color: rgba(0 0 0 / 0%);
 }
-a.album-case-catch-state-edit-action {
+a.album-case-catch-state-edit-action, 
+a.album-case-counter-add, 
+a.album-case-counter-remove {
     color: inherit;
 }
-a.album-case-catch-state-edit-action:hover {
+a.album-case-catch-state-edit-action:hover, 
+a.album-case-counter-add:hover, 
+a.album-case-counter-remove:hover {
     color: black;
 }
 

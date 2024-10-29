@@ -79,15 +79,15 @@ album:
             regular: "Image if"
             shiny: "Shiny image of"
     update:
-        title: "Update"
-        success:
-            prefix: ""
-            radical: "%pokemonName%"
-            suffix: "new state has been saved"
-        error:
-            prefix: ""
-            radical: "%pokemonName%"
-            suffix: "new state has not been saved"
+        catch_state:
+            success:
+                prefix: ""
+                radical: "%pokemonName%"
+                suffix: "counter has been saved"
+            error:
+                prefix: ""
+                radical: "%pokemonName%"
+                suffix: "counter has not been saved"
     intro:
         action:
             mode:

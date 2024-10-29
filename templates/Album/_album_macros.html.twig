@@ -45,9 +45,9 @@
             &nbsp;
         {% endif %}
     </div>
-    <div class="album-case-catch-state-container">
+    <div class="album-actions-container rounded-1">
         {% if canEdit %}
-        <div class="album-case-action text-center" hidden>
+        <div class="album-case-action text-start" hidden>
             <select
                 class="catch-state-{{ currentCatchState }}"
                 id="catch-state-{{ item.pokemon_slug }}"
@@ -62,8 +62,15 @@
             </select>
         </div>
         {% endif %}
-        <div class="album-case-catch-state rounded-1 ps-2 overflow-auto">
+        <div class="album-case-catch-state ps-1">
             {% if canEdit %}
+            <a
+                id="{{ item.pokemon_slug }}-catch-state-edit-action"
+                class="album-case-catch-state-edit-action float-end pe-1"
+                href="#{{ item.pokemon_slug }}"
+            >
+                <i class="bi bi-pencil-square"></i>
+            </a>
             <a
                 href="#{{ item.pokemon_slug }}"
                 class="link-dark album-case-catch-state-label"
@@ -81,16 +88,28 @@
             {% else %}
             </span>
             {% endif %}
-            {% if canEdit %}
-            <a
-                id="{{ item.pokemon_slug }}-catch-state-edit-action"
-                class="album-case-catch-state-edit-action float-end pe-1"
-                href="#{{ item.pokemon_slug }}"
-            >
-                <i class="bi bi-pencil-square"></i>
-            </a>
-            {% endif %}
         </div>
+    </div>
+    <div class="album-case-counter rounded-1 text-end pe-1">
+        <input type="hidden" id="{{ item.pokemon_slug }}-counter-value" value="100000000">
+        <a
+            type="button" 
+            class="album-case-counter-remove"
+            id="{{ item.pokemon_slug }}-counter-remove"
+            data-target-value="{{ item.pokemon_slug }}-counter-value"
+            data-target-display="{{ item.pokemon_slug }}-counter-display"
+        ><i class="bi bi-dash-square-dotted"></i></a>
+        <span
+            class="album-case-counter-display"
+            id="{{ item.pokemon_slug }}-counter-display"
+        >{{ 100000000|format_number({}, locale=locale)}}</span>
+        <a
+            type="button" 
+            class="album-case-counter-add"
+            id="{{ item.pokemon_slug }}-counter-add"
+            data-target-value="{{ item.pokemon_slug }}-counter-value"
+            data-target-display="{{ item.pokemon_slug }}-counter-display"
+        ><i class="bi bi-plus-square-dotted"></i></a>
     </div>
 </div>
 
@@ -328,23 +347,45 @@
 {% macro toasts(item) %}
 {% set locale = app.request.locale %}
 {% set pokemonName = locale is same as('fr') ? item.pokemon_french_name : item.pokemon_name %}
-<div id="successToast-{{ item.pokemon_slug }}" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+<div id="catchStateSuccessToast-{{ item.pokemon_slug }}" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
         <div class="toast-body">
-            {{ 'album.update.success.prefix'|trans }}
-            <strong>{{ 'album.update.success.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
-            {{ 'album.update.success.suffix'|trans }}
+            {{ 'album.update.catch_state.success.prefix'|trans }}
+            <strong>{{ 'album.update.catch_state.success.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
+            {{ 'album.update.catch_state.success.suffix'|trans }}
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
 
-<div id="errorToast-{{ item.pokemon_slug }}" class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+<div id="catchStateErrorToast-{{ item.pokemon_slug }}" class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
         <div class="toast-body">
-            {{ 'album.update.error.prefix'|trans }}
-            <strong>{{ 'album.update.error.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
-            {{ 'album.update.error.suffix'|trans }}
+            {{ 'album.update.catch_state.error.prefix'|trans }}
+            <strong>{{ 'album.update.catch_state.error.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
+            {{ 'album.update.catch_state.error.suffix'|trans }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
+<div id="counterSuccessToast-{{ item.pokemon_slug }}" class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ 'album.update.counter.success.prefix'|trans }}
+            <strong>{{ 'album.update.counter.success.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
+            {{ 'album.update.counter.success.suffix'|trans }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>
+
+<div id="counterErrorToast-{{ item.pokemon_slug }}" class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+            {{ 'album.update.counter.error.prefix'|trans }}
+            <strong>{{ 'album.update.counter.error.radical'|trans({'%pokemonName%': pokemonName}) }}</strong>
+            {{ 'album.update.counter.error.suffix'|trans }}
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
