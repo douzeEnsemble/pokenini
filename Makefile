@@ -122,6 +122,7 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --working-dir=tools/psalm
 	@$(COMPOSER) update --working-dir=tools/phpstan
 	@$(COMPOSER) update --working-dir=tools/infection
+	@$(COMPOSER) update --working-dir=tools/jsonlint
 
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
