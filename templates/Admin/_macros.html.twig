@@ -218,13 +218,16 @@
 {% set timeDiff = actionData.createdAt.diff(date('now')) %}
 {% set elapsedSeconds = timeDiff.days * 86400 + timeDiff.h * 3600 + timeDiff.i * 60 + timeDiff.s %}
 {% set elapsedPercent = otherActionData.executionTime ? elapsedSeconds * 100 / otherActionData.executionTime : 0 %}
-{% set progressColor = 'bg-light' %}
-{% if 20 > elapsedPercent%}
-{% set progressColor = 'bg-info' %}
-{% elseif 90 > elapsedPercent %}
-{% set progressColor = 'bg-warning' %}
-{% elseif 100 < elapsedPercent %}
+
 {% set progressColor = 'bg-danger' %}
+{% if elapsedPercent < 125 %}
+{% set progressColor = 'bg-warning' %}
+{% endif %}
+{% if elapsedPercent <= 100 %}
+{% set progressColor = 'bg-info' %}
+{% endif %}
+{% if elapsedPercent <= 25 %}
+{% set progressColor = 'bg-success' %}
 {% endif %}
 
 <div 
