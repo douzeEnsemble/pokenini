@@ -50,12 +50,19 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 3, 0, 0, 3);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 3, 0, 0, 3);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testCatchStateFilterNegative(): void
@@ -83,12 +90,19 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(19, $pokemons);
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 9, 0, 3, 7, 19);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 9, 0, 3, 7, 19);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testNoCatchStateFilter(): void
@@ -116,12 +130,19 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(9, $pokemons);
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 9, 0, 0, 0, 9);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 9, 0, 0, 0, 9);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testCatchStateFilterNegativeNo(): void
@@ -149,12 +170,19 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(13, $pokemons);
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 3, 3, 7, 13);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 3, 3, 7, 13);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testCatchStateFilterNull(): void
@@ -219,11 +247,18 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 3, 3, 0, 6);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 3, 3, 0, 6);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 }

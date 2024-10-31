@@ -48,12 +48,19 @@ class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFilteredContro
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 0, 0, 0, 1);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 0, 0, 0, 1);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testCollectionAvailabililiesNullFilter(): void
@@ -131,11 +138,18 @@ class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFilteredContro
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 8, 3, 3, 7, 21);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 8, 3, 3, 7, 21);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 }

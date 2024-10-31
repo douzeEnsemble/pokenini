@@ -85,6 +85,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 4, 1, 2, 0, 7);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
@@ -163,6 +170,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 8, 0, 0, 1, 9);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
@@ -238,6 +252,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             ),
             $pokemons
         );
+
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 6, 0, 0, 1, 7);
 
         $this->assertArrayHasKey('report', $data);
 
@@ -315,6 +336,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 0, 0, 0, 7);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
@@ -374,6 +402,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 9, 3, 3, 7, 22);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
@@ -432,6 +467,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
             AlbumData::getExpectedHomeShinyContent(),
             $pokemons
         );
+
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 11, 0, 0, 0, 11);
 
         $this->assertArrayHasKey('report', $data);
 
@@ -540,6 +582,13 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEmpty($data['dex']);
         $this->assertArrayHasKey('pokemons', $data);
         $this->assertEmpty($data['pokemons']);
+
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 0, 0, 0, 0);
 
         $this->assertArrayHasKey('report', $data);
 

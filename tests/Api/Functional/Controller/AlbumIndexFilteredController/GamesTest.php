@@ -59,12 +59,19 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 4, 1, 1, 6, 12);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 4, 1, 1, 6, 12);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testOriginalGameBundleNull(): void
@@ -124,12 +131,19 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 0, 2, 0, 2);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 0, 2, 0, 2);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testGameBundleAvailabilitiesNull(): void
@@ -207,12 +221,19 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 9, 3, 1, 7, 20);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 9, 3, 1, 7, 20);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testGameBundleShinyAvailabilities(): void
@@ -248,12 +269,19 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 0, 2, 1, 1, 4);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 0, 2, 1, 1, 4);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testGameBundleShinyAvailabilitiesNull(): void
@@ -329,11 +357,18 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 9, 1, 2, 6, 18);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 9, 1, 2, 6, 18);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 }

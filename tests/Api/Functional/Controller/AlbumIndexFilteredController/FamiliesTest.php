@@ -53,12 +53,19 @@ class FamiliesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 6, 0, 0, 0, 6);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 6, 0, 0, 0, 6);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testFamilyFilterNull(): void
@@ -126,11 +133,18 @@ class FamiliesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 6, 0, 0, 3, 9);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 6, 0, 0, 3, 9);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 }

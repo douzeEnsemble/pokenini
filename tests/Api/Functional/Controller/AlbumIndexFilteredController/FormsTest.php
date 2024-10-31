@@ -49,12 +49,19 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 0, 0, 1, 2);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 0, 0, 1, 2);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testCategoryFormNull(): void
@@ -115,12 +122,19 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 0, 2, 0, 3);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 0, 2, 0, 3);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testRegionalFormNull(): void
@@ -180,12 +194,19 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 2, 0, 0, 0, 2);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 2, 0, 0, 0, 2);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testSpecialFormNull(): void
@@ -247,12 +268,19 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 3, 0, 0, 0, 3);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 3, 0, 0, 0, 3);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testVariantForm(): void
@@ -288,12 +316,19 @@ class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 2, 0, 1, 4);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 2, 0, 1, 4);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testVariantFormNull(): void
