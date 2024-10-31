@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Controller;
 
+use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\DTO\AlbumFilter\AlbumFiltersRequest;
 use App\Api\Service\Album\AlbumDexService;
 use App\Api\Service\Album\AlbumPokemonService;
@@ -29,7 +30,8 @@ class AlbumIndexController extends AbstractController
 
         $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug, $albumsFilters);
 
-        $report = $albumReportService->get($trainerExternalId, $dexSlug, $albumsFilters);
+        $report = $albumReportService->get($trainerExternalId, $dexSlug, AlbumFilters::createFromArray([]));
+        $filteredReport = $albumReportService->get($trainerExternalId, $dexSlug, $albumsFilters);
 
         $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
@@ -38,6 +40,7 @@ class AlbumIndexController extends AbstractController
             'dex' => $dex,
             'pokemons' => $pokemons,
             'report' => $report,
+            'filteredReport' => $filteredReport,
         ]);
     }
 }

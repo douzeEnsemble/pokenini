@@ -53,12 +53,19 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 6, 0, 0, 0, 6);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 6, 0, 0, 0, 6);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testPrimaryTypeNullFilter(): void
@@ -118,12 +125,19 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 0, 2, 0, 3);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 0, 2, 0, 3);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testSecondaryTypeNullFilter(): void
@@ -187,12 +201,19 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 0, 0, 2, 3);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 0, 0, 2, 3);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
     public function testAnyTypeFilter(): void
@@ -231,11 +252,18 @@ class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
+        $this->assertArrayHasKey('filteredReport', $data);
+
+        /** @var int[]|int[][][]|string[][][] $filteredReport */
+        $filteredReport = $data['filteredReport'];
+
+        $this->assertReport($filteredReport, 1, 2, 2, 2, 7);
+
         $this->assertArrayHasKey('report', $data);
 
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 1, 2, 2, 2, 7);
+        $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 }
