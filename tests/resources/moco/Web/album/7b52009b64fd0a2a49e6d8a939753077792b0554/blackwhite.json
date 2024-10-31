@@ -592,5 +592,6 @@
       },
       { "slug": "yes", "name": "Yes", "frenchName": "Oui", "count": 0 }
     ]
-  }
+  },
+  "filteredReport": {}
 }

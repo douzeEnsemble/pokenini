@@ -65,8 +65,14 @@
                         </a>
                     </span>
                 </th>
-                <td>
-                    {{ line.slug is same as('no') ? report.totalUncaught : line.count }}
+                <td class="text-end">
+                    {% if filteredReport is not empty %}
+                    {% set filteredLine = filteredReport.detail[loop.index0] %}
+                    {{ (filteredLine.slug is same as('no') ? filteredReport.totalUncaught : filteredLine.count)|format_number }}
+                    {% endif %}
+                </td>
+                <td class="text-start">
+                    {{ (line.slug is same as('no') ? report.totalUncaught : line.count)|format_number }}
                 </td>
             </tr>
         {% endfor %}
@@ -93,9 +99,14 @@
                     </a>
                 </span>
             </th>
-            <td>
+            <th class="text-end">
+                {% if filteredReport is not empty %}
+                {{ filteredReport.total }}
+                {% endif %}
+            </th>
+            <th class="text-start">
                 {{ report.total }}
-            </td>
+            </th>
         </tr>
         </tbody>
     </table>
