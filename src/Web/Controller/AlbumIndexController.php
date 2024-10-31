@@ -74,6 +74,7 @@ class AlbumIndexController extends AbstractController
             'currentDexSlug' => $dexSlug,
             'dex' => $dex,
             'report' => $pokedex['report'],
+            'filteredReport' => $pokedex['filteredReport'],
             'list' => $pokemons,
             'catchStates' => $catchStates,
             'types' => $types,

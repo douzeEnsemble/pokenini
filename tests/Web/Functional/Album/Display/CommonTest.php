@@ -194,30 +194,23 @@ class CommonTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table#report tr.catch-state-yes');
         $this->assertCountFilter($crawler, 1, 'table#report tr.catch-state-total');
 
-        $this->assertEquals(
-            '17',
-            $crawler->filter('table#report tr.catch-state-no td')->text()
-        );
-        $this->assertEquals(
-            '1',
-            $crawler->filter('table#report tr.catch-state-toevolve td')->text()
-        );
-        $this->assertEquals(
-            '1',
-            $crawler->filter('table#report tr.catch-state-tobreed td')->text()
-        );
-        $this->assertEquals(
-            '1',
-            $crawler->filter('table#report tr.catch-state-totransfer td')->text()
-        );
-        $this->assertEquals(
-            '20',
-            $crawler->filter('table#report tr.catch-state-yes td')->text()
-        );
-        $this->assertEquals(
-            '37',
-            $crawler->filter('table#report tr.catch-state-total td')->text()
-        );
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-no td')->eq(0)->text());
+        $this->assertEquals('17', $crawler->filter('table#report tr.catch-state-no td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-toevolve td')->eq(0)->text());
+        $this->assertEquals('1', $crawler->filter('table#report tr.catch-state-toevolve td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-tobreed td')->eq(0)->text());
+        $this->assertEquals('1', $crawler->filter('table#report tr.catch-state-tobreed td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-totransfer td')->eq(0)->text());
+        $this->assertEquals('1', $crawler->filter('table#report tr.catch-state-totransfer td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-yes td')->eq(0)->text());
+        $this->assertEquals('20', $crawler->filter('table#report tr.catch-state-yes td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-total th')->eq(1)->text());
+        $this->assertEquals('37', $crawler->filter('table#report tr.catch-state-total th')->eq(2)->text());
 
         $this->assertStringContainsString(
             '/album/demolite?cs=no&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -282,30 +275,23 @@ class CommonTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, 'table#report tr.catch-state-yes');
         $this->assertCountFilter($crawler, 1, 'table#report tr.catch-state-total');
 
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-no td')->text()
-        );
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-toevolve td')->text()
-        );
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-tobreed td')->text()
-        );
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-totransfer td')->text()
-        );
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-yes td')->text()
-        );
-        $this->assertEquals(
-            '0',
-            $crawler->filter('table#report tr.catch-state-total td')->text()
-        );
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-no td')->eq(0)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-no td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-toevolve td')->eq(0)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-toevolve td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-tobreed td')->eq(0)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-tobreed td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-totransfer td')->eq(0)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-totransfer td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-yes td')->eq(0)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-yes td')->eq(1)->text());
+
+        $this->assertEquals('', $crawler->filter('table#report tr.catch-state-total th')->eq(1)->text());
+        $this->assertEquals('0', $crawler->filter('table#report tr.catch-state-total th')->eq(2)->text());
 
         $this->assertStringContainsString(
             '/album/virgin?cs=no&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
