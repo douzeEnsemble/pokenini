@@ -43,6 +43,26 @@ class CatchStateTest extends WebTestCase
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->last()->attr('href')
         );
+        $this->assertCountFilter($crawler, 1, '.progress');
+        $this->assertCountFilter($crawler, 6, '.progress-bar');
+
+        $this->assertEquals(
+            '100%',
+            $crawler->filter('.progress-bar.catch-state-no')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-toevolve')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-tobreed')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-totransfer')->text()
+        );
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-yes')->text()
+        );
     }
 
     public function testFilterCatchStateYes(): void
@@ -69,6 +89,26 @@ class CatchStateTest extends WebTestCase
         $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->last()->attr('href')
+        );
+        $this->assertCountFilter($crawler, 1, '.progress');
+        $this->assertCountFilter($crawler, 6, '.progress-bar');
+
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-no')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-toevolve')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-tobreed')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-totransfer')->text()
+        );
+        $this->assertEquals(
+            '100%',
+            $crawler->filter('.progress-bar.catch-state-yes')->text()
         );
     }
 
@@ -103,6 +143,26 @@ class CatchStateTest extends WebTestCase
             '/fr/album/demo',
             $crawler->filter('table a')->last()->attr('href')
         );
+        $this->assertCountFilter($crawler, 1, '.progress');
+        $this->assertCountFilter($crawler, 6, '.progress-bar');
+
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-no')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-toevolve')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-tobreed')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-totransfer')->text()
+        );
+        $this->assertEquals(
+            '100%',
+            $crawler->filter('.progress-bar.catch-state-yes')->text()
+        );
     }
 
     public function testFilterCatchStateUnknown(): void
@@ -123,6 +183,26 @@ class CatchStateTest extends WebTestCase
         $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->last()->attr('href')
+        );
+        $this->assertCountFilter($crawler, 1, '.progress');
+        $this->assertCountFilter($crawler, 6, '.progress-bar');
+
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-no')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-toevolve')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-tobreed')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-totransfer')->text()
+        );
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-yes')->text()
         );
     }
 
@@ -150,6 +230,26 @@ class CatchStateTest extends WebTestCase
         $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->last()->attr('href')
+        );
+        $this->assertCountFilter($crawler, 1, '.progress');
+        $this->assertCountFilter($crawler, 6, '.progress-bar');
+
+        $this->assertEquals(
+            '0%',
+            $crawler->filter('.progress-bar.catch-state-no')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-toevolve')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-tobreed')->text()
+        );
+        $this->assertEmpty(
+            $crawler->filter('.progress-bar.catch-state-totransfer')->text()
+        );
+        $this->assertEquals(
+            '33.33%',
+            $crawler->filter('.progress-bar.catch-state-yes')->text()
         );
     }
 }
