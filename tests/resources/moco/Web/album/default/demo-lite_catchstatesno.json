@@ -2752,33 +2752,33 @@
     ]
   },
   "filteredReport": {
-    "total": 37,
-    "totalCaught": 20,
+    "total": 17,
+    "totalCaught": 0,
     "totalUncaught": 17,
     "detail": [
       {
         "slug": "no",
         "name": "No",
         "frenchName": "Non",
-        "count": 1
+        "count": 17
       },
       {
         "slug": "toevolve",
         "name": "To evolve",
         "frenchName": "Af. \u00e9voluer",
-        "count": 1
+        "count": 0
       },
       {
         "slug": "tobreed",
         "name": "To breed",
         "frenchName": "Af. reproduire",
-        "count": 1
+        "count": 0
       },
       {
         "slug": "totransfer",
         "name": "To transfer",
         "frenchName": "\u00c0 transf\u00e9rer",
-        "count": 1
+        "count": 0
       },
       {
         "slug": "totrade",
@@ -2790,7 +2790,7 @@
         "slug": "yes",
         "name": "Yes",
         "frenchName": "Oui",
-        "count": 20
+        "count": 0
       }
     ]
   }

@@ -559,9 +559,9 @@
     }
   ],
   "report": {
-    "total": 1736,
-    "totalCaught": 2,
-    "totalUncaught": 1731,
+    "total": 7,
+    "totalCaught": 6,
+    "totalUncaught": 1,
     "detail": [
       {
         "slug": "no",
@@ -602,15 +602,15 @@
     ]
   },
   "filteredReport": {
-    "total": 1736,
-    "totalCaught": 2,
-    "totalUncaught": 1731,
+    "total": 6,
+    "totalCaught": 6,
+    "totalUncaught": 0,
     "detail": [
       {
         "slug": "no",
         "name": "No",
         "frenchName": "Non",
-        "count": 1
+        "count": 0
       },
       {
         "slug": "toevolve",
