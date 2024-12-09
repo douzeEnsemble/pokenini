@@ -21,6 +21,16 @@ parameters:
 			path: src/Web/Exception/ModifyFailedException.php
 
 		-
+			message: "#^Method App\\\\Web\\\\Security\\\\User\\:\\:getUserIdentifier\\(\\) should return non\\-empty\\-string but returns string\\.$#"
+			count: 1
+			path: src/Web/Security/User.php
+
+		-
+			message: "#^Property App\\\\Tests\\\\Api\\\\Functional\\\\Controller\\\\AbstractTestControllerApi\\:\\:\\$client with generic class Symfony\\\\Component\\\\BrowserKit\\\\AbstractBrowser does not specify its types\\: TRequest, TResponse$#"
+			count: 1
+			path: tests/Api/Functional/Controller/AbstractTestControllerApi.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$nexistepas\\.$#"
 			count: 2
 			path: tests/Api/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
