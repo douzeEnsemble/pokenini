@@ -13,6 +13,7 @@ services:
             string $apiPassword: '%env(API_PASSWORD)%'
             string $demoUserId: '%env(DEMO_USER_ID)%'
             int $kFactor: '%env(K_FACTOR)%'
+            int $topCount: '%env(ELECTION_TOP_COUNT)%'
 
     App\Api\:
         resource: '../src/Api/'

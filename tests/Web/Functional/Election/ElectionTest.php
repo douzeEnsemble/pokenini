@@ -35,7 +35,7 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 3, '.card-body');
         $this->assertCountFilter($crawler, 3, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 3, '.election-card-image-container-shiny[hidden]');
-        $this->assertCountFilter($crawler, 6, '.album-modal-image');
+        $this->assertCountFilter($crawler, 11, '.album-modal-image');
         $this->assertCountFilter($crawler, 6, '.election-card-icon');
         $this->assertCountFilter($crawler, 3, '.election-card-icon-regular.active');
         $this->assertCountFilter($crawler, 3, '.election-card-icon-regular');
@@ -84,6 +84,11 @@ class ElectionTest extends WebTestCase
             $crawler->filter('#card-bulbasaur input[type="hidden"][name="losers_slugs[]"]')
                 ->attr('value')
         );
+
+        $this->assertCountFilter($crawler, 1, '#election-top');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
     }
 
     public function testVote(): void

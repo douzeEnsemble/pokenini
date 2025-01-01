@@ -42,3 +42,6 @@ a.election-card-catch-state-edit-action:hover {
     align-items: inherit;
 }
 
+#election-top .card-image .img-fluid {
+    max-width: 100px;
+}

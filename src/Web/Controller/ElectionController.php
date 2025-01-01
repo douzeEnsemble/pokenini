@@ -7,6 +7,7 @@ namespace App\Web\Controller;
 use App\Web\DTO\ElectionVote;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokemonsService;
+use App\Web\Service\ElectionTopService;
 use App\Web\Service\ElectionVoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,17 +20,21 @@ class ElectionController extends AbstractController
 {
     #[Route('', methods: ['GET'])]
     public function index(
+        Request $request,
         GetPokemonsService $getPokemonsService,
         GetLabelsService $getLabelsService,
+        ElectionTopService $electionTopService,
     ): Response {
         $pokemons = $getPokemonsService->get(3);
         $types = $getLabelsService->getTypes();
+        $electionTop = $electionTopService->getTop($request->query->getAlnum('election_slug', ''));
 
         return $this->render(
             'Election/index.html.twig',
             [
                 'pokemons' => $pokemons,
                 'types' => $types,
+                'electionTop' => $electionTop,
             ]
         );
     }

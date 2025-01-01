@@ -429,3 +429,5 @@ election:
         title: "Configuration"
         open:
             action: "Open configuration sidebar"
+    top:
+        title: "Your actual top %n%"

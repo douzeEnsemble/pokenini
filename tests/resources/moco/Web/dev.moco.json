@@ -1923,5 +1923,21 @@
     "response": {
       "status": "200"
     }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_top_5.json"
+    }
   }
 ]
