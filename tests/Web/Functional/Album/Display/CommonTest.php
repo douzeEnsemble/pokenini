@@ -332,7 +332,7 @@ class CommonTest extends WebTestCase
 
         $this->assertStringContainsString(
             '/regular/',
-            $crawler->filter('.album-image')->first()->attr('src') ?? ''
+            $crawler->filter('.pokemon-icon')->first()->attr('src') ?? ''
         );
     }
 
@@ -342,7 +342,7 @@ class CommonTest extends WebTestCase
 
         $this->assertStringContainsString(
             '/shiny/',
-            $crawler->filter('.album-image')->first()->attr('src') ?? ''
+            $crawler->filter('.pokemon-icon')->first()->attr('src') ?? ''
         );
     }
 }

@@ -5,48 +5,45 @@ declare(strict_types=1);
 namespace App\Web\Controller;
 
 use App\Web\DTO\ElectionVote;
-use App\Web\Service\ElectionVoteService;
+use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokemonsService;
+use App\Web\Service\ElectionVoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/election')]
 class ElectionController extends AbstractController
 {
     #[Route('', methods: ['GET'])]
-    #[IsGranted('ROLE_TRAINER')]
     public function index(
         GetPokemonsService $getPokemonsService,
+        GetLabelsService $getLabelsService,
     ): Response {
         $pokemons = $getPokemonsService->get(3);
+        $types = $getLabelsService->getTypes();
 
         return $this->render(
             'Election/index.html.twig',
             [
                 'pokemons' => $pokemons,
+                'types' => $types,
             ]
         );
     }
 
     #[Route('', methods: ['POST'])]
-    #[IsGranted('ROLE_TRAINER')]
     public function vote(
         Request $request,
         ElectionVoteService $electionVoteService,
     ): Response {
-        $json = $request->getContent();
+        $content = $request->request->all();
 
-        if (!$json) {
+        if (!$content) {
             throw new BadRequestHttpException();
         }
-
-        /** @var string[]|string[][] */
-        $content = json_decode($json, true);
 
         try {
             $electionVote = new ElectionVote($content);
@@ -56,6 +53,6 @@ class ElectionController extends AbstractController
 
         $electionVoteService->vote($electionVote);
 
-        return new JsonResponse();
+        return $this->redirectToRoute('app_web_election_index');
     }
 }

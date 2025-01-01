@@ -72,6 +72,7 @@
         <InvalidArgument>
             <errorLevel type="suppress">
                 <file name="tests/Api/Unit/DTO/ElectionVoteTest.php" />
+                <file name="tests/Web/Unit/DTO/ElectionVoteTest.php" />
             </errorLevel>
         </InvalidArgument>        
     </issueHandlers>

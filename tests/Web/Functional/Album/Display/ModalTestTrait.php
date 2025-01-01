@@ -457,7 +457,7 @@ trait ModalTestTrait
             1,
             "#modal-{$pokemonSlug} a.album-modal-icon.album-modal-icon-next",
         );
-        $this->assertCountFilter($crawler, 4, "#modal-{$pokemonSlug} img.album-image");
+        $this->assertCountFilter($crawler, 4, "#modal-{$pokemonSlug} img.pokemon-icon");
 
         $this->assertEquals(
             'fr' === $lang ? 'Normal' : 'Regular',
