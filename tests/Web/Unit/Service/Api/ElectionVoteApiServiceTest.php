@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Service\Api;
 
-use App\Web\Service\Api\ElectionVoteService;
+use App\Web\DTO\ElectionVote;
+use App\Web\Service\Api\ElectionVoteApiService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -13,13 +14,19 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 /**
  * @internal
  */
-#[CoversClass(ElectionVoteService::class)]
-class ElectionVoteServiceTest extends TestCase
+#[CoversClass(ElectionVoteApiService::class)]
+class ElectionVoteApiServiceTest extends TestCase
 {
     private ArrayAdapter $cache;
 
     public function testVote(): void
     {
+        $electionVote = new ElectionVote([
+            'election_slug' => 'whatever',
+            'winner_slug' => 'pichu',
+            'losers_slugs' => ['pikachu', 'raichu'],
+        ]);
+
         $this
             ->getService([
                 'trainer_external_id' => '5465465',
@@ -29,9 +36,7 @@ class ElectionVoteServiceTest extends TestCase
             ])
             ->vote(
                 '5465465',
-                'whatever',
-                'pichu',
-                ['pikachu', 'raichu'],
+                $electionVote,
             )
         ;
 
@@ -43,7 +48,7 @@ class ElectionVoteServiceTest extends TestCase
      */
     private function getService(
         array $body
-    ): ElectionVoteService {
+    ): ElectionVoteApiService {
         $client = $this->createMock(HttpClientInterface::class);
 
         $client
@@ -51,7 +56,7 @@ class ElectionVoteServiceTest extends TestCase
             ->method('request')
             ->with(
                 'POST',
-                'https://api.domain/favorite/vote',
+                'https://api.domain/election/vote',
                 [
                     'headers' => [
                         'accept' => 'application/json',
@@ -67,7 +72,7 @@ class ElectionVoteServiceTest extends TestCase
 
         $this->cache = new ArrayAdapter();
 
-        return new ElectionVoteService(
+        return new ElectionVoteApiService(
             $client,
             'https://api.domain',
             $this->cache,

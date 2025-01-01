@@ -1,0 +1,18 @@
+{% set locale = app.request.locale %}
+
+{% extends 'base.html.twig' %}
+{% use '_nav.html.twig' %}
+
+{% block title %}Pokénini {{ 'title.election'|trans }}{% endblock title %}
+{% block navbarTitle %}{% endblock navbarTitle %}
+
+{% block container %}
+	<div class="row">
+		<div class="col-md-8 mx-auto text-center row">
+			<h1>{{ 'title.election'|trans }}</h1>
+		</div>
+	</div>
+    <div class="row">
+        {{ dump(pokemons) }}
+    </div>
+{% endblock container %}

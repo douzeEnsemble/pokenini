@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/favorite')]
+#[Route('/election')]
 class ElectionController extends AbstractController
 {
     #[Route(path: 'vote', methods: ['POST'])]
