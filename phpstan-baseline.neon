@@ -191,6 +191,16 @@ parameters:
 			path: tests/Api/Unit/DTO/CollectionsAvailabilitiesTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|int\\|string\\> given\\.$#"
+			count: 2
+			path: tests/Api/Unit/DTO/ElectionVoteTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|string\\|false\\> given\\.$#"
+			count: 1
+			path: tests/Api/Unit/DTO/ElectionVoteTest.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Api\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"
 			count: 1
 			path: tests/Api/Unit/DTO/GameBundlesAvailabilitiesTest.php
