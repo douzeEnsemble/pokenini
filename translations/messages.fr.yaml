@@ -431,3 +431,5 @@ election:
         title: "Configuration"
         open:
             action: "Ouvrir le volet de configuration"
+    top:
+        title: "Ton top %n% actuel"
