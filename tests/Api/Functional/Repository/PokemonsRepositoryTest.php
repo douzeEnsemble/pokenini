@@ -9,6 +9,7 @@ use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -76,5 +77,51 @@ class PokemonsRepositoryTest extends KernelTestCase
         $repo = static::getContainer()->get(PokemonsRepository::class);
 
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
+    }
+
+    #[DataProvider('providerGetN')]
+    public function testGetToCompareN(int $count): void
+    {
+        /** @var PokemonsRepository $repo */
+        $repo = static::getContainer()->get(PokemonsRepository::class);
+
+        $list = $repo->getN($count);
+
+        $this->assertCount($count, $list);
+
+        $previous = $list[0]['pokemon_slug'];
+        $max = count($list);
+        for ($i = 1; $i < $max; ++$i) {
+            $this->assertNotSame($previous, $list[$i]['pokemon_slug']);
+
+            $previous = $list[$i]['pokemon_slug'];
+        }
+    }
+
+    /**
+     * @return int[][]
+     */
+    public static function providerGetN(): array
+    {
+        return [
+            '1' => [
+                1,
+            ],
+            '2' => [
+                2,
+            ],
+            '3' => [
+                3,
+            ],
+            '5' => [
+                5,
+            ],
+            '8' => [
+                8,
+            ],
+            '13' => [
+                13,
+            ],
+        ];
     }
 }
