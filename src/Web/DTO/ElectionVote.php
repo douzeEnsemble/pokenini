@@ -30,6 +30,13 @@ final class ElectionVote
         $this->electionSlug = $options['election_slug'];
         $this->winnerSlug = $options['winner_slug'];
         $this->losersSlugs = $options['losers_slugs'];
+
+        $index = array_search($this->winnerSlug, $this->losersSlugs);
+        if (false !== $index) {
+            unset($this->losersSlugs[$index]);
+        }
+
+        $this->losersSlugs = array_values($this->losersSlugs);
     }
 
     private function configureOptions(OptionsResolver $resolver): void

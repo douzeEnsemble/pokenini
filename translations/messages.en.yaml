@@ -53,6 +53,7 @@ title:
     legals: "Legal Notice"
     policy: "Privacy Policy"
     cookies: "Cookies"
+    election: "Choose your favorite Pokémon"
     error:
         unknown: "There was an error"
         404: "The page was not found"
@@ -418,3 +419,13 @@ admin:
     toggle:
         last: "Show last action"
         current: "Show current action"
+
+election:
+    choose:
+        action: "I choose this one"
+    slug:
+        label: "Election's name"
+    offcanvas:
+        title: "Configuration"
+        open:
+            action: "Open configuration sidebar"

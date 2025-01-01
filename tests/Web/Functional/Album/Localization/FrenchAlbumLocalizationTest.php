@@ -105,7 +105,7 @@ class FrenchAlbumLocalizationTest extends WebTestCase
             '#1 Bulbizarre',
             $tooltip->attr('title')
         );
-        $imgAlt = $crawler->filter('#bulbasaur .album-image');
+        $imgAlt = $crawler->filter('#bulbasaur .pokemon-icon');
         $this->assertEquals(
             'Icone de Bulbizarre',
             $imgAlt->attr('alt')
@@ -236,7 +236,7 @@ class FrenchAlbumLocalizationTest extends WebTestCase
 
         $this->assertStringContainsString(
             'Icone de ',
-            $crawler->filter('.album-image')->first()->attr('alt') ?? ''
+            $crawler->filter('.pokemon-icon')->first()->attr('alt') ?? ''
         );
     }
 
@@ -246,7 +246,7 @@ class FrenchAlbumLocalizationTest extends WebTestCase
 
         $this->assertStringContainsString(
             'Icone chromatique de ',
-            $crawler->filter('.album-image')->first()->attr('alt') ?? ''
+            $crawler->filter('.pokemon-icon')->first()->attr('alt') ?? ''
         );
     }
 }

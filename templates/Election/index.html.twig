@@ -1,18 +1,171 @@
 {% set locale = app.request.locale %}
 
+{% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
+
 {% extends 'base.html.twig' %}
 {% use '_nav.html.twig' %}
 
 {% block title %}Pokénini {{ 'title.election'|trans }}{% endblock title %}
 {% block navbarTitle %}{% endblock navbarTitle %}
 
-{% block container %}
-	<div class="row">
-		<div class="col-md-8 mx-auto text-center row">
-			<h1>{{ 'title.election'|trans }}</h1>
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/album.css') }}">
+
+    <style>
+    {% for type in types %}
+    .pokemon-type-{{ type.slug }} {
+        background-color: {{ type.color }};
+    }
+    {% endfor %}
+    </style>
+{% endblock stylesheets %}
+
+{% block body %}
+	<div class="container-fluid" id="main-container">
+		<div class="row">
+			<div class="col-md-8 mx-auto text-center row">
+				<h1>{{ 'title.election'|trans }}</h1>
+			</div>
 		</div>
+		<form action="" method="POST">
+			{# Offcanvas link #}
+			<a
+				class="fixed-top ms-1"
+				href="#offCanvasConfig"
+				title="{{ 'election.offcanvas.open.action'|trans }}"
+				data-bs-toggle="offcanvas" 
+			>
+				<i class="bi bi-three-dots"></i>
+			</a>
+
+			{# Offcanvas div #}
+			<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasConfig" aria-labelledby="offCanvasConfigLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offCanvasConfigLabel">{{ 'election.offcanvas.title'|trans }}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<div class="">
+						<label for="election_slug">{{ 'election.slug.label'|trans }}</label>
+						<input type="text" class="form-control form-control-sm" id="election_slug" name="election_slug" value="" autocomplete="off" placeholder="">
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3 ms-5 me-5">
+			{% for item in pokemons %}
+				<div class="col-xl-4 col-md-6 col-sm-12 mb-3">
+					<div class="card" id="card-{{ item.pokemon_slug }}">
+						<div class="card-body row">
+							<div class="col-6">
+								<div>
+									<span class="election-card-image-container-regular">
+										{{ imageMacros.regularPokemonImage(item, locale) }}
+									</span>
+									<span class="election-card-image-container-shiny" hidden>
+										{{ imageMacros.shinyPokemonImage(item, locale) }}
+									</span>
+								</div>
+								<div class="d-flex justify-content-evenly align-items-center text-center mt-3 mb-3">
+									<a
+										href="#card-{{ item.pokemon_slug }}"
+										class="election-card-icon election-card-icon-regular active"
+									>
+										{{ imageMacros.regularPokemonIcon(item, locale, 'img-thumbnail') }}
+										{{ 'album.icon.title.regular'|trans }}
+									</a>
+									<a
+										href="#card-{{ item.pokemon_slug }}"
+										class="election-card-icon election-card-icon-shiny"
+									>
+										{{ imageMacros.shinyPokemonIcon(item, locale, 'img-thumbnail') }}
+										{{ 'album.icon.title.shiny'|trans }}
+									</a>
+								</div>
+							</div>
+							<div class="col-6">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<strong>
+											{{ locale is same as('fr') ? item.pokemon_simplified_french_name : item.pokemon_simplified_name }}
+										</strong>
+										/
+										<em>
+											{{ locale is same as('fr') ? item.pokemon_simplified_name : item.pokemon_simplified_french_name }}
+										</em>
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<strong>{{ 'album.modal.forms'|trans }}</strong>
+										<span>
+											{% set forms = locale is same as('fr') ? item.pokemon_forms_french_label : item.pokemon_forms_label %}
+											{{ forms ? forms : 'album.modal.no_forms'|trans }}
+										</span>
+									</li>
+									<li class="list-group-item d-flex justify-content-end align-items-center">
+										<span class="election-card-types election-card-type-primary pokemon-type-{{ item.primary_type_slug }} badge">
+											{{ locale is same as('fr') ? item.primary_type_french_name : item.primary_type_name }}
+										</span>
+										
+										{% if item.secondary_type_french_name is not null %}
+										<span class="election-card-types election-card-type-secondary pokemon-type-{{ item.secondary_type_slug }} badge ms-2">
+											{{ locale is same as('fr') ? item.secondary_type_french_name : item.secondary_type_name }}
+										</span>
+										{% endif %}
+									</li>
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+										<strong>{{ 'album.modal.national_dex_number'|trans }}</strong>
+										<span>
+											{{ item.pokemon_national_dex_number }}
+										</span>
+									</li>
+								</ul>
+								
+								<ul class="list-group list-group-flush mt-5">
+									<li class="list-group-item text-center">
+										<button 
+											type="submit" 
+											class="btn btn-primary election-vote-action"
+											name="winner_slug"
+											value="{{ item.pokemon_slug }}"
+										>
+											{{ 'election.choose.action'|trans }}
+										</button>
+										<input type="hidden" name="losers_slugs[]" value="{{ item.pokemon_slug }}" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</form>
 	</div>
-    <div class="row">
-        {{ dump(pokemons) }}
-    </div>
-{% endblock container %}
+	{% block footer %}
+		{{ include('_footer.html.twig') }}
+	{% endblock footer %}
+{% endblock body %}
+
+{% block head_javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/election.js') }}"></script>
+{% endblock head_javascripts %}
+
+{% block foot_javascript %}
+    {{ parent() }}
+
+    <script type="application/javascript">
+    (function() {
+        watchToggleShinyMode();
+    })();
+    </script>
+		
+    <script type="application/javascript">
+    (function() {
+        // Enable tooltips
+        [...document.querySelectorAll('.album-case-image, [data-bs-toggle="tooltip"], [data-bs-toggle="offcanvas"]')]
+            .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+    })();
+    </script>
+{% endblock foot_javascript %}

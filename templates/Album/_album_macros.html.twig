@@ -1,4 +1,5 @@
 {% macro albumCase(item, dex, canEdit, catchStates, trainerId, list, loop) %}
+{% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
 
 {% set locale = app.request.locale %}
 {% set currentCatchState = item.catch_state_slug ?? 'no' %}
@@ -30,7 +31,7 @@
             data-bs-toggle="modal"
             data-bs-target="#modal-{{ item.pokemon_slug }}"
         >
-            {{ dex.is_shiny ? _self.shinyPokemonIcon(item, locale) : _self.regularPokemonIcon(item, locale) }}
+            {{ dex.is_shiny ? imageMacros.shinyPokemonIcon(item, locale) : imageMacros.regularPokemonIcon(item, locale) }}
         </span>
     </div>
     <div class="album-case-forms text-truncate text-end">
@@ -114,10 +115,10 @@
                 <div class="col-md-6">
                     <div>
                         <span class="album-modal-image-container-regular" {{ dex.is_shiny ? 'hidden': '' }}>
-                            {{ _self.regularPokemonImage(item, locale) }}
+                            {{ imageMacros.regularPokemonImage(item, locale) }}
                         </span>
                         <span class="album-modal-image-container-shiny" {{ dex.is_shiny ? '': 'hidden' }}>
-                            {{ _self.shinyPokemonImage(item, locale) }}
+                            {{ imageMacros.shinyPokemonImage(item, locale) }}
                         </span>
                     </div>
                     <div class="d-flex justify-content-evenly align-items-center text-center mt-3 mb-3">
@@ -125,14 +126,14 @@
                             href="#modal-{{ item.pokemon_slug }}"
                             class="album-modal-icon album-modal-icon-regular {{ dex.is_shiny ? '': 'active' }}"
                         >
-                            {{ _self.regularPokemonIcon(item, locale, 'img-thumbnail') }}
+                            {{ imageMacros.regularPokemonIcon(item, locale, 'img-thumbnail') }}
                             {{ 'album.icon.title.regular'|trans }}
                         </a>
                         <a
                             href="#modal-{{ item.pokemon_slug }}"
                             class="album-modal-icon album-modal-icon-shiny {{ dex.is_shiny ? 'active' : '' }}"
                         >
-                            {{ _self.shinyPokemonIcon(item, locale, 'img-thumbnail') }}
+                            {{ imageMacros.shinyPokemonIcon(item, locale, 'img-thumbnail') }}
                             {{ 'album.icon.title.shiny'|trans }}
                         </a>
                     </div>
@@ -190,9 +191,9 @@
                             class="album-modal-icon album-modal-icon-previous {{ loop.first ? 'invisible': 'visible' }}"
                         >
                             {% if dex.is_shiny %}
-                            {{ _self.shinyPokemonIcon(previous, locale, 'img-thumbnaild') }}
+                            {{ imageMacros.shinyPokemonIcon(previous, locale, 'img-thumbnaild') }}
                             {% else %}
-                            {{ _self.regularPokemonIcon(previous, locale, 'img-thumbnaild') }}
+                            {{ imageMacros.regularPokemonIcon(previous, locale, 'img-thumbnaild') }}
                             {% endif %}
 
                             <span class="text-truncate">
@@ -209,9 +210,9 @@
                             class="album-modal-icon album-modal-icon-next {{ loop.last ? 'invisible': 'visible' }}"
                         >
                             {% if dex.is_shiny %}
-                            {{ _self.shinyPokemonIcon(next, locale, 'img-thumbnaild') }}
+                            {{ imageMacros.shinyPokemonIcon(next, locale, 'img-thumbnaild') }}
                             {% else %}
-                            {{ _self.regularPokemonIcon(next, locale, 'img-thumbnaild') }}
+                            {{ imageMacros.regularPokemonIcon(next, locale, 'img-thumbnaild') }}
                             {% endif %}
 
                             <span class="text-truncate">
@@ -265,64 +266,6 @@
     </div>
   </div>
 </div>
-{% endmacro %}
-
-{% macro regularPokemonIcon(item, locale, classMore) %}
-    {{ _self.pokemonIcon(
-        item,
-        'regular',
-        locale,
-        classMore,
-    ) }}
-{% endmacro %}
-{% macro shinyPokemonIcon(item, locale, classMore) %}
-    {{ _self.pokemonIcon(
-        item,
-        'shiny',
-        locale,
-        classMore,
-    ) }}
-{% endmacro %}
-{% macro pokemonIcon(item, dir, locale, classMore) %}
-    {% set pokemonName = locale is same as('fr') ? item.pokemon_french_name : item.pokemon_name %}
-
-    {% set iconUrl = pokemonIconUrl|format(dir, item.pokemon_icon) %}
-
-    <img
-        alt="{{ ('album.icon.alt.'~dir)|trans }} {{ pokemonName }}"
-        class="album-image img-fluid {{ classMore }}"
-        src="{{ iconUrl }}"
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/img/pokemon/default_icon.webp';"
-    />
-{% endmacro %}
-
-{% macro regularPokemonImage(item, locale) %}
-    {{ _self.pokemonImage(
-        item,
-        'regular',
-        locale
-    ) }}
-{% endmacro %}
-{% macro shinyPokemonImage(item, locale) %}
-    {{ _self.pokemonImage(
-        item,
-        'shiny',
-        locale
-    ) }}
-{% endmacro %}
-{% macro pokemonImage(item, dir, locale) %}
-    {% set pokemonName = locale is same as('fr') ? item.pokemon_french_name : item.pokemon_name %}
-
-    {% set imageUrl = pokemonImageUrl|format(dir, item.pokemon_icon) %}
-
-    <img
-        alt="{{ ('album.image.alt.'~dir)|trans }} {{ pokemonName }}"
-        class="album-modal-image img-fluid"
-        src="{{ imageUrl }}"
-        loading="lazy"
-        onerror="this.onerror=null;this.src='/img/pokemon/default_image.webp';"
-    />
 {% endmacro %}
 
 {% macro toasts(item) %}

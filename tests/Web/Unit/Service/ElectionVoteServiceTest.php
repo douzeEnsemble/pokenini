@@ -45,4 +45,33 @@ class ElectionVoteServiceTest extends TestCase
         $service = new ElectionVoteService($userTokenService, $apiService);
         $service->vote($electionVote);
     }
+
+    public function testVoteWinnerAsLoser(): void
+    {
+        $userTokenService = $this->createMock(UserTokenService::class);
+        $userTokenService
+            ->expects($this->once())
+            ->method('getLoggedUserToken')
+            ->willReturn('8800088')
+        ;
+
+        $electionVote = new ElectionVote([
+            'election_slug' => 'whatever',
+            'winner_slug' => 'pichu',
+            'losers_slugs' => ['pikachu', 'pichu', 'raichu'],
+        ]);
+
+        $apiService = $this->createMock(ElectionVoteApiService::class);
+        $apiService
+            ->expects($this->once())
+            ->method('vote')
+            ->with(
+                '8800088',
+                $electionVote,
+            )
+        ;
+
+        $service = new ElectionVoteService($userTokenService, $apiService);
+        $service->vote($electionVote);
+    }
 }

@@ -1,0 +1,44 @@
+.election-card {
+    padding: 0 2px;
+}
+.election-card-dex-number {
+    font-size: .5rem;
+}
+.election-card-name {
+    font-size: .6rem;
+    font-weight: bold;
+}
+.election-card-catch-state {
+    font-size: .7rem;
+}
+.election-card-forms {
+    font-size: .6rem;
+}
+.election-card-action {
+    font-size: .6rem;
+    padding-bottom: .125rem;
+}
+.election-card-action select {
+    width: 100%;
+}
+.pokemon-icon {
+    max-width: 68px;
+    max-height: 56px;
+    font-size: .3rem;
+    color: rgba(0 0 0 / 0%);
+}
+a.election-card-catch-state-edit-action {
+    color: inherit;
+}
+a.election-card-catch-state-edit-action:hover {
+    color: black;
+}
+
+.album-modal-types {
+    color: white;
+}
+
+.list-group-item .icon-link {
+    align-items: inherit;
+}
+

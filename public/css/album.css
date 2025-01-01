@@ -21,7 +21,7 @@
 .album-case-action select {
     width: 100%;
 }
-.album-image {
+.pokemon-icon {
     max-width: 68px;
     max-height: 56px;
     font-size: .3rem;
@@ -48,17 +48,17 @@ a.album-case-catch-state-edit-action:hover {
 .modal-body .list-group .list-group-item {
     padding: 0.2rem;
 }
-.modal-body a.album-modal-icon {
+.modal-body a.pokemon-icon {
     text-decoration: none;
     color: #aab7b8;
 }
-.modal-body a.album-modal-icon:hover {
+.modal-body a.pokemon-icon:hover {
     color: #408b91;
 }
-.modal-body a.album-modal-icon:hover .img-thumbnail {
+.modal-body a.pokemon-icon:hover .img-thumbnail {
     border-color: #408b91;
 }
-.modal-body a.album-modal-icon.active {
+.modal-body a.pokemon-icon.active {
     text-decoration: underline;
     color: #212529;
 }
