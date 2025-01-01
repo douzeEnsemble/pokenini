@@ -43,13 +43,13 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 3, '.election-card-icon-shiny');
 
         $this->assertEquals(
-            'Bulbizarre / Bulbasaur', 
+            'Bulbizarre / Bulbasaur',
             $crawler->filter('#card-bulbasaur .list-group-item')
                 ->eq(0)
                 ->text()
         );
         $this->assertEquals(
-            'Forme Normale', 
+            'Forme Normale',
             $crawler->filter('#card-bulbasaur .list-group-item')
                 ->eq(1)
                 ->text()
@@ -57,30 +57,30 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter(
             $crawler,
             1,
-            "#card-bulbasaur .list-group-item",
+            '#card-bulbasaur .list-group-item',
             2,
             '.election-card-type-primary.pokemon-type-grass',
         );
         $this->assertCountFilter(
             $crawler,
             1,
-            "#card-bulbasaur .list-group-item",
+            '#card-bulbasaur .list-group-item',
             2,
             '.election-card-type-secondary.pokemon-type-poison',
         );
         $this->assertEquals(
-            'Numéro de dex national 1', 
+            'Numéro de dex national 1',
             $crawler->filter('#card-bulbasaur .list-group-item')
                 ->eq(3)
                 ->text()
         );
         $this->assertEquals(
-            'bulbasaur', 
+            'bulbasaur',
             $crawler->filter('#card-bulbasaur button.election-vote-action[name="winner_slug"]')
                 ->attr('value')
         );
         $this->assertEquals(
-            'bulbasaur', 
+            'bulbasaur',
             $crawler->filter('#card-bulbasaur input[type="hidden"][name="losers_slugs[]"]')
                 ->attr('value')
         );

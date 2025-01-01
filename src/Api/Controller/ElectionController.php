@@ -15,8 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/election')]
 class ElectionController extends AbstractController
 {
-    #[Route(path: 'vote', methods: ['POST'])]
-    public function getN(
+    #[Route(path: '/vote', methods: ['POST'])]
+    public function vote(
         Request $request,
         UpdateTrainerPokemonEloService $updateTrainerPokemonEloService,
     ): JsonResponse {
@@ -35,16 +35,24 @@ class ElectionController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
+        $winnerElo = 0;
+        $losersElo = [];
         foreach ($attributes->losersSlugs as $loserSlug) {
-            $updateTrainerPokemonEloService->updateElo(
+            $updatedElo = $updateTrainerPokemonEloService->updateElo(
                 $attributes->trainerExternalId,
                 $attributes->electionSlug,
                 $attributes->winnerSlug,
                 $loserSlug,
             );
+
+            $winnerElo = $updatedElo->getWinnerElo();
+            $losersElo[$loserSlug] = $updatedElo->getLoserElo();
         }
 
         // Better with serializer ?
-        return new JsonResponse();
+        return new JsonResponse([
+            'winnerFinalElo' => $winnerElo,
+            'losersElo' => $losersElo,
+        ]);
     }
 }
