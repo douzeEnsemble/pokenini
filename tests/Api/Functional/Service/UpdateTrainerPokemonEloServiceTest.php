@@ -30,12 +30,15 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
         /** @var UpdateTrainerPokemonEloService $service */
         $service = static::getContainer()->get(UpdateTrainerPokemonEloService::class);
 
-        $service->updateElo(
+        $updatedElo = $service->updateElo(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             '',
             'bulbasaur',
             'ivysaur',
         );
+
+        $this->assertSame(1026, $updatedElo->getWinnerElo());
+        $this->assertSame(1004, $updatedElo->getLoserElo());
 
         /** @var TrainerPokemonEloRepository $trainerPokemonEloRepo */
         $trainerPokemonEloRepo = static::getContainer()->get(TrainerPokemonEloRepository::class);
@@ -63,12 +66,15 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
         /** @var UpdateTrainerPokemonEloService $service */
         $service = static::getContainer()->get(UpdateTrainerPokemonEloService::class);
 
-        $service->updateElo(
+        $updatedElo = $service->updateElo(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             '',
             'ivysaur',
             'bulbasaur',
         );
+
+        $this->assertSame(1036, $updatedElo->getWinnerElo());
+        $this->assertSame(994, $updatedElo->getLoserElo());
 
         /** @var TrainerPokemonEloRepository $trainerPokemonEloRepo */
         $trainerPokemonEloRepo = static::getContainer()->get(TrainerPokemonEloRepository::class);

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Service;
 
+use App\Api\DTO\UpdatedTrainerPokemonElo;
 use App\Api\Repository\TrainerPokemonEloRepository;
 
 class UpdateTrainerPokemonEloService
@@ -18,7 +19,7 @@ class UpdateTrainerPokemonEloService
         string $electionSlug,
         string $winnerSlug,
         string $loserSlug,
-    ): void {
+    ): UpdatedTrainerPokemonElo {
         $winnerElo = $this->repository->getElo($trainerExternalId, $electionSlug, $winnerSlug);
         $loserElo = $this->repository->getElo($trainerExternalId, $electionSlug, $loserSlug);
 
@@ -33,5 +34,7 @@ class UpdateTrainerPokemonEloService
 
         $this->repository->updateElo($newWinnerElo, $trainerExternalId, $electionSlug, $winnerSlug);
         $this->repository->updateElo($newLoserElo, $trainerExternalId, $electionSlug, $loserSlug);
+
+        return new UpdatedTrainerPokemonElo($newWinnerElo, $newLoserElo);
     }
 }
