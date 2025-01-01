@@ -68,6 +68,11 @@
             <errorLevel type="suppress">
                 <file name="src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php" />
             </errorLevel>
-        </UndefinedInterfaceMethod>        
+        </UndefinedInterfaceMethod>  
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <file name="tests/Api/Unit/DTO/ElectionVoteTest.php" />
+            </errorLevel>
+        </InvalidArgument>        
     </issueHandlers>
 </psalm>

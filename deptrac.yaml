@@ -132,6 +132,7 @@ parameters:
       - ApiActionStarter
       - ApiDTO
       - ApiEntity
+      - ApiRepository
       - ApiService
     ApiDTO:
       - ApiDTO

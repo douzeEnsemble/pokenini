@@ -58,7 +58,7 @@ class DexController extends AbstractController
 
         try {
             $attributes = new TrainerDexAttributes($content);
-        } catch (InvalidArgumentException  $e) {
+        } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
