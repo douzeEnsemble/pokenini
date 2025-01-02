@@ -24,8 +24,9 @@ class ElectionController extends AbstractController
         GetPokemonsService $getPokemonsService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
+        int $electionCandidateCount,
     ): Response {
-        $pokemons = $getPokemonsService->get(3);
+        $pokemons = $getPokemonsService->get($electionCandidateCount);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($request->query->getAlnum('election_slug', ''));
 

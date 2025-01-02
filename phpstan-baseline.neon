@@ -6,6 +6,11 @@ parameters:
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
+			message: "#^Method App\\\\Api\\\\Service\\\\ElectionService\\:\\:getAverageELo\\(\\) has parameter \\$pokemonselo with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Api/Service/ElectionService.php
+
+		-
 			message: "#^Property App\\\\Web\\\\Exception\\\\EmptyContentException\\:\\:\\$message has no type specified\\.$#"
 			count: 1
 			path: src/Web/Exception/EmptyContentException.php
@@ -191,8 +196,8 @@ parameters:
 			path: tests/Api/Unit/DTO/CollectionsAvailabilitiesTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|int\\|string\\> given\\.$#"
-			count: 2
+			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|int\\> given\\.$#"
+			count: 1
 			path: tests/Api/Unit/DTO/ElectionVoteTest.php
 
 		-
@@ -276,11 +281,11 @@ parameters:
 			path: tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|int\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, int\\|string\\>\\> given\\.$#"
 			count: 1
 			path: tests/Web/Unit/DTO/ElectionVoteTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|string\\|false\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|false\\> given\\.$#"
 			count: 1
 			path: tests/Web/Unit/DTO/ElectionVoteTest.php

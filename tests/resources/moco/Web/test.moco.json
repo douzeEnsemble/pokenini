@@ -2036,6 +2036,22 @@
   {
     "request": {
       "uri": {
+        "match": "/pokemons/list/10"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_list_10.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/election/vote"
       },
       "method": "post",

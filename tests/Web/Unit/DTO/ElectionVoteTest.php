@@ -20,12 +20,12 @@ class ElectionVoteTest extends TestCase
     {
         $attributes = new ElectionVote([
             'election_slug' => 'douze',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
         $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame('pikachu', $attributes->winnerSlug);
+        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
@@ -33,24 +33,37 @@ class ElectionVoteTest extends TestCase
     {
         $attributes = new ElectionVote([
             'election_slug' => 'douze',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'pikachu', 'raichu'],
         ]);
 
         $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame('pikachu', $attributes->winnerSlug);
+        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
+    }
+
+    public function testWinnersAsLosers(): void
+    {
+        $attributes = new ElectionVote([
+            'election_slug' => 'douze',
+            'winners_slugs' => ['pikachu', 'pichu'],
+            'losers_slugs' => ['pichu', 'pikachu', 'raichu'],
+        ]);
+
+        $this->assertSame('douze', $attributes->electionSlug);
+        $this->assertSame(['pikachu', 'pichu'], $attributes->winnersSlugs);
+        $this->assertSame(['raichu'], $attributes->losersSlugs);
     }
 
     public function testMissingElectionSlug(): void
     {
         $attributes = new ElectionVote([
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
         $this->assertSame('', $attributes->electionSlug);
-        $this->assertSame('pikachu', $attributes->winnerSlug);
+        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
@@ -59,7 +72,7 @@ class ElectionVoteTest extends TestCase
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
             'election_slug' => false,
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
     }
@@ -68,7 +81,7 @@ class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
-            'winner_slug' => 54654,
+            'winners_slugs' => [54654],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
     }
@@ -77,7 +90,7 @@ class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => 'pichu',
         ]);
     }
@@ -87,7 +100,7 @@ class ElectionVoteTest extends TestCase
         $this->expectException(UndefinedOptionsException::class);
         new ElectionVote([
             'election_slug' => 'douze',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
             'other' => 'idk',
         ]);
