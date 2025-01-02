@@ -113,6 +113,46 @@ class ElectionTest extends WebTestCase
         $this->assertResponseRedirects();
     }
 
+    public function testEmptyVote(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'POST',
+            '/fr/election',
+            [],
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testBadVote(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'POST',
+            '/fr/election',
+            [
+                'electionSlug' => '',
+                'winnerSlug' => 'pichu',
+                'losersSlugs' => ['pikachu', 'raichu'],
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testIndexNonTrainer(): void
     {
         $client = static::createClient();

@@ -11,7 +11,9 @@ class UpdateTrainerPokemonEloService
 {
     public function __construct(
         private readonly TrainerPokemonEloRepository $repository,
-        private int $kFactor,
+        private int $eloKFactor,
+        private int $eloDefault,
+        private int $eloDDifference,
     ) {}
 
     public function updateElo(
@@ -23,14 +25,17 @@ class UpdateTrainerPokemonEloService
         $winnerElo = $this->repository->getElo($trainerExternalId, $electionSlug, $winnerSlug);
         $loserElo = $this->repository->getElo($trainerExternalId, $electionSlug, $loserSlug);
 
-        $expectedWinnerElo = 1 / (1 + pow(10, ($loserElo - $winnerElo) / 400));
-        $expectedLoserElo = 1 / (1 + pow(10, ($winnerElo - $loserElo) / 400));
+        $winnerElo = $winnerElo ?? $this->eloDefault;
+        $loserElo = $loserElo ?? $this->eloDefault;
+
+        $expectedWinnerElo = 1 / (1 + pow(10, ($loserElo - $winnerElo) / $this->eloDDifference));
+        $expectedLoserElo = 1 / (1 + pow(10, ($winnerElo - $loserElo) / $this->eloDDifference));
 
         /** @var int $newWinnerElo */
-        $newWinnerElo = (int) ($winnerElo + round($this->kFactor * (1 - $expectedWinnerElo)));
+        $newWinnerElo = (int) ($winnerElo + round($this->eloKFactor * (1 - $expectedWinnerElo)));
 
         /** @var int $newLoserElo */
-        $newLoserElo = (int) ($loserElo + round($this->kFactor * (0 - $expectedLoserElo)));
+        $newLoserElo = (int) ($loserElo + round($this->eloKFactor * (0 - $expectedLoserElo)));
 
         $this->repository->updateElo($newWinnerElo, $trainerExternalId, $electionSlug, $winnerSlug);
         $this->repository->updateElo($newLoserElo, $trainerExternalId, $electionSlug, $loserSlug);

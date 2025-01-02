@@ -96,4 +96,40 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
             )
         );
     }
+
+    public function testUpdateNewElo(): void
+    {
+        /** @var UpdateTrainerPokemonEloService $service */
+        $service = static::getContainer()->get(UpdateTrainerPokemonEloService::class);
+
+        $updatedElo = $service->updateElo(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            '',
+            'butterfree-gmax',
+            'butterfree',
+        );
+
+        $this->assertSame(1016, $updatedElo->getWinnerElo());
+        $this->assertSame(984, $updatedElo->getLoserElo());
+
+        /** @var TrainerPokemonEloRepository $trainerPokemonEloRepo */
+        $trainerPokemonEloRepo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $this->assertSame(
+            1016,
+            $trainerPokemonEloRepo->getElo(
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                '',
+                'butterfree-gmax',
+            )
+        );
+        $this->assertSame(
+            984,
+            $trainerPokemonEloRepo->getElo(
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                '',
+                'butterfree',
+            )
+        );
+    }
 }

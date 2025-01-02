@@ -30,7 +30,7 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainer_external_id": "12", "election_slug": "", "winner_slug": "pichu", "losers_slugs": ["pikachu", "raichu"]}'
+            '{"trainer_external_id": "12", "election_slug": "", "winner_slug": "butterfree", "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -42,13 +42,51 @@ class ElectionControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'winnerFinalElo' => 16,
+                'winnerFinalElo' => 1031,
                 'losersElo' => [
-                    'pikachu' => -16,
-                    'raichu' => -16,
+                    'caterpie' => 984,
+                    'metapod' => 985,
                 ],
             ],
             $data,
         );
+    }
+
+    public function testEmptyVote(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            'api/election/vote',
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW' => 'douze',
+            ],
+            '',
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testBadVote(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            'api/election/vote',
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW' => 'douze',
+            ],
+            '{"trainerExternalId": "12", "electionSlug": "", "winnerSlug": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
+        );
+
+        $this->assertResponseStatusCodeSame(400);
     }
 }

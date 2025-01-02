@@ -34,4 +34,17 @@ class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
             $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'bulbasaur'),
         );
     }
+
+    public function testUpdateNewElo(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $repo->updateElo(1212, '7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'butterfree-gmax');
+
+        $this->assertSame(
+            1212,
+            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'butterfree-gmax'),
+        );
+    }
 }

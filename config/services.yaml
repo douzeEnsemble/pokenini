@@ -12,7 +12,9 @@ services:
             string $apiLogin: '%env(API_LOGIN)%'
             string $apiPassword: '%env(API_PASSWORD)%'
             string $demoUserId: '%env(DEMO_USER_ID)%'
-            int $kFactor: '%env(K_FACTOR)%'
+            int $eloKFactor: '%env(ELO_K_FACTOR)%'
+            int $eloDDifference: '%env(ELO_D_DIFFERENCE)%'
+            int $eloDefault: '%env(ELO_DEFAULT)%'
             int $topCount: '%env(ELECTION_TOP_COUNT)%'
 
     App\Api\:
