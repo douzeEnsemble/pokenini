@@ -6,7 +6,6 @@ namespace App\Api\Service;
 
 use App\Api\DTO\ElectionVote;
 use App\Api\DTO\PokemonElo;
-use App\Api\DTO\UpdatedTrainerPokemonElo;
 use App\Api\Repository\TrainerPokemonEloRepository;
 
 class ElectionService
@@ -19,83 +18,86 @@ class ElectionService
     ) {}
 
     /**
-     * @return UpdatedTrainerPokemonElo[]
+     * @return PokemonElo[][]
      */
     public function update(ElectionVote $electionVote): array
     {
-        $winnerElo = $this->getWinnerElo($electionVote);
+        $winnersPokemonElo = $this->getPokemonsElo($electionVote, $electionVote->winnersSlugs);
+        $losersPokemonElo = $this->getPokemonsElo($electionVote, $electionVote->losersSlugs);
 
-        $losersPokemonElo = $this->getLosersElo($electionVote);
+        $winnersAverageElo = $this->getAverageElo($winnersPokemonElo);
+        $losersAverageElo = $this->getAverageElo($losersPokemonElo);
 
-        $losersElo = [];
-        foreach ($losersPokemonElo as $pokemonElo) {
-            $losersElo[] = $pokemonElo->getElo();
-        }
-
-        $losersAverageElo = round(array_sum($losersElo) / count($losersElo));
-
-        $expectedWinnerElo = 1 / (1 + pow(10, ($losersAverageElo - $winnerElo) / $this->eloDDifference));
-        $expectedLosersElo = 1 - $expectedWinnerElo;
-
-        $newWinnerElo = (int) ($winnerElo + round($this->eloKFactor * (1 - $expectedWinnerElo)));
+        $expectedWinnerElo = 1 / (1 + pow(10, ($losersAverageElo - $winnersAverageElo) / $this->eloDDifference));
+        $expectedLoserElo = 1 - $expectedWinnerElo;
 
         $results = [];
-        foreach ($losersPokemonElo as $pokemonElo) {
-            $newLoserElo = (int) ($pokemonElo->getElo() + round($this->eloKFactor * (0 - $expectedLosersElo)));
-
-            $this->repository->updateElo(
-                $newLoserElo,
-                $electionVote->trainerExternalId,
-                $electionVote->electionSlug,
-                $pokemonElo->getPokemonSlug()
-            );
-
-            $results[] = new UpdatedTrainerPokemonElo(
-                $electionVote->winnerSlug,
-                $newWinnerElo,
-                $pokemonElo->getPokemonSlug(),
-                $newLoserElo
-            );
-        }
-
-        $this->repository->updateElo(
-            $newWinnerElo,
-            $electionVote->trainerExternalId,
-            $electionVote->electionSlug,
-            $electionVote->winnerSlug,
-        );
+        $results['winners'] = $this->updatePokemonsElo($electionVote, $winnersPokemonElo, 1 - $expectedWinnerElo);
+        $results['losers'] = $this->updatePokemonsElo($electionVote, $losersPokemonElo, 0 - $expectedLoserElo);
 
         return $results;
     }
 
-    private function getWinnerElo(ElectionVote $electionVote): int
+    /**
+     * @param string[] $list
+     *
+     * @return PokemonElo[]
+     */
+    private function getPokemonsElo(ElectionVote $electionVote, array $list): array
     {
-        $winnerElo = $this->repository->getElo(
-            $electionVote->trainerExternalId,
-            $electionVote->electionSlug,
-            $electionVote->winnerSlug
-        );
+        $pokemonsElo = [];
+        foreach ($list as $slug) {
+            $elo = $this->repository->getElo(
+                $electionVote->trainerExternalId,
+                $electionVote->electionSlug,
+                $slug
+            );
+            $elo ??= $this->eloDefault;
 
-        return $winnerElo ?? $this->eloDefault;
+            $pokemonsElo[] = new PokemonElo($slug, $elo);
+        }
+
+        return $pokemonsElo;
+    }
+
+    private function getAverageELo(array $pokemonselo): int
+    {
+        $listElo = [];
+        foreach ($pokemonselo as $pokemonElo) {
+            $listElo[] = $pokemonElo->getElo();
+        }
+
+        return (int) round(array_sum($listElo) / count($listElo));
     }
 
     /**
+     * @param PokemonElo[] $list
+     *
      * @return PokemonElo[]
      */
-    private function getLosersElo(ElectionVote $electionVote): array
+    private function updatePokemonsElo(ElectionVote $electionVote, array $list, float $baseExpectedElo): array
     {
-        $losersElo = [];
-        foreach ($electionVote->losersSlugs as $loserSlug) {
-            $loserElo = $this->repository->getElo(
-                $electionVote->trainerExternalId,
-                $electionVote->electionSlug,
-                $loserSlug
-            );
-            $loserElo ??= $this->eloDefault;
+        $result = [];
+        foreach ($list as $pokemonElo) {
+            $newElo = $this->updatePokemonElo($electionVote, $pokemonElo, $baseExpectedElo);
 
-            $losersElo[] = new PokemonElo($loserSlug, $loserElo);
+            $result[] = new PokemonElo($pokemonElo->getPokemonSlug(), $newElo);
         }
 
-        return $losersElo;
+        return $result;
+    }
+
+    private function updatePokemonElo(ElectionVote $electionVote, PokemonElo $pokemonElo, float $baseExpectedElo): int
+    {
+        $newElo = (int) ($pokemonElo->getElo() + round($this->eloKFactor * $baseExpectedElo));
+
+        $this->repository->updateElo(
+            $newElo,
+            $electionVote->trainerExternalId,
+            $electionVote->electionSlug,
+            $pokemonElo->getPokemonSlug()
+        );
+
+        return $newElo;
     }
 }

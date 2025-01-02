@@ -16,6 +16,7 @@ services:
             int $eloDDifference: '%env(ELO_D_DIFFERENCE)%'
             int $eloDefault: '%env(ELO_DEFAULT)%'
             int $topCount: '%env(ELECTION_TOP_COUNT)%'
+            int $electionCandidateCount: '%env(ELECTION_CANDIDATE_COUNT)%'
 
     App\Api\:
         resource: '../src/Api/'

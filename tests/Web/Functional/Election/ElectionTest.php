@@ -31,16 +31,16 @@ class ElectionTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertCountFilter($crawler, 3, '.card');
-        $this->assertCountFilter($crawler, 3, '.card-body');
-        $this->assertCountFilter($crawler, 3, '.election-card-image-container-regular');
-        $this->assertCountFilter($crawler, 3, '.election-card-image-container-shiny[hidden]');
-        $this->assertCountFilter($crawler, 11, '.album-modal-image');
-        $this->assertCountFilter($crawler, 6, '.election-card-icon');
-        $this->assertCountFilter($crawler, 3, '.election-card-icon-regular.active');
-        $this->assertCountFilter($crawler, 3, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 10, '.card');
+        $this->assertCountFilter($crawler, 10, '.card-body');
+        $this->assertCountFilter($crawler, 10, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 10, '.election-card-image-container-shiny[hidden]');
+        $this->assertCountFilter($crawler, 25, '.album-modal-image');
+        $this->assertCountFilter($crawler, 20, '.election-card-icon');
+        $this->assertCountFilter($crawler, 10, '.election-card-icon-regular.active');
+        $this->assertCountFilter($crawler, 10, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny.active');
-        $this->assertCountFilter($crawler, 3, '.election-card-icon-shiny');
+        $this->assertCountFilter($crawler, 10, '.election-card-icon-shiny');
 
         $this->assertEquals(
             'Bulbizarre / Bulbasaur',
@@ -76,7 +76,7 @@ class ElectionTest extends WebTestCase
         );
         $this->assertEquals(
             'bulbasaur',
-            $crawler->filter('#card-bulbasaur button.election-vote-action[name="winner_slug"]')
+            $crawler->filter('#card-bulbasaur button.election-vote-action[name="winners_slugs[]"]')
                 ->attr('value')
         );
         $this->assertEquals(
@@ -105,7 +105,7 @@ class ElectionTest extends WebTestCase
             '/fr/election',
             [
                 'election_slug' => '',
-                'winner_slug' => 'pichu',
+                'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
             ],
         );
@@ -145,7 +145,7 @@ class ElectionTest extends WebTestCase
             '/fr/election',
             [
                 'electionSlug' => '',
-                'winnerSlug' => 'pichu',
+                'winnersSlugs' => ['pichu'],
                 'losersSlugs' => ['pikachu', 'raichu'],
             ],
         );
@@ -184,7 +184,7 @@ class ElectionTest extends WebTestCase
             [],
             [],
             [],
-            '{"election_slug": "", "winner_slug": "pichu", "losers_slugs": ["pikachu", "raich"]}'
+            '{"election_slug": "", "winners_slugs": ["pichu"], "losers_slugs": ["pikachu", "raich"]}'
         );
     }
 }

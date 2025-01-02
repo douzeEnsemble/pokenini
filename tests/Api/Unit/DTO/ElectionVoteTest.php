@@ -21,13 +21,13 @@ class ElectionVoteTest extends TestCase
         $attributes = new ElectionVote([
             'trainer_external_id' => '67865468',
             'election_slug' => 'douze',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
         $this->assertSame('67865468', $attributes->trainerExternalId);
         $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame('pikachu', $attributes->winnerSlug);
+        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
@@ -35,13 +35,13 @@ class ElectionVoteTest extends TestCase
     {
         $attributes = new ElectionVote([
             'trainer_external_id' => '67865468',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
         $this->assertSame('67865468', $attributes->trainerExternalId);
         $this->assertSame('', $attributes->electionSlug);
-        $this->assertSame('pikachu', $attributes->winnerSlug);
+        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
@@ -50,7 +50,7 @@ class ElectionVoteTest extends TestCase
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
             'trainer_external_id' => 67865468,
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
     }
@@ -61,17 +61,17 @@ class ElectionVoteTest extends TestCase
         new ElectionVote([
             'trainer_external_id' => '67865468',
             'election_slug' => false,
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
     }
 
-    public function testWrongValueForWinnerSlug(): void
+    public function testWrongValueForWinnersSlugs(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
             'trainer_external_id' => '67865468',
-            'winner_slug' => 54654,
+            'winners_slugs' => 'pikachu',
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
     }
@@ -81,7 +81,7 @@ class ElectionVoteTest extends TestCase
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
             'trainer_external_id' => '67865468',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => 'pichu',
         ]);
     }
@@ -92,7 +92,7 @@ class ElectionVoteTest extends TestCase
         new ElectionVote([
             'trainer_external_id' => '67865468',
             'election_slug' => 'douze',
-            'winner_slug' => 'pikachu',
+            'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
             'other' => 'idk',
         ]);

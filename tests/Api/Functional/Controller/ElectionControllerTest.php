@@ -30,22 +30,32 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainer_external_id": "12", "election_slug": "", "winner_slug": "butterfree", "losers_slugs": ["caterpie", "metapod"]}',
+            '{"trainer_external_id": "12", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
 
         $content = (string) $client->getResponse()->getContent();
 
-        /** @var int[]|int[][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertSame(
             [
-                'winnerFinalElo' => 1016,
-                'losersElo' => [
-                    'caterpie' => 984,
-                    'metapod' => 984,
+                'winners' => [
+                    [
+                        'pokemonSlug' => 'butterfree',
+                        'elo' => 1016,
+                    ],
+                ],
+                'losers' => [
+                    [
+                        'pokemonSlug' => 'caterpie',
+                        'elo' => 984,
+                    ],
+                    [
+                        'pokemonSlug' => 'metapod',
+                        'elo' => 984,
+                    ],
                 ],
             ],
             $data,
@@ -84,7 +94,7 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainerExternalId": "12", "electionSlug": "", "winnerSlug": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
+            '{"trainerExternalId": "12", "electionSlug": "", "winnersSlugs": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
         );
 
         $this->assertResponseStatusCodeSame(400);

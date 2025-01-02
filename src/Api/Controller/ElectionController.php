@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Api\Controller;
 
 use App\Api\DTO\ElectionVote;
-use App\Api\DTO\UpdatedTrainerPokemonElo;
 use App\Api\Service\ElectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/election')]
 class ElectionController extends AbstractController
@@ -20,7 +20,8 @@ class ElectionController extends AbstractController
     public function vote(
         Request $request,
         ElectionService $electionService,
-    ): JsonResponse {
+        SerializerInterface $serializer,
+    ): Response {
         $json = $request->getContent();
 
         if (!$json) {
@@ -36,21 +37,11 @@ class ElectionController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        /** @var UpdatedTrainerPokemonElo[] $results */
         $results = $electionService->update($electionVote);
 
-        $winnerElo = 0;
-        $losersElo = [];
-        foreach ($results as $result) {
-            $winnerElo = $result->getWinnerElo();
-
-            $losersElo[$result->getLoserSlug()] = $result->getLoserElo();
-        }
-
-        // Better with serializer ?
-        return new JsonResponse([
-            'winnerFinalElo' => $winnerElo,
-            'losersElo' => $losersElo,
-        ]);
+        return new Response($serializer->serialize(
+            $results,
+            'json'
+        ));
     }
 }

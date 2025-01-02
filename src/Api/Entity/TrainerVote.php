@@ -19,8 +19,11 @@ class TrainerVote
     #[ORM\Column]
     public string $electionSlug = '';
 
-    #[ORM\Column(type: 'string')]
-    public string $winnerSlug;
+    /**
+     * @var string[] $winners
+     */
+    #[ORM\Column(type: Types::SIMPLE_ARRAY)]
+    public array $winners = [];
 
     /**
      * @var string[] $losers

@@ -19,7 +19,7 @@ class ElectionVoteApiService extends AbstractApiService
                 'body' => [
                     'trainer_external_id' => $trainerId,
                     'election_slug' => $electionVote->electionSlug,
-                    'winner_slug' => $electionVote->winnerSlug,
+                    'winners_slugs' => $electionVote->winnersSlugs,
                     'losers_slugs' => $electionVote->losersSlugs,
                 ],
             ]

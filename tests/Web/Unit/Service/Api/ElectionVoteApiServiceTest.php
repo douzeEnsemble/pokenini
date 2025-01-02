@@ -23,7 +23,7 @@ class ElectionVoteApiServiceTest extends TestCase
     {
         $electionVote = new ElectionVote([
             'election_slug' => 'whatever',
-            'winner_slug' => 'pichu',
+            'winners_slugs' => ['pichu'],
             'losers_slugs' => ['pikachu', 'raichu'],
         ]);
 
@@ -31,7 +31,7 @@ class ElectionVoteApiServiceTest extends TestCase
             ->getService([
                 'trainer_external_id' => '5465465',
                 'election_slug' => 'whatever',
-                'winner_slug' => 'pichu',
+                'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
             ])
             ->vote(
