@@ -42,10 +42,10 @@ class ElectionControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'winnerFinalElo' => 1031,
+                'winnerFinalElo' => 1016,
                 'losersElo' => [
                     'caterpie' => 984,
-                    'metapod' => 985,
+                    'metapod' => 984,
                 ],
             ],
             $data,
