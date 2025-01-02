@@ -281,8 +281,6 @@ dependency_check: ## Execute OWASP Dependency Check
 dependency_check: 
 	@bin/dependency-check.sh ${NVD_API_KEY}
 
-
-
 ## —— Tools 🔧 ———————————————————————————————————————————————————————————————
 tools/php-cs-fixer/vendor/bin/php-cs-fixer:
 	@$(COMPOSER) install --working-dir=tools/php-cs-fixer

@@ -8,6 +8,7 @@ use App\Api\Entity\TrainerPokemonElo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<TrainerPokemonElo>
@@ -23,7 +24,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $trainerExternalId,
         string $electionSlug,
         string $pokemonSlug,
-    ): int {
+    ): ?int {
         $sql = <<<'SQL'
             SELECT  tpe.elo
             FROM    trainer_pokemon_elo AS tpe
@@ -45,14 +46,14 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'pokemon_slug' => ParameterType::STRING,
         ];
 
-        /** @var string */
+        /** @var ?int */
         $result = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,
             $types,
         );
 
-        return (int) $result;
+        return false === $result ? null : $result;
     }
 
     public function updateElo(
@@ -62,15 +63,28 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $pokemonSlug,
     ): void {
         $sql = <<<'SQL'
-            UPDATE  trainer_pokemon_elo AS tpe
-            SET     elo = :elo
-            FROM    pokemon AS p
-            WHERE   tpe.pokemon_id = p.id AND p.slug = :pokemon_slug
-                AND tpe.trainer_external_id = :trainer_external_id
-                AND tpe.election_slug = :election_slug
+            INSERT INTO trainer_pokemon_elo (
+                id,
+                trainer_external_id, 
+                election_slug, 
+                pokemon_id, 
+                elo
+            )
+            VALUES (
+                :id,
+                :trainer_external_id,
+                :election_slug,
+                (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
+                :elo
+            )
+            ON CONFLICT (trainer_external_id, election_slug, pokemon_id)
+            DO
+            UPDATE
+            SET     elo = excluded.elo
             SQL;
 
         $params = [
+            'id' => Uuid::v4(),
             'elo' => $elo,
             'trainer_external_id' => $trainerExternalId,
             'election_slug' => $electionSlug,
@@ -78,6 +92,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         ];
 
         $types = [
+            'id' => ParameterType::STRING,
             'elo' => ParameterType::INTEGER,
             'trainer_external_id' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,

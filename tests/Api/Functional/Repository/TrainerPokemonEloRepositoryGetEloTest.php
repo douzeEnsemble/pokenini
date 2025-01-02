@@ -24,7 +24,7 @@ class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     }
 
     #[DataProvider('providerGetElo')]
-    public function testGetElo(string $pokemonSlug, int $expectedElo): void
+    public function testGetElo(string $pokemonSlug, ?int $expectedElo): void
     {
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
@@ -36,7 +36,7 @@ class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return int[][]|null[][]|string[][]
      */
     public static function providerGetElo(): array
     {
@@ -67,7 +67,7 @@ class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
             ],
             'pikachu' => [
                 'pokemonSlug' => 'pikachu',
-                'expectedElo' => 0,
+                'expectedElo' => null,
             ],
         ];
     }
