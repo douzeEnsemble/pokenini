@@ -16,9 +16,11 @@ class UpdatedTrainerPokemonEloTest extends TestCase
 {
     public function testGetter(): void
     {
-        $object = new UpdatedTrainerPokemonElo(12, 13);
+        $object = new UpdatedTrainerPokemonElo('pichu', 12, 'pikachu', 13);
 
+        $this->assertSame('pichu', $object->getWinnerSlug());
         $this->assertSame(12, $object->getWinnerElo());
+        $this->assertSame('pikachu', $object->getLoserSlug());
         $this->assertSame(13, $object->getLoserElo());
     }
 }
