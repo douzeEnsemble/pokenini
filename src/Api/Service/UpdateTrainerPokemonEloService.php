@@ -12,7 +12,6 @@ class UpdateTrainerPokemonEloService
     public function __construct(
         private readonly TrainerPokemonEloRepository $repository,
         private int $eloKFactor,
-        private int $eloDefault,
         private int $eloDDifference,
     ) {}
 
@@ -20,14 +19,10 @@ class UpdateTrainerPokemonEloService
         string $trainerExternalId,
         string $electionSlug,
         string $winnerSlug,
+        int $winnerElo,
         string $loserSlug,
+        int $loserElo,
     ): UpdatedTrainerPokemonElo {
-        $winnerElo = $this->repository->getElo($trainerExternalId, $electionSlug, $winnerSlug);
-        $loserElo = $this->repository->getElo($trainerExternalId, $electionSlug, $loserSlug);
-
-        $winnerElo = $winnerElo ?? $this->eloDefault;
-        $loserElo = $loserElo ?? $this->eloDefault;
-
         $expectedWinnerElo = 1 / (1 + pow(10, ($loserElo - $winnerElo) / $this->eloDDifference));
         $expectedLoserElo = 1 / (1 + pow(10, ($winnerElo - $loserElo) / $this->eloDDifference));
 
@@ -40,6 +35,6 @@ class UpdateTrainerPokemonEloService
         $this->repository->updateElo($newWinnerElo, $trainerExternalId, $electionSlug, $winnerSlug);
         $this->repository->updateElo($newLoserElo, $trainerExternalId, $electionSlug, $loserSlug);
 
-        return new UpdatedTrainerPokemonElo($newWinnerElo, $newLoserElo);
+        return new UpdatedTrainerPokemonElo($winnerSlug, $newWinnerElo, $loserSlug, $newLoserElo);
     }
 }

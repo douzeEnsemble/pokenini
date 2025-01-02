@@ -46,7 +46,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'pokemon_slug' => ParameterType::STRING,
         ];
 
-        /** @var ?int */
+        /** @var false|int */
         $result = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,

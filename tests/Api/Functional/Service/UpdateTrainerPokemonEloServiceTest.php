@@ -6,7 +6,6 @@ namespace App\Tests\Api\Functional\Service;
 
 use App\Api\Repository\TrainerPokemonEloRepository;
 use App\Api\Service\UpdateTrainerPokemonEloService;
-use App\Tests\Api\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -18,7 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
-    use CountGameBundleAvailabilityTrait;
 
     public function setUp(): void
     {
@@ -34,7 +32,9 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             '',
             'bulbasaur',
+            1010,
             'ivysaur',
+            1020,
         );
 
         $this->assertSame(1026, $updatedElo->getWinnerElo());
@@ -70,7 +70,9 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             '',
             'ivysaur',
+            1020,
             'bulbasaur',
+            1010,
         );
 
         $this->assertSame(1036, $updatedElo->getWinnerElo());
@@ -106,7 +108,9 @@ class UpdateTrainerPokemonEloServiceTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             '',
             'butterfree-gmax',
+            1000,
             'butterfree',
+            1000,
         );
 
         $this->assertSame(1016, $updatedElo->getWinnerElo());
