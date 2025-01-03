@@ -79,15 +79,15 @@ class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
     }
 
-    #[DataProvider('providerGetN')]
-    public function testGetToCompareN(int $count): void
+    #[DataProvider('providerGetNFromDex')]
+    public function testGetNFromDex(string $dexSlug, int $count, int $expectedCount): void
     {
         /** @var PokemonsRepository $repo */
         $repo = static::getContainer()->get(PokemonsRepository::class);
 
-        $list = $repo->getN($count);
+        $list = $repo->getNFromDex($dexSlug, $count);
 
-        $this->assertCount($count, $list);
+        $this->assertCount($expectedCount, $list);
 
         $previous = $list[0]['pokemon_slug'];
         $max = count($list);
@@ -101,26 +101,18 @@ class PokemonsRepositoryTest extends KernelTestCase
     /**
      * @return int[][]
      */
-    public static function providerGetN(): array
+    public static function providerGetNFromDex(): array
     {
         return [
-            '1' => [
-                1,
+            'home-12' => [
+                'dexSlug' => 'home',
+                'count' => 12,
+                'expectedCount' => 12,
             ],
-            '2' => [
-                2,
-            ],
-            '3' => [
-                3,
-            ],
-            '5' => [
-                5,
-            ],
-            '8' => [
-                8,
-            ],
-            '13' => [
-                13,
+            'redgreenblueyellow-12' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'count' => 12,
+                'expectedCount' => 7,
             ],
         ];
     }
