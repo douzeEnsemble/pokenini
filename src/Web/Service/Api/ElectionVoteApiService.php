@@ -10,7 +10,7 @@ use App\Web\Utils\JsonDecoder;
 class ElectionVoteApiService extends AbstractApiService
 {
     /**
-     * @return int[]|string[][]|int[][][]|string[][][]
+     * @return int[]|int[][]|string[]|string[][]
      */
     public function vote(
         string $trainerId,
@@ -30,7 +30,7 @@ class ElectionVoteApiService extends AbstractApiService
             ]
         );
 
-        /** @var int[]|string[][]|int[][][]|string[][][] */
+        /** @var int[]|int[][]|string[]|string[][] */
         return JsonDecoder::decode($json);
     }
 }

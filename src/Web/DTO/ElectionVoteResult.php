@@ -6,12 +6,10 @@ namespace App\Web\DTO;
 
 final class ElectionVoteResult
 {
-    private function __construct(private readonly int $voteCount) 
-    {        
-    }
+    private function __construct(private readonly int $voteCount) {}
 
     /**
-     * @param int[]|string[][]|int[][][]|string[][][] $data
+     * @param mixed[] $data
      */
     public static function createFromApi(array $data): self
     {
@@ -22,5 +20,4 @@ final class ElectionVoteResult
     {
         return $this->voteCount;
     }
-
 }

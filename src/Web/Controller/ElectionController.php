@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Web\Controller;
 
 use App\Web\DTO\ElectionVote;
+use App\Web\DTO\ElectionVoteResult;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokemonsService;
 use App\Web\Service\ElectionTopService;
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/election')]
 class ElectionController extends AbstractController
 {
-    const SESSION_VOTE_RESULT_NAME = 'vote_result';
+    public const SESSION_VOTE_RESULT_NAME = 'vote_result';
 
     #[Route(
         '/{dexSlug}',
@@ -40,6 +41,7 @@ class ElectionController extends AbstractController
         $electionTop = $electionTopService->getTop($request->query->getAlnum('election_slug', ''));
 
         $session = $request->getSession();
+
         /** @var ElectionVoteResult $result */
         $result = $session->get(self::SESSION_VOTE_RESULT_NAME);
 
@@ -54,10 +56,17 @@ class ElectionController extends AbstractController
         );
     }
 
-    #[Route('', methods: ['POST'])]
+    #[Route(
+        '/{dexSlug}',
+        requirements: [
+            'dexSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
+        ],
+        methods: ['POST']
+    )]
     public function vote(
         Request $request,
         ElectionVoteService $electionVoteService,
+        string $dexSlug,
     ): Response {
         $content = $request->request->all();
 
@@ -76,6 +85,11 @@ class ElectionController extends AbstractController
         $session = $request->getSession();
         $session->set(self::SESSION_VOTE_RESULT_NAME, $result);
 
-        return $this->redirectToRoute('app_web_election_index');
+        return $this->redirectToRoute(
+            'app_web_election_index',
+            [
+                'dexSlug' => $dexSlug,
+            ]
+        );
     }
 }
