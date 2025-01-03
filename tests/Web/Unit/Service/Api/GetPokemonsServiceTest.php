@@ -31,7 +31,7 @@ class GetPokemonsServiceTest extends TestCase
     }
 
     /**
-     * @return int[][]
+     * @return int[][]|string[][]
      */
     public static function providerGet(): array
     {

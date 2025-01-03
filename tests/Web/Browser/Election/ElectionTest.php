@@ -27,7 +27,7 @@ class ElectionTest extends AbstractBrowserTestCase
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
-        $client->request('GET', '/fr/election');
+        $client->request('GET', '/fr/election/demolite');
 
         $this->assertSelectorTextContains('#election-counter', '0');
 

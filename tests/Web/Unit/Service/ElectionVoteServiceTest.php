@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service;
 
 use App\Web\DTO\ElectionVote;
-use App\Web\DTO\ElectionVoteResult;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ElectionVoteApiService;
 use App\Web\Service\ElectionVoteService;

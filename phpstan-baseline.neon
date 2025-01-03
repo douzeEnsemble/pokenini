@@ -6,6 +6,11 @@ parameters:
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
+			message: "#^Parameter \\#1 \\$voteCount of class App\\\\Web\\\\DTO\\\\ElectionVoteResult constructor expects int, mixed given\\.$#"
+			count: 1
+			path: src/Web/DTO/ElectionVoteResult.php
+
+		-
 			message: "#^Property App\\\\Web\\\\Exception\\\\EmptyContentException\\:\\:\\$message has no type specified\\.$#"
 			count: 1
 			path: src/Web/Exception/EmptyContentException.php

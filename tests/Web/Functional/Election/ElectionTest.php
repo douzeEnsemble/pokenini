@@ -27,12 +27,12 @@ class ElectionTest extends WebTestCase
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
-        $crawler = $client->request('GET', '/fr/election');
+        $crawler = $client->request('GET', '/fr/election/demolite');
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertCountFilter($crawler, 12, '.card');
-        $this->assertCountFilter($crawler, 12, '.card-body');
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -102,6 +102,9 @@ class ElectionTest extends WebTestCase
                 ->eq(3)
                 ->text()
         );
+
+        $this->assertCountFilter($crawler, 1, '#election-stats');
+        $this->assertSame('Tu as voté 0 fois', $crawler->filter('#election-stats p')->eq(0)->text());
     }
 
     public function testVote(): void
@@ -115,7 +118,7 @@ class ElectionTest extends WebTestCase
 
         $client->request(
             'POST',
-            '/fr/election',
+            '/fr/election/demolite',
             [
                 'election_slug' => '',
                 'winners_slugs' => ['pichu'],
@@ -137,7 +140,7 @@ class ElectionTest extends WebTestCase
 
         $client->request(
             'POST',
-            '/fr/election',
+            '/fr/election/demolite',
             [],
         );
 
@@ -155,7 +158,7 @@ class ElectionTest extends WebTestCase
 
         $client->request(
             'POST',
-            '/fr/election',
+            '/fr/election/demolite',
             [
                 'electionSlug' => '',
                 'winnersSlugs' => ['pichu'],
@@ -177,7 +180,7 @@ class ElectionTest extends WebTestCase
 
         $this->expectException(AccessDeniedException::class);
 
-        $client->request('GET', '/fr/election');
+        $client->request('GET', '/fr/election/demolite');
     }
 
     public function testVoteNonTrainer(): void
@@ -193,7 +196,7 @@ class ElectionTest extends WebTestCase
 
         $client->request(
             'POST',
-            '/fr/election',
+            '/fr/election/demolite',
             [],
             [],
             [],

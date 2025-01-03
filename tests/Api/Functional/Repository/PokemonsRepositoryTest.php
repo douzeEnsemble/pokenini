@@ -99,7 +99,7 @@ class PokemonsRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]
+     * @return int[][]|string[][]
      */
     public static function providerGetNFromDex(): array
     {
