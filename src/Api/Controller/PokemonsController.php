@@ -12,12 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/pokemons')]
 class PokemonsController extends AbstractController
 {
-    #[Route(path: '/list/{count}', methods: ['GET'])]
-    public function getN(
+    #[Route(path: '/list/{dexSlug}/{count}', methods: ['GET'])]
+    public function getNFromDex(
+        string $dexSlug,
         int $count,
         PokemonsRepository $pokemonsRepository,
     ): JsonResponse {
-        $list = $pokemonsRepository->getN($count);
+        $list = $pokemonsRepository->getNFromDex($dexSlug, $count);
 
         // Better with serializer ?
         return new JsonResponse($list);

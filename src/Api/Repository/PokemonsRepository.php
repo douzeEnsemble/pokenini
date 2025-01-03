@@ -54,7 +54,8 @@ class PokemonsRepository extends ServiceEntityRepository
     /**
      * @return string[][]
      */
-    public function getN(
+    public function getNFromDex(
+        string $dexSlug,
         int $count,
     ): array {
         $sql = <<<'SQL'
@@ -108,15 +109,21 @@ class PokemonsRepository extends ServiceEntityRepository
                         ON p.family = pp.slug
                     LEFT JOIN game_bundle AS ogb
                         ON p.original_game_bundle_id = ogb.id
+                    JOIN dex_availability AS da
+                        ON p.id = da.pokemon_id
+                    JOIN dex AS d
+                        ON da.dex_id = d.id AND d.slug = :dexSlug
             ORDER BY RANDOM()
             LIMIT   :count
             SQL;
 
         $params = [
+            'dexSlug' => $dexSlug,
             'count' => $count,
         ];
 
         $types = [
+            'dexSlug' => ParameterType::STRING,
             'count' => ParameterType::INTEGER,
         ];
 
