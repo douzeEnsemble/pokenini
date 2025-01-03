@@ -1,7 +1,5 @@
 {% set locale = app.request.locale %}
 
-{% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
-
 {% extends 'base.html.twig' %}
 {% use '_nav.html.twig' %}
 
@@ -29,127 +27,9 @@
 				<h1>{{ 'title.election'|trans }}</h1>
 			</div>
 		</div>
-		<form action="" method="POST">
-			{# Offcanvas link #}
-			<a
-				class="fixed-top ms-1"
-				href="#offCanvasConfig"
-				title="{{ 'election.offcanvas.open.action'|trans }}"
-				data-bs-toggle="offcanvas" 
-			>
-				<i class="bi bi-three-dots"></i>
-			</a>
-
-			{# Offcanvas div #}
-			<div class="offcanvas offcanvas-start" tabindex="-1" id="offCanvasConfig" aria-labelledby="offCanvasConfigLabel">
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offCanvasConfigLabel">{{ 'election.offcanvas.title'|trans }}</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<div class="">
-						<label for="election_slug">{{ 'election.slug.label'|trans }}</label>
-						<input type="text" class="form-control form-control-sm" id="election_slug" name="election_slug" value="" autocomplete="off" placeholder="">
-					</div>
-				</div>
-			</div>
-			<div class="row mt-3 ms-5 me-5">
-			{% for item in pokemons %}
-				<div class="col-xl-4 col-md-6 col-sm-12 mb-3">
-					<div class="card" id="card-{{ item.pokemon_slug }}">
-						<div class="card-body row">
-							<div class="col-6">
-								<div>
-									<span class="election-card-image-container-regular">
-										{{ imageMacros.regularPokemonImage(item, locale) }}
-									</span>
-									<span class="election-card-image-container-shiny" hidden>
-										{{ imageMacros.shinyPokemonImage(item, locale) }}
-									</span>
-								</div>
-								<div class="d-flex justify-content-evenly align-items-center text-center mt-3 mb-3">
-									<a
-										href="#card-{{ item.pokemon_slug }}"
-										class="election-card-icon election-card-icon-regular active"
-									>
-										{{ imageMacros.regularPokemonIcon(item, locale, 'img-thumbnail') }}
-										{{ 'album.icon.title.regular'|trans }}
-									</a>
-									<a
-										href="#card-{{ item.pokemon_slug }}"
-										class="election-card-icon election-card-icon-shiny"
-									>
-										{{ imageMacros.shinyPokemonIcon(item, locale, 'img-thumbnail') }}
-										{{ 'album.icon.title.shiny'|trans }}
-									</a>
-								</div>
-							</div>
-							<div class="col-6">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<strong>
-											{{ locale is same as('fr') ? item.pokemon_simplified_french_name : item.pokemon_simplified_name }}
-										</strong>
-										/
-										<em>
-											{{ locale is same as('fr') ? item.pokemon_simplified_name : item.pokemon_simplified_french_name }}
-										</em>
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<strong>{{ 'album.modal.forms'|trans }}</strong>
-										<span>
-											{% set forms = locale is same as('fr') ? item.pokemon_forms_french_label : item.pokemon_forms_label %}
-											{{ forms ? forms : 'album.modal.no_forms'|trans }}
-										</span>
-									</li>
-									<li class="list-group-item d-flex justify-content-end align-items-center">
-										<span class="election-card-types election-card-type-primary pokemon-type-{{ item.primary_type_slug }} badge">
-											{{ locale is same as('fr') ? item.primary_type_french_name : item.primary_type_name }}
-										</span>
-										
-										{% if item.secondary_type_french_name is not null %}
-										<span class="election-card-types election-card-type-secondary pokemon-type-{{ item.secondary_type_slug }} badge ms-2">
-											{{ locale is same as('fr') ? item.secondary_type_french_name : item.secondary_type_name }}
-										</span>
-										{% endif %}
-									</li>
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-										<strong>{{ 'album.modal.national_dex_number'|trans }}</strong>
-										<span>
-											{{ item.pokemon_national_dex_number }}
-										</span>
-									</li>
-								</ul>
-								
-								<ul class="list-group list-group-flush mt-5">
-									<li class="list-group-item text-center">
-										<button 
-											type="submit" 
-											class="btn btn-primary election-vote-action"
-											name="winners_slugs[]"
-											value="{{ item.pokemon_slug }}"
-										>
-											{{ 'election.choose.action'|trans }}
-										</button>
-										<input type="hidden" name="losers_slugs[]" value="{{ item.pokemon_slug }}" />
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</form>
-		<div id="election-top" class="row mt-3 ms-5 me-5">
-		<h4>{{ 'election.top.title'|trans({'%n%': electionTop|length}) }}</h4>
-		{% for item in electionTop %}
-		<div class="election-top-item col text-center">
-			{{ imageMacros.regularPokemonImage(item, locale) }}
-			<strong>{{ item.pokemon_simplified_french_name }}</strong>				
-		</div>
-		{% endfor %}
-		</div>
+		{{ include('Election/_actions.html.twig') }}
+		{{ include('Election/_candidates.html.twig') }}
+		{{ include('Election/_top.html.twig') }}
 	</div>
 	{% block footer %}
 		{{ include('_footer.html.twig') }}
@@ -166,7 +46,7 @@
 
     <script type="application/javascript">
     (function() {
-        watchToggleShinyMode();
+        watchWinnerCheckboxes();
     })();
     </script>
 		

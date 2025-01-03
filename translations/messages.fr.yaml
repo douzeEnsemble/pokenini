@@ -433,3 +433,9 @@ election:
             action: "Ouvrir le volet de configuration"
     top:
         title: "Ton top %n% actuel"
+    actions:
+        submit: "J'ai fait mes choix"
+        reset: "Nouvelle liste"
+        goto:
+            mytop: "Voir mon top %n% actuel"
+            top: "Remonter"
