@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service;
 
 use App\Web\DTO\ElectionVote;
+use App\Web\DTO\ElectionVoteResult;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ElectionVoteApiService;
 use App\Web\Service\ElectionVoteService;
@@ -40,10 +41,13 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
+            ->willReturn(['voteCount' => 2])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $service->vote($electionVote);
+        $result = $service->vote($electionVote);
+
+        $this->assertSame(2, $result->getVoteCount());
     }
 
     public function testVoteWinnerAsLoser(): void
@@ -69,9 +73,12 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
+            ->willReturn(['voteCount' => 3])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $service->vote($electionVote);
+        $result = $service->vote($electionVote);
+
+        $this->assertSame(3, $result->getVoteCount());
     }
 }

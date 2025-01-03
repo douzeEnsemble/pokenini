@@ -30,6 +30,7 @@
 		{{ include('Election/_actions.html.twig') }}
 		{{ include('Election/_candidates.html.twig') }}
 		{{ include('Election/_top.html.twig') }}
+		{{ include('Election/_stats.html.twig') }}
 	</div>
 	{% block footer %}
 		{{ include('_footer.html.twig') }}
@@ -47,14 +48,7 @@
     <script type="application/javascript">
     (function() {
         watchWinnerCheckboxes();
-    })();
-    </script>
-		
-    <script type="application/javascript">
-    (function() {
-        // Enable tooltips
-        [...document.querySelectorAll('.album-case-image, [data-bs-toggle="tooltip"], [data-bs-toggle="offcanvas"]')]
-            .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        watchSubmitAction();
     })();
     </script>
 {% endblock foot_javascript %}

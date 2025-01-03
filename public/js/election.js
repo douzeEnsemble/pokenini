@@ -32,3 +32,11 @@ function updateElectionCounter() {
 
   document.getElementById('election-counter').textContent = count;
 }
+
+function watchSubmitAction () {
+  document.getElementById('election-vote-submit').addEventListener('click', onSubmitVote);
+}
+
+function onSubmitVote() {
+  document.getElementById('election').submit();
+}

@@ -2004,54 +2004,6 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list/3"
-      },
-      "method": "get",
-      "headers": {
-        "accept": "application/json",
-        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
-      }
-    },
-    "response": {
-      "status": "200",
-      "file": "/var/moco/pokemons_list_3.json"
-    }
-  },
-  {
-    "request": {
-      "uri": {
-        "match": "/pokemons/list/5"
-      },
-      "method": "get",
-      "headers": {
-        "accept": "application/json",
-        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
-      }
-    },
-    "response": {
-      "status": "200",
-      "file": "/var/moco/pokemons_list_5.json"
-    }
-  },
-  {
-    "request": {
-      "uri": {
-        "match": "/pokemons/list/10"
-      },
-      "method": "get",
-      "headers": {
-        "accept": "application/json",
-        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
-      }
-    },
-    "response": {
-      "status": "200",
-      "file": "/var/moco/pokemons_list_10.json"
-    }
-  },
-  {
-    "request": {
-      "uri": {
         "match": "/pokemons/list/12"
       },
       "method": "get",
@@ -2077,7 +2029,8 @@
       }
     },
     "response": {
-      "status": "200"
+      "status": "200",
+      "file": "/var/moco/election_vote.json"
     }
   },
   {

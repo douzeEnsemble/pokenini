@@ -1,6 +1,6 @@
 {% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
 
-<form action="" method="POST">
+<form action="" method="POST" id="election">
   <div class="row mt-3 ms-5 me-5">
   {% for item in pokemons %}
     <div class="col-xl-2 col-md-4 col-sm-6 mb-3">
@@ -41,4 +41,6 @@
     </div>
     {% endfor %}
   </div>
+  <input type="hidden" name="winners_slugs[]" value="" />
+  <input type="hidden" name="losers_slugs[]" value="" />
 </form>

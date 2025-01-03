@@ -5,14 +5,19 @@ declare(strict_types=1);
 namespace App\Web\Service\Api;
 
 use App\Web\DTO\ElectionVote;
+use App\Web\Utils\JsonDecoder;
 
 class ElectionVoteApiService extends AbstractApiService
 {
+    /**
+     * @return int[]|string[][]|int[][][]|string[][][]
+     */
     public function vote(
         string $trainerId,
         ElectionVote $electionVote,
-    ): void {
-        $this->request(
+    ): array {
+        /** @var string $json */
+        $json = $this->requestContent(
             'POST',
             '/election/vote',
             [
@@ -24,5 +29,8 @@ class ElectionVoteApiService extends AbstractApiService
                 ],
             ]
         );
+
+        /** @var int[]|string[][]|int[][][]|string[][][] */
+        return JsonDecoder::decode($json);
     }
 }
