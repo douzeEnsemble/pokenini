@@ -11,12 +11,12 @@ class GetPokemonsService extends AbstractApiService
     /**
      * @return string[][]
      */
-    public function get(int $count): array
+    public function get(string $dexSlug, int $count): array
     {
         /** @var string $json */
         $json = $this->requestContent(
             'GET',
-            '/pokemons/list/'.$count,
+            "/pokemons/list/{$dexSlug}/{$count}",
         );
 
         /** @var string[][] */

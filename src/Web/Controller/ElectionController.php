@@ -20,15 +20,22 @@ class ElectionController extends AbstractController
 {
     const SESSION_VOTE_RESULT_NAME = 'vote_result';
 
-    #[Route('', methods: ['GET'])]
+    #[Route(
+        '/{dexSlug}',
+        requirements: [
+            'dexSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
+        ],
+        methods: ['GET']
+    )]
     public function index(
         Request $request,
         GetPokemonsService $getPokemonsService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
         int $electionCandidateCount,
+        string $dexSlug,
     ): Response {
-        $pokemons = $getPokemonsService->get($electionCandidateCount);
+        $pokemons = $getPokemonsService->get($dexSlug, $electionCandidateCount);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($request->query->getAlnum('election_slug', ''));
 

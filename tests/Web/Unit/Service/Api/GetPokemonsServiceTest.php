@@ -21,9 +21,9 @@ class GetPokemonsServiceTest extends TestCase
     private ArrayAdapter $cache;
 
     #[DataProvider('providerGet')]
-    public function testGet(int $count): void
+    public function testGet(string $dexSlug, int $count): void
     {
-        $pokemons = $this->getService($count)->get($count);
+        $pokemons = $this->getService($dexSlug, $count)->get($dexSlug, $count);
 
         $this->assertCount($count, $pokemons);
 
@@ -36,16 +36,26 @@ class GetPokemonsServiceTest extends TestCase
     public static function providerGet(): array
     {
         return [
-            '3' => ['count' => 3],
-            '5' => ['count' => 5],
+            '123-3' => [
+                'dexSlug' => '123',
+                'count' => 3,
+            ],
+            '123-5' => [
+                'dexSlug' => '123',
+                'count' => 5,
+            ],
+            'all-12' => [
+                'dexSlug' => 'all',
+                'count' => 12,
+            ],
         ];
     }
 
-    private function getService(int $count): GetPokemonsService
+    private function getService(string $dexSlug, int $count): GetPokemonsService
     {
         $client = $this->createMock(HttpClientInterface::class);
 
-        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/pokemons_list_{$count}.json");
+        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/pokemons_list_{$dexSlug}_{$count}.json");
 
         $response = $this->createMock(ResponseInterface::class);
         $response
@@ -59,7 +69,7 @@ class GetPokemonsServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/pokemons/list/{$count}",
+                "https://api.domain/pokemons/list/{$dexSlug}/{$count}",
                 [
                     'headers' => [
                         'accept' => 'application/json',
