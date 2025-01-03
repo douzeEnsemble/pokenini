@@ -37,7 +37,7 @@ class ElectionController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $results = $electionService->update($electionVote);
+        $results = $electionService->vote($electionVote);
 
         return new Response($serializer->serialize(
             $results,

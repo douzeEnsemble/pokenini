@@ -6,11 +6,6 @@ parameters:
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
-			message: "#^Method App\\\\Api\\\\Service\\\\ElectionService\\:\\:getAverageELo\\(\\) has parameter \\$pokemonselo with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Api/Service/ElectionService.php
-
-		-
 			message: "#^Property App\\\\Web\\\\Exception\\\\EmptyContentException\\:\\:\\$message has no type specified\\.$#"
 			count: 1
 			path: src/Web/Exception/EmptyContentException.php
