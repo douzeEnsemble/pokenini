@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Api\DTO;
+
+final class ElectionVoteResult
+{
+    /**
+     * @param PokemonElo[][] $pokemonsElo
+     */
+    public function __construct(
+        private readonly ElectionVote $electionVote,
+        private readonly array $pokemonsElo,
+        private readonly int $voteCount,
+    ) {}
+
+    public function getElectionVote(): ElectionVote
+    {
+        return $this->electionVote;
+    }
+
+    /**
+     * @return PokemonElo[][]
+     */
+    public function getPokemonsElo(): array
+    {
+        return $this->pokemonsElo;
+    }
+
+    public function getVoteCount(): int
+    {
+        return $this->voteCount;
+    }
+}

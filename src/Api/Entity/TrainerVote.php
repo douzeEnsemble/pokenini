@@ -14,7 +14,7 @@ class TrainerVote
     use BaseEntityTrait;
 
     #[ORM\Column]
-    public string $trainerExternalId = '';
+    public string $trainerExternalId;
 
     #[ORM\Column]
     public string $electionSlug = '';

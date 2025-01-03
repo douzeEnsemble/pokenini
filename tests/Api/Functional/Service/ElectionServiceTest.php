@@ -23,29 +23,63 @@ class ElectionServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testUpdateElo(): void
+    public function testVote(): void
     {
         /** @var ElectionService $service */
         $service = static::getContainer()->get(ElectionService::class);
 
-        $results = $service->update(
-            new ElectionVote([
-                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'election_slug' => '',
-                'winners_slugs' => ['bulbasaur'],
-                'losers_slugs' => ['ivysaur', 'venusaur'],
-            ])
-        );
+        $electionVote = new ElectionVote([
+            'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'election_slug' => '',
+            'winners_slugs' => ['bulbasaur'],
+            'losers_slugs' => ['ivysaur', 'venusaur'],
+        ]);
+        $result = $service->vote($electionVote);
 
-        $this->assertCount(2, $results);
-        $this->assertSame(['winners', 'losers'], array_keys($results));
+        $this->assertSame($electionVote, $result->getElectionVote());
 
-        $this->assertSame('bulbasaur', $results['winners'][0]->getPokemonSlug());
-        $this->assertSame(1027, $results['winners'][0]->getElo());
+        $pokemonsElo = $result->getPokemonsElo();
 
-        $this->assertSame('ivysaur', $results['losers'][0]->getPokemonSlug());
-        $this->assertSame(1003, $results['losers'][0]->getElo());
-        $this->assertSame('venusaur', $results['losers'][1]->getPokemonSlug());
-        $this->assertSame(1013, $results['losers'][1]->getElo());
+        $this->assertSame(['winners', 'losers'], array_keys($pokemonsElo));
+
+        $this->assertSame('bulbasaur', $pokemonsElo['winners'][0]->getPokemonSlug());
+        $this->assertSame(1027, $pokemonsElo['winners'][0]->getElo());
+
+        $this->assertSame('ivysaur', $pokemonsElo['losers'][0]->getPokemonSlug());
+        $this->assertSame(1003, $pokemonsElo['losers'][0]->getElo());
+        $this->assertSame('venusaur', $pokemonsElo['losers'][1]->getPokemonSlug());
+        $this->assertSame(1013, $pokemonsElo['losers'][1]->getElo());
+
+        $this->assertSame(3, $result->getVoteCount());
+    }
+
+    public function testVoteBis(): void
+    {
+        /** @var ElectionService $service */
+        $service = static::getContainer()->get(ElectionService::class);
+
+        $electionVote = new ElectionVote([
+            'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'election_slug' => 'favorite',
+            'winners_slugs' => ['bulbasaur'],
+            'losers_slugs' => ['ivysaur', 'venusaur'],
+        ]);
+        $result = $service->vote($electionVote);
+
+        $this->assertSame($electionVote, $result->getElectionVote());
+
+        $pokemonsElo = $result->getPokemonsElo();
+
+        $this->assertSame(['winners', 'losers'], array_keys($pokemonsElo));
+
+        $this->assertSame('bulbasaur', $pokemonsElo['winners'][0]->getPokemonSlug());
+        $this->assertSame(1016, $pokemonsElo['winners'][0]->getElo());
+
+        $this->assertSame('ivysaur', $pokemonsElo['losers'][0]->getPokemonSlug());
+        $this->assertSame(984, $pokemonsElo['losers'][0]->getElo());
+        $this->assertSame('venusaur', $pokemonsElo['losers'][1]->getPokemonSlug());
+        $this->assertSame(984, $pokemonsElo['losers'][1]->getElo());
+
+        $this->assertSame(4, $result->getVoteCount());
     }
 }
