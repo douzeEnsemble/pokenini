@@ -431,3 +431,9 @@ election:
             action: "Open configuration sidebar"
     top:
         title: "Your actual top %n%"
+    actions:
+        submit: "I've made my choices"
+        reset: "New selection"
+        goto:
+            mytop: "See my actual top %n%"
+            top: "Go back up"

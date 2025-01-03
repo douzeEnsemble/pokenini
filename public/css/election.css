@@ -42,6 +42,16 @@ a.election-card-catch-state-edit-action:hover {
     align-items: inherit;
 }
 
-#election-top .card-image .img-fluid {
+.election-top-item .card-img.img-fluid {
     max-width: 100px;
+}
+
+#election-actions.sticky-top {
+    background-color: white;
+}
+#election-actions .nav {
+    padding: 1rem 0;
+}
+#election-actions .nav-item.btn-item {
+    margin: 0 1rem;
 }

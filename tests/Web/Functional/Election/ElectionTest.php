@@ -31,52 +31,38 @@ class ElectionTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertCountFilter($crawler, 10, '.card');
-        $this->assertCountFilter($crawler, 10, '.card-body');
-        $this->assertCountFilter($crawler, 10, '.election-card-image-container-regular');
-        $this->assertCountFilter($crawler, 10, '.election-card-image-container-shiny[hidden]');
-        $this->assertCountFilter($crawler, 25, '.album-modal-image');
-        $this->assertCountFilter($crawler, 20, '.election-card-icon');
-        $this->assertCountFilter($crawler, 10, '.election-card-icon-regular.active');
-        $this->assertCountFilter($crawler, 10, '.election-card-icon-regular');
-        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny.active');
-        $this->assertCountFilter($crawler, 10, '.election-card-icon-shiny');
+        $this->assertCountFilter($crawler, 12, '.card');
+        $this->assertCountFilter($crawler, 12, '.card-body');
+        $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
+        $this->assertCountFilter($crawler, 17, '.album-modal-image');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
         $this->assertEquals(
-            'Bulbizarre / Bulbasaur',
+            'Bulbizarre',
             $crawler->filter('#card-bulbasaur .list-group-item')
                 ->eq(0)
-                ->text()
-        );
-        $this->assertEquals(
-            'Forme Normale',
-            $crawler->filter('#card-bulbasaur .list-group-item')
-                ->eq(1)
                 ->text()
         );
         $this->assertCountFilter(
             $crawler,
             1,
             '#card-bulbasaur .list-group-item',
-            2,
+            1,
             '.election-card-type-primary.pokemon-type-grass',
         );
         $this->assertCountFilter(
             $crawler,
             1,
             '#card-bulbasaur .list-group-item',
-            2,
+            1,
             '.election-card-type-secondary.pokemon-type-poison',
         );
         $this->assertEquals(
-            'Numéro de dex national 1',
-            $crawler->filter('#card-bulbasaur .list-group-item')
-                ->eq(3)
-                ->text()
-        );
-        $this->assertEquals(
             'bulbasaur',
-            $crawler->filter('#card-bulbasaur button.election-vote-action[name="winners_slugs[]"]')
+            $crawler->filter('#card-bulbasaur input[type="checkbox"][name="winners_slugs[]"]')
                 ->attr('value')
         );
         $this->assertEquals(
@@ -89,6 +75,33 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
+
+        $this->assertCountFilter($crawler, 1, '#election-actions');
+        $this->assertCountFilter($crawler, 4, '#election-actions .nav-item');
+        $this->assertEquals(
+            'Voir mon top 5 actuel',
+            $crawler->filter('#election-actions .nav-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertEquals(
+            "J'ai fait mes choix 0",
+            $crawler->filter('#election-actions .nav-item')
+                ->eq(1)
+                ->text()
+        );
+        $this->assertEquals(
+            'Nouvelle liste',
+            $crawler->filter('#election-actions .nav-item')
+                ->eq(2)
+                ->text()
+        );
+        $this->assertEquals(
+            'Remonter',
+            $crawler->filter('#election-actions .nav-item')
+                ->eq(3)
+                ->text()
+        );
     }
 
     public function testVote(): void

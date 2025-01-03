@@ -1,0 +1,27 @@
+<div id="election-actions" class="sticky-top">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="#election-top">
+        {{ 'election.actions.goto.mytop'|trans({'%n%': electionTop|length}) }}
+      </a>
+    </li>
+    <li class="nav-item btn-item">
+      <button class="btn btn-primary position-relative">
+        {{ 'election.actions.submit'|trans }}
+        <span id="election-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          0
+        </span>
+      </button>
+    </li>
+    <li class="nav-item btn-item">
+      <a class="btn btn-light" href="#">
+        {{ 'election.actions.reset'|trans }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        {{ 'election.actions.goto.top'|trans }}
+      </a>
+    </li>
+  </ul>
+</div>

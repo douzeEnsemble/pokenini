@@ -1,36 +1,34 @@
-function watchToggleShinyMode() {
+function watchWinnerCheckboxes () {
   document
-    .querySelectorAll(".election-card-icon-shiny")
+    .querySelectorAll('input[type="checkbox"][name="winners_slugs[]"')
     .forEach(function (element) {
-      element.addEventListener("click", onDisplayShinyImageMode);
-    });
-  document
-    .querySelectorAll(".election-card-icon-regular")
-    .forEach(function (element) {
-      element.addEventListener("click", onDisplayRegularImageMode);
+      element.addEventListener('change', onChangeWinnerCheckbox);
     });
 }
 
-function onDisplayShinyImageMode(event) {
+function onChangeWinnerCheckbox(event) {
   event.preventDefault();
 
   const target = event.target;
-  const cardBody = target.closest(".card-body");
-
-  cardBody.querySelector('.election-card-image-container-regular').setAttribute("hidden", true);
-  cardBody.querySelector('.election-card-image-container-shiny').removeAttribute('hidden');
-  cardBody.querySelector('.election-card-icon-regular').classList.remove('active');
-  cardBody.querySelector('.election-card-icon-shiny').classList.add('active');
+  
+  changeCardBorder(target);
+  updateElectionCounter(target);
 }
 
-function onDisplayRegularImageMode(event) {
-  event.preventDefault();
+function changeCardBorder(target) {
+  const card = target.closest('.card');
 
-  const target = event.target;
-  const cardBody = target.closest(".card-body");
+  if (target.checked) {
+    card.classList.add('border-primary');
+  } else {
+    card.classList.remove('border-primary');
+  }
+}
 
-  cardBody.querySelector('.election-card-image-container-regular').removeAttribute('hidden');
-  cardBody.querySelector('.election-card-image-container-shiny').setAttribute("hidden", true);
-  cardBody.querySelector('.election-card-icon-regular').classList.add('active');
-  cardBody.querySelector('.election-card-icon-shiny').classList.remove('active');
+function updateElectionCounter() {
+  const checkboxes = document.querySelectorAll('input[name="winners_slugs[]"]');
+  const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+  const count = checkedCheckboxes.length;
+
+  document.getElementById('election-counter').textContent = count;
 }
