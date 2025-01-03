@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
 
 /**
  * @internal
@@ -27,13 +28,8 @@ class ElectionVoteApiServiceTest extends TestCase
             'losers_slugs' => ['pikachu', 'raichu'],
         ]);
 
-        $this
-            ->getService([
-                'trainer_external_id' => '5465465',
-                'election_slug' => 'whatever',
-                'winners_slugs' => ['pichu'],
-                'losers_slugs' => ['pikachu', 'raichu'],
-            ])
+        $result = $this
+            ->getService('5465465', 'whatever', ['pichu'], ['pikachu', 'raichu'])
             ->vote(
                 '5465465',
                 $electionVote,
@@ -41,15 +37,30 @@ class ElectionVoteApiServiceTest extends TestCase
         ;
 
         $this->assertEmpty($this->cache->getValues());
+
+        $this->assertSame(3, $result['voteCount']);
     }
 
     /**
-     * @param string[]|string[][] $body
+     * @param string[] $winnersSlugs
+     * @param string[] $losersSlugs
      */
     private function getService(
-        array $body
+        string $trainerId,
+        string $electionSlug,
+        array $winnersSlugs,
+        array $losersSlugs,
     ): ElectionVoteApiService {
         $client = $this->createMock(HttpClientInterface::class);
+
+        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_vote_{$trainerId}_{$electionSlug}.json");
+
+        $response = $this->createMock(ResponseInterface::class);
+        $response
+            ->expects($this->once())
+            ->method('getContent')
+            ->willReturn($json)
+        ;
 
         $client
             ->expects($this->once())
@@ -65,9 +76,15 @@ class ElectionVoteApiServiceTest extends TestCase
                         'web',
                         'douze',
                     ],
-                    'body' => $body,
+                    'body' => [
+                        'trainer_external_id' => $trainerId,
+                        'election_slug' => $electionSlug,
+                        'winners_slugs' => $winnersSlugs,
+                        'losers_slugs' => $losersSlugs,
+                    ],
                 ],
             )
+            ->willReturn($response)
         ;
 
         $this->cache = new ArrayAdapter();

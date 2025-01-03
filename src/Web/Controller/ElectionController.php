@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/election')]
 class ElectionController extends AbstractController
 {
+    const SESSION_VOTE_RESULT_NAME = 'vote_result';
+
     #[Route('', methods: ['GET'])]
     public function index(
         Request $request,
@@ -30,12 +32,17 @@ class ElectionController extends AbstractController
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($request->query->getAlnum('election_slug', ''));
 
+        $session = $request->getSession();
+        /** @var ElectionVoteResult $result */
+        $result = $session->get(self::SESSION_VOTE_RESULT_NAME);
+
         return $this->render(
             'Election/index.html.twig',
             [
                 'pokemons' => $pokemons,
                 'types' => $types,
                 'electionTop' => $electionTop,
+                'result' => $result,
             ]
         );
     }
@@ -57,7 +64,10 @@ class ElectionController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $electionVoteService->vote($electionVote);
+        $result = $electionVoteService->vote($electionVote);
+
+        $session = $request->getSession();
+        $session->set(self::SESSION_VOTE_RESULT_NAME, $result);
 
         return $this->redirectToRoute('app_web_election_index');
     }

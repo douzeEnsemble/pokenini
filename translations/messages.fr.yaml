@@ -439,3 +439,8 @@ election:
         goto:
             mytop: "Voir mon top %n% actuel"
             top: "Remonter"
+    stats:
+        title: "Les stats"
+        vote_count: 
+            start: "Tu as voté"
+            end: "fois"

@@ -1,0 +1,16 @@
+<div id="election-stats" class="row mt-5 ms-5 me-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 text-center">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="card-title mb-5">{{ 'election.stats.title'|trans }}</h4>
+          <p class="card-text">
+            {{ 'election.stats.vote_count.start'|trans }}
+            <strong>{{ result.voteCount ?? 0 }}</strong>
+            {{ 'election.stats.vote_count.end'|trans }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
