@@ -49,24 +49,32 @@ services:
   api.test.moco:
     build:
       context: docker/moco/Api/test
+      args:
+        MOCO_VERSION: 1.5.0
     volumes:
       - ./tests/resources/moco/Api:/var/moco:ro
 
   api.int.moco:
     build:
       context: docker/moco/Api/int
+      args:
+        MOCO_VERSION: 1.5.0
     volumes:
       - ./tests/resources/moco/Api:/var/moco:ro
 
   web.test.moco:
     build:
       context: docker/moco/Web/test
+      args:
+        MOCO_VERSION: 1.5.0
     volumes:
       - ./tests/resources/moco/Web/:/var/moco:ro
 
   web.dev.moco:
     build:
       context: docker/moco/Web/dev
+      args:
+        MOCO_VERSION: 1.5.0
     volumes:
       - ./tests/resources/moco/Web/:/var/moco:ro
 
