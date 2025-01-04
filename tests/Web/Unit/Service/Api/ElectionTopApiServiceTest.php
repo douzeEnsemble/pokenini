@@ -21,7 +21,7 @@ class ElectionTopApiServiceTest extends TestCase
 
     public function testGet(): void
     {
-        $items = $this->getService('4564650', 'fav', 5)->getTop('4564650', 'fav', 5);
+        $items = $this->getService('4564650', 'home', 'fav', 5)->getTop('4564650', 'home', 'fav', 5);
 
         $this->assertCount(5, $items);
 
@@ -30,7 +30,7 @@ class ElectionTopApiServiceTest extends TestCase
 
     public function testGetBis(): void
     {
-        $items = $this->getService('87654', 'pref', 10)->getTop('87654', 'pref', 10);
+        $items = $this->getService('87654', 'demo', 'pref', 10)->getTop('87654', 'demo', 'pref', 10);
 
         $this->assertCount(10, $items);
 
@@ -39,12 +39,13 @@ class ElectionTopApiServiceTest extends TestCase
 
     private function getService(
         string $trainerId,
+        string $dexSlug,
         string $electionSlug,
         int $count,
     ): ElectionTopApiService {
         $client = $this->createMock(HttpClientInterface::class);
 
-        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_top_{$count}_{$trainerId}_{$electionSlug}.json");
+        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_top_{$count}_{$trainerId}_{$dexSlug}_{$electionSlug}.json");
 
         $response = $this->createMock(ResponseInterface::class);
         $response

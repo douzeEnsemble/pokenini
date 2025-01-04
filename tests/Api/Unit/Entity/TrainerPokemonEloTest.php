@@ -20,11 +20,12 @@ class TrainerPokemonEloTest extends TestCase
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
 
-        $entity = new TrainerPokemonElo('121212', $pokemon);
+        $entity = new TrainerPokemonElo('121212', $pokemon, 'home');
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
         $this->assertSame(1000, $entity->elo);
+        $this->assertSame('home', $entity->getDexSlug());
         $this->assertSame('', $entity->getElectionSlug());
     }
 
@@ -33,11 +34,12 @@ class TrainerPokemonEloTest extends TestCase
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
 
-        $entity = new TrainerPokemonElo('121212', $pokemon, 'pref');
+        $entity = new TrainerPokemonElo('121212', $pokemon, 'demo', 'pref');
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
         $this->assertSame(1000, $entity->elo);
+        $this->assertSame('demo', $entity->getDexSlug());
         $this->assertSame('pref', $entity->getElectionSlug());
     }
 }

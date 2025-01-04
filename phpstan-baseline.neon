@@ -266,17 +266,7 @@ parameters:
 			path: tests/Api/Unit/DTO/GamesShiniesAvailabilitiesTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, int\\> given\\.$#"
-			count: 1
-			path: tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 3
-			path: tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"
 			count: 1
 			path: tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
 

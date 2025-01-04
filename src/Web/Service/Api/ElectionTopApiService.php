@@ -13,20 +13,14 @@ class ElectionTopApiService extends AbstractApiService
      */
     public function getTop(
         string $trainerId,
+        string $dexSlug,
         string $electionSlug,
         int $count,
     ): array {
         /** @var string $json */
         $json = $this->requestContent(
             'GET',
-            '/election/top',
-            [
-                'body' => [
-                    'trainer_external_id' => $trainerId,
-                    'election_slug' => $electionSlug,
-                    'count' => $count,
-                ],
-            ]
+            "/election/top?trainer_external_id={$trainerId}&dex_slug={$dexSlug}&election_slug={$electionSlug}&count={$count}"
         );
 
         /** @var string[][] */

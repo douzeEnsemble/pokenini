@@ -16,10 +16,10 @@ class ElectionTopService
     /**
      * @return string[][]
      */
-    public function getTop(string $electionSlug): array
+    public function getTop(string $dexSlug, string $electionSlug): array
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
-        return $this->apiService->getTop($trainerId, $electionSlug, $this->topCount);
+        return $this->apiService->getTop($trainerId, $dexSlug, $electionSlug, $this->topCount);
     }
 }

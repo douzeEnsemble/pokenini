@@ -37,6 +37,6 @@ class ElectionTopServiceTest extends TestCase
         ;
 
         $service = new ElectionTopService($userTokenService, $apiService, 12);
-        $service->getTop('whatever');
+        $service->getTop('demo', 'whatever');
     }
 }
