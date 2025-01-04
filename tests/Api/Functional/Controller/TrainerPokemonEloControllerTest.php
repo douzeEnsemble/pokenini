@@ -33,9 +33,43 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
         $this->assertCount(5, $content);
 
         foreach ($content as $pokemon) {
+            $this->assertArrayHasKey('elo', $pokemon);
+            $this->assertArrayHasKey('detachment_threshold', $pokemon);
             $this->assertArrayHasKey('pokemon_slug', $pokemon);
             $this->assertArrayHasKey('pokemon_french_name', $pokemon);
             $this->assertArrayHasKey('pokemon_icon', $pokemon);
+
+            $this->assertSame('1000.0000000000000000', $pokemon['detachment_threshold']);
+        }
+    }
+
+    public function testGetTopBis(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/election/top',
+            [
+                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'election_slug' => '',
+                'count' => '5',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        /** @var string[][] $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertCount(5, $content);
+
+        foreach ($content as $pokemon) {
+            $this->assertArrayHasKey('elo', $pokemon);
+            $this->assertArrayHasKey('detachment_threshold', $pokemon);
+            $this->assertArrayHasKey('pokemon_slug', $pokemon);
+            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
+            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+
+            $this->assertSame('1072.4165738677394138', $pokemon['detachment_threshold']);
         }
     }
 

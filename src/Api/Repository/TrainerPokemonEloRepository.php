@@ -107,15 +107,58 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[][]
+     * @return float[][]|int[][]|string[][]
      */
     public function getTopN(
         string $trainerExternalId,
+        string $dexSlug,
         string $electionSlug,
         int $count,
     ): array {
-        $sql = <<<'SQL'
-            SELECT  tpe.elo AS elo,
+        $sql = $this->getTopNSQL();
+
+        $params = [
+            'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
+            'election_slug' => $electionSlug,
+            'count' => $count,
+        ];
+
+        $types = [
+            'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
+            'election_slug' => ParameterType::STRING,
+            'count' => ParameterType::INTEGER,
+        ];
+
+        /** @var string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            $params,
+            $types,
+        );
+    }
+
+    private function getTopNSQL(): string
+    {
+        return <<<'SQL'
+            WITH scores AS (
+                SELECT  id, 
+                        elo,
+                        pokemon_id
+                FROM    trainer_pokemon_elo
+                WHERE   trainer_external_id = :trainer_external_id
+                    AND dex_slug = :dex_slug
+                    AND election_slug = :election_slug
+            ),
+            stats AS (
+                SELECT
+                    AVG(elo) AS avg_elo,
+                    STDDEV(elo) AS stddev_elo
+                FROM scores
+            )
+            SELECT  e.elo AS elo,
+                    s.avg_elo + 2 * s.stddev_elo AS detachment_threshold,
                     p.slug AS pokemon_slug,
                     p.name AS pokemon_name,
                     p.national_dex_number AS pokemon_national_dex_number,
@@ -149,9 +192,11 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                         '-',
                         LPAD(CAST(p.family_order AS varchar), 3, '0')
                     ) as pokemon_order_number
-            FROM    trainer_pokemon_elo AS tpe
+            FROM    
+                    stats AS s,
+                    scores AS e 
                 JOIN pokemon AS p
-                    ON tpe.pokemon_id = p.id
+                    ON e.pokemon_id = p.id
                 LEFT JOIN category_form AS cf
                     ON p.category_form_id = cf.id
                 LEFT JOIN regional_form AS rf
@@ -168,29 +213,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                     ON p.family = pp.slug
                 LEFT JOIN game_bundle AS ogb
                     ON p.original_game_bundle_id = ogb.id
-            WHERE   tpe.trainer_external_id = :trainer_external_id
-                AND tpe.election_slug = :election_slug
-            ORDER BY tpe.elo DESC
+            ORDER BY e.elo DESC
             LIMIT   :count
             SQL;
-
-        $params = [
-            'trainer_external_id' => $trainerExternalId,
-            'election_slug' => $electionSlug,
-            'count' => $count,
-        ];
-
-        $types = [
-            'trainer_external_id' => ParameterType::STRING,
-            'election_slug' => ParameterType::STRING,
-            'count' => ParameterType::INTEGER,
-        ];
-
-        /** @var string[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
-            $sql,
-            $params,
-            $types,
-        );
     }
 }

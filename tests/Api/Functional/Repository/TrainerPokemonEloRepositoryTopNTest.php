@@ -7,7 +7,6 @@ namespace App\Tests\Api\Functional\Repository;
 use App\Api\Repository\TrainerPokemonEloRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,48 +22,92 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         self::bootKernel();
     }
 
-    #[DataProvider('providerTopN')]
-    public function testTopN(int $count, int $expectedCount): void
+    public function testTop5(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', '', $count);
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 5);
 
         $this->assertCount(
-            $expectedCount,
+            5,
             $list,
         );
 
-        $scores = array_map(
-            fn ($value) => $value['elo'],
-            $list
+        $this->assertAllKeysMatches(
+            $list,
+            'elo',
+            [
+                1060,
+                1050,
+                1040,
+                1030,
+                1020,
+            ],
+        );
+        $this->assertAllKeysMatches(
+            $list,
+            'detachment_threshold',
+            [
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+            ],
+        );
+    }
+
+    public function testTop10(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 10);
+
+        $this->assertCount(
+            6,
+            $list,
         );
 
-        $sortedScores = $scores;
-        arsort($sortedScores);
-
-        $this->assertSame($scores, $sortedScores);
+        $this->assertAllKeysMatches(
+            $list,
+            'elo',
+            [
+                1060,
+                1050,
+                1040,
+                1030,
+                1020,
+                1010,
+            ],
+        );
+        $this->assertAllKeysMatches(
+            $list,
+            'detachment_threshold',
+            [
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+                '1072.4165738677394138',
+            ],
+        );
     }
 
     /**
-     * @return int[][]
+     * @param float[][]|int[][]|string[][] $list
+     * @param float[]|int[]|string[]       $matches
      */
-    public static function providerTopN(): array
+    private function assertAllKeysMatches(array $list, string $key, array $matches): void
     {
-        return [
-            '5' => [
-                'count' => 5,
-                'expectedCount' => 5,
-            ],
-            '3' => [
-                'count' => 3,
-                'expectedCount' => 3,
-            ],
-            '10' => [
-                'count' => 10,
-                'expectedCount' => 6,
-            ],
-        ];
+        $this->assertSame(
+            $matches,
+            array_map(
+                fn ($value) => $value[$key],
+                $list,
+            ),
+        );
     }
 }

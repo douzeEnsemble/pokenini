@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
 #[ORM\Entity]
-#[UniqueConstraint(name: 'trainer_election_pokemon', columns: ['trainer_external_id', 'election_slug', 'pokemon_id'])]
+#[UniqueConstraint(name: 'trainer_election_pokemon', columns: ['trainer_external_id', 'dex_slug', 'election_slug', 'pokemon_id'])]
 class TrainerPokemonElo
 {
     use BaseEntityTrait;
@@ -24,6 +24,8 @@ class TrainerPokemonElo
         #[ORM\JoinColumn(nullable: false)]
         private readonly Pokemon $pokemon,
         #[ORM\Column]
+        private readonly string $dexSlug,
+        #[ORM\Column]
         private readonly string $electionSlug = '',
     ) {}
 
@@ -35,6 +37,11 @@ class TrainerPokemonElo
     public function getPokemon(): Pokemon
     {
         return $this->pokemon;
+    }
+
+    public function getDexSlug(): string
+    {
+        return $this->dexSlug;
     }
 
     public function getElectionSlug(): string

@@ -20,11 +20,13 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
     {
         $attributes = new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
             'election_slug' => 'douze',
             'count' => 10,
         ]);
 
         $this->assertSame('67865468', $attributes->trainerExternalId);
+        $this->assertSame('demo', $attributes->dexSlug);
         $this->assertSame('douze', $attributes->electionSlug);
         $this->assertSame(10, $attributes->count);
     }
@@ -33,10 +35,12 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
     {
         $attributes = new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
             'count' => 10,
         ]);
 
         $this->assertSame('67865468', $attributes->trainerExternalId);
+        $this->assertSame('demo', $attributes->dexSlug);
         $this->assertSame('', $attributes->electionSlug);
         $this->assertSame(10, $attributes->count);
     }
@@ -46,6 +50,7 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
         $this->expectException(InvalidOptionsException::class);
         new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => 67865468,
+            'dex_slug' => 'demo',
             'count' => 10,
         ]);
     }
@@ -55,7 +60,19 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
         $this->expectException(InvalidOptionsException::class);
         new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
             'election_slug' => false,
+            'count' => 10,
+        ]);
+    }
+
+    public function testWrongValueForDexSlug(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new TrainerPokemonEloQueryOptions([
+            'trainer_external_id' => '67865468',
+            'dex_slug' => 54,
+            'election_slug' => '',
             'count' => 10,
         ]);
     }
@@ -64,11 +81,13 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
     {
         $attributes = new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
             'election_slug' => '',
             'count' => '10',
         ]);
 
         $this->assertSame('67865468', $attributes->trainerExternalId);
+        $this->assertSame('demo', $attributes->dexSlug);
         $this->assertSame('', $attributes->electionSlug);
         $this->assertSame(10, $attributes->count);
     }
@@ -78,6 +97,7 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
         $this->expectException(UndefinedOptionsException::class);
         new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
             'election_slug' => 'douze',
             'count' => 10,
             'other' => 'idk',

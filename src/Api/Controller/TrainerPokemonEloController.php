@@ -25,6 +25,7 @@ class TrainerPokemonEloController extends AbstractController
         return new JsonResponse(
             $trainerPokemonEloRepository->getTopN(
                 $queryOptions->trainerExternalId,
+                $queryOptions->dexSlug,
                 $queryOptions->electionSlug,
                 $queryOptions->count,
             )

@@ -2054,6 +2054,11 @@
       "uri": {
         "match": "/election/top"
       },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "",
+        "count": "5"
+      },
       "method": "get",
       "headers": {
         "accept": "application/json",
@@ -2062,7 +2067,70 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_top_5.json"
+      "file": "/var/moco/election_swordshield__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_swordshield_favorite_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_demolite__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_demolite_favorite_top_5.json"
     }
   }
 ]
