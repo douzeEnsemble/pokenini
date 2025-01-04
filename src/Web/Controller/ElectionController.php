@@ -42,6 +42,13 @@ class ElectionController extends AbstractController
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
 
+        $detachedCount = 0;
+        foreach ($electionTop as $item) {
+            if ($item['elo'] > $item['detachment_threshold']) {
+                ++$detachedCount;
+            }
+        }
+
         $session = $request->getSession();
 
         /** @var ElectionVoteResult $result */
@@ -54,14 +61,16 @@ class ElectionController extends AbstractController
                 'types' => $types,
                 'electionTop' => $electionTop,
                 'result' => $result,
+                'detachedCount' => $detachedCount,
             ]
         );
     }
 
     #[Route(
-        '/{dexSlug}',
+        '/{dexSlug}/{electionSlug}',
         requirements: [
             'dexSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
+            'electionSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
         ],
         methods: ['POST']
     )]
@@ -69,12 +78,23 @@ class ElectionController extends AbstractController
         Request $request,
         ElectionVoteService $electionVoteService,
         string $dexSlug,
+        string $electionSlug = '',
     ): Response {
         $content = $request->request->all();
 
         if (!$content) {
             throw new BadRequestHttpException();
         }
+
+        $content = array_merge(
+            [
+                'dex_slug' => $dexSlug,
+                'election_slug' => $electionSlug,
+            ],
+            $content
+        );
+
+        dump($content);
 
         try {
             $electionVote = new ElectionVote($content);

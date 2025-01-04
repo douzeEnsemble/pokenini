@@ -10,6 +10,7 @@ final class ElectionVote
 {
     public string $trainerExternalId;
 
+    public string $dexSlug;
     public string $electionSlug;
 
     /**
@@ -33,6 +34,7 @@ final class ElectionVote
         $options = $resolver->resolve($values);
 
         $this->trainerExternalId = $options['trainer_external_id'];
+        $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
         $this->winnersSlugs = $options['winners_slugs'];
         $this->losersSlugs = $options['losers_slugs'];
@@ -45,6 +47,9 @@ final class ElectionVote
 
         $resolver->setDefault('election_slug', '');
         $resolver->setAllowedTypes('election_slug', 'string');
+
+        $resolver->setDefault('dex_slug', '');
+        $resolver->setAllowedTypes('dex_slug', 'string');
 
         $resolver->setRequired('winners_slugs');
         $resolver->setAllowedTypes('winners_slugs', 'string[]');

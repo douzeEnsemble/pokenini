@@ -9,6 +9,15 @@
             <strong>{{ result.voteCount ?? 0 }}</strong>
             {{ 'election.stats.vote_count.end'|trans }}
           </p>
+          <p class="card-text">
+            {% if detachedCount %}
+            {{ 'election.stats.favorite_count.start'|trans({'n': detachedCount}) }}
+            <strong>{{ detachedCount }}</strong>
+            {{ 'election.stats.favorite_count.end'|trans({'n': detachedCount}) }}
+            {% else %}
+            {{ 'election.stats.favorite_count.none'|trans({'n': detachedCount}) }}
+            {% endif %}
+          </p>
         </div>
       </div>
     </div>

@@ -27,11 +27,11 @@ class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $repo->updateElo(4556, '7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'bulbasaur');
+        $repo->updateElo(4556, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur');
 
         $this->assertSame(
             4556,
-            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'bulbasaur'),
+            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur'),
         );
     }
 
@@ -40,11 +40,11 @@ class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $repo->updateElo(1212, '7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'butterfree-gmax');
+        $repo->updateElo(1212, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'butterfree-gmax');
 
         $this->assertSame(
             1212,
-            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', '', 'butterfree-gmax'),
+            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'butterfree-gmax'),
         );
     }
 }

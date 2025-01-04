@@ -1,7 +1,7 @@
 {% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
 
 <div id="election-top" class="row mt-3 ms-5 me-5">
-    <h4>{{ 'election.top.title'|trans({'%n%': electionTop|length}) }}</h4>
+    <h4>{{ 'election.top.title'|trans({'n': electionTop|length}) }}</h4>
     {% for item in electionTop %}
     {% set isDetached = item.elo > item.detachment_threshold %}
     <div class="election-top-item col text-center position-relative" data-attr-elo="{{ item.elo }}">

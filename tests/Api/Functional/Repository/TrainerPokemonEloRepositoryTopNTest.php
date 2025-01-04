@@ -27,7 +27,7 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 5);
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 5);
 
         $this->assertCount(
             5,
@@ -58,12 +58,61 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         );
     }
 
+    public function testTop5Home(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 5);
+
+        $this->assertCount(
+            0,
+            $list,
+        );
+    }
+
+    public function testTop5HomeFavorite(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', 'favorite', 5);
+
+        $this->assertCount(
+            5,
+            $list,
+        );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'elo',
+            [
+                1000,
+                1000,
+                1000,
+                1000,
+                1000,
+            ],
+        );
+        $this->assertAllKeysMatches(
+            $list,
+            'detachment_threshold',
+            [
+                '1000.0000000000000000',
+                '1000.0000000000000000',
+                '1000.0000000000000000',
+                '1000.0000000000000000',
+                '1000.0000000000000000',
+            ],
+        );
+    }
+
     public function testTop10(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 10);
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 10);
 
         $this->assertCount(
             6,
