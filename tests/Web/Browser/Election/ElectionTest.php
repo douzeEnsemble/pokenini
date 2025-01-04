@@ -29,7 +29,8 @@ class ElectionTest extends AbstractBrowserTestCase
 
         $client->request('GET', '/fr/election/demolite');
 
-        $this->assertSelectorTextContains('#election-counter', '0');
+        $this->assertSelectorTextContains('#election-counter-top', '0');
+        $this->assertSelectorTextContains('#election-counter-bottom', '0');
 
         $client->executeScript("
             var checkbox = document.querySelector('#vote-bulbasaur');
@@ -38,7 +39,8 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter', '1');
+        $this->assertSelectorTextContains('#election-counter-top', '1');
+        $this->assertSelectorTextContains('#election-counter-bottom', '1');
 
         $client->executeScript("
             var checkbox = document.querySelector('#vote-ivysaur');
@@ -47,7 +49,8 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter', '2');
+        $this->assertSelectorTextContains('#election-counter-top', '2');
+        $this->assertSelectorTextContains('#election-counter-bottom', '2');
 
         $client->executeScript("
             var checkbox = document.querySelector('#vote-ivysaur');
@@ -56,6 +59,7 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter', '1');
+        $this->assertSelectorTextContains('#election-counter-top', '1');
+        $this->assertSelectorTextContains('#election-counter-bottom', '1');
     }
 }

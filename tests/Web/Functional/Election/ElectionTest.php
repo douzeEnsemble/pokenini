@@ -76,30 +76,45 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
 
-        $this->assertCountFilter($crawler, 1, '#election-actions');
-        $this->assertCountFilter($crawler, 4, '#election-actions .nav-item');
+        $this->assertCountFilter($crawler, 1, '#election-actions-top');
+        $this->assertCountFilter($crawler, 4, '#election-actions-top .nav-item');
         $this->assertEquals(
             'Voir mon top 5 actuel',
-            $crawler->filter('#election-actions .nav-item')
+            $crawler->filter('#election-actions-top .nav-item')
                 ->eq(0)
                 ->text()
         );
         $this->assertEquals(
             "J'ai fait mes choix 0",
-            $crawler->filter('#election-actions .nav-item')
+            $crawler->filter('#election-actions-top .nav-item')
                 ->eq(1)
                 ->text()
         );
         $this->assertEquals(
             'Nouvelle liste',
-            $crawler->filter('#election-actions .nav-item')
+            $crawler->filter('#election-actions-top .nav-item')
                 ->eq(2)
                 ->text()
         );
         $this->assertEquals(
             'Remonter',
-            $crawler->filter('#election-actions .nav-item')
+            $crawler->filter('#election-actions-top .nav-item')
                 ->eq(3)
+                ->text()
+        );
+
+        $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
+        $this->assertCountFilter($crawler, 2, '#election-actions-bottom .nav-item');
+        $this->assertEquals(
+            "J'ai fait mes choix 0",
+            $crawler->filter('#election-actions-bottom .nav-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertEquals(
+            'Nouvelle liste',
+            $crawler->filter('#election-actions-bottom .nav-item')
+                ->eq(1)
                 ->text()
         );
 
