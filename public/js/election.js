@@ -30,7 +30,11 @@ function updateElectionCounter() {
   const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
   const count = checkedCheckboxes.length;
 
-  document.getElementById('election-counter').textContent = count;
+  document
+    .querySelectorAll('.election-counter')
+    .forEach(function (element) {
+      element.textContent = count;
+    });
 }
 
 function watchCardClicking () {
@@ -56,7 +60,11 @@ function onCardClick(event) {
 }
 
 function watchSubmitAction () {
-  document.getElementById('election-vote-submit').addEventListener('click', onSubmitVote);
+  document
+    .querySelectorAll('.election-vote-submit')
+    .forEach(function (element) {
+      element.addEventListener('click', onSubmitVote);
+    });
 }
 
 function onSubmitVote() {

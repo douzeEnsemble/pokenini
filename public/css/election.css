@@ -28,12 +28,15 @@ a.election-card-catch-state-edit-action:hover {
     max-width: 100px;
 }
 
-#election-actions.sticky-top {
+.election-actions {
     background-color: white;
 }
-#election-actions .nav {
+.election-actions .nav {
     padding: 1rem 0;
 }
-#election-actions .nav-item.btn-item {
+.election-actions .nav-item.btn-item {
     margin: 0 1rem;
+}
+#election-actions-bottom {
+    bottom: 3rem;
 }
