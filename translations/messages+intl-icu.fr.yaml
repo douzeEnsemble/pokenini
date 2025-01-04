@@ -83,11 +83,11 @@ album:
         title: "Maj"
         success:
             prefix: "Le changement de statut de"
-            radical: "%pokemonName%"
+            radical: "{pokemonName}"
             suffix: "a été enregistré"
         error:
             prefix: "Le changement de statut de"
-            radical: "%pokemonName%"
+            radical: "{pokemonName}"
             suffix: "a échoué"
     intro:
         action:
@@ -186,8 +186,8 @@ album:
                     negative: "Pas dans "
             catch_states:
                 total: "Toute la collection"
-                positive: "Filtre les '%cs%'"
-                negative: "Filtre tous sauf les '%cs%'"
+                positive: "Filtre les '{cs}'"
+                negative: "Filtre tous sauf les '{cs}'"
             collection:
                 label: Collection
                 value:
@@ -280,11 +280,11 @@ trainer:
             title: "Maj"
             success:
                 prefix: "Le paramétrage de "
-                radical: "%dexName%"
+                radical: "{dexName}"
                 suffix: "a été enregistré"
             error:
                 prefix: "Le paramétrage de "
-                radical: "%dexName%"
+                radical: "{dexName}"
                 suffix: "n'a pas été enregistré"
     filters:
         attributes:
@@ -323,7 +323,7 @@ outer_room:
 
         Si tu veux y avoir accès, tu peux contacter mon administrateur, Renaud,
         par email pokenini.app@gmail.com ou par un autre moyen si tu en connais.
-        Il suffit de lui transmettre cet identifiant `%id%`
+        Il suffit de lui transmettre cet identifiant `{id}`
 
         Et si tu cliques en dessous, ça te fait l'email tout seul. Je suis pas gentil ?
 
@@ -335,7 +335,7 @@ outer_room:
     mail:
         link: "Envoyer une demande"
         subject: "Je peux avoir accès à Pokénini stp ?"
-        body: "Mon identifiant Google OpenId est %id%"
+        body: "Mon identifiant Google OpenId est {id}"
 
 footer:
     home: "Accueil"
@@ -432,15 +432,23 @@ election:
         open:
             action: "Ouvrir le volet de configuration"
     top:
-        title: "Ton top %n% actuel"
+        title: "Ton top {n} actuel"
     actions:
         submit: "J'ai fait mes choix"
         reset: "Nouvelle liste"
         goto:
-            mytop: "Voir mon top %n% actuel"
+            mytop: "Voir mon top {n} actuel"
             top: "Remonter"
     stats:
         title: "Les stats"
         vote_count: 
             start: "Tu as voté"
             end: "fois"
+        favorite_count: 
+            start: "Tu as"
+            end: >-
+                {n, plural,
+                    =1 {favoris qui se détache}
+                    other {favoris qui se détachent}
+                }
+            none: "Tu n'as pas de favoris qui se détache"

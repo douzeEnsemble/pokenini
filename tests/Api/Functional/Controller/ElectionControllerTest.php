@@ -30,7 +30,7 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainer_external_id": "12", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
+            '{"trainer_external_id": "12", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -43,6 +43,7 @@ class ElectionControllerTest extends WebTestCase
             [
                 'electionVote' => [
                     'trainerExternalId' => '12',
+                    'dexSlug' => 'demo',
                     'electionSlug' => '',
                     'winnersSlugs' => [
                         'butterfree',
@@ -89,7 +90,7 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
+            '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -102,6 +103,7 @@ class ElectionControllerTest extends WebTestCase
             [
                 'electionVote' => [
                     'trainerExternalId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'dexSlug' => 'demo',
                     'electionSlug' => '',
                     'winnersSlugs' => [
                         'butterfree',
@@ -167,7 +169,7 @@ class ElectionControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => 'web',
                 'PHP_AUTH_PW' => 'douze',
             ],
-            '{"trainerExternalId": "12", "electionSlug": "", "winnersSlugs": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
+            '{"trainerExternalId": "12", "dex_slug": "demo", "electionSlug": "", "winnersSlugs": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
         );
 
         $this->assertResponseStatusCodeSame(400);

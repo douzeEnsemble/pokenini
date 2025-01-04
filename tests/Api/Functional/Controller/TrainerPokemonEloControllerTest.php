@@ -20,6 +20,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             'api/election/top',
             [
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'home',
                 'election_slug' => 'favorite',
                 'count' => '5',
             ]
@@ -50,6 +51,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             'api/election/top',
             [
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'demo',
                 'election_slug' => '',
                 'count' => '5',
             ]
@@ -80,6 +82,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             'api/election/top',
             [
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'home',
                 'election_slug' => 'favorite',
                 'count' => '5',
             ],
@@ -104,6 +107,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             'api/election/top',
             [
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'home',
                 'election_slug' => 'favorite',
                 'count' => '5',
             ],

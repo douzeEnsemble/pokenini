@@ -31,6 +31,7 @@ class ElectionTopServiceTest extends TestCase
             ->method('getTop')
             ->with(
                 '8800088',
+                'demo',
                 'whatever',
                 12,
             )

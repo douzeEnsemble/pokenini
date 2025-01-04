@@ -59,7 +59,7 @@ class ElectionTopApiServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                'https://api.domain/election/top',
+                "https://api.domain/election/top?trainer_external_id={$trainerId}&dex_slug={$dexSlug}&election_slug={$electionSlug}&count={$count}",
                 [
                     'headers' => [
                         'accept' => 'application/json',
@@ -67,11 +67,6 @@ class ElectionTopApiServiceTest extends TestCase
                     'auth_basic' => [
                         'web',
                         'douze',
-                    ],
-                    'body' => [
-                        'trainer_external_id' => $trainerId,
-                        'election_slug' => $electionSlug,
-                        'count' => $count,
                     ],
                 ],
             )

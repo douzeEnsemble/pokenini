@@ -22,6 +22,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
 
     public function getElo(
         string $trainerExternalId,
+        string $dexSlug,
         string $electionSlug,
         string $pokemonSlug,
     ): ?int {
@@ -31,17 +32,20 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id AND p.slug = :pokemon_slug
             WHERE   tpe.trainer_external_id = :trainer_external_id
+                AND tpe.dex_slug = :dex_slug
                 AND tpe.election_slug = :election_slug
             SQL;
 
         $params = [
             'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'pokemon_slug' => $pokemonSlug,
         ];
 
         $types = [
             'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,
             'pokemon_slug' => ParameterType::STRING,
         ];
@@ -59,6 +63,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     public function updateElo(
         int $elo,
         string $trainerExternalId,
+        string $dexSlug,
         string $electionSlug,
         string $pokemonSlug,
     ): void {
@@ -66,6 +71,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             INSERT INTO trainer_pokemon_elo (
                 id,
                 trainer_external_id, 
+                dex_slug, 
                 election_slug, 
                 pokemon_id, 
                 elo
@@ -73,11 +79,12 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             VALUES (
                 :id,
                 :trainer_external_id,
+                :dex_slug,
                 :election_slug,
                 (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
                 :elo
             )
-            ON CONFLICT (trainer_external_id, election_slug, pokemon_id)
+            ON CONFLICT (trainer_external_id, dex_slug, election_slug, pokemon_id)
             DO
             UPDATE
             SET     elo = excluded.elo
@@ -87,6 +94,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'id' => Uuid::v4(),
             'elo' => $elo,
             'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'pokemon_slug' => $pokemonSlug,
         ];
@@ -95,6 +103,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'id' => ParameterType::STRING,
             'elo' => ParameterType::INTEGER,
             'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,
             'pokemon_slug' => ParameterType::STRING,
         ];
@@ -158,7 +167,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 FROM scores
             )
             SELECT  e.elo AS elo,
-                    s.avg_elo + 2 * s.stddev_elo AS detachment_threshold,
+                    s.avg_elo + 3 * s.stddev_elo AS detachment_threshold,
                     p.slug AS pokemon_slug,
                     p.name AS pokemon_name,
                     p.national_dex_number AS pokemon_national_dex_number,

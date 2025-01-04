@@ -18,53 +18,79 @@ class ElectionVoteTest extends TestCase
 {
     public function testOk(): void
     {
-        $attributes = new ElectionVote([
+        $object = new ElectionVote([
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
-        $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
-        $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
+        $this->assertSame('douze', $object->electionSlug);
+        $this->assertSame(['pikachu'], $object->winnersSlugs);
+        $this->assertSame(['pichu', 'raichu'], $object->losersSlugs);
     }
 
     public function testWinnerAsLoser(): void
     {
-        $attributes = new ElectionVote([
+        $object = new ElectionVote([
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'pikachu', 'raichu'],
         ]);
 
-        $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
-        $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
+        $this->assertSame('douze', $object->electionSlug);
+        $this->assertSame(['pikachu'], $object->winnersSlugs);
+        $this->assertSame(['pichu', 'raichu'], $object->losersSlugs);
     }
 
     public function testWinnersAsLosers(): void
     {
-        $attributes = new ElectionVote([
+        $object = new ElectionVote([
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu', 'pichu'],
             'losers_slugs' => ['pichu', 'pikachu', 'raichu'],
         ]);
 
-        $this->assertSame('douze', $attributes->electionSlug);
-        $this->assertSame(['pikachu', 'pichu'], $attributes->winnersSlugs);
-        $this->assertSame(['raichu'], $attributes->losersSlugs);
+        $this->assertSame('douze', $object->electionSlug);
+        $this->assertSame(['pikachu', 'pichu'], $object->winnersSlugs);
+        $this->assertSame(['raichu'], $object->losersSlugs);
+    }
+
+    public function testWithEmptyWinners(): void
+    {
+        $object = new ElectionVote([
+            'election_slug' => 'douze',
+            'winners_slugs' => ['pichu', ''],
+            'losers_slugs' => ['pikachu', 'raichu'],
+        ]);
+
+        $this->assertSame('douze', $object->electionSlug);
+        $this->assertSame(['pichu'], $object->winnersSlugs);
+        $this->assertSame(['pikachu', 'raichu'], $object->losersSlugs);
+    }
+
+    public function testWithEmptyLosers(): void
+    {
+        $object = new ElectionVote([
+            'election_slug' => 'douze',
+            'winners_slugs' => ['pichu'],
+            'losers_slugs' => ['pikachu', 'raichu', ''],
+        ]);
+
+        $this->assertSame('douze', $object->electionSlug);
+        $this->assertSame(['pichu'], $object->winnersSlugs);
+        $this->assertSame(['pikachu', 'raichu'], $object->losersSlugs);
     }
 
     public function testMissingElectionSlug(): void
     {
-        $attributes = new ElectionVote([
+        $object = new ElectionVote([
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
         ]);
 
-        $this->assertSame('', $attributes->electionSlug);
-        $this->assertSame(['pikachu'], $attributes->winnersSlugs);
-        $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
+        $this->assertSame('', $object->electionSlug);
+        $this->assertSame(['pikachu'], $object->winnersSlugs);
+        $this->assertSame(['pichu', 'raichu'], $object->losersSlugs);
     }
 
     public function testWrongValueForElectionSlug(): void

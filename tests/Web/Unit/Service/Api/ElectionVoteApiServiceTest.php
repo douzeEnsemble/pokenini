@@ -23,13 +23,14 @@ class ElectionVoteApiServiceTest extends TestCase
     public function testVote(): void
     {
         $electionVote = new ElectionVote([
+            'dex_slug' => 'demo',
             'election_slug' => 'whatever',
             'winners_slugs' => ['pichu'],
             'losers_slugs' => ['pikachu', 'raichu'],
         ]);
 
         $result = $this
-            ->getService('5465465', 'whatever', ['pichu'], ['pikachu', 'raichu'])
+            ->getService('5465465', 'demo', 'whatever', ['pichu'], ['pikachu', 'raichu'])
             ->vote(
                 '5465465',
                 $electionVote,
@@ -47,13 +48,14 @@ class ElectionVoteApiServiceTest extends TestCase
      */
     private function getService(
         string $trainerId,
+        string $dexSlug,
         string $electionSlug,
         array $winnersSlugs,
         array $losersSlugs,
     ): ElectionVoteApiService {
         $client = $this->createMock(HttpClientInterface::class);
 
-        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_vote_{$trainerId}_{$electionSlug}.json");
+        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_vote_{$trainerId}_{$dexSlug}_{$electionSlug}.json");
 
         $response = $this->createMock(ResponseInterface::class);
         $response
@@ -76,12 +78,13 @@ class ElectionVoteApiServiceTest extends TestCase
                         'web',
                         'douze',
                     ],
-                    'body' => [
+                    'body' => json_encode([
                         'trainer_external_id' => $trainerId,
+                        'dex_slug' => $dexSlug,
                         'election_slug' => $electionSlug,
                         'winners_slugs' => $winnersSlugs,
                         'losers_slugs' => $losersSlugs,
-                    ],
+                    ]),
                 ],
             )
             ->willReturn($response)

@@ -83,11 +83,11 @@ album:
         title: "Update"
         success:
             prefix: ""
-            radical: "%pokemonName%"
+            radical: "{pokemonName}"
             suffix: "new state has been saved"
         error:
             prefix: ""
-            radical: "%pokemonName%"
+            radical: "{pokemonName}"
             suffix: "new state has not been saved"
     intro:
         action:
@@ -186,8 +186,8 @@ album:
                     negative: "Not in "
             catch_states:
                 total: "All the collection"
-                positive: "Filter all '%cs%'"
-                negative: "Filter all excepts '%cs%'"
+                positive: "Filter all '{cs}'"
+                negative: "Filter all excepts '{cs}'"
             collections:
                 label: Collection
                 value:
@@ -279,11 +279,11 @@ trainer:
             title: "Maj"
             success:
                 prefix: ""
-                radical: "%dexName%"
+                radical: "{dexName}"
                 suffix: "setting have been saved"
             error:
                 prefix: ""
-                radical: "%dexName%"
+                radical: "{dexName}"
                 suffix: "setting have not been saved"
     filters:
         attributes:
@@ -322,7 +322,7 @@ outer_room:
 
         If you want to have access to it, you can contact my administrator, Renaud,
         by email pokenini.app@gmail.com or by another means if you know of one.
-        Just send it this identifier `%id%`
+        Just send it this identifier `{id}`
 
         And if you click below, it gives you the email on its own. Am I not nice?
 
@@ -334,7 +334,7 @@ outer_room:
     mail:
         link: "Send a request"
         subject: "Can I have access to Pokénini please?"
-        body: "My Google OpenId identifier is %id%"
+        body: "My Google OpenId identifier is {id}"
 
 footer:
     home: "Home"
@@ -430,15 +430,19 @@ election:
         open:
             action: "Open configuration sidebar"
     top:
-        title: "Your actual top %n%"
+        title: "Your actual top {n}"
     actions:
         submit: "I've made my choices"
         reset: "New selection"
         goto:
-            mytop: "See my actual top %n%"
+            mytop: "See my actual top {n}"
             top: "Go back up"
     stats:
         title: "Stats"
         vote_count: 
             start: "You have voted"
             end: "times"
+        favorite_count: 
+            start: "You have"
+            end: "favorites that stand out"
+            none: "You have no favorites that stand out"

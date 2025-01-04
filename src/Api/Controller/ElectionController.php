@@ -31,6 +31,10 @@ class ElectionController extends AbstractController
         /** @var string[]|string[][] */
         $content = json_decode($json, true);
 
+        if (!$content) {
+            throw new BadRequestHttpException();
+        }
+
         try {
             $electionVote = new ElectionVote($content);
         } catch (\InvalidArgumentException $e) {

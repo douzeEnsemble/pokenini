@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ElectionVote
 {
+    public string $dexSlug;
     public string $electionSlug;
 
     /**
@@ -30,15 +31,19 @@ final class ElectionVote
 
         $options = $resolver->resolve($values);
 
+        $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
-        $this->winnersSlugs = $options['winners_slugs'];
-        $this->losersSlugs = array_diff($options['losers_slugs'], $this->winnersSlugs);
+        $this->winnersSlugs = array_filter($options['winners_slugs']);
+        $this->losersSlugs = array_diff(array_filter($options['losers_slugs']), $this->winnersSlugs);
 
         $this->losersSlugs = array_values($this->losersSlugs);
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
+        $resolver->setDefault('dex_slug', '');
+        $resolver->setAllowedTypes('dex_slug', 'string');
+
         $resolver->setDefault('election_slug', '');
         $resolver->setAllowedTypes('election_slug', 'string');
 

@@ -21,12 +21,13 @@ class ElectionVoteApiService extends AbstractApiService
             'POST',
             '/election/vote',
             [
-                'body' => [
+                'body' => json_encode([
                     'trainer_external_id' => $trainerId,
+                    'dex_slug' => $electionVote->dexSlug,
                     'election_slug' => $electionVote->electionSlug,
                     'winners_slugs' => $electionVote->winnersSlugs,
                     'losers_slugs' => $electionVote->losersSlugs,
-                ],
+                ]),
             ]
         );
 

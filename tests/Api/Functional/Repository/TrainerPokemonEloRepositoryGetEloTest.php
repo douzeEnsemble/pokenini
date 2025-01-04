@@ -31,7 +31,7 @@ class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
 
         $this->assertSame(
             $expectedElo,
-            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', '', $pokemonSlug),
+            $repo->getElo('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', $pokemonSlug),
         );
     }
 
