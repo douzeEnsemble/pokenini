@@ -30,8 +30,7 @@
         "secondary_type_french_name": "Poison",
         "pokemon_order_number": "999-0001-000",
         "original_game_bundle_slug": "redgreenblueyellow",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "ivysaur",
@@ -64,8 +63,7 @@
         "secondary_type_french_name": "Poison",
         "pokemon_order_number": "999-0002-001",
         "original_game_bundle_slug": "redgreenblueyellow",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "venusaur",
@@ -98,8 +96,7 @@
         "secondary_type_french_name": "Poison",
         "pokemon_order_number": "999-0003-002",
         "original_game_bundle_slug": "redgreenblueyellow",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "venusaur-f",
@@ -132,8 +129,7 @@
         "secondary_type_french_name": "Poison",
         "pokemon_order_number": "999-0003-003",
         "original_game_bundle_slug": "redgreenblueyellow",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "venusaur-mega",
@@ -166,7 +162,6 @@
         "secondary_type_french_name": "Poison",
         "pokemon_order_number": "999-0003-004",
         "original_game_bundle_slug": "redgreenblueyellow",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     }
 ]

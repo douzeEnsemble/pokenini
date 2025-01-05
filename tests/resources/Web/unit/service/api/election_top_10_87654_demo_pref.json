@@ -29,8 +29,7 @@
         "secondary_type_name": null,
         "secondary_type_french_name": null,
         "pokemon_order_number": "999-0019-005",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "rattata-alola",
@@ -60,8 +59,7 @@
         "secondary_type_name": "Normal",
         "secondary_type_french_name": "Normal",
         "pokemon_order_number": "999-0019-006",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "raticate",
@@ -93,8 +91,7 @@
         "secondary_type_name": null,
         "secondary_type_french_name": null,
         "pokemon_order_number": "999-0020-007",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "raticate-f",
@@ -126,8 +123,7 @@
         "secondary_type_name": null,
         "secondary_type_french_name": null,
         "pokemon_order_number": "999-0020-008",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "raticate-alola",
@@ -157,8 +153,7 @@
         "secondary_type_name": "Normal",
         "secondary_type_french_name": "Normal",
         "pokemon_order_number": "999-0020-009",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "raticate-alola-totem",
@@ -188,8 +183,7 @@
         "secondary_type_name": "Normal",
         "secondary_type_french_name": "Normal",
         "pokemon_order_number": "999-0020-010",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "spearow",
@@ -221,8 +215,7 @@
         "secondary_type_name": "Flying",
         "secondary_type_french_name": "Vol",
         "pokemon_order_number": "999-0021-000",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "fearow",
@@ -254,8 +247,7 @@
         "secondary_type_name": "Flying",
         "secondary_type_french_name": "Vol",
         "pokemon_order_number": "999-0022-001",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "ekans",
@@ -287,8 +279,7 @@
         "secondary_type_name": null,
         "secondary_type_french_name": null,
         "pokemon_order_number": "999-0023-000",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     },
     {
         "pokemon_slug": "arbok",
@@ -320,7 +311,6 @@
         "secondary_type_name": null,
         "secondary_type_french_name": null,
         "pokemon_order_number": "999-0024-001",
-        "elo": 1040,
-        "detachment_threshold": "1072.4165738677394138"
+        "elo": 1040
     }
 ]

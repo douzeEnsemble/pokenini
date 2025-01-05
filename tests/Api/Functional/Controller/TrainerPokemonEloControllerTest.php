@@ -35,12 +35,9 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         foreach ($content as $pokemon) {
             $this->assertArrayHasKey('elo', $pokemon);
-            $this->assertArrayHasKey('detachment_threshold', $pokemon);
             $this->assertArrayHasKey('pokemon_slug', $pokemon);
             $this->assertArrayHasKey('pokemon_french_name', $pokemon);
             $this->assertArrayHasKey('pokemon_icon', $pokemon);
-
-            $this->assertSame('1000.0000000000000000', $pokemon['detachment_threshold']);
         }
     }
 
@@ -66,12 +63,9 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         foreach ($content as $pokemon) {
             $this->assertArrayHasKey('elo', $pokemon);
-            $this->assertArrayHasKey('detachment_threshold', $pokemon);
             $this->assertArrayHasKey('pokemon_slug', $pokemon);
             $this->assertArrayHasKey('pokemon_french_name', $pokemon);
             $this->assertArrayHasKey('pokemon_icon', $pokemon);
-
-            $this->assertSame('1091.1248608016091207', $pokemon['detachment_threshold']);
         }
     }
 

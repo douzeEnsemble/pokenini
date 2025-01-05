@@ -43,12 +43,7 @@ class ElectionController extends AbstractController
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
 
         $detachedCount = 0;
-        foreach ($electionTop as $item) {
-            if ($item['elo'] > $item['detachment_threshold']) {
-                ++$detachedCount;
-            }
-        }
-
+        
         $session = $request->getSession();
 
         /** @var ElectionVoteResult $result */

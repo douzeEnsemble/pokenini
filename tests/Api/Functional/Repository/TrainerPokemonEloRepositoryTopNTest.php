@@ -45,39 +45,6 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1020,
             ],
         );
-        $this->assertAllKeysMatches(
-            $list,
-            'percent',
-            [
-                '28.57',
-                '28.57',
-                '28.57',
-                '28.57',
-                '28.57',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'adjusted_threshold',
-            [
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'detachment_threshold',
-            [
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-            ],
-        );
     }
 
     public function testTop5Home(): void
@@ -116,39 +83,6 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1000,
             ],
         );
-        $this->assertAllKeysMatches(
-            $list,
-            'percent',
-            [
-                '27.27',
-                '27.27',
-                '27.27',
-                '27.27',
-                '27.27',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'adjusted_threshold',
-            [
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'detachment_threshold',
-            [
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-                '1000.0000000000000000',
-            ],
-        );
     }
 
     public function testTop10(): void
@@ -173,42 +107,6 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1030,
                 1020,
                 1010,
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'percent',
-            [
-                '28.57',
-                '28.57',
-                '28.57',
-                '28.57',
-                '28.57',
-                '28.57',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'adjusted_threshold',
-            [
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-                '1071.106993782368534317',
-            ],
-        );
-        $this->assertAllKeysMatches(
-            $list,
-            'detachment_threshold',
-            [
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
-                '1091.1248608016091207',
             ],
         );
     }
