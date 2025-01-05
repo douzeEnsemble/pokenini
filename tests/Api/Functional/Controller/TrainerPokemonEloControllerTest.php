@@ -71,7 +71,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('pokemon_french_name', $pokemon);
             $this->assertArrayHasKey('pokemon_icon', $pokemon);
 
-            $this->assertSame('1072.4165738677394138', $pokemon['detachment_threshold']);
+            $this->assertSame('1091.1248608016091207', $pokemon['detachment_threshold']);
         }
     }
 
