@@ -41,7 +41,7 @@ class ElectionMetricsServiceTest extends TestCase
             ])
         ;
 
-        $service = new ElectionMetricsService($userTokenService, $apiService, 12);
+        $service = new ElectionMetricsService($userTokenService, $apiService);
 
         $metrics = $service->getMetrics('demo', 'whatever');
 

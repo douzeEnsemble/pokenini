@@ -9,6 +9,7 @@ use App\Web\Controller\ElectionController;
 use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -40,86 +41,10 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
-        $this->assertEquals(
-            'Bulbizarre',
-            $crawler->filter('#card-bulbasaur .list-group-item')
-                ->eq(0)
-                ->text()
-        );
-        $this->assertCountFilter(
-            $crawler,
-            1,
-            '#card-bulbasaur .list-group-item',
-            1,
-            '.election-card-type-primary.pokemon-type-grass',
-        );
-        $this->assertCountFilter(
-            $crawler,
-            1,
-            '#card-bulbasaur .list-group-item',
-            1,
-            '.election-card-type-secondary.pokemon-type-poison',
-        );
-        $this->assertEquals(
-            'bulbasaur',
-            $crawler->filter('#card-bulbasaur input[type="checkbox"][name="winners_slugs[]"]')
-                ->attr('value')
-        );
-        $this->assertEquals(
-            'bulbasaur',
-            $crawler->filter('#card-bulbasaur input[type="hidden"][name="losers_slugs[]"]')
-                ->attr('value')
-        );
-
-        $this->assertCountFilter($crawler, 1, '#election-top');
-        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item');
-        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
-        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
-
-        $this->assertCountFilter($crawler, 1, '#election-actions-top');
-        $this->assertCountFilter($crawler, 4, '#election-actions-top .nav-item');
-        $this->assertEquals(
-            'Voir mon top 5 actuel',
-            $crawler->filter('#election-actions-top .nav-item')
-                ->eq(0)
-                ->text()
-        );
-        $this->assertEquals(
-            "J'ai fait mes choix 0",
-            $crawler->filter('#election-actions-top .nav-item')
-                ->eq(1)
-                ->text()
-        );
-        $this->assertEquals(
-            'Nouvelle liste',
-            $crawler->filter('#election-actions-top .nav-item')
-                ->eq(2)
-                ->text()
-        );
-        $this->assertEquals(
-            'Remonter',
-            $crawler->filter('#election-actions-top .nav-item')
-                ->eq(3)
-                ->text()
-        );
-
-        $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
-        $this->assertCountFilter($crawler, 2, '#election-actions-bottom .nav-item');
-        $this->assertEquals(
-            "J'ai fait mes choix 0",
-            $crawler->filter('#election-actions-bottom .nav-item')
-                ->eq(0)
-                ->text()
-        );
-        $this->assertEquals(
-            'Nouvelle liste',
-            $crawler->filter('#election-actions-bottom .nav-item')
-                ->eq(1)
-                ->text()
-        );
-
-        $this->assertCountFilter($crawler, 1, '#election-stats');
-        $this->assertSame('Tu as voté 0 fois', $crawler->filter('#election-stats p')->eq(0)->text());
+        $this->assertCardContent($crawler);
+        $this->assertElectionTop($crawler);
+        $this->assertActions($crawler);
+        $this->assertStats($crawler);
     }
 
     public function testVote(): void
@@ -217,5 +142,98 @@ class ElectionTest extends WebTestCase
             [],
             '{"election_slug": "", "winners_slugs": ["pichu"], "losers_slugs": ["pikachu", "raich"]}'
         );
+    }
+
+    private function assertCardContent(Crawler $crawler): void
+    {
+        $this->assertEquals(
+            'Bulbizarre',
+            $crawler->filter('#card-bulbasaur .list-group-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertCountFilter(
+            $crawler,
+            1,
+            '#card-bulbasaur .list-group-item',
+            1,
+            '.election-card-type-primary.pokemon-type-grass',
+        );
+        $this->assertCountFilter(
+            $crawler,
+            1,
+            '#card-bulbasaur .list-group-item',
+            1,
+            '.election-card-type-secondary.pokemon-type-poison',
+        );
+        $this->assertEquals(
+            'bulbasaur',
+            $crawler->filter('#card-bulbasaur input[type="checkbox"][name="winners_slugs[]"]')
+                ->attr('value')
+        );
+        $this->assertEquals(
+            'bulbasaur',
+            $crawler->filter('#card-bulbasaur input[type="hidden"][name="losers_slugs[]"]')
+                ->attr('value')
+        );
+    }
+
+    private function assertElectionTop(Crawler $crawler): void
+    {
+        $this->assertCountFilter($crawler, 1, '#election-top');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
+        $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
+    }
+
+    private function assertActions(Crawler $crawler): void
+    {
+        $this->assertCountFilter($crawler, 1, '#election-actions-top');
+        $this->assertCountFilter($crawler, 4, '#election-actions-top .nav-item');
+        $this->assertEquals(
+            'Voir mon top 5 actuel',
+            $crawler->filter('#election-actions-top .nav-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertEquals(
+            "J'ai fait mes choix 0",
+            $crawler->filter('#election-actions-top .nav-item')
+                ->eq(1)
+                ->text()
+        );
+        $this->assertEquals(
+            'Nouvelle liste',
+            $crawler->filter('#election-actions-top .nav-item')
+                ->eq(2)
+                ->text()
+        );
+        $this->assertEquals(
+            'Remonter',
+            $crawler->filter('#election-actions-top .nav-item')
+                ->eq(3)
+                ->text()
+        );
+
+        $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
+        $this->assertCountFilter($crawler, 2, '#election-actions-bottom .nav-item');
+        $this->assertEquals(
+            "J'ai fait mes choix 0",
+            $crawler->filter('#election-actions-bottom .nav-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertEquals(
+            'Nouvelle liste',
+            $crawler->filter('#election-actions-bottom .nav-item')
+                ->eq(1)
+                ->text()
+        );
+    }
+
+    private function assertStats(Crawler $crawler): void
+    {
+        $this->assertCountFilter($crawler, 1, '#election-stats');
+        $this->assertSame('Tu as voté 0 fois', $crawler->filter('#election-stats p')->eq(0)->text());
     }
 }

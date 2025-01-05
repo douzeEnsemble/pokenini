@@ -148,6 +148,52 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * @return float[]|int[]
+     */
+    public function getMetrics(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $electionSlug,
+    ): array {
+        $sql = <<<'SQL'
+            SELECT  
+                AVG(elo) AS avg_elo,
+                STDDEV(elo) AS stddev_elo,
+                COUNT(1) AS count_elo
+            FROM    trainer_pokemon_elo AS tpe
+            WHERE   trainer_external_id = :trainer_external_id
+                    AND dex_slug = :dex_slug
+                    AND election_slug = :election_slug 
+            SQL;
+
+        $params = [
+            'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
+            'election_slug' => $electionSlug,
+        ];
+
+        $types = [
+            'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
+            'election_slug' => ParameterType::STRING,
+        ];
+
+        /** @var int[]|string[] $result */
+        $result = $this->getEntityManager()->getConnection()->fetchAssociative(
+            $sql,
+            $params,
+            $types,
+        );
+
+        $cleanResult = [];
+        $cleanResult['avg_elo'] = floatval($result['avg_elo']);
+        $cleanResult['stddev_elo'] = floatval($result['stddev_elo']);
+        $cleanResult['count_elo'] = intval($result['count_elo']);
+
+        return $cleanResult;
+    }
+
     private function getTopNSQL(): string
     {
         return <<<'SQL'
@@ -210,49 +256,5 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             ORDER BY tpe.elo DESC, p.slug ASC
             LIMIT   :count
             SQL;
-    }
-
-    /**
-     * @return float[]|int[]
-     */
-    public function getMetrics(
-        string $trainerExternalId,
-        string $dexSlug,
-        string $electionSlug,
-    ): array {
-        $sql = <<<'SQL'
-        SELECT  
-            AVG(elo) AS avg_elo,
-            STDDEV(elo) AS stddev_elo,
-            COUNT(1) AS count_elo
-        FROM    trainer_pokemon_elo AS tpe
-        WHERE   trainer_external_id = :trainer_external_id
-                AND dex_slug = :dex_slug
-                AND election_slug = :election_slug 
-        SQL;
-
-        $params = [
-            'trainer_external_id' => $trainerExternalId,
-            'dex_slug' => $dexSlug,
-            'election_slug' => $electionSlug,
-        ];
-
-        $types = [
-            'trainer_external_id' => ParameterType::STRING,
-            'dex_slug' => ParameterType::STRING,
-            'election_slug' => ParameterType::STRING,
-        ];
-
-        /** @var string[]|int[] */
-        $result = $this->getEntityManager()->getConnection()->fetchAssociative(
-            $sql,
-            $params,
-            $types,
-        );
-
-        $result['avg_elo'] = floatval($result['avg_elo']);
-        $result['stddev_elo'] = floatval($result['stddev_elo']);
-
-        return $result;
     }
 }

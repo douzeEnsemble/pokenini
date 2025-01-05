@@ -11,6 +11,7 @@ use App\Web\Service\Api\GetPokemonsService;
 use App\Web\Service\ElectionMetricsService;
 use App\Web\Service\ElectionTopService;
 use App\Web\Service\ElectionVoteService;
+use App\Web\Service\GetTrainerPokedexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,7 @@ class ElectionController extends AbstractController
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
         ElectionMetricsService $electionMetricsService,
+        GetTrainerPokedexService $getTrainerPokedexService,
         int $electionCandidateCount,
         string $dexSlug,
         string $electionSlug = '',
@@ -44,14 +46,15 @@ class ElectionController extends AbstractController
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
         $electionMetrics = $electionMetricsService->getMetrics($dexSlug, $electionSlug);
+        $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, []);
 
         $detachedCount = 0;
         foreach ($electionTop as $pokemon) {
             if ($pokemon['elo'] > $electionMetrics->avg + 2 * $electionMetrics->stddev) {
-                $detachedCount++;
+                ++$detachedCount;
             }
         }
-        
+
         $session = $request->getSession();
 
         /** @var ElectionVoteResult $result */
@@ -61,6 +64,7 @@ class ElectionController extends AbstractController
             'Election/index.html.twig',
             [
                 'pokemons' => $pokemons,
+                'pokedex' => $pokedex,
                 'types' => $types,
                 'electionTop' => $electionTop,
                 'electionMetrics' => $electionMetrics,

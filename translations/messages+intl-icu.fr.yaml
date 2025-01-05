@@ -446,6 +446,7 @@ election:
             end: "fois"
         pokemon_vote: 
             start: "Tu as voté pour ou contre"
+            middle: "sur"
             end: "Pokémon"
         favorite_count: 
             start: "Tu as"

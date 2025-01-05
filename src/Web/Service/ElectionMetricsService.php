@@ -17,6 +17,7 @@ class ElectionMetricsService
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
+        /** @var float[]|int[] */
         $data = $this->apiService->getMetrics($trainerId, $dexSlug, $electionSlug);
 
         return new ElectionMetrics($data);
