@@ -10,6 +10,11 @@
             {{ 'election.stats.vote_count.end'|trans }}
           </p>
           <p class="card-text">
+            {{ 'election.stats.pokemon_vote.start'|trans }}
+            <strong>{{ electionMetrics.count ?? 0 }}</strong>
+            {{ 'election.stats.pokemon_vote.end'|trans }}
+          </p>
+          <p class="card-text">
             {% if detachedCount %}
             {{ 'election.stats.favorite_count.start'|trans({'n': detachedCount}) }}
             <strong>{{ detachedCount }}</strong>

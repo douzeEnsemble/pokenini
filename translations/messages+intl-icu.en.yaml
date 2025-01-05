@@ -440,8 +440,11 @@ election:
     stats:
         title: "Stats"
         vote_count: 
-            start: "You have voted"
+            start: "You voted"
             end: "times"
+        pokemon_vote: 
+            start: "You voted for or against"
+            end: "Pokémon"
         favorite_count: 
             start: "You have"
             end: "favorites that stand out"
