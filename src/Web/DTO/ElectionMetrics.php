@@ -13,7 +13,7 @@ final class ElectionMetrics
     public int $count;
 
     /**
-     * @param string[]|string[][] $values
+     * @param float[]|int[] $values
      */
     public function __construct(array $values = [])
     {

@@ -444,6 +444,7 @@ election:
             end: "times"
         pokemon_vote: 
             start: "You voted for or against"
+            middle: "over"
             end: "Pokémon"
         favorite_count: 
             start: "You have"

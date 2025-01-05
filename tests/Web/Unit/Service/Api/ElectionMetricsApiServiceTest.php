@@ -28,7 +28,7 @@ class ElectionMetricsApiServiceTest extends TestCase
                 'avg_elo' => 1000,
                 'stddev_elo' => 0,
                 'count_elo' => 6,
-            ], 
+            ],
             $items
         );
 
@@ -44,7 +44,7 @@ class ElectionMetricsApiServiceTest extends TestCase
                 'avg_elo' => 1035,
                 'stddev_elo' => 18.708286933869708,
                 'count_elo' => 6,
-            ], 
+            ],
             $items
         );
 

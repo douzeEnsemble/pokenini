@@ -95,7 +95,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $content,
         );
     }
-    
+
     public function testGetMetricsBis(): void
     {
         $this->apiRequest(
