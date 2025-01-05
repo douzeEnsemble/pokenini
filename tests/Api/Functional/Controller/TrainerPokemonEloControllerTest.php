@@ -69,6 +69,60 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
         }
     }
 
+    public function testGetMetrics(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/election/metrics',
+            [
+                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'demo',
+                'election_slug' => '',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        /** @var float[]|int[] $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertSame(
+            [
+                'avg_elo' => 1035,
+                'stddev_elo' => 18.708286933869708,
+                'count_elo' => 6,
+            ],
+            $content,
+        );
+    }
+    
+    public function testGetMetricsBis(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'api/election/metrics',
+            [
+                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'demo',
+                'election_slug' => 'favorite',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        /** @var float[]|int[] $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertSame(
+            [
+                'avg_elo' => 1000,
+                'stddev_elo' => 0,
+                'count_elo' => 6,
+            ],
+            $content,
+        );
+    }
+
     public function testGetAuth(): void
     {
         $this->apiRequest(

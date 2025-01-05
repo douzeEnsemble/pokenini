@@ -35,9 +35,14 @@ class ElectionTopServiceTest extends TestCase
                 'whatever',
                 12,
             )
+            ->willReturn(['some', 'data'])
         ;
 
         $service = new ElectionTopService($userTokenService, $apiService, 12);
-        $service->getTop('demo', 'whatever');
+
+        $this->assertSame(
+            ['some', 'data'],
+            $service->getTop('demo', 'whatever'),
+        );
     }
 }

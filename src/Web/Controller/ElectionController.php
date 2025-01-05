@@ -8,6 +8,7 @@ use App\Web\DTO\ElectionVote;
 use App\Web\DTO\ElectionVoteResult;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokemonsService;
+use App\Web\Service\ElectionMetricsService;
 use App\Web\Service\ElectionTopService;
 use App\Web\Service\ElectionVoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +35,7 @@ class ElectionController extends AbstractController
         GetPokemonsService $getPokemonsService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
+        ElectionMetricsService $electionMetricsService,
         int $electionCandidateCount,
         string $dexSlug,
         string $electionSlug = '',
@@ -41,8 +43,14 @@ class ElectionController extends AbstractController
         $pokemons = $getPokemonsService->get($dexSlug, $electionCandidateCount);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
+        $electionMetrics = $electionMetricsService->getMetrics($dexSlug, $electionSlug);
 
         $detachedCount = 0;
+        foreach ($electionTop as $pokemon) {
+            if ($pokemon['elo'] > $electionMetrics->avg + 2 * $electionMetrics->stddev) {
+                $detachedCount++;
+            }
+        }
         
         $session = $request->getSession();
 
@@ -55,6 +63,7 @@ class ElectionController extends AbstractController
                 'pokemons' => $pokemons,
                 'types' => $types,
                 'electionTop' => $electionTop,
+                'electionMetrics' => $electionMetrics,
                 'result' => $result,
                 'detachedCount' => $detachedCount,
             ]
@@ -88,8 +97,6 @@ class ElectionController extends AbstractController
             ],
             $content
         );
-
-        dump($content);
 
         try {
             $electionVote = new ElectionVote($content);
