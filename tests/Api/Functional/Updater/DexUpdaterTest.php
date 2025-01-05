@@ -18,10 +18,10 @@ class DexUpdaterTest extends AbstractTestUpdater
 {
     use GetDexTrait;
 
-    protected int $initialTotalCount = 8;
-    protected int $finalTotalCount = 24;
+    protected int $initialTotalCount = 9;
+    protected int $finalTotalCount = 25;
     protected int $initialDeletedTotalCount = 1;
-    protected int $mustBeDeletedTotalCount = 3;
+    protected int $mustBeDeletedTotalCount = 4;
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
 

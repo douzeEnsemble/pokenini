@@ -61,7 +61,7 @@ class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
 
         $this->assertInstanceOf(\Generator::class, $list);
-        $this->assertCount(9, iterator_to_array($list, false));
+        $this->assertCount(10, iterator_to_array($list, false));
     }
 
     public function testGetListQueryWithUnreleasedAndPremium(): void
@@ -77,6 +77,6 @@ class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $list = $repo->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $dexQueryOptions);
 
         $this->assertInstanceOf(\Generator::class, $list);
-        $this->assertCount(10, iterator_to_array($list, false));
+        $this->assertCount(11, iterator_to_array($list, false));
     }
 }

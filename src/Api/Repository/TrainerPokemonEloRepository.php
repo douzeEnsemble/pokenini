@@ -160,14 +160,44 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                     AND dex_slug = :dex_slug
                     AND election_slug = :election_slug
             ),
+            totals AS (
+                SELECT  
+                    COUNT(1) as count_pokemon,
+                    (SELECT COUNT(1) FROM scores) AS count_pokemon_seen
+                FROM dex_availability AS da
+                    JOIN dex AS d 
+                        ON da.dex_id = d.id AND d.slug = :dex_slug
+            ),
+            completion AS (
+                 SELECT 
+                    CASE 
+                        WHEN count_pokemon <> 0 
+                            THEN ROUND((100 * count_pokemon_seen::FLOAT / count_pokemon::FLOAT)::NUMERIC, 2)
+                        ELSE 0
+                    END AS percent
+                 FROM totals
+            ),
             stats AS (
                 SELECT
                     AVG(elo) AS avg_elo,
-                    STDDEV(elo) AS stddev_elo
+                    STDDEV(elo) AS stddev_elo,
+                    COUNT(*) AS count_elo
                 FROM scores
+            ),
+            ajusted_threshold AS (
+                SELECT 
+                    avg_elo,
+                    stddev_elo,
+                    ROUND(1.5 + (percent / 100) * (3 - 1.5), 2) AS dynamic_factor
+                FROM stats, completion
             )
             SELECT  e.elo AS elo,
+                    t.count_pokemon, 
+                    t.count_pokemon_seen,
+                    c.percent,
                     s.avg_elo + 3 * s.stddev_elo AS detachment_threshold,
+                    a.avg_elo + a.dynamic_factor * a.stddev_elo AS adjusted_threshold,
+
                     p.slug AS pokemon_slug,
                     p.name AS pokemon_name,
                     p.national_dex_number AS pokemon_national_dex_number,
@@ -202,7 +232,10 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                         LPAD(CAST(p.family_order AS varchar), 3, '0')
                     ) as pokemon_order_number
             FROM    
+                    ajusted_threshold AS a,
                     stats AS s,
+                    totals AS t,
+                    completion AS c,
                     scores AS e 
                 JOIN pokemon AS p
                     ON e.pokemon_id = p.id

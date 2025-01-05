@@ -35,7 +35,7 @@ class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(8, $this->getTableCount('dex'));
+        $this->assertEquals(9, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
@@ -48,7 +48,7 @@ class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(24, $this->getTableCount('dex'));
+        $this->assertEquals(25, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());

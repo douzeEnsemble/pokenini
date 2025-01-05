@@ -77,6 +77,15 @@ App\Api\Entity\Dex:
         isDisplayForm: false
         lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
         isPremium: true
+    dex_demo:
+        name: 'Demo'
+        slug: 'demo'
+        frenchName: 'Démo'
+        selectionRule: "(p.bankable or p.bankableish)"
+        displayTemplate: 'box'
+        orderNumber: 7
+        lastChangedAt: '<date_create()>'
+        isPremium: false
     dex_spoon:
         name: 'Spoon'
         slug: 'spoon'
