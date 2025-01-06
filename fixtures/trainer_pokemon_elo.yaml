@@ -121,3 +121,53 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_venusaur_gigantamax'
             electionSlug: 'favorite'
         elo: 1000
+
+    trainerpokemonelo_redgreenblueyellow_u12_fav_douze:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_douze'
+            electionSlug: 'favorite'
+        elo: 1016
+    trainerpokemonelo_redgreenblueyellow_u12_fav_bulbasaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_bulbasaur'
+            electionSlug: 'favorite'
+        elo: 984
+    trainerpokemonelo_redgreenblueyellow_u12_fav_ivysaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_ivysaur'
+            electionSlug: 'favorite'
+        elo: 984
+    trainerpokemonelo_redgreenblueyellow_u12_fav_venusaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_venusaur'
+            electionSlug: 'favorite'
+        elo: 984
+    trainerpokemonelo_redgreenblueyellow_u12_fav_caterpie:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_caterpie'
+            electionSlug: 'favorite'
+        elo: 984
+    trainerpokemonelo_redgreenblueyellow_u12_fav_metapod:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_metapod'
+            electionSlug: 'favorite'
+        elo: 984
+    trainerpokemonelo_redgreenblueyellow_u12_fav_butterfree:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'redgreenblueyellow'
+            pokemon: '@pokemon_butterfree'
+            electionSlug: 'favorite'
+        elo: 984

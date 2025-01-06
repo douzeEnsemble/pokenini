@@ -45,6 +45,18 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1020,
             ],
         );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'significance',
+            [
+                false,
+                false,
+                false,
+                false,
+                false,
+            ],
+        );
     }
 
     public function testTop5Home(): void
@@ -83,6 +95,18 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1000,
             ],
         );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'significance',
+            [
+                false,
+                false,
+                false,
+                false,
+                false,
+            ],
+        );
     }
 
     public function testTop10(): void
@@ -107,6 +131,60 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
                 1030,
                 1020,
                 1010,
+            ],
+        );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'significance',
+            [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+            ],
+        );
+    }
+
+    public function testTopComplete(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'favorite', 10);
+
+        $this->assertCount(
+            7,
+            $list,
+        );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'elo',
+            [
+                1016,
+                984,
+                984,
+                984,
+                984,
+                984,
+                984,
+            ],
+        );
+
+        $this->assertAllKeysMatches(
+            $list,
+            'significance',
+            [
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
             ],
         );
     }
