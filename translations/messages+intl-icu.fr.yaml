@@ -452,7 +452,7 @@ election:
             start: "Tu as"
             end: >-
                 {n, plural,
-                    =1 {favoris qui se détache}
+                    =1 {favori qui se détache}
                     other {favoris qui se détachent}
                 }
             none: "Tu n'as pas de favoris qui se détache"
