@@ -196,7 +196,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
 
     private function getTopNSQL(): string
     {
-        $sql = file_get_contents('resources/auth/sql/trainer_pokemon_elo-get_top_n.sql');
+        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/trainer_pokemon_elo-get_top_n.sql');
 
         if (false === $sql) {
             throw new \RuntimeException('Failed to read SQL file "trainer_pokemon_elo-get_top_n.sql"');
