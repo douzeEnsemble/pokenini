@@ -117,7 +117,6 @@ class ElectionController extends AbstractController
             'app_web_election_index',
             [
                 'dexSlug' => $dexSlug,
-                'electionSlug' => $electionSlug,
             ]
         );
     }
