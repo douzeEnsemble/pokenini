@@ -199,7 +199,11 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/trainer_pokemon_elo-get_top_n.sql');
 
         if (false === $sql) {
+            // This condition is here form safety reason
+            // It can never happen
+            // @codeCoverageIgnoreStart
             throw new \RuntimeException('Failed to read SQL file "trainer_pokemon_elo-get_top_n.sql"');
+            // @codeCoverageIgnoreEnd
         }
 
         return $sql;

@@ -68,12 +68,8 @@ class ElectionUpdateEloService
     /**
      * @param PokemonElo[] $pokemonsElo
      */
-    private function getAverageELo(array $pokemonsElo): int
+    private function getAverageElo(array $pokemonsElo): int
     {
-        if (!count($pokemonsElo)) {
-            return 0;
-        }
-
         $listElo = [];
         foreach ($pokemonsElo as $pokemonElo) {
             $listElo[] = $pokemonElo->getElo();

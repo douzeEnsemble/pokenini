@@ -156,6 +156,25 @@ class ElectionControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(400);
     }
 
+    public function testEmptyVoteBis(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            'api/election/vote',
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW' => 'douze',
+            ],
+            '{}',
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testBadVote(): void
     {
         $client = static::createClient();
