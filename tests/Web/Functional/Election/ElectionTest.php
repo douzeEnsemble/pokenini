@@ -66,7 +66,29 @@ class ElectionTest extends WebTestCase
             ],
         );
 
-        $this->assertResponseRedirects();
+        $this->assertResponseRedirects('/fr/election/demolite');
+    }
+
+    public function testVoteWithElectionSlug(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'POST',
+            '/fr/election/demolite/pref',
+            [
+                'election_slug' => '',
+                'winners_slugs' => ['pichu'],
+                'losers_slugs' => ['pikachu', 'raichu'],
+            ],
+        );
+
+        $this->assertResponseRedirects('/fr/election/demolite/pref');
     }
 
     public function testEmptyVote(): void
