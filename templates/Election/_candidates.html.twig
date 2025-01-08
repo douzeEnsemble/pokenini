@@ -18,7 +18,11 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <strong>
+                {% if pokedex.dex.is_display_form %}
                 {{ locale is same as('fr') ? item.pokemon_french_name : item.pokemon_name }}
+                {% else %}  
+                {{ locale is same as('fr') ? item.pokemon_simplified_french_name : item.pokemon_simplified_name }}
+                {% endif %}
               </strong>
             </li>
             <li class="list-group-item d-flex justify-content-start align-items-center">

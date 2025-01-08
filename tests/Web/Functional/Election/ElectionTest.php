@@ -41,7 +41,7 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
-        $this->assertCardContent($crawler);
+        $this->assertCardContentDemoLite($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
         $this->assertStats($crawler);
@@ -68,7 +68,34 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
-        $this->assertCardContent($crawler);
+        $this->assertCardContentDemoLite($crawler);
+        $this->assertElectionTop($crawler);
+        $this->assertActions($crawler);
+        $this->assertStats($crawler);
+    }
+
+    public function testIndexWithoutDisplayForm(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/election/mega');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
+        $this->assertCountFilter($crawler, 17, '.album-modal-image');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
+
+        $this->assertCardContentMega($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
         $this->assertStats($crawler);
@@ -193,7 +220,7 @@ class ElectionTest extends WebTestCase
         );
     }
 
-    private function assertCardContent(Crawler $crawler): void
+    private function assertCardContentDemoLite(Crawler $crawler): void
     {
         $this->assertEquals(
             'Bulbizarre',
@@ -223,6 +250,40 @@ class ElectionTest extends WebTestCase
         $this->assertEquals(
             'bulbasaur',
             $crawler->filter('#card-bulbasaur input[type="hidden"][name="losers_slugs[]"]')
+                ->attr('value')
+        );
+    }
+
+    private function assertCardContentMega(Crawler $crawler): void
+    {
+        $this->assertEquals(
+            'Dracaufeu',
+            $crawler->filter('#card-charizard-mega-y .list-group-item')
+                ->eq(0)
+                ->text()
+        );
+        $this->assertCountFilter(
+            $crawler,
+            1,
+            '#card-charizard-mega-y .list-group-item',
+            1,
+            '.election-card-type-primary.pokemon-type-fire',
+        );
+        $this->assertCountFilter(
+            $crawler,
+            1,
+            '#card-charizard-mega-y .list-group-item',
+            1,
+            '.election-card-type-secondary.pokemon-type-flying',
+        );
+        $this->assertEquals(
+            'charizard-mega-y',
+            $crawler->filter('#card-charizard-mega-y input[type="checkbox"][name="winners_slugs[]"]')
+                ->attr('value')
+        );
+        $this->assertEquals(
+            'charizard-mega-y',
+            $crawler->filter('#card-charizard-mega-y input[type="hidden"][name="losers_slugs[]"]')
                 ->attr('value')
         );
     }
