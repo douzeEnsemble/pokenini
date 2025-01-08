@@ -47,6 +47,33 @@ class ElectionTest extends WebTestCase
         $this->assertStats($crawler);
     }
 
+    public function testIndexShinyDex(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/election/demoliteshiny');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 0, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 12, '.election-card-image-container-shiny');
+        $this->assertCountFilter($crawler, 17, '.album-modal-image');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
+
+        $this->assertCardContent($crawler);
+        $this->assertElectionTop($crawler);
+        $this->assertActions($crawler);
+        $this->assertStats($crawler);
+    }
+
     public function testVote(): void
     {
         $client = static::createClient();

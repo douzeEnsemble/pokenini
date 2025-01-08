@@ -4,7 +4,11 @@
     <h4>{{ 'election.top.title'|trans({'n': electionTop|length}) }}</h4>
     {% for item in electionTop %}
     <div class="election-top-item col text-center position-relative" data-attr-elo="{{ item.elo }}">
+        {% if pokedex.dex.is_shiny %}
+        {{ imageMacros.shinyPokemonImage(item, locale) }}
+        {% else %}
         {{ imageMacros.regularPokemonImage(item, locale) }}
+        {% endif %}
         <br>
         {% if item.significance %}
         <i class="bi bi-star"></i>
