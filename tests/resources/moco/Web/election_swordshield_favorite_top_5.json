@@ -29,7 +29,8 @@
         "secondary_type_french_name": null,
         "original_game_bundle_slug": "redgreenblueyellow",
         "pokemon_order_number": "398-0888-000",
-        "elo": 1073
+        "elo": 1073,
+        "significance": false
     },
     {
         "pokemon_slug": "zamazenta",
@@ -61,7 +62,8 @@
         "secondary_type_french_name": null,
         "original_game_bundle_slug": "redgreenblueyellow",
         "pokemon_order_number": "399-0889-000",
-        "elo": 1040
+        "elo": 1040,
+        "significance": false
     },
     {
         "pokemon_slug": "rillaboom-gmax",
@@ -93,7 +95,8 @@
         "secondary_type_french_name": null,
         "original_game_bundle_slug": "redgreenblueyellow",
         "pokemon_order_number": "003-0812-003",
-        "elo": 1040
+        "elo": 1040,
+        "significance": false
     },
     {
         "pokemon_slug": "cinderace-gmax",
@@ -125,7 +128,8 @@
         "secondary_type_french_name": null,
         "original_game_bundle_slug": "redgreenblueyellow",
         "pokemon_order_number": "006-0815-003",
-        "elo": 1040
+        "elo": 1040,
+        "significance": false
     },
     {
         "pokemon_slug": "inteleon-gmax",
@@ -157,6 +161,7 @@
         "secondary_type_french_name": null,
         "original_game_bundle_slug": "redgreenblueyellow",
         "pokemon_order_number": "009-0818-003",
-        "elo": 1040
+        "elo": 1040,
+        "significance": false
     }
 ]
