@@ -11,13 +11,14 @@ function onChangeWinnerCheckbox(event) {
 
   const target = event.target;
   
-  changeCardBorder(target);
+  changeCardBorderWinner(target);
   updateElectionCounter(target);
 }
 
-function changeCardBorder(target) {
+function changeCardBorderWinner(target) {
   const card = target.closest('.card');
 
+  card.classList.remove('border-warning');
   if (target.checked) {
     card.classList.add('border-primary');
   } else {
@@ -69,4 +70,29 @@ function watchSubmitAction () {
 
 function onSubmitVote() {
   document.getElementById('election').submit();
+}
+
+function watchCardMouseHover () {
+  document
+    .querySelectorAll('.card')
+    .forEach(function (element) {
+      element.addEventListener('mouseover', onCardMouseOver);
+      element.addEventListener('mouseout', onCardMouseOut);
+    });
+}
+
+function onCardMouseOver (event) {
+  const card = event.target.closest('.card');
+
+  card.classList
+    .add('border-warning')
+  ;
+}
+
+function onCardMouseOut (event) {
+  const card = event.target.closest('.card');
+
+  card.classList
+    .remove('border-warning')
+  ;
 }
