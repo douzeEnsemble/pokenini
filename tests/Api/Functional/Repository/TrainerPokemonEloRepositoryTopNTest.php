@@ -190,8 +190,8 @@ class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     }
 
     /**
-     * @param float[][]|int[][]|string[][] $list
-     * @param float[]|int[]|string[]       $matches
+     * @param float[][]|int[][]|string[][]  $list
+     * @param bool[]|float[]|int[]|string[] $matches
      */
     private function assertAllKeysMatches(array $list, string $key, array $matches): void
     {
