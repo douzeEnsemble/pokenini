@@ -1909,6 +1909,22 @@
   {
     "request": {
       "uri": {
+        "match": "/pokemons/list/demoliteshiny/12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_list_demoliteshiny_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/pokemons/list/swordshield/12"
       },
       "method": "get",
@@ -2048,6 +2064,27 @@
         "match": "/election/top"
       },
       "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_demoliteshiny__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
         "dex_slug": "mega",
         "election_slug": "favorite",
         "count": "5"
@@ -2121,6 +2158,26 @@
     "response": {
       "status": "200",
       "file": "/var/moco/election_demolite_favorite_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_demoliteshiny__metrics.json"
     }
   },
   {

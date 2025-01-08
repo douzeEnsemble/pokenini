@@ -7,8 +7,12 @@
       <div class="card election-card" id="card-{{ item.pokemon_slug }}">
         <div class="card-body position-relative">
           <div class="card-pokemon-images">
-            <span class="election-card-image-container-regular">
+            <span class="election-card-image-container-{{ pokedex.dex.is_shiny ? 'shiny' : 'regular' }}">
+              {% if pokedex.dex.is_shiny %}
+              {{ imageMacros.shinyPokemonImage(item, locale) }}
+              {% else %}
               {{ imageMacros.regularPokemonImage(item, locale) }}
+              {% endif %}
             </span>
           </div>
           <ul class="list-group list-group-flush">
