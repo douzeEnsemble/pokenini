@@ -41,7 +41,7 @@ final class ElectionVote
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('dex_slug', '');
+        $resolver->setRequired('dex_slug');
         $resolver->setAllowedTypes('dex_slug', 'string');
 
         $resolver->setDefault('election_slug', '');

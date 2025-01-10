@@ -30,6 +30,7 @@ class AccessPrivateTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.navbar-nav #share-link');
         $this->assertCountFilter($crawler, 0, '.navbar-nav #private-tag');
+        $this->assertSame('', $crawler->filter('input[name="t"]')->attr('value'));
     }
 
     public function testAccessOwnPrivateAlbum(): void
@@ -44,6 +45,7 @@ class AccessPrivateTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.navbar-nav #share-link');
         $this->assertCountFilter($crawler, 0, '.navbar-nav #private-tag');
+        $this->assertSame('', $crawler->filter('input[name="t"]')->attr('value'));
     }
 
     public function testAccessAnotherPublicAlbum(): void
@@ -58,6 +60,7 @@ class AccessPrivateTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 0, '.navbar-nav #share-link');
         $this->assertCountFilter($crawler, 0, '.navbar-nav #private-tag');
+        $this->assertSame('7b52009b64fd0a2a49e6d8a939753077792b0554', $crawler->filter('input[name="t"]')->attr('value'));
     }
 
     public function testAccessAnotherPrivateAlbum(): void

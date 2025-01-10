@@ -79,6 +79,17 @@ class TrainerPokemonEloTopQueryOptionsTest extends TestCase
 
     public function testWrongValueForCount(): void
     {
+        $this->expectException(InvalidOptionsException::class);
+        new TrainerPokemonEloTopQueryOptions([
+            'trainer_external_id' => '67865468',
+            'dex_slug' => 'demo',
+            'election_slug' => '',
+            'count' => [10],
+        ]);
+    }
+
+    public function testUnnormalizeValueForCount(): void
+    {
         $attributes = new TrainerPokemonEloTopQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',

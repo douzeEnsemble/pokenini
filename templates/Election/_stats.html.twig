@@ -7,7 +7,7 @@
           <h4 class="card-title mb-5">{{ 'election.stats.title'|trans }}</h4>
           <p class="card-text">
             {{ 'election.stats.vote_count.start'|trans }}
-            <strong>{{ result.voteCount ?? 0 }}</strong>
+            <strong>{{ electionMetrics.count ?? 0 }}</strong>
             {{ 'election.stats.vote_count.end'|trans }}
           </p>
           <p class="card-text">
