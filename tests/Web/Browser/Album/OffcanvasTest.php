@@ -31,11 +31,11 @@ class OffcanvasTest extends AbstractBrowserTestCase
 
         $this->assertSelectorIsNotVisible('#offcanvas');
 
-        $client->executeScript('document.querySelector(\'.open-offcanvas\').click()');
+        $client->executeScript("document.querySelector('.open-offcanvas').click()");
 
         $this->assertSelectorWillBeVisible('#offcanvas');
 
-        $client->executeScript('document.querySelector(\'#offcanvas .btn-close\').click()');
+        $client->executeScript("document.querySelector('#offcanvas .btn-close').click()");
 
         $this->assertSelectorWillNotBeVisible('#offcanvas');
     }

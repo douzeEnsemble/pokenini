@@ -69,6 +69,19 @@ function watchSubmitAction () {
 }
 
 function onSubmitVote() {
+  document
+    .querySelectorAll('.election-vote-submit .spinner-border')
+    .forEach(function (element) {
+      element.attributes.removeNamedItem('hidden');
+    });
+
+  document
+    .querySelectorAll('.election-vote-submit')
+    .forEach(function (element) {
+      const disabledAttr = document.createAttribute('disabled');
+      element.attributes.setNamedItem(disabledAttr);
+    });
+  
   document.getElementById('election').submit();
 }
 

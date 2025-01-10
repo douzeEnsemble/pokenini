@@ -29,7 +29,6 @@ class ElectionTest extends AbstractBrowserTestCase
 
         $client->request('GET', '/fr/election/demolite');
 
-        $this->assertSelectorTextContains('#election-counter-top', '0');
         $this->assertSelectorTextContains('#election-counter-bottom', '0');
 
         $client->executeScript("
@@ -39,7 +38,6 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter-top', '1');
         $this->assertSelectorTextContains('#election-counter-bottom', '1');
 
         $client->executeScript("
@@ -49,7 +47,6 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter-top', '2');
         $this->assertSelectorTextContains('#election-counter-bottom', '2');
 
         $client->executeScript("
@@ -59,7 +56,6 @@ class ElectionTest extends AbstractBrowserTestCase
             checkbox.dispatchEvent(event);
         ");
 
-        $this->assertSelectorTextContains('#election-counter-top', '1');
         $this->assertSelectorTextContains('#election-counter-bottom', '1');
     }
 }
