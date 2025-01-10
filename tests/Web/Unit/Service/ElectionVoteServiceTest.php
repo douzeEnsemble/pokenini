@@ -27,6 +27,7 @@ class ElectionVoteServiceTest extends TestCase
         ;
 
         $electionVote = new ElectionVote([
+            'dex_slug' => 'demo',
             'election_slug' => 'whatever',
             'winners_slugs' => ['pichu'],
             'losers_slugs' => ['pikachu', 'raichu'],
@@ -59,6 +60,7 @@ class ElectionVoteServiceTest extends TestCase
         ;
 
         $electionVote = new ElectionVote([
+            'dex_slug' => 'demo',
             'election_slug' => 'whatever',
             'winners_slugs' => ['pichu'],
             'losers_slugs' => ['pikachu', 'pichu', 'raichu'],

@@ -12,6 +12,16 @@
                 "App\\Api\\Helper\\A1Notation::indexToLetter",
             ]
         },
+        "FalseValue": {
+            "ignore": [
+                "App\\Api\\Entity\\TrainerPokemonElo::__construct",
+            ]
+        },
+        "Throw_": {
+            "ignore": [
+                "App\\Api\\Repository\\TrainerPokemonEloRepository::getTopNSQL",
+            ]
+        },
         "global-ignore": [
             "App\\Api\\Updater\\CollectionsAvailabilitiesUpdater::upsertRecord",
             "App\\Api\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",

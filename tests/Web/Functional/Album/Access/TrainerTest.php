@@ -33,6 +33,8 @@ class TrainerTest extends WebTestCase
         $this->assertCountFilter($crawler, 12, '.album-case');
 
         $this->assertCountFilter($crawler, 0, '.another-trainer-album');
+
+        $this->assertSame('', $crawler->filter('input[name="t"]')->attr('value'));
     }
 
     public function testAlbumTrainerGiven(): void
@@ -46,6 +48,8 @@ class TrainerTest extends WebTestCase
         $this->assertCountFilter($crawler, 25, '.album-case');
 
         $this->assertCountFilter($crawler, 1, '.another-trainer-album');
+
+        $this->assertSame('7b52009b64fd0a2a49e6d8a939753077792b0554', $crawler->filter('input[name="t"]')->attr('value'));
     }
 
     public function testAlbumTrainerLoggedAndGiven(): void
@@ -63,5 +67,7 @@ class TrainerTest extends WebTestCase
         $this->assertCountFilter($crawler, 25, '.album-case');
 
         $this->assertCountFilter($crawler, 1, '.another-trainer-album');
+
+        $this->assertSame('7b52009b64fd0a2a49e6d8a939753077792b0554', $crawler->filter('input[name="t"]')->attr('value'));
     }
 }

@@ -26,7 +26,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 .PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
 .PHONY : quality phpcsfixer phpcsfixer_fix phpcbf phpmd psalm psalm_fix phpstan deptrac
 .PHONY : integration newman
-.PHONY : measures clear-build coverage coverage_html infection infection_api infection_web
+.PHONY : measures clear-build coverage coverage_html clear_infection_cache infection infection_api infection_web
 .PHONY : security composer_audit security_checker dependency_check
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
@@ -246,8 +246,11 @@ coverage_html: ## Execute PHPUnit Coverage in HTML
             --exclude-group="browser-testing" \
 			--coverage-html=build/coverage/coverage-html
 
+clear_infection_cache: 
+	@$(PHP_CONT) rm -Rf var/cache/infection
+
 infection: ## Execute all Infection testing
-infection: infection_api infection_web
+infection: clear_infection_cache infection_api infection_web
 
 infection_api: ## Execute Infection (Mutation testing) for API module
 infection_api: build/coverage/coverage-xml tools/infection/vendor/bin/infection

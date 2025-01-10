@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Web\DTO;
 
-final class ElectionVoteResult
+class ElectionVoteResult
 {
     private function __construct(private readonly int $voteCount) {}
 

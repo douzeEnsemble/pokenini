@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Web\Controller;
 
 use App\Web\DTO\ElectionVote;
-use App\Web\DTO\ElectionVoteResult;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\Api\GetPokemonsService;
 use App\Web\Service\ElectionMetricsService;
@@ -21,8 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/election')]
 class ElectionController extends AbstractController
 {
-    public const SESSION_VOTE_RESULT_NAME = 'vote_result';
-
     #[Route(
         '/{dexSlug}/{electionSlug}',
         requirements: [
@@ -32,7 +29,6 @@ class ElectionController extends AbstractController
         methods: ['GET']
     )]
     public function index(
-        Request $request,
         GetPokemonsService $getPokemonsService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
@@ -50,15 +46,10 @@ class ElectionController extends AbstractController
 
         $detachedCount = 0;
         foreach ($electionTop as $pokemon) {
-            if ($pokemon['elo'] > $electionMetrics->avg + 2 * $electionMetrics->stddev) {
+            if ($pokemon['significance']) {
                 ++$detachedCount;
             }
         }
-
-        $session = $request->getSession();
-
-        /** @var ElectionVoteResult $result */
-        $result = $session->get(self::SESSION_VOTE_RESULT_NAME);
 
         return $this->render(
             'Election/index.html.twig',
@@ -68,7 +59,6 @@ class ElectionController extends AbstractController
                 'types' => $types,
                 'electionTop' => $electionTop,
                 'electionMetrics' => $electionMetrics,
-                'result' => $result,
                 'detachedCount' => $detachedCount,
             ]
         );
@@ -88,12 +78,19 @@ class ElectionController extends AbstractController
         string $dexSlug,
         string $electionSlug = '',
     ): Response {
-        $content = $request->request->all();
+        $json = $request->getContent();
 
-        if (!$content) {
-            throw new BadRequestHttpException();
+        if (empty($json)) {
+            throw new BadRequestHttpException('Content cannot be empty');
         }
 
+        $content = json_decode($json, true);
+
+        if (!is_array($content)) {
+            throw new BadRequestHttpException('Content must be a JSON array');
+        }
+
+        /** @var string[]|string[][] $content */
         $content = array_merge(
             [
                 'dex_slug' => $dexSlug,
@@ -108,16 +105,13 @@ class ElectionController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $result = $electionVoteService->vote($electionVote);
-
-        $session = $request->getSession();
-        $session->set(self::SESSION_VOTE_RESULT_NAME, $result);
+        $electionVoteService->vote($electionVote);
 
         return $this->redirectToRoute(
             'app_web_election_index',
             [
-                'dexSlug' => $dexSlug,
-                'electionSlug' => $electionSlug,
+                'dexSlug' => $electionVote->dexSlug,
+                'electionSlug' => $electionVote->electionSlug,
             ]
         );
     }

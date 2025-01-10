@@ -44,7 +44,14 @@ class ElectionTest extends WebTestCase
         $this->assertCardContentDemoLite($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
-        $this->assertStats($crawler);
+        $this->assertStats(
+            $crawler,
+            6,
+            6,
+            41,
+            15,
+            "Tu n'as pas de favoris qui se détache",
+        );
     }
 
     public function testIndexShinyDex(): void
@@ -71,7 +78,14 @@ class ElectionTest extends WebTestCase
         $this->assertCardContentDemoLite($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
-        $this->assertStats($crawler);
+        $this->assertStats(
+            $crawler,
+            6,
+            6,
+            41,
+            15,
+            "Tu n'as pas de favoris qui se détache",
+        );
     }
 
     public function testIndexWithoutDisplayForm(): void
@@ -98,7 +112,48 @@ class ElectionTest extends WebTestCase
         $this->assertCardContentMega($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
-        $this->assertStats($crawler);
+        $this->assertStats(
+            $crawler,
+            12,
+            12,
+            50,
+            24,
+            "Tu n'as pas de favoris qui se détache",
+        );
+    }
+
+    public function testIndexDetachedCount(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/election/mega/favorite');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
+        $this->assertCountFilter($crawler, 17, '.album-modal-image');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
+
+        $this->assertCardContentMega($crawler);
+        $this->assertElectionTop($crawler);
+        $this->assertActions($crawler);
+        $this->assertStats(
+            $crawler,
+            50,
+            50,
+            50,
+            100,
+            'Tu as 1 favori qui se détache',
+        );
     }
 
     public function testVote(): void
@@ -113,14 +168,27 @@ class ElectionTest extends WebTestCase
         $client->request(
             'POST',
             '/fr/election/demolite',
-            [
-                'election_slug' => '',
+            [],
+            [],
+            [],
+            (string) json_encode([
                 'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
-            ],
+            ]),
         );
 
         $this->assertResponseRedirects('/fr/election/demolite');
+
+        $crawler = $client->followRedirect();
+
+        $this->assertStats(
+            $crawler,
+            6,
+            6,
+            41,
+            15,
+            "Tu n'as pas de favoris qui se détache",
+        );
     }
 
     public function testVoteWithElectionSlug(): void
@@ -134,15 +202,28 @@ class ElectionTest extends WebTestCase
 
         $client->request(
             'POST',
-            '/fr/election/demolite/pref',
-            [
-                'election_slug' => '',
+            '/fr/election/demolite/favorite',
+            [],
+            [],
+            [],
+            (string) json_encode([
                 'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
-            ],
+            ]),
         );
 
-        $this->assertResponseRedirects('/fr/election/demolite/pref');
+        $this->assertResponseRedirects('/fr/election/demolite/favorite');
+
+        $crawler = $client->followRedirect();
+
+        $this->assertStats(
+            $crawler,
+            6,
+            6,
+            41,
+            15,
+            "Tu n'as pas de favoris qui se détache",
+        );
     }
 
     public function testEmptyVote(): void
@@ -158,9 +239,39 @@ class ElectionTest extends WebTestCase
             'POST',
             '/fr/election/demolite',
             [],
+            [],
+            [],
+            '',
         );
 
         $this->assertResponseStatusCodeSame(400);
+
+        $content = (string) $client->getResponse()->getContent();
+        $this->assertStringContainsString('Content cannot be empty', $content);
+    }
+
+    public function testEmptyVoteBis(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('8764532');
+        $user->addTrainerRole();
+        $user->addAdminRole();
+        $client->loginUser($user, 'web');
+
+        $client->request(
+            'POST',
+            '/fr/election/demolite',
+            [],
+            [],
+            [],
+            (string) json_encode(12),
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+
+        $content = (string) $client->getResponse()->getContent();
+        $this->assertStringContainsString('Content must be a JSON array', $content);
     }
 
     public function testBadVote(): void
@@ -175,11 +286,14 @@ class ElectionTest extends WebTestCase
         $client->request(
             'POST',
             '/fr/election/demolite',
-            [
+            [],
+            [],
+            [],
+            (string) json_encode([
                 'electionSlug' => '',
                 'winnersSlugs' => ['pichu'],
                 'losersSlugs' => ['pikachu', 'raichu'],
-            ],
+            ]),
         );
 
         $this->assertResponseStatusCodeSame(400);
@@ -216,7 +330,7 @@ class ElectionTest extends WebTestCase
             [],
             [],
             [],
-            '{"election_slug": "", "winners_slugs": ["pichu"], "losers_slugs": ["pikachu", "raich"]}'
+            '{"winners_slugs": ["pichu"], "losers_slugs": ["pikachu", "raich"]}'
         );
     }
 
@@ -341,9 +455,22 @@ class ElectionTest extends WebTestCase
         );
     }
 
-    private function assertStats(Crawler $crawler): void
-    {
+    private function assertStats(
+        Crawler $crawler,
+        int $voteCount,
+        int $seenCount,
+        int $totalCount,
+        int $progress,
+        string $favoriteCountText,
+    ): void {
         $this->assertCountFilter($crawler, 1, '#election-stats');
-        $this->assertSame('Tu as voté 0 fois', $crawler->filter('#election-stats p')->eq(0)->text());
+
+        $this->assertSame("Tu as voté {$voteCount} fois", $crawler->filter('#election-stats p')->eq(0)->text());
+
+        $this->assertSame("Tu as voté pour ou contre {$seenCount} sur {$totalCount} Pokémon", $crawler->filter('#election-stats p')->eq(1)->text());
+
+        $this->assertSame("{$progress}%", $crawler->filter('#election-stats div.progress')->eq(0)->text());
+
+        $this->assertSame($favoriteCountText, $crawler->filter('#election-stats p')->eq(2)->text());
     }
 }

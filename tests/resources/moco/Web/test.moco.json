@@ -2223,6 +2223,27 @@
   {
     "request": {
       "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_favorite_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/election/metrics"
       },
       "queries": {
@@ -2298,6 +2319,26 @@
     "response": {
       "status": "200",
       "file": "/var/moco/election_mega__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_favorite_metrics.json"
     }
   }
 ]
