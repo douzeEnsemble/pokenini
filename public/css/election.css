@@ -40,3 +40,7 @@ a.election-card-catch-state-edit-action:hover {
 #election-actions-bottom {
     bottom: 3rem;
 }
+
+.election-actions .progress {
+    height: 0.75rem;
+}

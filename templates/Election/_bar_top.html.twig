@@ -1,0 +1,24 @@
+<div id="election-actions-top" class="election-actions sticky-top">
+  <div class="progress-container">
+    {% set totalPokemon = pokedex.pokemons|length %}
+    {% set progress = totalPokemon ? (100 * electionMetrics.count / totalPokemon)|round(0) : 0 %}
+    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100">
+      {% set tooltipContent = 
+        ('election.stats.pokemon_vote.start'|trans) ~  
+        ' <strong>'~ (electionMetrics.count ?? 0) ~'</strong> ' ~ 
+        ('election.stats.pokemon_vote.middle'|trans) ~
+        ' <strong>'~ pokedex.pokemons|length ~'</strong> ' ~ 
+        ('election.stats.pokemon_vote.end'|trans)
+      %}
+      <div 
+        class="progress-bar progress-bar-striped" 
+        style="width: {{ progress }}%"
+        data-bs-toggle="tooltip" 
+        data-bs-html="true"
+        data-bs-title="{{ tooltipContent }}"
+      >
+        {{ progress }}%
+      </div>
+    </div>
+  </div>
+</div>
