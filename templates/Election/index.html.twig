@@ -27,9 +27,9 @@
 				<h1>{{ 'title.election'|trans }}</h1>
 			</div>
 		</div>
-		{{ include('Election/_actions_top.html.twig') }}
+		{{ include('Election/_bar_top.html.twig') }}
 		{{ include('Election/_candidates.html.twig') }}
-		{{ include('Election/_actions_bottom.html.twig') }}
+		{{ include('Election/_bar_bottom.html.twig') }}
 		{{ include('Election/_top.html.twig') }}
 		{{ include('Election/_stats.html.twig') }}
 	</div>
@@ -52,6 +52,9 @@
         watchWinnerCheckboxes();
         watchSubmitAction();
         watchCardMouseHover();
+
+        const tooltipList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')]
+            .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     })();
     </script>
 {% endblock foot_javascript %}
