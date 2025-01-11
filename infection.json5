@@ -20,7 +20,7 @@
         "Throw_": {
             "ignore": [
                 "App\\Api\\Repository\\TrainerPokemonEloRepository::getTopNSQL",
-                "App\\Api\\Repository\\PokemonsRepository::getNToVoteSQL",
+                "App\\Api\\Repository\\PokemonsRepository::getNToPickSQL",
             ]
         },
         "global-ignore": [

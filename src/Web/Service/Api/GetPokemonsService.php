@@ -20,7 +20,7 @@ class GetPokemonsService extends AbstractApiService
         /** @var string $json */
         $json = $this->requestContent(
             'GET',
-            '/pokemons/list',
+            '/pokemons/to_pick',
             [
                 'query' => [
                     'trainer_external_id' => $trainerExternalId,

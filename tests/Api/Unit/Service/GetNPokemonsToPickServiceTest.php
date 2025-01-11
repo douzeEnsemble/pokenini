@@ -6,21 +6,21 @@ namespace App\Tests\Api\Unit\Service;
 
 use App\Api\DTO\TrainerPokemonEloListQueryOptions;
 use App\Api\Repository\PokemonsRepository;
-use App\Api\Service\GetNPokemonsToVoteService;
+use App\Api\Service\GetNPokemonsToPickService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  */
-#[CoversClass(GetNPokemonsToVoteService::class)]
-class GetNPokemonsToVoteServiceTest extends TestCase
+#[CoversClass(GetNPokemonsToPickService::class)]
+class GetNPokemonsToPickServiceTest extends TestCase
 {
-    public function testGetNPokemonsToVote(): void
+    public function testgetNPokemonsToPick(): void
     {
         $repository = $this->createMock(PokemonsRepository::class);
         $repository->expects($this->once())
-            ->method('getNToVote')
+            ->method('getNToPick')
             ->with(
                 'demo',
                 12,
@@ -42,7 +42,7 @@ class GetNPokemonsToVoteServiceTest extends TestCase
             )
         ;
 
-        $service = new GetNPokemonsToVoteService(
+        $service = new GetNPokemonsToPickService(
             $repository,
             1000,
             3,
@@ -65,7 +65,7 @@ class GetNPokemonsToVoteServiceTest extends TestCase
                     'titi',
                 ],
             ],
-            $service->getNPokemonsToVote($queryOptions)
+            $service->getNPokemonsToPick($queryOptions)
         );
     }
 }
