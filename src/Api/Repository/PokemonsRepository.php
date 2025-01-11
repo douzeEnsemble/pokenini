@@ -54,7 +54,7 @@ class PokemonsRepository extends ServiceEntityRepository
     /**
      * @return string[][]
      */
-    public function getNToVote(
+    public function getNToPick(
         string $dexSlug,
         int $count,
         string $trainerExternalId,
@@ -63,7 +63,7 @@ class PokemonsRepository extends ServiceEntityRepository
         int $minVotes,
         int $defaultElo,
     ): array {
-        $sql = $this->getNToVoteSQL();
+        $sql = $this->getNToPickSQL();
 
         $params = [
             'trainer_external_id' => $trainerExternalId,
@@ -93,15 +93,15 @@ class PokemonsRepository extends ServiceEntityRepository
         );
     }
 
-    private function getNToVoteSQL(): string
+    private function getNToPickSQL(): string
     {
-        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_vote.sql');
+        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_pick.sql');
 
         if (false === $sql) {
             // This condition is here form safety reason
             // It can never happen
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_vote.sql"');
+            throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_pick.sql"');
             // @codeCoverageIgnoreEnd
         }
 

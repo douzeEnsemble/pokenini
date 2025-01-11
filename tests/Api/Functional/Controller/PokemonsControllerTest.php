@@ -17,7 +17,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/list',
+            'api/pokemons/to_pick',
             [
                 'count' => '12',
                 'dex_slug' => 'home',
@@ -43,7 +43,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/list',
+            'api/pokemons/to_pick',
             [
                 'count' => '12',
                 'dex_slug' => 'redgreenblueyellow',
@@ -69,7 +69,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/list',
+            'api/pokemons/to_pick',
             [
                 'count' => '12',
                 'dex_slug' => 'redgreenblueyellow',
@@ -96,7 +96,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/list',
+            'api/pokemons/to_pick',
             [
                 'count' => '12',
                 'dex_slug' => 'home',
@@ -120,7 +120,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/list',
+            'api/pokemons/to_pick',
             [
                 'count' => '12',
                 'dex_slug' => 'home',

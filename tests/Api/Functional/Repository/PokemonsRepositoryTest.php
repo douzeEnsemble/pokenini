@@ -79,8 +79,8 @@ class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
     }
 
-    #[DataProvider('providergetNToVote')]
-    public function testgetNToVote(
+    #[DataProvider('providergetNToPick')]
+    public function testgetNToPick(
         string $dexSlug,
         string $electionSlug,
         int $expectedCount,
@@ -90,7 +90,7 @@ class PokemonsRepositoryTest extends KernelTestCase
         /** @var PokemonsRepository $repo */
         $repo = static::getContainer()->get(PokemonsRepository::class);
 
-        $list = $repo->getNToVote(
+        $list = $repo->getNToPick(
             $dexSlug,
             12,
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -114,7 +114,7 @@ class PokemonsRepositoryTest extends KernelTestCase
     /**
      * @return int[][]|string[][]
      */
-    public static function providergetNToVote(): array
+    public static function providergetNToPick(): array
     {
         return [
             'home-12' => [

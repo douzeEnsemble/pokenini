@@ -7,7 +7,7 @@ namespace App\Api\Service;
 use App\Api\DTO\TrainerPokemonEloListQueryOptions;
 use App\Api\Repository\PokemonsRepository;
 
-class GetNPokemonsToVoteService
+class GetNPokemonsToPickService
 {
     public function __construct(
         private readonly PokemonsRepository $pokemonsRepository,
@@ -19,9 +19,9 @@ class GetNPokemonsToVoteService
     /**
      * @return string[][]
      */
-    public function getNPokemonsToVote(TrainerPokemonEloListQueryOptions $queryOptions): array
+    public function getNPokemonsToPick(TrainerPokemonEloListQueryOptions $queryOptions): array
     {
-        return $this->pokemonsRepository->getNToVote(
+        return $this->pokemonsRepository->getNToPick(
             $queryOptions->dexSlug,
             $queryOptions->count,
             $queryOptions->trainerExternalId,

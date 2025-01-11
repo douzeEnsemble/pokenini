@@ -2017,7 +2017,7 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "demolite",
@@ -2032,13 +2032,13 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_demolite_12.json"
+      "file": "/var/moco/pokemons_topick_demolite_12.json"
     }
   },
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "demolite",
@@ -2053,13 +2053,13 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_demolite_12.json"
+      "file": "/var/moco/pokemons_topick_demolite_12.json"
     }
   },
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "demoliteshiny",
@@ -2074,13 +2074,13 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_demoliteshiny_12.json"
+      "file": "/var/moco/pokemons_topick_demoliteshiny_12.json"
     }
   },
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "mega",
@@ -2095,13 +2095,13 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_mega_favorite_12.json"
+      "file": "/var/moco/pokemons_topick_mega_favorite_12.json"
     }
   }, 
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "mega",
@@ -2116,13 +2116,13 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_mega_12.json"
+      "file": "/var/moco/pokemons_topick_mega_12.json"
     }
   },
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list"
+        "match": "/pokemons/to_pick"
       },
       "queries": {
         "dex_slug": "swordshield",
@@ -2137,7 +2137,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_list_swordshield_12.json"
+      "file": "/var/moco/pokemons_topick_swordshield_12.json"
     }
   },
   {

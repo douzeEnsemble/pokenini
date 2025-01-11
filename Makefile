@@ -20,7 +20,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 # Misc
 .DEFAULT_GOAL = help
 .PHONY : help
-.PHONY : certs build rebuild up install start stop sh
+.PHONY : certs build rebuild up install start stop sh mocks_restart
 .PHONY : data init_db data_app
 .PHONY : composer vendor sf cc
 .PHONY : tests tests_api tests_web tests_unit_api tests_unit_web tests_functional_api tests_functional_web tests_browser_web
@@ -77,6 +77,12 @@ stop: ## Stop the project
 
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) bash
+
+mocks_restart: ## Restart mocks
+	$(DOCKER_COMP) restart api.int.moco
+	$(DOCKER_COMP) restart api.test.moco
+	$(DOCKER_COMP) restart web.dev.moco
+	$(DOCKER_COMP) restart web.test.moco
 
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 data: ## Initialize data
