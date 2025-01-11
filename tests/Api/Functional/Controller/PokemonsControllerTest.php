@@ -17,7 +17,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/to_pick',
+            'api/pokemons/to_choose',
             [
                 'count' => '12',
                 'dex_slug' => 'home',
@@ -43,7 +43,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/to_pick',
+            'api/pokemons/to_choose',
             [
                 'count' => '12',
                 'dex_slug' => 'redgreenblueyellow',
@@ -69,7 +69,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/to_pick',
+            'api/pokemons/to_choose',
             [
                 'count' => '12',
                 'dex_slug' => 'redgreenblueyellow',
@@ -96,7 +96,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/to_pick',
+            'api/pokemons/to_choose',
             [
                 'count' => '12',
                 'dex_slug' => 'home',
@@ -110,17 +110,23 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[] $content */
+        /** @var string[][] $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertCount(12, $content);
+
+        foreach ($content as $pokemon) {
+            $this->assertArrayHasKey('pokemon_slug', $pokemon);
+            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
+            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+        }
     }
 
     public function testGetBadAuth(): void
     {
         $this->apiRequest(
             'GET',
-            'api/pokemons/to_pick',
+            'api/pokemons/to_choose',
             [
                 'count' => '12',
                 'dex_slug' => 'home',
