@@ -147,4 +147,61 @@ class PokemonsRepositoryTest extends KernelTestCase
             ],
         ];
     }
+
+    #[DataProvider('providergetNToVote')]
+    public function testgetNToVote(
+        string $dexSlug,
+        string $electionSlug,
+        int $expectedCount,
+    ): void {
+        /** @var PokemonsRepository $repo */
+        $repo = static::getContainer()->get(PokemonsRepository::class);
+
+        $list = $repo->getNToVote(
+            $dexSlug,
+            12,
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            $electionSlug,
+            1000,
+        );
+
+        $this->assertCount($expectedCount, $list);
+
+        $previous = $list[0]['pokemon_slug'];
+        $max = count($list);
+        for ($i = 1; $i < $max; ++$i) {
+            $this->assertNotSame($previous, $list[$i]['pokemon_slug']);
+
+            $previous = $list[$i]['pokemon_slug'];
+        }
+    }
+
+    /**
+     * @return int[][]|string[][]
+     */
+    public static function providergetNToVote(): array
+    {
+        return [
+            'home-12' => [
+                'dexSlug' => 'home',
+                'electionSlug' => '',
+                'expectedCount' => 0,
+            ],
+            'redgreenblueyellow-12' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'electionSlug' => '',
+                'expectedCount' => 0,
+            ],
+            'demo-affinee-12-10-10' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'electionSlug' => 'affinee',
+                'expectedCount' => 3,
+            ],
+            'demo-affinee-12-2--1' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'electionSlug' => 'affinee',
+                'expectedCount' => 3,
+            ],
+        ];
+    }
 }

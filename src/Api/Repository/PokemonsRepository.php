@@ -93,6 +93,42 @@ class PokemonsRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * @return string[][]
+     */
+    public function getNToVote(
+        string $dexSlug,
+        int $count,
+        string $trainerExternalId,
+        string $electionSlug,
+        int $defaultElo,
+    ): array {
+        $sql = $this->getNToVoteSQL();
+
+        $params = [
+            'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
+            'election_slug' => $electionSlug,
+            'count' => $count,
+            'default_elo' => $defaultElo,
+        ];
+
+        $types = [
+            'trainer_external_id' => ParameterType::STRING,
+            'election_slug' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
+            'count' => ParameterType::INTEGER,
+            'default_elo' => ParameterType::INTEGER,
+        ];
+
+        /** @var string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            $params,
+            $types,
+        );
+    }
+
     private function getNToPickSQL(): string
     {
         $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_pick.sql');
@@ -102,6 +138,21 @@ class PokemonsRepository extends ServiceEntityRepository
             // It can never happen
             // @codeCoverageIgnoreStart
             throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_pick.sql"');
+            // @codeCoverageIgnoreEnd
+        }
+
+        return $sql;
+    }
+
+    private function getNToVoteSQL(): string
+    {
+        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_vote.sql');
+
+        if (false === $sql) {
+            // This condition is here form safety reason
+            // It can never happen
+            // @codeCoverageIgnoreStart
+            throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_vote.sql"');
             // @codeCoverageIgnoreEnd
         }
 
