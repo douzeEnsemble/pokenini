@@ -22,12 +22,7 @@ class ElectionControllerTest extends TestCase
 {
     public function testVote(): void
     {
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{"winners_slugs": ["pichu"], "losers_slugs": ["pikachu"]}')
-        ;
+        $request = new Request([], ['winners_slugs' => ['pichu'], 'losers_slugs' => ['pikachu']]);
 
         $electionVoteService = $this->createMock(ElectionVoteService::class);
         $electionVoteService
@@ -66,42 +61,14 @@ class ElectionControllerTest extends TestCase
 
     public function testVoteEmpty(): void
     {
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn(null)
-        ;
+        $request = new Request();
 
         $electionVoteService = $this->createMock(ElectionVoteService::class);
 
         $controller = new ElectionController();
 
         $this->expectException(BadRequestHttpException::class);
-        $this->expectExceptionMessage('Content cannot be empty');
-        $controller->vote(
-            $request,
-            $electionVoteService,
-            'demo',
-            ''
-        );
-    }
-
-    public function testVoteNonArray(): void
-    {
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('12')
-        ;
-
-        $electionVoteService = $this->createMock(ElectionVoteService::class);
-
-        $controller = new ElectionController();
-
-        $this->expectException(BadRequestHttpException::class);
-        $this->expectExceptionMessage('Content must be a JSON array');
+        $this->expectExceptionMessage('Data cannot be empty');
         $controller->vote(
             $request,
             $electionVoteService,
@@ -112,12 +79,7 @@ class ElectionControllerTest extends TestCase
 
     public function testVoteNonvalid(): void
     {
-        $request = $this->createMock(Request::class);
-        $request
-            ->expects($this->once())
-            ->method('getContent')
-            ->willReturn('{"winners_slugs": []}')
-        ;
+        $request = new Request([], ['winners_slugs' => ['pichu']]);
 
         $electionVoteService = $this->createMock(ElectionVoteService::class);
 

@@ -21,9 +21,16 @@ class GetPokemonsServiceTest extends TestCase
     private ArrayAdapter $cache;
 
     #[DataProvider('providerGet')]
-    public function testGet(string $dexSlug, int $count): void
-    {
-        $pokemons = $this->getService($dexSlug, $count)->get($dexSlug, $count);
+    public function testGet(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $electionSlug,
+        int $count,
+    ): void {
+        $pokemons = $this
+            ->getService($trainerExternalId, $dexSlug, $electionSlug, $count)
+            ->get($trainerExternalId, $dexSlug, $electionSlug, $count)
+        ;
 
         $this->assertCount($count, $pokemons);
 
@@ -37,25 +44,37 @@ class GetPokemonsServiceTest extends TestCase
     {
         return [
             '123-3' => [
+                'trainerExternalId' => '12',
                 'dexSlug' => '123',
+                'electionSlug' => '',
                 'count' => 3,
             ],
             '123-5' => [
+                'trainerExternalId' => '13',
                 'dexSlug' => '123',
+                'electionSlug' => 'a',
                 'count' => 5,
             ],
             'all-12' => [
+                'trainerExternalId' => '14',
                 'dexSlug' => 'all',
+                'electionSlug' => 'b',
                 'count' => 12,
             ],
         ];
     }
 
-    private function getService(string $dexSlug, int $count): GetPokemonsService
-    {
+    private function getService(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $electionSlug,
+        int $count
+    ): GetPokemonsService {
         $client = $this->createMock(HttpClientInterface::class);
 
-        $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/pokemons_list_{$dexSlug}_{$count}.json");
+        $json = (string) file_get_contents(
+            "/var/www/html/tests/resources/Web/unit/service/api/pokemons_list_{$trainerExternalId}_{$dexSlug}_{$electionSlug}_{$count}.json"
+        );
 
         $response = $this->createMock(ResponseInterface::class);
         $response
@@ -69,8 +88,14 @@ class GetPokemonsServiceTest extends TestCase
             ->method('request')
             ->with(
                 'GET',
-                "https://api.domain/pokemons/list/{$dexSlug}/{$count}",
+                'https://api.domain/pokemons/list',
                 [
+                    'query' => [
+                        'trainer_external_id' => $trainerExternalId,
+                        'dex_slug' => $dexSlug,
+                        'election_slug' => $electionSlug,
+                        'count' => $count,
+                    ],
                     'headers' => [
                         'accept' => 'application/json',
                     ],

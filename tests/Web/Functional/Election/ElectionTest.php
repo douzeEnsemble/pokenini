@@ -168,13 +168,10 @@ class ElectionTest extends WebTestCase
         $client->request(
             'POST',
             '/fr/election/demolite',
-            [],
-            [],
-            [],
-            (string) json_encode([
+            [
                 'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
-            ]),
+            ],
         );
 
         $this->assertResponseRedirects('/fr/election/demolite');
@@ -203,13 +200,10 @@ class ElectionTest extends WebTestCase
         $client->request(
             'POST',
             '/fr/election/demolite/favorite',
-            [],
-            [],
-            [],
-            (string) json_encode([
+            [
                 'winners_slugs' => ['pichu'],
                 'losers_slugs' => ['pikachu', 'raichu'],
-            ]),
+            ],
         );
 
         $this->assertResponseRedirects('/fr/election/demolite/favorite');
@@ -247,31 +241,7 @@ class ElectionTest extends WebTestCase
         $this->assertResponseStatusCodeSame(400);
 
         $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('Content cannot be empty', $content);
-    }
-
-    public function testEmptyVoteBis(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $user->addTrainerRole();
-        $user->addAdminRole();
-        $client->loginUser($user, 'web');
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite',
-            [],
-            [],
-            [],
-            (string) json_encode(12),
-        );
-
-        $this->assertResponseStatusCodeSame(400);
-
-        $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('Content must be a JSON array', $content);
+        $this->assertStringContainsString('Data cannot be empty', $content);
     }
 
     public function testBadVote(): void
@@ -289,7 +259,7 @@ class ElectionTest extends WebTestCase
             [],
             [],
             [],
-            (string) json_encode([
+            http_build_query([
                 'electionSlug' => '',
                 'winnersSlugs' => ['pichu'],
                 'losersSlugs' => ['pikachu', 'raichu'],
@@ -440,7 +410,7 @@ class ElectionTest extends WebTestCase
         $this->assertEquals(
             'Remonter',
             $crawler->filter('#election-actions-bottom .nav-item')
-            ->eq($index++)
+                ->eq($index++)
                 ->text()
         );
     }
