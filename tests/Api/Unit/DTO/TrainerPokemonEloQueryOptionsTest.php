@@ -8,6 +8,7 @@ use App\Api\DTO\TrainerPokemonEloQueryOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
 /**
@@ -39,6 +40,14 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
         $this->assertSame('67865468', $attributes->trainerExternalId);
         $this->assertSame('demo', $attributes->dexSlug);
         $this->assertSame('', $attributes->electionSlug);
+    }
+
+    public function testMissingDexSlug(): void
+    {
+        $this->expectException(MissingOptionsException::class);
+        new TrainerPokemonEloQueryOptions([
+            'trainer_external_id' => '67865468',
+        ]);
     }
 
     public function testWrongValueForTrainerExternalId(): void

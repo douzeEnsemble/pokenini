@@ -6,10 +6,10 @@ namespace App\Web\Controller;
 
 use App\Web\DTO\ElectionVote;
 use App\Web\Service\Api\GetLabelsService;
-use App\Web\Service\Api\GetPokemonsService;
 use App\Web\Service\ElectionMetricsService;
 use App\Web\Service\ElectionTopService;
 use App\Web\Service\ElectionVoteService;
+use App\Web\Service\GetPokemonsListService;
 use App\Web\Service\GetTrainerPokedexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class ElectionController extends AbstractController
         methods: ['GET']
     )]
     public function index(
-        GetPokemonsService $getPokemonsService,
+        GetPokemonsListService $getPokemonsListService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
         ElectionMetricsService $electionMetricsService,
@@ -38,7 +38,7 @@ class ElectionController extends AbstractController
         string $dexSlug,
         string $electionSlug = '',
     ): Response {
-        $pokemons = $getPokemonsService->get($dexSlug, $electionCandidateCount);
+        $pokemons = $getPokemonsListService->get($dexSlug, $electionSlug, $electionCandidateCount);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
         $electionMetrics = $electionMetricsService->getMetrics($dexSlug, $electionSlug);
@@ -78,29 +78,23 @@ class ElectionController extends AbstractController
         string $dexSlug,
         string $electionSlug = '',
     ): Response {
-        $json = $request->getContent();
+        $data = $request->request->all();
 
-        if (empty($json)) {
-            throw new BadRequestHttpException('Content cannot be empty');
+        if (empty($data)) {
+            throw new BadRequestHttpException('Data cannot be empty');
         }
 
-        $content = json_decode($json, true);
-
-        if (!is_array($content)) {
-            throw new BadRequestHttpException('Content must be a JSON array');
-        }
-
-        /** @var string[]|string[][] $content */
-        $content = array_merge(
+        /** @var string[]|string[][] $data */
+        $data = array_merge(
             [
                 'dex_slug' => $dexSlug,
                 'election_slug' => $electionSlug,
             ],
-            $content
+            $data
         );
 
         try {
-            $electionVote = new ElectionVote($content);
+            $electionVote = new ElectionVote($data);
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }

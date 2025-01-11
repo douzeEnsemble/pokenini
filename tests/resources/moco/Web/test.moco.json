@@ -2017,7 +2017,12 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list/demolite/12"
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "",
+        "count": "12"
       },
       "method": "get",
       "headers": {
@@ -2033,7 +2038,33 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list/demoliteshiny/12"
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_list_demolite_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": "",
+        "count": "12"
       },
       "method": "get",
       "headers": {
@@ -2049,7 +2080,33 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list/mega/12"
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_list_mega_favorite_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "",
+        "count": "12"
       },
       "method": "get",
       "headers": {
@@ -2065,7 +2122,12 @@
   {
     "request": {
       "uri": {
-        "match": "/pokemons/list/swordshield/12"
+        "match": "/pokemons/list"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "",
+        "count": "12"
       },
       "method": "get",
       "headers": {

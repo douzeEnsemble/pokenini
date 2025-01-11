@@ -73,6 +73,7 @@
             <errorLevel type="suppress">
                 <file name="tests/Api/Unit/DTO/ElectionVoteTest.php" />
                 <file name="tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php" />
+                <file name="tests/Api/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php" />
                 <file name="tests/Api/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php" />
                 <file name="tests/Web/Unit/DTO/ElectionVoteTest.php" />
                 <file name="tests/Web/Unit/DTO/ElectionMetricsTest.php" />

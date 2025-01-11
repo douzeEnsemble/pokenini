@@ -17,6 +17,9 @@ class TrainerPokemonElo
     #[ORM\Column]
     public int $elo = 1000;
 
+    #[ORM\Column]
+    public int $count = 0;
+
     public function __construct(
         #[ORM\Column]
         private readonly string $trainerExternalId,

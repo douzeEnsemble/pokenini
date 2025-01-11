@@ -11,7 +11,6 @@ final class TrainerPokemonEloQueryOptions
     public string $trainerExternalId;
     public string $dexSlug;
     public string $electionSlug;
-    public int $count;
 
     /**
      * @param int[]|string[] $values
@@ -33,7 +32,7 @@ final class TrainerPokemonEloQueryOptions
         $resolver->setRequired('trainer_external_id');
         $resolver->setAllowedTypes('trainer_external_id', 'string');
 
-        $resolver->setDefault('dex_slug', '');
+        $resolver->setRequired('dex_slug');
         $resolver->setAllowedTypes('dex_slug', 'string');
 
         $resolver->setDefault('election_slug', '');

@@ -79,13 +79,26 @@ class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
     }
 
-    #[DataProvider('providerGetNFromDex')]
-    public function testGetNFromDex(string $dexSlug, int $count, int $expectedCount): void
-    {
+    #[DataProvider('providergetNToVote')]
+    public function testgetNToVote(
+        string $dexSlug,
+        string $electionSlug,
+        int $expectedCount,
+        int $maxVotes,
+        int $minVotes,
+    ): void {
         /** @var PokemonsRepository $repo */
         $repo = static::getContainer()->get(PokemonsRepository::class);
 
-        $list = $repo->getNFromDex($dexSlug, $count);
+        $list = $repo->getNToVote(
+            $dexSlug,
+            12,
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            $electionSlug,
+            $maxVotes,
+            $minVotes,
+            1000,
+        );
 
         $this->assertCount($expectedCount, $list);
 
@@ -101,18 +114,36 @@ class PokemonsRepositoryTest extends KernelTestCase
     /**
      * @return int[][]|string[][]
      */
-    public static function providerGetNFromDex(): array
+    public static function providergetNToVote(): array
     {
         return [
             'home-12' => [
                 'dexSlug' => 'home',
-                'count' => 12,
+                'electionSlug' => '',
                 'expectedCount' => 12,
+                'maxVotes' => 10,
+                'minVotes' => -10,
             ],
             'redgreenblueyellow-12' => [
                 'dexSlug' => 'redgreenblueyellow',
-                'count' => 12,
+                'electionSlug' => '',
                 'expectedCount' => 7,
+                'maxVotes' => 10,
+                'minVotes' => -10,
+            ],
+            'demo-affinee-12-10-10' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'electionSlug' => 'affinee',
+                'expectedCount' => 7,
+                'maxVotes' => 10,
+                'minVotes' => -10,
+            ],
+            'demo-affinee-12-2--1' => [
+                'dexSlug' => 'redgreenblueyellow',
+                'electionSlug' => 'affinee',
+                'expectedCount' => 5,
+                'maxVotes' => 2,
+                'minVotes' => -1,
             ],
         ];
     }

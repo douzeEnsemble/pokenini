@@ -66,6 +66,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $dexSlug,
         string $electionSlug,
         string $pokemonSlug,
+        int $initialVoteCount,
     ): void {
         $sql = <<<'SQL'
             INSERT INTO trainer_pokemon_elo (
@@ -74,7 +75,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 dex_slug, 
                 election_slug, 
                 pokemon_id, 
-                elo
+                elo,
+                count
             )
             VALUES (
                 :id,
@@ -82,12 +84,14 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 :dex_slug,
                 :election_slug,
                 (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
-                :elo
+                :elo,
+                :initial_vote_count
             )
             ON CONFLICT (trainer_external_id, dex_slug, election_slug, pokemon_id)
             DO
             UPDATE
-            SET     elo = excluded.elo
+            SET     elo = excluded.elo,
+                    count = excluded.count + :initial_vote_count
             SQL;
 
         $params = [
@@ -97,6 +101,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'pokemon_slug' => $pokemonSlug,
+            'initial_vote_count' => $initialVoteCount,
         ];
 
         $types = [
@@ -106,6 +111,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,
             'pokemon_slug' => ParameterType::STRING,
+            'initial_vote_count' => ParameterType::INTEGER,
         ];
 
         $this->getEntityManager()->getConnection()->executeQuery(
