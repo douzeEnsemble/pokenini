@@ -11,7 +11,7 @@
         ('election.stats.pokemon_vote.end'|trans)
       %}
       <div 
-        class="progress-bar progress-bar-striped" 
+        class="progress-bar progress-bar-striped bg-{{ 'pick' == listType ? 'info' : 'warning' }}" 
         style="width: {{ progress }}%"
         data-bs-toggle="tooltip" 
         data-bs-html="true"
