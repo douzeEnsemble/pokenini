@@ -37,11 +37,15 @@ stats AS (
 variables AS (
     SELECT
         CASE
-            WHEN 0 <> t.count THEN (v.count * 1.0 / t.count)
-            ELSE 0
-        END AS ratio,
-        CASE
-            WHEN 0 <> t.count THEN 1 / NULLIF(AVG((v.count * 1.0 / t.count)), 0)
+            WHEN 0 < t.count THEN COALESCE(
+                1 / NULLIF(
+                    AVG(
+                        CASE WHEN t.count > 0 THEN v.count * 1.0 / t.count ELSE NULL END
+                    ),
+                    0
+                ),
+                0
+            )
             ELSE 0
         END AS multiplier
     FROM
