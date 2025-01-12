@@ -2,6 +2,7 @@
 
 namespace App\Web\Service;
 
+use App\Web\DTO\ElectionPokemonsList;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetPokemonsService;
 
@@ -10,12 +11,10 @@ class GetPokemonsListService
     public function __construct(
         private readonly UserTokenService $userTokenService,
         private readonly GetPokemonsService $getPokemonsService,
+        private readonly int $electionCandidateCount,
     ) {}
 
-    /**
-     * @return string[][]
-     */
-    public function get(string $dexSlug, string $electionSlug, int $count): ?array
+    public function get(string $dexSlug, string $electionSlug): ElectionPokemonsList
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
@@ -23,7 +22,7 @@ class GetPokemonsListService
             $trainerId,
             $dexSlug,
             $electionSlug,
-            $count,
+            $this->electionCandidateCount,
         );
     }
 }

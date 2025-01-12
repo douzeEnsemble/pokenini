@@ -27,16 +27,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertCount(12, $content);
-
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
-        }
+        $this->assertResponseContent(12);
     }
 
     public function testGetListFromDexBis(): void
@@ -53,16 +44,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertCount(7, $content);
-
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
-        }
+        $this->assertResponseContent(7);
     }
 
     public function testGetListFromDexTer(): void
@@ -80,16 +62,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertCount(5, $content);
-
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
-        }
+        $this->assertResponseContent(5);
     }
 
     public function testGetAuth(): void
@@ -110,16 +83,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertCount(12, $content);
-
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
-        }
+        $this->assertResponseContent(12);
     }
 
     public function testGetBadAuth(): void
@@ -139,5 +103,26 @@ class PokemonsControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertEquals(401, $this->getResponse()->getStatusCode());
+    }
+
+    private function assertResponseContent(int $expectedCount): void
+    {
+        /** @var string[]|string[][][] $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertArrayHasKey('type', $content);
+        $this->assertSame('pick', $content['type']);
+
+        $this->assertArrayHasKey('items', $content);
+
+        /** @var string[][] $items */
+        $items = $content['items'];
+        $this->assertCount($expectedCount, $items);
+
+        foreach ($items as $pokemon) {
+            $this->assertArrayHasKey('pokemon_slug', $pokemon);
+            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
+            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+        }
     }
 }

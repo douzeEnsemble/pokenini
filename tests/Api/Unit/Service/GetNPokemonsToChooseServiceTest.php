@@ -52,6 +52,9 @@ class GetNPokemonsToChooseServiceTest extends TestCase
             $toVoteService,
         );
 
+        $electionList = $service->getNPokemonsToChoose($queryOptions);
+
+        $this->assertSame('pick', $electionList->getListType());
         $this->assertSame(
             [
                 [
@@ -61,7 +64,7 @@ class GetNPokemonsToChooseServiceTest extends TestCase
                     'titi',
                 ],
             ],
-            $service->getNPokemonsToChoose($queryOptions),
+            $electionList->getItems(),
         );
     }
 
@@ -102,6 +105,9 @@ class GetNPokemonsToChooseServiceTest extends TestCase
             $toVoteService,
         );
 
+        $electionList = $service->getNPokemonsToChoose($queryOptions);
+
+        $this->assertSame('vote', $electionList->getListType());
         $this->assertSame(
             [
                 [
@@ -111,7 +117,7 @@ class GetNPokemonsToChooseServiceTest extends TestCase
                     'tutu',
                 ],
             ],
-            $service->getNPokemonsToChoose($queryOptions),
+            $electionList->getItems(),
         );
     }
 }

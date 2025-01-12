@@ -53,7 +53,10 @@ title:
     legals: "Mentions Légales"
     policy: "Politique de confidentialité"
     cookies: "Cookies"
-    election: "Choisi ton Pokémon préféré"
+    election: 
+        pick: "Fait ton choix"
+        vote: "Vote maintenant"
+        subtitle: "Choisissez d'abord, ensuite Votez"
     error:
         unknown: "Y'a eu une erreur"
         404: "La page n'a pas été trouvée"

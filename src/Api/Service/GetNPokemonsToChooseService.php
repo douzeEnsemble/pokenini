@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Service;
 
+use App\Api\DTO\ElectionPokemonsList;
 use App\Api\DTO\TrainerPokemonEloListQueryOptions;
 
 class GetNPokemonsToChooseService
@@ -13,17 +14,17 @@ class GetNPokemonsToChooseService
         private readonly GetNPokemonsToVoteService $toVoteService,
     ) {}
 
-    /**
-     * @return string[][]
-     */
-    public function getNPokemonsToChoose(TrainerPokemonEloListQueryOptions $queryOptions): array
+    public function getNPokemonsToChoose(TrainerPokemonEloListQueryOptions $queryOptions): ElectionPokemonsList
     {
         $toPick = $this->toPickService->getNPokemonsToPick($queryOptions);
 
         if (!empty($toPick)) {
-            return $toPick;
+            return new ElectionPokemonsList('pick', $toPick);
         }
 
-        return $this->toVoteService->getNPokemonsToVote($queryOptions);
+        return new ElectionPokemonsList(
+            'vote',
+            $this->toVoteService->getNPokemonsToVote($queryOptions)
+        );
     }
 }

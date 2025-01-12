@@ -53,7 +53,10 @@ title:
     legals: "Legal Notice"
     policy: "Privacy Policy"
     cookies: "Cookies"
-    election: "Choose your favorite Pokémon"
+    election: 
+        pick: "Make Your Choice"
+        vote: "Vote Now"
+        subtitle: "Choose First, Then Vote"
     error:
         unknown: "There was an error"
         404: "The page was not found"

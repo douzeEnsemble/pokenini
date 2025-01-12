@@ -7,9 +7,10 @@ namespace App\Api\Controller;
 use App\Api\DTO\TrainerPokemonEloListQueryOptions;
 use App\Api\Service\GetNPokemonsToChooseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/pokemons')]
 class PokemonsController extends AbstractController
@@ -18,12 +19,15 @@ class PokemonsController extends AbstractController
     public function getNPokemonsToChoose(
         Request $request,
         GetNPokemonsToChooseService $getNPokemonsToChooseService,
-    ): JsonResponse {
+        SerializerInterface $serializer,
+    ): Response {
         $queryOptions = new TrainerPokemonEloListQueryOptions($request->query->all());
 
         $list = $getNPokemonsToChooseService->getNPokemonsToChoose($queryOptions);
 
-        // Better with serializer ?
-        return new JsonResponse($list);
+        return new Response($serializer->serialize(
+            $list,
+            'json'
+        ));
     }
 }

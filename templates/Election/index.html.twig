@@ -3,7 +3,7 @@
 {% extends 'base.html.twig' %}
 {% use '_nav.html.twig' %}
 
-{% block title %}Pokénini {{ 'title.election'|trans }}{% endblock title %}
+{% block title %}Pokénini {{ ('title.election.'~listType)|trans }}{% endblock title %}
 {% block navbarTitle %}{% endblock navbarTitle %}
 
 {% block stylesheets %}
@@ -24,7 +24,14 @@
 	<div class="container-fluid" id="main-container">
 		<div class="row">
 			<div class="col-md-8 mx-auto text-center row">
-				<h1>{{ 'title.election'|trans }}</h1>
+				<h1>
+                    {{ ('title.election.'~listType)|trans }}
+                </h1>
+                <h2>
+                    <small class="text-body-secondary">
+                        {{ 'title.election.subtitle'|trans }}
+                    </small>
+                </h2>
 			</div>
 		</div>
 		{{ include('Election/_bar_top.html.twig') }}
