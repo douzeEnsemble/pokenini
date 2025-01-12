@@ -32,6 +32,8 @@ class ElectionTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+
         $this->assertCountFilter($crawler, 13, '.card');
         $this->assertCountFilter($crawler, 13, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
@@ -65,6 +67,8 @@ class ElectionTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/election/demoliteshiny');
 
         $this->assertResponseIsSuccessful();
+
+        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
 
         $this->assertCountFilter($crawler, 13, '.card');
         $this->assertCountFilter($crawler, 13, '.card-body');
@@ -100,6 +104,8 @@ class ElectionTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+
         $this->assertCountFilter($crawler, 13, '.card');
         $this->assertCountFilter($crawler, 13, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
@@ -133,6 +139,44 @@ class ElectionTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/election/mega/favorite');
 
         $this->assertResponseIsSuccessful();
+
+        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
+        $this->assertCountFilter($crawler, 17, '.album-modal-image');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
+        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
+
+        $this->assertCardContentMega($crawler);
+        $this->assertElectionTop($crawler);
+        $this->assertActions($crawler);
+        $this->assertStats(
+            $crawler,
+            50,
+            50,
+            50,
+            100,
+            'Tu as 1 favori qui se détache',
+        );
+    }
+
+    public function testIndexVote(): void
+    {
+        $client = static::createClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $client->loginUser($user, 'web');
+
+        $crawler = $client->request('GET', '/fr/election/mega/vote');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
 
         $this->assertCountFilter($crawler, 13, '.card');
         $this->assertCountFilter($crawler, 13, '.card-body');
@@ -209,6 +253,8 @@ class ElectionTest extends WebTestCase
         $this->assertResponseRedirects('/fr/election/demolite/favorite');
 
         $crawler = $client->followRedirect();
+
+        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
 
         $this->assertStats(
             $crawler,

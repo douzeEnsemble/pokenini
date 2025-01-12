@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Service;
 
+use App\Web\DTO\ElectionPokemonsList;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\GetPokemonsService;
 use App\Web\Service\GetPokemonsListService;
@@ -35,29 +36,45 @@ class GetPokemonsListServiceTest extends TestCase
                 '',
                 12,
             )
-            ->willReturn([
-                [
-                    'poke' => '1',
-                ],
-                [
-                    'poke' => '2',
-                ],
-            ])
+            ->willReturn(
+                new ElectionPokemonsList(
+                    [
+                        'type' => 'pick',
+                        'items' => [
+                            [
+                                'poke' => '1',
+                                'numb' => 1,
+                                'exist' => null,
+                            ],
+                            [
+                                'poke' => '2',
+                                'numb' => 2,
+                                'exist' => null,
+                            ],
+                        ],
+                    ]
+                )
+            )
         ;
 
-        $service = new GetPokemonsListService($userTokenService, $getPokemonsService);
-        $list = $service->get('douze', '', 12);
+        $service = new GetPokemonsListService($userTokenService, $getPokemonsService, 12);
+        $list = $service->get('douze', '');
 
+        $this->assertSame('pick', $list->type);
         $this->assertSame(
             [
                 [
                     'poke' => '1',
+                    'numb' => 1,
+                    'exist' => null,
                 ],
                 [
                     'poke' => '2',
+                    'numb' => 2,
+                    'exist' => null,
                 ],
             ],
-            $list,
+            $list->items
         );
     }
 }

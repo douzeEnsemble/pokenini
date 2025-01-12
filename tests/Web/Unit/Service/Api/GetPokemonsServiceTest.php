@@ -22,16 +22,20 @@ class GetPokemonsServiceTest extends TestCase
 
     #[DataProvider('providerGet')]
     public function testGet(
+        string $listType,
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
         int $count,
     ): void {
-        $pokemons = $this
-            ->getService($trainerExternalId, $dexSlug, $electionSlug, $count)
+        $electionList = $this
+            ->getService($listType, $trainerExternalId, $dexSlug, $electionSlug, $count)
             ->get($trainerExternalId, $dexSlug, $electionSlug, $count)
         ;
 
+        $this->assertSame($listType, $electionList->type);
+
+        $pokemons = $electionList->items;
         $this->assertCount($count, $pokemons);
 
         $this->assertEmpty($this->cache->getValues());
@@ -44,18 +48,21 @@ class GetPokemonsServiceTest extends TestCase
     {
         return [
             '123-3' => [
+                'listType' => 'pick',
                 'trainerExternalId' => '12',
                 'dexSlug' => '123',
                 'electionSlug' => '',
                 'count' => 3,
             ],
             '123-5' => [
+                'listType' => 'pick',
                 'trainerExternalId' => '13',
                 'dexSlug' => '123',
                 'electionSlug' => 'a',
                 'count' => 5,
             ],
             'all-12' => [
+                'listType' => 'vote',
                 'trainerExternalId' => '14',
                 'dexSlug' => 'all',
                 'electionSlug' => 'b',
@@ -65,15 +72,16 @@ class GetPokemonsServiceTest extends TestCase
     }
 
     private function getService(
+        string $listType,
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
-        int $count
+        int $count,
     ): GetPokemonsService {
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokemons_tochoose_{$trainerExternalId}_{$dexSlug}_{$electionSlug}_{$count}.json"
+            "/var/www/html/tests/resources/Web/unit/service/api/pokemons_to{$listType}_{$trainerExternalId}_{$dexSlug}_{$electionSlug}_{$count}.json"
         );
 
         $response = $this->createMock(ResponseInterface::class);

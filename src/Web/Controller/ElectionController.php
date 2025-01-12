@@ -34,11 +34,10 @@ class ElectionController extends AbstractController
         ElectionTopService $electionTopService,
         ElectionMetricsService $electionMetricsService,
         GetTrainerPokedexService $getTrainerPokedexService,
-        int $electionCandidateCount,
         string $dexSlug,
         string $electionSlug = '',
     ): Response {
-        $pokemons = $getPokemonsListService->get($dexSlug, $electionSlug, $electionCandidateCount);
+        $list = $getPokemonsListService->get($dexSlug, $electionSlug);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
         $electionMetrics = $electionMetricsService->getMetrics($dexSlug, $electionSlug);
@@ -54,7 +53,8 @@ class ElectionController extends AbstractController
         return $this->render(
             'Election/index.html.twig',
             [
-                'pokemons' => $pokemons,
+                'listType' => $list->type,
+                'pokemons' => $list->items,
                 'pokedex' => $pokedex,
                 'types' => $types,
                 'electionTop' => $electionTop,

@@ -1908,7 +1908,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_tochoose_demolite_12.json"
+      "file": "/var/moco/pokemons_topick_demolite_12.json"
     }
   },
   {
@@ -1929,7 +1929,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_tochoose_demoliteshiny_12.json"
+      "file": "/var/moco/pokemons_topick_demoliteshiny_12.json"
     }
   },
   {
@@ -1950,7 +1950,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_tochoose_swordshield_12.json"
+      "file": "/var/moco/pokemons_topick_swordshield_12.json"
     }
   },
   {
@@ -1973,7 +1973,57 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_tochoose_mega_12-${random(1, 9, '#')}.json"
+          "template": "/var/moco/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "vote",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": {
+        "name": {
+          "template": "/var/moco/pokemons_tovote_mega_12-${random(1, 9, '#')}.json"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "pick",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": {
+        "name": {
+          "template": "/var/moco/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
         }
       }
     }

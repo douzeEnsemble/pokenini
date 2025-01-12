@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace App\Web\Service\Api;
 
+use App\Web\DTO\ElectionPokemonsList;
 use App\Web\Utils\JsonDecoder;
 
 class GetPokemonsService extends AbstractApiService
 {
-    /**
-     * @return string[][]
-     */
     public function get(
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
         int $count,
-    ): array {
+    ): ElectionPokemonsList {
         /** @var string $json */
         $json = $this->requestContent(
             'GET',
@@ -31,7 +29,9 @@ class GetPokemonsService extends AbstractApiService
             ]
         );
 
-        /** @var string[][] */
-        return JsonDecoder::decode($json);
+        /** @var array{type: string, items: list<array{null|int|string}>} */
+        $data = JsonDecoder::decode($json);
+
+        return new ElectionPokemonsList($data);
     }
 }

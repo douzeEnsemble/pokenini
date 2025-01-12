@@ -21,6 +21,7 @@
             "ignore": [
                 "App\\Api\\Repository\\TrainerPokemonEloRepository::getTopNSQL",
                 "App\\Api\\Repository\\PokemonsRepository::getNToPickSQL",
+                "App\\Api\\Repository\\PokemonsRepository::getNToVoteSQL"
             ]
         },
         "global-ignore": [
