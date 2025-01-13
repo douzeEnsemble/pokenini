@@ -12,8 +12,6 @@ class GetNPokemonsToPickService
     public function __construct(
         private readonly PokemonsRepository $pokemonsRepository,
         private readonly int $eloDefault,
-        private readonly int $maxVotes,
-        private readonly int $minVotes,
     ) {}
 
     /**
@@ -26,8 +24,6 @@ class GetNPokemonsToPickService
             $queryOptions->count,
             $queryOptions->trainerExternalId,
             $queryOptions->electionSlug,
-            $this->maxVotes,
-            $this->minVotes,
             $this->eloDefault,
         );
     }

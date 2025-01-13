@@ -1,77 +1,77 @@
 App\Api\Entity\TrainerPokemonElo:
-    trainerpokemonelo_demo_u12_default_bulbasaur:
+    tpe_demo_u12_default_bulbasaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_bulbasaur'
         elo: 1010
-    trainerpokemonelo_demo_u12_default_ivysaur:
+    tpe_demo_u12_default_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_ivysaur'
         elo: 1020
-    trainerpokemonelo_demo_u12_default_venusaur:
+    tpe_demo_u12_default_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur'
         elo: 1030
-    trainerpokemonelo_demo_u12_default_venusaurf:
+    tpe_demo_u12_default_venusaurf:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur_f'
         elo: 1040
-    trainerpokemonelo_demo_u12_default_venusaurmega:
+    tpe_demo_u12_default_venusaurmega:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur_mega'
         elo: 1050
-    trainerpokemonelo_demo_u12_default_venusaurgmax:
+    tpe_demo_u12_default_venusaurgmax:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur_gigantamax'
         elo: 1060
 
-    trainerpokemonelo_demo_u12_fav_bulbasaur:
+    tpe_demo_u12_fav_bulbasaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_bulbasaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_demo_u12_fav_ivysaur:
+    tpe_demo_u12_fav_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_ivysaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_demo_u12_fav_venusaur:
+    tpe_demo_u12_fav_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_demo_u12_fav_venusaurf:
+    tpe_demo_u12_fav_venusaurf:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur_f'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_demo_u12_fav_venusaurmega:
+    tpe_demo_u12_fav_venusaurmega:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
             pokemon: '@pokemon_venusaur_mega'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_demo_u12_fav_venusaurgmax:
+    tpe_demo_u12_fav_venusaurgmax:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'demo'
@@ -79,42 +79,42 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'favorite'
         elo: 1000
 
-    trainerpokemonelo_home_u12_fav_bulbasaur:
+    tpe_home_u12_fav_bulbasaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
             pokemon: '@pokemon_bulbasaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_home_u12_fav_ivysaur:
+    tpe_home_u12_fav_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
             pokemon: '@pokemon_ivysaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_home_u12_fav_venusaur:
+    tpe_home_u12_fav_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
             pokemon: '@pokemon_venusaur'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_home_u12_fav_venusaurf:
+    tpe_home_u12_fav_venusaurf:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
             pokemon: '@pokemon_venusaur_f'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_home_u12_fav_venusaurmega:
+    tpe_home_u12_fav_venusaurmega:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
             pokemon: '@pokemon_venusaur_mega'
             electionSlug: 'favorite'
         elo: 1000
-    trainerpokemonelo_home_u12_fav_venusaurgmax:
+    tpe_home_u12_fav_venusaurgmax:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'home'
@@ -122,49 +122,49 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'favorite'
         elo: 1000
 
-    trainerpokemonelo_redgreenblueyellow_u12_fav_douze:
+    tpe_redgreenblueyellow_u12_fav_douze:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_douze'
             electionSlug: 'favorite'
         elo: 1016
-    trainerpokemonelo_redgreenblueyellow_u12_fav_bulbasaur:
+    tpe_redgreenblueyellow_u12_fav_bulbasaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_bulbasaur'
             electionSlug: 'favorite'
         elo: 984
-    trainerpokemonelo_redgreenblueyellow_u12_fav_ivysaur:
+    tpe_redgreenblueyellow_u12_fav_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_ivysaur'
             electionSlug: 'favorite'
         elo: 984
-    trainerpokemonelo_redgreenblueyellow_u12_fav_venusaur:
+    tpe_redgreenblueyellow_u12_fav_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_venusaur'
             electionSlug: 'favorite'
         elo: 984
-    trainerpokemonelo_redgreenblueyellow_u12_fav_caterpie:
+    tpe_redgreenblueyellow_u12_fav_caterpie:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_caterpie'
             electionSlug: 'favorite'
         elo: 984
-    trainerpokemonelo_redgreenblueyellow_u12_fav_metapod:
+    tpe_redgreenblueyellow_u12_fav_metapod:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
             pokemon: '@pokemon_metapod'
             electionSlug: 'favorite'
         elo: 984
-    trainerpokemonelo_redgreenblueyellow_u12_fav_butterfree:
+    tpe_redgreenblueyellow_u12_fav_butterfree:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -172,7 +172,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'favorite'
         elo: 984
 
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_bulbasaur:
+    tpe_redgreenblueyellow_u12_affinee_bulbasaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -180,7 +180,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 1000
         count: 0
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_ivysaur:
+    tpe_redgreenblueyellow_u12_affinee_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -188,7 +188,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 1016
         count: 1
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_venusaur:
+    tpe_redgreenblueyellow_u12_affinee_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -196,7 +196,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 1032
         count: 2
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_caterpie:
+    tpe_redgreenblueyellow_u12_affinee_caterpie:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -204,7 +204,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 1048
         count: 3
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_metapod:
+    tpe_redgreenblueyellow_u12_affinee_metapod:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -212,7 +212,7 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 984
         count: -1
-    trainerpokemonelo_redgreenblueyellow_u12_affinee_butterfree:
+    tpe_redgreenblueyellow_u12_affinee_butterfree:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
             dexSlug: 'redgreenblueyellow'
@@ -220,3 +220,5 @@ App\Api\Entity\TrainerPokemonElo:
             electionSlug: 'affinee'
         elo: 968
         count: -2
+
+        
