@@ -99,15 +99,13 @@ class ElectionUpdateEloService
     {
         $newElo = (int) ($pokemonElo->getElo() + round($this->eloKFactor * $baseExpectedElo));
 
-        $initialVoteCount = $newElo <=> $pokemonElo->getElo();
-
         $this->repository->updateElo(
             $newElo,
             $electionVote->trainerExternalId,
             $electionVote->dexSlug,
             $electionVote->electionSlug,
             $pokemonElo->getPokemonSlug(),
-            $initialVoteCount,
+            $newElo > $pokemonElo->getElo(),
         );
 
         return $newElo;

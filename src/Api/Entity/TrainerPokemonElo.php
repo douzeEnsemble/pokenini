@@ -18,7 +18,10 @@ class TrainerPokemonElo
     public int $elo = 1000;
 
     #[ORM\Column]
-    public int $count = 0;
+    public int $viewCount = 0;
+
+    #[ORM\Column]
+    public int $winCount = 0;
 
     public function __construct(
         #[ORM\Column]

@@ -48,9 +48,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 1027,
-                'count' => 1,
+                'view_count' => 1,
+                'win_count' => 1,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur'),
         );
 
         $this->assertSame('ivysaur', $results['losers'][0]->getPokemonSlug());
@@ -58,9 +59,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 1003,
-                'count' => -1,
+                'view_count' => 1,
+                'win_count' => 0,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'ivysaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'ivysaur'),
         );
 
         $this->assertSame('venusaur', $results['losers'][1]->getPokemonSlug());
@@ -68,9 +70,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 1013,
-                'count' => -1,
+                'view_count' => 1,
+                'win_count' => 0,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'venusaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'venusaur'),
         );
     }
 
@@ -97,9 +100,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 1016,
-                'count' => 1,
+                'view_count' => 1,
+                'win_count' => 1,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'bulbasaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'bulbasaur'),
         );
 
         $this->assertSame('ivysaur', $results['losers'][0]->getPokemonSlug());
@@ -107,9 +111,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 984,
-                'count' => -1,
+                'view_count' => 1,
+                'win_count' => 0,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'ivysaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'ivysaur'),
         );
 
         $this->assertSame('venusaur', $results['losers'][1]->getPokemonSlug());
@@ -117,9 +122,10 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 984,
-                'count' => -1,
+                'view_count' => 1,
+                'win_count' => 0,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'venusaur'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'venusaur'),
         );
 
         $this->assertSame('venusaur-f', $results['losers'][2]->getPokemonSlug());
@@ -127,9 +133,51 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 984,
-                'count' => -1,
+                'view_count' => 1,
+                'win_count' => 0,
             ],
-            $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'venusaur-f'),
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite', 'venusaur-f'),
+        );
+    }
+
+    public function testVoteTer(): void
+    {
+        /** @var ElectionUpdateEloService $service */
+        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+
+        $results = $service->update(
+            new ElectionVote([
+                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'redgreenblueyellow',
+                'election_slug' => 'affinee',
+                'winners_slugs' => ['venusaur'],
+                'losers_slugs' => ['butterfree'],
+            ])
+        );
+
+        $this->assertCount(2, $results);
+        $this->assertSame(['winners', 'losers'], array_keys($results));
+
+        $this->assertSame('venusaur', $results['winners'][0]->getPokemonSlug());
+        $this->assertSame(1045, $results['winners'][0]->getElo());
+        $this->assertSame(
+            [
+                'elo' => 1045,
+                'view_count' => 3,
+                'win_count' => 3,
+            ],
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee', 'venusaur'),
+        );
+
+        $this->assertSame('butterfree', $results['losers'][0]->getPokemonSlug());
+        $this->assertSame(955, $results['losers'][0]->getElo());
+        $this->assertSame(
+            [
+                'elo' => 955,
+                'view_count' => 3,
+                'win_count' => 0,
+            ],
+            $this->getEloAndCounts('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee', 'butterfree'),
         );
     }
 

@@ -11,7 +11,7 @@ trait GetTrainerPokemonEloTrait
     /**
      * @return int[]|string[]
      */
-    protected function getEloAndCount(
+    protected function getEloAndCounts(
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
@@ -22,7 +22,8 @@ trait GetTrainerPokemonEloTrait
 
         $sql = <<< 'SQL'
             SELECT  elo, 
-                    count 
+                    view_count, 
+                    win_count
             FROM    trainer_pokemon_elo AS tpe 
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id

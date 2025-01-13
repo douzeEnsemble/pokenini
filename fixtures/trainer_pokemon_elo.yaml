@@ -179,7 +179,7 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_bulbasaur'
             electionSlug: 'affinee'
         elo: 1000
-        count: 0
+        viewCount: 0
     tpe_redgreenblueyellow_u12_affinee_ivysaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
@@ -187,7 +187,8 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_ivysaur'
             electionSlug: 'affinee'
         elo: 1016
-        count: 1
+        viewCount: 1
+        winCount: 1
     tpe_redgreenblueyellow_u12_affinee_venusaur:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
@@ -195,7 +196,8 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_venusaur'
             electionSlug: 'affinee'
         elo: 1032
-        count: 2
+        viewCount: 2
+        winCount: 2
     tpe_redgreenblueyellow_u12_affinee_caterpie:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
@@ -203,7 +205,8 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_caterpie'
             electionSlug: 'affinee'
         elo: 1048
-        count: 3
+        viewCount: 3
+        winCount: 3
     tpe_redgreenblueyellow_u12_affinee_metapod:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
@@ -211,7 +214,8 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_metapod'
             electionSlug: 'affinee'
         elo: 984
-        count: -1
+        viewCount: 1
+        winCount: 0
     tpe_redgreenblueyellow_u12_affinee_butterfree:
         __construct: 
             trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
@@ -219,6 +223,7 @@ App\Api\Entity\TrainerPokemonElo:
             pokemon: '@pokemon_butterfree'
             electionSlug: 'affinee'
         elo: 968
-        count: -2
+        viewCount: 2
+        winCount: 0
 
         
