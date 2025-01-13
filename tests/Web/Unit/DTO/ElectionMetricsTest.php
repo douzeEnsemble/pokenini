@@ -18,96 +18,115 @@ class ElectionMetricsTest extends TestCase
     public function testOk(): void
     {
         $object = new ElectionMetrics([
-            'avg_elo' => 12.1,
-            'stddev_elo' => 24.46568468,
-            'count_elo' => 4,
+            'max_view' => 1,
+            'max_view_count' => 2,
+            'under_max_view_count' => 3,
+            'elo_count' => 4,
         ]);
 
-        $this->assertSame(12.1, $object->avg);
-        $this->assertSame(24.46568468, $object->stddev);
-        $this->assertSame(4, $object->count);
+        $this->assertSame(1, $object->maxView);
+        $this->assertSame(2, $object->maxViewCount);
+        $this->assertSame(3, $object->underMaxViewCount);
+        $this->assertSame(4, $object->eloCount);
     }
 
-    public function testIntAvg(): void
+    public function testMissingMaxView(): void
     {
         $object = new ElectionMetrics([
-            'avg_elo' => 12,
-            'stddev_elo' => 24.46568468,
-            'count_elo' => 4,
+            'max_view_count' => 2,
+            'under_max_view_count' => 3,
+            'elo_count' => 4,
         ]);
 
-        $this->assertSame(12.0, $object->avg);
-        $this->assertSame(24.46568468, $object->stddev);
-        $this->assertSame(4, $object->count);
+        $this->assertSame(0, $object->maxView);
+        $this->assertSame(2, $object->maxViewCount);
+        $this->assertSame(3, $object->underMaxViewCount);
+        $this->assertSame(4, $object->eloCount);
     }
 
-    public function testIntStddev(): void
+    public function testBadMaxView(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionMetrics([
+            'max_view' => '1',
+            'max_view_count' => 2,
+            'under_max_view_count' => 3,
+            'elo_count' => 4,
+        ]);
+    }
+
+    public function testMissingMaxViewCount(): void
     {
         $object = new ElectionMetrics([
-            'avg_elo' => 12.1,
-            'stddev_elo' => 0,
-            'count_elo' => 4,
+            'max_view' => 1,
+            'under_max_view_count' => 3,
+            'elo_count' => 4,
         ]);
 
-        $this->assertSame(12.1, $object->avg);
-        $this->assertSame(0.0, $object->stddev);
-        $this->assertSame(4, $object->count);
+        $this->assertSame(1, $object->maxView);
+        $this->assertSame(0, $object->maxViewCount);
+        $this->assertSame(3, $object->underMaxViewCount);
+        $this->assertSame(4, $object->eloCount);
     }
 
-    public function testMissingAvg(): void
+    public function testBadMaxViewCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionMetrics([
-            'stddev_elo' => 24.46568468,
-            'count_elo' => 4,
+            'max_view' => 1,
+            'max_view_count' => '2',
+            'under_max_view_count' => 3,
+            'elo_count' => 4,
         ]);
     }
 
-    public function testMissingStddev(): void
+    public function testMissingUnderMaxViewCount(): void
+    {
+        $object = new ElectionMetrics([
+            'max_view' => 1,
+            'max_view_count' => 2,
+            'elo_count' => 4,
+        ]);
+
+        $this->assertSame(1, $object->maxView);
+        $this->assertSame(2, $object->maxViewCount);
+        $this->assertSame(0, $object->underMaxViewCount);
+        $this->assertSame(4, $object->eloCount);
+    }
+
+    public function testBadUnderMaxViewCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionMetrics([
-            'avg_elo' => 12,
-            'count_elo' => 4,
+            'max_view' => 1,
+            'max_view_count' => 2,
+            'under_max_view_count' => '3',
+            'elo_count' => 4,
         ]);
     }
 
-    public function testMissingCount(): void
+    public function testMissingEloCount(): void
     {
-        $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'avg_elo' => 12,
-            'stddev_elo' => 24.46568468,
+        $object = new ElectionMetrics([
+            'max_view' => 1,
+            'max_view_count' => 2,
+            'under_max_view_count' => 3,
         ]);
+
+        $this->assertSame(1, $object->maxView);
+        $this->assertSame(2, $object->maxViewCount);
+        $this->assertSame(3, $object->underMaxViewCount);
+        $this->assertSame(0, $object->eloCount);
     }
 
-    public function testBadAvg(): void
+    public function testBadEloCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionMetrics([
-            'avg_elo' => '12',
-            'stddev_elo' => 24.46568468,
-            'count_elo' => 4,
-        ]);
-    }
-
-    public function testBadStddev(): void
-    {
-        $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'avg_elo' => 12,
-            'stddev_elo' => '24.46568468',
-            'count_elo' => 4,
-        ]);
-    }
-
-    public function testBadCount(): void
-    {
-        $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'avg_elo' => 12,
-            'stddev_elo' => 24.46568468,
-            'count_elo' => '4',
+            'max_view' => 1,
+            'max_view_count' => 2,
+            'under_max_view_count' => 3,
+            'elo_count' => '4',
         ]);
     }
 }

@@ -8,9 +8,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ElectionMetrics
 {
-    public float $avg;
-    public float $stddev;
-    public int $count;
+    public int $maxView;
+    public int $maxViewCount;
+    public int $underMaxViewCount;
+    public int $eloCount;
 
     /**
      * @param float[]|int[] $values
@@ -22,20 +23,24 @@ final class ElectionMetrics
 
         $options = $resolver->resolve($values);
 
-        $this->avg = $options['avg_elo'];
-        $this->stddev = $options['stddev_elo'];
-        $this->count = $options['count_elo'];
+        $this->maxView = $options['max_view'];
+        $this->maxViewCount = $options['max_view_count'];
+        $this->underMaxViewCount = $options['under_max_view_count'];
+        $this->eloCount = $options['elo_count'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('avg_elo', '');
-        $resolver->setAllowedTypes('avg_elo', ['float', 'int']);
+        $resolver->setDefault('max_view', 0);
+        $resolver->setAllowedTypes('max_view', 'int');
 
-        $resolver->setDefault('stddev_elo', '');
-        $resolver->setAllowedTypes('stddev_elo', ['float', 'int']);
+        $resolver->setDefault('max_view_count', 0);
+        $resolver->setAllowedTypes('max_view_count', 'int');
 
-        $resolver->setDefault('count_elo', '');
-        $resolver->setAllowedTypes('count_elo', 'int');
+        $resolver->setDefault('under_max_view_count', 0);
+        $resolver->setAllowedTypes('under_max_view_count', 'int');
+
+        $resolver->setDefault('elo_count', 0);
+        $resolver->setAllowedTypes('elo_count', 'int');
     }
 }

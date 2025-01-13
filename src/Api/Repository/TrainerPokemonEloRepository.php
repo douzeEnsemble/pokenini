@@ -158,7 +158,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return float[]|int[]
+     * @return int[]
      */
     public function getMetrics(
         string $trainerExternalId,
@@ -166,14 +166,33 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $electionSlug,
     ): array {
         $sql = <<<'SQL'
-            SELECT  
-                AVG(elo) AS avg_elo,
-                STDDEV(elo) AS stddev_elo,
-                COUNT(1) AS count_elo
-            FROM    trainer_pokemon_elo AS tpe
-            WHERE   trainer_external_id = :trainer_external_id
-                    AND dex_slug = :dex_slug
-                    AND election_slug = :election_slug 
+            WITH stats AS (
+                SELECT MAX(view_count) AS max_view
+                FROM    trainer_pokemon_elo AS tpe
+                WHERE   tpe.trainer_external_id = :trainer_external_id
+                    AND tpe.dex_slug = :dex_slug
+                    AND tpe.election_slug = :election_slug
+            )
+            SELECT 
+                s.max_view AS max_view,
+                COUNT(
+                    CASE 
+                        WHEN tpe.view_count = s.max_view AND tpe.view_count = tpe.win_count 
+                            THEN 1 
+                    END
+                ) AS max_view_count,
+                COUNT(
+                    CASE 
+                        WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count 
+                            THEN 1 
+                    END
+                ) AS under_max_view_count,
+                COUNT(tpe.id) AS elo_count
+            FROM    trainer_pokemon_elo AS tpe, stats AS s
+            WHERE   tpe.trainer_external_id = :trainer_external_id
+                    AND tpe.dex_slug = :dex_slug
+                    AND tpe.election_slug = :election_slug 
+            GROUP BY tpe.trainer_external_id, tpe.dex_slug, tpe.election_slug, s.max_view
             SQL;
 
         $params = [
@@ -188,19 +207,23 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'election_slug' => ParameterType::STRING,
         ];
 
-        /** @var int[]|string[] $result */
+        /** @var false|int[]|string[] $result */
         $result = $this->getEntityManager()->getConnection()->fetchAssociative(
             $sql,
             $params,
             $types,
         );
 
-        $cleanResult = [];
-        $cleanResult['avg_elo'] = floatval($result['avg_elo']);
-        $cleanResult['stddev_elo'] = floatval($result['stddev_elo']);
-        $cleanResult['count_elo'] = intval($result['count_elo']);
+        if (false === $result) {
+            return [
+                'max_view' => 0,
+                'max_view_count' => 0,
+                'under_max_view_count' => 0,
+                'elo_count' => 0,
+            ];
+        }
 
-        return $cleanResult;
+        return $result;
     }
 
     private function getTopNSQL(): string

@@ -6,12 +6,12 @@
           <h4 class="card-title mb-5">{{ 'election.stats.title'|trans }}</h4>
           <p class="card-text">
             {{ 'election.stats.vote_count.start'|trans }}
-            <strong>{{ electionMetrics.count ?? 0 }}</strong>
+            <strong>{{ electionMetrics.eloCount }}</strong>
             {{ 'election.stats.vote_count.end'|trans }}
           </p>
           <p class="card-text">
             {{ 'election.stats.pokemon_vote.start'|trans }}
-            <strong>{{ electionMetrics.count ?? 0 }}</strong>
+            <strong>{{ electionMetrics.eloCount }}</strong>
             {{ 'election.stats.pokemon_vote.middle'|trans }}
             <strong>{{ pokedex.pokemons|length }}</strong>
             {{ 'election.stats.pokemon_vote.end'|trans }}

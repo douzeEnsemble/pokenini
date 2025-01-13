@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Method App\\\\Api\\\\Repository\\\\TrainerPokemonEloRepository\\:\\:getMetrics\\(\\) should return array\\<int\\> but returns array\\<int\\|string\\>\\.$#"
+			count: 1
+			path: src/Api/Repository/TrainerPokemonEloRepository.php
+
+		-
 			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
 			count: 1
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
@@ -286,13 +291,8 @@ parameters:
 			path: tests/Api/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionMetrics constructor expects array\\<float\\|int\\>, array\\<string, float\\|int\\|string\\> given\\.$#"
-			count: 2
-			path: tests/Web/Unit/DTO/ElectionMetricsTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionMetrics constructor expects array\\<float\\|int\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 1
+			count: 4
 			path: tests/Web/Unit/DTO/ElectionMetricsTest.php
 
 		-

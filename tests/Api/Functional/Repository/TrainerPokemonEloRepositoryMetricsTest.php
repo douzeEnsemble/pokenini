@@ -31,9 +31,10 @@ class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
 
         $this->assertSame(
             [
-                'avg_elo' => 1035.0,
-                'stddev_elo' => 18.708286933869708,
-                'count_elo' => 6,
+                'max_view' => 0,
+                'max_view_count' => 6,
+                'under_max_view_count' => 0,
+                'elo_count' => 6,
             ],
             $metrics,
         );
@@ -44,13 +45,32 @@ class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
         /** @var TrainerPokemonEloRepository $repo */
         $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
 
-        $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', 'favorite');
+        $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee');
 
         $this->assertSame(
             [
-                'avg_elo' => 1000.0,
-                'stddev_elo' => 0.0,
-                'count_elo' => 6,
+                'max_view' => 3,
+                'max_view_count' => 1,
+                'under_max_view_count' => 1,
+                'elo_count' => 6,
+            ],
+            $metrics,
+        );
+    }
+
+    public function testGetMetricsNo(): void
+    {
+        /** @var TrainerPokemonEloRepository $repo */
+        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+
+        $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'doesntexists');
+
+        $this->assertSame(
+            [
+                'max_view' => 0,
+                'max_view_count' => 0,
+                'under_max_view_count' => 0,
+                'elo_count' => 0,
             ],
             $metrics,
         );
