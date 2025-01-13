@@ -59,8 +59,6 @@ class PokemonsRepository extends ServiceEntityRepository
         int $count,
         string $trainerExternalId,
         string $electionSlug,
-        int $maxVotes,
-        int $minVotes,
         int $defaultElo,
     ): array {
         $sql = $this->getNToPickSQL();
@@ -70,8 +68,6 @@ class PokemonsRepository extends ServiceEntityRepository
             'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'count' => $count,
-            'max_votes' => $maxVotes,
-            'min_votes' => $minVotes,
             'default_elo' => $defaultElo,
         ];
 
@@ -80,8 +76,6 @@ class PokemonsRepository extends ServiceEntityRepository
             'election_slug' => ParameterType::STRING,
             'dex_slug' => ParameterType::STRING,
             'count' => ParameterType::INTEGER,
-            'max_votes' => ParameterType::INTEGER,
-            'min_votes' => ParameterType::INTEGER,
             'default_elo' => ParameterType::INTEGER,
         ];
 

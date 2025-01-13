@@ -91,7 +91,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             DO
             UPDATE
             SET     elo = excluded.elo,
-                    count = excluded.count + :initial_vote_count
+                    count = trainer_pokemon_elo.count + :initial_vote_count
             SQL;
 
         $params = [

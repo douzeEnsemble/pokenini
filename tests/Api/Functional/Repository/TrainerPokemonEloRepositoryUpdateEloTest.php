@@ -34,7 +34,7 @@ class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         $this->assertSame(
             [
                 'elo' => 4556,
-                'count' => 2,
+                'count' => 1,
             ],
             $this->getEloAndCount('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur'),
         );

@@ -61,7 +61,6 @@ WHERE EXISTS (
             AND tpe.trainer_external_id = :trainer_external_id
             AND tpe.dex_slug = :dex_slug
             AND tpe.election_slug = :election_slug
-            AND tpe.elo > :default_elo
     )
 ORDER BY RANDOM()
 LIMIT :count

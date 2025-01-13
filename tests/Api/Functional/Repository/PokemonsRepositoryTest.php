@@ -84,8 +84,6 @@ class PokemonsRepositoryTest extends KernelTestCase
         string $dexSlug,
         string $electionSlug,
         int $expectedCount,
-        int $maxVotes,
-        int $minVotes,
     ): void {
         /** @var PokemonsRepository $repo */
         $repo = static::getContainer()->get(PokemonsRepository::class);
@@ -95,8 +93,6 @@ class PokemonsRepositoryTest extends KernelTestCase
             12,
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             $electionSlug,
-            $maxVotes,
-            $minVotes,
             1000,
         );
 
@@ -121,29 +117,21 @@ class PokemonsRepositoryTest extends KernelTestCase
                 'dexSlug' => 'home',
                 'electionSlug' => '',
                 'expectedCount' => 12,
-                'maxVotes' => 10,
-                'minVotes' => -10,
             ],
             'redgreenblueyellow-12' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => '',
                 'expectedCount' => 7,
-                'maxVotes' => 10,
-                'minVotes' => -10,
             ],
             'demo-affinee-12-10-10' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
                 'expectedCount' => 7,
-                'maxVotes' => 10,
-                'minVotes' => -10,
             ],
             'demo-affinee-12-2--1' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
                 'expectedCount' => 5,
-                'maxVotes' => 2,
-                'minVotes' => -1,
             ],
         ];
     }

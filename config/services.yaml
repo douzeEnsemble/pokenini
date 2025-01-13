@@ -17,8 +17,6 @@ services:
             int $eloDefault: '%env(ELO_DEFAULT)%'
             int $topCount: '%env(ELECTION_TOP_COUNT)%'
             int $electionCandidateCount: '%env(ELECTION_CANDIDATE_COUNT)%'
-            int $maxVotes: '%env(ELECTION_MAX_VOTES)%'
-            int $minVotes: '%env(ELECTION_MIN_VOTES)%'
             
     App\Api\:
         resource: '../src/Api/'
