@@ -6,8 +6,7 @@ WITH stats AS (
         AND tpe.election_slug = :election_slug
 ), variables AS (
     SELECT  
-            COUNT(CASE WHEN tpe.view_count = s.max_view THEN 1 END) AS max_view,
-            COUNT(CASE WHEN tpe.view_count = s.max_view - 1 THEN 1 END) AS under_max_view
+            COUNT(CASE WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count THEN 1 END) AS under_max_view_count
     FROM    trainer_pokemon_elo AS tpe
         CROSS JOIN stats s
     WHERE   tpe.trainer_external_id = :trainer_external_id
@@ -72,12 +71,15 @@ FROM
         ON da.dex_id = d.id AND d.slug = :dex_slug
 WHERE EXISTS (
         SELECT  1
-        FROM    trainer_pokemon_elo AS tpe, variables as v
+        FROM    stats AS s,
+                variables as v,
+                trainer_pokemon_elo AS tpe
         WHERE   p.id = tpe.pokemon_id
             AND tpe.trainer_external_id = :trainer_external_id
             AND tpe.dex_slug = :dex_slug
             AND tpe.election_slug = :election_slug
-            AND tpe.view_count = CASE WHEN 0 = v.under_max_view THEN v.max_view ELSE v.under_max_view END
+            AND tpe.view_count = CASE WHEN 0 = v.under_max_view_count THEN s.max_view ELSE s.max_view - 1 END
+            AND tpe.view_count = tpe.win_count
     )
 ORDER BY RANDOM()
 LIMIT :count
