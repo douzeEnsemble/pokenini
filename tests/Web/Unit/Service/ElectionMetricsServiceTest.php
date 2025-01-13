@@ -35,9 +35,10 @@ class ElectionMetricsServiceTest extends TestCase
                 'whatever'
             )
             ->willReturn([
-                'avg_elo' => 12,
-                'stddev_elo' => 12.45648,
-                'count_elo' => 21,
+                'max_view' => 12,
+                'max_view_count' => 48,
+                'under_max_view_count' => 4,
+                'elo_count' => 21,
             ])
         ;
 
@@ -45,8 +46,9 @@ class ElectionMetricsServiceTest extends TestCase
 
         $metrics = $service->getMetrics('demo', 'whatever');
 
-        $this->assertSame(12.0, $metrics->avg);
-        $this->assertSame(12.45648, $metrics->stddev);
-        $this->assertSame(21, $metrics->count);
+        $this->assertSame(12, $metrics->maxView);
+        $this->assertSame(48, $metrics->maxViewCount);
+        $this->assertSame(4, $metrics->underMaxViewCount);
+        $this->assertSame(21, $metrics->eloCount);
     }
 }

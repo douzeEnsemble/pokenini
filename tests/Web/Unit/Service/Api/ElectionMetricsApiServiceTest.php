@@ -25,9 +25,10 @@ class ElectionMetricsApiServiceTest extends TestCase
 
         $this->assertSame(
             [
-                'avg_elo' => 1000,
-                'stddev_elo' => 0,
-                'count_elo' => 6,
+                'max_view' => 1,
+                'max_view_count' => 3,
+                'under_max_view_count' => 3,
+                'elo_count' => 6,
             ],
             $items
         );
@@ -41,9 +42,10 @@ class ElectionMetricsApiServiceTest extends TestCase
 
         $this->assertSame(
             [
-                'avg_elo' => 1035,
-                'stddev_elo' => 18.708286933869708,
-                'count_elo' => 6,
+                'max_view' => 12,
+                'max_view_count' => 2,
+                'under_max_view_count' => 0,
+                'elo_count' => 6,
             ],
             $items
         );
