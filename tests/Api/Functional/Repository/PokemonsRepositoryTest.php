@@ -126,12 +126,12 @@ class PokemonsRepositoryTest extends KernelTestCase
             'demo-affinee-12-10-10' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
-                'expectedCount' => 7,
+                'expectedCount' => 1,
             ],
             'demo-affinee-12-2--1' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
-                'expectedCount' => 5,
+                'expectedCount' => 1,
             ],
         ];
     }
@@ -183,12 +183,12 @@ class PokemonsRepositoryTest extends KernelTestCase
             'demo-affinee-12-10-10' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
-                'expectedCount' => 3,
+                'expectedCount' => 2,
             ],
             'demo-affinee-12-2--1' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
-                'expectedCount' => 3,
+                'expectedCount' => 2,
             ],
         ];
     }

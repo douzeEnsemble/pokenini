@@ -71,6 +71,26 @@ class ElectionPokemonsListTest extends TestCase
         ]);
     }
 
+    public function testWrongType(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionPokemonsList([
+            'type' => 12,
+            'items' => [
+                [
+                    'pokemon_slug' => 'pichu',
+                    'regional_form_slug' => null,
+                    'pokemon_family_order' => 0,
+                ],
+                [
+                    'pokemon_slug' => 'raichu',
+                    'regional_form_slug' => null,
+                    'pokemon_family_order' => 2,
+                ],
+            ],
+        ]);
+    }
+
     public function testMissingItems(): void
     {
         $this->expectException(MissingOptionsException::class);

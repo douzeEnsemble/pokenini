@@ -26,8 +26,6 @@ class GetNPokemonsToPickServiceTest extends TestCase
                 12,
                 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
                 'pref',
-                3,
-                -1,
                 1000
             )
             ->willReturn(
@@ -45,8 +43,6 @@ class GetNPokemonsToPickServiceTest extends TestCase
         $service = new GetNPokemonsToPickService(
             $repository,
             1000,
-            3,
-            -1
         );
 
         $queryOptions = new TrainerPokemonEloListQueryOptions([

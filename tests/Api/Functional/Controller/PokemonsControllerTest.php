@@ -62,7 +62,7 @@ class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $this->assertResponseContent(5);
+        $this->assertResponseContent(1);
     }
 
     public function testGetAuth(): void

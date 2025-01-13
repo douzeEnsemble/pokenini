@@ -66,7 +66,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $dexSlug,
         string $electionSlug,
         string $pokemonSlug,
-        int $initialVoteCount,
+        bool $isWinner,
     ): void {
         $sql = <<<'SQL'
             INSERT INTO trainer_pokemon_elo (
@@ -76,7 +76,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 election_slug, 
                 pokemon_id, 
                 elo,
-                count
+                view_count,
+                win_count
             )
             VALUES (
                 :id,
@@ -85,13 +86,15 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 :election_slug,
                 (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
                 :elo,
-                :initial_vote_count
+                1,
+                CASE WHEN :is_winner THEN 1 ELSE 0 END
             )
             ON CONFLICT (trainer_external_id, dex_slug, election_slug, pokemon_id)
             DO
             UPDATE
             SET     elo = excluded.elo,
-                    count = trainer_pokemon_elo.count + :initial_vote_count
+                    view_count = trainer_pokemon_elo.view_count + excluded.view_count,
+                    win_count = trainer_pokemon_elo.win_count + excluded.win_count
             SQL;
 
         $params = [
@@ -101,7 +104,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'pokemon_slug' => $pokemonSlug,
-            'initial_vote_count' => $initialVoteCount,
+            'is_winner' => $isWinner,
         ];
 
         $types = [
@@ -111,7 +114,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,
             'pokemon_slug' => ParameterType::STRING,
-            'initial_vote_count' => ParameterType::INTEGER,
+            'is_winner' => ParameterType::BOOLEAN,
         ];
 
         $this->getEntityManager()->getConnection()->executeQuery(
