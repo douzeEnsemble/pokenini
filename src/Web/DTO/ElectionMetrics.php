@@ -8,39 +8,61 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ElectionMetrics
 {
-    public int $maxView;
-    public int $maxViewCount;
-    public int $underMaxViewCount;
-    public int $eloCount;
+    public int $viewCountSum;
+    public int $winCountSum;
+    public int $roundCount;
+    public float $winnerAverage;
+    public int $totalRoundCount;
 
     /**
      * @param float[]|int[] $values
      */
-    public function __construct(array $values = [])
+    public function __construct(array $values, int $perViewCount, int $totalCount)
     {
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
         $options = $resolver->resolve($values);
 
-        $this->maxView = $options['max_view'];
-        $this->maxViewCount = $options['max_view_count'];
-        $this->underMaxViewCount = $options['under_max_view_count'];
-        $this->eloCount = $options['elo_count'];
+        $this->viewCountSum = $options['view_count_sum'];
+        $this->winCountSum = $options['win_count_sum'];
+
+        $this->roundCount = (int) round($this->viewCountSum / $perViewCount);
+        $this->winnerAverage = 4.0;
+        if (0 !== $this->roundCount) {
+            $this->winnerAverage = round($this->winCountSum / $this->roundCount, 2);
+        }
+
+        $this->calculateTotalRoundCount($perViewCount, $totalCount);
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('max_view', 0);
-        $resolver->setAllowedTypes('max_view', 'int');
+        $resolver->setDefault('view_count_sum', 0);
+        $resolver->setAllowedTypes('view_count_sum', 'int');
 
-        $resolver->setDefault('max_view_count', 0);
-        $resolver->setAllowedTypes('max_view_count', 'int');
+        $resolver->setDefault('win_count_sum', 0);
+        $resolver->setAllowedTypes('win_count_sum', 'int');
+    }
 
-        $resolver->setDefault('under_max_view_count', 0);
-        $resolver->setAllowedTypes('under_max_view_count', 'int');
+    private function calculateTotalRoundCount(int $perViewCount, int $totalCount): void
+    {
+        if (0.0 === $this->winnerAverage) {
+            $this->totalRoundCount = 0;
 
-        $resolver->setDefault('elo_count', 0);
-        $resolver->setAllowedTypes('elo_count', 'int');
+            return;
+        }
+
+        $totalScreens = 0;
+        $currentCount = $totalCount;
+
+        while ($currentCount > 0) {
+            $screensInCurrentRound = round($currentCount / $perViewCount, 0);
+            $totalScreens += $screensInCurrentRound;
+
+            $currentCount = floor($currentCount / $this->winnerAverage);
+        }
+
+        $this->totalRoundCount = (int) $totalScreens;
     }
 }

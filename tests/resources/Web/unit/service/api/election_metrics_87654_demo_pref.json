@@ -1,6 +1,4 @@
 {
-    "max_view": 12,
-    "max_view_count": 2,
-    "under_max_view_count": 0,
-    "elo_count": 6
+    "view_count_sum": 5,
+    "win_count_sum": 10
 }

@@ -445,11 +445,15 @@ election:
         vote_count: 
             start: "You voted"
             end: "times"
-        pokemon_vote: 
-            start: "You voted for or against"
-            middle: "over"
-            end: "Pokémon"
+        round: 
+            start: "You completed "
+            middle: >-
+                {n, plural,
+                    =1 { round out of }
+                    other { rounds out of }
+                }
+            end: "."
         favorite_count: 
-            start: "You have"
-            end: "favorites that stand out"
-            none: "You have no favorites that stand out"
+            start: "You have "
+            end: " favorites that stand out."
+            none: "You have no favorites that stand out."

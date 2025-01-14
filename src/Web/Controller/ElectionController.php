@@ -32,7 +32,7 @@ class ElectionController extends AbstractController
         GetPokemonsListService $getPokemonsListService,
         GetLabelsService $getLabelsService,
         ElectionTopService $electionTopService,
-        ElectionMetricsService $electionMetricsService,
+        ElectionMetricsService $metricsService,
         GetTrainerPokedexService $getTrainerPokedexService,
         string $dexSlug,
         string $electionSlug = '',
@@ -40,9 +40,16 @@ class ElectionController extends AbstractController
         $list = $getPokemonsListService->get($dexSlug, $electionSlug);
         $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
-        $electionMetrics = $electionMetricsService->getMetrics($dexSlug, $electionSlug);
+
         $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, []);
 
+        $metrics = $metricsService->getMetrics(
+            $dexSlug,
+            $electionSlug,
+            count($pokedex['pokemons'])
+        );
+
+        // @todo Remove this
         $detachedCount = 0;
         foreach ($electionTop as $pokemon) {
             if ($pokemon['significance']) {
@@ -58,7 +65,7 @@ class ElectionController extends AbstractController
                 'pokedex' => $pokedex,
                 'types' => $types,
                 'electionTop' => $electionTop,
-                'electionMetrics' => $electionMetrics,
+                'metrics' => $metrics,
                 'detachedCount' => $detachedCount,
             ]
         );

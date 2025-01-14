@@ -48,11 +48,10 @@ class ElectionTest extends WebTestCase
         $this->assertActions($crawler);
         $this->assertStats(
             $crawler,
-            6,
-            6,
-            41,
-            15,
-            "Tu n'as pas de favoris qui se détache",
+            1,
+            4,
+            25,
+            "Tu n'as pas de favoris qui se détache.",
         );
     }
 
@@ -84,11 +83,10 @@ class ElectionTest extends WebTestCase
         $this->assertActions($crawler);
         $this->assertStats(
             $crawler,
-            6,
-            6,
-            41,
-            15,
-            "Tu n'as pas de favoris qui se détache",
+            7,
+            4,
+            175,
+            "Tu n'as pas de favoris qui se détache.",
         );
     }
 
@@ -120,11 +118,10 @@ class ElectionTest extends WebTestCase
         $this->assertActions($crawler);
         $this->assertStats(
             $crawler,
-            12,
-            12,
-            50,
-            24,
-            "Tu n'as pas de favoris qui se détache",
+            5,
+            5,
+            100,
+            "Tu n'as pas de favoris qui se détache.",
         );
     }
 
@@ -156,10 +153,9 @@ class ElectionTest extends WebTestCase
         $this->assertActions($crawler);
         $this->assertStats(
             $crawler,
-            50,
-            50,
-            50,
-            100,
+            7,
+            5,
+            140,
             'Tu as 1 favori qui se détache',
         );
     }
@@ -192,10 +188,9 @@ class ElectionTest extends WebTestCase
         $this->assertActions($crawler);
         $this->assertStats(
             $crawler,
+            4,
+            8,
             50,
-            50,
-            50,
-            100,
             'Tu as 1 favori qui se détache',
         );
     }
@@ -224,11 +219,10 @@ class ElectionTest extends WebTestCase
 
         $this->assertStats(
             $crawler,
-            6,
-            6,
-            41,
-            15,
-            "Tu n'as pas de favoris qui se détache",
+            1,
+            4,
+            25,
+            "Tu n'as pas de favoris qui se détache.",
         );
     }
 
@@ -259,10 +253,9 @@ class ElectionTest extends WebTestCase
         $this->assertStats(
             $crawler,
             6,
-            6,
-            41,
-            15,
-            "Tu n'as pas de favoris qui se détache",
+            7,
+            86,
+            "Tu n'as pas de favoris qui se détache.",
         );
     }
 
@@ -463,21 +456,32 @@ class ElectionTest extends WebTestCase
 
     private function assertStats(
         Crawler $crawler,
-        int $voteCount,
-        int $seenCount,
-        int $totalCount,
+        int $roundCount,
+        int $totalRoundCount,
         int $progress,
         string $favoriteCountText,
     ): void {
         $this->assertCountFilter($crawler, 1, '#election-stats');
 
-        $this->assertSame("Tu as voté {$voteCount} fois", $crawler->filter('#election-stats p')->eq(0)->text());
+        $this->assertSame(
+            "{$progress}%",
+            $crawler->filter('#election-actions-top div.progress')->eq(0)->text()
+        );
 
-        $this->assertSame("Tu as voté pour ou contre {$seenCount} sur {$totalCount} Pokémon", $crawler->filter('#election-stats p')->eq(1)->text());
+        $roundsTxt = 1 >= $roundCount ? 'tour' : 'tours';
 
-        $this->assertSame("{$progress}%", $crawler->filter('#election-actions-top div.progress')->eq(0)->text());
-        $this->assertSame("Tu as voté pour ou contre <strong>{$voteCount}</strong> sur <strong>{$totalCount}</strong> Pokémon", $crawler->filter('#election-actions-top div.progress .progress-bar')->eq(0)->attr('data-bs-title'));
+        $this->assertSame(
+            "Tu as fait <strong>{$roundCount}</strong> {$roundsTxt} sur <strong>{$totalRoundCount}</strong>.",
+            $crawler->filter('#election-actions-top div.progress .progress-bar')->eq(0)->attr('data-bs-title')
+        );
 
-        $this->assertSame($favoriteCountText, $crawler->filter('#election-stats p')->eq(2)->text());
+        $this->assertSame(
+            "Tu as fait {$roundCount} {$roundsTxt} sur {$totalRoundCount}.",
+            $crawler->filter('#election-stats p')->eq(0)->text()
+        );
+        $this->assertSame(
+            $favoriteCountText,
+            $crawler->filter('#election-stats p')->eq(1)->text()
+        );
     }
 }

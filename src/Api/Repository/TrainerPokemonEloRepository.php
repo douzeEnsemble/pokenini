@@ -158,7 +158,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[]
+     * @return array{view_count_sum: int, win_count_sum: int}
      */
     public function getMetrics(
         string $trainerExternalId,
@@ -166,33 +166,13 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $electionSlug,
     ): array {
         $sql = <<<'SQL'
-            WITH stats AS (
-                SELECT MAX(view_count) AS max_view
-                FROM    trainer_pokemon_elo AS tpe
-                WHERE   tpe.trainer_external_id = :trainer_external_id
-                    AND tpe.dex_slug = :dex_slug
-                    AND tpe.election_slug = :election_slug
-            )
             SELECT 
-                s.max_view AS max_view,
-                COUNT(
-                    CASE 
-                        WHEN tpe.view_count = s.max_view AND tpe.view_count = tpe.win_count 
-                            THEN 1 
-                    END
-                ) AS max_view_count,
-                COUNT(
-                    CASE 
-                        WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count 
-                            THEN 1 
-                    END
-                ) AS under_max_view_count,
-                COUNT(tpe.id) AS elo_count
-            FROM    trainer_pokemon_elo AS tpe, stats AS s
+                SUM(view_count) AS view_count_sum,
+                SUM(win_count)  AS win_count_sum
+            FROM    trainer_pokemon_elo AS tpe
             WHERE   tpe.trainer_external_id = :trainer_external_id
                     AND tpe.dex_slug = :dex_slug
-                    AND tpe.election_slug = :election_slug 
-            GROUP BY tpe.trainer_external_id, tpe.dex_slug, tpe.election_slug, s.max_view
+                    AND tpe.election_slug = :election_slug
             SQL;
 
         $params = [
@@ -216,14 +196,15 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
 
         if (false === $result) {
             return [
-                'max_view' => 0,
-                'max_view_count' => 0,
-                'under_max_view_count' => 0,
-                'elo_count' => 0,
+                'view_count_sum' => 0,
+                'win_count_sum' => 0,
             ];
         }
 
-        return $result;
+        return [
+            'view_count_sum' => $result['view_count_sum'] ?? 0,
+            'win_count_sum' => $result['win_count_sum'] ?? 0,
+        ];
     }
 
     private function getTopNSQL(): string
