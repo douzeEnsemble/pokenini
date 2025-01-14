@@ -33,6 +33,60 @@ class ElectionMetricsTest extends TestCase
         $this->assertSame(5, $object->totalRoundCount);
     }
 
+    public function testSumZero(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 0,
+                'win_count_sum' => 0,
+            ],
+            12,
+            50
+        );
+
+        $this->assertSame(0, $object->viewCountSum);
+        $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
+    }
+
+    public function testEdge(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 1,
+            ],
+            120,
+            50
+        );
+
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(1, $object->winCountSum);
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(0, $object->totalRoundCount);
+    }
+
+    public function testFloor(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 120,
+                'win_count_sum' => 28,
+            ],
+            12,
+            17,
+        );
+
+        $this->assertSame(120, $object->viewCountSum);
+        $this->assertSame(28, $object->winCountSum);
+        $this->assertSame(10, $object->roundCount);
+        $this->assertSame(2.8, $object->winnerAverage);
+        $this->assertSame(2, $object->totalRoundCount);
+    }
+
     public function testMissingViewCountSum(): void
     {
         $object = new ElectionMetrics(

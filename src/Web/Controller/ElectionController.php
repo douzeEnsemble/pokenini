@@ -49,7 +49,6 @@ class ElectionController extends AbstractController
             count($pokedex['pokemons'])
         );
 
-        // @todo Remove this
         $detachedCount = 0;
         foreach ($electionTop as $pokemon) {
             if ($pokemon['significance']) {
