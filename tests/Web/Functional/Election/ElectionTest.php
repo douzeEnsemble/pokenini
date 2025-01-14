@@ -49,8 +49,8 @@ class ElectionTest extends WebTestCase
         $this->assertStats(
             $crawler,
             1,
-            4,
-            25,
+            5,
+            20,
             "Tu n'as pas de favoris qui se détache.",
         );
     }
@@ -84,8 +84,8 @@ class ElectionTest extends WebTestCase
         $this->assertStats(
             $crawler,
             7,
-            4,
-            175,
+            5,
+            140,
             "Tu n'as pas de favoris qui se détache.",
         );
     }
@@ -220,8 +220,8 @@ class ElectionTest extends WebTestCase
         $this->assertStats(
             $crawler,
             1,
-            4,
-            25,
+            5,
+            20,
             "Tu n'as pas de favoris qui se détache.",
         );
     }
@@ -253,8 +253,8 @@ class ElectionTest extends WebTestCase
         $this->assertStats(
             $crawler,
             6,
-            7,
-            86,
+            8,
+            75,
             "Tu n'as pas de favoris qui se détache.",
         );
     }

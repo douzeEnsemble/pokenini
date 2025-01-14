@@ -158,7 +158,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array{view_count_sum: int, win_count_sum: int}
+     * @return array{view_count_sum: int, win_count_sum: int, dex_total_count: int}
      */
     public function getMetrics(
         string $trainerExternalId,
@@ -168,7 +168,13 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             SELECT 
                 SUM(view_count) AS view_count_sum,
-                SUM(win_count)  AS win_count_sum
+                SUM(win_count) AS win_count_sum,
+                (
+                    SELECT  COUNT(1) AS count
+                    FROM    dex_availability AS da
+                        JOIN dex as d
+                            ON da.dex_id = d.id AND d.slug = :dex_slug
+                ) AS  dex_total_count                
             FROM    trainer_pokemon_elo AS tpe
             WHERE   tpe.trainer_external_id = :trainer_external_id
                     AND tpe.dex_slug = :dex_slug
@@ -197,6 +203,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         return [
             'view_count_sum' => $result['view_count_sum'] ?? 0,
             'win_count_sum' => $result['win_count_sum'] ?? 0,
+            'dex_total_count' => $result['dex_total_count'] ?? 0,
         ];
     }
 

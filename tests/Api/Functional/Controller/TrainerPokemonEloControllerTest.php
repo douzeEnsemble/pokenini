@@ -90,6 +90,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count_sum' => 0,
                 'win_count_sum' => 0,
+                'dex_total_count' => 21,
             ],
             $content,
         );
@@ -116,6 +117,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count_sum' => 9,
                 'win_count_sum' => 6,
+                'dex_total_count' => 7,
             ],
             $content,
         );
@@ -142,6 +144,7 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count_sum' => 0,
                 'win_count_sum' => 0,
+                'dex_total_count' => 7,
             ],
             $content,
         );

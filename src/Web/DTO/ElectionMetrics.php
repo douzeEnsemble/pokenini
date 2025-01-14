@@ -10,6 +10,8 @@ final class ElectionMetrics
 {
     public int $viewCountSum;
     public int $winCountSum;
+    public int $dexTotalCount;
+
     public int $roundCount;
     public float $winnerAverage;
     public int $totalRoundCount;
@@ -17,7 +19,7 @@ final class ElectionMetrics
     /**
      * @param float[]|int[] $values
      */
-    public function __construct(array $values, int $perViewCount, int $totalCount)
+    public function __construct(array $values, int $perViewCount)
     {
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
@@ -26,6 +28,7 @@ final class ElectionMetrics
 
         $this->viewCountSum = $options['view_count_sum'];
         $this->winCountSum = $options['win_count_sum'];
+        $this->dexTotalCount = $options['dex_total_count'];
 
         $this->roundCount = (int) round($this->viewCountSum / $perViewCount);
         $this->winnerAverage = 4.0;
@@ -33,7 +36,7 @@ final class ElectionMetrics
             $this->winnerAverage = round($this->winCountSum / $this->roundCount, 2);
         }
 
-        $this->calculateTotalRoundCount($perViewCount, $totalCount);
+        $this->calculateTotalRoundCount($perViewCount);
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -43,12 +46,15 @@ final class ElectionMetrics
 
         $resolver->setDefault('win_count_sum', 0);
         $resolver->setAllowedTypes('win_count_sum', 'int');
+
+        $resolver->setDefault('dex_total_count', 0);
+        $resolver->setAllowedTypes('dex_total_count', 'int');
     }
 
-    private function calculateTotalRoundCount(int $perViewCount, int $totalCount): void
+    private function calculateTotalRoundCount(int $perViewCount): void
     {
         $totalScreens = 0;
-        $currentCount = $totalCount;
+        $currentCount = $this->dexTotalCount;
 
         while ($currentCount > 0) {
             $screensInCurrentRound = round($currentCount / $perViewCount, 0);

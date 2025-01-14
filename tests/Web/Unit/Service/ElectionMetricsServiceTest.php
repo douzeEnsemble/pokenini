@@ -37,12 +37,13 @@ class ElectionMetricsServiceTest extends TestCase
             ->willReturn([
                 'view_count_sum' => 12,
                 'win_count_sum' => 48,
+                'dex_total_count' => 48,
             ])
         ;
 
         $service = new ElectionMetricsService($userTokenService, $apiService, 12);
 
-        $metrics = $service->getMetrics('demo', 'whatever', 48);
+        $metrics = $service->getMetrics('demo', 'whatever');
 
         $this->assertSame(12, $metrics->viewCountSum);
         $this->assertSame(48, $metrics->winCountSum);
