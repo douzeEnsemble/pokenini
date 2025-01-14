@@ -47,12 +47,6 @@ final class ElectionMetrics
 
     private function calculateTotalRoundCount(int $perViewCount, int $totalCount): void
     {
-        if (0.0 === $this->winnerAverage) {
-            $this->totalRoundCount = 0;
-
-            return;
-        }
-
         $totalScreens = 0;
         $currentCount = $totalCount;
 

@@ -24,6 +24,11 @@
                 "App\\Api\\Repository\\PokemonsRepository::getNToVoteSQL"
             ]
         },
+        "RoundingFamily": {
+            "ignore": [
+                "App\\Web\\DTO\\ElectionMetrics::calculateTotalRoundCount",
+            ]
+        },
         "global-ignore": [
             "App\\Api\\Updater\\CollectionsAvailabilitiesUpdater::upsertRecord",
             "App\\Api\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",

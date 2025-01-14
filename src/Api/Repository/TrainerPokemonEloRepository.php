@@ -187,19 +187,12 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'election_slug' => ParameterType::STRING,
         ];
 
-        /** @var false|int[]|string[] $result */
+        /** @var int[]|string[] $result */
         $result = $this->getEntityManager()->getConnection()->fetchAssociative(
             $sql,
             $params,
             $types,
         );
-
-        if (false === $result) {
-            return [
-                'view_count_sum' => 0,
-                'win_count_sum' => 0,
-            ];
-        }
 
         return [
             'view_count_sum' => $result['view_count_sum'] ?? 0,
