@@ -88,10 +88,8 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertSame(
             [
-                'max_view' => 0,
-                'max_view_count' => 6,
-                'under_max_view_count' => 0,
-                'elo_count' => 6,
+                'view_count_sum' => 0,
+                'win_count_sum' => 0,
             ],
             $content,
         );
@@ -116,10 +114,8 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertSame(
             [
-                'max_view' => 3,
-                'max_view_count' => 1,
-                'under_max_view_count' => 1,
-                'elo_count' => 6,
+                'view_count_sum' => 9,
+                'win_count_sum' => 6,
             ],
             $content,
         );
@@ -144,10 +140,8 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertSame(
             [
-                'max_view' => 0,
-                'max_view_count' => 0,
-                'under_max_view_count' => 0,
-                'elo_count' => 0,
+                'view_count_sum' => 0,
+                'win_count_sum' => 0,
             ],
             $content,
         );

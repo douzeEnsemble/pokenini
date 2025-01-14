@@ -25,10 +25,8 @@ class ElectionMetricsApiServiceTest extends TestCase
 
         $this->assertSame(
             [
-                'max_view' => 1,
-                'max_view_count' => 3,
-                'under_max_view_count' => 3,
-                'elo_count' => 6,
+                'view_count_sum' => 6,
+                'win_count_sum' => 2,
             ],
             $items
         );
@@ -42,10 +40,8 @@ class ElectionMetricsApiServiceTest extends TestCase
 
         $this->assertSame(
             [
-                'max_view' => 12,
-                'max_view_count' => 2,
-                'under_max_view_count' => 0,
-                'elo_count' => 6,
+                'view_count_sum' => 5,
+                'win_count_sum' => 10,
             ],
             $items
         );

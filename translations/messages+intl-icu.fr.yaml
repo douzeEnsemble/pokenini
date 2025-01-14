@@ -447,15 +447,19 @@ election:
         vote_count: 
             start: "Tu as voté"
             end: "fois"
-        pokemon_vote: 
-            start: "Tu as voté pour ou contre"
-            middle: "sur"
-            end: "Pokémon"
+        round: 
+            start: "Tu as fait "
+            middle: >-
+                {n, plural,
+                    =1 { tour sur }
+                    other { tours sur }
+                }
+            end: "."
         favorite_count: 
-            start: "Tu as"
+            start: "Tu as "
             end: >-
                 {n, plural,
-                    =1 {favori qui se détache}
-                    other {favoris qui se détachent}
+                    =1 { favori qui se détache}
+                    other { favoris qui se détachent}
                 }
-            none: "Tu n'as pas de favoris qui se détache"
+            none: "Tu n'as pas de favoris qui se détache."

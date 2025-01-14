@@ -17,116 +17,79 @@ class ElectionMetricsTest extends TestCase
 {
     public function testOk(): void
     {
-        $object = new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => 2,
-            'under_max_view_count' => 3,
-            'elo_count' => 4,
-        ]);
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 82,
+                'win_count_sum' => 54,
+            ],
+            12,
+            50
+        );
 
-        $this->assertSame(1, $object->maxView);
-        $this->assertSame(2, $object->maxViewCount);
-        $this->assertSame(3, $object->underMaxViewCount);
-        $this->assertSame(4, $object->eloCount);
+        $this->assertSame(82, $object->viewCountSum);
+        $this->assertSame(54, $object->winCountSum);
+        $this->assertSame(7, $object->roundCount);
+        $this->assertSame(7.71, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
     }
 
-    public function testMissingMaxView(): void
+    public function testMissingViewCountSum(): void
     {
-        $object = new ElectionMetrics([
-            'max_view_count' => 2,
-            'under_max_view_count' => 3,
-            'elo_count' => 4,
-        ]);
+        $object = new ElectionMetrics(
+            [
+                'win_count_sum' => 2,
+            ],
+            12,
+            50,
+        );
 
-        $this->assertSame(0, $object->maxView);
-        $this->assertSame(2, $object->maxViewCount);
-        $this->assertSame(3, $object->underMaxViewCount);
-        $this->assertSame(4, $object->eloCount);
+        $this->assertSame(0, $object->viewCountSum);
+        $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
     }
 
-    public function testBadMaxView(): void
-    {
-        $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'max_view' => '1',
-            'max_view_count' => 2,
-            'under_max_view_count' => 3,
-            'elo_count' => 4,
-        ]);
-    }
-
-    public function testMissingMaxViewCount(): void
-    {
-        $object = new ElectionMetrics([
-            'max_view' => 1,
-            'under_max_view_count' => 3,
-            'elo_count' => 4,
-        ]);
-
-        $this->assertSame(1, $object->maxView);
-        $this->assertSame(0, $object->maxViewCount);
-        $this->assertSame(3, $object->underMaxViewCount);
-        $this->assertSame(4, $object->eloCount);
-    }
-
-    public function testBadMaxViewCount(): void
+    public function testBadViewCountSum(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => '2',
-            'under_max_view_count' => 3,
-            'elo_count' => 4,
-        ]);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => '1',
+                'win_count_sum' => 2,
+            ],
+            12,
+            50,
+        );
     }
 
-    public function testMissingUnderMaxViewCount(): void
+    public function testMissingWinCountSum(): void
     {
-        $object = new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => 2,
-            'elo_count' => 4,
-        ]);
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+            ],
+            12,
+            50,
+        );
 
-        $this->assertSame(1, $object->maxView);
-        $this->assertSame(2, $object->maxViewCount);
-        $this->assertSame(0, $object->underMaxViewCount);
-        $this->assertSame(4, $object->eloCount);
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
     }
 
-    public function testBadUnderMaxViewCount(): void
-    {
-        $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => 2,
-            'under_max_view_count' => '3',
-            'elo_count' => 4,
-        ]);
-    }
-
-    public function testMissingEloCount(): void
-    {
-        $object = new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => 2,
-            'under_max_view_count' => 3,
-        ]);
-
-        $this->assertSame(1, $object->maxView);
-        $this->assertSame(2, $object->maxViewCount);
-        $this->assertSame(3, $object->underMaxViewCount);
-        $this->assertSame(0, $object->eloCount);
-    }
-
-    public function testBadEloCount(): void
+    public function testBadWinCountSum(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        new ElectionMetrics([
-            'max_view' => 1,
-            'max_view_count' => 2,
-            'under_max_view_count' => 3,
-            'elo_count' => '4',
-        ]);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => '2',
+            ],
+            12,
+            50,
+        );
     }
 }

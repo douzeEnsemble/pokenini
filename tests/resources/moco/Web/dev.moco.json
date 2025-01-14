@@ -2156,27 +2156,6 @@
       },
       "queries": {
         "dex_slug": "mega",
-        "election_slug": "favorite",
-        "count": "5"
-      },
-      "method": "get",
-      "headers": {
-        "accept": "application/json",
-        "Authorization": "Basic d2ViOmRvdXpl"
-      }
-    },
-    "response": {
-      "status": "200",
-      "file": "/var/moco/election_mega_favorite_top_5.json"
-    }
-  },
-  {
-    "request": {
-      "uri": {
-        "match": "/election/top"
-      },
-      "queries": {
-        "dex_slug": "mega",
         "count": "5"
       },
       "method": "get",
@@ -2257,7 +2236,7 @@
       },
       "queries": {
         "dex_slug": "mega",
-        "election_slug": "favorite"
+        "election_slug": "pick"
       },
       "method": "get",
       "headers": {
@@ -2267,7 +2246,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_favorite_metrics.json"
+      "file": "/var/moco/election_mega_pick_metrics.json"
     }
   },
   {
@@ -2276,7 +2255,28 @@
         "match": "/election/metrics"
       },
       "queries": {
-        "dex_slug": "mega"
+        "dex_slug": "mega",
+        "election_slug": "vote"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_vote_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": ""
       },
       "method": "get",
       "headers": {
