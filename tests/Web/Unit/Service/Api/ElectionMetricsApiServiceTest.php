@@ -27,6 +27,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 6,
                 'win_count_sum' => 2,
+                'dex_total_count' => 48,
             ],
             $items
         );
@@ -42,6 +43,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 5,
                 'win_count_sum' => 10,
+                'dex_total_count' => 48,
             ],
             $items
         );

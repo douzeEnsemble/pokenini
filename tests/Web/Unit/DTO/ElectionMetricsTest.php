@@ -21,13 +21,15 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 82,
                 'win_count_sum' => 54,
+                'dex_total_count' => 50,
             ],
             12,
-            50
         );
 
         $this->assertSame(82, $object->viewCountSum);
         $this->assertSame(54, $object->winCountSum);
+        $this->assertSame(50, $object->dexTotalCount);
+
         $this->assertSame(7, $object->roundCount);
         $this->assertSame(7.71, $object->winnerAverage);
         $this->assertSame(5, $object->totalRoundCount);
@@ -39,13 +41,15 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 0,
                 'win_count_sum' => 0,
+                'dex_total_count' => 50,
             ],
             12,
-            50
         );
 
         $this->assertSame(0, $object->viewCountSum);
         $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(50, $object->dexTotalCount);
+
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
         $this->assertSame(5, $object->totalRoundCount);
@@ -57,13 +61,15 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 1,
                 'win_count_sum' => 1,
+                'dex_total_count' => 50,
             ],
             120,
-            50
         );
 
         $this->assertSame(1, $object->viewCountSum);
         $this->assertSame(1, $object->winCountSum);
+        $this->assertSame(50, $object->dexTotalCount);
+
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
         $this->assertSame(0, $object->totalRoundCount);
@@ -75,13 +81,15 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 120,
                 'win_count_sum' => 28,
+                'dex_total_count' => 17,
             ],
             12,
-            17,
         );
 
         $this->assertSame(120, $object->viewCountSum);
         $this->assertSame(28, $object->winCountSum);
+        $this->assertSame(17, $object->dexTotalCount);
+
         $this->assertSame(10, $object->roundCount);
         $this->assertSame(2.8, $object->winnerAverage);
         $this->assertSame(2, $object->totalRoundCount);
@@ -92,13 +100,15 @@ class ElectionMetricsTest extends TestCase
         $object = new ElectionMetrics(
             [
                 'win_count_sum' => 2,
+                'dex_total_count' => 50,
             ],
             12,
-            50,
         );
 
         $this->assertSame(0, $object->viewCountSum);
         $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(50, $object->dexTotalCount);
+
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
         $this->assertSame(5, $object->totalRoundCount);
@@ -111,9 +121,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => '1',
                 'win_count_sum' => 2,
+                'dex_total_count' => 50,
             ],
             12,
-            50,
         );
     }
 
@@ -122,13 +132,15 @@ class ElectionMetricsTest extends TestCase
         $object = new ElectionMetrics(
             [
                 'view_count_sum' => 1,
+                'dex_total_count' => 50,
             ],
             12,
-            50,
         );
 
         $this->assertSame(1, $object->viewCountSum);
         $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(50, $object->dexTotalCount);
+
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
         $this->assertSame(5, $object->totalRoundCount);
@@ -141,9 +153,41 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 1,
                 'win_count_sum' => '2',
+                'dex_total_count' => 50,
             ],
             12,
-            50,
+        );
+    }
+
+    public function testMissingdexTotalCount(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+            ],
+            12,
+        );
+
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(0, $object->dexTotalCount);
+
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(0, $object->totalRoundCount);
+    }
+
+    public function testBadDexTotalCount(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'dex_total_count' => '50',
+            ],
+            12,
         );
     }
 }
