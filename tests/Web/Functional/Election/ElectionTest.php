@@ -422,33 +422,27 @@ class ElectionTest extends WebTestCase
     private function assertActions(Crawler $crawler): void
     {
         $this->assertCountFilter($crawler, 1, '#election-actions-top');
-        $this->assertCountFilter($crawler, 0, '#election-actions-top .nav-item');
+        $this->assertCountFilter($crawler, 0, '#election-actions-top .election-actions-item');
         $this->assertCountFilter($crawler, 1, '#election-actions-top .progress');
 
         $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
-        $this->assertCountFilter($crawler, 5, '#election-actions-bottom .nav-item');
+        $this->assertCountFilter($crawler, 3, '#election-actions-bottom .election-actions-item');
         $index = 0;
         $this->assertEquals(
-            'Voir mon top 5 actuel',
-            $crawler->filter('#election-actions-bottom .nav-item')
+            'Nouvelle liste',
+            $crawler->filter('#election-actions-bottom .election-actions-item')
                 ->eq($index++)
                 ->text()
         );
         $this->assertEquals(
             "J'ai fait mes choix 0",
-            $crawler->filter('#election-actions-bottom .nav-item')
+            $crawler->filter('#election-actions-bottom .election-actions-item')
                 ->eq($index++)
                 ->text()
         );
         $this->assertEquals(
-            'Nouvelle liste',
-            $crawler->filter('#election-actions-bottom .nav-item')
-                ->eq($index++)
-                ->text()
-        );
-        $this->assertEquals(
-            'Remonter',
-            $crawler->filter('#election-actions-bottom .nav-item')
+            'Voir les filtres',
+            $crawler->filter('#election-actions-bottom .election-actions-item')
                 ->eq($index++)
                 ->text()
         );

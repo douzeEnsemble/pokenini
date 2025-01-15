@@ -383,6 +383,7 @@ election:
         goto:
             mytop: "See my actual top {n}"
             top: "Go back up"
+        filters: "See filters"
     stats:
         title: "Stats"
         vote_count: 
