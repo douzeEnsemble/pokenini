@@ -133,69 +133,8 @@ album:
     offcanvas:
         informations:
             title: Informations
-        filters:
-            title: Filtres
-            open_distinguish_types: Avancées
-            submit:
-                label: Filtrer
-            reset:
-                label: Réinitialier
-            any_type:
-                label: Type
-                value:
-                    empty: Tous
-            primary_type:
-                label: Premier type
-                value:
-                    empty: Tous
-            secondary_type:
-                label: Second type
-                value:
-                    empty: Tous
-                    "null": Aucun
-            category_form:
-                label: Catégorie
-                value:
-                    empty: Toutes
-                    "null": Aucune
-            regional_form:
-                label: Forme régional
-                value:
-                    empty: Toutes
-                    "null": Aucune
-            special_form:
-                label: Forme spéciale
-                value:
-                    empty: Toutes
-                    "null": Aucune
-            variant_form:
-                label: Variante
-                value:
-                    empty: Toutes
-                    "null": Aucune
-            original_game_bundle:
-                label: Pack de jeu original
-                value:
-                    empty: Tous
-            game_bundle_availability:
-                label: Disponibilités dans
-                value:
-                    empty: Tous
-                    negative: "Pas dans "
-            game_bundle_shiny_availability:
-                label: Disponibilités dans
-                value:
-                    empty: Tous
-                    negative: "Pas dans "
-            catch_states:
-                total: "Toute la collection"
-                positive: "Filtre les '{cs}'"
-                negative: "Filtre tous sauf les '{cs}'"
-            collection:
-                label: Collection
-                value:
-                    empty: Peu importe
-                    negative: "Pas dans "
+        title: Filtres
+        open_distinguish_types: Avancées
 
 update:
     labels:
@@ -430,10 +369,13 @@ election:
         action: "Je choisi celui-là"
     slug:
         label: "Nom de l'élection"
-    offcanvas:
-        title: "Configuration"
-        open:
-            action: "Ouvrir le volet de configuration"
+    filters:
+        title: "Filtres"
+        open: "Voir les filtres"
+        back: "Oula, trop compliqué !"
+    filters-advanced:
+        title: "Filtres complets"
+        open: "Voir les filtres complets"
     top:
         title: "Ton top {n} actuel"
     actions:
@@ -463,3 +405,66 @@ election:
                     other { favoris qui se détachent}
                 }
             none: "Tu n'as pas de favoris qui se détache."
+    
+dex:
+    filters:
+        submit:
+            label: Filtrer
+        reset:
+            label: Réinitialier
+        any_type:
+            label: Type
+            value:
+                empty: Tous
+        primary_type:
+            label: Premier type
+            value:
+                empty: Tous
+        secondary_type:
+            label: Second type
+            value:
+                empty: Tous
+                "null": Aucun
+        category_form:
+            label: Catégorie
+            value:
+                empty: Toutes
+                "null": Aucune
+        regional_form:
+            label: Forme régional
+            value:
+                empty: Toutes
+                "null": Aucune
+        special_form:
+            label: Forme spéciale
+            value:
+                empty: Toutes
+                "null": Aucune
+        variant_form:
+            label: Variante
+            value:
+                empty: Toutes
+                "null": Aucune
+        original_game_bundle:
+            label: Pack de jeu original
+            value:
+                empty: Tous
+        game_bundle_availability:
+            label: Disponibilités dans
+            value:
+                empty: Tous
+                negative: "Pas dans "
+        game_bundle_shiny_availability:
+            label: Disponibilités dans
+            value:
+                empty: Tous
+                negative: "Pas dans "
+        catch_states:
+            total: "Toute la collection"
+            positive: "Filtre les '{cs}'"
+            negative: "Filtre tous sauf les '{cs}'"
+        collection:
+            label: Collection
+            value:
+                empty: Peu importe
+                negative: "Pas dans "

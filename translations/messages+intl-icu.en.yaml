@@ -136,66 +136,6 @@ album:
         filters:
             title: Filters
             open_distinguish_types: More
-            submit:
-                label: Filter
-            reset:
-                label: Reset
-            any_type:
-                label: Type
-                value:
-                    empty: All
-            primary_type:
-                label: Primary type
-                value:
-                    empty: All
-            secondary_type:
-                label: Secondary type
-                value:
-                    empty: All
-                    "null": None
-            category_form:
-                label: Category
-                value:
-                    empty: All
-                    "null": None
-            regional_form:
-                label: Regional form
-                value:
-                    empty: All
-                    "null": None
-            special_form:
-                label: Special form
-                value:
-                    empty: All
-                    "null": None
-            variant_form:
-                label: Variant
-                value:
-                    empty: All
-                    "null": None
-            original_game_bundle:
-                label: Original game bundle
-                value:
-                    empty: All
-            game_bundle_availability:
-                label: Available in
-                value:
-                    empty: All
-                    negative: "Not in "
-            game_bundle_shiny_availability:
-                label: Available in
-                value:
-                    empty: All
-                    negative: "Not in "
-            catch_states:
-                total: "All the collection"
-                positive: "Filter all '{cs}'"
-                negative: "Filter all excepts '{cs}'"
-            collections:
-                label: Collection
-                value:
-                    empty: Whatever
-                    negative: "Not in "
 
 update:
     labels:
@@ -428,10 +368,13 @@ election:
         action: "I choose this one"
     slug:
         label: "Election's name"
-    offcanvas:
-        title: "Configuration"
-        open:
-            action: "Open configuration sidebar"
+    filters:
+        title: "Filters"
+        open: "See filters"
+        back: "Whoa, too complicated!"
+    filters-advanced:
+        title: "Advanced filters"
+        open: "See advanced filters"
     top:
         title: "Your actual top {n}"
     actions:
@@ -457,3 +400,66 @@ election:
             start: "You have "
             end: " favorites that stand out."
             none: "You have no favorites that stand out."
+
+dex:
+    filters:
+        submit:
+            label: Filter
+        reset:
+            label: Reset
+        any_type:
+            label: Type
+            value:
+                empty: All
+        primary_type:
+            label: Primary type
+            value:
+                empty: All
+        secondary_type:
+            label: Secondary type
+            value:
+                empty: All
+                "null": None
+        category_form:
+            label: Category
+            value:
+                empty: All
+                "null": None
+        regional_form:
+            label: Regional form
+            value:
+                empty: All
+                "null": None
+        special_form:
+            label: Special form
+            value:
+                empty: All
+                "null": None
+        variant_form:
+            label: Variant
+            value:
+                empty: All
+                "null": None
+        original_game_bundle:
+            label: Original game bundle
+            value:
+                empty: All
+        game_bundle_availability:
+            label: Available in
+            value:
+                empty: All
+                negative: "Not in "
+        game_bundle_shiny_availability:
+            label: Available in
+            value:
+                empty: All
+                negative: "Not in "
+        catch_states:
+            total: "All the collection"
+            positive: "Filter all '{cs}'"
+            negative: "Filter all excepts '{cs}'"
+        collections:
+            label: Collection
+            value:
+                empty: Whatever
+                negative: "Not in "

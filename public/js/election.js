@@ -82,6 +82,7 @@ function onSubmitVote() {
       element.attributes.setNamedItem(disabledAttr);
     });
   
+  console.log('#election.submit()')
   document.getElementById('election').submit();
 }
 

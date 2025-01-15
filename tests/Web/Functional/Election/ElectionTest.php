@@ -426,7 +426,7 @@ class ElectionTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '#election-actions-top .progress');
 
         $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
-        $this->assertCountFilter($crawler, 4, '#election-actions-bottom .nav-item');
+        $this->assertCountFilter($crawler, 5, '#election-actions-bottom .nav-item');
         $index = 0;
         $this->assertEquals(
             'Voir mon top 5 actuel',
