@@ -1,0 +1,107 @@
+<div id="election-modal-filters" class="modal" tabindex="-1">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">{{ 'election.filters.title'|trans }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-animation="none" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form class="mt-3 mb-3" method="get" action="#">
+					<div class="mb-3 ms-3 row">
+						{% set filteredAnyTypes = app.request.get('at', []) %}
+						{% for item in types %}
+						<div class="col-2 mb-2 form-check">
+							<label 
+								class="filters-types pokemon-type-{{ item.slug }} badge" 
+								for="at_{{ item.slug }}"
+							>
+								{{ locale is same as('fr') ? item.frenchName : item.name }}
+							</label>
+							<input 
+								class="form-check-input"
+								type="checkbox" 
+								value="{{ item.slug }}" 
+								name="at[]"
+								id="at_{{ item.slug }}"
+								{{ ((item.slug in filteredAnyTypes) ? 'checked': '') }}
+							>
+						</div>						
+						{% endfor %}
+					</div>
+					<div class="mb-3 d-flex justify-content-between">
+						<a class="btn btn-link btn-sm" data-bs-target="#election-modal-filters-advanced" data-bs-toggle="modal">
+							{{ 'election.filters-advanced.open'|trans }}
+						</a>
+						<button type="submit" class="btn btn-outline-primary btn-sm">
+							{{ 'dex.filters.submit.label'|trans }}
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="election-modal-filters-advanced" class="modal" tabindex="-1">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">{{ 'election.filters-advanced.title'|trans }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-animation="none" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form class="mt-3 mb-3" method="get" action="#">
+					<div class="row mb-3">
+						<div class="col-4">
+							{{ block('anyTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+						<div class="col-4">
+							{{ block('primaryTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+						<div class="col-4">
+							{{ block('secondaryTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}						
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-6">
+							{{ block('categoryForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+						<div class="col-6">
+							{{ block('regionalForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-6">
+							{{ block('specialForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+						<div class="col-6">
+							{{ block('variantForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="col-4">
+							{{ block('originalGameBundle_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+						<div class="col-4">
+						{% if not pokedex.dex.is_shiny %}
+							{{ block('gameBundleAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						{% else %}
+							{{ block('gameBundleShinyAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						{% endif %}
+						</div>
+						<div class="col-4">
+							{{ block('collection_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
+						</div>
+					</div>
+					<div class="mb-3 d-flex justify-content-between">
+						<button class="btn btn-link btn-sm" data-bs-target="#election-modal-filters" data-bs-toggle="modal">
+							{{ 'election.filters.back'|trans }}
+						</button>
+						<button type="submit" class="btn btn-outline-primary btn-sm">
+							{{ 'dex.filters.submit.label'|trans }}
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

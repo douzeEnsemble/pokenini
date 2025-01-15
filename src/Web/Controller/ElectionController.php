@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Web\Controller;
 
+use App\Web\AlbumFilters\FromRequest;
+use App\Web\AlbumFilters\Mapping;
 use App\Web\DTO\ElectionVote;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\ElectionMetricsService;
@@ -34,15 +36,18 @@ class ElectionController extends AbstractController
         ElectionTopService $electionTopService,
         ElectionMetricsService $metricsService,
         GetTrainerPokedexService $getTrainerPokedexService,
+        Request $request,
         string $dexSlug,
         string $electionSlug = '',
     ): Response {
+        $filters = FromRequest::get($request);
+        $apiFilters = Mapping::get($filters);
+
         $list = $getPokemonsListService->get($dexSlug, $electionSlug);
-        $types = $getLabelsService->getTypes();
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
         $metrics = $metricsService->getMetrics($dexSlug, $electionSlug);
-        $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, []);
-
+        
+        $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, $apiFilters);
 
         $detachedCount = 0;
         foreach ($electionTop as $pokemon) {
@@ -51,6 +56,15 @@ class ElectionController extends AbstractController
             }
         }
 
+        $types = $getLabelsService->getTypes();
+        $categoryForms = $getLabelsService->getFormsCategory();
+        $regionalForms = $getLabelsService->getFormsRegional();
+        $specialForms = $getLabelsService->getFormsSpecial();
+        $variantForms = $getLabelsService->getFormsVariant();
+        $variantForms = $getLabelsService->getFormsVariant();
+        $gameBundles = $getLabelsService->getGameBundles();
+        $collections = $getLabelsService->getCollections();
+
         return $this->render(
             'Election/index.html.twig',
             [
@@ -58,6 +72,12 @@ class ElectionController extends AbstractController
                 'pokemons' => $list->items,
                 'pokedex' => $pokedex,
                 'types' => $types,
+                'categoryForms' => $categoryForms,
+                'regionalForms' => $regionalForms,
+                'specialForms' => $specialForms,
+                'variantForms' => $variantForms,
+                'gameBundles' => $gameBundles,
+                'collections' => $collections,
                 'electionTop' => $electionTop,
                 'metrics' => $metrics,
                 'detachedCount' => $detachedCount,
