@@ -14,7 +14,10 @@
     <style>
     {% for type in types %}
     .pokemon-type-{{ type.slug }} {
-        background-color: {{ type.color }};
+        background-color: {{ type.color }}FF;
+    }
+    .pokemon-type-{{ type.slug }}:hover {
+        background-color: {{ type.color }}AA;
     }
     {% endfor %}
     </style>

@@ -373,6 +373,7 @@ election:
         title: "Filtres"
         open: "Voir les filtres"
         back: "Oula, trop compliqué !"
+        anytype_title: "Choisis ton ou tes types préférés"
     filters-advanced:
         title: "Filtres complets"
         open: "Voir les filtres complets"
