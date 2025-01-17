@@ -78,6 +78,10 @@ class ElectionIndexTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
+        $this->assertSame('modal', $crawler->filter('#election-modal-welcome')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
+
         $this->assertCardContentDemoLite($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
@@ -113,6 +117,10 @@ class ElectionIndexTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
 
+        $this->assertSame('modal', $crawler->filter('#election-modal-welcome')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
+
         $this->assertCardContentMega($crawler);
         $this->assertElectionTop($crawler);
         $this->assertActions($crawler);
@@ -147,6 +155,10 @@ class ElectionIndexTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.election-card-icon');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
+
+        $this->assertSame('modal', $crawler->filter('#election-modal-welcome')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters')->attr('class'));
+        $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentMega($crawler);
         $this->assertElectionTop($crawler);

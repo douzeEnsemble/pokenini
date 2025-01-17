@@ -42,6 +42,7 @@
 		{{ include('Election/_bar_bottom.html.twig') }}
 		{{ include('Election/_top.html.twig') }}
 		{{ include('Election/_stats.html.twig') }}
+		{{ include('Election/_welcome_modal.html.twig') }}
 		{{ include('Election/_filters_modal.html.twig') }}
 	</div>
 	{% block footer %}
@@ -68,4 +69,12 @@
             .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     })();
     </script>
+
+    {% if 0 == metrics.roundCount and app.request.query.all is empty %}
+    <script type="application/javascript">
+    (function() {
+        new bootstrap.Modal('#election-modal-welcome').show();
+    })();
+    </script>
+    {% endif %}
 {% endblock foot_javascript %}

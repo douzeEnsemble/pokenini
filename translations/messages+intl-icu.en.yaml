@@ -372,10 +372,26 @@ election:
         title: "Filters"
         open: "See filters"
         back: "Whoa, too complicated!"
-        anytype_title: "Choose your favorite type or types"
+        submit: 
+            label: "Let's Go"
+        anytype:
+            title: "Choose your favorite type or types"
+            help: "You can select only certain types to narrow down the list, or choose them all to see every Pokémon."
     filters-advanced:
         title: "Advanced filters"
         open: "See advanced filters"
+    welcome:
+        title: "Ready to pick your favorite Pokémon?"
+        subtitle: "Which Pokémon is in your team?"
+        submit: 
+            label: "Make it Happen!"
+        description: |
+            Now you can finally choose your favorite Pokémon!
+            Think you already know it? Think again!
+            
+            This site, tested by experts in the field, will surprise you.
+
+            Are you ready?!
     top:
         title: "Your actual top {n}"
     actions:

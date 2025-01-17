@@ -58,4 +58,49 @@ class ElectionTest extends AbstractBrowserTestCase
 
         $this->assertSelectorTextContains('#election-counter-bottom', '1');
     }
+
+    public function testWelcomeModalVisible(): void
+    {
+        $client = $this->getNewClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $this->loginUser($client, $user);
+
+        $client->request('GET', '/fr/election/swordshield');
+
+        $this->assertSelectorIsVisible('#election-modal-welcome');
+        $this->assertSelectorIsNotVisible('#election-modal-filters');
+        $this->assertSelectorIsNotVisible('#election-modal-filters-advanced');
+    }
+
+    public function testWelcomeModalHidden(): void
+    {
+        $client = $this->getNewClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $this->loginUser($client, $user);
+
+        $client->request('GET', '/fr/election/swordshield?at[]=ground&at[]=rock');
+
+        $this->assertSelectorIsNotVisible('#election-modal-welcome');
+        $this->assertSelectorIsNotVisible('#election-modal-filters');
+        $this->assertSelectorIsNotVisible('#election-modal-filters-advanced');
+    }
+
+    public function testWelcomeModalHiddenBis(): void
+    {
+        $client = $this->getNewClient();
+
+        $user = new User('789465465489');
+        $user->addTrainerRole();
+        $this->loginUser($client, $user);
+
+        $client->request('GET', '/fr/election/swordshield/favorite');
+
+        $this->assertSelectorIsNotVisible('#election-modal-welcome');
+        $this->assertSelectorIsNotVisible('#election-modal-filters');
+        $this->assertSelectorIsNotVisible('#election-modal-filters-advanced');
+    }
 }
