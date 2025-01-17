@@ -486,3 +486,9 @@ dex:
             value:
                 empty: Peu importe
                 negative: "Pas dans "
+
+election_dex:
+    title: "Choisir le dex pour lequel tu veux voter"
+    subtitle: "Selon le dex, il y'a plus ou moins de pokémons, plus ou moins de formes. C'est à toi de voir"
+    dex:
+        total_count_suffixe: Pokémons

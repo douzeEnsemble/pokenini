@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A1:M1",
+  "range": "Dex!A1:O1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -15,7 +15,9 @@
       "#Region",
       "French description",
       "Description",
-      "Is released"
+      "Is released",
+      "Banner",
+      "Can Hold Election"
     ]
   ]
 }

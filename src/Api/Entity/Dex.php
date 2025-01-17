@@ -51,6 +51,9 @@ class Dex
     #[ORM\Column]
     public bool $isReleased = true;
 
+    #[ORM\Column(options: ['default' => false])]
+    public bool $canHoldElection = false;
+
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public \DateTime $lastChangedAt;
 }

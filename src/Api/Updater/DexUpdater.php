@@ -11,10 +11,10 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:M1';
+    protected string $headerCellsRange = 'A1:O1';
 
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:M'];
+    protected array $recordsCellsRanges = ['A2:O'];
 
     protected function getExpectedHeader(): array
     {
@@ -32,6 +32,8 @@ class DexUpdater extends AbstractUpdater
             'Description',
             'Is released',
             'Is Premium',
+            'Can Hold Election',
+            'Banner',
         ];
     }
 
@@ -52,6 +54,7 @@ class DexUpdater extends AbstractUpdater
             'french_description' => $record['French description'],
             'is_released' => $record['Is released'],
             'is_premium' => $record['Is Premium'],
+            'can_hold_election' => $record['Can Hold Election'],
         ];
 
         $tableName = $this->tableName;
@@ -72,6 +75,7 @@ class DexUpdater extends AbstractUpdater
               french_description,
               is_released,
               is_premium,
+              can_hold_election,
               last_changed_at
             )
             VALUES (
@@ -89,6 +93,7 @@ class DexUpdater extends AbstractUpdater
                 :french_description,
                 :is_released,
                 :is_premium,
+                :can_hold_election,
                 NOW()
             )
             ON CONFLICT (slug)
@@ -107,6 +112,7 @@ class DexUpdater extends AbstractUpdater
                 french_description = excluded.french_description,
                 is_released = excluded.is_released,
                 is_premium = excluded.is_premium,
+                can_hold_election = excluded.can_hold_election,
                 deleted_at = NULL
             SQL;
 

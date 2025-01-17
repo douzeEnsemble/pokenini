@@ -31,11 +31,11 @@ class TrainerDexRepository extends ServiceEntityRepository
         $where = '';
 
         if (!$options->includeUnreleasedDex) {
-            $where = ' AND d.is_released = true ';
+            $where .= ' AND d.is_released = true ';
         }
 
         if (!$options->includePremiumDex) {
-            $where = ' AND d.is_premium = true ';
+            $where .= ' AND d.is_premium = true ';
         }
 
         $sql = <<<SQL
