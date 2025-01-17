@@ -44,3 +44,12 @@ a.election-card-catch-state-edit-action:hover {
 .election-actions .progress {
     height: 0.75rem;
 }
+
+label.filters-types {
+    font-size: large;
+    width: 75%;
+}
+.filters-types-container:hover label {
+    cursor: pointer;
+    color: black;
+}

@@ -372,6 +372,7 @@ election:
         title: "Filters"
         open: "See filters"
         back: "Whoa, too complicated!"
+        anytype_title: "Choose your favorite type or types"
     filters-advanced:
         title: "Advanced filters"
         open: "See advanced filters"
