@@ -11,6 +11,7 @@ class KeyMaker
     private const string CACHE_KEY_CACHE_REGISTER = 'register';
 
     private const string CACHE_KEY_DEX = 'dex';
+    private const string CACHE_KEY_ELECTION_DEX = 'election_dex';
     private const string CACHE_KEY_CATCH_STATES = 'catch_states';
     private const string CACHE_KEY_TYPES = 'types';
     private const string CACHE_KEY_GAME_BUNDLES = 'game_bundles';
@@ -80,6 +81,11 @@ class KeyMaker
     public static function getDexKeyForTrainer(string $trainerId, string $alt = ''): string
     {
         return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId.$alt;
+    }
+
+    public static function getElectionDexKey(string $alt = ''): string
+    {
+        return self::CACHE_KEY_ELECTION_DEX.self::CACHE_KEY_SEPARATOR.$alt;
     }
 
     /**

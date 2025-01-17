@@ -2525,5 +2525,60 @@
       "status": "200",
       "file": "/var/moco/election_swordshield_favorite_metrics.json"
     }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "queries": {
+        "include_premium_dex": "1",
+        "include_unreleased_dex": "1"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_dex_include_premium_dex1_include_unreleased_dex1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_dex_include_premium_dex1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_dex.json"
+    }
   }
 ]

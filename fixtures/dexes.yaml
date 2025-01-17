@@ -11,6 +11,8 @@ App\Api\Entity\Dex:
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
         lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
         isPremium: false
+        canHoldElection: true
+        isReleased: true
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
         slug: 'goldsilvercrystal'
@@ -24,6 +26,7 @@ App\Api\Entity\Dex:
         lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
         isReleased: false
         isPremium: false
+        canHoldElection: false
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
         slug: 'rubysapphireemerald'
@@ -33,6 +36,8 @@ App\Api\Entity\Dex:
         orderNumber: 3
         lastChangedAt: '<date_create()>'
         isPremium: false
+        canHoldElection: false
+        isReleased: true
     dex_rubysapphireemeraldshiny:
         name: 'Ruby / Sapphire / Emerald: Shiny'
         slug: 'rubysapphireemeraldshiny'
@@ -43,6 +48,8 @@ App\Api\Entity\Dex:
         orderNumber: 30
         lastChangedAt: '<date_create()>'
         isPremium: false
+        canHoldElection: false
+        isReleased: true
     dex_home:
         name: 'Home'
         slug: 'home'
@@ -52,6 +59,8 @@ App\Api\Entity\Dex:
         orderNumber: 4
         lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
         isPremium: false
+        canHoldElection: true
+        isReleased: true
     dex_home_shiny:
         name: |-
             Home
@@ -66,6 +75,8 @@ App\Api\Entity\Dex:
         isShiny: true
         lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
         isPremium: false
+        canHoldElection: false
+        isReleased: true
     dex_home_pogo:
         name: 'Home PoGo'
         slug: 'homepogo'
@@ -77,6 +88,8 @@ App\Api\Entity\Dex:
         isDisplayForm: false
         lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
         isPremium: true
+        canHoldElection: true
+        isReleased: true
     dex_demo:
         name: 'Demo'
         slug: 'demo'
@@ -86,6 +99,8 @@ App\Api\Entity\Dex:
         orderNumber: 7
         lastChangedAt: '<date_create()>'
         isPremium: false
+        canHoldElection: false
+        isReleased: true
     dex_spoon:
         name: 'Spoon'
         slug: 'spoon'
@@ -98,3 +113,5 @@ App\Api\Entity\Dex:
         deletedAt: '<date_create()>'
         lastChangedAt: '<date_create()>'
         isPremium: true
+        isReleased: false
+        canHoldElection: true

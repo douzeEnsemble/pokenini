@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/election')]
-class ElectionController extends AbstractController
+class ElectionVoteController extends AbstractController
 {
     #[Route(path: '/vote', methods: ['POST'])]
     public function vote(

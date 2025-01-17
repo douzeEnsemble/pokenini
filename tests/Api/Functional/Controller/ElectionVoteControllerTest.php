@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Controller;
 
-use App\Api\Controller\ElectionController;
+use App\Api\Controller\ElectionVoteController;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -12,8 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 /**
  * @internal
  */
-#[CoversClass(ElectionController::class)]
-class ElectionControllerTest extends WebTestCase
+#[CoversClass(ElectionVoteController::class)]
+class ElectionVoteControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

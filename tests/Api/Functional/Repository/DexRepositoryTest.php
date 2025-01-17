@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Repository;
 
+use App\Api\DTO\DexQueryOptions;
 use App\Api\Entity\Dex;
 use App\Api\Repository\DexRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -88,5 +90,53 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertTrue($dexGSC['is_private']);
 
         $this->assertEmpty($repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
+    }
+
+    #[DataProvider('providerGetCanHoldElection')]
+    public function testGetCanHoldElection(
+        bool $includeUnreleasedDex,
+        bool $includePremiumDex,
+        int $expectedCount,
+    ): void {
+        /** @var DexRepository $repo */
+        $repo = static::getContainer()->get(DexRepository::class);
+
+        $options = new DexQueryOptions([
+            'include_unreleased_dex' => $includeUnreleasedDex,
+            'include_premium_dex' => $includePremiumDex,
+        ]);
+
+        $list = $repo->getCanHoldElection($options);
+
+        $this->assertCount($expectedCount, $list);
+    }
+
+    /**
+     * @return bool[][]|int[][]
+     */
+    public static function providerGetCanHoldElection(): array
+    {
+        return [
+            'true_true' => [
+                'includeUnreleasedDex' => true,
+                'includePremiumDex' => true,
+                'expectedCount' => 2,
+            ],
+            'false_true' => [
+                'includeUnreleasedDex' => false,
+                'includePremiumDex' => true,
+                'expectedCount' => 2,
+            ],
+            'true_false' => [
+                'includeUnreleasedDex' => true,
+                'includePremiumDex' => false,
+                'expectedCount' => 0,
+            ],
+            'false_false' => [
+                'includeUnreleasedDex' => false,
+                'includePremiumDex' => false,
+                'expectedCount' => 0,
+            ],
+        ];
     }
 }
