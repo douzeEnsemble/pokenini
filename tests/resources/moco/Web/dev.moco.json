@@ -2288,5 +2288,45 @@
       "status": "200",
       "file": "/var/moco/election_mega__metrics.json"
     }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_swordshield__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_swordshield_favorite_metrics.json"
+    }
   }
 ]

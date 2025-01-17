@@ -373,10 +373,26 @@ election:
         title: "Filtres"
         open: "Voir les filtres"
         back: "Oula, trop compliqué !"
-        anytype_title: "Choisis ton ou tes types préférés"
+        submit: 
+            label: "Filtrons ça !"
+        anytype:
+            title: "Choisis ton ou tes types préférés"
+            help: "Tu peux choisir uniquement certains types pour limiter la liste ou tu peux tous les choisir pour avoir tous les Pokémon"
     filters-advanced:
         title: "Filtres complets"
         open: "Voir les filtres complets"
+    welcome:
+        title: "Prêt à choisir ton Pokémon préféré ?"
+        subtitle: "Quel Pokémon dans ta Team ?"
+        submit: 
+            label: "C'est parti !"
+        description: |
+            Tu vas pouvoir, enfin, choisir ton Pokémon préféré ! 
+            Tu penses peut-être que tu le connais déjà ? Détrompe-toi !
+            
+            Sache que ce site, testé par des experts dans le domaine, va te surprendre.
+
+            Es-tu prêt ?!
     top:
         title: "Ton top {n} actuel"
     actions:

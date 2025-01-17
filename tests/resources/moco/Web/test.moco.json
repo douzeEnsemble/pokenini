@@ -2164,6 +2164,27 @@
   {
     "request": {
       "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_topick_swordshield_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/election/vote"
       },
       "method": "post",
@@ -2463,6 +2484,46 @@
     "response": {
       "status": "200",
       "file": "/var/moco/election_mega_vote_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_swordshield__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_swordshield_favorite_metrics.json"
     }
   }
 ]
