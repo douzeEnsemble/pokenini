@@ -81,5 +81,6 @@ WHERE EXISTS (
             AND tpe.view_count = CASE WHEN 0 = v.under_max_view_count THEN s.max_view ELSE s.max_view - 1 END
             AND tpe.view_count = tpe.win_count
     )
+    -- {album_filters}
 ORDER BY RANDOM()
 LIMIT :count

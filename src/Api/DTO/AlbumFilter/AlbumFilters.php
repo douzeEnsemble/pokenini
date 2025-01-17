@@ -12,7 +12,7 @@ final class AlbumFilters
     /**
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    private function __construct(
+    public function __construct(
         public AlbumFilterValues $primaryTypes,
         public AlbumFilterValues $secondaryTypes,
         public AlbumFilterValues $anyTypes,
@@ -34,7 +34,28 @@ final class AlbumFilters
     public static function createFromArray(array $data): self
     {
         $resolver = new OptionsResolver();
+        self::configureOptions($resolver);
+        $options = $resolver->resolve($data);
 
+        return new self(
+            $options['primaryTypes'],
+            $options['secondaryTypes'],
+            $options['anyTypes'],
+            $options['categoryForms'],
+            $options['regionalForms'],
+            $options['specialForms'],
+            $options['variantForms'],
+            $options['catchStates'],
+            $options['originalGameBundles'],
+            $options['gameBundleAvailabilities'],
+            $options['gameBundleShinyAvailabilities'],
+            $options['families'],
+            $options['collectionAvailabilities'],
+        );
+    }
+
+    public static function configureOptions(OptionsResolver $resolver): void
+    {
         $defaultsValues = [
             'primaryTypes' => [],
             'secondaryTypes' => [],
@@ -57,28 +78,12 @@ final class AlbumFilters
             $resolver->setNormalizer(
                 $key,
                 function (Options $options, array $data): AlbumFilterValues {
+                    unset($options); // To remove PHPMD.UnusedFormalParameter warning
+
                     return self::normalizer($data);
                 }
             );
         }
-
-        $options = $resolver->resolve($data);
-
-        return new self(
-            $options['primaryTypes'],
-            $options['secondaryTypes'],
-            $options['anyTypes'],
-            $options['categoryForms'],
-            $options['regionalForms'],
-            $options['specialForms'],
-            $options['variantForms'],
-            $options['catchStates'],
-            $options['originalGameBundles'],
-            $options['gameBundleAvailabilities'],
-            $options['gameBundleShinyAvailabilities'],
-            $options['families'],
-            $options['collectionAvailabilities'],
-        );
     }
 
     /**

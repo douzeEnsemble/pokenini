@@ -6,21 +6,18 @@ namespace App\Web\Controller;
 
 use App\Web\AlbumFilters\FromRequest;
 use App\Web\AlbumFilters\Mapping;
-use App\Web\DTO\ElectionVote;
 use App\Web\Service\Api\GetLabelsService;
 use App\Web\Service\ElectionMetricsService;
 use App\Web\Service\ElectionTopService;
-use App\Web\Service\ElectionVoteService;
 use App\Web\Service\GetPokemonsListService;
 use App\Web\Service\GetTrainerPokedexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/election')]
-class ElectionController extends AbstractController
+class ElectionIndexController extends AbstractController
 {
     #[Route(
         '/{dexSlug}/{electionSlug}',
@@ -43,10 +40,10 @@ class ElectionController extends AbstractController
         $filters = FromRequest::get($request);
         $apiFilters = Mapping::get($filters);
 
-        $list = $getPokemonsListService->get($dexSlug, $electionSlug);
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
-        $metrics = $metricsService->getMetrics($dexSlug, $electionSlug);
-        
+
+        $list = $getPokemonsListService->get($dexSlug, $electionSlug, $apiFilters);
+        $metrics = $metricsService->getMetrics($dexSlug, $electionSlug, $apiFilters);
         $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, $apiFilters);
 
         $detachedCount = 0;
@@ -81,52 +78,6 @@ class ElectionController extends AbstractController
                 'electionTop' => $electionTop,
                 'metrics' => $metrics,
                 'detachedCount' => $detachedCount,
-            ]
-        );
-    }
-
-    #[Route(
-        '/{dexSlug}/{electionSlug}',
-        requirements: [
-            'dexSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
-            'electionSlug' => '[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*',
-        ],
-        methods: ['POST']
-    )]
-    public function vote(
-        Request $request,
-        ElectionVoteService $electionVoteService,
-        string $dexSlug,
-        string $electionSlug = '',
-    ): Response {
-        $data = $request->request->all();
-
-        if (empty($data)) {
-            throw new BadRequestHttpException('Data cannot be empty');
-        }
-
-        /** @var string[]|string[][] $data */
-        $data = array_merge(
-            [
-                'dex_slug' => $dexSlug,
-                'election_slug' => $electionSlug,
-            ],
-            $data
-        );
-
-        try {
-            $electionVote = new ElectionVote($data);
-        } catch (\InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
-
-        $electionVoteService->vote($electionVote);
-
-        return $this->redirectToRoute(
-            'app_web_election_index',
-            [
-                'dexSlug' => $electionVote->dexSlug,
-                'electionSlug' => $electionVote->electionSlug,
             ]
         );
     }

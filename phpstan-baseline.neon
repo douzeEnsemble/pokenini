@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method App\\\\Api\\\\Repository\\\\TrainerPokemonEloRepository\\:\\:getMetrics\\(\\) should return array\\{view_count_sum\\: int, win_count_sum\\: int\\} but returns array\\{view_count_sum\\: int\\|string, win_count_sum\\: int\\|string\\}\\.$#"
+			message: "#^Method App\\\\Api\\\\Repository\\\\TrainerPokemonEloRepository\\:\\:getMetrics\\(\\) should return array\\{view_count_sum\\: int, win_count_sum\\: int, dex_total_count\\: int\\} but returns array\\{view_count_sum\\: int\\|string, win_count_sum\\: int\\|string, dex_total_count\\: int\\|string\\}\\.$#"
 			count: 1
 			path: src/Api/Repository/TrainerPokemonEloRepository.php
 
@@ -9,11 +9,6 @@ parameters:
 			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
 			count: 1
 			path: src/Api/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
-
-		-
-			message: "#^Offset 'pokemons' does not exist on array\\<array\\<string\\>\\>\\|null\\.$#"
-			count: 1
-			path: src/Web/Controller/ElectionController.php
 
 		-
 			message: "#^Parameter \\#1 \\$voteCount of class App\\\\Web\\\\DTO\\\\ElectionVoteResult constructor expects int, mixed given\\.$#"
@@ -276,7 +271,7 @@ parameters:
 			path: tests/Api/Unit/DTO/GamesShiniesAvailabilitiesTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloListQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, string\\|false\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$values of class App\\\\Api\\\\DTO\\\\TrainerPokemonEloListQueryOptions constructor expects array\\<array\\<string\\>\\|int\\|string\\>, array\\<string, string\\|false\\> given\\.$#"
 			count: 1
 			path: tests/Api/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php
 
@@ -297,7 +292,7 @@ parameters:
 
 		-
 			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionMetrics constructor expects array\\<float\\|int\\>, array\\<string, int\\|string\\> given\\.$#"
-			count: 2
+			count: 3
 			path: tests/Web/Unit/DTO/ElectionMetricsTest.php
 
 		-

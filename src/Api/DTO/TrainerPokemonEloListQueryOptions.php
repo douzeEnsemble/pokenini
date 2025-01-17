@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\DTO;
 
+use App\Api\DTO\AlbumFilter\AlbumFilters;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,13 +14,15 @@ final class TrainerPokemonEloListQueryOptions
     public string $dexSlug;
     public string $electionSlug;
     public int $count;
+    public AlbumFilters $albumFilters;
 
     /**
-     * @param int[]|string[] $values
+     * @param int[]|string[]|string[][] $values
      */
     public function __construct(array $values = [])
     {
         $resolver = new OptionsResolver();
+
         $this->configureOptions($resolver);
 
         $options = $resolver->resolve($values);
@@ -28,6 +31,22 @@ final class TrainerPokemonEloListQueryOptions
         $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
         $this->count = $options['count'];
+
+        $this->albumFilters = new AlbumFilters(
+            $options['primaryTypes'],
+            $options['secondaryTypes'],
+            $options['anyTypes'],
+            $options['categoryForms'],
+            $options['regionalForms'],
+            $options['specialForms'],
+            $options['variantForms'],
+            $options['catchStates'],
+            $options['originalGameBundles'],
+            $options['gameBundleAvailabilities'],
+            $options['gameBundleShinyAvailabilities'],
+            $options['families'],
+            $options['collectionAvailabilities'],
+        );
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -48,5 +67,7 @@ final class TrainerPokemonEloListQueryOptions
 
             return (int) $value;
         });
+
+        AlbumFilters::configureOptions($resolver);
     }
 }

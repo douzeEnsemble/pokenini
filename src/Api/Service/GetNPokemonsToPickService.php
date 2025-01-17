@@ -24,6 +24,7 @@ class GetNPokemonsToPickService
             $queryOptions->count,
             $queryOptions->trainerExternalId,
             $queryOptions->electionSlug,
+            $queryOptions->albumFilters,
             $this->eloDefault,
         );
     }

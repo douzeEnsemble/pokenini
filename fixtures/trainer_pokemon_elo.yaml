@@ -226,4 +226,57 @@ App\Api\Entity\TrainerPokemonElo:
         viewCount: 2
         winCount: 0
 
-        
+    tpe_home_u12_affinee_bulbasaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_bulbasaur'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5
+    tpe_home_u12_affinee_ivysaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_ivysaur'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5
+    tpe_home_u12_affinee_venusaur:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_venusaur'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5
+    tpe_home_u12_affinee_venusaurf:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_venusaur_f'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5
+    tpe_home_u12_affinee_venusaurmega:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_venusaur_mega'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5
+    tpe_home_u12_affinee_venusaurgmax:
+        __construct: 
+            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+            dexSlug: 'home'
+            pokemon: '@pokemon_venusaur_gigantamax'
+            electionSlug: 'affinee'
+        elo: 1500
+        viewCount: 5
+        winCount: 5

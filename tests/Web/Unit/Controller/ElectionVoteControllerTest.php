@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Controller;
 
-use App\Web\Controller\ElectionController;
+use App\Web\Controller\ElectionVoteController;
 use App\Web\Service\ElectionVoteService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -17,8 +17,8 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 /**
  * @internal
  */
-#[CoversClass(ElectionController::class)]
-class ElectionControllerTest extends TestCase
+#[CoversClass(ElectionVoteController::class)]
+class ElectionVoteControllerTest extends TestCase
 {
     public function testVote(): void
     {
@@ -30,7 +30,7 @@ class ElectionControllerTest extends TestCase
             ->method('vote')
         ;
 
-        $controller = new ElectionController();
+        $controller = new ElectionVoteController();
 
         $router = $this->createMock(Router::class);
         $router
@@ -65,7 +65,7 @@ class ElectionControllerTest extends TestCase
 
         $electionVoteService = $this->createMock(ElectionVoteService::class);
 
-        $controller = new ElectionController();
+        $controller = new ElectionVoteController();
 
         $this->expectException(BadRequestHttpException::class);
         $this->expectExceptionMessage('Data cannot be empty');
@@ -83,7 +83,7 @@ class ElectionControllerTest extends TestCase
 
         $electionVoteService = $this->createMock(ElectionVoteService::class);
 
-        $controller = new ElectionController();
+        $controller = new ElectionVoteController();
 
         $this->expectException(BadRequestHttpException::class);
         $this->expectExceptionMessage('The required option "losers_slugs');

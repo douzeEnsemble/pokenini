@@ -62,5 +62,6 @@ WHERE NOT EXISTS (
             AND tpe.dex_slug = :dex_slug
             AND tpe.election_slug = :election_slug
     )
+    -- {album_filters}
 ORDER BY RANDOM()
 LIMIT :count

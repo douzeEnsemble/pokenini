@@ -14,12 +14,15 @@ class ElectionMetricsService
         private readonly int $electionCandidateCount,
     ) {}
 
-    public function getMetrics(string $dexSlug, string $electionSlug): ElectionMetrics
+    /**
+     * @param string[]|string[][] $filters
+     */
+    public function getMetrics(string $dexSlug, string $electionSlug, array $filters): ElectionMetrics
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
         /** @var float[]|int[] */
-        $data = $this->apiService->getMetrics($trainerId, $dexSlug, $electionSlug);
+        $data = $this->apiService->getMetrics($trainerId, $dexSlug, $electionSlug, $filters);
 
         return new ElectionMetrics($data, $this->electionCandidateCount);
     }

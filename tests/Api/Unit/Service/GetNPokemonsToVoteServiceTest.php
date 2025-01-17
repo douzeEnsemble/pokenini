@@ -16,8 +16,15 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GetNPokemonsToVoteService::class)]
 class GetNPokemonsToVoteServiceTest extends TestCase
 {
-    public function testgetNPokemonsToVote(): void
+    public function testGetNPokemonsToVote(): void
     {
+        $queryOptions = new TrainerPokemonEloListQueryOptions([
+            'trainer_external_id' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
+            'dex_slug' => 'demo',
+            'election_slug' => 'pref',
+            'count' => 12,
+        ]);
+
         $repository = $this->createMock(PokemonsRepository::class);
         $repository->expects($this->once())
             ->method('getNToVote')
@@ -26,6 +33,7 @@ class GetNPokemonsToVoteServiceTest extends TestCase
                 12,
                 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
                 'pref',
+                $queryOptions->albumFilters,
                 1000
             )
             ->willReturn(
@@ -44,13 +52,6 @@ class GetNPokemonsToVoteServiceTest extends TestCase
             $repository,
             1000,
         );
-
-        $queryOptions = new TrainerPokemonEloListQueryOptions([
-            'trainer_external_id' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
-            'dex_slug' => 'demo',
-            'election_slug' => 'pref',
-            'count' => 12,
-        ]);
 
         $this->assertEquals(
             [
