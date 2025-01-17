@@ -29,14 +29,59 @@ class GetPokemonsServiceTest extends TestCase
         int $count,
     ): void {
         $electionList = $this
-            ->getService($listType, $trainerExternalId, $dexSlug, $electionSlug, $count)
-            ->get($trainerExternalId, $dexSlug, $electionSlug, $count)
+            ->getService(
+                $listType,
+                $trainerExternalId,
+                $dexSlug,
+                $electionSlug,
+                $count,
+            )
+            ->get(
+                $trainerExternalId,
+                $dexSlug,
+                $electionSlug,
+                $count,
+                [],
+            )
         ;
 
         $this->assertSame($listType, $electionList->type);
 
         $pokemons = $electionList->items;
         $this->assertCount($count, $pokemons);
+
+        $this->assertEmpty($this->cache->getValues());
+    }
+
+    public function testGetWithFilters(): void
+    {
+        $electionList = $this
+            ->getService(
+                'pick',
+                '12',
+                '123',
+                '',
+                5,
+                '_cflegendary',
+                [
+                    'cf' => ['legendary'],
+                ],
+            )
+            ->get(
+                '12',
+                '123',
+                '',
+                5,
+                [
+                    'cf' => ['legendary'],
+                ],
+            )
+        ;
+
+        $this->assertSame('pick', $electionList->type);
+
+        $pokemons = $electionList->items;
+        $this->assertCount(5, $pokemons);
 
         $this->assertEmpty($this->cache->getValues());
     }
@@ -71,17 +116,23 @@ class GetPokemonsServiceTest extends TestCase
         ];
     }
 
+    /**
+     * @param string[][] $filters
+     */
     private function getService(
         string $listType,
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
         int $count,
+        string $filtersStr = '',
+        array $filters = [],
     ): GetPokemonsService {
         $client = $this->createMock(HttpClientInterface::class);
 
+        $dir = '/var/www/html/tests/resources/Web/unit/service/api';
         $json = (string) file_get_contents(
-            "/var/www/html/tests/resources/Web/unit/service/api/pokemons_to{$listType}_{$trainerExternalId}_{$dexSlug}_{$electionSlug}_{$count}.json"
+            "{$dir}/pokemons_to{$listType}_{$trainerExternalId}_{$dexSlug}_{$electionSlug}_{$count}{$filtersStr}.json"
         );
 
         $response = $this->createMock(ResponseInterface::class);
@@ -98,12 +149,15 @@ class GetPokemonsServiceTest extends TestCase
                 'GET',
                 'https://api.domain/pokemons/to_choose',
                 [
-                    'query' => [
-                        'trainer_external_id' => $trainerExternalId,
-                        'dex_slug' => $dexSlug,
-                        'election_slug' => $electionSlug,
-                        'count' => $count,
-                    ],
+                    'query' => array_merge(
+                        [
+                            'trainer_external_id' => $trainerExternalId,
+                            'dex_slug' => $dexSlug,
+                            'election_slug' => $electionSlug,
+                            'count' => $count,
+                        ],
+                        $filters,
+                    ),
                     'headers' => [
                         'accept' => 'application/json',
                     ],

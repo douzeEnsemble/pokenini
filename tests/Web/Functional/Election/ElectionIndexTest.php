@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Home;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
-use App\Web\Controller\ElectionController;
+use App\Web\Controller\ElectionIndexController;
 use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -15,8 +15,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * @internal
  */
-#[CoversClass(ElectionController::class)]
-class ElectionTest extends WebTestCase
+#[CoversClass(ElectionIndexController::class)]
+class ElectionIndexTest extends WebTestCase
 {
     use TestNavTrait;
 
@@ -160,154 +160,6 @@ class ElectionTest extends WebTestCase
         );
     }
 
-    public function testIndexVote(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('789465465489');
-        $user->addTrainerRole();
-        $client->loginUser($user, 'web');
-
-        $crawler = $client->request('GET', '/fr/election/mega/vote');
-
-        $this->assertResponseIsSuccessful();
-
-        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
-
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
-        $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
-        $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
-        $this->assertCountFilter($crawler, 17, '.album-modal-image');
-        $this->assertCountFilter($crawler, 0, '.election-card-icon');
-        $this->assertCountFilter($crawler, 0, '.election-card-icon-regular');
-        $this->assertCountFilter($crawler, 0, '.election-card-icon-shiny');
-
-        $this->assertCardContentMega($crawler);
-        $this->assertElectionTop($crawler);
-        $this->assertActions($crawler);
-        $this->assertStats(
-            $crawler,
-            4,
-            8,
-            50,
-            'Tu as 1 favori qui se détache',
-        );
-    }
-
-    public function testVote(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $user->addTrainerRole();
-        $user->addAdminRole();
-        $client->loginUser($user, 'web');
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite',
-            [
-                'winners_slugs' => ['pichu'],
-                'losers_slugs' => ['pikachu', 'raichu'],
-            ],
-        );
-
-        $this->assertResponseRedirects('/fr/election/demolite');
-
-        $crawler = $client->followRedirect();
-
-        $this->assertStats(
-            $crawler,
-            1,
-            5,
-            20,
-            "Tu n'as pas de favoris qui se détache.",
-        );
-    }
-
-    public function testVoteWithElectionSlug(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $user->addTrainerRole();
-        $user->addAdminRole();
-        $client->loginUser($user, 'web');
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite/favorite',
-            [
-                'winners_slugs' => ['pichu'],
-                'losers_slugs' => ['pikachu', 'raichu'],
-            ],
-        );
-
-        $this->assertResponseRedirects('/fr/election/demolite/favorite');
-
-        $crawler = $client->followRedirect();
-
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
-
-        $this->assertStats(
-            $crawler,
-            6,
-            8,
-            75,
-            "Tu n'as pas de favoris qui se détache.",
-        );
-    }
-
-    public function testEmptyVote(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $user->addTrainerRole();
-        $user->addAdminRole();
-        $client->loginUser($user, 'web');
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite',
-            [],
-            [],
-            [],
-            '',
-        );
-
-        $this->assertResponseStatusCodeSame(400);
-
-        $content = (string) $client->getResponse()->getContent();
-        $this->assertStringContainsString('Data cannot be empty', $content);
-    }
-
-    public function testBadVote(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $user->addTrainerRole();
-        $user->addAdminRole();
-        $client->loginUser($user, 'web');
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite',
-            [],
-            [],
-            [],
-            http_build_query([
-                'electionSlug' => '',
-                'winnersSlugs' => ['pichu'],
-                'losersSlugs' => ['pikachu', 'raichu'],
-            ]),
-        );
-
-        $this->assertResponseStatusCodeSame(400);
-    }
-
     public function testIndexNonTrainer(): void
     {
         $client = static::createClient();
@@ -320,27 +172,6 @@ class ElectionTest extends WebTestCase
         $this->expectException(AccessDeniedException::class);
 
         $client->request('GET', '/fr/election/demolite');
-    }
-
-    public function testVoteNonTrainer(): void
-    {
-        $client = static::createClient();
-
-        $user = new User('8764532');
-        $client->loginUser($user, 'web');
-
-        $client->catchExceptions(false);
-
-        $this->expectException(AccessDeniedException::class);
-
-        $client->request(
-            'POST',
-            '/fr/election/demolite',
-            [],
-            [],
-            [],
-            '{"winners_slugs": ["pichu"], "losers_slugs": ["pikachu", "raich"]}'
-        );
     }
 
     private function assertCardContentDemoLite(Crawler $crawler): void

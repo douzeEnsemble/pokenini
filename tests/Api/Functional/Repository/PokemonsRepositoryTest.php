@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Functional\Repository;
 
+use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Entity\Pokemon;
 use App\Api\Repository\PokemonsRepository;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
@@ -79,10 +80,14 @@ class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
     }
 
-    #[DataProvider('providergetNToPick')]
-    public function testgetNToPick(
+    /**
+     * @param string[][] $filters
+     */
+    #[DataProvider('providerGetNToPick')]
+    public function testGetNToPick(
         string $dexSlug,
         string $electionSlug,
+        array $filters,
         int $expectedCount,
     ): void {
         /** @var PokemonsRepository $repo */
@@ -93,6 +98,7 @@ class PokemonsRepositoryTest extends KernelTestCase
             12,
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             $electionSlug,
+            AlbumFilters::createFromArray($filters),
             1000,
         );
 
@@ -108,38 +114,62 @@ class PokemonsRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return int[][]|string[][]|string[][][][]
      */
-    public static function providergetNToPick(): array
+    public static function providerGetNToPick(): array
     {
         return [
             'home-12' => [
                 'dexSlug' => 'home',
                 'electionSlug' => '',
+                'filters' => [],
                 'expectedCount' => 12,
             ],
             'redgreenblueyellow-12' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => '',
+                'filters' => [],
                 'expectedCount' => 7,
             ],
             'demo-affinee-12-10-10' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
+                'filters' => [],
                 'expectedCount' => 1,
             ],
             'demo-affinee-12-2--1' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
+                'filters' => [],
                 'expectedCount' => 1,
+            ],
+            'home-12-cfstarters' => [
+                'dexSlug' => 'home',
+                'electionSlug' => '',
+                'filters' => [
+                    'categoryForms' => ['starter'],
+                ],
+                'expectedCount' => 2,
+            ],
+            'home-12-sfmega' => [
+                'dexSlug' => 'home',
+                'electionSlug' => '',
+                'filters' => [
+                    'specialForms' => ['mega', 'gigantamax'],
+                ],
+                'expectedCount' => 3,
             ],
         ];
     }
 
-    #[DataProvider('providergetNToVote')]
-    public function testgetNToVote(
+    /**
+     * @param string[][] $filters
+     */
+    #[DataProvider('providerGetNToVote')]
+    public function testGetNToVote(
         string $dexSlug,
         string $electionSlug,
+        array $filters,
         int $expectedCount,
     ): void {
         /** @var PokemonsRepository $repo */
@@ -150,6 +180,7 @@ class PokemonsRepositoryTest extends KernelTestCase
             12,
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             $electionSlug,
+            AlbumFilters::createFromArray($filters),
             1000,
         );
 
@@ -165,30 +196,56 @@ class PokemonsRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return int[][]|string[][]|string[][][][]
      */
-    public static function providergetNToVote(): array
+    public static function providerGetNToVote(): array
     {
         return [
             'home-12' => [
                 'dexSlug' => 'home',
                 'electionSlug' => '',
+                'filters' => [],
                 'expectedCount' => 0,
             ],
             'redgreenblueyellow-12' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => '',
+                'filters' => [],
                 'expectedCount' => 0,
             ],
             'demo-affinee-12-10-10' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
+                'filters' => [],
                 'expectedCount' => 1,
             ],
             'demo-affinee-12-2--1' => [
                 'dexSlug' => 'redgreenblueyellow',
                 'electionSlug' => 'affinee',
+                'filters' => [],
                 'expectedCount' => 1,
+            ],
+            'home-12-affinee' => [
+                'dexSlug' => 'home',
+                'electionSlug' => 'affinee',
+                'filters' => [],
+                'expectedCount' => 6,
+            ],
+            'home-12-affinee-cfstarters' => [
+                'dexSlug' => 'home',
+                'electionSlug' => 'affinee',
+                'filters' => [
+                    'categoryForms' => ['starter'],
+                ],
+                'expectedCount' => 1,
+            ],
+            'home-12-affinee-sfmega' => [
+                'dexSlug' => 'home',
+                'electionSlug' => 'affinee',
+                'filters' => [
+                    'specialForms' => ['mega', 'gigantamax'],
+                ],
+                'expectedCount' => 2,
             ],
         ];
     }

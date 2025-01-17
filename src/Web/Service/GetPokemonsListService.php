@@ -14,7 +14,10 @@ class GetPokemonsListService
         private readonly int $electionCandidateCount,
     ) {}
 
-    public function get(string $dexSlug, string $electionSlug): ElectionPokemonsList
+    /**
+     * @param string[]|string[][] $filters
+     */
+    public function get(string $dexSlug, string $electionSlug, array $filters): ElectionPokemonsList
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
@@ -23,6 +26,7 @@ class GetPokemonsListService
             $dexSlug,
             $electionSlug,
             $this->electionCandidateCount,
+            $filters,
         );
     }
 }

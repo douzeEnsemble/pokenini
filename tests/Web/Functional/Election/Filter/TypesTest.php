@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Web\Functional\Election\Filter;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
-use App\Web\Controller\ElectionController;
+use App\Web\Controller\ElectionIndexController;
 use App\Web\Security\User;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 /**
  * @internal
  */
-#[CoversClass(ElectionController::class)]
+#[CoversClass(ElectionIndexController::class)]
 class TypesTest extends WebTestCase
 {
     use TestNavTrait;

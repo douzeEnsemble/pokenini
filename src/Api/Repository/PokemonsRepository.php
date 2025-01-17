@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Api\Repository;
 
+use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\Entity\Pokemon;
+use App\Api\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ParameterType;
 use Doctrine\ORM\AbstractQuery;
@@ -15,6 +17,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class PokemonsRepository extends ServiceEntityRepository
 {
+    use FiltersTrait;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Pokemon::class);
@@ -59,25 +63,33 @@ class PokemonsRepository extends ServiceEntityRepository
         int $count,
         string $trainerExternalId,
         string $electionSlug,
+        AlbumFilters $filters,
         int $defaultElo,
     ): array {
         $sql = $this->getNToPickSQL();
+        $sql = $this->replaceFilters($sql, $filters);
 
-        $params = [
-            'trainer_external_id' => $trainerExternalId,
-            'dex_slug' => $dexSlug,
-            'election_slug' => $electionSlug,
-            'count' => $count,
-            'default_elo' => $defaultElo,
-        ];
+        $params = array_merge(
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+                'election_slug' => $electionSlug,
+                'count' => $count,
+                'default_elo' => $defaultElo,
+            ],
+            $this->getFiltersParameters($filters),
+        );
 
-        $types = [
-            'trainer_external_id' => ParameterType::STRING,
-            'election_slug' => ParameterType::STRING,
-            'dex_slug' => ParameterType::STRING,
-            'count' => ParameterType::INTEGER,
-            'default_elo' => ParameterType::INTEGER,
-        ];
+        $types = array_merge(
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'election_slug' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+                'count' => ParameterType::INTEGER,
+                'default_elo' => ParameterType::INTEGER,
+            ],
+            $this->getFiltersTypes(),
+        );
 
         /** @var string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
@@ -95,25 +107,33 @@ class PokemonsRepository extends ServiceEntityRepository
         int $count,
         string $trainerExternalId,
         string $electionSlug,
+        AlbumFilters $filters,
         int $defaultElo,
     ): array {
         $sql = $this->getNToVoteSQL();
+        $sql = $this->replaceFilters($sql, $filters);
 
-        $params = [
-            'trainer_external_id' => $trainerExternalId,
-            'dex_slug' => $dexSlug,
-            'election_slug' => $electionSlug,
-            'count' => $count,
-            'default_elo' => $defaultElo,
-        ];
+        $params = array_merge(
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+                'election_slug' => $electionSlug,
+                'count' => $count,
+                'default_elo' => $defaultElo,
+            ],
+            $this->getFiltersParameters($filters),
+        );
 
-        $types = [
-            'trainer_external_id' => ParameterType::STRING,
-            'election_slug' => ParameterType::STRING,
-            'dex_slug' => ParameterType::STRING,
-            'count' => ParameterType::INTEGER,
-            'default_elo' => ParameterType::INTEGER,
-        ];
+        $types = array_merge(
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'election_slug' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+                'count' => ParameterType::INTEGER,
+                'default_elo' => ParameterType::INTEGER,
+            ],
+            $this->getFiltersTypes(),
+        );
 
         /** @var string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
@@ -151,5 +171,10 @@ class PokemonsRepository extends ServiceEntityRepository
         }
 
         return $sql;
+    }
+
+    private function replaceFilters(string $sql, AlbumFilters $filters): string
+    {
+        return str_replace('-- {album_filters}', $this->getFiltersQuery($filters), $sql);
     }
 }

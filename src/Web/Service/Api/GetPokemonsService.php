@@ -9,23 +9,30 @@ use App\Web\Utils\JsonDecoder;
 
 class GetPokemonsService extends AbstractApiService
 {
+    /**
+     * @param string[]|string[][] $filters
+     */
     public function get(
         string $trainerExternalId,
         string $dexSlug,
         string $electionSlug,
         int $count,
+        array $filters,
     ): ElectionPokemonsList {
         /** @var string $json */
         $json = $this->requestContent(
             'GET',
             '/pokemons/to_choose',
             [
-                'query' => [
-                    'trainer_external_id' => $trainerExternalId,
-                    'dex_slug' => $dexSlug,
-                    'election_slug' => $electionSlug,
-                    'count' => $count,
-                ],
+                'query' => array_merge(
+                    [
+                        'trainer_external_id' => $trainerExternalId,
+                        'dex_slug' => $dexSlug,
+                        'election_slug' => $electionSlug,
+                        'count' => $count,
+                    ],
+                    $filters,
+                ),
             ]
         );
 

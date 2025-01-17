@@ -8,6 +8,8 @@ use App\Api\DTO\AlbumFilter\AlbumFilters;
 use App\Api\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @internal
@@ -225,5 +227,72 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(2, $filterValues->values);
         $this->assertCount(1, $filterValues->negativeValues);
         $this->assertFalse($filterValues->hasNull());
+    }
+
+    public function testCreateWithOptionsResolver(): void
+    {
+        $resolver = new OptionsResolver();
+
+        $resolver->setRequired('value');
+        $resolver->setAllowedTypes('value', 'string');
+        AlbumFilters::configureOptions($resolver);
+
+        $options = $resolver->resolve([
+            'value' => 'douze',
+            'primaryTypes' => ['fire', 'water'],
+            'secondaryTypes' => ['water', 'fire'],
+            'anyTypes' => ['normal'],
+            'categoryForms' => ['starter', 'finisher'],
+            'regionalForms' => ['provence', 'sud', 'mer'],
+            'specialForms' => ['banana', 'orange'],
+            'variantForms' => ['gender'],
+            'catchStates' => ['maybe'],
+            'originalGameBundles' => ['redgreenblueyellow'],
+            'gameBundleAvailabilities' => ['sunmoon'],
+            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'families' => ['pichu', 'eevee'],
+            'collectionAvailabilities' => ['swshdens'],
+        ]);
+
+        $this->assertSame('douze', $options['value']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['primaryTypes']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['secondaryTypes']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['anyTypes']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['categoryForms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['regionalForms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['specialForms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['variantForms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['catchStates']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['originalGameBundles']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['gameBundleAvailabilities']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['gameBundleShinyAvailabilities']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['families']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['collectionAvailabilities']);
+    }
+
+    public function testCreateWithOptionsResolverException(): void
+    {
+        $resolver = new OptionsResolver();
+
+        $resolver->setRequired('value');
+        $resolver->setAllowedTypes('value', 'string');
+        AlbumFilters::configureOptions($resolver);
+
+        $this->expectException(MissingOptionsException::class);
+        $resolver->resolve([
+            'primaryTypes' => ['fire', 'water'],
+            'secondaryTypes' => ['water', 'fire'],
+            'anyTypes' => ['normal'],
+            'categoryForms' => ['starter', 'finisher'],
+            'regionalForms' => ['provence', 'sud', 'mer'],
+            'specialForms' => ['banana', 'orange'],
+            'variantForms' => ['gender'],
+            'catchStates' => ['maybe'],
+            'originalGameBundles' => ['redgreenblueyellow'],
+            'gameBundleAvailabilities' => ['sunmoon'],
+            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'families' => ['pichu', 'eevee'],
+            'collectionAvailabilities' => ['swshdens'],
+        ]);
     }
 }
