@@ -33,7 +33,6 @@ class ElectionMetricsServiceTest extends TestCase
                 '8800088',
                 'demo',
                 'whatever',
-                ['at' => ['poison', 'fire'], 'cf' => ['legendary']],
             )
             ->willReturn([
                 'view_count_sum' => 12,
@@ -44,7 +43,7 @@ class ElectionMetricsServiceTest extends TestCase
 
         $service = new ElectionMetricsService($userTokenService, $apiService, 12);
 
-        $metrics = $service->getMetrics('demo', 'whatever', ['at' => ['poison', 'fire'], 'cf' => ['legendary']]);
+        $metrics = $service->getMetrics('demo', 'whatever');
 
         $this->assertSame(12, $metrics->viewCountSum);
         $this->assertSame(48, $metrics->winCountSum);

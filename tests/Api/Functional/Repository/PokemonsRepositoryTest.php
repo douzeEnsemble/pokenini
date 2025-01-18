@@ -147,7 +147,7 @@ class PokemonsRepositoryTest extends KernelTestCase
                 'dexSlug' => 'home',
                 'electionSlug' => '',
                 'filters' => [
-                    'categoryForms' => ['starter'],
+                    'category_forms' => ['starter'],
                 ],
                 'expectedCount' => 2,
             ],
@@ -155,7 +155,7 @@ class PokemonsRepositoryTest extends KernelTestCase
                 'dexSlug' => 'home',
                 'electionSlug' => '',
                 'filters' => [
-                    'specialForms' => ['mega', 'gigantamax'],
+                    'special_forms' => ['mega', 'gigantamax'],
                 ],
                 'expectedCount' => 3,
             ],
@@ -235,7 +235,7 @@ class PokemonsRepositoryTest extends KernelTestCase
                 'dexSlug' => 'home',
                 'electionSlug' => 'affinee',
                 'filters' => [
-                    'categoryForms' => ['starter'],
+                    'category_forms' => ['starter'],
                 ],
                 'expectedCount' => 1,
             ],
@@ -243,7 +243,7 @@ class PokemonsRepositoryTest extends KernelTestCase
                 'dexSlug' => 'home',
                 'electionSlug' => 'affinee',
                 'filters' => [
-                    'specialForms' => ['mega', 'gigantamax'],
+                    'special_forms' => ['mega', 'gigantamax'],
                 ],
                 'expectedCount' => 2,
             ],

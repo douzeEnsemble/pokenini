@@ -14,7 +14,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'primary_type' => [
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'grass',
                     ],
                 ],
@@ -27,7 +27,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'primary_type_null' => [
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'null',
                     ],
                 ],
@@ -40,7 +40,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'secondary_type' => [
                 [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'normal',
                     ],
                 ],
@@ -53,7 +53,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'secondary_type_null' => [
                 [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'null',
                     ],
                 ],
@@ -66,10 +66,10 @@ class PokedexRepositoryCatchStateCountData
             ],
             'primary_and_secondary_types' => [
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'bug',
                     ],
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'flying',
                     ],
                 ],
@@ -82,7 +82,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'any_types' => [
                 [
-                    'anyTypes' => [
+                    'any_types' => [
                         'normal',
                     ],
                 ],
@@ -95,7 +95,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'any_types_null' => [
                 [
-                    'anyTypes' => [
+                    'any_types' => [
                         'null',
                     ],
                 ],
@@ -119,7 +119,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'category_form' => [
                 [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'starter',
                     ],
                 ],
@@ -132,7 +132,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'category_form_null' => [
                 [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'null',
                     ],
                 ],
@@ -145,7 +145,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'regional_form' => [
                 [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'alolan',
                     ],
                 ],
@@ -158,7 +158,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'regional_form_null' => [
                 [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'null',
                     ],
                 ],
@@ -171,7 +171,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'special_form' => [
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                     ],
                 ],
@@ -184,7 +184,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'special_form_null' => [
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'null',
                     ],
                 ],
@@ -197,7 +197,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'special_forms' => [
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                         'mega',
                     ],
@@ -211,7 +211,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'variant_form' => [
                 [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'gender',
                     ],
                 ],
@@ -224,7 +224,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'variant_form_null' => [
                 [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'null',
                     ],
                 ],
@@ -246,7 +246,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'catch_state' => [
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                     ],
                 ],
@@ -259,7 +259,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'catch_state_null' => [
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'null',
                     ],
                 ],
@@ -272,7 +272,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'catch_states' => [
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                         'maybenot',
                     ],
@@ -286,7 +286,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'catch_state_negative' => [
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         '!maybe',
                     ],
                 ],
@@ -308,7 +308,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'original_game_bundle' => [
                 [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'redgreenblueyellow',
                     ],
                 ],
@@ -321,7 +321,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'original_game_bundle_null' => [
                 [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'null',
                     ],
                 ],
@@ -343,7 +343,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'game_bundle_availabilities' => [
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -356,7 +356,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'game_bundle_availabilities_null' => [
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'null',
                     ],
                 ],
@@ -369,7 +369,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'game_bundle_availabilities_negative' => [
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
@@ -382,7 +382,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'game_bundle_shiny_availabilities' => [
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -395,7 +395,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'game_bundle_shiny_availabilities_null' => [
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'null',
                     ],
                 ],
@@ -408,7 +408,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'game_bundle_shiny_availabilities_negative' => [
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
@@ -479,7 +479,7 @@ class PokedexRepositoryCatchStateCountData
         return [
             'collection_availabilities' => [
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'pogoshadow',
                     ],
                 ],
@@ -492,7 +492,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'collection_availabilities_null' => [
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'null',
                     ],
                 ],
@@ -505,7 +505,7 @@ class PokedexRepositoryCatchStateCountData
             ],
             'collection_availabilities_negative' => [
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         '!pogoshadow',
                     ],
                 ],

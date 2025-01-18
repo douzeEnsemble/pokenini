@@ -66,7 +66,7 @@
 							{{ block('originalGameBundle_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
 						<div class="col-4">
-						{% if not pokedex.dex.is_shiny %}
+						{% if pokedex.dex is empty or not pokedex.dex.is_shiny %}
 							{{ block('gameBundleAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						{% else %}
 							{{ block('gameBundleShinyAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}

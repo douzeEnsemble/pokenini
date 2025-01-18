@@ -18,7 +18,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'grass',
                     ],
                 ],
@@ -32,7 +32,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'null',
                     ],
                 ],
@@ -46,7 +46,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'normal',
                     ],
                 ],
@@ -60,7 +60,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'null',
                     ],
                 ],
@@ -74,10 +74,10 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'bug',
                     ],
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'flying',
                     ],
                 ],
@@ -91,7 +91,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'anyTypes' => [
+                    'any_types' => [
                         'normal',
                     ],
                 ],
@@ -105,7 +105,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'anyTypes' => [
+                    'any_types' => [
                         'null',
                     ],
                 ],
@@ -130,7 +130,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'starter',
                     ],
                 ],
@@ -144,7 +144,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'null',
                     ],
                 ],
@@ -158,7 +158,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'alolan',
                     ],
                 ],
@@ -172,7 +172,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'null',
                     ],
                 ],
@@ -186,7 +186,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                     ],
                 ],
@@ -200,7 +200,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'null',
                     ],
                 ],
@@ -214,7 +214,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                         'mega',
                     ],
@@ -229,7 +229,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'gender',
                     ],
                 ],
@@ -243,7 +243,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'null',
                     ],
                 ],
@@ -266,7 +266,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                     ],
                 ],
@@ -280,7 +280,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'null',
                     ],
                 ],
@@ -294,7 +294,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                         'maybenot',
                     ],
@@ -309,7 +309,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'catchStates' => [
+                    'catch_states' => [
                         '!maybe',
                     ],
                 ],
@@ -332,7 +332,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'redgreenblueyellow',
                     ],
                 ],
@@ -346,7 +346,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'null',
                     ],
                 ],
@@ -369,7 +369,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -383,7 +383,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'null',
                     ],
                 ],
@@ -397,7 +397,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
@@ -411,7 +411,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -425,7 +425,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'null',
                     ],
                 ],
@@ -439,7 +439,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
@@ -514,7 +514,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'pogoshadow',
                     ],
                 ],
@@ -528,7 +528,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'null',
                     ],
                 ],
@@ -542,7 +542,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'pogoshadow',
                         'pogoshadowshiny',
                     ],
@@ -557,7 +557,7 @@ class AlbumReportServiceData
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
                 [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         '!pogoshadow',
                     ],
                 ],

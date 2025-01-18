@@ -32,19 +32,19 @@ final class AlbumFiltersRequest
         $options = $resolver->resolve($request->query->all());
 
         return AlbumFilters::createFromArray([
-            'primaryTypes' => $options['primary_types'],
-            'secondaryTypes' => $options['secondary_types'],
-            'anyTypes' => $options['any_types'],
-            'categoryForms' => $options['category_forms'],
-            'regionalForms' => $options['regional_forms'],
-            'specialForms' => $options['special_forms'],
-            'variantForms' => $options['variant_forms'],
-            'catchStates' => $options['catch_states'],
-            'originalGameBundles' => $options['original_game_bundles'],
-            'gameBundleAvailabilities' => $options['game_bundle_availabilities'],
-            'gameBundleShinyAvailabilities' => $options['game_bundle_shiny_availabilities'],
+            'primary_types' => $options['primary_types'],
+            'secondary_types' => $options['secondary_types'],
+            'any_types' => $options['any_types'],
+            'category_forms' => $options['category_forms'],
+            'regional_forms' => $options['regional_forms'],
+            'special_forms' => $options['special_forms'],
+            'variant_forms' => $options['variant_forms'],
+            'catch_states' => $options['catch_states'],
+            'original_game_bundles' => $options['original_game_bundles'],
+            'game_bundle_availabilities' => $options['game_bundle_availabilities'],
+            'game_bundle_shiny_availabilities' => $options['game_bundle_shiny_availabilities'],
             'families' => $options['families'],
-            'collectionAvailabilities' => $options['collection_availabilities'],
+            'collection_availabilities' => $options['collection_availabilities'],
         ]);
     }
 }

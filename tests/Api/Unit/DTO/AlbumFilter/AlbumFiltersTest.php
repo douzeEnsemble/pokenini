@@ -68,19 +68,19 @@ class AlbumFiltersTest extends TestCase
     public function testCreateFromArray(): void
     {
         $filters = AlbumFilters::createFromArray([
-            'primaryTypes' => ['fire', 'water'],
-            'secondaryTypes' => ['water', 'fire'],
-            'anyTypes' => ['normal'],
-            'categoryForms' => ['starter', 'finisher'],
-            'regionalForms' => ['provence', 'sud', 'mer'],
-            'specialForms' => ['banana', 'orange'],
-            'variantForms' => ['gender'],
-            'catchStates' => ['maybe'],
-            'originalGameBundles' => ['redgreenblueyellow'],
-            'gameBundleAvailabilities' => ['sunmoon'],
-            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'primary_types' => ['fire', 'water'],
+            'secondary_types' => ['water', 'fire'],
+            'any_types' => ['normal'],
+            'category_forms' => ['starter', 'finisher'],
+            'regional_forms' => ['provence', 'sud', 'mer'],
+            'special_forms' => ['banana', 'orange'],
+            'variant_forms' => ['gender'],
+            'catch_states' => ['maybe'],
+            'original_game_bundles' => ['redgreenblueyellow'],
+            'game_bundle_availabilities' => ['sunmoon'],
+            'game_bundle_shiny_availabilities' => ['ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
-            'collectionAvailabilities' => ['swshdens'],
+            'collection_availabilities' => ['swshdens'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -130,19 +130,19 @@ class AlbumFiltersTest extends TestCase
     public function testCreateFromArrayWithNegative(): void
     {
         $filters = AlbumFilters::createFromArray([
-            'primaryTypes' => ['fire', 'water'],
-            'secondaryTypes' => ['water', 'fire'],
-            'anyTypes' => ['normal'],
-            'categoryForms' => ['starter', 'finisher'],
-            'regionalForms' => ['provence', 'sud', 'mer'],
-            'specialForms' => ['banana', 'orange'],
-            'variantForms' => ['gender'],
-            'catchStates' => ['!maybe'],
-            'originalGameBundles' => ['redgreenblueyellow'],
-            'gameBundleAvailabilities' => ['!sunmoon'],
-            'gameBundleShinyAvailabilities' => ['!ultrasunutramoon'],
+            'primary_types' => ['fire', 'water'],
+            'secondary_types' => ['water', 'fire'],
+            'any_types' => ['normal'],
+            'category_forms' => ['starter', 'finisher'],
+            'regional_forms' => ['provence', 'sud', 'mer'],
+            'special_forms' => ['banana', 'orange'],
+            'variant_forms' => ['gender'],
+            'catch_states' => ['!maybe'],
+            'original_game_bundles' => ['redgreenblueyellow'],
+            'game_bundle_availabilities' => ['!sunmoon'],
+            'game_bundle_shiny_availabilities' => ['!ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
-            'collectionAvailabilities' => ['!swshdens'],
+            'collection_availabilities' => ['!swshdens'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -239,35 +239,35 @@ class AlbumFiltersTest extends TestCase
 
         $options = $resolver->resolve([
             'value' => 'douze',
-            'primaryTypes' => ['fire', 'water'],
-            'secondaryTypes' => ['water', 'fire'],
-            'anyTypes' => ['normal'],
-            'categoryForms' => ['starter', 'finisher'],
-            'regionalForms' => ['provence', 'sud', 'mer'],
-            'specialForms' => ['banana', 'orange'],
-            'variantForms' => ['gender'],
-            'catchStates' => ['maybe'],
-            'originalGameBundles' => ['redgreenblueyellow'],
-            'gameBundleAvailabilities' => ['sunmoon'],
-            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'primary_types' => ['fire', 'water'],
+            'secondary_types' => ['water', 'fire'],
+            'any_types' => ['normal'],
+            'category_forms' => ['starter', 'finisher'],
+            'regional_forms' => ['provence', 'sud', 'mer'],
+            'special_forms' => ['banana', 'orange'],
+            'variant_forms' => ['gender'],
+            'catch_states' => ['maybe'],
+            'original_game_bundles' => ['redgreenblueyellow'],
+            'game_bundle_availabilities' => ['sunmoon'],
+            'game_bundle_shiny_availabilities' => ['ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
-            'collectionAvailabilities' => ['swshdens'],
+            'collection_availabilities' => ['swshdens'],
         ]);
 
         $this->assertSame('douze', $options['value']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['primaryTypes']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['secondaryTypes']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['anyTypes']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['categoryForms']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['regionalForms']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['specialForms']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['variantForms']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['catchStates']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['originalGameBundles']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['gameBundleAvailabilities']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['gameBundleShinyAvailabilities']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['primary_types']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['secondary_types']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['any_types']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['category_forms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['regional_forms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['special_forms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['variant_forms']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['catch_states']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['original_game_bundles']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['game_bundle_availabilities']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['game_bundle_shiny_availabilities']);
         $this->assertInstanceOf(AlbumFilterValues::class, $options['families']);
-        $this->assertInstanceOf(AlbumFilterValues::class, $options['collectionAvailabilities']);
+        $this->assertInstanceOf(AlbumFilterValues::class, $options['collection_availabilities']);
     }
 
     public function testCreateWithOptionsResolverException(): void
@@ -280,19 +280,19 @@ class AlbumFiltersTest extends TestCase
 
         $this->expectException(MissingOptionsException::class);
         $resolver->resolve([
-            'primaryTypes' => ['fire', 'water'],
-            'secondaryTypes' => ['water', 'fire'],
-            'anyTypes' => ['normal'],
-            'categoryForms' => ['starter', 'finisher'],
-            'regionalForms' => ['provence', 'sud', 'mer'],
-            'specialForms' => ['banana', 'orange'],
-            'variantForms' => ['gender'],
-            'catchStates' => ['maybe'],
-            'originalGameBundles' => ['redgreenblueyellow'],
-            'gameBundleAvailabilities' => ['sunmoon'],
-            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'primary_types' => ['fire', 'water'],
+            'secondary_types' => ['water', 'fire'],
+            'any_types' => ['normal'],
+            'category_forms' => ['starter', 'finisher'],
+            'regional_forms' => ['provence', 'sud', 'mer'],
+            'special_forms' => ['banana', 'orange'],
+            'variant_forms' => ['gender'],
+            'catch_states' => ['maybe'],
+            'original_game_bundles' => ['redgreenblueyellow'],
+            'game_bundle_availabilities' => ['sunmoon'],
+            'game_bundle_shiny_availabilities' => ['ultrasunutramoon'],
             'families' => ['pichu', 'eevee'],
-            'collectionAvailabilities' => ['swshdens'],
+            'collection_availabilities' => ['swshdens'],
         ]);
     }
 }

@@ -31,7 +31,6 @@ class ElectionMetricsApiServiceTest extends TestCase
                 '4564650',
                 'home',
                 'fav',
-                [],
             )
         ;
 
@@ -59,7 +58,6 @@ class ElectionMetricsApiServiceTest extends TestCase
                 '87654',
                 'demo',
                 'pref',
-                [],
             )
         ;
 
@@ -82,14 +80,11 @@ class ElectionMetricsApiServiceTest extends TestCase
                 '4564650',
                 'home',
                 'fav',
-                '_cflegendary',
-                ['cf' => ['legendary']],
             )
             ->getMetrics(
                 '4564650',
                 'home',
                 'fav',
-                ['cf' => ['legendary']],
             )
         ;
 
@@ -112,14 +107,11 @@ class ElectionMetricsApiServiceTest extends TestCase
                 '87654',
                 'demo',
                 'pref',
-                '_at0poison_at1fire_cfstarter',
-                ['at' => ['poison', 'fire'], 'cf' => ['starter']],
             )
             ->getMetrics(
                 '87654',
                 'demo',
                 'pref',
-                ['at' => ['poison', 'fire'], 'cf' => ['starter']],
             )
         ;
 
@@ -135,21 +127,16 @@ class ElectionMetricsApiServiceTest extends TestCase
         $this->assertEmpty($this->cache->getValues());
     }
 
-    /**
-     * @param string[]|string[][] $filters
-     */
     private function getService(
         string $trainerId,
         string $dexSlug,
         string $electionSlug,
-        string $filtersStr = '',
-        array $filters = [],
     ): ElectionMetricsApiService {
         $client = $this->createMock(HttpClientInterface::class);
 
         $dir = '/var/www/html/tests/resources/Web/unit/service/api';
         $json = (string) file_get_contents(
-            "{$dir}/election_metrics_{$trainerId}_{$dexSlug}_{$electionSlug}{$filtersStr}.json"
+            "{$dir}/election_metrics_{$trainerId}_{$dexSlug}_{$electionSlug}.json"
         );
 
         $response = $this->createMock(ResponseInterface::class);
@@ -166,14 +153,11 @@ class ElectionMetricsApiServiceTest extends TestCase
                 'GET',
                 'https://api.domain/election/metrics',
                 [
-                    'query' => array_merge(
-                        [
-                            'trainer_external_id' => $trainerId,
-                            'dex_slug' => $dexSlug,
-                            'election_slug' => $electionSlug,
-                        ],
-                        $filters,
-                    ),
+                    'query' => [
+                        'trainer_external_id' => $trainerId,
+                        'dex_slug' => $dexSlug,
+                        'election_slug' => $electionSlug,
+                    ],
                     'headers' => [
                         'accept' => 'application/json',
                     ],
