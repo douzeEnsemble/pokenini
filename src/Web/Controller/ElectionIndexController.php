@@ -43,7 +43,7 @@ class ElectionIndexController extends AbstractController
         $electionTop = $electionTopService->getTop($dexSlug, $electionSlug);
 
         $list = $getPokemonsListService->get($dexSlug, $electionSlug, $apiFilters);
-        $metrics = $metricsService->getMetrics($dexSlug, $electionSlug, $apiFilters);
+        $metrics = $metricsService->getMetrics($dexSlug, $electionSlug);
         $pokedex = $getTrainerPokedexService->getPokedexData($dexSlug, $apiFilters);
 
         $detachedCount = 0;

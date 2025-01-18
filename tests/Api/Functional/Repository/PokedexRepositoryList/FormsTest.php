@@ -39,7 +39,7 @@ class FormsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'categoryForms' => [
+                'category_forms' => [
                     'starter',
                 ],
             ])
@@ -63,7 +63,7 @@ class FormsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'regionalForms' => [
+                'regional_forms' => [
                     'alolan',
                 ],
             ])
@@ -88,7 +88,7 @@ class FormsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'specialForms' => [
+                'special_forms' => [
                     'gigantamax',
                 ],
             ])
@@ -112,7 +112,7 @@ class FormsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'specialForms' => [
+                'special_forms' => [
                     'gigantamax',
                     'mega',
                 ],
@@ -138,7 +138,7 @@ class FormsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'variantForms' => [
+                'variant_forms' => [
                     'gender',
                 ],
             ])

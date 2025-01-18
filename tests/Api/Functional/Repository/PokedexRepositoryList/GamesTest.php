@@ -39,7 +39,7 @@ class GamesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'originalGameBundles' => [
+                'original_game_bundles' => [
                     'redgreenblueyellow',
                 ],
             ])
@@ -73,7 +73,7 @@ class GamesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleAvailabilities' => [
+                'game_bundle_availabilities' => [
                     'ultrasunultramoon',
                 ],
             ])
@@ -97,7 +97,7 @@ class GamesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleAvailabilities' => [
+                'game_bundle_availabilities' => [
                     '!ultrasunultramoon',
                 ],
             ])
@@ -139,7 +139,7 @@ class GamesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleShinyAvailabilities' => [
+                'game_bundle_shiny_availabilities' => [
                     'ultrasunultramoon',
                 ],
             ])
@@ -165,7 +165,7 @@ class GamesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleShinyAvailabilities' => [
+                'game_bundle_shiny_availabilities' => [
                     '!ultrasunultramoon',
                 ],
             ])

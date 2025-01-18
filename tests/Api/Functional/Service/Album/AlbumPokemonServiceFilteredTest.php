@@ -37,7 +37,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'primaryTypes' => [
+                'primary_types' => [
                     'grass',
                 ],
             ]),
@@ -67,7 +67,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'secondaryTypes' => [
+                'secondary_types' => [
                     'normal',
                 ],
             ]),
@@ -92,10 +92,10 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'primaryTypes' => [
+                'primary_types' => [
                     'bug',
                 ],
-                'secondaryTypes' => [
+                'secondary_types' => [
                     'flying',
                 ],
             ]),
@@ -120,7 +120,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'anyTypes' => [
+                'any_types' => [
                     'normal',
                 ],
             ]),
@@ -149,7 +149,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'categoryForms' => [
+                'category_forms' => [
                     'starter',
                 ],
             ]),
@@ -173,7 +173,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'regionalForms' => [
+                'regional_forms' => [
                     'alolan',
                 ],
             ]),
@@ -198,7 +198,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'specialForms' => [
+                'special_forms' => [
                     'gigantamax',
                 ],
             ]),
@@ -222,7 +222,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'specialForms' => [
+                'special_forms' => [
                     'gigantamax',
                     'mega',
                 ],
@@ -248,7 +248,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'variantForms' => [
+                'variant_forms' => [
                     'gender',
                 ],
             ]),
@@ -274,7 +274,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'catchStates' => [
+                'catch_states' => [
                     'maybe',
                 ],
             ]),
@@ -299,7 +299,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'originalGameBundles' => [
+                'original_game_bundles' => [
                     'redgreenblueyellow',
                 ],
             ]),
@@ -333,7 +333,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleAvailabilities' => [
+                'game_bundle_availabilities' => [
                     'ultrasunultramoon',
                 ],
             ]),
@@ -357,7 +357,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'gameBundleShinyAvailabilities' => [
+                'game_bundle_shiny_availabilities' => [
                     'ultrasunultramoon',
                 ],
             ]),
@@ -411,7 +411,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'collectionAvailabilities' => [
+                'collection_availabilities' => [
                     'pogoshadow',
                 ],
             ]),
@@ -451,47 +451,47 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
     {
         return [
             'primary_types' => [
-                'primaryTypes',
+                'primary_types',
                 1,
             ],
             'secondary_types' => [
-                'secondaryTypes',
+                'secondary_types',
                 9,
             ],
             'category_forms' => [
-                'categoryForms',
+                'category_forms',
                 20,
             ],
             'regional_forms' => [
-                'regionalForms',
+                'regional_forms',
                 19,
             ],
             'special_forms' => [
-                'specialForms',
+                'special_forms',
                 18,
             ],
             'variant_forms' => [
-                'variantForms',
+                'variant_forms',
                 18,
             ],
             'catch_states' => [
-                'catchStates',
+                'catch_states',
                 1,
             ],
             'original_game_bundles' => [
-                'originalGameBundles',
+                'original_game_bundles',
                 0,
             ],
             'game_bundle_availabilities' => [
-                'gameBundleAvailabilities',
+                'game_bundle_availabilities',
                 0,
             ],
             'game_bundle_shiny_availabilities' => [
-                'gameBundleShinyAvailabilities',
+                'game_bundle_shiny_availabilities',
                 0,
             ],
             'collection_availabilities' => [
-                'collectionAvailabilities',
+                'collection_availabilities',
                 0,
             ],
         ];

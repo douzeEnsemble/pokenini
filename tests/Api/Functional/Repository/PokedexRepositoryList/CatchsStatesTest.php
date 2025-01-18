@@ -39,7 +39,7 @@ class CatchsStatesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'catchStates' => [
+                'catch_states' => [
                     'maybe',
                 ],
             ])
@@ -64,7 +64,7 @@ class CatchsStatesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'catchStates' => [
+                'catch_states' => [
                     '!maybe',
                 ],
             ])
@@ -105,7 +105,7 @@ class CatchsStatesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'catchStates' => [
+                'catch_states' => [
                     '!no',
                 ],
             ])

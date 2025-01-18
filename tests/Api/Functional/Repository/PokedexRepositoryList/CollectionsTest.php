@@ -39,7 +39,7 @@ class CollectionsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'collectionAvailabilities' => [
+                'collection_availabilities' => [
                     'pogoshadow',
                 ],
             ])
@@ -62,7 +62,7 @@ class CollectionsTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'collectionAvailabilities' => [
+                'collection_availabilities' => [
                     '!pogoshadow',
                 ],
             ])

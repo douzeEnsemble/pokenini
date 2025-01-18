@@ -14,7 +14,7 @@ class DexAvailabilitiesRepositoryData
         return [
             'primary_type' => [
                 'filters' => [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'grass',
                     ],
                 ],
@@ -22,7 +22,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'primary_type_null' => [
                 'filters' => [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'null',
                     ],
                 ],
@@ -30,7 +30,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'secondary_type' => [
                 'filters' => [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'normal',
                     ],
                 ],
@@ -38,7 +38,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'secondary_type_null' => [
                 'filters' => [
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'null',
                     ],
                 ],
@@ -46,10 +46,10 @@ class DexAvailabilitiesRepositoryData
             ],
             'primary_and_secondary_types' => [
                 'filters' => [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         'bug',
                     ],
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         'flying',
                     ],
                 ],
@@ -57,7 +57,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'any_type' => [
                 'filters' => [
-                    'anyTypes' => [
+                    'any_types' => [
                         'normal',
                     ],
                 ],
@@ -65,7 +65,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'any_type_null' => [
                 'filters' => [
-                    'anyTypes' => [
+                    'any_types' => [
                         'null',
                     ],
                 ],
@@ -82,7 +82,7 @@ class DexAvailabilitiesRepositoryData
         return [
             'category_form' => [
                 'filters' => [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'starter',
                     ],
                 ],
@@ -90,7 +90,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'category_form_null' => [
                 'filters' => [
-                    'categoryForms' => [
+                    'category_forms' => [
                         'null',
                     ],
                 ],
@@ -98,7 +98,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'regional_form' => [
                 'filters' => [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'alolan',
                     ],
                 ],
@@ -106,7 +106,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'regional_form_null' => [
                 'filters' => [
-                    'regionalForms' => [
+                    'regional_forms' => [
                         'null',
                     ],
                 ],
@@ -114,7 +114,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'special_form' => [
                 'filters' => [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                     ],
                 ],
@@ -122,7 +122,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'special_form_null' => [
                 'filters' => [
-                    'specialForms' => [
+                    'special_forms' => [
                         'null',
                     ],
                 ],
@@ -130,7 +130,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'special_forms' => [
                 'filters' => [
-                    'specialForms' => [
+                    'special_forms' => [
                         'gigantamax',
                         'mega',
                     ],
@@ -139,7 +139,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'variant_form' => [
                 'filters' => [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'gender',
                     ],
                 ],
@@ -147,7 +147,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'variant_form_null' => [
                 'filters' => [
-                    'variantForms' => [
+                    'variant_forms' => [
                         'null',
                     ],
                 ],
@@ -164,7 +164,7 @@ class DexAvailabilitiesRepositoryData
         return [
             'catch_state' => [
                 'filters' => [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                     ],
                 ],
@@ -172,7 +172,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'catch_state_null' => [
                 'filters' => [
-                    'catchStates' => [
+                    'catch_states' => [
                         'null',
                     ],
                 ],
@@ -180,7 +180,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'catch_states' => [
                 'filters' => [
-                    'catchStates' => [
+                    'catch_states' => [
                         'maybe',
                         'maybenot',
                     ],
@@ -198,7 +198,7 @@ class DexAvailabilitiesRepositoryData
         return [
             'original_game_bundles' => [
                 'filters' => [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -206,7 +206,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'original_game_bundles_null' => [
                 'filters' => [
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         'null',
                     ],
                 ],
@@ -214,7 +214,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'game_bundle_availabilities' => [
                 'filters' => [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -222,7 +222,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'game_bundle_availabilities_null' => [
                 'filters' => [
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         'null',
                     ],
                 ],
@@ -230,7 +230,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'game_bundle_shiny_availabilities' => [
                 'filters' => [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
@@ -238,7 +238,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'game_bundle_shiny_availabilities_null' => [
                 'filters' => [
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         'null',
                     ],
                 ],
@@ -255,7 +255,7 @@ class DexAvailabilitiesRepositoryData
         return [
             'collection_availabilities' => [
                 'filters' => [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'pogoshadow',
                     ],
                 ],
@@ -263,7 +263,7 @@ class DexAvailabilitiesRepositoryData
             ],
             'collection_availabilities_null' => [
                 'filters' => [
-                    'collectionAvailabilities' => [
+                    'collection_availabilities' => [
                         'null',
                     ],
                 ],
@@ -314,37 +314,37 @@ class DexAvailabilitiesRepositoryData
         return [
             'empty' => [
                 'filters' => [
-                    'primaryTypes' => [
+                    'primary_types' => [
                         '',
                     ],
-                    'secondaryTypes' => [
+                    'secondary_types' => [
                         '',
                     ],
-                    'anyTypes' => [
+                    'any_types' => [
                         '',
                     ],
-                    'categoryForms' => [
+                    'category_forms' => [
                         '',
                     ],
-                    'regionalForms' => [
+                    'regional_forms' => [
                         '',
                     ],
-                    'specialForms' => [
+                    'special_forms' => [
                         '',
                     ],
-                    'variantForms' => [
+                    'variant_forms' => [
                         '',
                     ],
-                    'catchStates' => [
+                    'catch_states' => [
                         '',
                     ],
-                    'originalGameBundles' => [
+                    'original_game_bundles' => [
                         '',
                     ],
-                    'gameBundleAvailabilities' => [
+                    'game_bundle_availabilities' => [
                         '',
                     ],
-                    'gameBundleShinyAvailabilities' => [
+                    'game_bundle_shiny_availabilities' => [
                         '',
                     ],
                     'families' => [

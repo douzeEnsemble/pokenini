@@ -39,7 +39,7 @@ class TypesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'primaryTypes' => [
+                'primary_types' => [
                     'grass',
                 ],
             ])
@@ -67,7 +67,7 @@ class TypesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'secondaryTypes' => [
+                'secondary_types' => [
                     'normal',
                 ],
             ])
@@ -92,10 +92,10 @@ class TypesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'primaryTypes' => [
+                'primary_types' => [
                     'bug',
                 ],
-                'secondaryTypes' => [
+                'secondary_types' => [
                     'flying',
                 ],
             ])
@@ -120,7 +120,7 @@ class TypesTest extends KernelTestCase
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
             AlbumFilters::createFromArray([
-                'anyTypes' => [
+                'any_types' => [
                     'normal',
                 ],
             ])

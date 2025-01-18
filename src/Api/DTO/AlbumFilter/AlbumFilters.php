@@ -38,38 +38,38 @@ final class AlbumFilters
         $options = $resolver->resolve($data);
 
         return new self(
-            $options['primaryTypes'],
-            $options['secondaryTypes'],
-            $options['anyTypes'],
-            $options['categoryForms'],
-            $options['regionalForms'],
-            $options['specialForms'],
-            $options['variantForms'],
-            $options['catchStates'],
-            $options['originalGameBundles'],
-            $options['gameBundleAvailabilities'],
-            $options['gameBundleShinyAvailabilities'],
+            $options['primary_types'],
+            $options['secondary_types'],
+            $options['any_types'],
+            $options['category_forms'],
+            $options['regional_forms'],
+            $options['special_forms'],
+            $options['variant_forms'],
+            $options['catch_states'],
+            $options['original_game_bundles'],
+            $options['game_bundle_availabilities'],
+            $options['game_bundle_shiny_availabilities'],
             $options['families'],
-            $options['collectionAvailabilities'],
+            $options['collection_availabilities'],
         );
     }
 
     public static function configureOptions(OptionsResolver $resolver): void
     {
         $defaultsValues = [
-            'primaryTypes' => [],
-            'secondaryTypes' => [],
-            'anyTypes' => [],
-            'categoryForms' => [],
-            'regionalForms' => [],
-            'specialForms' => [],
-            'variantForms' => [],
-            'catchStates' => [],
-            'originalGameBundles' => [],
-            'gameBundleAvailabilities' => [],
-            'gameBundleShinyAvailabilities' => [],
+            'primary_types' => [],
+            'secondary_types' => [],
+            'any_types' => [],
+            'category_forms' => [],
+            'regional_forms' => [],
+            'special_forms' => [],
+            'variant_forms' => [],
+            'catch_states' => [],
+            'original_game_bundles' => [],
+            'game_bundle_availabilities' => [],
+            'game_bundle_shiny_availabilities' => [],
             'families' => [],
-            'collectionAvailabilities' => [],
+            'collection_availabilities' => [],
         ];
 
         $resolver->setDefaults($defaultsValues);
