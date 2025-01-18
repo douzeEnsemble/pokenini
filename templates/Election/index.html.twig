@@ -13,10 +13,17 @@
 
     <style>
     {% for type in types %}
+    {% set iconUrl = pokemonTypeIconUrl|format(type.slug) %}
     .pokemon-type-{{ type.slug }} {
         background-color: {{ type.color }}FF;
     }
-    .pokemon-type-{{ type.slug }}:hover {
+    .filters-types.pokemon-type-{{ type.slug }} {
+        background-image: url('{{ iconUrl }}');
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 25%;
+    }
+    .filters-types.pokemon-type-{{ type.slug }}:hover {
         background-color: {{ type.color }}AA;
     }
     {% endfor %}
