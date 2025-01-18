@@ -1,11 +1,12 @@
 <div id="election-actions-bottom" class="election-actions sticky-top sticky-bottom">
-  <div class="row text-center justify-content-center p-3">
-    <div class="election-actions-item col-2">
+  <div class="row text-center justify-content-center px-xl-4 px-lg-3 px-2 py-xl-2 py-lg-3 py-4">
+    <div class="election-actions-item col-xl-2 col-lg-3 col-3">
       <a class="btn btn-secondary btn-sm" href="">
-        {{ 'election.actions.reset'|trans }}
+        <span class="d-none d-md-inline">{{ 'election.actions.reset'|trans }}</span>
+        <i class="bi bi-arrow-clockwise"></i>
       </a>
     </div>
-    <div class="election-actions-item col-3">
+    <div class="election-actions-item col-xl-2 col-lg-3 col-6">
       <button id="election-vote-submit-bottom" class="election-vote-submit btn btn-primary position-relative">
         <span class="spinner-border spinner-border-sm" aria-hidden="true" hidden></span>
         {{ 'election.actions.submit'|trans }}
@@ -14,9 +15,10 @@
         </span>
       </button>
     </div>
-    <div class="election-actions-item col-2">
+    <div class="election-actions-item col-xl-2 col-lg-3 col-3">
       <a class="btn btn-light btn-sm" href="#election-modal-filters" data-bs-toggle="modal" data-bs-target="#election-modal-filters">
-        {{ 'election.actions.filters'|trans }}
+        <span class="d-none d-md-inline">{{ 'election.actions.filters'|trans }}</span>
+        <i class="bi bi-funnel"></i>
       </a>
     </div>    
   </div>
