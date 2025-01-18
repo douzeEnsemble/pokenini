@@ -48,7 +48,23 @@ a.election-card-catch-state-edit-action:hover {
 label.filters-types {
     font-size: large;
     width: 75%;
+    text-align: left;
 }
-.filters-types-container:hover label {
+label.filters-types-container:hover label {
     cursor: pointer;
+}
+label.filters-types {
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 25%;
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    label.filters-types {
+        font-size: medium;
+    }
+}
+@media (max-width: 767.98px) {
+    label.filters-types {
+        font-size: small;
+    }
 }

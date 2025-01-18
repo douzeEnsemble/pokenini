@@ -35,44 +35,44 @@
 			<div class="modal-body">
 				<form class="mt-3 mb-3" method="get" action="#">
 					<div class="row mb-3">
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 							{{ block('anyTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 							{{ block('primaryTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 							{{ block('secondaryTypes_row', 'common/Filter/_dex_filters_blocks.html.twig') }}						
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-6">
+						<div class="col-lg-6 col-12">
 							{{ block('categoryForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
-						<div class="col-6">
+						<div class="col-lg-6 col-12">
 							{{ block('regionalForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-6">
+						<div class="col-lg-6 col-12">
 							{{ block('specialForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
-						<div class="col-6">
+						<div class="col-lg-6 col-12">
 							{{ block('variantForm_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 							{{ block('originalGameBundle_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 						{% if pokedex.dex is empty or not pokedex.dex.is_shiny %}
 							{{ block('gameBundleAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						{% else %}
 							{{ block('gameBundleShinyAvailability_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						{% endif %}
 						</div>
-						<div class="col-4">
+						<div class="col-lg-4 col-12">
 							{{ block('collection_row', 'common/Filter/_dex_filters_blocks.html.twig') }}
 						</div>
 					</div>
