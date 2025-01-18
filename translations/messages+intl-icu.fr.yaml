@@ -54,6 +54,7 @@ title:
     policy: "Politique de confidentialité"
     cookies: "Cookies"
     election: 
+        nav: "C'est quoi ton préféré ?"
         pick: "Fait ton choix"
         vote: "Vote maintenant"
         subtitle: "Choisissez d'abord, ensuite Votez"

@@ -39,6 +39,16 @@
                     </a>
                     {% endif %}
                 </li>
+                <li class="nav-item election-link">
+                    {% if is_granted("ROLE_TRAINER") %}
+                    <strong>
+                        <a class="nav-link" href="{{ path('app_web_electiondex_index') }}">
+                            <i class="bi bi-heart"></i>
+                            {{ 'title.election.nav'|trans }}
+                        </a>
+                    </strong>
+                    {% endif %}
+                </li>
                 <li class="nav-item lang-switch">
                     {% set langTarget = locale == 'fr' ? 'en' : 'fr' %}
                     {% set routeParameters = currentRouteParameters|merge({
