@@ -72,6 +72,8 @@
         const tooltipList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')]
             .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     })();
+
+    new bootstrap.Modal('#election-modal-filters-advanced').show();
     </script>
 
     {% if 0 == metrics.roundCount and app.request.query.all is empty %}
