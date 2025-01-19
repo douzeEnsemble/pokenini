@@ -112,6 +112,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             '',
             '',
             '',
+            true,
         );
     }
 }

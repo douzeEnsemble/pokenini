@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
  * @internal
  */
 #[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorAuthenticateTest extends TestCase
+class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 {
     public function testAuthenticateUser(): void
     {
@@ -39,7 +39,7 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         /** @var User $user */
         $user = $validationPassport->getUser();
         $this->assertFalse($user->isAnAdmin());
-        $this->assertFalse($user->isATrainer());
+        $this->assertTrue($user->isATrainer());
         $this->assertFalse($user->isACollector());
         $this->assertEquals('1212121212000000000000012', $user->getId());
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
@@ -72,8 +72,8 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
     {
         $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313',
-            '2121212121,1313131313,1212121212000000000000012',
-            '2121212121',
+            '2121212121,1313131313',
+            '2121212121,1212121212000000000000012',
         );
 
         $request = $this->createMock(Request::class);
@@ -86,7 +86,7 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         $user = $validationPassport->getUser();
         $this->assertFalse($user->isAnAdmin());
         $this->assertTrue($user->isATrainer());
-        $this->assertFalse($user->isACollector());
+        $this->assertTrue($user->isACollector());
         $this->assertEquals('1212121212000000000000012', $user->getId());
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
@@ -108,7 +108,7 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
         /** @var User $user */
         $user = $validationPassport->getUser();
         $this->assertTrue($user->isAnAdmin());
-        $this->assertFalse($user->isATrainer());
+        $this->assertTrue($user->isATrainer());
         $this->assertFalse($user->isACollector());
         $this->assertEquals('1212121212000000000000012', $user->getId());
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
@@ -210,6 +210,7 @@ class GoogleAuthenticatorAuthenticateTest extends TestCase
             $listAdmin,
             $listTrainer,
             $listCollector,
+            false,
         );
     }
 }

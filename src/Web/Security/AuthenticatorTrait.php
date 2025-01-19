@@ -64,11 +64,11 @@ trait AuthenticatorTrait
         if (in_array($user->getUserIdentifier(), $listAdmins)) {
             $user->addAdminRole();
         }
-        if (in_array($user->getUserIdentifier(), $listTrainers)) {
-            $user->addTrainerRole();
-        }
         if (in_array($user->getUserIdentifier(), $listCollectors)) {
             $user->addCollectorRole();
+        }
+        if (!$this->isInvitationRequired || in_array($user->getUserIdentifier(), $listTrainers)) {
+            $user->addTrainerRole();
         }
 
         return $user;
