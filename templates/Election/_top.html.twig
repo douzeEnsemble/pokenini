@@ -1,22 +1,24 @@
 {% import "common/Pokemon/_image_macros.html.twig" as imageMacros %}
 
-<div id="election-top" class="row mt-3 ms-5 me-5">
+<div id="election-top" class="mt-xl-5 mt-lg-4 mt-3 ms-xl-5 ms-lg-3 ms-0 me-xl-5 me-lg-3 me-0">
     <h4>{{ 'election.top.title'|trans({'n': electionTop|length}) }}</h4>
-    {% for item in electionTop %}
-    <div class="election-top-item col text-center position-relative" data-attr-elo="{{ item.elo }}">
-        {% if pokedex.dex.is_shiny %}
-        {{ imageMacros.shinyPokemonImage(item, locale) }}
-        {% else %}
-        {{ imageMacros.regularPokemonImage(item, locale) }}
-        {% endif %}
-        <br>
-        {% if item.significance %}
-        <i class="bi bi-star"></i>
-        {% endif %}
-        <strong>{{ item.pokemon_simplified_french_name }}</strong>
-        {% if item.significance %}
-        <i class="bi bi-star"></i>
-        {% endif %}
+    <div class="row">
+        {% for item in electionTop %}
+        <div class="election-top-item col text-center position-relative" data-attr-elo="{{ item.elo }}">
+            {% if pokedex.dex.is_shiny %}
+            {{ imageMacros.shinyPokemonImage(item, locale) }}
+            {% else %}
+            {{ imageMacros.regularPokemonImage(item, locale) }}
+            {% endif %}
+            <br>
+            {% if item.significance %}
+            <i class="bi bi-star"></i>
+            {% endif %}
+            <strong>{{ item.pokemon_simplified_french_name }}</strong>
+            {% if item.significance %}
+            <i class="bi bi-star"></i>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
