@@ -15,7 +15,7 @@
 {% block body %}
 	<div class="container-fluid" id="main-container">
 		<div class="row">
-			<div class="col-md-8 mx-auto text-center row">
+			<div class="col-xl-6 col-lg-8 col-12 mx-auto text-center row">
 				<h1>
                     {{ 'election_dex.title'|trans }}
                 </h1>
@@ -26,7 +26,7 @@
                 </h2>
 			</div>
 		</div>
-		<div class="row row-cols-lg-12 row-cols-sm-6 row-cols-3 g-3 text-center">
+		<div class="row row-cols-lg-12 row-cols-sm-6 row-cols-2 g-xl-3 g-lg-2 g-1 text-center">
             {% for item in dex %}
             {% set url = path('app_web_electionindex_index', {'dexSlug': item.slug}) %}
             <div class="col">
