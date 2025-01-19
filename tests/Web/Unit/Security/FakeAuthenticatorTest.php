@@ -26,6 +26,7 @@ class FakeAuthenticatorTest extends TestCase
             'listAdmin',
             'listTrainer',
             'listCollector',
+            true,
         );
 
         $this->assertTrue(
@@ -55,6 +56,7 @@ class FakeAuthenticatorTest extends TestCase
             'listAdmin',
             'listTrainer',
             'listCollector',
+            true,
         );
 
         $request = new Request();

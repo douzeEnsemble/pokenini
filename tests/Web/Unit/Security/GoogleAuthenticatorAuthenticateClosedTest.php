@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\FakeAuthenticator;
+use App\Web\Security\GoogleAuthenticator;
 use App\Web\Security\User;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
+use League\OAuth2\Client\Provider\GoogleUser;
+use League\OAuth2\Client\Token\AccessToken;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,20 +19,20 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
 /**
  * @internal
  */
-#[CoversClass(FakeAuthenticator::class)]
-class FakeAuthenticatorAuthenticateTest extends TestCase
+#[CoversClass(GoogleAuthenticator::class)]
+class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 {
     public function testAuthenticateUser(): void
     {
-        $fakeAuthenticator = $this->getFakeAuthenticator(
+        $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121',
         );
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -43,15 +47,15 @@ class FakeAuthenticatorAuthenticateTest extends TestCase
 
     public function testAuthenticateTrainer(): void
     {
-        $fakeAuthenticator = $this->getFakeAuthenticator(
+        $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,1313131313',
         );
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -66,38 +70,38 @@ class FakeAuthenticatorAuthenticateTest extends TestCase
 
     public function testAuthenticateCollector(): void
     {
-        $fakeAuthenticator = $this->getFakeAuthenticator(
+        $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313',
-            '2121212121,1313131313,1212121212000000000000012',
-            '2121212121',
+            '2121212121,1313131313',
+            '2121212121,1212121212000000000000012',
         );
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
         /** @var User $user */
         $user = $validationPassport->getUser();
         $this->assertFalse($user->isAnAdmin());
-        $this->assertTrue($user->isATrainer());
-        $this->assertFalse($user->isACollector());
+        $this->assertFalse($user->isATrainer());
+        $this->assertTrue($user->isACollector());
         $this->assertEquals('1212121212000000000000012', $user->getId());
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
     public function testAuthenticateAdmin(): void
     {
-        $fakeAuthenticator = $this->getFakeAuthenticator(
+        $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313',
             '2121212121',
         );
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -112,15 +116,15 @@ class FakeAuthenticatorAuthenticateTest extends TestCase
 
     public function testAuthenticateAdminTrainer(): void
     {
-        $fakeAuthenticator = $this->getFakeAuthenticator(
+        $googleAuthenticator = $this->getGoogleAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,',
         );
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -155,11 +159,11 @@ class FakeAuthenticatorAuthenticateTest extends TestCase
             1212121212000000000000012,
             LIST;
 
-        $fakeAuthenticator = $this->getFakeAuthenticator($listAdmin, $listTrainer, $listCollector);
+        $googleAuthenticator = $this->getGoogleAuthenticator($listAdmin, $listTrainer, $listCollector);
 
-        $request = Request::create('local.dev', 'GET', ['t' => '1212121212000000000000012']);
+        $request = $this->createMock(Request::class);
 
-        $validationPassport = $fakeAuthenticator->authenticate($request);
+        $validationPassport = $googleAuthenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -172,11 +176,36 @@ class FakeAuthenticatorAuthenticateTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    private function getFakeAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): FakeAuthenticator
+    private function getGoogleAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): GoogleAuthenticator
     {
+        $oauth2Client = $this->createMock(OAuth2ClientInterface::class);
+        $oauth2Client
+            ->expects($this->once())
+            ->method('getAccessToken')
+            ->willReturn(new AccessToken([
+                'access_token' => '1douze2',
+            ]))
+        ;
+        $oauth2Client
+            ->expects($this->once())
+            ->method('fetchUserFromToken')
+            ->willReturn(new GoogleUser([
+                'sub' => '1212121212000000000000012',
+                'name' => 'Douze',
+            ]))
+        ;
+
+        $clientRegistry = $this->createMock(ClientRegistry::class);
+        $clientRegistry
+            ->expects($this->once())
+            ->method('getClient')
+            ->willReturn($oauth2Client)
+        ;
+
         $router = $this->createMock(RouterInterface::class);
 
-        return new FakeAuthenticator(
+        return new GoogleAuthenticator(
+            $clientRegistry,
             $router,
             $listAdmin,
             $listTrainer,

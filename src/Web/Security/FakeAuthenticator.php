@@ -21,6 +21,7 @@ class FakeAuthenticator extends OAuth2Authenticator implements AuthenticationEnt
         private readonly string $listAdmin,
         private readonly string $listTrainer,
         private readonly string $listCollector,
+        private readonly bool $isInvitationRequired,
     ) {}
 
     public function supports(Request $request): ?bool
