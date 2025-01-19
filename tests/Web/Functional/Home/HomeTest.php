@@ -54,6 +54,10 @@ class HomeTest extends WebTestCase
 
         $this->assertStringNotContainsString('const catchStates = JSON.parse', $crawler->outerHtml());
         $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->attr('href'));
     }
 
     public function testHomeAsAdmin(): void
@@ -93,6 +97,10 @@ class HomeTest extends WebTestCase
 
         $this->assertStringNotContainsString('const catchStates = JSON.parse', $crawler->outerHtml());
         $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->attr('href'));
     }
 
     public function testNonConnectedHome(): void
@@ -106,6 +114,11 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 8, '.home-item');
         $this->assertCountFilter($crawler, 8, '.home-item h5');
         $this->assertCountFilter($crawler, 1, '.home-item h6');
+
+        $this->assertCountFilter($crawler, 1, '.alert-warning');
+        $this->assertEquals('/fr/connect', $crawler->filter('.alert-warning a')->attr('href'));
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->attr('href'));
 
         $this->assertCountFilter($crawler, 1, '.dex_is_premium');
         $this->assertCountFilter($crawler, 0, '.dex_not_is_released');
@@ -149,7 +162,14 @@ class HomeTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $this->assertCountFilter($crawler, 0, '.home-item');
-        $this->assertCountFilter($crawler, 1, '.alert');
+
+        $this->assertCountFilter($crawler, 1, '.alert-secondary');
+        $this->assertEquals('/fr/trainer', $crawler->filter('.alert-secondary a')->eq(0)->attr('href'));
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->eq(0)->attr('href'));
     }
 
     public function testConnectedHomeDexNoOnHome(): void
@@ -165,8 +185,14 @@ class HomeTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $this->assertCountFilter($crawler, 0, '.home-item');
-        $this->assertCountFilter($crawler, 1, '.alert');
-        $this->assertCountFilter($crawler, 1, '.alert a');
+
+        $this->assertCountFilter($crawler, 1, '.alert-secondary');
+        $this->assertEquals('/fr/trainer', $crawler->filter('.alert-secondary a')->eq(0)->attr('href'));
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->eq(0)->attr('href'));
     }
 
     public function testConnectedHomeSomeDex(): void
@@ -184,6 +210,11 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 2, '.home-item');
         $this->assertCountFilter($crawler, 2, '.home-item h5');
         $this->assertCountFilter($crawler, 0, '.home-item h6');
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->eq(0)->attr('href'));
     }
 
     public function testHomeFrench(): void
@@ -211,6 +242,11 @@ class HomeTest extends WebTestCase
         $secondAlbum = $crawler->filter('.home-item')->eq(2);
         $this->assertEquals('Home Chromatique', $secondAlbum->text());
         $this->assertEquals('/fr/album/homeshiny', $secondAlbum->filter('a')->attr('href'));
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.alert-info a')->eq(0)->attr('href'));
     }
 
     public function testHomeEnglish(): void
@@ -238,5 +274,10 @@ class HomeTest extends WebTestCase
         $secondAlbum = $crawler->filter('.home-item')->eq(2);
         $this->assertEquals('Home Shiny', $secondAlbum->text());
         $this->assertEquals('/en/album/homeshiny', $secondAlbum->filter('a')->attr('href'));
+
+        $this->assertCountFilter($crawler, 0, '.alert-warning');
+
+        $this->assertCountFilter($crawler, 1, '.alert-info');
+        $this->assertEquals('/en/election/dex', $crawler->filter('.alert-info a')->eq(0)->attr('href'));
     }
 }

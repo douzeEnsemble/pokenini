@@ -65,6 +65,13 @@ title:
 
 home:
     no_dex: "There are no albums to display. You can add them to your <a>trainer space</a>"
+    alert:
+        election: 
+            description: "Brand new ! You can choose your favorite Pokémon"
+            action: "Let's Go !"
+        not_connected: 
+            description: "You're not logged in. Log in to make the most of the app."
+            action: "Log in"
 
 stats:
     total: "Total"

@@ -12,6 +12,26 @@
     <div class="col-lg-8 mx-auto text-center">
         <h1>Pokénini</h1>
 
+        {% if connectedUserId is null %}
+        <div class="alert alert-warning" role="alert">
+            <p>
+                {{ 'home.alert.not_connected.description'|trans }}
+            </p>
+            <a href="{{ path('app_web_connect_index') }}" class="btn btn-warning">
+                {{ 'home.alert.not_connected.action'|trans }}
+            </a>
+        </div>
+        {% endif %}
+
+        <div class="alert alert-info" role="alert">
+            <p>
+                {{ 'home.alert.election.description'|trans }}
+            </p>
+            <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-light">
+                {{ 'home.alert.election.action'|trans }}
+            </a>
+        </div>
+
         <div class="row">
             {% for item in dex|filter(item => item.is_on_home is same as(true)) %}
             {{ _self.homeItem(
@@ -20,7 +40,7 @@
                 connectedUserId is not null ? null : userId
             ) }}
             {% else %}
-            <div class="alert alert-info mt-5" role="alert">
+            <div class="alert alert-secondary mt-5" role="alert">
                 <p>{{ 'home.no_dex'|trans|replace({'<a>': '<a href="'~path('app_web_trainerindex_index')~'">'})|raw }}</p>
             </div>
             {% endfor %}
