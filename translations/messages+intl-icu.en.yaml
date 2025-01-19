@@ -63,11 +63,13 @@ title:
         404: "The page was not found"
         500: "There was a shit. It's not you, it's us"
 
-home:
-    no_dex: "There are no albums to display. You can add them to your <a>trainer space</a>"
-
 stats:
     total: "Total"
+
+album_dex:
+    title: "Choose the dex"
+    subtitle: "Collect them all !"
+    no_dex: "There are no albums to display. You can add them to your <a>trainer space</a>"
 
 album:
     icon:
@@ -285,6 +287,7 @@ footer:
     legals: "Legal Notice"
     policy: "Privacy Policy"
     cookies: "Cookies"
+
 error:
     unknown:
         text: |
@@ -488,3 +491,14 @@ election_dex:
     subtitle: "Depending on the dex, there are more or fewer Pokémon, and more or fewer forms. It's up to you."
     dex:
         total_count_suffixe: Pokémons
+
+home:
+    goto:
+        album_dex: 
+            title: "Show me the collections"
+            description: "You can track and manage your Pokémon collections across various Pokédexes by games, apps, or forms"
+            action: "Manage my Pokédex"
+        election_dex: 
+            title: "I want to choose my favorite Pokémon"
+            description: "If you're unsure about picking your favorite Pokémon, you should check this out"
+            action: "Discover my favorite"

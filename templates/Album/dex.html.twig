@@ -8,49 +8,36 @@
 {% block navbarTitle %}Pokénini{% endblock navbarTitle %}
 
 {% block container %}
-<div id="home" class="row">
+<div id="election_dex" class="row">
     <div class="col-lg-8 mx-auto text-center">
-        <h1>Pokénini</h1>
-
+        <h1>
+            {{ 'album_dex.title'|trans }}
+        </h1>
+        <h2>
+            <small class="text-body-secondary">
+                {{ 'album_dex.subtitle'|trans }}
+            </small>
+        </h2>
         <div class="row">
-            <div class="col">
-                <div class="card text-bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ 'home.goto.album_dex.title'|trans }}
-                        </h5>
-                        <p class="card-text">
-                            {{ 'home.goto.album_dex.description'|trans }}
-                        </p>
-                        <a href="{{ path('app_web_albumdex_index') }}" class="btn btn-primary">
-                            {{ 'home.goto.album_dex.action'|trans }}
-                        </a>
-                    </div>
-                </div>
+            {% for item in dex|filter(item => item.is_on_home is same as(true)) %}
+            {{ _self.dexItem(
+                item,
+                locale, 
+                connectedUserId is not null ? null : userId
+            ) }}
+            {% else %}
+            <div class="alert alert-info mt-5" role="alert">
+                <p>{{ 'album_dex.no_dex'|trans|replace({'<a>': '<a href="'~path('app_web_trainerindex_index')~'">'})|raw }}</p>
             </div>
-            <div class="col">
-                <div class="card text-bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {{ 'home.goto.election_dex.title'|trans }}
-                        </h5>
-                        <p class="card-text">
-                            {{ 'home.goto.election_dex.description'|trans }}
-                        </p>
-                        <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-primary">
-                            {{ 'home.goto.album_dex.action'|trans }}
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 {% endblock %}
 
-{% macro homeItem(dex, locale, trainerId) %}
+{% macro dexItem(dex, locale, trainerId) %}
 {% set url = path('app_web_albumindex_index', {'dexSlug': dex.slug, 't': trainerId}) %}
-<div class="card col-lg-3 col-sm-6 col-12 home-item position-relative">
+<div class="card col-lg-3 col-sm-6 col-12 dex-item position-relative">
     <a href="{{ url }}">
         {% set bannerUrl = dexBannerUrl|format(dex.slug) %}
         {% set defaultBannerUrl = '/img/banner/default.webp' %}

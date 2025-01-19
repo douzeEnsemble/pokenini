@@ -63,11 +63,13 @@ title:
         404: "La page n'a pas été trouvée"
         500: "Y'a eu une merde. C'est pas toi, c'est nous"
 
-home:
-    no_dex: "Y'a pas d'album à afficher. Tu peux les rajouter sur ton <a>espace dresseur</a>."
-
 stats:
     total: "Total"
+
+album_dex:
+    title: "Choisi ton pokédex"
+    subtitle: "Complète les tous !"
+    no_dex: "Y'a pas d'album à afficher. Tu peux les rajouter sur ton <a>espace dresseur</a>."
 
 album:
     icon:
@@ -493,3 +495,15 @@ election_dex:
     subtitle: "Selon le dex, il y'a plus ou moins de pokémons, plus ou moins de formes. C'est à toi de voir"
     dex:
         total_count_suffixe: Pokémons
+
+home:
+    goto:
+        album_dex: 
+            title: "Montre-moi les collections"
+            description: "Tu peux suivre et gérer tes collections de Pokémons selon plusieurs pokédex par jeux, applications ou par formes"
+            action: "Gérer mes Pokédex"
+        election_dex: 
+            title: "Je veux choisir mon Pokémon préféré"
+            description: "Si tu hésites à choisir ton pokémon préféré, tu devrais voir ça"
+            action: "Découvrir mon préféré"
+
