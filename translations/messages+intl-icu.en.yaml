@@ -1,5 +1,12 @@
 logout: "Log out"
 login: "Log in"
+
+number:
+    exactly: exactly {number}
+    almost: almost {number}
+    approximately: approximately {number}
+    between: between {low} and {high}
+
 nav:
     home: "Home"
     back_home: "Back to home"
@@ -426,6 +433,15 @@ election:
             start: "You have "
             end: " favorites that stand out."
             none: "You have no favorites that stand out."
+        choose_per_turn: >
+            {value, plural,
+                =0 {exactly {value}}
+                =1 {exactly {value}}
+                one {almost {value}}
+                few {about {value}}
+                other {between {value0} and {value1}}
+            }
+
 
 dex:
     filters:

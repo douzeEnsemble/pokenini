@@ -52,6 +52,7 @@ class ElectionIndexTest extends WebTestCase
             5,
             20,
             "Tu n'as pas de favoris qui se détache.",
+            'exactement 3',
         );
     }
 
@@ -91,6 +92,7 @@ class ElectionIndexTest extends WebTestCase
             5,
             140,
             "Tu n'as pas de favoris qui se détache.",
+            'quasi 6',
         );
     }
 
@@ -130,6 +132,7 @@ class ElectionIndexTest extends WebTestCase
             5,
             100,
             "Tu n'as pas de favoris qui se détache.",
+            'quasi 3',
         );
     }
 
@@ -169,6 +172,7 @@ class ElectionIndexTest extends WebTestCase
             5,
             140,
             'Tu as 1 favori qui se détache',
+            'exactement 6',
         );
     }
 
@@ -297,6 +301,7 @@ class ElectionIndexTest extends WebTestCase
         int $totalRoundCount,
         int $progress,
         string $favoriteCountText,
+        string $almostExactlyText,
     ): void {
         $this->assertCountFilter($crawler, 1, '#election-stats');
 
@@ -314,11 +319,16 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertSame(
             "Tu as fait {$roundCount} {$roundsTxt} sur {$totalRoundCount}.",
-            $crawler->filter('#election-stats p')->eq(0)->text()
+            $crawler->filter('#election-stats p span')->eq(0)->text()
         );
         $this->assertSame(
             $favoriteCountText,
             $crawler->filter('#election-stats p')->eq(1)->text()
+        );
+
+        $this->assertSame(
+            $almostExactlyText,
+            $crawler->filter('#election-stats small mark')->eq(0)->text()
         );
     }
 }

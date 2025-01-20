@@ -1,5 +1,12 @@
 logout: "Se déconnecter"
 login: "Se connecter"
+
+number:
+    exactly: exactement {number}
+    almost: quasi {number}
+    approximately: presque {number}
+    between: entre {low} et {high}
+
 nav:
     home: "Accueil"
     back_home: "Retour à l'accueil"
@@ -431,6 +438,14 @@ election:
                     other { favoris qui se détachent}
                 }
             none: "Tu n'as pas de favoris qui se détache."
+        choose_per_turn: >
+            {value, plural,
+                =0 {exactly {value}}
+                =1 {exactly {value}}
+                one {almost {value}}
+                few {about {value}}
+                other {between {value0} and {value1}}
+            }
     
 dex:
     filters:
