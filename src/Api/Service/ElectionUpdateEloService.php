@@ -22,10 +22,6 @@ class ElectionUpdateEloService
      */
     public function update(ElectionVote $electionVote): array
     {
-        if (!count($electionVote->winnersSlugs) || !count($electionVote->losersSlugs)) {
-            return [];
-        }
-
         $winnersPokemonElo = $this->getPokemonsElo($electionVote, $electionVote->winnersSlugs);
         $losersPokemonElo = $this->getPokemonsElo($electionVote, $electionVote->losersSlugs);
 
@@ -55,7 +51,7 @@ class ElectionUpdateEloService
                 $electionVote->trainerExternalId,
                 $electionVote->dexSlug,
                 $electionVote->electionSlug,
-                $slug
+                $slug,
             );
             $elo ??= $this->eloDefault;
 
@@ -73,6 +69,10 @@ class ElectionUpdateEloService
         $listElo = [];
         foreach ($pokemonsElo as $pokemonElo) {
             $listElo[] = $pokemonElo->getElo();
+        }
+
+        if (empty($listElo)) {
+            return $this->eloDefault;
         }
 
         return (int) round(array_sum($listElo) / count($listElo));
