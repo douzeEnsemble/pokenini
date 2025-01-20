@@ -10,9 +10,7 @@ use Twig\TwigFilter;
 
 class AppTranslatorExtension extends AbstractExtension
 {
-    public function __construct(private readonly TranslatorInterface $translator)
-    {    
-    }
+    public function __construct(private readonly TranslatorInterface $translator) {}
 
     public function getFilters(): array
     {
@@ -30,16 +28,20 @@ class AppTranslatorExtension extends AbstractExtension
 
         if ($value == $floor) {
             return $this->translator->trans('number.exactly', ['number' => $floor]);
-        } elseif ($value < $floor + 0.25) {
+        }
+        if ($value < $floor + 0.25) {
             return $this->translator->trans('number.almost', ['number' => $floor]);
-        } elseif ($value > $ceil - 0.25) {
+        }
+        if ($value > $ceil - 0.25) {
             return $this->translator->trans('number.almost', ['number' => $ceil]);
-        } elseif ($average === $value) {
-            return $this->translator->trans('number.between', ['low' => $floor, 'high' => $ceil]);
-        } elseif ($average > $value) {
+        }
+        if ($average > $value) {
             return $this->translator->trans('number.approximately', ['number' => $floor]);
-        } elseif ($average < $value) {
+        }
+        if ($average < $value) {
             return $this->translator->trans('number.approximately', ['number' => $ceil]);
         }
+
+        return $this->translator->trans('number.between', ['low' => $floor, 'high' => $ceil]);
     }
 }

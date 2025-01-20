@@ -39,6 +39,9 @@ class AppTranslatorExtensionTest extends TestCase
         $this->assertEquals('almostExactly', $almostExactlyFilterCallable[1]);
     }
 
+    /**
+     * @param string[] $params
+     */
     #[DataProvider('providerAlmostExactly')]
     public function testAlmostExactly(
         string $text,
@@ -59,16 +62,19 @@ class AppTranslatorExtensionTest extends TestCase
         $this->assertSame(
             $expected,
             $extension->almostExactly($value),
-        );        
+        );
     }
 
+    /**
+     * @return float[][]|int[][]|int[][][]|string[][]|string[][][]
+     */
     public static function providerAlmostExactly(): array
     {
         return [
             'exactly4' => [
                 'text' => 'number.exactly',
                 'params' => [
-                    '%number%' => 4,
+                    'number' => 4,
                 ],
                 'return' => 'exactly_number4',
                 'expected' => 'exactly_number4',
@@ -77,7 +83,7 @@ class AppTranslatorExtensionTest extends TestCase
             'almost.1' => [
                 'text' => 'number.almost',
                 'params' => [
-                    '%number%' => 4,
+                    'number' => 4,
                 ],
                 'return' => 'almost_number4',
                 'expected' => 'almost_number4',
@@ -86,16 +92,25 @@ class AppTranslatorExtensionTest extends TestCase
             'almost.2' => [
                 'text' => 'number.almost',
                 'params' => [
-                    '%number%' => 4,
+                    'number' => 4,
                 ],
                 'return' => 'almost_number4',
                 'expected' => 'almost_number4',
                 'value' => 4.2,
             ],
+            'approximately.25' => [
+                'text' => 'number.approximately',
+                'params' => [
+                    'number' => 4,
+                ],
+                'return' => 'approximately_number4',
+                'expected' => 'approximately_number4',
+                'value' => 4.25,
+            ],
             'approximately.3' => [
                 'text' => 'number.approximately',
                 'params' => [
-                    '%number%' => 4,
+                    'number' => 4,
                 ],
                 'return' => 'approximately_number4',
                 'expected' => 'approximately_number4',
@@ -104,17 +119,17 @@ class AppTranslatorExtensionTest extends TestCase
             'approximately.4' => [
                 'text' => 'number.approximately',
                 'params' => [
-                    '%number%' => 4,
+                    'number' => 4,
                 ],
                 'return' => 'approximately_number4',
                 'expected' => 'approximately_number4',
                 'value' => 4.4,
             ],
-            'between.4' => [
+            'between.5' => [
                 'text' => 'number.between',
                 'params' => [
-                    '%low%' => 4,
-                    '%high%' => 5,
+                    'low' => 4,
+                    'high' => 5,
                 ],
                 'return' => 'between_low4_high5',
                 'expected' => 'between_low4_high5',
@@ -123,7 +138,7 @@ class AppTranslatorExtensionTest extends TestCase
             'approximately.6' => [
                 'text' => 'number.approximately',
                 'params' => [
-                    '%number%' => 5,
+                    'number' => 5,
                 ],
                 'return' => 'approximately_number5',
                 'expected' => 'approximately_number5',
@@ -132,16 +147,34 @@ class AppTranslatorExtensionTest extends TestCase
             'approximately.7' => [
                 'text' => 'number.approximately',
                 'params' => [
-                    '%number%' => 5,
+                    'number' => 5,
                 ],
                 'return' => 'approximately_number5',
                 'expected' => 'approximately_number5',
                 'value' => 4.7,
             ],
+            'approximately.75' => [
+                'text' => 'number.approximately',
+                'params' => [
+                    'number' => 5,
+                ],
+                'return' => 'approximately_number5',
+                'expected' => 'approximately_number5',
+                'value' => 4.75,
+            ],
+            'almost.8' => [
+                'text' => 'number.almost',
+                'params' => [
+                    'number' => 5,
+                ],
+                'return' => 'almost_number5',
+                'expected' => 'almost_number5',
+                'value' => 4.8,
+            ],
             'almost.9' => [
                 'text' => 'number.almost',
                 'params' => [
-                    '%number%' => 5,
+                    'number' => 5,
                 ],
                 'return' => 'almost_number5',
                 'expected' => 'almost_number5',
@@ -150,7 +183,7 @@ class AppTranslatorExtensionTest extends TestCase
             'exactly5' => [
                 'text' => 'number.exactly',
                 'params' => [
-                    '%number%' => 5,
+                    'number' => 5,
                 ],
                 'return' => 'exactly_number5',
                 'expected' => 'exactly_number5',
