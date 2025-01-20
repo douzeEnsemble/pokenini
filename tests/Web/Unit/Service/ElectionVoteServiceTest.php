@@ -82,4 +82,70 @@ class ElectionVoteServiceTest extends TestCase
 
         $this->assertSame(3, $result->getVoteCount());
     }
+
+    public function testVoteAllLosers(): void
+    {
+        $userTokenService = $this->createMock(UserTokenService::class);
+        $userTokenService
+            ->expects($this->once())
+            ->method('getLoggedUserToken')
+            ->willReturn('8800088')
+        ;
+
+        $electionVote = new ElectionVote([
+            'dex_slug' => 'demo',
+            'election_slug' => 'whatever',
+            'winners_slugs' => [],
+            'losers_slugs' => ['pikachu', 'pichu', 'raichu'],
+        ]);
+
+        $apiService = $this->createMock(ElectionVoteApiService::class);
+        $apiService
+            ->expects($this->once())
+            ->method('vote')
+            ->with(
+                '8800088',
+                $electionVote,
+            )
+            ->willReturn(['voteCount' => 3])
+        ;
+
+        $service = new ElectionVoteService($userTokenService, $apiService);
+        $result = $service->vote($electionVote);
+
+        $this->assertSame(3, $result->getVoteCount());
+    }
+
+    public function testVoteAllWinners(): void
+    {
+        $userTokenService = $this->createMock(UserTokenService::class);
+        $userTokenService
+            ->expects($this->once())
+            ->method('getLoggedUserToken')
+            ->willReturn('8800088')
+        ;
+
+        $electionVote = new ElectionVote([
+            'dex_slug' => 'demo',
+            'election_slug' => 'whatever',
+            'winners_slugs' => ['pikachu', 'pichu', 'raichu'],
+            'losers_slugs' => [],
+        ]);
+
+        $apiService = $this->createMock(ElectionVoteApiService::class);
+        $apiService
+            ->expects($this->once())
+            ->method('vote')
+            ->with(
+                '8800088',
+                $electionVote,
+            )
+            ->willReturn(['voteCount' => 3])
+        ;
+
+        $service = new ElectionVoteService($userTokenService, $apiService);
+        $result = $service->vote($electionVote);
+
+        $this->assertSame(3, $result->getVoteCount());
+    }
 }
