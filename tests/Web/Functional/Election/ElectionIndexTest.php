@@ -273,14 +273,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '#election-actions-top .progress');
 
         $this->assertCountFilter($crawler, 1, '#election-actions-bottom');
-        $this->assertCountFilter($crawler, 3, '#election-actions-bottom .election-actions-item');
+        $this->assertCountFilter($crawler, 2, '#election-actions-bottom .election-actions-item');
         $index = 0;
-        $this->assertEquals(
-            'Nouvelle liste',
-            $crawler->filter('#election-actions-bottom .election-actions-item')
-                ->eq($index++)
-                ->text()
-        );
         $this->assertEquals(
             "J'ai fait mes choix 0",
             $crawler->filter('#election-actions-bottom .election-actions-item')
