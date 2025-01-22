@@ -81,4 +81,18 @@
     })();
     </script>
     {% endif %}
+
+    {% if true %}
+    <script type="application/javascript">
+    (function() {
+        new bootstrap.Popover(
+            '#election-vote-submit-bottom', 
+            {
+                trigger: 'focus'
+            }
+        )
+        .show();
+    })();
+    </script>
+    {% endif %}
 {% endblock foot_javascript %}

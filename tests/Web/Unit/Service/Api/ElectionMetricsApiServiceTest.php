@@ -38,6 +38,9 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 6,
                 'win_count_sum' => 2,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 48,
             ],
             $items
@@ -65,6 +68,9 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 5,
                 'win_count_sum' => 10,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 48,
             ],
             $items
@@ -92,6 +98,9 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 6,
                 'win_count_sum' => 2,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 48,
             ],
             $items
@@ -119,6 +128,9 @@ class ElectionMetricsApiServiceTest extends TestCase
             [
                 'view_count_sum' => 5,
                 'win_count_sum' => 10,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 48,
             ],
             $items

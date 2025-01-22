@@ -70,6 +70,19 @@ class AppTranslatorExtensionTest extends TestCase
      */
     public static function providerAlmostExactly(): array
     {
+        return array_merge(
+            self::getProviderExactlyData(),
+            self::getProviderAlmostData(),
+            self::getProviderApproximatelyData(),
+            self::getProviderBetweenData(),
+        );
+    }
+
+    /**
+     * @return float[][]|int[][]|int[][][]|string[][]|string[][][]
+     */
+    public static function getProviderExactlyData(): array
+    {
         return [
             'exactly4' => [
                 'text' => 'number.exactly',
@@ -80,6 +93,24 @@ class AppTranslatorExtensionTest extends TestCase
                 'expected' => 'exactly_number4',
                 'value' => 4,
             ],
+            'exactly5' => [
+                'text' => 'number.exactly',
+                'params' => [
+                    'number' => 5,
+                ],
+                'return' => 'exactly_number5',
+                'expected' => 'exactly_number5',
+                'value' => 5,
+            ],
+        ];
+    }
+
+    /**
+     * @return float[][]|int[][]|int[][][]|string[][]|string[][][]
+     */
+    public static function getProviderAlmostData(): array
+    {
+        return [
             'almost.1' => [
                 'text' => 'number.almost',
                 'params' => [
@@ -98,6 +129,33 @@ class AppTranslatorExtensionTest extends TestCase
                 'expected' => 'almost_number4',
                 'value' => 4.2,
             ],
+            'almost.8' => [
+                'text' => 'number.almost',
+                'params' => [
+                    'number' => 5,
+                ],
+                'return' => 'almost_number5',
+                'expected' => 'almost_number5',
+                'value' => 4.8,
+            ],
+            'almost.9' => [
+                'text' => 'number.almost',
+                'params' => [
+                    'number' => 5,
+                ],
+                'return' => 'almost_number5',
+                'expected' => 'almost_number5',
+                'value' => 4.9,
+            ],
+        ];
+    }
+
+    /**
+     * @return float[][]|int[][]|int[][][]|string[][]|string[][][]
+     */
+    public static function getProviderApproximatelyData(): array
+    {
+        return [
             'approximately.25' => [
                 'text' => 'number.approximately',
                 'params' => [
@@ -124,16 +182,6 @@ class AppTranslatorExtensionTest extends TestCase
                 'return' => 'approximately_number4',
                 'expected' => 'approximately_number4',
                 'value' => 4.4,
-            ],
-            'between.5' => [
-                'text' => 'number.between',
-                'params' => [
-                    'low' => 4,
-                    'high' => 5,
-                ],
-                'return' => 'between_low4_high5',
-                'expected' => 'between_low4_high5',
-                'value' => 4.5,
             ],
             'approximately.6' => [
                 'text' => 'number.approximately',
@@ -162,32 +210,24 @@ class AppTranslatorExtensionTest extends TestCase
                 'expected' => 'approximately_number5',
                 'value' => 4.75,
             ],
-            'almost.8' => [
-                'text' => 'number.almost',
+        ];
+    }
+
+    /**
+     * @return float[][]|int[][]|int[][][]|string[][]|string[][][]
+     */
+    public static function getProviderBetweenData(): array
+    {
+        return [
+            'between.5' => [
+                'text' => 'number.between',
                 'params' => [
-                    'number' => 5,
+                    'low' => 4,
+                    'high' => 5,
                 ],
-                'return' => 'almost_number5',
-                'expected' => 'almost_number5',
-                'value' => 4.8,
-            ],
-            'almost.9' => [
-                'text' => 'number.almost',
-                'params' => [
-                    'number' => 5,
-                ],
-                'return' => 'almost_number5',
-                'expected' => 'almost_number5',
-                'value' => 4.9,
-            ],
-            'exactly5' => [
-                'text' => 'number.exactly',
-                'params' => [
-                    'number' => 5,
-                ],
-                'return' => 'exactly_number5',
-                'expected' => 'exactly_number5',
-                'value' => 5,
+                'return' => 'between_low4_high5',
+                'expected' => 'between_low4_high5',
+                'value' => 4.5,
             ],
         ];
     }

@@ -1,7 +1,14 @@
 <div id="election-actions-bottom" class="election-actions sticky-top sticky-bottom">
   <div class="row justify-content-center px-xl-4 px-lg-3 px-2 py-xl-2 py-lg-3 py-4">
     <div class="election-actions-item text-center  col-xl-2 col-lg-3 col-6 offset-xl-2 offset-lg-3 offset-3">
-      <button id="election-vote-submit-bottom" class="election-vote-submit btn btn-primary position-relative">
+      <button 
+        id="election-vote-submit-bottom" 
+        class="election-vote-submit btn btn-primary position-relative"
+        data-bs-container="body" 
+        data-bs-trigger="focus"
+        data-bs-placement="top" 
+        data-bs-content="Top popover"
+      >
         <span class="spinner-border spinner-border-sm" aria-hidden="true" hidden></span>
         {{ 'election.actions.submit'|trans }}
         <span id="election-counter-bottom" class="election-counter position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

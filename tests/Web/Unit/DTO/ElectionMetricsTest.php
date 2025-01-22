@@ -21,6 +21,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 82,
                 'win_count_sum' => 54,
+                'view_count_max' => 42,
+                'win_count_max' => 52,
+                'under_max_view_count' => 62,
                 'dex_total_count' => 50,
             ],
             12,
@@ -28,6 +31,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(82, $object->viewCountSum);
         $this->assertSame(54, $object->winCountSum);
+        $this->assertSame(42, $object->viewCountMax);
+        $this->assertSame(52, $object->winCountMax);
+        $this->assertSame(62, $object->underMaxViewCount);
         $this->assertSame(50, $object->dexTotalCount);
 
         $this->assertSame(7, $object->roundCount);
@@ -41,6 +47,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 0,
                 'win_count_sum' => 0,
+                'view_count_max' => 0,
+                'win_count_max' => 0,
+                'under_max_view_count' => 0,
                 'dex_total_count' => 50,
             ],
             12,
@@ -48,6 +57,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->viewCountSum);
         $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(0, $object->viewCountMax);
+        $this->assertSame(0, $object->winCountMax);
+        $this->assertSame(0, $object->underMaxViewCount);
         $this->assertSame(50, $object->dexTotalCount);
 
         $this->assertSame(0, $object->roundCount);
@@ -61,6 +73,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 1,
                 'win_count_sum' => 1,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 50,
             ],
             120,
@@ -68,6 +83,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(1, $object->viewCountSum);
         $this->assertSame(1, $object->winCountSum);
+        $this->assertSame(1, $object->viewCountMax);
+        $this->assertSame(1, $object->winCountMax);
+        $this->assertSame(1, $object->underMaxViewCount);
         $this->assertSame(50, $object->dexTotalCount);
 
         $this->assertSame(0, $object->roundCount);
@@ -81,6 +99,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 120,
                 'win_count_sum' => 28,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => 17,
             ],
             12,
@@ -88,6 +109,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(120, $object->viewCountSum);
         $this->assertSame(28, $object->winCountSum);
+        $this->assertSame(1, $object->viewCountMax);
+        $this->assertSame(1, $object->winCountMax);
+        $this->assertSame(1, $object->underMaxViewCount);
         $this->assertSame(17, $object->dexTotalCount);
 
         $this->assertSame(10, $object->roundCount);
@@ -100,6 +124,9 @@ class ElectionMetricsTest extends TestCase
         $object = new ElectionMetrics(
             [
                 'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
                 'dex_total_count' => 50,
             ],
             12,
@@ -107,6 +134,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->viewCountSum);
         $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(3, $object->viewCountMax);
+        $this->assertSame(4, $object->winCountMax);
+        $this->assertSame(5, $object->underMaxViewCount);
         $this->assertSame(50, $object->dexTotalCount);
 
         $this->assertSame(0, $object->roundCount);
@@ -121,6 +151,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => '1',
                 'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
                 'dex_total_count' => 50,
             ],
             12,
@@ -132,6 +165,9 @@ class ElectionMetricsTest extends TestCase
         $object = new ElectionMetrics(
             [
                 'view_count_sum' => 1,
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
                 'dex_total_count' => 50,
             ],
             12,
@@ -139,6 +175,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(1, $object->viewCountSum);
         $this->assertSame(0, $object->winCountSum);
+        $this->assertSame(3, $object->viewCountMax);
+        $this->assertSame(4, $object->winCountMax);
+        $this->assertSame(5, $object->underMaxViewCount);
         $this->assertSame(50, $object->dexTotalCount);
 
         $this->assertSame(0, $object->roundCount);
@@ -153,17 +192,146 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 1,
                 'win_count_sum' => '2',
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
                 'dex_total_count' => 50,
             ],
             12,
         );
     }
 
-    public function testMissingdexTotalCount(): void
+    public function testMissingViewCountMax(): void
     {
         $object = new ElectionMetrics(
             [
                 'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(0, $object->viewCountMax);
+        $this->assertSame(4, $object->winCountMax);
+        $this->assertSame(5, $object->underMaxViewCount);
+        $this->assertSame(50, $object->dexTotalCount);
+
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
+    }
+
+    public function testBadViewCountMax(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'view_count_max' => '3',
+                'win_count_max' => 4,
+                'under_max_view_count' => 5,
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+    }
+
+    public function testMissingWinCountMax(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'under_max_view_count' => 5,
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(3, $object->viewCountMax);
+        $this->assertSame(0, $object->winCountMax);
+        $this->assertSame(5, $object->underMaxViewCount);
+        $this->assertSame(50, $object->dexTotalCount);
+
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
+    }
+
+    public function testBadWinCountMax(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'win_count_max' => '4',
+                'under_max_view_count' => 5,
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+    }
+
+    public function testMissingUnderMaxViewCount(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+
+        $this->assertSame(1, $object->viewCountSum);
+        $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(3, $object->viewCountMax);
+        $this->assertSame(4, $object->winCountMax);
+        $this->assertSame(0, $object->underMaxViewCount);
+        $this->assertSame(50, $object->dexTotalCount);
+
+        $this->assertSame(0, $object->roundCount);
+        $this->assertSame(4.0, $object->winnerAverage);
+        $this->assertSame(5, $object->totalRoundCount);
+    }
+
+    public function testBadUnderMaxViewCount(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'win_count_sum' => 2,
+                'view_count_max' => 3,
+                'win_count_max' => 4,
+                'under_max_view_count' => '5',
+                'dex_total_count' => 50,
+            ],
+            12,
+        );
+    }
+
+    public function testMissingDexTotalCount(): void
+    {
+        $object = new ElectionMetrics(
+            [
+                'view_count_sum' => 1,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'win_count_sum' => 2,
             ],
             12,
@@ -171,6 +339,9 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(1, $object->viewCountSum);
         $this->assertSame(2, $object->winCountSum);
+        $this->assertSame(1, $object->viewCountMax);
+        $this->assertSame(1, $object->winCountMax);
+        $this->assertSame(1, $object->underMaxViewCount);
         $this->assertSame(0, $object->dexTotalCount);
 
         $this->assertSame(0, $object->roundCount);
@@ -185,6 +356,9 @@ class ElectionMetricsTest extends TestCase
             [
                 'view_count_sum' => 1,
                 'win_count_sum' => 2,
+                'view_count_max' => 1,
+                'win_count_max' => 1,
+                'under_max_view_count' => 1,
                 'dex_total_count' => '50',
             ],
             12,
