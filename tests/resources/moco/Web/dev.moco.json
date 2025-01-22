@@ -2010,6 +2010,81 @@
       },
       "queries": {
         "dex_slug": "mega",
+        "election_slug": "11left",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": {
+        "name": {
+          "template": "/var/moco/pokemons_tovote_mega_11left.json"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "3left",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": {
+        "name": {
+          "template": "/var/moco/pokemons_tovote_mega_3left.json"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "1left",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": {
+        "name": {
+          "template": "/var/moco/pokemons_tovote_mega_1left.json"
+        }
+      }
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
         "election_slug": "pick",
         "count": "12"
       },
@@ -2267,6 +2342,66 @@
     "response": {
       "status": "200",
       "file": "/var/moco/election_mega_vote_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "11left"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_11left_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "3left"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_3left_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "1left"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOmRvdXpl"
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_1left_metrics.json"
     }
   },
   {
