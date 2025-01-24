@@ -2116,7 +2116,49 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_topick_mega_vote_12.json"
+      "file": "/var/moco/pokemons_tovote_mega_vote_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_tovote_mega_lastpage_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/pokemons_tovote_mega_lastone_12.json"
     }
   }, 
   {
@@ -2369,6 +2411,48 @@
   {
     "request": {
       "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_lastpage_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_lastone_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
         "match": "/election/metrics"
       },
       "queries": {
@@ -2484,6 +2568,46 @@
     "response": {
       "status": "200",
       "file": "/var/moco/election_mega_vote_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_lastpage_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/election_mega_lastone_metrics.json"
     }
   },
   {

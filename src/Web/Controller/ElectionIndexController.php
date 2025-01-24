@@ -53,6 +53,9 @@ class ElectionIndexController extends AbstractController
             }
         }
 
+        $isTheLastPage = 0 === $metrics->underMaxViewCount && $metrics->maxViewCount === count($list->items);
+        $isTheLastOne = $isTheLastPage && 1 === $metrics->maxViewCount;
+
         $types = $getLabelsService->getTypes();
         $categoryForms = $getLabelsService->getFormsCategory();
         $regionalForms = $getLabelsService->getFormsRegional();
@@ -78,6 +81,8 @@ class ElectionIndexController extends AbstractController
                 'electionTop' => $electionTop,
                 'metrics' => $metrics,
                 'detachedCount' => $detachedCount,
+                'isTheLastOne' => $isTheLastOne,
+                'isTheLastPage' => $isTheLastPage,
             ]
         );
     }

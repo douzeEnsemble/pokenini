@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 3,
             "pokemon_slug": "charizard-mega-y",
             "pokemon_name": "Mega Charizard Y",
             "pokemon_national_dex_number": 6,
@@ -36,7 +35,6 @@
             "pokemon_order_number": "999-0006-004"
         },
         {
-            "mega-order": 4,
             "pokemon_slug": "blastoise-mega",
             "pokemon_name": "Mega Blastoise",
             "pokemon_national_dex_number": 9,
@@ -70,7 +68,6 @@
             "pokemon_order_number": "999-0009-003"
         },
         {
-            "mega-order": 5,
             "pokemon_slug": "beedrill-mega",
             "pokemon_name": "Mega Beedrill",
             "pokemon_national_dex_number": 15,
@@ -104,7 +101,6 @@
             "pokemon_order_number": "999-0015-003"
         },
         {
-            "mega-order": 6,
             "pokemon_slug": "pidgeot-mega",
             "pokemon_name": "Mega Pidgeot",
             "pokemon_national_dex_number": 18,
@@ -138,7 +134,6 @@
             "pokemon_order_number": "999-0018-003"
         },
         {
-            "mega-order": 14,
             "pokemon_slug": "mewtwo-mega-x",
             "pokemon_name": "Mega Mewtwo X",
             "pokemon_national_dex_number": 150,
@@ -172,7 +167,6 @@
             "pokemon_order_number": "999-0150-001"
         },
         {
-            "mega-order": 16,
             "pokemon_slug": "ampharos-mega",
             "pokemon_name": "Mega Ampharos",
             "pokemon_national_dex_number": 181,
@@ -206,7 +200,6 @@
             "pokemon_order_number": "999-0181-003"
         },
         {
-            "mega-order": 19,
             "pokemon_slug": "heracross-mega",
             "pokemon_name": "Mega Heracross",
             "pokemon_national_dex_number": 214,
@@ -240,7 +233,6 @@
             "pokemon_order_number": "999-0214-005"
         },
         {
-            "mega-order": 22,
             "pokemon_slug": "sceptile-mega",
             "pokemon_name": "Mega Sceptile",
             "pokemon_national_dex_number": 254,
@@ -274,7 +266,6 @@
             "pokemon_order_number": "999-0254-003"
         },
         {
-            "mega-order": 34,
             "pokemon_slug": "banette-mega",
             "pokemon_name": "Mega Banette",
             "pokemon_national_dex_number": 354,
@@ -308,7 +299,6 @@
             "pokemon_order_number": "999-0354-002"
         },
         {
-            "mega-order": 37,
             "pokemon_slug": "salamence-mega",
             "pokemon_name": "Mega Salamence",
             "pokemon_national_dex_number": 373,
@@ -342,7 +332,6 @@
             "pokemon_order_number": "999-0373-003"
         },
         {
-            "mega-order": 39,
             "pokemon_slug": "latias-mega",
             "pokemon_name": "Mega Latias",
             "pokemon_national_dex_number": 380,
@@ -376,7 +365,6 @@
             "pokemon_order_number": "999-0380-001"
         },
         {
-            "mega-order": 49,
             "pokemon_slug": "audino-mega",
             "pokemon_name": "Mega Audino",
             "pokemon_national_dex_number": 531,

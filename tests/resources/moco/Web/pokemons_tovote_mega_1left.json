@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 2,
             "pokemon_slug": "charizard-mega-x",
             "pokemon_name": "Mega Charizard X",
             "pokemon_national_dex_number": 6,

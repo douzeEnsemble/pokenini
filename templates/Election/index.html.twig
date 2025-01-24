@@ -36,7 +36,11 @@
                 </h1>
                 <h2>
                     <small class="text-body-secondary">
-                        {{ 'title.election.subtitle'|trans }}
+                        {% if 0 == metrics.underMaxViewCount and metrics.maxViewCount == pokemons|length %}
+                        {{ 'title.election.subtitle.refine'|trans({'n': pokemons|length}) }}
+                        {% else %}
+                        {{ 'title.election.subtitle.pick_vote'|trans }}
+                        {% endif %}
                     </small>
                 </h2>
 			</div>
@@ -69,8 +73,11 @@
         watchSubmitAction();
         watchCardMouseHover();
 
-        const tooltipList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')]
-            .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        if (null !== tooltips) {     
+            const tooltipList = [...tooltips]
+                .map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))   
+        }
     })();
     </script>
 
@@ -82,7 +89,7 @@
     </script>
     {% endif %}
 
-    {% if true %}
+    {% if not isTheLastOne %}
     <script type="application/javascript">
     (function() {
         new bootstrap.Popover(

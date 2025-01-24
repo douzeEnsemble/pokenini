@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 7,
             "pokemon_slug": "alakazam-mega",
             "pokemon_name": "Mega Alakazam",
             "pokemon_national_dex_number": 65,
@@ -36,7 +35,6 @@
             "pokemon_order_number": "999-0065-010"
         },
         {
-            "mega-order": 10,
             "pokemon_slug": "kangaskhan-mega",
             "pokemon_name": "Mega Kangaskhan",
             "pokemon_national_dex_number": 115,
@@ -70,7 +68,6 @@
             "pokemon_order_number": "999-0115-001"
         },
         {
-            "mega-order": 15,
             "pokemon_slug": "mewtwo-mega-y",
             "pokemon_name": "Mega Mewtwo Y",
             "pokemon_national_dex_number": 150,
@@ -104,7 +101,6 @@
             "pokemon_order_number": "999-0150-002"
         },
         {
-            "mega-order": 21,
             "pokemon_slug": "tyranitar-mega",
             "pokemon_name": "Mega Tyranitar",
             "pokemon_national_dex_number": 248,
@@ -138,7 +134,6 @@
             "pokemon_order_number": "999-0248-003"
         },
         {
-            "mega-order": 25,
             "pokemon_slug": "gardevoir-mega",
             "pokemon_name": "Mega Gardevoir",
             "pokemon_national_dex_number": 282,
@@ -172,7 +167,6 @@
             "pokemon_order_number": "999-0282-006"
         },
         {
-            "mega-order": 29,
             "pokemon_slug": "medicham-mega",
             "pokemon_name": "Mega Medicham",
             "pokemon_national_dex_number": 308,
@@ -206,7 +200,6 @@
             "pokemon_order_number": "999-0308-004"
         },
         {
-            "mega-order": 32,
             "pokemon_slug": "camerupt-mega",
             "pokemon_name": "Mega Camerupt",
             "pokemon_national_dex_number": 323,
@@ -240,7 +233,6 @@
             "pokemon_order_number": "999-0323-004"
         },
         {
-            "mega-order": 33,
             "pokemon_slug": "altaria-mega",
             "pokemon_name": "Mega Altaria",
             "pokemon_national_dex_number": 334,
@@ -274,7 +266,6 @@
             "pokemon_order_number": "999-0334-002"
         },
         {
-            "mega-order": 41,
             "pokemon_slug": "kyogre-primal",
             "pokemon_name": "Primal Kyogre",
             "pokemon_national_dex_number": 382,
@@ -308,7 +299,6 @@
             "pokemon_order_number": "999-0382-001"
         },
         {
-            "mega-order": 42,
             "pokemon_slug": "groudon-primal",
             "pokemon_name": "Primal Groudon",
             "pokemon_national_dex_number": 383,
@@ -342,7 +332,6 @@
             "pokemon_order_number": "999-0383-001"
         },
         {
-            "mega-order": 46,
             "pokemon_slug": "lucario-mega",
             "pokemon_name": "Mega Lucario",
             "pokemon_national_dex_number": 448,
@@ -376,7 +365,6 @@
             "pokemon_order_number": "999-0448-004"
         },
         {
-            "mega-order": 47,
             "pokemon_slug": "abomasnow-mega",
             "pokemon_name": "Mega Abomasnow",
             "pokemon_national_dex_number": 460,

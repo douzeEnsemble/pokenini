@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 2,
             "pokemon_slug": "charizard-mega-x",
             "pokemon_name": "Mega Charizard X",
             "pokemon_national_dex_number": 6,
@@ -36,7 +35,6 @@
             "pokemon_order_number": "999-0006-003"
         },
         {
-            "mega-order": 4,
             "pokemon_slug": "blastoise-mega",
             "pokemon_name": "Mega Blastoise",
             "pokemon_national_dex_number": 9,
@@ -70,7 +68,6 @@
             "pokemon_order_number": "999-0009-003"
         },
         {
-            "mega-order": 8,
             "pokemon_slug": "slowbro-mega",
             "pokemon_name": "Mega Slowbro",
             "pokemon_national_dex_number": 80,
