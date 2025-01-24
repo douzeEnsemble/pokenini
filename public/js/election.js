@@ -28,6 +28,11 @@ function changeCardBorderWinner(target) {
 
 function updateElectionCounter() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"][name="winners_slugs[]"');
+
+  if (null === checkboxes) {
+    return;
+  }
+  
   const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
   const count = checkedCheckboxes.length;
 
@@ -57,7 +62,10 @@ function onCardClick(event) {
   const target = event.target;
   const card = target.closest('.card');
 
-  card.querySelector('input[type="checkbox"][name="winners_slugs[]"').click();
+  const checkboxes = card.querySelector('input[type="checkbox"][name="winners_slugs[]"');
+  if (null !== checkboxes) {
+    checkboxes.click();
+  }
 }
 
 function watchSubmitAction () {

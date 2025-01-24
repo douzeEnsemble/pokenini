@@ -64,22 +64,13 @@ title:
         nav: "C'est quoi ton préféré ?"
         pick: "Fait ton choix"
         vote: "Vote maintenant"
-        subtitle: >-
-            {n, plural,
-                =0    {There are no apples}
-                =1    {There is one apple...}
-                =2    {There is one apple...}
-                =3    {There is one apple...}
-                =4    {There is one apple...}
-                =5    {There is one apple...}
-                =6    {There is one apple...}
-                =7    {There is one apple...}
-                =8    {There is one apple...}
-                =9    {There is one apple...}
-                =10   {There is one apple...}
-                =11   {Dernière liste}
-                other {Choisissez d'abord, ensuite Votez}
-            }        
+        subtitle: 
+            pick_vote: "Choisissez d'abord, ensuite Votez"
+            refine: >-
+                {n, plural,
+                    =1 { Voilà TON Pokémon préféré }
+                    other { Affine toi choix }
+                }
     error:
         unknown: "Y'a eu une erreur"
         404: "La page n'a pas été trouvée"
@@ -397,6 +388,7 @@ admin:
 election:
     choose:
         action: "Je choisi celui-là"
+    the_end: "Bravo, tu as fini"
     slug:
         label: "Nom de l'élection"
     filters:
@@ -445,6 +437,7 @@ election:
                     other { tours sur }
                 }
             end: "."
+        last: "Ce sont les {n} derniers. Tu peux en rester là, ou affiner ton choix. Stoi qui décide"
         favorite_count: 
             start: "Tu as "
             end: >-

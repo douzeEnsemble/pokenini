@@ -37,6 +37,7 @@
               {% endif %}
             </li>
           </ul>
+          {% if not isTheLastOne %}
           <ul class="list-group list-group-flush mt-2">
             <li class="list-group-item text-center">
               <input type="checkbox" class="btn-check" name="winners_slugs[]" value="{{ item.pokemon_slug }}" id="vote-{{ item.pokemon_slug }}" autocomplete="off">
@@ -44,6 +45,7 @@
               <input type="hidden" name="losers_slugs[]" value="{{ item.pokemon_slug }}" />
             </li>
           </ul>
+          {% endif %}
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 12,
             "pokemon_slug": "gyarados-mega",
             "pokemon_name": "Mega Gyarados",
             "pokemon_national_dex_number": 130,
@@ -36,7 +35,6 @@
             "pokemon_order_number": "999-0130-009"
         },
         {
-            "mega-order": 16,
             "pokemon_slug": "ampharos-mega",
             "pokemon_name": "Mega Ampharos",
             "pokemon_national_dex_number": 181,
@@ -70,7 +68,6 @@
             "pokemon_order_number": "999-0181-003"
         },
         {
-            "mega-order": 18,
             "pokemon_slug": "scizor-mega",
             "pokemon_name": "Mega Scizor",
             "pokemon_national_dex_number": 212,
@@ -104,7 +101,6 @@
             "pokemon_order_number": "999-0212-008"
         },
         {
-            "mega-order": 21,
             "pokemon_slug": "tyranitar-mega",
             "pokemon_name": "Mega Tyranitar",
             "pokemon_national_dex_number": 248,
@@ -138,7 +134,6 @@
             "pokemon_order_number": "999-0248-003"
         },
         {
-            "mega-order": 24,
             "pokemon_slug": "swampert-mega",
             "pokemon_name": "Mega Swampert",
             "pokemon_national_dex_number": 260,
@@ -172,7 +167,6 @@
             "pokemon_order_number": "999-0260-003"
         },
         {
-            "mega-order": 25,
             "pokemon_slug": "gardevoir-mega",
             "pokemon_name": "Mega Gardevoir",
             "pokemon_national_dex_number": 282,
@@ -206,7 +200,6 @@
             "pokemon_order_number": "999-0282-006"
         },
         {
-            "mega-order": 26,
             "pokemon_slug": "sableye-mega",
             "pokemon_name": "Mega Sableye",
             "pokemon_national_dex_number": 302,
@@ -240,7 +233,6 @@
             "pokemon_order_number": "999-0302-001"
         },
         {
-            "mega-order": 31,
             "pokemon_slug": "sharpedo-mega",
             "pokemon_name": "Mega Sharpedo",
             "pokemon_national_dex_number": 319,
@@ -274,7 +266,6 @@
             "pokemon_order_number": "999-0319-002"
         },
         {
-            "mega-order": 32,
             "pokemon_slug": "camerupt-mega",
             "pokemon_name": "Mega Camerupt",
             "pokemon_national_dex_number": 323,
@@ -308,7 +299,6 @@
             "pokemon_order_number": "999-0323-004"
         },
         {
-            "mega-order": 38,
             "pokemon_slug": "metagross-mega",
             "pokemon_name": "Mega Metagross",
             "pokemon_national_dex_number": 376,
@@ -342,7 +332,6 @@
             "pokemon_order_number": "999-0376-003"
         },
         {
-            "mega-order": 43,
             "pokemon_slug": "rayquaza-mega",
             "pokemon_name": "Mega Rayquaza",
             "pokemon_national_dex_number": 384,
@@ -376,7 +365,6 @@
             "pokemon_order_number": "999-0384-001"
         },
         {
-            "mega-order": 47,
             "pokemon_slug": "abomasnow-mega",
             "pokemon_name": "Mega Abomasnow",
             "pokemon_national_dex_number": 460,

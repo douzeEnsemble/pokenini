@@ -40,6 +40,7 @@ class ElectionMetricsServiceTest extends TestCase
                 'view_count_max' => 4,
                 'win_count_max' => 14,
                 'under_max_view_count' => 24,
+                'max_view_count' => 5,
                 'dex_total_count' => 48,
             ])
         ;
@@ -53,6 +54,7 @@ class ElectionMetricsServiceTest extends TestCase
         $this->assertSame(4, $metrics->viewCountMax);
         $this->assertSame(14, $metrics->winCountMax);
         $this->assertSame(24, $metrics->underMaxViewCount);
+        $this->assertSame(5, $metrics->maxViewCount);
         $this->assertSame(1, $metrics->roundCount);
         $this->assertSame(48.0, $metrics->winnerAverage);
         $this->assertSame(4, $metrics->totalRoundCount);

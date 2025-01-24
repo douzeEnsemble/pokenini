@@ -1,13 +1,16 @@
 <div id="election-actions-bottom" class="election-actions sticky-top sticky-bottom">
   <div class="row justify-content-center px-xl-4 px-lg-3 px-2 py-xl-2 py-lg-3 py-4">
-    <div class="election-actions-item text-center  col-xl-2 col-lg-3 col-6 offset-xl-2 offset-lg-3 offset-3">
+    <div class="election-actions-item text-center col-xl-2 col-lg-3 col-6 offset-xl-2 offset-lg-3 offset-3">
+      {% if not isTheLastOne %}
       <button 
         id="election-vote-submit-bottom" 
         class="election-vote-submit btn btn-primary position-relative"
+        {% if isTheLastPage %}
         data-bs-container="body" 
         data-bs-trigger="focus"
         data-bs-placement="top" 
-        data-bs-content="Top popover"
+        data-bs-content="{{ 'election.stats.last'|trans({'n': pokemons|length}) }}"
+        {% endif %}
       >
         <span class="spinner-border spinner-border-sm" aria-hidden="true" hidden></span>
         {{ 'election.actions.submit'|trans }}
@@ -15,12 +18,19 @@
           0
         </span>
       </button>
+      {% else %}
+      <div class="alert alert-success" role="alert">
+        {{ 'election.the_end'|trans }}
+      </div>
+      {% endif %}
     </div>
     <div class="election-actions-item text-end col-xl-2 col-lg-3 col-3">
+      {% if not isTheLastOne %}
       <a class="btn btn-light btn-sm" href="#election-modal-filters" data-bs-toggle="modal" data-bs-target="#election-modal-filters">
         <span class="d-none d-md-inline">{{ 'election.actions.filters'|trans }}</span>
         <i class="bi bi-funnel"></i>
       </a>
-    </div>    
+      {% endif %}
+    </div>
   </div>
 </div>

@@ -64,7 +64,13 @@ title:
         nav: "What's your favorite?"
         pick: "Make Your Choice"
         vote: "Vote Now"
-        subtitle: "Choose First, Then Vote"
+        subtitle: 
+            pick_vote: "Choose First, Then Vote"
+            refine: >-
+                {n, plural,
+                    =1 { This IS your favorite Pokémon }
+                    other { Refine your choice }
+                }
     error:
         unknown: "There was an error"
         404: "The page was not found"
@@ -381,6 +387,7 @@ admin:
 election:
     choose:
         action: "I choose this one"
+    the_end: "Well done, you're done!"
     slug:
         label: "Election's name"
     filters:
@@ -429,6 +436,7 @@ election:
                     other { rounds out of }
                 }
             end: "."
+        last: "These are the last {n}. You can stop here or refine your choice."
         favorite_count: 
             start: "You have "
             end: " favorites that stand out."

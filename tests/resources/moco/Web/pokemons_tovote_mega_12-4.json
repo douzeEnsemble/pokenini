@@ -2,7 +2,6 @@
     "type": "vote",
     "items": [
         {
-            "mega-order": 5,
             "pokemon_slug": "beedrill-mega",
             "pokemon_name": "Mega Beedrill",
             "pokemon_national_dex_number": 15,
@@ -36,7 +35,6 @@
             "pokemon_order_number": "999-0015-003"
         },
         {
-            "mega-order": 15,
             "pokemon_slug": "mewtwo-mega-y",
             "pokemon_name": "Mega Mewtwo Y",
             "pokemon_national_dex_number": 150,
@@ -70,7 +68,6 @@
             "pokemon_order_number": "999-0150-002"
         },
         {
-            "mega-order": 16,
             "pokemon_slug": "ampharos-mega",
             "pokemon_name": "Mega Ampharos",
             "pokemon_national_dex_number": 181,
@@ -104,7 +101,6 @@
             "pokemon_order_number": "999-0181-003"
         },
         {
-            "mega-order": 17,
             "pokemon_slug": "steelix-mega",
             "pokemon_name": "Mega Steelix",
             "pokemon_national_dex_number": 208,
@@ -138,7 +134,6 @@
             "pokemon_order_number": "999-0208-006"
         },
         {
-            "mega-order": 19,
             "pokemon_slug": "heracross-mega",
             "pokemon_name": "Mega Heracross",
             "pokemon_national_dex_number": 214,
@@ -172,7 +167,6 @@
             "pokemon_order_number": "999-0214-005"
         },
         {
-            "mega-order": 27,
             "pokemon_slug": "mawile-mega",
             "pokemon_name": "Mega Mawile",
             "pokemon_national_dex_number": 303,
@@ -206,7 +200,6 @@
             "pokemon_order_number": "999-0303-001"
         },
         {
-            "mega-order": 31,
             "pokemon_slug": "sharpedo-mega",
             "pokemon_name": "Mega Sharpedo",
             "pokemon_national_dex_number": 319,
@@ -240,7 +233,6 @@
             "pokemon_order_number": "999-0319-002"
         },
         {
-            "mega-order": 33,
             "pokemon_slug": "altaria-mega",
             "pokemon_name": "Mega Altaria",
             "pokemon_national_dex_number": 334,
@@ -274,7 +266,6 @@
             "pokemon_order_number": "999-0334-002"
         },
         {
-            "mega-order": 42,
             "pokemon_slug": "groudon-primal",
             "pokemon_name": "Primal Groudon",
             "pokemon_national_dex_number": 383,
@@ -308,7 +299,6 @@
             "pokemon_order_number": "999-0383-001"
         },
         {
-            "mega-order": 47,
             "pokemon_slug": "abomasnow-mega",
             "pokemon_name": "Mega Abomasnow",
             "pokemon_national_dex_number": 460,
@@ -342,7 +332,6 @@
             "pokemon_order_number": "999-0460-008"
         },
         {
-            "mega-order": 48,
             "pokemon_slug": "gallade-mega",
             "pokemon_name": "Mega Gallade",
             "pokemon_national_dex_number": 475,
