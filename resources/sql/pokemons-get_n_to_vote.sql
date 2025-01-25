@@ -1,16 +1,17 @@
 WITH stats AS (
     SELECT MAX(view_count) AS max_view
     FROM    trainer_pokemon_elo AS tpe
+        JOIN dex AS d 
+            ON tpe.dex_id = d.id AND d.slug = :dex_slug
     WHERE   tpe.trainer_external_id = :trainer_external_id
-        AND tpe.dex_slug = :dex_slug
         AND tpe.election_slug = :election_slug
 ), variables AS (
     SELECT  
             COUNT(CASE WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count THEN 1 END) AS under_max_view_count
     FROM    trainer_pokemon_elo AS tpe
+        JOIN dex AS d ON tpe.dex_id = d.id AND d.slug = :dex_slug
         CROSS JOIN stats s
     WHERE   tpe.trainer_external_id = :trainer_external_id
-        AND tpe.dex_slug = :dex_slug
         AND tpe.election_slug = :election_slug
 )
 SELECT
@@ -76,7 +77,7 @@ WHERE EXISTS (
                 trainer_pokemon_elo AS tpe
         WHERE   p.id = tpe.pokemon_id
             AND tpe.trainer_external_id = :trainer_external_id
-            AND tpe.dex_slug = :dex_slug
+            AND tpe.dex_id = d.id
             AND tpe.election_slug = :election_slug
             AND tpe.view_count = CASE WHEN 0 = v.under_max_view_count THEN s.max_view ELSE s.max_view - 1 END
             AND tpe.view_count = tpe.win_count

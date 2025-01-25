@@ -59,6 +59,7 @@ class ElectionServiceTest extends KernelTestCase
 
         $electionVote = new ElectionVote([
             'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'dex_slug' => 'home',
             'election_slug' => 'favorite',
             'winners_slugs' => ['bulbasaur'],
             'losers_slugs' => ['ivysaur', 'venusaur'],

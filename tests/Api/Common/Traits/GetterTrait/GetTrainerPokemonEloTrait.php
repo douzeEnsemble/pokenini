@@ -25,10 +25,11 @@ trait GetTrainerPokemonEloTrait
                     view_count, 
                     win_count
             FROM    trainer_pokemon_elo AS tpe 
+                JOIN dex AS d 
+                    ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id
             WHERE   tpe.trainer_external_id = :trainer_external_id
-                AND tpe.dex_slug = :dex_slug
                 AND tpe.election_slug = :election_slug
                 AND p.slug = :pokemon_slug
             SQL;

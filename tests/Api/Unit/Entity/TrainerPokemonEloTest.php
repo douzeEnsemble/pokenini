@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Api\Unit\Entity;
 
+use App\Api\Entity\Dex;
 use App\Api\Entity\Pokemon;
 use App\Api\Entity\TrainerPokemonElo;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -20,12 +21,15 @@ class TrainerPokemonEloTest extends TestCase
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
 
-        $entity = new TrainerPokemonElo('121212', $pokemon, 'home');
+        $dex = new Dex();
+        $dex->slug = 'demo';
+
+        $entity = new TrainerPokemonElo('121212', $pokemon, $dex);
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
         $this->assertSame(1000, $entity->elo);
-        $this->assertSame('home', $entity->getDexSlug());
+        $this->assertSame($dex, $entity->getDex());
         $this->assertSame('', $entity->getElectionSlug());
     }
 
@@ -34,12 +38,15 @@ class TrainerPokemonEloTest extends TestCase
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
 
-        $entity = new TrainerPokemonElo('121212', $pokemon, 'demo', 'pref');
+        $dex = new Dex();
+        $dex->slug = 'demo';
+
+        $entity = new TrainerPokemonElo('121212', $pokemon, $dex, 'pref');
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
         $this->assertSame(1000, $entity->elo);
-        $this->assertSame('demo', $entity->getDexSlug());
+        $this->assertSame($dex, $entity->getDex());
         $this->assertSame('pref', $entity->getElectionSlug());
     }
 }

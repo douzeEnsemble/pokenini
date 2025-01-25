@@ -29,10 +29,11 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             SELECT  tpe.elo
             FROM    trainer_pokemon_elo AS tpe
+                JOIN dex AS d 
+                    ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id AND p.slug = :pokemon_slug
             WHERE   tpe.trainer_external_id = :trainer_external_id
-                AND tpe.dex_slug = :dex_slug
                 AND tpe.election_slug = :election_slug
             SQL;
 
@@ -72,7 +73,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             INSERT INTO trainer_pokemon_elo (
                 id,
                 trainer_external_id, 
-                dex_slug, 
+                dex_id, 
                 election_slug, 
                 pokemon_id, 
                 elo,
@@ -82,14 +83,14 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             VALUES (
                 :id,
                 :trainer_external_id,
-                :dex_slug,
+                (SELECT id FROM dex WHERE slug = :dex_slug),
                 :election_slug,
                 (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
                 :elo,
                 1,
                 CASE WHEN :is_winner THEN 1 ELSE 0 END
             )
-            ON CONFLICT (trainer_external_id, dex_slug, election_slug, pokemon_id)
+            ON CONFLICT (trainer_external_id, dex_id, election_slug, pokemon_id)
             DO
             UPDATE
             SET     elo = excluded.elo,
@@ -171,8 +172,9 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                         MAX(win_count) AS max_win,
                         COUNT(1) AS count_elo
                 FROM    trainer_pokemon_elo AS tpe
+                    JOIN dex AS d 
+                        ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 WHERE   tpe.trainer_external_id = :trainer_external_id
-                    AND tpe.dex_slug = :dex_slug
                     AND tpe.election_slug = :election_slug
             ), dex_stats AS (
                 SELECT  COUNT(1) AS count
@@ -194,10 +196,11 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                             COUNT(CASE WHEN tpe.view_count = s.max_view AND tpe.view_count = tpe.win_count THEN 1 END)
                     END AS max_view_count
                 FROM    trainer_pokemon_elo AS tpe
+                    JOIN dex AS d 
+                        ON tpe.dex_id = d.id AND d.slug = :dex_slug
                     CROSS JOIN stats s
                     CROSS JOIN dex_stats AS ds
                 WHERE   tpe.trainer_external_id = :trainer_external_id
-                    AND tpe.dex_slug = :dex_slug
                     AND tpe.election_slug = :election_slug
                 GROUP BY ds.count, s.count_elo
             )
@@ -216,8 +219,9 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 ) AS max_view_count,
                 (SELECT count FROM dex_stats) AS dex_total_count
             FROM    trainer_pokemon_elo AS tpe
+                JOIN dex AS d 
+                    ON tpe.dex_id = d.id AND d.slug = :dex_slug
             WHERE   tpe.trainer_external_id = :trainer_external_id
-                    AND tpe.dex_slug = :dex_slug
                     AND tpe.election_slug = :election_slug
             SQL;
 
