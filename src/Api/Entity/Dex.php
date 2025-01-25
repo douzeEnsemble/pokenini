@@ -56,4 +56,7 @@ class Dex
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public \DateTime $lastChangedAt;
+
+    #[ORM\Column]
+    public int $electionOrderNumber = 0;
 }

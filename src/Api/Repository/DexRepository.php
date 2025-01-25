@@ -119,9 +119,9 @@ class DexRepository extends ServiceEntityRepository
                         ON d.id = da.dex_id
                 WHERE       d.can_hold_election = true
                             {$where}
-                GROUP BY    d.order_number, d.slug, d.name, d.french_name, d.is_shiny, d.is_display_form, 
+                GROUP BY    d.election_order_number, d.slug, d.name, d.french_name, d.is_shiny, d.is_display_form, 
                             d.description, d.french_description, d.is_released, d.is_premium
-                ORDER BY    d.order_number ASC, d.slug ASC
+                ORDER BY    d.election_order_number ASC, d.slug ASC
             SQL;
 
         /** @var bool[][]|int[][]|string[][] */
