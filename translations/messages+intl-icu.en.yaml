@@ -434,7 +434,10 @@ election:
                     =1 { round out of }
                     other { rounds out of }
                 }
-            end: "."
+            end: "*."
+            help: 
+                start: "* based on the choice of"
+                end: "per turn"
         last: "These are the last {n}. You can stop here or refine your choice."
         favorite_count: 
             start: "You have "
@@ -448,6 +451,8 @@ election:
                 few {about {value}}
                 other {between {value0} and {value1}}
             }
+    dex:
+        details: 
 
 
 dex:

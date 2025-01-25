@@ -435,7 +435,10 @@ election:
                     =1 { tour sur }
                     other { tours sur }
                 }
-            end: "."
+            end: "*."
+            help: 
+                start: "* basé sur le fait de choisir"
+                end: "par tour"
         last: "Ce sont les {n} derniers. Tu peux en rester là, ou affiner ton choix. Stoi qui décide"
         favorite_count: 
             start: "Tu as "
