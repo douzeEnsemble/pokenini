@@ -114,7 +114,7 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertCount(count($expectedSlugs), $list);
 
         $slugs = array_map(
-            static fn (array $item): string => $item['slug'],
+            static fn (array $item): string => (string) $item['slug'],
             $list
         );
 
@@ -122,7 +122,7 @@ class DexRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return bool[][]|int[][]
+     * @return bool[][]|string[][][]
      */
     public static function providerGetCanHoldElection(): array
     {
@@ -131,8 +131,10 @@ class DexRepositoryTest extends KernelTestCase
                 'includeUnreleasedDex' => true,
                 'includePremiumDex' => true,
                 'expectedSlugs' => [
+                    'homepogo',
                     'home',
-                    'redgreenblueyellow', 
+                    'redgreenblueyellow',
+                    'spoon',
                 ],
             ],
             'false_true' => [
@@ -140,18 +142,23 @@ class DexRepositoryTest extends KernelTestCase
                 'includePremiumDex' => true,
                 'expectedSlugs' => [
                     'home',
-                    'redgreenblueyellow', 
+                    'redgreenblueyellow',
                 ],
             ],
             'true_false' => [
                 'includeUnreleasedDex' => true,
                 'includePremiumDex' => false,
-                'expectedSlugs' => [],
+                'expectedSlugs' => [
+                    'homepogo',
+                    'home',
+                ],
             ],
             'false_false' => [
                 'includeUnreleasedDex' => false,
                 'includePremiumDex' => false,
-                'expectedSlugs' => [],
+                'expectedSlugs' => [
+                    'home',
+                ],
             ],
         ];
     }

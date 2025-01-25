@@ -44,17 +44,17 @@ class DexCanHoldElectionControllerTest extends WebTestCase
         $this->assertSame(
             [
                 [
-                    'slug' => 'redgreenblueyellow',
-                    'original_slug' => 'redgreenblueyellow',
-                    'name' => 'Red / Green / Blue / Yellow',
-                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
+                    'slug' => 'homepogo',
+                    'original_slug' => 'homepogo',
+                    'name' => 'Home PoGo',
+                    'french_name' => 'Home PoGo',
                     'is_shiny' => false,
-                    'is_display_form' => true,
-                    'description' => 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
-                    'french_description' => 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
-                    'is_released' => true,
+                    'is_display_form' => false,
+                    'description' => '',
+                    'french_description' => '',
+                    'is_released' => false,
                     'is_premium' => false,
-                    'dex_total_count' => 7,
+                    'dex_total_count' => 1,
                 ],
                 [
                     'slug' => 'home',
@@ -68,6 +68,32 @@ class DexCanHoldElectionControllerTest extends WebTestCase
                     'is_released' => true,
                     'is_premium' => false,
                     'dex_total_count' => 22,
+                ],
+                [
+                    'slug' => 'redgreenblueyellow',
+                    'original_slug' => 'redgreenblueyellow',
+                    'name' => 'Red / Green / Blue / Yellow',
+                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
+                    'is_shiny' => false,
+                    'is_display_form' => true,
+                    'description' => 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+                    'french_description' => 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+                    'is_released' => true,
+                    'is_premium' => true,
+                    'dex_total_count' => 7,
+                ],
+                [
+                    'slug' => 'spoon',
+                    'original_slug' => 'spoon',
+                    'name' => 'Spoon',
+                    'french_name' => 'Cuillière',
+                    'is_shiny' => false,
+                    'is_display_form' => true,
+                    'description' => '',
+                    'french_description' => '',
+                    'is_released' => false,
+                    'is_premium' => true,
+                    'dex_total_count' => 1,
                 ],
             ],
             $data
@@ -95,6 +121,23 @@ class DexCanHoldElectionControllerTest extends WebTestCase
 
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-        $this->assertSame([], $data);
+        $this->assertSame(
+            [
+                [
+                    'slug' => 'home',
+                    'original_slug' => 'home',
+                    'name' => 'Home',
+                    'french_name' => 'Home',
+                    'is_shiny' => false,
+                    'is_display_form' => true,
+                    'description' => '',
+                    'french_description' => '',
+                    'is_released' => true,
+                    'is_premium' => false,
+                    'dex_total_count' => 22,
+                ],
+            ],
+            $data
+        );
     }
 }

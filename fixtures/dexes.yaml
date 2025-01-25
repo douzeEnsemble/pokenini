@@ -11,7 +11,7 @@ App\Api\Entity\Dex:
         description: 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
         lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
-        isPremium: false
+        isPremium: true
         canHoldElection: true
         isReleased: true
     dex_goldsilvercrystal:
@@ -94,9 +94,9 @@ App\Api\Entity\Dex:
         isShiny: false
         isDisplayForm: false
         lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
-        isPremium: true
+        isPremium: false
         canHoldElection: true
-        isReleased: true
+        isReleased: false
     dex_demo:
         name: 'Demo'
         slug: 'demo'

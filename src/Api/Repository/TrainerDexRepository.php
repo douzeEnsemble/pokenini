@@ -35,7 +35,7 @@ class TrainerDexRepository extends ServiceEntityRepository
         }
 
         if (!$options->includePremiumDex) {
-            $where .= ' AND d.is_premium = true ';
+            $where .= ' AND d.is_premium = false ';
         }
 
         $sql = <<<SQL

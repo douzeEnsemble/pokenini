@@ -24,9 +24,9 @@
                 "App\\Api\\Repository\\PokemonsRepository::getNToVoteSQL"
             ]
         },
-        "GreaterThan": {
+        "RoundingFamily": {
             "ignore": [
-                "App\\Web\\Helper\\TotalRoundCountHelper::Helper",
+                "App\\Web\\Helper\\TotalRoundCountHelper::calculate",
             ]
         },
         "global-ignore": [

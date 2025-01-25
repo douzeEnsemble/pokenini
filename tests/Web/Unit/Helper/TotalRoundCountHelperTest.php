@@ -84,7 +84,7 @@ class TotalRoundCountHelperTest extends TestCase
                 'winnerAverage' => 3.9,
                 'expectedCount' => 0,
             ],
-            'edge_rouding_floor' => [
+            'edge_rounding_floor' => [
                 'dexTotalCount' => 50,
                 'perViewCount' => 10,
                 'winnerAverage' => 4.5,
