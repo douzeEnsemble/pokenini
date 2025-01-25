@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Web\DTO;
 
+use App\Web\Helper\TotalRoundCountHelper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ElectionMetrics
@@ -41,13 +42,14 @@ final class ElectionMetrics
         $this->roundCount = (int) round($this->viewCountSum / $perViewCount);
         $this->winnerAverage = 4.0;
         if (0 !== $this->roundCount) {
-            $this->winnerAverage = max(
-                round($this->winCountSum / $this->roundCount, 2),
-                1.1,
-            );
+            $this->winnerAverage = round($this->winCountSum / $this->roundCount, 2);
         }
 
-        $this->calculateTotalRoundCount($perViewCount);
+        $this->totalRoundCount = TotalRoundCountHelper::calculate(
+            $this->dexTotalCount,
+            $perViewCount,
+            $this->winnerAverage,
+        );
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -72,20 +74,5 @@ final class ElectionMetrics
 
         $resolver->setDefault('dex_total_count', 0);
         $resolver->setAllowedTypes('dex_total_count', 'int');
-    }
-
-    private function calculateTotalRoundCount(int $perViewCount): void
-    {
-        $totalScreens = 0;
-        $currentCount = $this->dexTotalCount;
-
-        while ($currentCount > 0) {
-            $screensInCurrentRound = round($currentCount / $perViewCount, 0);
-            $totalScreens += $screensInCurrentRound;
-
-            $currentCount = floor($currentCount / $this->winnerAverage);
-        }
-
-        $this->totalRoundCount = (int) $totalScreens;
     }
 }

@@ -40,7 +40,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(7, $object->roundCount);
         $this->assertSame(7.71, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(13, $object->totalRoundCount);
     }
 
     public function testZeros(): void
@@ -68,7 +68,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testEdge(): void
@@ -96,7 +96,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(0, $object->totalRoundCount);
+        $this->assertSame(2, $object->totalRoundCount);
     }
 
     public function testLowerAverage(): void
@@ -123,8 +123,8 @@ class ElectionMetricsTest extends TestCase
         $this->assertSame(48, $object->dexTotalCount);
 
         $this->assertSame(4, $object->roundCount);
-        $this->assertSame(1.1, $object->winnerAverage);
-        $this->assertSame(35, $object->totalRoundCount);
+        $this->assertSame(0.75, $object->winnerAverage);
+        $this->assertSame(6, $object->totalRoundCount);
     }
 
     public function testFloor(): void
@@ -152,7 +152,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(10, $object->roundCount);
         $this->assertSame(2.8, $object->winnerAverage);
-        $this->assertSame(2, $object->totalRoundCount);
+        $this->assertSame(4, $object->totalRoundCount);
     }
 
     public function testMissingViewCountSum(): void
@@ -179,7 +179,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadViewCountSum(): void
@@ -223,7 +223,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadWinCountSum(): void
@@ -267,7 +267,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadViewCountMax(): void
@@ -311,7 +311,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadWinCountMax(): void
@@ -355,7 +355,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadUnderMaxViewCount(): void
@@ -399,7 +399,7 @@ class ElectionMetricsTest extends TestCase
 
         $this->assertSame(0, $object->roundCount);
         $this->assertSame(4.0, $object->winnerAverage);
-        $this->assertSame(5, $object->totalRoundCount);
+        $this->assertSame(9, $object->totalRoundCount);
     }
 
     public function testBadMaxViewCount(): void
