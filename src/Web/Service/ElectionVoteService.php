@@ -3,7 +3,6 @@
 namespace App\Web\Service;
 
 use App\Web\DTO\ElectionVote;
-use App\Web\DTO\ElectionVoteResult;
 use App\Web\Security\UserTokenService;
 use App\Web\Service\Api\ElectionVoteApiService;
 
@@ -14,12 +13,10 @@ class ElectionVoteService
         private readonly ElectionVoteApiService $apiService,
     ) {}
 
-    public function vote(ElectionVote $electionVote): ElectionVoteResult
+    public function vote(ElectionVote $electionVote): void
     {
         $trainerId = $this->userTokenService->getLoggedUserToken();
 
-        $result = $this->apiService->vote($trainerId, $electionVote);
-
-        return ElectionVoteResult::createFromApi($result);
+        $this->apiService->vote($trainerId, $electionVote);
     }
 }

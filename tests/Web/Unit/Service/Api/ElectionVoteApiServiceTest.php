@@ -29,7 +29,7 @@ class ElectionVoteApiServiceTest extends TestCase
             'losers_slugs' => ['pikachu', 'raichu'],
         ]);
 
-        $result = $this
+        $this
             ->getService('5465465', 'demo', 'whatever', ['pichu'], ['pikachu', 'raichu'])
             ->vote(
                 '5465465',
@@ -38,8 +38,6 @@ class ElectionVoteApiServiceTest extends TestCase
         ;
 
         $this->assertEmpty($this->cache->getValues());
-
-        $this->assertSame(3, $result['voteCount']);
     }
 
     public function testVoteAllLosers(): void
@@ -51,7 +49,7 @@ class ElectionVoteApiServiceTest extends TestCase
             'losers_slugs' => ['pikachu', 'pichu', 'raichu'],
         ]);
 
-        $result = $this
+        $this
             ->getService('5465465', 'demo', 'whatever', [], ['pikachu', 'pichu', 'raichu'])
             ->vote(
                 '5465465',
@@ -60,8 +58,6 @@ class ElectionVoteApiServiceTest extends TestCase
         ;
 
         $this->assertEmpty($this->cache->getValues());
-
-        $this->assertSame(3, $result['voteCount']);
     }
 
     public function testVoteAllWinners(): void
@@ -73,7 +69,7 @@ class ElectionVoteApiServiceTest extends TestCase
             'losers_slugs' => [],
         ]);
 
-        $result = $this
+        $this
             ->getService('5465465', 'demo', 'whatever', ['pikachu', 'pichu', 'raichu'], [])
             ->vote(
                 '5465465',
@@ -82,8 +78,6 @@ class ElectionVoteApiServiceTest extends TestCase
         ;
 
         $this->assertEmpty($this->cache->getValues());
-
-        $this->assertSame(3, $result['voteCount']);
     }
 
     /**

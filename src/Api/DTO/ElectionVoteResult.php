@@ -12,7 +12,6 @@ final class ElectionVoteResult
     public function __construct(
         private readonly ElectionVote $electionVote,
         private readonly array $pokemonsElo,
-        private readonly int $voteCount,
     ) {}
 
     public function getElectionVote(): ElectionVote
@@ -26,10 +25,5 @@ final class ElectionVoteResult
     public function getPokemonsElo(): array
     {
         return $this->pokemonsElo;
-    }
-
-    public function getVoteCount(): int
-    {
-        return $this->voteCount;
     }
 }
