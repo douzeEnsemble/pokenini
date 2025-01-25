@@ -89,13 +89,15 @@
     </script>
     {% endif %}
 
-    {% if not isTheLastOne %}
+    {% if isTheLastPage and not isTheLastOne %}
     <script type="application/javascript">
     (function() {
+        bootstrap.Toast.getOrCreateInstance(document.getElementById('election-lastpage-toast')).show();
+
         new bootstrap.Popover(
             '#election-vote-submit-bottom', 
             {
-                trigger: 'focus'
+                trigger: 'manual focus'
             }
         )
         .show();
