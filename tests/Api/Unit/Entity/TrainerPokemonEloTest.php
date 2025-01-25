@@ -28,7 +28,7 @@ class TrainerPokemonEloTest extends TestCase
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
-        $this->assertSame(1000, $entity->elo);
+        $this->assertSame(0, $entity->elo);
         $this->assertSame($dex, $entity->getDex());
         $this->assertSame('', $entity->getElectionSlug());
     }
@@ -45,7 +45,7 @@ class TrainerPokemonEloTest extends TestCase
 
         $this->assertSame('121212', $entity->getTrainerExternalId());
         $this->assertSame($pokemon, $entity->getPokemon());
-        $this->assertSame(1000, $entity->elo);
+        $this->assertSame(0, $entity->elo);
         $this->assertSame($dex, $entity->getDex());
         $this->assertSame('pref', $entity->getElectionSlug());
     }
