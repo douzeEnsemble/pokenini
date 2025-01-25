@@ -416,13 +416,12 @@ election:
 
             Es-tu prêt ?!
     top:
-        title: "Ton top {n} actuel"
+        title: 
+            final: "Ton top {n}"
+            temp: "Ton top {n} temporaire"
     actions:
         submit: "J'ai fait mes choix"
         reset: "Nouvelle liste"
-        goto:
-            mytop: "Voir mon top {n} actuel"
-            top: "Remonter"
         filters: "Voir les filtres"
     stats:
         title: "Les stats"

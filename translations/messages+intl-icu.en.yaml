@@ -415,13 +415,12 @@ election:
 
             Are you ready?!
     top:
-        title: "Your actual top {n}"
+        title: 
+            final: "Your top {n}"
+            temp: "Your temporary top {n}"
     actions:
         submit: "I've made my choices"
         reset: "New selection"
-        goto:
-            mytop: "See my actual top {n}"
-            top: "Go back up"
         filters: "See filters"
     stats:
         title: "Stats"
