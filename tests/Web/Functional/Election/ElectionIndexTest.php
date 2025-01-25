@@ -46,7 +46,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertCountFilter($crawler, 12, 'input[type=checkbox][name="winners_slugs[]"]');
 
         $this->assertCardContentDemoLite($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -91,7 +91,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentDemoLite($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -136,7 +136,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentMega($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -181,7 +181,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentMega($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -226,7 +226,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentMega($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -271,7 +271,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
         $this->assertCardContentMega($crawler);
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5 temporaire');
         $this->assertActions($crawler, "J'ai fait mes choix 0", 'Voir les filtres');
         $this->assertStats(
             $crawler,
@@ -318,7 +318,7 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('modal', $crawler->filter('#election-modal-filters')->attr('class'));
         $this->assertSame('modal', $crawler->filter('#election-modal-filters-advanced')->attr('class'));
 
-        $this->assertElectionTop($crawler);
+        $this->assertElectionTop($crawler, 'Ton top 5');
         $this->assertActions($crawler, 'Bravo, tu as fini', '');
         $this->assertStats(
             $crawler,
@@ -416,12 +416,14 @@ class ElectionIndexTest extends WebTestCase
         );
     }
 
-    private function assertElectionTop(Crawler $crawler): void
+    private function assertElectionTop(Crawler $crawler, string $title): void
     {
         $this->assertCountFilter($crawler, 1, '#election-top');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item img');
         $this->assertCountFilter($crawler, 5, '#election-top .election-top-item strong');
+
+        $this->assertSame($title, $crawler->filter('#election-top h4')->text());
     }
 
     private function assertActions(Crawler $crawler, string $actionLabel, string $filterLabel): void
