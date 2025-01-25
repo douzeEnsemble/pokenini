@@ -58,7 +58,7 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
-        $this->assertNull($crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'));
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testIndexShinyDex(): void
@@ -103,7 +103,7 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
-        $this->assertNull($crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'));
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testIndexWithoutDisplayForm(): void
@@ -148,7 +148,7 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
-        $this->assertNull($crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'));
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testIndexDetachedCount(): void
@@ -193,7 +193,7 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
-        $this->assertNull($crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'));
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testProgressVoteStep(): void
@@ -238,7 +238,7 @@ class ElectionIndexTest extends WebTestCase
             'warning',
         );
 
-        $this->assertNull($crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'));
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testProgressLastPageStep(): void
@@ -285,7 +285,7 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertSame(
             'Ce sont les 11 derniers. Tu peux en rester là, ou affiner ton choix. Stoi qui décide',
-            $crawler->filter('#election-vote-submit-bottom')->attr('data-bs-content'),
+            $crawler->filter('#election-lastpage-toast .toast-body')->text(),
         );
     }
 
@@ -331,6 +331,7 @@ class ElectionIndexTest extends WebTestCase
         );
 
         $this->assertCountFilter($crawler, 0, '#election-vote-submit-bottom');
+        $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
     public function testIndexNonTrainer(): void
