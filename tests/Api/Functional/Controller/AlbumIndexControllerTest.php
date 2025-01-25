@@ -522,7 +522,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.121212', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertFalse($data['dex']['is_released']);
     }
 
     public function testListHomeShinyOT(): void

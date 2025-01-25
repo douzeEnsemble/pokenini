@@ -99,7 +99,7 @@ class DexRepository extends ServiceEntityRepository
         }
 
         if (!$options->includePremiumDex) {
-            $where .= ' AND d.is_premium = true ';
+            $where .= ' AND d.is_premium = false ';
         }
 
         $sql = <<<SQL
@@ -115,7 +115,7 @@ class DexRepository extends ServiceEntityRepository
                             d.is_premium AS "is_premium",
                             COUNT(1) AS dex_total_count
                 FROM        dex AS d
-                    JOIN dex_availability AS da
+                    LEFT JOIN dex_availability AS da
                         ON d.id = da.dex_id
                 WHERE       d.can_hold_election = true
                             {$where}
