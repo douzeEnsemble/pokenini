@@ -36,7 +36,7 @@ class ElectionMetricsServiceTest extends TestCase
             )
             ->willReturn([
                 'view_count_sum' => 12,
-                'win_count_sum' => 48,
+                'win_count_sum' => 5,
                 'view_count_max' => 4,
                 'win_count_max' => 14,
                 'under_max_view_count' => 24,
@@ -50,13 +50,13 @@ class ElectionMetricsServiceTest extends TestCase
         $metrics = $service->getMetrics('demo', 'whatever');
 
         $this->assertSame(12, $metrics->viewCountSum);
-        $this->assertSame(48, $metrics->winCountSum);
+        $this->assertSame(5, $metrics->winCountSum);
         $this->assertSame(4, $metrics->viewCountMax);
         $this->assertSame(14, $metrics->winCountMax);
         $this->assertSame(24, $metrics->underMaxViewCount);
         $this->assertSame(5, $metrics->maxViewCount);
         $this->assertSame(1, $metrics->roundCount);
-        $this->assertSame(48.0, $metrics->winnerAverage);
-        $this->assertSame(4, $metrics->totalRoundCount);
+        $this->assertSame(5.0, $metrics->winnerAverage);
+        $this->assertSame(8, $metrics->totalRoundCount);
     }
 }
