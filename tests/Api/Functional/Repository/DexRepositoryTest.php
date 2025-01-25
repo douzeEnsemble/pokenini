@@ -92,11 +92,14 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertEmpty($repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
     }
 
+    /**
+     * @param string[] $expectedSlugs
+     */
     #[DataProvider('providerGetCanHoldElection')]
     public function testGetCanHoldElection(
         bool $includeUnreleasedDex,
         bool $includePremiumDex,
-        int $expectedCount,
+        array $expectedSlugs,
     ): void {
         /** @var DexRepository $repo */
         $repo = static::getContainer()->get(DexRepository::class);
@@ -108,7 +111,14 @@ class DexRepositoryTest extends KernelTestCase
 
         $list = $repo->getCanHoldElection($options);
 
-        $this->assertCount($expectedCount, $list);
+        $this->assertCount(count($expectedSlugs), $list);
+
+        $slugs = array_map(
+            static fn (array $item): string => $item['slug'],
+            $list
+        );
+
+        $this->assertSame($expectedSlugs, $slugs);
     }
 
     /**
@@ -120,22 +130,28 @@ class DexRepositoryTest extends KernelTestCase
             'true_true' => [
                 'includeUnreleasedDex' => true,
                 'includePremiumDex' => true,
-                'expectedCount' => 2,
+                'expectedSlugs' => [
+                    'home',
+                    'redgreenblueyellow', 
+                ],
             ],
             'false_true' => [
                 'includeUnreleasedDex' => false,
                 'includePremiumDex' => true,
-                'expectedCount' => 2,
+                'expectedSlugs' => [
+                    'home',
+                    'redgreenblueyellow', 
+                ],
             ],
             'true_false' => [
                 'includeUnreleasedDex' => true,
                 'includePremiumDex' => false,
-                'expectedCount' => 0,
+                'expectedSlugs' => [],
             ],
             'false_false' => [
                 'includeUnreleasedDex' => false,
                 'includePremiumDex' => false,
-                'expectedCount' => 0,
+                'expectedSlugs' => [],
             ],
         ];
     }
