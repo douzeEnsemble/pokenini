@@ -16,7 +16,9 @@ final class Version20250125081923 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('ALTER TABLE dex ADD election_order_number INT NOT NULL');
+        $this->addSql('ALTER TABLE dex ADD election_order_number INT NULL');
+        $this->addSql('UPDATE dex set election_order_number = order_number');
+        $this->addSql('ALTER TABLE dex ALTER COLUMN election_order_number SET NOT NULL');
     }
 
     public function down(Schema $schema): void
