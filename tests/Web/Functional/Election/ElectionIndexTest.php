@@ -35,8 +35,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
         $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 14, '.card');
+        $this->assertCountFilter($crawler, 14, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -58,6 +58,10 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
+        $this->assertSame('Démo, extrait', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('41 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame('', $crawler->filter('#election-dex-info .dex-description')->text());
+
         $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
@@ -76,8 +80,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
         $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 14, '.card');
+        $this->assertCountFilter($crawler, 14, '.card-body');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -103,6 +107,10 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
+        $this->assertSame('Démo, extrait chromatique', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('41 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame('', $crawler->filter('#election-dex-info .dex-description')->text());
+
         $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
@@ -121,8 +129,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
         $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 14, '.card');
+        $this->assertCountFilter($crawler, 14, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -148,6 +156,14 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
+        $this->assertSame('Méga', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('50 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame(
+            'La liste de tous les pokémons ayant une méga ou primo évolution '
+            .'dans les différents jeux X, Y ou Soleil et Lune (par exemple).',
+            $crawler->filter('#election-dex-info .dex-description')->text()
+        );
+
         $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
@@ -166,8 +182,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
         $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 14, '.card');
+        $this->assertCountFilter($crawler, 14, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -193,6 +209,14 @@ class ElectionIndexTest extends WebTestCase
             'info',
         );
 
+        $this->assertSame('Méga', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('50 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame(
+            'La liste de tous les pokémons ayant une méga ou primo évolution '
+            .'dans les différents jeux X, Y ou Soleil et Lune (par exemple).',
+            $crawler->filter('#election-dex-info .dex-description')->text()
+        );
+
         $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
@@ -211,8 +235,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
         $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 13, '.card');
-        $this->assertCountFilter($crawler, 13, '.card-body');
+        $this->assertCountFilter($crawler, 14, '.card');
+        $this->assertCountFilter($crawler, 14, '.card-body');
         $this->assertCountFilter($crawler, 12, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 17, '.album-modal-image');
@@ -238,6 +262,14 @@ class ElectionIndexTest extends WebTestCase
             'warning',
         );
 
+        $this->assertSame('Méga', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('50 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame(
+            'La liste de tous les pokémons ayant une méga ou primo évolution '
+            .'dans les différents jeux X, Y ou Soleil et Lune (par exemple).',
+            $crawler->filter('#election-dex-info .dex-description')->text()
+        );
+
         $this->assertCountFilter($crawler, 0, '#election-lastpage-toast');
     }
 
@@ -256,8 +288,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
         $this->assertSame('Affine toi choix', $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 12, '.card');
-        $this->assertCountFilter($crawler, 12, '.card-body');
+        $this->assertCountFilter($crawler, 13, '.card');
+        $this->assertCountFilter($crawler, 13, '.card-body');
         $this->assertCountFilter($crawler, 11, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 16, '.album-modal-image');
@@ -283,6 +315,14 @@ class ElectionIndexTest extends WebTestCase
             'danger',
         );
 
+        $this->assertSame('Méga', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('50 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame(
+            'La liste de tous les pokémons ayant une méga ou primo évolution '
+            .'dans les différents jeux X, Y ou Soleil et Lune (par exemple).',
+            $crawler->filter('#election-dex-info .dex-description')->text()
+        );
+
         $this->assertSame(
             'Ce sont les 11 derniers. Tu peux en rester là, ou affiner ton choix. Stoi qui décide',
             $crawler->filter('#election-lastpage-toast .toast-body')->text(),
@@ -304,8 +344,8 @@ class ElectionIndexTest extends WebTestCase
         $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
         $this->assertSame('Voilà TON Pokémon préféré', $crawler->filter('h2')->text());
 
-        $this->assertCountFilter($crawler, 2, '.card');
-        $this->assertCountFilter($crawler, 2, '.card-body');
+        $this->assertCountFilter($crawler, 3, '.card');
+        $this->assertCountFilter($crawler, 3, '.card-body');
         $this->assertCountFilter($crawler, 1, '.election-card-image-container-regular');
         $this->assertCountFilter($crawler, 0, '.election-card-image-container-shiny');
         $this->assertCountFilter($crawler, 6, '.album-modal-image');
@@ -328,6 +368,14 @@ class ElectionIndexTest extends WebTestCase
             'Tu as 1 favori qui se détache',
             'quasi 3',
             'success',
+        );
+
+        $this->assertSame('Méga', $crawler->filter('#election-dex-info h4')->text());
+        $this->assertSame('50 Pokémons', $crawler->filter('#election-dex-info .dex-pokemon-counter')->text());
+        $this->assertSame(
+            'La liste de tous les pokémons ayant une méga ou primo évolution '
+            .'dans les différents jeux X, Y ou Soleil et Lune (par exemple).',
+            $crawler->filter('#election-dex-info .dex-description')->text()
         );
 
         $this->assertCountFilter($crawler, 0, '#election-vote-submit-bottom');
@@ -468,13 +516,13 @@ class ElectionIndexTest extends WebTestCase
         $roundsTxt = 1 >= $roundCount ? 'tour' : 'tours';
 
         $this->assertSame(
-            "Tu as fait <strong>{$roundCount}</strong> {$roundsTxt} sur <strong>{$totalRoundCount}</strong>.",
+            "Tu as fait <strong>{$roundCount}</strong> {$roundsTxt} sur <strong>{$totalRoundCount}</strong>*.",
             $crawler->filter('#election-actions-top div.progress .progress-bar')->eq(0)->attr('data-bs-title')
         );
         $this->assertCountFilter($crawler, 1, "#election-actions-top div.progress .progress-bar.bg-{$progressBarStyle}");
 
         $this->assertSame(
-            "Tu as fait {$roundCount} {$roundsTxt} sur {$totalRoundCount}.",
+            "Tu as fait {$roundCount} {$roundsTxt} sur {$totalRoundCount}*.",
             $crawler->filter('#election-stats p span')->eq(0)->text()
         );
         $this->assertSame(
