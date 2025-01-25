@@ -59,7 +59,7 @@ WHERE NOT EXISTS (
         FROM    trainer_pokemon_elo AS tpe
         WHERE   p.id = tpe.pokemon_id
             AND tpe.trainer_external_id = :trainer_external_id
-            AND tpe.dex_slug = :dex_slug
+            AND tpe.dex_id = d.id
             AND tpe.election_slug = :election_slug
     )
     -- {album_filters}

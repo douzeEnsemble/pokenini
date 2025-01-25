@@ -3,17 +3,18 @@ WITH total AS (
         COUNT(1) AS count
     FROM
         dex_availability AS da
-        JOIN dex AS d ON da.dex_id = d.id
-        AND d.slug = :dex_slug
+        JOIN dex AS d 
+            ON da.dex_id = d.id AND d.slug = :dex_slug
 ),
 views AS (
     SELECT
         COUNT(1) AS count
     FROM
         trainer_pokemon_elo AS tpe
+        JOIN dex AS d 
+            ON tpe.dex_id = d.id AND d.slug = :dex_slug
     WHERE
         trainer_external_id = :trainer_external_id
-        AND dex_slug = :dex_slug
         AND election_slug = :election_slug
 ),
 elo AS (
@@ -22,9 +23,10 @@ elo AS (
         tpe.pokemon_id
     FROM
         trainer_pokemon_elo tpe
+        JOIN dex AS d 
+            ON tpe.dex_id = d.id AND d.slug = :dex_slug
     WHERE
         trainer_external_id = :trainer_external_id
-        AND dex_slug = :dex_slug
         AND election_slug = :election_slug
 ),
 stats AS (
