@@ -15,7 +15,7 @@ class TrainerPokemonElo
     use BaseEntityTrait;
 
     #[ORM\Column]
-    public int $elo = 1000;
+    public int $elo = 0;
 
     #[ORM\Column]
     public int $viewCount = 0;
