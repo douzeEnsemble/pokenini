@@ -50,8 +50,6 @@ class ElectionServiceTest extends KernelTestCase
         $this->assertSame(1003, $pokemonsElo['losers'][0]->getElo());
         $this->assertSame('venusaur', $pokemonsElo['losers'][1]->getPokemonSlug());
         $this->assertSame(1013, $pokemonsElo['losers'][1]->getElo());
-
-        $this->assertSame(3, $result->getVoteCount());
     }
 
     public function testVoteBis(): void
@@ -80,7 +78,5 @@ class ElectionServiceTest extends KernelTestCase
         $this->assertSame(984, $pokemonsElo['losers'][0]->getElo());
         $this->assertSame('venusaur', $pokemonsElo['losers'][1]->getPokemonSlug());
         $this->assertSame(984, $pokemonsElo['losers'][1]->getElo());
-
-        $this->assertSame(4, $result->getVoteCount());
     }
 }

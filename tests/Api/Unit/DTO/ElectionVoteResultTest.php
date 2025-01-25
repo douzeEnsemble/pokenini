@@ -38,11 +38,9 @@ class ElectionVoteResultTest extends TestCase
         $object = new ElectionVoteResult(
             $electionVote,
             $pokemonsElo,
-            3,
         );
 
         $this->assertSame($electionVote, $object->getElectionVote());
         $this->assertSame($pokemonsElo, $object->getPokemonsElo());
-        $this->assertSame(3, $object->getVoteCount());
     }
 }

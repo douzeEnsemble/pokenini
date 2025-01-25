@@ -71,7 +71,6 @@ class ElectionVoteControllerTest extends WebTestCase
                         ],
                     ],
                 ],
-                'voteCount' => 1,
             ],
             $data,
         );
@@ -131,7 +130,6 @@ class ElectionVoteControllerTest extends WebTestCase
                         ],
                     ],
                 ],
-                'voteCount' => 3,
             ],
             $data,
         );
@@ -191,7 +189,6 @@ class ElectionVoteControllerTest extends WebTestCase
                         ],
                     ],
                 ],
-                'voteCount' => 3,
             ],
             $data,
         );
@@ -251,7 +248,6 @@ class ElectionVoteControllerTest extends WebTestCase
                     'losers' => [
                     ],
                 ],
-                'voteCount' => 3,
             ],
             $data,
         );

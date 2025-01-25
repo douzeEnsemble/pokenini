@@ -41,13 +41,10 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
-            ->willReturn(['voteCount' => 2])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $result = $service->vote($electionVote);
-
-        $this->assertSame(2, $result->getVoteCount());
+        $service->vote($electionVote);
     }
 
     public function testVoteWinnerAsLoser(): void
@@ -74,13 +71,10 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
-            ->willReturn(['voteCount' => 3])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $result = $service->vote($electionVote);
-
-        $this->assertSame(3, $result->getVoteCount());
+        $service->vote($electionVote);
     }
 
     public function testVoteAllLosers(): void
@@ -107,13 +101,10 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
-            ->willReturn(['voteCount' => 3])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $result = $service->vote($electionVote);
-
-        $this->assertSame(3, $result->getVoteCount());
+        $service->vote($electionVote);
     }
 
     public function testVoteAllWinners(): void
@@ -140,12 +131,9 @@ class ElectionVoteServiceTest extends TestCase
                 '8800088',
                 $electionVote,
             )
-            ->willReturn(['voteCount' => 3])
         ;
 
         $service = new ElectionVoteService($userTokenService, $apiService);
-        $result = $service->vote($electionVote);
-
-        $this->assertSame(3, $result->getVoteCount());
+        $service->vote($electionVote);
     }
 }
