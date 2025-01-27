@@ -32,8 +32,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
-        $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("Choisi d'abord", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 14, '.card');
         $this->assertCountFilter($crawler, 14, '.card-body');
@@ -77,8 +77,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
-        $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("Choisi d'abord", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 14, '.card');
         $this->assertCountFilter($crawler, 14, '.card-body');
@@ -126,8 +126,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
-        $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("Choisi d'abord", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 14, '.card');
         $this->assertCountFilter($crawler, 14, '.card-body');
@@ -179,8 +179,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
-        $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("Choisi d'abord", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 14, '.card');
         $this->assertCountFilter($crawler, 14, '.card-body');
@@ -232,8 +232,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
-        $this->assertSame("Choisissez d'abord, ensuite Votez", $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame('Maintenant tu votes', $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 14, '.card');
         $this->assertCountFilter($crawler, 14, '.card-body');
@@ -285,8 +285,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
-        $this->assertSame('Affine toi choix', $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("Y'a plus que ceux là", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 13, '.card');
         $this->assertCountFilter($crawler, 13, '.card-body');
@@ -341,8 +341,8 @@ class ElectionIndexTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
-        $this->assertSame('Voilà TON Pokémon préféré', $crawler->filter('h2')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
+        $this->assertSame("C'est iel !", $crawler->filter('h2')->text());
 
         $this->assertCountFilter($crawler, 3, '.card');
         $this->assertCountFilter($crawler, 3, '.card-body');

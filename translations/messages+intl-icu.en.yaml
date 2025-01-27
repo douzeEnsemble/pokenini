@@ -62,15 +62,11 @@ title:
     cookies: "Cookies"
     election: 
         nav: "What's your favorite?"
-        pick: "Make Your Choice"
-        vote: "Vote Now"
         subtitle: 
-            pick_vote: "Choose First, Then Vote"
-            refine: >-
-                {n, plural,
-                    =1 { This IS your favorite Pokémon }
-                    other { Refine your choice }
-                }
+            pick: "Choose First"
+            vote: "Now Vote"
+            lastpage: "There are only these left."
+            lastone: "That's it!"
     error:
         unknown: "There was an error"
         404: "The page was not found"

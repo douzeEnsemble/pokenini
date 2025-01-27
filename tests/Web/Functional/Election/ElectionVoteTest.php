@@ -31,7 +31,7 @@ class ElectionVoteTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertSame('Vote maintenant', $crawler->filter('h1')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
     }
 
     public function testVoteBis(): void
@@ -56,7 +56,7 @@ class ElectionVoteTest extends WebTestCase
 
         $crawler = $client->followRedirect();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
     }
 
     public function testVoteWithElectionSlug(): void
@@ -81,7 +81,7 @@ class ElectionVoteTest extends WebTestCase
 
         $crawler = $client->followRedirect();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
     }
 
     public function testVoteWithFilters(): void
@@ -106,7 +106,7 @@ class ElectionVoteTest extends WebTestCase
 
         $crawler = $client->followRedirect();
 
-        $this->assertSame('Fait ton choix', $crawler->filter('h1')->text());
+        $this->assertSame("C'est quoi ton préféré ?", $crawler->filter('h1')->text());
     }
 
     public function testEmptyVote(): void

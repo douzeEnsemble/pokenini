@@ -3,7 +3,7 @@
 {% extends 'base.html.twig' %}
 {% use '_nav.html.twig' %}
 
-{% block title %}Pokénini {{ ('title.election.'~listType)|trans }}{% endblock title %}
+{% block title %}Pokénini {{ 'title.election.nav'|trans }}{% endblock title %}
 {% block navbarTitle %}{% endblock navbarTitle %}
 
 {% block stylesheets %}
@@ -32,15 +32,14 @@
 		<div class="row">
 			<div class="col-md-8 mx-auto text-center row">
 				<h1>
-                    {{ ('title.election.'~listType)|trans }}
+                    {{ 'title.election.nav'|trans }}
                 </h1>
                 <h2>
+                    {% set subtitleSuffixe = listType %}
+                    {% set subtitleSuffixe = (isTheLastPage ? 'lastpage' : subtitleSuffixe)%}
+                    {% set subtitleSuffixe = (isTheLastOne ? 'lastone' : subtitleSuffixe)%}
                     <small class="text-body-secondary">
-                        {% if 0 == metrics.underMaxViewCount and metrics.maxViewCount == pokemons|length %}
-                        {{ 'title.election.subtitle.refine'|trans({'n': pokemons|length}) }}
-                        {% else %}
-                        {{ 'title.election.subtitle.pick_vote'|trans }}
-                        {% endif %}
+                        {{ ('title.election.subtitle.'~subtitleSuffixe)|trans({'n': pokemons|length}) }}
                     </small>
                 </h2>
 			</div>

@@ -3,8 +3,8 @@
 <form action="" method="POST" id="election">
   <div class="row mt-xl-3 mt-1 ms-xl-5 me-xl-5 ms-md-3 me-md-3 ms-sm-1 me-sm-1">
   {% for item in pokemons %}
-    <div class="col-xl-2 col-md-4 col-sm-6 col-6 mb-xl-3 mb-1 p-xl-3 p-lg-2 p-1">
-      <div class="card election-card" id="card-{{ item.pokemon_slug }}">
+    <div class="col-xl-2 col-md-4 col-sm-6 col-6 mb-xl-3 mb-1 p-xl-3 p-lg-2 p-1 {{ isTheLastOne ? 'offset-xl-5 offset-md-4 offset-sm-3 offset-3' : '' }}">
+      <div class="card election-card {{ isTheLastOne ? 'border-success' : '' }}" id="card-{{ item.pokemon_slug }}">
         <div class="card-body position-relative">
           <div class="card-pokemon-images">
             <span class="election-card-image-container-{{ pokedex.dex.is_shiny ? 'shiny' : 'regular' }}">
