@@ -17,8 +17,8 @@ class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void
     {
-        $gameBundlesShiniesAvailabilitiesRepository =
-            $this->createMock(GameBundlesShiniesAvailabilitiesRepository::class);
+        $gameBundlesShiniesAvailabilitiesRepository
+            = $this->createMock(GameBundlesShiniesAvailabilitiesRepository::class);
         $gameBundlesShiniesAvailabilitiesRepository
             ->expects($this->once())
             ->method('removeAll')
