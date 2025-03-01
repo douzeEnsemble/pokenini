@@ -42,9 +42,9 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.alert-warning');
         $this->assertCountFilter($crawler, 0, '.alert-info');
 
-        $this->assertCountFilter($crawler, 2, '.card-group .card');
-        $this->assertEquals('/fr/election/dex', $crawler->filter('.card-group .card a')->eq(0)->attr('href'));
-        $this->assertEquals('/fr/album/dex', $crawler->filter('.card-group .card a')->eq(1)->attr('href'));
+        $this->assertCountFilter($crawler, 2, '.home-menu-item');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
     }
 
     public function testHomeAsAdmin(): void
@@ -72,9 +72,9 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.alert-warning');
         $this->assertCountFilter($crawler, 0, '.alert-info');
 
-        $this->assertCountFilter($crawler, 2, '.card-group .card');
-        $this->assertEquals('/fr/election/dex', $crawler->filter('.card-group .card a')->eq(0)->attr('href'));
-        $this->assertEquals('/fr/album/dex', $crawler->filter('.card-group .card a')->eq(1)->attr('href'));
+        $this->assertCountFilter($crawler, 2, '.home-menu-item');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
     }
 
     public function testNonConnectedHome(): void
@@ -90,9 +90,9 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 1, '.alert-warning');
         $this->assertCountFilter($crawler, 0, '.alert-info');
 
-        $this->assertCountFilter($crawler, 2, '.card-group .card');
-        $this->assertEquals('/fr/election/dex', $crawler->filter('.card-group .card a')->eq(0)->attr('href'));
-        $this->assertEquals('/fr/album/dex', $crawler->filter('.card-group .card a')->eq(1)->attr('href'));
+        $this->assertCountFilter($crawler, 2, '.home-menu-item');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
 
         $this->assertCountFilter($crawler, 0, '.home-item');
         $this->assertCountFilter($crawler, 0, '.dex_is_premium');
@@ -119,9 +119,9 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.alert-warning');
         $this->assertCountFilter($crawler, 0, '.alert-info');
 
-        $this->assertCountFilter($crawler, 2, '.card-group .card');
-        $this->assertEquals('/fr/election/dex', $crawler->filter('.card-group .card a')->eq(0)->attr('href'));
-        $this->assertEquals('/fr/album/dex', $crawler->filter('.card-group .card a')->eq(1)->attr('href'));
+        $this->assertCountFilter($crawler, 2, '.home-menu-item');
+        $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
     }
 
     public function testHomeEnglish(): void

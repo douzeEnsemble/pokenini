@@ -9,6 +9,12 @@
 {% block navbarTitle %}Pokénini
 {% endblock navbarTitle %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+{% endblock stylesheets %}
+
 {% block container %}
   <div id="home" class="row">
     <div class="col-lg-8 mx-auto text-center">
@@ -25,35 +31,32 @@
         </div>
       {% endif %}
 
-      <div class="card-group">
-        <div class="card border-dark text-info">
-          <div class="card-body">
-            <h5 class="card-title">{{ 'home.menu.election.title'|trans }}</h5>
-            <p class="card-text">
-              {{- 'home.menu.election.description'|trans -}}
-            </p>
+      <div class="row mt-5">
+        <div class="col d-flex align-items-start border-end home-menu-item home-menu-item-election">
+          <div class="icon-square text-body-emphasis bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <i class="bi bi-balloon-heart"></i>
           </div>
-          <div class="card-footer">
-            <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-info">
-              {{ 'home.menu.election.action'|trans }}
-            </a>
-          </div>
-        </div>
-        <div class="card border-dark">
-          <div class="card-body">
-            <h5 class="card-title">{{ 'home.menu.album.title'|trans }}</h5>
-            <p class="card-text">
-              {{- 'home.menu.album.description'|trans -}}
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="{{ path('app_web_albumdex_index') }}" class="btn btn-dark">
-              {{ 'home.menu.album.action'|trans }}
-            </a>
+          <div>
+            <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.election.title'|trans }}</h3>
+            <p>{{- 'home.menu.election.description'|trans -}}</p>
+            <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-outline-primary">
+                {{ 'home.menu.election.action'|trans }}
+              </a>
           </div>
         </div>
-      </div>
-
+        <div class="col d-flex align-items-start home-menu-item home-menu-item-album">
+          <div class="icon-square text-light bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <i class="bi bi-collection"></i>
+          </div>
+          <div>
+            <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.album.title'|trans }}</h3>
+            <p>{{- 'home.menu.album.description'|trans -}}</p>
+              <a href="{{ path('app_web_albumdex_index') }}" class="btn btn-outline-primary">
+                {{ 'home.menu.album.action'|trans }}
+              </a>
+          </div>
+        </div>    
+      </div>  
     </div>
   </div>
 {% endblock %}
