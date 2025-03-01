@@ -294,8 +294,7 @@ class GetPokedexServiceTest extends TestCase
             ->willReturn($json)
         ;
 
-        $options =
-        [
+        $options = [
             'headers' => [
                 'accept' => 'application/json',
             ],
