@@ -80,12 +80,12 @@ class KeyMaker
 
     public static function getDexKeyForTrainer(string $trainerId, string $alt = ''): string
     {
-        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId.$alt;
+        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId.($alt ? self::CACHE_KEY_SEPARATOR.$alt : '');
     }
 
     public static function getElectionDexKey(string $alt = ''): string
     {
-        return self::CACHE_KEY_ELECTION_DEX.self::CACHE_KEY_SEPARATOR.$alt;
+        return self::CACHE_KEY_ELECTION_DEX.($alt ? self::CACHE_KEY_SEPARATOR.$alt : '');
     }
 
     /**

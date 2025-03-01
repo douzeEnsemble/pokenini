@@ -77,13 +77,13 @@ class KeyMakerTest extends TestCase
 
     public function testGetDexKeyForTrainerWithAlt(): void
     {
-        $this->assertEquals('dex_11=1', KeyMaker::getDexKeyForTrainer('1', '1=1'));
-        $this->assertEquals('dex_121=1&2=2', KeyMaker::getDexKeyForTrainer('12', '1=1&2=2'));
+        $this->assertEquals('dex_1_1=1', KeyMaker::getDexKeyForTrainer('1', '1=1'));
+        $this->assertEquals('dex_12_1=1&2=2', KeyMaker::getDexKeyForTrainer('12', '1=1&2=2'));
     }
 
     public function testGetElectionDexKey(): void
     {
-        $this->assertEquals('election_dex_', KeyMaker::getElectionDexKey());
+        $this->assertEquals('election_dex', KeyMaker::getElectionDexKey());
     }
 
     public function testGetElectionDexKeyWithAlt(): void

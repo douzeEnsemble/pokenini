@@ -19,5 +19,13 @@ class DexCacheInvalidatorService extends AbstractCacheInvalidatorService
 
         $this->cache->delete($key);
         $this->unregisterCache(KeyMaker::getDexKey(), $key);
+
+        $dex = $this->getRegisteredCache(KeyMaker::getDexKey());
+        foreach ($dex as $dexKey) {
+            if (str_contains($dexKey, $key)) {
+                $this->cache->delete($dexKey);
+                $this->unregisterCache(KeyMaker::getDexKey(), $dexKey);
+            }
+        }
     }
 }

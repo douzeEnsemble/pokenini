@@ -33,7 +33,7 @@ class GetElectionDexServiceTest extends TestCase
         );
 
         /** @var string $value */
-        $value = $this->cache->getItem('election_dex_')->get();
+        $value = $this->cache->getItem('election_dex')->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
