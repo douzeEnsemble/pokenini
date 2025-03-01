@@ -75,12 +75,18 @@ title:
 home:
     no_dex: "Y'a pas d'album à afficher. Tu peux les rajouter sur ton <a>espace dresseur</a>."
     alert:
-        election: 
-            description: "Tout nouveau, tout beau, tout propre. Tu peux choisir ton pokémon préféré"
-            action: "Je veux choisir !"
         not_connected: 
             description: "Tu n'es pas connecté. Connecte-toi pour profiter pleinement de l'application"
             action: "Se connecter"
+    menu:
+        election: 
+            title: "C'est quoi ton préféré ?"
+            description: "Tout nouveau, tout beau, tout propre. Tu peux choisir ton pokémon préféré"
+            action: "Je veux choisir !"
+        album: 
+            title: "Attrape les tous"
+            description: "Tous les pokémons, toutes les formes, tous les jeux. Tout est là"
+            action: "Montre moi les albums"
 
 stats:
     total: "Total"
