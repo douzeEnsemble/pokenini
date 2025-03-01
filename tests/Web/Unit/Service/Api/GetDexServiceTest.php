@@ -61,7 +61,7 @@ class GetDexServiceTest extends TestCase
         );
 
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123include_unreleased_dex=1')->get();
+        $value = $this->cache->getItem('dex_123_include_unreleased_dex=1')->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -73,7 +73,7 @@ class GetDexServiceTest extends TestCase
 
         $this->assertEquals(
             [
-                'dex_123include_unreleased_dex=1',
+                'dex_123_include_unreleased_dex=1',
             ],
             $this->cache->getItem('register_dex')->get(),
         );
@@ -94,7 +94,7 @@ class GetDexServiceTest extends TestCase
         );
 
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123include_premium_dex=1')->get();
+        $value = $this->cache->getItem('dex_123_include_premium_dex=1')->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -106,7 +106,7 @@ class GetDexServiceTest extends TestCase
 
         $this->assertEquals(
             [
-                'dex_123include_premium_dex=1',
+                'dex_123_include_premium_dex=1',
             ],
             $this->cache->getItem('register_dex')->get(),
         );
@@ -128,7 +128,7 @@ class GetDexServiceTest extends TestCase
         );
 
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123include_unreleased_dex=1&include_premium_dex=1')->get();
+        $value = $this->cache->getItem('dex_123_include_unreleased_dex=1&include_premium_dex=1')->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -140,7 +140,7 @@ class GetDexServiceTest extends TestCase
 
         $this->assertEquals(
             [
-                'dex_123include_unreleased_dex=1&include_premium_dex=1',
+                'dex_123_include_unreleased_dex=1&include_premium_dex=1',
             ],
             $this->cache->getItem('register_dex')->get(),
         );

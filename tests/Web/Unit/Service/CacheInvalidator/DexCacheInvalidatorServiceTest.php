@@ -101,11 +101,35 @@ class DexCacheInvalidatorServiceTest extends TestCase
         $this->assertCount(1, $register);
     }
 
+    public function testInvalidateByTrainerIdWithHomeDex(): void
+    {
+        $cache = new ArrayAdapter();
+        $cache->get('douze', fn () => 'DouZe');
+        $cache->get('dex_123', fn () => 'whatever');
+        $cache->get('dex_123#includeprivatedex', fn () => 'whatever');
+        $cache->get('dex_456', fn () => 'whatever');
+        $cache->get('dex_789', fn () => 'whatever');
+        $cache->get('register_dex', fn () => ['dex_123', 'dex_123#includeprivatedex', 'dex_456']);
+
+        $service = new DexCacheInvalidatorService($cache);
+        $service->invalidateByTrainerId('unknown');
+        $service->invalidateByTrainerId('123');
+
+        $values = $cache->getValues();
+        $this->assertCount(4, $values);
+        $this->assertArrayNotHasKey('dex_123', $values);
+        $this->assertArrayNotHasKey('dex_123includeprivatedex', $values);
+
+        /** @var string[] $register */
+        $register = $cache->getItem('register_dex')->get();
+        $this->assertCount(1, $register);
+    }
+
     public function testInvalidateByTrainerIdMock(): void
     {
         $cache = $this->createMock(ArrayAdapter::class);
         $cache
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(3))
             ->method('get')
             ->with('register_dex')
             ->willReturnCallback(function (string $key, callable $callback): mixed {

@@ -26,6 +26,24 @@ trait CacheRegisterTrait
         });
     }
 
+    /**
+     * @return string[]
+     */
+    protected function getRegisteredCache(string $type): array
+    {
+        $key = KeyMaker::getRegisterTypeKey($type);
+
+        $list = $this->cache->get($key, function () {
+            return [];
+        });
+
+        if (!is_array($list)) {
+            return [];
+        }
+
+        return $list;
+    }
+
     private function registerCache(string $type, string $key): void
     {
         $registerKey = KeyMaker::getRegisterTypeKey($type);
@@ -42,23 +60,5 @@ trait CacheRegisterTrait
         $this->cache->get($registerKey, function () use ($list) {
             return $list;
         });
-    }
-
-    /**
-     * @return string[]
-     */
-    private function getRegisteredCache(string $type): array
-    {
-        $key = KeyMaker::getRegisterTypeKey($type);
-
-        $list = $this->cache->get($key, function () {
-            return [];
-        });
-
-        if (!is_array($list)) {
-            return [];
-        }
-
-        return $list;
     }
 }
