@@ -506,8 +506,8 @@ dex:
                 negative: "Not in "
         catch_states:
             total: "All the collection"
-            positive: "Filter all '{cs}'"
-            negative: "Filter all excepts '{cs}'"
+            positive: "Filter all “{cs}”"
+            negative: "Filter all excepts “{cs}”"
         collections:
             label: Collection
             value:
