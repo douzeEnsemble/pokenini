@@ -32,11 +32,11 @@ security:
 
   access_control:
     - { path: ^/api, roles: ROLE_API }
+    - { path: ^/(en|fr)/album/dex$, roles: ROLE_TRAINER }
     - { path: ^/(en|fr)/album, roles: PUBLIC_ACCESS }
     - { path: ^/(en|fr)/connect, roles: PUBLIC_ACCESS }
     - { path: ^/(en|fr)/istration, roles: ROLE_ADMIN }
     - { path: ^/(en|fr)/trainer, roles: ROLE_TRAINER }
-    - { path: ^/(en|fr)/album, roles: ROLE_TRAINER }
     - { path: ^/(en|fr)/election, roles: ROLE_TRAINER }
     - { path: ^/(en|fr)/outerroom, roles: ROLE_USER }
     - { path: ^/, roles: PUBLIC_ACCESS }

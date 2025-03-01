@@ -6,7 +6,6 @@ namespace App\Web\Controller;
 
 use App\Web\Exception\NoLoggedUserException;
 use App\Web\Security\UserTokenService;
-use App\Web\Service\Api\GetDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,27 +14,17 @@ class HomeController extends AbstractController
 {
     #[Route('')]
     public function index(
-        GetDexService $getDexService,
         UserTokenService $userTokenService,
-        string $demoUserId,
     ): Response {
-        $connectedUserId = null;
-
         try {
-            $userId = $connectedUserId = $userTokenService->getLoggedUserToken();
+            $connectedUserId = $userTokenService->getLoggedUserToken();
         } catch (NoLoggedUserException $e) {
-            $userId = $demoUserId;
+            $connectedUserId = null;
         }
-
-        $dex = $this->isGranted('ROLE_ADMIN')
-            ? $getDexService->getWithUnreleasedAndPremium($userId)
-            : $getDexService->getWithPremium($userId);
 
         return $this->render(
             'Home/index.html.twig',
             [
-                'dex' => $dex,
-                'userId' => $userId,
                 'connectedUserId' => $connectedUserId,
             ]
         );
