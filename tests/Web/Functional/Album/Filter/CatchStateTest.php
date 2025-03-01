@@ -40,8 +40,24 @@ class CatchStateTest extends WebTestCase
             $crawler->filter('table a')->first()->attr('href')
         );
         $this->assertEquals(
+            'Filtre les “Non”',
+            $crawler->filter('table a')->first()->attr('data-bs-title')
+        );
+        $this->assertEquals(
+            '/fr/album/demo?cs=!no&t=7b52009b64fd0a2a49e6d8a939753077792b0554',
+            $crawler->filter('table a')->eq(1)->attr('href')
+        );
+        $this->assertEquals(
+            'Filtre tous sauf les “Non”',
+            $crawler->filter('table a')->eq(1)->attr('data-bs-title')
+        );
+        $this->assertEquals(
             '/fr/album/demo?t=7b52009b64fd0a2a49e6d8a939753077792b0554',
             $crawler->filter('table a')->last()->attr('href')
+        );
+        $this->assertEquals(
+            'Toute la collection',
+            $crawler->filter('table a')->last()->attr('data-bs-title')
         );
         $this->assertCountFilter($crawler, 1, '.progress');
         $this->assertCountFilter($crawler, 6, '.progress-bar');
