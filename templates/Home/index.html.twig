@@ -17,7 +17,7 @@
 
 {% block container %}
   <div id="home" class="row">
-    <div class="col-lg-8 mx-auto text-center">
+    <div class="col-lg-10 mx-auto text-center">
       <h1>Pokénini</h1>
 
       {% if connectedUserId is null %}
@@ -32,29 +32,33 @@
       {% endif %}
 
       <div class="row mt-5">
-        <div class="col d-flex align-items-start border-end home-menu-item home-menu-item-election">
-          <div class="icon-square text-body-emphasis bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-            <i class="bi bi-balloon-heart"></i>
-          </div>
-          <div>
-            <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.election.title'|trans }}</h3>
-            <p>{{- 'home.menu.election.description'|trans -}}</p>
-            <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-outline-primary">
-                {{ 'home.menu.election.action'|trans }}
-              </a>
+        <div class="col-lg-6 col-12 home-menu-item home-menu-item-election">
+          <div class="d-flex bg-body-tertiary rounded-3 p-xl-5 p-lg-3 p-2 mb-5 align-items-start">
+            <div class="icon-square text-light bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+              <i class="bi bi-balloon-heart"></i>
+            </div>
+            <div class="flex-fill">
+              <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.election.title'|trans }}</h3>
+              <p>{{- 'home.menu.election.description'|trans -}}</p>
+              <a href="{{ path('app_web_electiondex_index') }}" class="btn btn-outline-primary">
+                  {{ 'home.menu.election.action'|trans }}
+                </a>
+            </div>
           </div>
         </div>
-        <div class="col d-flex align-items-start home-menu-item home-menu-item-album">
-          <div class="icon-square text-light bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-            <i class="bi bi-collection"></i>
-          </div>
-          <div>
-            <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.album.title'|trans }}</h3>
-            <p>{{- 'home.menu.album.description'|trans -}}</p>
-              <a href="{{ path('app_web_albumdex_index') }}" class="btn btn-outline-primary">
-                {{ 'home.menu.album.action'|trans }}
-              </a>
-          </div>
+        <div class="col-lg-6 col-12 home-menu-item home-menu-item-album">
+          <div class="d-flex bg-body-tertiary rounded-3 p-xl-5 p-lg-3 p-2 mb-5 align-items-start">
+            <div class="icon-square text-light bg-info d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+              <i class="bi bi-collection"></i>
+            </div>
+            <div class="flex-fill">
+              <h3 class="fs-2 text-body-emphasis">{{ 'home.menu.album.title'|trans }}</h3>
+              <p>{{- 'home.menu.album.description'|trans -}}</p>
+                <a href="{{ path('app_web_albumdex_index') }}" class="btn btn-outline-primary">
+                  {{ 'home.menu.album.action'|trans }}
+                </a>
+            </div>
+          </div>    
         </div>    
       </div>  
     </div>
