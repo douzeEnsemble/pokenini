@@ -49,8 +49,8 @@ class ActionCalculateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 0, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 2, '.list-group-item-danger');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 2, '.icon-square.bg-danger');
         $this->assertCountFilter($crawler, 3, '.alert-danger');
         $this->assertSelectorTextSame(
             '.admin-item-calculate_dex_availabilities .alert',
@@ -73,8 +73,8 @@ class ActionCalculateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 0, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 2, '.list-group-item-danger');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 2, '.icon-square.bg-danger');
         $this->assertCountFilter($crawler, 3, '.alert-danger');
         $this->assertCountFilter($crawler, 1, '.admin-item-calculate_dex_availabilities .alert');
         $this->assertSelectorTextSame(
@@ -85,8 +85,8 @@ class ActionCalculateTest extends WebTestCase
 
         $crawler = $client->request('GET', '/fr/istration');
 
-        $this->assertCountFilter($crawler, 0, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 1, '.list-group-item-danger');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-danger');
         $this->assertCountFilter($crawler, 2, '.alert-danger');
     }
 
@@ -132,8 +132,8 @@ class ActionCalculateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 1, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 1, '.list-group-item-danger');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-danger');
 
         $this->assertConnectedNavBar($crawler);
         $this->assertFrenchLangSwitch($crawler);

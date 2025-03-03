@@ -34,7 +34,7 @@ class ActionInvalidateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 1, '.list-group-item-success');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-success');
     }
 
     #[DataProvider('providerInvalidateNotExists')]

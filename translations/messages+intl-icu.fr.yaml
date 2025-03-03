@@ -25,31 +25,6 @@ title:
     home: "Accueil"
     report: "Stats"
     admin: "Administration"
-    update_data: "Mises à jour des données"
-    update_availabilities: "Mises à jour des données de disponibilités"
-    calculate_data: "Calculs des données"
-    invalidate_data: "Invalidation des caches"
-    update:
-        labels: "Mise à jour des labels"
-        games_collections_and_dex: "Mise à jour des jeux, des collections et des dex"
-        pokemons: "Mise à jour des pokémons"
-        games_availabilities: "Mise à jour des disponibilités des jeux"
-        games_shinies_availabilities: "Mise à jour des disponibilités des jeux des chromatiques"
-        regional_dex_numbers: "Mise à jour des numéro des dex régionaux"
-        collections_availabilities: "Mise à jour des disponibilités des collections"
-    calculate:
-        game_bundles_availabilities: "Calculs des disponibilités des bundles de jeux"
-        game_bundles_shinies_availabilities: "Calculs des disponibilités des bundles de jeux des chromatiques"
-        dex_availabilities: "Calculs des disponibilités des dex"
-        pokemon_availabilities: "Calculs des disponibilités par pokemons"
-    invalidate:
-        catch_states: "Invalidation du cache des statuts"
-        types: "Invalidation du cache des types"
-        labels: "Invalidation du cache des labels"
-        dex: "Invalidation du cache des dex"
-        albums: "Invalidation du cache des albums"
-        reports: "Invalidation du cache des rapports"
-        actions: "Invalidation du cache des actions"
     admin_actions: "Données et caches"
     admin_reports: "Rapports"
     box: "Boite"
@@ -330,31 +305,6 @@ error:
             une capture, le max d'info.
 
 admin:
-    update:
-        games_availabilities: "Disponibilités des jeux"
-        games_shinies_availabilities: "Disponibilités des jeux des chromatiques"
-        collections_availabilities: "Disponibilités des collections"
-        regional_dex_numbers: "Numéros de dex régionaux"
-        game_generations: "Générations"
-        game_bundles: "Bundles de jeux"
-        games: "Jeux"
-        dex: "Dex"
-        collections: "Collections"
-        catch_states: "Statuts"
-        types: "Types"
-        regions: "Régions"
-        category_forms: "Catégories"
-        regional_forms: "Formes régionales"
-        special_forms: "Formes spéciales"
-        variant_forms: "Variantes"
-        pokemons: "Pokémons"
-
-    calculate:
-        game_bundles_availabilities: "Disponibilités des bundles"
-        game_bundles_shinies_availabilities: "Disponibilités des bundles des chromatiques"
-        dex_availabilities: "Disponibilités des dex"
-        pokemon_availabilities_game_bundle: "Disponibilités des packs de jeux par pokémons"
-        pokemon_availabilities_game_bundle_shiny: "Disponibilités des chromatiques des packs de jeux par pokémons "
     reports:
         cache:
             title: "Cache"
@@ -386,6 +336,109 @@ admin:
     toggle:
         last: "Voir l'action précédente"
         current: "Voir la dernière action"
+    actions:
+        update_availabilities:
+            title: "Mises à jour des données de disponibilités"
+            games_availabilities: 
+                title: "Mise à jour des disponibilités des jeux"
+                item: "Disponibilités des jeux"
+                cta: "Mettre à jour"
+            games_shinies_availabilities: 
+                title: "Mise à jour des disponibilités des jeux des chromatiques"
+                item: "Disponibilités des jeux des chromatiques"
+                cta: "Mettre à jour"
+            collections_availabilities: 
+                title: "Mise à jour des disponibilités des collections"
+                item: "Disponibilités des collections"
+                cta: "Mettre à jour"
+        update_data:
+            title: "Mises à jour des données"
+            labels: 
+                title: "Mise à jour des labels"
+                cta: "Mettre à jour"
+            games_collections_and_dex: 
+                title: "Mise à jour des jeux, des collections et des dex"
+                cta: "Mettre à jour"
+            pokemons: 
+                title: "Mise à jour des pokémons"
+                item: "Pokémons"
+                cta: "Mettre à jour"
+            regional_dex_numbers: 
+                title: "Mise à jour des numéro des dex régionaux"
+                item: "Numéros de dex régionaux"
+                cta: "Mettre à jour"
+            game_generations: 
+                item: "Générations"
+            game_bundles: 
+                item: "Bundles de jeux"
+            games: 
+                item: "Jeux"
+            dex: 
+                item: "Dex"
+            collections: 
+                item: "Collections"
+            catch_states: 
+                item: "Statuts"
+            types: 
+                item: "Types"
+            regions: 
+                item: "Régions"
+            category_forms: 
+                item: "Catégories"
+            regional_forms: 
+                item: "Formes régionales"
+            special_forms: 
+                item: "Formes spéciales"
+            variant_forms: 
+                item: "Variantes"
+                
+        calculate_data:
+            title: "Calculs des données"
+            game_bundles_availabilities: 
+                title: "Calculs des disponibilités des bundles de jeux"
+                item: "Disponibilités des bundles"
+                cta: "Calculer"
+            game_bundles_shinies_availabilities: 
+                title: "Calculs des disponibilités des bundles de jeux des chromatiques"
+                item: "Disponibilités des bundles des chromatiques"
+                cta: "Calculer"
+            dex_availabilities: 
+                title: "Calculs des disponibilités des dex"
+                item: "Disponibilités des dex"
+                cta: "Calculer"
+            pokemon_availabilities: 
+                title: "Calculs des disponibilités par pokemons"
+                cta: "Calculer"
+            pokemon_availabilities_game_bundle: 
+                item: "Disponibilités des packs de jeux par pokémons"
+            pokemon_availabilities_game_bundle_shiny: 
+                item: "Disponibilités des chromatiques des packs de jeux par pokémons "
+
+        invalidate_data:
+            title: "Invalidation des caches"
+            catch_states: 
+                title: "Invalidation du cache des statuts"
+                cta: "Invalider"
+            types: 
+                title: "Invalidation du cache des types"
+                cta: "Invalider"
+            labels: 
+                title: "Invalidation du cache des labels"
+                cta: "Invalider"
+            dex: 
+                title: "Invalidation du cache des dex"
+                cta: "Invalider"
+            albums: 
+                title: "Invalidation du cache des albums"
+                cta: "Invalider"
+            actions: 
+                title: "Invalidation du cache des actions"
+                cta: "Invalider"
+        
+        reports_data: 
+            reports: 
+                title: "Invalidation du cache des rapports"
+                cta: "Invalider"
 
 election:
     choose:

@@ -180,11 +180,7 @@
     </div>
 </div>
 
-<div class="row align-items-center justify-content-start">
-    <div class="col-md-md-4">
-        <h3 class="mt-3">{{ 'admin.reports.cache.title'|trans }}</h3>
-        <div class="list-group list-group-report-invalidate">
-            {{ admin.action('invalidate', 'reports', 'bar-chart', updatedItem, updatedAction, updatedState) }}
-        </div>
-    </div>
+<div class="row px-4 py-5">
+  <h2 class="mb-3 pb-2 border-bottom">{{ 'admin.reports.cache.title'|trans }}</h2>
+  {{ admin.action('reports_data', 'invalidate', 'reports', 'bar-chart', updatedItem, updatedAction, updatedState) }}
 </div>
