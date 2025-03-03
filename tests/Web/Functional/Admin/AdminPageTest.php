@@ -60,16 +60,15 @@ class AdminPageTest extends WebTestCase
     {
         $crawler = $this->getAdminHomeConnected();
 
-        $this->assertCountFilter($crawler, 2, 'h2');
-        $this->assertCountFilter($crawler, 8, 'h3');
+        $this->assertCountFilter($crawler, 7, 'h2');
+        $this->assertCountFilter($crawler, 18, 'h3');
         $this->assertCountFilter($crawler, 15, '.admin-item a.admin-item-cta');
-        $this->assertCountFilter($crawler, 15, '.admin-item a.admin-item-cta i.bi');
 
-        $this->assertCountFilter($crawler, 7, '.list-group-update .admin-item a.admin-item-cta');
-        $this->assertCountFilter($crawler, 4, '.list-group-calculate .admin-item a.admin-item-cta');
-        $this->assertCountFilter($crawler, 3, '.list-group-invalidate .admin-item a.admin-item-cta');
+        $this->assertCountFilter($crawler, 7, '.admin-item-update a.admin-item-cta');
+        $this->assertCountFilter($crawler, 4, '.admin-item-calculate a.admin-item-cta');
+        $this->assertCountFilter($crawler, 4, '.admin-item-invalidate a.admin-item-cta');
         $this->assertCountFilter($crawler, 2, 'table.report-table');
-        $this->assertCountFilter($crawler, 1, '.list-group-report-invalidate .admin-item a.admin-item-cta');
+        $this->assertCountFilter($crawler, 1, '.admin-item-invalidate_reports a.admin-item-cta');
 
         $this->assertCountFilter($crawler, 0, 'script[src="/js/album.js"]');
 

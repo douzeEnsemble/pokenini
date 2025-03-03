@@ -25,31 +25,6 @@ title:
     home: "Home"
     report: "Report"
     admin: "Backoffice"
-    update_data: "Update data"
-    update_availabilities: "Update availabilities' data"
-    calculate_data: "Calculate data"
-    invalidate_data: "Invalidate caches"
-    update:
-        labels: "Update labels"
-        games_collections_and_dex: "Update games, collections and dex"
-        pokemons: "Update pokémons"
-        games_availabilities: "Update games' availabilities"
-        games_shinies_availabilities: "Update games' shinies' availabilities"
-        regional_dex_numbers: "Update regional dex numbers"
-        collections_availabilities: "Update collections"
-    calculate:
-        game_bundles_availabilities: "Calculate game bundles' availabilities"
-        game_bundles_shinies_availabilities: "Calculate game bundles' shinies' availabilities"
-        dex_availabilities: "Calculate dex availabilities"
-        pokemon_availabilities: "Calculate pokemons availabilities"
-    invalidate:
-        catch_states: "Invalidate status cache"
-        types: "Invalidate types cache"
-        labels: "Invalidate labels cache"
-        dex: "Invalidate dex cache"
-        albums: "Invalidate album cache"
-        reports: "Invalidate reports cache"
-        actions: "Invalidate actions cache"
     admin_actions: "Data and caches"
     admin_reports: "Reporting"
     box: "Box"
@@ -323,31 +298,6 @@ error:
             a capture, the max of info.
 
 admin:
-    update:
-        games_availabilities: "Games' availabilities"
-        games_shinies_availabilities: "Games' shinies' availabilities"
-        collections_availabilities: "Collections' availabilities"
-        regional_dex_numbers: "Regional Dex numbers"
-        game_generations: "Game's generations"
-        game_bundles: "Game's bundles"
-        games: "Games"
-        dex: "Dex"
-        collections: "Collections"
-        catch_states: "Catch's states"
-        types: "Types"
-        regions: "Regions"
-        category_forms: "Category forms"
-        regional_forms: "Regional forms"
-        special_forms: "Special forms"
-        variant_forms: "Variant forms"
-        pokemons: "Pokémons"
-
-    calculate:
-        game_bundles_availabilities: "Bundles' availabilities"
-        game_bundles_shinies_availabilities: "Bundles' shinies' availabilities"
-        dex_availabilities: "Dex' availabilities"
-        pokemon_availabilities_game_bundle: "Pokemons' availabilities for Game bundles"
-        pokemon_availabilities_game_bundle_shiny: "Pokemons' availabilities for Game bundles shiny"
     reports:
         cache:
             title: "Cache"
@@ -379,6 +329,108 @@ admin:
     toggle:
         last: "Show last action"
         current: "Show current action"
+
+    actions:
+        update_availabilities:
+            title: "Update availabilities' data"
+            games_availabilities: 
+                title: "Update games' availabilities"
+                item: "Games' availabilities"
+                cta: "Update!"
+            games_shinies_availabilities: 
+                title: "Update games' shinies' availabilities"
+                item: "Games' shinies' availabilities"
+                cta: "Update!"
+            collections_availabilities: 
+                title: "Update collections"
+                item: "Collections' availabilities"
+                cta: "Update!"
+        update_data:
+            title: "Update data"
+            labels: 
+                title: "Update labels"
+                cta: "Update!"
+            games_collections_and_dex: 
+                title: "Update games, collections and dex"
+                cta: "Update!"
+            pokemons: 
+                title: "Update pokémons"
+                item: "Pokémons"
+                cta: "Update!"
+            regional_dex_numbers: 
+                title: "Update regional dex numbers"
+                item: "Regional Dex numbers"
+                cta: "Update!"
+            game_generations: 
+                item: "Game's generations"
+            game_bundles: 
+                item: "Game's bundles"
+            games: 
+                item: "Games"
+            dex: 
+                item: "Dex"
+            collections: 
+                item: "Collections"
+            catch_states: 
+                item: "Catch's states"
+            types: 
+                item: "Types"
+            regions: 
+                item: "Regions"
+            category_forms: 
+                item: "Category forms"
+            regional_forms: 
+                item: "Regional forms"
+            special_forms: 
+                item: "Special forms"
+            variant_forms: 
+                item: "Variant forms"
+                
+        calculate_data:
+            title: "Calculate data"
+            game_bundles_availabilities: 
+                title: "Calculate game bundles' availabilities"
+                item: "Bundles' availabilities"
+                cta: "Calculate!"
+            game_bundles_shinies_availabilities: 
+                title: "Calculate game bundles' shinies' availabilities"
+                item: "Bundles' shinies' availabilities"
+                cta: "Calculate!"
+            dex_availabilities: 
+                title: "Calculate dex availabilities"
+                item: "Dex' availabilities"
+                cta: "Calculate!"
+            pokemon_availabilities: 
+                title: "Calculate pokemons availabilities"
+                cta: "Calculate!"
+            pokemon_availabilities_game_bundle: 
+                item: "Pokemons' availabilities for Game bundles"
+            pokemon_availabilities_game_bundle_shiny: 
+                item: "Pokemons' availabilities for Game bundles shiny"
+        invalidate_data:
+            title: "Invalidate caches"
+            catch_states: 
+                title: "Invalidate status cache"
+                cta: "Invalidate!"
+            types: 
+                title: "Invalidate types cache"
+                cta: "Invalidate!"
+            labels: 
+                title: "Invalidate labels cache"
+                cta: "Invalidate!"
+            dex: 
+                title: "Invalidate dex cache"
+                cta: "Invalidate!"
+            albums: 
+                title: "Invalidate album cache"
+                cta: "Invalidate!"
+            actions: 
+                title: "Invalidate actions cache"
+                cta: "Invalidate!"
+        reports_data: 
+            reports: 
+                title: "Invalidate reports cache"
+                cta: "Invalidate!"
 
 election:
     choose:

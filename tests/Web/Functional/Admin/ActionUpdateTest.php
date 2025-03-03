@@ -59,8 +59,8 @@ class ActionUpdateTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(200);
 
-        $this->assertCountFilter($crawler, 0, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 1, '.list-group-item-danger');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-danger');
         $this->assertCountFilter($crawler, 2, '.alert-danger');
         $this->assertSelectorTextSame('.alert-danger', 'Exception has been thrown for X reason');
 
@@ -121,13 +121,13 @@ class ActionUpdateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 1, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 0, '.list-group-item-warning');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-warning');
 
         $crawler = $client->request('GET', '/fr/istration');
 
-        $this->assertCountFilter($crawler, 0, '.list-group-item-success');
-        $this->assertCountFilter($crawler, 0, '.list-group-item-warning');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-success');
+        $this->assertCountFilter($crawler, 0, '.icon-square.bg-warning');
     }
 
     private function testAdminUpdate(string $name): void
@@ -143,7 +143,7 @@ class ActionUpdateTest extends WebTestCase
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
 
-        $this->assertCountFilter($crawler, 1, '.list-group-item-success');
+        $this->assertCountFilter($crawler, 1, '.icon-square.bg-success');
 
         $this->assertConnectedNavBar($crawler);
         $this->assertFrenchLangSwitch($crawler);
