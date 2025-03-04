@@ -30,7 +30,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0001-000"
+      "pokemon_order_number": "9999-0001-000"
     },
     {
       "pokemon_slug": "ivysaur",
@@ -61,7 +61,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0002-001"
+      "pokemon_order_number": "9999-0002-001"
     },
     {
       "pokemon_slug": "venusaur",
@@ -92,7 +92,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-002"
+      "pokemon_order_number": "9999-0003-002"
     },
     {
       "pokemon_slug": "venusaur-f",
@@ -123,7 +123,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-003"
+      "pokemon_order_number": "9999-0003-003"
     },
     {
       "pokemon_slug": "venusaur-mega",
@@ -154,7 +154,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-004"
+      "pokemon_order_number": "9999-0003-004"
     }
   ]
 }

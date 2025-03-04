@@ -32,7 +32,7 @@
             "secondary_type_name": "Flying",
             "secondary_type_french_name": "Vol",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0006-004"
+            "pokemon_order_number": "9999-0006-004"
         },
         {
             "pokemon_slug": "blastoise-mega",
@@ -65,7 +65,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0009-003"
+            "pokemon_order_number": "9999-0009-003"
         },
         {
             "pokemon_slug": "beedrill-mega",
@@ -98,7 +98,7 @@
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0015-003"
+            "pokemon_order_number": "9999-0015-003"
         },
         {
             "pokemon_slug": "pidgeot-mega",
@@ -131,7 +131,7 @@
             "secondary_type_name": "Flying",
             "secondary_type_french_name": "Vol",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0018-003"
+            "pokemon_order_number": "9999-0018-003"
         },
         {
             "pokemon_slug": "mewtwo-mega-x",
@@ -164,7 +164,7 @@
             "secondary_type_name": "Fighting",
             "secondary_type_french_name": "Combat",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0150-001"
+            "pokemon_order_number": "9999-0150-001"
         },
         {
             "pokemon_slug": "ampharos-mega",
@@ -197,7 +197,7 @@
             "secondary_type_name": "Dragon",
             "secondary_type_french_name": "Dragon",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0181-003"
+            "pokemon_order_number": "9999-0181-003"
         },
         {
             "pokemon_slug": "heracross-mega",
@@ -230,7 +230,7 @@
             "secondary_type_name": "Fighting",
             "secondary_type_french_name": "Combat",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0214-005"
+            "pokemon_order_number": "9999-0214-005"
         },
         {
             "pokemon_slug": "sceptile-mega",
@@ -263,7 +263,7 @@
             "secondary_type_name": "Dragon",
             "secondary_type_french_name": "Dragon",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0254-003"
+            "pokemon_order_number": "9999-0254-003"
         },
         {
             "pokemon_slug": "banette-mega",
@@ -296,7 +296,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0354-002"
+            "pokemon_order_number": "9999-0354-002"
         },
         {
             "pokemon_slug": "salamence-mega",
@@ -329,7 +329,7 @@
             "secondary_type_name": "Flying",
             "secondary_type_french_name": "Vol",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0373-003"
+            "pokemon_order_number": "9999-0373-003"
         },
         {
             "pokemon_slug": "latias-mega",
@@ -362,7 +362,7 @@
             "secondary_type_name": "Psychic",
             "secondary_type_french_name": "Psy",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0380-001"
+            "pokemon_order_number": "9999-0380-001"
         },
         {
             "pokemon_slug": "audino-mega",
@@ -395,7 +395,7 @@
             "secondary_type_name": "Fairy",
             "secondary_type_french_name": "F\u00e9e",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0531-001"
+            "pokemon_order_number": "9999-0531-001"
         }
     ]
 }

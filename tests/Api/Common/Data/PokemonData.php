@@ -14,7 +14,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 1,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0001-000',
+            'pokemon_order_number' => '9999-0001-000',
             'pokemon_slug' => 'bulbasaur',
             'pokemon_name' => 'Bulbasaur',
             'pokemon_simplified_name' => 'Bulbasaur',
@@ -59,7 +59,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 2,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0002-001',
+            'pokemon_order_number' => '9999-0002-001',
             'pokemon_slug' => 'ivysaur',
             'pokemon_name' => 'Ivysaur',
             'pokemon_simplified_name' => 'Ivysaur',
@@ -107,7 +107,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 3,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0003-002',
+            'pokemon_order_number' => '9999-0003-002',
             'pokemon_slug' => 'venusaur',
             'pokemon_name' => 'Venusaur',
             'pokemon_simplified_name' => 'Venusaur',
@@ -155,7 +155,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 10,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0010-000',
+            'pokemon_order_number' => '9999-0010-000',
             'pokemon_slug' => 'caterpie',
             'pokemon_name' => 'Caterpie',
             'pokemon_simplified_name' => 'Caterpie',
@@ -197,7 +197,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 11,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0011-001',
+            'pokemon_order_number' => '9999-0011-001',
             'pokemon_slug' => 'metapod',
             'pokemon_name' => 'Metapod',
             'pokemon_simplified_name' => 'Metapod',
@@ -239,7 +239,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 12,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0012-002',
+            'pokemon_order_number' => '9999-0012-002',
             'pokemon_slug' => 'butterfree',
             'pokemon_name' => 'Butterfree',
             'pokemon_simplified_name' => 'Butterfree',
@@ -281,7 +281,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 9912,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-9912-000',
+            'pokemon_order_number' => '9999-9912-000',
             'pokemon_slug' => 'douze',
             'pokemon_name' => 'Douze',
             'pokemon_simplified_name' => 'Douze',
@@ -327,7 +327,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 4,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0004-000',
+            'pokemon_order_number' => '9999-0004-000',
             'pokemon_slug' => 'charmander',
             'pokemon_name' => 'Charmander',
             'pokemon_simplified_name' => 'Charmander',
@@ -366,7 +366,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 5,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0005-001',
+            'pokemon_order_number' => '9999-0005-001',
             'pokemon_slug' => 'charmeleon',
             'pokemon_name' => 'Charmeleon',
             'pokemon_simplified_name' => 'Charmeleon',
@@ -408,7 +408,7 @@ final class PokemonData
         return [
             'pokemon_national_dex_number' => 6,
             'pokemon_regional_dex_number' => null,
-            'pokemon_order_number' => '999-0006-002',
+            'pokemon_order_number' => '9999-0006-002',
             'pokemon_slug' => 'charizard',
             'pokemon_name' => 'Charizard',
             'pokemon_simplified_name' => 'Charizard',
@@ -478,7 +478,7 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'pokemon_order_number' => '999-0019-004',
+            'pokemon_order_number' => '9999-0019-004',
             'game_bundles' => [
                 'ultrasunultramoon',
             ],
@@ -524,7 +524,7 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
-            'pokemon_order_number' => '999-0019-005',
+            'pokemon_order_number' => '9999-0019-005',
             'game_bundles' => [
                 'redgreenblueyellow',
                 'ultrasunultramoon',
@@ -572,7 +572,7 @@ final class PokemonData
             'secondary_type_name' => 'Normal',
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
-            'pokemon_order_number' => '999-0019-006',
+            'pokemon_order_number' => '9999-0019-006',
             'game_bundles' => [
                 'redgreenblueyellow',
                 'ultrasunultramoon',
@@ -620,7 +620,7 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'pokemon_order_number' => '999-0020-007',
+            'pokemon_order_number' => '9999-0020-007',
             'game_bundles' => [
                 'ultrasunultramoon',
             ],
@@ -666,7 +666,7 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
-            'pokemon_order_number' => '999-0020-008',
+            'pokemon_order_number' => '9999-0020-008',
             'game_bundles' => [
                 'redgreenblueyellow',
                 'ultrasunultramoon',
@@ -714,7 +714,7 @@ final class PokemonData
             'secondary_type_name' => 'Normal',
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
-            'pokemon_order_number' => '999-0020-009',
+            'pokemon_order_number' => '9999-0020-009',
             'game_bundles' => [
                 'redgreenblueyellow',
                 'ultrasunultramoon',
@@ -762,7 +762,7 @@ final class PokemonData
             'secondary_type_name' => 'Normal',
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'ultrasunultramoon',
-            'pokemon_order_number' => '999-0020-010',
+            'pokemon_order_number' => '9999-0020-010',
             'game_bundles' => [],
             'game_bundles_shiny' => [],
         ];

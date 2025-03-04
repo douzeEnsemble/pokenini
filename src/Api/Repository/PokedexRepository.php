@@ -290,7 +290,7 @@ class PokedexRepository extends ServiceEntityRepository
                     pagb.items AS game_bundle_slugs,
                     pagbs.items AS game_bundle_shiny_slugs,
                     CONCAT(
-                        LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
+                        LPAD(CAST(COALESCE(rdn.dex_number, 9999) AS varchar), 4, '0'),
                         '-',
                         LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
                         '-',

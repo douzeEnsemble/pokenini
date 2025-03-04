@@ -48,7 +48,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0001-000"
+      "pokemon_order_number": "9999-0001-000"
     },
     {
       "pokemon_slug": "ivysaur",
@@ -80,7 +80,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0002-001"
+      "pokemon_order_number": "9999-0002-001"
     },
     {
       "pokemon_slug": "venusaur",
@@ -112,7 +112,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-002"
+      "pokemon_order_number": "9999-0003-002"
     },
     {
       "pokemon_slug": "venusaur-f",
@@ -144,7 +144,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-003"
+      "pokemon_order_number": "9999-0003-003"
     },
     {
       "pokemon_slug": "venusaur-mega",
@@ -176,7 +176,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-004"
+      "pokemon_order_number": "9999-0003-004"
     },
     {
       "pokemon_slug": "venusaur-gmax",
@@ -208,7 +208,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0003-005"
+      "pokemon_order_number": "9999-0003-005"
     },
     {
       "pokemon_slug": "charmander",
@@ -240,7 +240,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0004-000"
+      "pokemon_order_number": "9999-0004-000"
     },
     {
       "pokemon_slug": "charmeleon",
@@ -272,7 +272,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0005-001"
+      "pokemon_order_number": "9999-0005-001"
     },
     {
       "pokemon_slug": "charizard",
@@ -304,7 +304,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0006-002"
+      "pokemon_order_number": "9999-0006-002"
     },
     {
       "pokemon_slug": "charizard-mega-x",
@@ -336,7 +336,7 @@
       "secondary_type_slug": "dragon",
       "secondary_type_name": "Dragon",
       "secondary_type_french_name": "Dragon",
-      "pokemon_order_number": "999-0006-003"
+      "pokemon_order_number": "9999-0006-003"
     },
     {
       "pokemon_slug": "charizard-mega-y",
@@ -368,7 +368,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0006-004"
+      "pokemon_order_number": "9999-0006-004"
     },
     {
       "pokemon_slug": "charizard-gmax",
@@ -400,7 +400,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0006-005"
+      "pokemon_order_number": "9999-0006-005"
     },
     {
       "pokemon_slug": "squirtle",
@@ -432,7 +432,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0007-000"
+      "pokemon_order_number": "9999-0007-000"
     },
     {
       "pokemon_slug": "wartortle",
@@ -464,7 +464,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0008-001"
+      "pokemon_order_number": "9999-0008-001"
     },
     {
       "pokemon_slug": "blastoise",
@@ -496,7 +496,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0009-002"
+      "pokemon_order_number": "9999-0009-002"
     },
     {
       "pokemon_slug": "blastoise-mega",
@@ -528,7 +528,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0009-003"
+      "pokemon_order_number": "9999-0009-003"
     },
     {
       "pokemon_slug": "blastoise-gmax",
@@ -560,7 +560,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0009-004"
+      "pokemon_order_number": "9999-0009-004"
     },
     {
       "pokemon_slug": "caterpie",
@@ -592,7 +592,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0010-000"
+      "pokemon_order_number": "9999-0010-000"
     },
     {
       "pokemon_slug": "metapod",
@@ -624,7 +624,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0011-001"
+      "pokemon_order_number": "9999-0011-001"
     },
     {
       "pokemon_slug": "butterfree",
@@ -656,7 +656,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0012-002"
+      "pokemon_order_number": "9999-0012-002"
     },
     {
       "pokemon_slug": "butterfree-f",
@@ -688,7 +688,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0012-003"
+      "pokemon_order_number": "9999-0012-003"
     },
     {
       "pokemon_slug": "butterfree-gmax",
@@ -720,7 +720,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0012-004"
+      "pokemon_order_number": "9999-0012-004"
     },
     {
       "pokemon_slug": "weedle",
@@ -752,7 +752,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0013-000"
+      "pokemon_order_number": "9999-0013-000"
     },
     {
       "pokemon_slug": "kakuna",
@@ -784,7 +784,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0014-001"
+      "pokemon_order_number": "9999-0014-001"
     },
     {
       "pokemon_slug": "beedrill",
@@ -816,7 +816,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0015-002"
+      "pokemon_order_number": "9999-0015-002"
     },
     {
       "pokemon_slug": "beedrill-mega",
@@ -848,7 +848,7 @@
       "secondary_type_slug": "poison",
       "secondary_type_name": "Poison",
       "secondary_type_french_name": "Poison",
-      "pokemon_order_number": "999-0015-003"
+      "pokemon_order_number": "9999-0015-003"
     },
     {
       "pokemon_slug": "pidgey",
@@ -880,7 +880,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0016-000"
+      "pokemon_order_number": "9999-0016-000"
     },
     {
       "pokemon_slug": "pidgeotto",
@@ -912,7 +912,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0017-001"
+      "pokemon_order_number": "9999-0017-001"
     },
     {
       "pokemon_slug": "pidgeot",
@@ -944,7 +944,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0018-002"
+      "pokemon_order_number": "9999-0018-002"
     },
     {
       "pokemon_slug": "pidgeot-mega",
@@ -976,7 +976,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0018-003"
+      "pokemon_order_number": "9999-0018-003"
     },
     {
       "pokemon_slug": "rattata",
@@ -1008,7 +1008,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0019-004"
+      "pokemon_order_number": "9999-0019-004"
     },
     {
       "pokemon_slug": "rattata-f",
@@ -1040,7 +1040,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0019-005"
+      "pokemon_order_number": "9999-0019-005"
     },
     {
       "pokemon_slug": "rattata-alola",
@@ -1070,7 +1070,7 @@
       "secondary_type_slug": "normal",
       "secondary_type_name": "Normal",
       "secondary_type_french_name": "Normal",
-      "pokemon_order_number": "999-0019-006"
+      "pokemon_order_number": "9999-0019-006"
     },
     {
       "pokemon_slug": "raticate",
@@ -1102,7 +1102,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0020-007"
+      "pokemon_order_number": "9999-0020-007"
     },
     {
       "pokemon_slug": "raticate-f",
@@ -1134,7 +1134,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0020-008"
+      "pokemon_order_number": "9999-0020-008"
     },
     {
       "pokemon_slug": "raticate-alola",
@@ -1164,7 +1164,7 @@
       "secondary_type_slug": "normal",
       "secondary_type_name": "Normal",
       "secondary_type_french_name": "Normal",
-      "pokemon_order_number": "999-0020-009"
+      "pokemon_order_number": "9999-0020-009"
     },
     {
       "pokemon_slug": "raticate-alola-totem",
@@ -1194,7 +1194,7 @@
       "secondary_type_slug": "normal",
       "secondary_type_name": "Normal",
       "secondary_type_french_name": "Normal",
-      "pokemon_order_number": "999-0020-010"
+      "pokemon_order_number": "9999-0020-010"
     },
     {
       "pokemon_slug": "spearow",
@@ -1226,7 +1226,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0021-000"
+      "pokemon_order_number": "9999-0021-000"
     },
     {
       "pokemon_slug": "fearow",
@@ -1258,7 +1258,7 @@
       "secondary_type_slug": "flying",
       "secondary_type_name": "Flying",
       "secondary_type_french_name": "Vol",
-      "pokemon_order_number": "999-0022-001"
+      "pokemon_order_number": "9999-0022-001"
     },
     {
       "pokemon_slug": "ekans",
@@ -1290,7 +1290,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0023-000"
+      "pokemon_order_number": "9999-0023-000"
     },
     {
       "pokemon_slug": "arbok",
@@ -1322,7 +1322,7 @@
       "secondary_type_slug": null,
       "secondary_type_name": null,
       "secondary_type_french_name": null,
-      "pokemon_order_number": "999-0024-001"
+      "pokemon_order_number": "9999-0024-001"
     }
   ],
   "report": {
