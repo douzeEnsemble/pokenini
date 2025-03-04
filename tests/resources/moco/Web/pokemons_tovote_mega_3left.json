@@ -32,7 +32,7 @@
             "secondary_type_name": "Dragon",
             "secondary_type_french_name": "Dragon",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0006-003"
+            "pokemon_order_number": "9999-0006-003"
         },
         {
             "pokemon_slug": "blastoise-mega",
@@ -65,7 +65,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0009-003"
+            "pokemon_order_number": "9999-0009-003"
         },
         {
             "pokemon_slug": "slowbro-mega",
@@ -98,7 +98,7 @@
             "secondary_type_name": "Psychic",
             "secondary_type_french_name": "Psy",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0080-004"
+            "pokemon_order_number": "9999-0080-004"
         }
     ]
 }

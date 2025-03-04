@@ -30,7 +30,7 @@
             "secondary_type_slug": "poison",
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
-            "pokemon_order_number": "999-0001-000",
+            "pokemon_order_number": "9999-0001-000",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -62,7 +62,7 @@
             "secondary_type_slug": "poison",
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
-            "pokemon_order_number": "999-0002-001",
+            "pokemon_order_number": "9999-0002-001",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -94,7 +94,7 @@
             "secondary_type_slug": "poison",
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
-            "pokemon_order_number": "999-0003-002",
+            "pokemon_order_number": "9999-0003-002",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -126,7 +126,7 @@
             "secondary_type_slug": "poison",
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
-            "pokemon_order_number": "999-0003-004",
+            "pokemon_order_number": "9999-0003-004",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -158,7 +158,7 @@
             "secondary_type_slug": "poison",
             "secondary_type_name": "Poison",
             "secondary_type_french_name": "Poison",
-            "pokemon_order_number": "999-0003-005",
+            "pokemon_order_number": "9999-0003-005",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -190,7 +190,7 @@
             "secondary_type_slug": null,
             "secondary_type_name": null,
             "secondary_type_french_name": null,
-            "pokemon_order_number": "999-0004-000",
+            "pokemon_order_number": "9999-0004-000",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -222,7 +222,7 @@
             "secondary_type_slug": null,
             "secondary_type_name": null,
             "secondary_type_french_name": null,
-            "pokemon_order_number": "999-0005-001",
+            "pokemon_order_number": "9999-0005-001",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -254,7 +254,7 @@
             "secondary_type_slug": "flying",
             "secondary_type_name": "Flying",
             "secondary_type_french_name": "Vol",
-            "pokemon_order_number": "999-0006-002",
+            "pokemon_order_number": "9999-0006-002",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -286,7 +286,7 @@
             "secondary_type_slug": "dragon",
             "secondary_type_name": "Dragon",
             "secondary_type_french_name": "Dragon",
-            "pokemon_order_number": "999-0006-003",
+            "pokemon_order_number": "9999-0006-003",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -318,7 +318,7 @@
             "secondary_type_slug": "flying",
             "secondary_type_name": "Flying",
             "secondary_type_french_name": "Vol",
-            "pokemon_order_number": "999-0006-004",
+            "pokemon_order_number": "9999-0006-004",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -350,7 +350,7 @@
             "secondary_type_slug": null,
             "secondary_type_name": null,
             "secondary_type_french_name": null,
-            "pokemon_order_number": "999-0007-000",
+            "pokemon_order_number": "9999-0007-000",
             "original_game_bundle_slug": "redgreenblueyellow"
         },
         {
@@ -382,7 +382,7 @@
             "secondary_type_slug": null,
             "secondary_type_name": null,
             "secondary_type_french_name": null,
-            "pokemon_order_number": "999-0008-001",
+            "pokemon_order_number": "9999-0008-001",
             "original_game_bundle_slug": "redgreenblueyellow"
         }
     ]

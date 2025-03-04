@@ -26,7 +26,7 @@ SELECT
     st.french_name AS secondary_type_french_name,
     ogb.slug AS original_game_bundle_slug,
     CONCAT(
-        '999',
+        '9999',
         '-',
         LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
         '-',

@@ -32,7 +32,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0065-010"
+            "pokemon_order_number": "9999-0065-010"
         },
         {
             "pokemon_slug": "kangaskhan-mega",
@@ -65,7 +65,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0115-001"
+            "pokemon_order_number": "9999-0115-001"
         },
         {
             "pokemon_slug": "mewtwo-mega-y",
@@ -98,7 +98,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0150-002"
+            "pokemon_order_number": "9999-0150-002"
         },
         {
             "pokemon_slug": "tyranitar-mega",
@@ -131,7 +131,7 @@
             "secondary_type_name": "Dark",
             "secondary_type_french_name": "T\u00e9n\u00e8bre",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0248-003"
+            "pokemon_order_number": "9999-0248-003"
         },
         {
             "pokemon_slug": "gardevoir-mega",
@@ -164,7 +164,7 @@
             "secondary_type_name": "Fairy",
             "secondary_type_french_name": "F\u00e9e",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0282-006"
+            "pokemon_order_number": "9999-0282-006"
         },
         {
             "pokemon_slug": "medicham-mega",
@@ -197,7 +197,7 @@
             "secondary_type_name": "Psychic",
             "secondary_type_french_name": "Psy",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0308-004"
+            "pokemon_order_number": "9999-0308-004"
         },
         {
             "pokemon_slug": "camerupt-mega",
@@ -230,7 +230,7 @@
             "secondary_type_name": "Ground",
             "secondary_type_french_name": "Sol",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0323-004"
+            "pokemon_order_number": "9999-0323-004"
         },
         {
             "pokemon_slug": "altaria-mega",
@@ -263,7 +263,7 @@
             "secondary_type_name": "Fairy",
             "secondary_type_french_name": "F\u00e9e",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0334-002"
+            "pokemon_order_number": "9999-0334-002"
         },
         {
             "pokemon_slug": "kyogre-primal",
@@ -296,7 +296,7 @@
             "secondary_type_name": null,
             "secondary_type_french_name": null,
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0382-001"
+            "pokemon_order_number": "9999-0382-001"
         },
         {
             "pokemon_slug": "groudon-primal",
@@ -329,7 +329,7 @@
             "secondary_type_name": "Fire",
             "secondary_type_french_name": "Feu",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0383-001"
+            "pokemon_order_number": "9999-0383-001"
         },
         {
             "pokemon_slug": "lucario-mega",
@@ -362,7 +362,7 @@
             "secondary_type_name": "Steel",
             "secondary_type_french_name": "Acier",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0448-004"
+            "pokemon_order_number": "9999-0448-004"
         },
         {
             "pokemon_slug": "abomasnow-mega",
@@ -395,7 +395,7 @@
             "secondary_type_name": "Grass",
             "secondary_type_french_name": "Plante",
             "original_game_bundle_slug": "xy",
-            "pokemon_order_number": "999-0460-008"
+            "pokemon_order_number": "9999-0460-008"
         }
     ]
 }
