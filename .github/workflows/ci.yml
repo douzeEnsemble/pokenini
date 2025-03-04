@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install
         uses: ./.github/actions/local-tools-composer
         with:
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install
         uses: ./.github/actions/local-tools-composer
         with:
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install
         uses: ./.github/actions/local-tools-composer
         with:
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install
         uses: ./.github/actions/local-tools-composer
         with:
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Install
         uses: ./.github/actions/local-composer
       - name: Run
@@ -93,7 +93,7 @@ jobs:
     needs: [phpcsfixer, phpmd, psalm, phpstan]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Prepare
         uses: ./.github/actions/docker-compose
       - name: Run Api
@@ -111,7 +111,7 @@ jobs:
       APP_ENV: int
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Prepare
         uses: ./.github/actions/docker-compose
       - name: Copy .env file
@@ -147,7 +147,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Prepare
         uses: ./.github/actions/docker-compose
       - name: Run Coverage
@@ -181,15 +181,15 @@ jobs:
     name: Security / Composer Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: composer audit
 
   symfonycorp-security-checker:
     name: Security / SymfonyCorp Checker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         id: cache-db
         with:
             path: ~/.symfony/cache
