@@ -142,6 +142,7 @@ class ActionUpdateTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(302);
         $crawler = $client->followRedirect();
+        $this->assertSame('http://localhost/fr/istration', $client->getRequest()->getUri());
 
         $this->assertCountFilter($crawler, 1, '.icon-square.bg-success');
 

@@ -117,7 +117,12 @@ class AdminActionController extends AbstractController
 
         $this->requestStack->getSession()->set(self::SESSION_ACTION_DATA, $adminAction);
 
-        return $this->redirectToRoute('app_web_admin_index');
+        return $this->redirectToRoute(
+            'app_web_admin_index',
+            [
+                '_fragment' => "{$action}_{$name}",
+            ]
+        );
     }
 
     private function doAction(
