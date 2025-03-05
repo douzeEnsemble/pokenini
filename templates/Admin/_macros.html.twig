@@ -14,6 +14,7 @@
     'ok': 'success',
     'ko': 'danger',
     'done': 'light',
+    'idle': 'light',
     'pending': 'info',
   } %}
   {% set currentActionLog = null %}
@@ -31,25 +32,30 @@
     {% set lastActionLog = actionLogsData[actionItem].last %}
   {% endif %}
 
-  {% if currentActionLog is null %}
-    {% set currentBgStyle = 'light' %}
-  {% elseif currentActionLog.errorTrace is not empty %}
-    {% set currentBgStyle = stateColor['ko'] %}
-  {% elseif currentActionLog.doneAt is not empty %}
-    {% set currentBgStyle = stateColor['done'] %}
-  {% elseif currentActionLog.createdAt is not empty %}
-    {% set currentBgStyle = stateColor['pending'] %}
-  {% endif %}
+  {% set currentState = updatedState %}
 
-  {% if lastActionLog is null %}
-    {% set lastBgStyle = 'light' %}
-  {% elseif lastActionLog.errorTrace is not empty %}
-    {% set lastBgStyle = stateColor['ko'] %}
-  {% elseif lastActionLog.doneAt is not empty %}
-    {% set lastBgStyle = stateColor['done'] %}
-  {% elseif lastActionLog.createdAt is not empty %}
-    {% set lastBgStyle = stateColor['pending'] %}
+  {% if currentActionLog is null %}
+    {% set currentState = 'idle' %}
+  {% elseif currentActionLog.errorTrace is not empty %}
+    {% set currentState = 'ko' %}
+  {% elseif currentActionLog.doneAt is not empty %}
+    {% set currentState = 'done' %}
+  {% elseif currentActionLog.createdAt is not empty %}
+    {% set currentState = 'pending' %}
   {% endif %}
+  {% set currentBgStyle = stateColor[currentState] %}
+
+  {% set lastState = null %}
+  {% if lastActionLog is null %}
+    {% set lastState = 'idle' %}
+  {% elseif lastActionLog.errorTrace is not empty %}
+    {% set lastState = 'ko' %}
+  {% elseif lastActionLog.doneAt is not empty %}
+    {% set lastState = 'done' %}
+  {% elseif lastActionLog.createdAt is not empty %}
+    {% set lastState = 'pending' %}
+  {% endif %}
+  {% set lastBgStyle = stateColor[lastState] %}
 
   {% if updatedAction is same as(actionPrefix)
     and updatedItem is same as(item)
@@ -72,6 +78,9 @@
     data-current-text-style="{{ currentTextStyle }}"
     data-last-bg-style="{{ lastBgStyle }}"
     data-last-text-style="{{ lastTextStyle }}"
+    data-updated-state="{{ updatedState }}"
+    data-current-state="{{ currentState }}"
+    data-last-state="{{ lastState }}"
     id="{{ actionItem }}"
   >
     <div class="d-flex rounded-3 p-3 mb-md-1 mb-sm-2 mb-3 align-items-start">
