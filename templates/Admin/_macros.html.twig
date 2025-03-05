@@ -32,44 +32,55 @@
   {% endif %}
 
   {% if currentActionLog is null %}
-    {% set currentStyle = 'light' %}
+    {% set currentBgStyle = 'light' %}
   {% elseif currentActionLog.errorTrace is not empty %}
-    {% set currentStyle = stateColor['ko'] %}
+    {% set currentBgStyle = stateColor['ko'] %}
   {% elseif currentActionLog.doneAt is not empty %}
-    {% set currentStyle = stateColor['done'] %}
+    {% set currentBgStyle = stateColor['done'] %}
   {% elseif currentActionLog.createdAt is not empty %}
-    {% set currentStyle = stateColor['pending'] %}
+    {% set currentBgStyle = stateColor['pending'] %}
   {% endif %}
 
   {% if lastActionLog is null %}
-    {% set lastStyle = 'light' %}
+    {% set lastBgStyle = 'light' %}
   {% elseif lastActionLog.errorTrace is not empty %}
-    {% set lastStyle = stateColor['ko'] %}
+    {% set lastBgStyle = stateColor['ko'] %}
   {% elseif lastActionLog.doneAt is not empty %}
-    {% set lastStyle = stateColor['done'] %}
+    {% set lastBgStyle = stateColor['done'] %}
   {% elseif lastActionLog.createdAt is not empty %}
-    {% set lastStyle = stateColor['pending'] %}
+    {% set lastBgStyle = stateColor['pending'] %}
   {% endif %}
 
   {% if updatedAction is same as(actionPrefix)
     and updatedItem is same as(item)
   %}
-    {% set currentStyle = stateColor[updatedState] %}
+    {% set currentBgStyle = stateColor[updatedState] %}
+  {% endif %}
+
+  {% set currentTextStyle = 'dark' %}
+  {% if currentBgStyle == 'success' or currentBgStyle ==  'danger' or currentBgStyle ==  'info' %}
+    {% set currentTextStyle = 'light' %}
+  {% endif %}
+  {% set lastTextStyle = 'dark' %}
+  {% if lastBgStyle == 'success' or lastBgStyle ==  'danger' or lastBgStyle ==  'info' %}
+    {% set lastTextStyle = 'light' %}
   {% endif %}
 
   <div 
     class="col-lg-4 col-md-6 d-flex align-items-start admin-item admin-item-{{ actionItem }} admin-item-{{ actionPrefix }}"
-    data-current-list-group-item="{{ currentStyle }}"
-    data-last-list-group-item="{{ lastStyle }}"
+    data-current-bg-style="{{ currentBgStyle }}"
+    data-current-text-style="{{ currentTextStyle }}"
+    data-last-bg-style="{{ lastBgStyle }}"
+    data-last-text-style="{{ lastTextStyle }}"
     id="{{ actionItem }}"
   >
     <div class="d-flex rounded-3 p-3 mb-md-1 mb-sm-2 mb-3 align-items-start">
-      {{ _self.actionIcon(action, item, icon, currentStyle) }}
+      {{ _self.actionIcon(action, item, icon, currentBgStyle, currentTextStyle) }}
       <div>
         {{ _self.actionTitle(action, item, icon) }}
         {{ _self.actionFlashError(actionPrefix, item, updatedItem, updatedAction, updatedState) }}
         {{ _self.actionContainer(action, item, currentActionLog, lastActionLog) }}
-        {{ _self.actionButton(action, actionPrefix, item, currentStyle) }}
+        {{ _self.actionButton(action, actionPrefix, item, currentBgStyle) }}
       </div>
 		</div>
   </div>
@@ -87,10 +98,11 @@
     action,
     item,
     icon,
-    style,
+    bgStyle,
+    txtStyle,
 ) %}
-<div class="icon-square bg-{{ style }} d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-  <i class="text-dark bi bi-{{ icon }}"></i>
+<div class="icon-square bg-{{ bgStyle }} d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+  <i class="text-{{ txtStyle }} bi bi-{{ icon }}"></i>
 </div>
 {% endmacro %}
 
@@ -98,9 +110,9 @@
     action,
     actionPrefix,
     item,
-    style,
+    bgStyle
 ) %}
-<div class="text-end border-top border-{{ style }} pt-3">
+<div class="text-end border-top border-{{ bgStyle }} pt-3">
   <a 
     href="{{ path('app_web_adminaction_'~actionPrefix, {'name': item}) }}"
     class="btn btn-outline-primary admin-item-cta"
