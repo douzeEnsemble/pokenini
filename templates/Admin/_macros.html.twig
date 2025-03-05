@@ -89,7 +89,7 @@
         {{ _self.actionTitle(action, item, icon) }}
         {{ _self.actionFlashError(actionPrefix, item, updatedItem, updatedAction, updatedState) }}
         {{ _self.actionContainer(action, item, currentActionLog, lastActionLog) }}
-        {{ _self.actionButton(action, actionPrefix, item, currentBgStyle) }}
+        {{ _self.actionButton(action, actionPrefix, item, currentState, currentBgStyle) }}
       </div>
 		</div>
   </div>
@@ -119,15 +119,30 @@
     action,
     actionPrefix,
     item,
+    currentState,
     bgStyle
 ) %}
 <div class="text-end border-top border-{{ bgStyle }} pt-3">
   <a 
     href="{{ path('app_web_adminaction_'~actionPrefix, {'name': item}) }}"
-    class="btn btn-outline-primary admin-item-cta"
+    class="btn btn-outline-primary admin-item-cta {{ currentState == 'pending' ? 'disabled' : '' }}"
   >
     {{ ('admin.actions.'~action~'.'~item~'.cta')|trans }}
   </a>
+
+  {% if currentState == 'pending' %}
+  {% set query = app.request.query.all %}
+  {% set query = query|merge({
+    'refresh': 'now'|date('U'),
+    '_fragment': actionPrefix~'_'~item,
+    }) %}
+  <a 
+    href="{{ path(app.request.attributes.get('_route'), query) }}"
+    class="btn btn-outline-info btn-sm admin-item-refresh"
+  >
+    <i class="bi bi-arrow-clockwise"></i>
+  </a>
+  {% endif %}
 </div>
 {% endmacro %}
 

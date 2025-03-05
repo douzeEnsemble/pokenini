@@ -70,6 +70,26 @@ class AdminPageTest extends WebTestCase
         $this->assertCountFilter($crawler, 2, 'table.report-table');
         $this->assertCountFilter($crawler, 1, '.admin-item-invalidate_reports a.admin-item-cta');
 
+        $this->assertCountFilter($crawler, 3, '.admin-item-cta.disabled');
+        $this->assertCountFilter($crawler, 1, '#update_games_collections_and_dex .admin-item-cta.disabled');
+        $this->assertCountFilter($crawler, 1, '#calculate_game_bundles_availabilities .admin-item-cta.disabled');
+        $this->assertCountFilter($crawler, 1, '#calculate_dex_availabilities .admin-item-cta.disabled');
+
+        $this->assertCountFilter($crawler, 3, '.admin-item-refresh');
+
+        $this->assertCountFilter($crawler, 1, '#update_games_collections_and_dex .admin-item-refresh');
+        $updateGamesCollectionsAndDexHref = $crawler->filter('#update_games_collections_and_dex .admin-item-refresh')->attr('href') ?? '';
+        $this->assertStringContainsString('/fr/istration?refresh=', $updateGamesCollectionsAndDexHref);
+        $this->assertStringContainsString('#update_games_collections_and_dex', $updateGamesCollectionsAndDexHref);
+
+        $this->assertCountFilter($crawler, 1, '#calculate_game_bundles_availabilities .admin-item-refresh');
+        $calculateGameBundlesAvailabilitiesHref = $crawler->filter('#calculate_game_bundles_availabilities .admin-item-refresh')->attr('href') ?? '';
+        $this->assertStringContainsString('/fr/istration?refresh=', $calculateGameBundlesAvailabilitiesHref);
+
+        $this->assertCountFilter($crawler, 1, '#calculate_dex_availabilities .admin-item-refresh');
+        $calculateGameBundlesAvailabilitiesHref = $crawler->filter('#calculate_game_bundles_availabilities .admin-item-refresh')->attr('href') ?? '';
+        $this->assertStringContainsString('/fr/istration?refresh=', $calculateGameBundlesAvailabilitiesHref);
+
         $this->assertCountFilter($crawler, 0, 'script[src="/js/album.js"]');
 
         $this->assertStringNotContainsString('const catchStates = JSON.parse', $crawler->outerHtml());

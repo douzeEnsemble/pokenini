@@ -22,21 +22,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 #[CoversClass(AdminActionController::class)]
 class AdminActionControllerTest extends TestCase
 {
-    public function testFailUpdateLogs(): void
-    {
-        $controller = $this->assertFailActionLogs('update');
-
-        $controller->update('something');
-    }
-
-    public function testFailCalculateLogs(): void
-    {
-        $controller = $this->assertFailActionLogs('calculate');
-
-        $controller->calculate('something');
-    }
-
-    public function testInvalidateCall(): void
+    public function testAction(): void
     {
         $cacheInvalidatorService = $this->createMock(CacheInvalidatorService::class);
         $cacheInvalidatorService
@@ -73,6 +59,13 @@ class AdminActionControllerTest extends TestCase
         $router
             ->expects($this->once())
             ->method('generate')
+            ->with(
+                'app_web_admin_index',
+                [
+                    '_fragment' => "invalidate_something",
+                
+                ]
+            )
             ->willReturn('/admin')
         ;
 
@@ -97,7 +90,23 @@ class AdminActionControllerTest extends TestCase
 
         $controller->setContainer($container);
 
-        $controller->invalidate('something');
+        $response = $controller->invalidate('something');
+
+        $this->assertSame('/admin', $response->getTargetUrl());
+    }
+
+    public function testFailUpdateLogs(): void
+    {
+        $controller = $this->assertFailActionLogs('update');
+
+        $controller->update('something');
+    }
+
+    public function testFailCalculateLogs(): void
+    {
+        $controller = $this->assertFailActionLogs('calculate');
+
+        $controller->calculate('something');
     }
 
     private function assertFailActionLogs(string $action): AdminActionController
