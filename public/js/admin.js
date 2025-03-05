@@ -21,14 +21,20 @@ function onToggleCurrent(event) {
 
     adminItem.querySelectorAll('.icon-square').forEach(icon => {
       icon.classList.replace(
-        'bg-'+adminItem.getAttribute('data-current-list-group-item'), 
-        'bg-'+adminItem.getAttribute('data-last-list-group-item'),
+        'bg-'+adminItem.getAttribute('data-current-bg-style'), 
+        'bg-'+adminItem.getAttribute('data-last-bg-style'),
+      );
+    });
+    adminItem.querySelectorAll('.icon-square .bi').forEach(icon => {
+      icon.classList.replace(
+        'text-'+adminItem.getAttribute('data-current-text-style'), 
+        'text-'+adminItem.getAttribute('data-last-text-style'),
       );
     });
     adminItem.querySelectorAll('.border-top').forEach(icon => {
       icon.classList.replace(
-        'border-'+adminItem.getAttribute('data-current-list-group-item'), 
-        'border-'+adminItem.getAttribute('data-last-list-group-item'),
+        'border-'+adminItem.getAttribute('data-current-bg-style'), 
+        'border-'+adminItem.getAttribute('data-last-bg-style'),
       );
     });
 }
@@ -46,14 +52,20 @@ function onToggleLast(event) {
 
   adminItem.querySelectorAll('.icon-square').forEach(icon => {
     icon.classList.replace(
-      'bg-'+adminItem.getAttribute('data-last-list-group-item'),
-      'bg-'+adminItem.getAttribute('data-current-list-group-item'), 
+      'bg-'+adminItem.getAttribute('data-last-bg-style'),
+      'bg-'+adminItem.getAttribute('data-current-bg-style'), 
+    );
+  });
+  adminItem.querySelectorAll('.icon-square .bi').forEach(icon => {
+    icon.classList.replace(
+      'text-'+adminItem.getAttribute('data-last-text-style'),
+      'text-'+adminItem.getAttribute('data-current-text-style'), 
     );
   });
   adminItem.querySelectorAll('.border-top').forEach(icon => {
     icon.classList.replace(
-      'border-'+adminItem.getAttribute('data-last-list-group-item'),
-      'border-'+adminItem.getAttribute('data-current-list-group-item'), 
+      'border-'+adminItem.getAttribute('data-last-bg-style'),
+      'border-'+adminItem.getAttribute('data-current-bg-style'), 
     );
   });
 }
