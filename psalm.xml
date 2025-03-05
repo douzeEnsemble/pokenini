@@ -8,6 +8,7 @@
     resolveFromConfigFile="true"
     findUnusedBaselineEntry="true"
     findUnusedCode="false"
+    cacheDirectory="var/cache/psalm"
 >
     <projectFiles>
         <directory name="src" />

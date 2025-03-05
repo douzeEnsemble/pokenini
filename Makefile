@@ -185,7 +185,7 @@ phpmd: tools/phpmd/vendor/bin/phpmd
 
 psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
-	@$(PHP_CONT) rm -Rf ~/.cache/psalm
+	@$(PHP_CONT) rm -Rf var/cache/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=true
 
 psalm_fix: ## Execute psalm auto fixing
