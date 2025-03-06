@@ -62,8 +62,7 @@ class AdminActionControllerTest extends TestCase
             ->with(
                 'app_web_admin_index',
                 [
-                    '_fragment' => "invalidate_something",
-                
+                    '_fragment' => 'invalidate_something',
                 ]
             )
             ->willReturn('/admin')
