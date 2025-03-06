@@ -9,8 +9,8 @@ use App\Web\Service\Api\AdminActionService;
 use App\Web\Service\CacheInvalidatorService;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/istration/action')]
@@ -41,7 +41,7 @@ class AdminActionController extends AbstractController
     )]
     public function update(
         string $name,
-    ): Response {
+    ): RedirectResponse {
         return $this->execute($name, 'update');
     }
 
@@ -59,7 +59,7 @@ class AdminActionController extends AbstractController
     )]
     public function calculate(
         string $name,
-    ): Response {
+    ): RedirectResponse {
         return $this->execute($name, 'calculate');
     }
 
@@ -77,14 +77,14 @@ class AdminActionController extends AbstractController
     )]
     public function invalidate(
         string $name,
-    ): Response {
+    ): RedirectResponse {
         return $this->execute($name, 'invalidate');
     }
 
     private function execute(
         string $name,
         string $action,
-    ): Response {
+    ): RedirectResponse {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $state = 'ok';
