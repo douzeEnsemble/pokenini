@@ -259,14 +259,14 @@ infection: ## Execute all Infection testing
 infection: clear_infection_cache infection_api infection_web
 
 infection_api: ## Execute Infection (Mutation testing) for API module
-infection_api: build/coverage/coverage-xml tools/infection/vendor/bin/infection
+infection_api: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear_infection_cache
 	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
 		--filter=src/Api
 
 infection_web: ## Execute Infection (Mutation testing) for API module
-infection_web: build/coverage/coverage-xml tools/infection/vendor/bin/infection
+infection_web: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear_infection_cache
 	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
