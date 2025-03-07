@@ -172,10 +172,14 @@ calculate:
 
 connect:
     disclaimer: |
-        J'utilise la connexion uniquement pour identifier.
-        Je ne garde AUCUNE donnée autre que l'identifiant donnée par le fournisseur.
+        I use the connection solely for identification purposes.
+        The email is of no use to me, so it doesn't matter.
+        I do not retain ANY data other than the identifier provided by the provider.
+
+        Choose your preferred identification service.
+        You will be redirected to their site to log in.
     help: |
-        Je supporte que la connexion via Google. Si t'en veut d'autres, dis le moi
+        Each service allows you to have a different account on Pokénini.
 
 trainer:
     welcome: |

@@ -41,6 +41,23 @@ class ConnectController extends AbstractController
     }
     // @codeCoverageIgnoreEnd
 
+    #[Route('/az', methods: ['GET'])]
+    public function amazon(ClientRegistry $clientRegistry): Response
+    {
+        return $clientRegistry
+            ->getClient('amazon')
+            ->redirect(['profile'], [])
+        ;
+    }
+
+    // @codeCoverageIgnoreStart
+    #[Route('/az/c', methods: ['GET'])]
+    public function amazonCheck(): void
+    {
+        // noting, all done by the authenticator
+    }
+    // @codeCoverageIgnoreEnd
+
     // @codeCoverageIgnoreStart
     #[Route(
         '/f/c',
