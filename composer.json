@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.9.2",
         "knpuniversity/oauth2-client-bundle": "^2.18",
         "league/oauth2-google": "^4.0",
+        "luchianenco/oauth2-amazon": "^3.0",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "7.2.*",
         "symfony/console": "7.2.*",

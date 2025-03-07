@@ -6,3 +6,12 @@ knpu_oauth2_client:
             client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
             redirect_route: app_web_connect_googlecheck
             redirect_params: {}
+
+        # https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html
+        amazon:
+            type: amazon
+            client_id: '%env(OAUTH_AMAZON_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_AMAZON_CLIENT_SECRET)%'
+            redirect_route: app_web_connect_amazoncheck
+            redirect_params: {}
+            

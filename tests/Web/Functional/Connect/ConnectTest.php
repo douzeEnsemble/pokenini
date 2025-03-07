@@ -8,6 +8,7 @@ use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Controller\ConnectController;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @internal
@@ -27,10 +28,11 @@ class ConnectTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 1, 'h1');
         $this->assertCountFilter($crawler, 1, '#main-container ul.nav');
-        $this->assertCountFilter($crawler, 1, '#main-container ul.nav li');
-        $this->assertEquals('Google', $crawler->filter('#main-container ul.nav li')->text());
-        $this->assertCountFilter($crawler, 1, '#main-container ul.nav li a');
-        $this->assertEquals('/fr/connect/g', $crawler->filter('#main-container ul.nav li a')->attr('href'));
+        $this->assertCountFilter($crawler, 2, '#main-container ul.nav li');
+        $this->assertCountFilter($crawler, 2, '#main-container ul.nav li a');
+
+        $this->assertConnectLink($crawler, 'Amazon', 'az', 0);
+        $this->assertConnectLink($crawler, 'Google', 'g', 1);
 
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
     }
@@ -57,5 +59,11 @@ class ConnectTest extends WebTestCase
         $client->request('GET', '/fr/connect/f/c');
 
         $this->assertResponseStatusCodeSame(404);
+    }
+
+    private function assertConnectLink(Crawler $crawler, string $label, string $shortName, int $index): void
+    {
+        $this->assertEquals($label, $crawler->filter('#main-container ul.nav li')->eq($index)->text());
+        $this->assertEquals('/fr/connect/'.$shortName, $crawler->filter('#main-container ul.nav li a')->eq($index)->attr('href'));
     }
 }
