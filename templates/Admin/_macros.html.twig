@@ -225,7 +225,7 @@
     </dl>
     {% endif %}
 
-    <div class="col-12 row admin-item-report-meta admin-item-report-date mt-1 mb-0 text-muted">
+    <div class="col-12 row admin-item-report-meta admin-item-report-date mt-1 mb-0 text-body-secondary">
       {% set date = 'created_at' %}
       {% set dateValue = actionData.createdAt %}
       {% if actionData.doneAt is not empty %}
@@ -242,7 +242,7 @@
     </div>
     
     {% if actionData.executionTime is defined and actionData.executionTime is not null %}
-    <div class="col-12 row admin-item-report-meta admin-item-report-execution mt-1 mb-0 text-muted">
+    <div class="col-12 row admin-item-report-meta admin-item-report-execution mt-1 mb-0 text-body-secondary">
       <strong class="col-6">
         {{ ('admin.action.execution_time')|trans }}
       </strong>
