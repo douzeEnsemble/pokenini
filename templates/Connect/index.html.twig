@@ -17,13 +17,13 @@
         <div class="row mt-5">
             <ul class="nav nav-pills nav-fill justify-content-center">
                 <li class="nav-item">
-                    <a class="btn btn-outline-primary btn-lg" href="{{ path('app_web_connect_amazon') }}">
+                    <a class="btn btn-outline-primary btn-lg" href="{{ path('app_web_connect_amazon_goto') }}">
                         <i class="bi bi-amazon"></i>
                         Amazon
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-primary btn-lg" href="{{ path('app_web_connect_google') }}">
+                    <a class="btn btn-outline-primary btn-lg" href="{{ path('app_web_connect_google_goto') }}">
                         <i class="bi bi-google"></i>
                         Google
                     </a>
@@ -35,25 +35,25 @@
         <div class="row mt-5">
             <ul class="nav nav-pills nav-fill justify-content-center">
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fakecheck', {'t': 'admin'}) }}">
+                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fake_check', {'t': 'admin'}) }}">
                         <i class="bi bi-person-gear"></i>
                         Fake as <strong>Admin</strong>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fakecheck', {'t': 'collector'}) }}">
+                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fake_check', {'t': 'collector'}) }}">
                         <i class="bi bi-person-hearts"></i>
                         Fake as <strong>Collector</strong>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fakecheck', {'t': 'trainer'}) }}">
+                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fake_check', {'t': 'trainer'}) }}">
                         <i class="bi bi-person"></i>
                         Fake as <strong>Trainer</strong>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fakecheck', {'t': 'uninvited'}) }}">
+                    <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_web_connect_fake_check', {'t': 'uninvited'}) }}">
                         <i class="bi bi-person-slash"></i>
                         Fake as <strong>Uninvited</strong>
                     </a>
