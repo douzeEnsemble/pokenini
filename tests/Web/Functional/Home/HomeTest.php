@@ -40,7 +40,8 @@ class HomeTest extends WebTestCase
         $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
 
         $this->assertCountFilter($crawler, 0, '.alert-warning');
-        $this->assertCountFilter($crawler, 0, '.alert-info');
+        $this->assertCountFilter($crawler, 1, '.alert-light');
+        $this->assertStringContainsString('789465465489', $crawler->filter('.alert-light')->text());
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
@@ -70,7 +71,8 @@ class HomeTest extends WebTestCase
         $this->assertStringNotContainsString('watchCatchStates();', $crawler->outerHtml());
 
         $this->assertCountFilter($crawler, 0, '.alert-warning');
-        $this->assertCountFilter($crawler, 0, '.alert-info');
+        $this->assertCountFilter($crawler, 1, '.alert-light');
+        $this->assertStringContainsString('8764532', $crawler->filter('.alert-light')->text());
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
@@ -88,7 +90,7 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.home-item');
 
         $this->assertCountFilter($crawler, 1, '.alert-warning');
-        $this->assertCountFilter($crawler, 0, '.alert-info');
+        $this->assertCountFilter($crawler, 0, '.alert-light');
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
@@ -117,7 +119,8 @@ class HomeTest extends WebTestCase
         $this->assertCountFilter($crawler, 0, '.home-item');
 
         $this->assertCountFilter($crawler, 0, '.alert-warning');
-        $this->assertCountFilter($crawler, 0, '.alert-info');
+        $this->assertCountFilter($crawler, 1, '.alert-light');
+        $this->assertStringContainsString('789465465489', $crawler->filter('.alert-light')->text());
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
