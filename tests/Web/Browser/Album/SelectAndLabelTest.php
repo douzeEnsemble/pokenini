@@ -24,7 +24,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -55,7 +55,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -86,7 +86,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -117,7 +117,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -141,7 +141,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -165,7 +165,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -193,7 +193,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -233,7 +233,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -285,7 +285,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -323,7 +323,7 @@ class SelectAndLabelTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 

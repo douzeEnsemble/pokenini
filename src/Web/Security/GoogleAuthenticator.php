@@ -48,7 +48,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
                 /** @var string $userId */
                 $userId = $authUser->getId();
 
-                return $this->loadUserFromLists($userId);
+                return $this->loadUserFromLists($userId, 'Google');
             })
         );
     }

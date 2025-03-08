@@ -23,7 +23,7 @@ class UserTokenServiceTest extends TestCase
         $security
             ->expects($this->once())
             ->method('getUser')
-            ->willReturn(new User('12'))
+            ->willReturn(new User('12', 'TestProvider'))
         ;
 
         $service = new UserTokenService($security);

@@ -9,7 +9,11 @@
     <tbody>
         <tr>
             <th scope="row">{{ 'trainer.personnal_data.body.id'|trans }}</th>
-            <td>{{ app.user.userIdentifier }}</td>
+            <td>{{ app.user.id }}</td>
+        </tr>
+        <tr>
+            <th scope="row">{{ 'trainer.personnal_data.body.provider'|trans }}</th>
+            <td>{{ app.user.providerName }}</td>
         </tr>
     </tbody>
 </table>

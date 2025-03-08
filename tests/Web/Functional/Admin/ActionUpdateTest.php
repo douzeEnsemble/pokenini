@@ -49,7 +49,7 @@ class ActionUpdateTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -83,7 +83,7 @@ class ActionUpdateTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -98,7 +98,7 @@ class ActionUpdateTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $client->loginUser($user, 'web');
 
         $client->catchExceptions(false);
@@ -112,7 +112,7 @@ class ActionUpdateTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -134,7 +134,7 @@ class ActionUpdateTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 

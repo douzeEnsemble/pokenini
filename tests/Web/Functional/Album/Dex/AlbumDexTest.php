@@ -22,7 +22,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -60,7 +60,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
@@ -114,7 +114,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('0');
+        $user = new User('0', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -129,7 +129,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('1');
+        $user = new User('1', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -144,7 +144,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('2');
+        $user = new User('2', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -161,7 +161,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -188,7 +188,7 @@ class AlbumDexTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 

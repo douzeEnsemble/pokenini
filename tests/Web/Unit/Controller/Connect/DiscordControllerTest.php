@@ -25,7 +25,7 @@ class DiscordControllerTest extends TestCase
         $client
             ->expects($this->once())
             ->method('redirect')
-            ->with(['identity'], [])
+            ->with(['identify'], [])
             ->willReturn(new Response())
         ;
 

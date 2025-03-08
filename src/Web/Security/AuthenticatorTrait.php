@@ -50,9 +50,9 @@ trait AuthenticatorTrait
         );
     }
 
-    private function loadUserFromLists(string $identifier): User
+    private function loadUserFromLists(string $identifier, string $providerName): User
     {
-        $user = new User($identifier);
+        $user = new User($identifier, $providerName);
 
         $listAdmins = explode(',', $this->listAdmin);
         $listAdmins = array_map(fn ($value) => trim($value), $listAdmins);

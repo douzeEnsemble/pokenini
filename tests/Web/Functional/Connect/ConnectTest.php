@@ -31,9 +31,10 @@ class ConnectTest extends WebTestCase
         $this->assertCountFilter($crawler, 3, '#main-container ul.nav li');
         $this->assertCountFilter($crawler, 3, '#main-container ul.nav li a');
 
-        $this->assertConnectLink($crawler, 'Amazon', 'az', 0);
-        $this->assertConnectLink($crawler, 'Discord', 'az', 0);
-        $this->assertConnectLink($crawler, 'Google', 'g', 1);
+        $index = 0;
+        $this->assertConnectLink($crawler, 'Amazon', 'az', $index++);
+        $this->assertConnectLink($crawler, 'Discord', 'dd', $index++);
+        $this->assertConnectLink($crawler, 'Google', 'g', $index++);
 
         $this->assertEquals("Retour à l'accueil", $crawler->filter('.navbar-link')->text());
     }

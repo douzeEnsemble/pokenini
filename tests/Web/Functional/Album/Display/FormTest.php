@@ -22,7 +22,7 @@ class FormTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -37,7 +37,7 @@ class FormTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $client->loginUser($user, 'web');

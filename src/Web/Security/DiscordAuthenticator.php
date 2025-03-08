@@ -48,7 +48,7 @@ class DiscordAuthenticator extends OAuth2Authenticator implements Authentication
                 /** @var string $userId */
                 $userId = $authUser->getId();
 
-                return $this->loadUserFromLists($userId);
+                return $this->loadUserFromLists($userId, 'Discord');
             })
         );
     }

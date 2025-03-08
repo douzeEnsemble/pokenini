@@ -40,7 +40,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -57,7 +57,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addCollectorRole();
         $client->loginUser($user, 'web');
 
@@ -74,7 +74,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
@@ -101,7 +101,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -118,7 +118,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -135,7 +135,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addAdminRole();
         $client->loginUser($user, 'web');
@@ -153,7 +153,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -170,7 +170,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $client->loginUser($user, 'web');
@@ -188,7 +188,7 @@ class RolesTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();

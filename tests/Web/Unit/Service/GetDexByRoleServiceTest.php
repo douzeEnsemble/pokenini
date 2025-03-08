@@ -53,7 +53,7 @@ class GetDexByRoleServiceTest extends TestCase
             ->willReturn('1234567890')
         ;
 
-        $user = new User('1234567890');
+        $user = new User('1234567890', 'TestProvider');
         $user->addTrainerRole();
 
         $security = $this->createMock(Security::class);
@@ -116,7 +116,7 @@ class GetDexByRoleServiceTest extends TestCase
             ->willReturn('1234567890')
         ;
 
-        $user = new User('1234567890');
+        $user = new User('1234567890', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
 
@@ -180,7 +180,7 @@ class GetDexByRoleServiceTest extends TestCase
             ->willReturn('1234567890')
         ;
 
-        $user = new User('1234567890');
+        $user = new User('1234567890', 'TestProvider');
         $user->addTrainerRole();
         $user->addAdminRole();
 

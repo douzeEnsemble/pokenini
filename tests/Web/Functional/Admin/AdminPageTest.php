@@ -32,7 +32,7 @@ class AdminPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->loginUser(new User('34654656489621361987'), 'web');
+        $client->loginUser(new User('34654656489621361987', 'TestProvider'), 'web');
 
         $client->request('GET', '/fr/istration');
 
@@ -43,7 +43,7 @@ class AdminPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $client->loginUser($user, 'web');
 
         $client->request('GET', '/fr/istration');
@@ -142,7 +142,7 @@ class AdminPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 

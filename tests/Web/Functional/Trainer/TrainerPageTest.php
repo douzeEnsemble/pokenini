@@ -23,7 +23,7 @@ class TrainerPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -33,8 +33,9 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 1, 'h1');
         $this->assertCountFilter($crawler, 2, 'table thead th');
-        $this->assertCountFilter($crawler, 1, 'table tbody tr');
-        $this->assertEquals('789465465489', $crawler->filter('table tbody tr td')->last()->text());
+        $this->assertCountFilter($crawler, 2, 'table tbody tr');
+        $this->assertEquals('Identifiant 789465465489', $crawler->filter('table tbody tr')->eq(0)->text());
+        $this->assertEquals("Service d'identification TestProvider", $crawler->filter('table tbody tr')->eq(1)->text());
 
         $this->assertCustomizeAlbumSection($crawler, false, false);
 
@@ -55,7 +56,7 @@ class TrainerPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $client->loginUser($user, 'web');
@@ -66,8 +67,9 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 1, 'h1');
         $this->assertCountFilter($crawler, 2, 'table thead th');
-        $this->assertCountFilter($crawler, 1, 'table tbody tr');
-        $this->assertEquals('789465465489', $crawler->filter('table tbody tr td')->last()->text());
+        $this->assertCountFilter($crawler, 2, 'table tbody tr');
+        $this->assertEquals('Identifiant 789465465489', $crawler->filter('table tbody tr')->eq(0)->text());
+        $this->assertEquals("Service d'identification TestProvider", $crawler->filter('table tbody tr')->eq(1)->text());
 
         $this->assertCustomizeAlbumSection($crawler, false, true);
 
@@ -88,7 +90,7 @@ class TrainerPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestAdminProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -100,8 +102,9 @@ class TrainerPageTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 1, 'h1');
         $this->assertCountFilter($crawler, 2, 'table thead th');
-        $this->assertCountFilter($crawler, 1, 'table tbody tr');
-        $this->assertEquals('8764532', $crawler->filter('table tbody tr td')->last()->text());
+        $this->assertCountFilter($crawler, 2, 'table tbody tr');
+        $this->assertEquals('Identifiant 8764532', $crawler->filter('table tbody tr')->eq(0)->text());
+        $this->assertEquals("Service d'identification TestAdminProvider", $crawler->filter('table tbody tr')->eq(1)->text());
 
         $this->assertCustomizeAlbumSection($crawler, true, true);
 
@@ -122,7 +125,7 @@ class TrainerPageTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $client->loginUser($user, 'web');
 
         $client->request('GET', '/fr/trainer');

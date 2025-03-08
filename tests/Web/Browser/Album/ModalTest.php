@@ -24,7 +24,7 @@ class ModalTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('109903422692691643666');
+        $user = new User('109903422692691643666', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -41,7 +41,7 @@ class ModalTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('109903422692691643666');
+        $user = new User('109903422692691643666', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 

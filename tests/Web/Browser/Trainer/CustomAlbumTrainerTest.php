@@ -24,7 +24,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -49,7 +49,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -74,7 +74,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 
@@ -99,7 +99,7 @@ class CustomAlbumTrainerTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $this->loginUser($client, $user);
 

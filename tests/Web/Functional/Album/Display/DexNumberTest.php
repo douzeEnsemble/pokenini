@@ -22,7 +22,7 @@ class DexNumberTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('109903422692691643666');
+        $user = new User('109903422692691643666', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 

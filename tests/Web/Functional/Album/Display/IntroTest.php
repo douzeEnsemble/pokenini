@@ -22,7 +22,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -71,7 +71,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -116,7 +116,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -163,7 +163,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -212,7 +212,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -261,7 +261,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -310,7 +310,7 @@ class IntroTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('13');
+        $user = new User('13', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
