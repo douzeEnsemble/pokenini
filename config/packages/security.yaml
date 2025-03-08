@@ -29,6 +29,7 @@ security:
       entry_point: App\Web\Security\GoogleAuthenticator
       custom_authenticators:
         - App\Web\Security\AmazonAuthenticator
+        - App\Web\Security\DiscordAuthenticator
         - App\Web\Security\GoogleAuthenticator
 
   access_control:

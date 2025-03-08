@@ -24,7 +24,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 {
     public function testAuthenticateUser(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getGoogleAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121',
@@ -32,7 +32,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -47,7 +47,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
     public function testAuthenticateTrainer(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getGoogleAuthenticator(
             '1313131313',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,1313131313',
@@ -55,7 +55,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -70,7 +70,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
     public function testAuthenticateCollector(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getGoogleAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121,1212121212000000000000012',
@@ -78,7 +78,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -93,7 +93,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
     public function testAuthenticateAdmin(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getGoogleAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313',
             '2121212121',
@@ -101,7 +101,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -116,7 +116,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
     public function testAuthenticateAdminTrainer(): void
     {
-        $googleAuthenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getGoogleAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,',
@@ -124,7 +124,7 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 
@@ -159,11 +159,11 @@ class GoogleAuthenticatorAuthenticateOpenedTest extends TestCase
             1212121212000000000000012,
             LIST;
 
-        $googleAuthenticator = $this->getGoogleAuthenticator($listAdmin, $listTrainer, $listCollector);
+        $authenticator = $this->getGoogleAuthenticator($listAdmin, $listTrainer, $listCollector);
 
         $request = $this->createMock(Request::class);
 
-        $validationPassport = $googleAuthenticator->authenticate($request);
+        $validationPassport = $authenticator->authenticate($request);
 
         $this->assertInstanceOf(SelfValidatingPassport::class, $validationPassport);
 

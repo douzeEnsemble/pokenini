@@ -6,15 +6,15 @@ namespace App\Web\Security;
 
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
-use Luchianenco\OAuth2\Client\Provider\AmazonResourceOwner;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
+use Wohali\OAuth2\Client\Provider\DiscordResourceOwner;
 
-class AmazonAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
+class DiscordAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
 {
     use AuthenticatorTrait;
 
@@ -29,7 +29,7 @@ class AmazonAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function supports(Request $request): ?bool
     {
-        return 'app_web_connect_amazon_check' === $request->attributes->get('_route');
+        return 'app_web_connect_discord_check' === $request->attributes->get('_route');
     }
 
     /**
@@ -37,12 +37,12 @@ class AmazonAuthenticator extends OAuth2Authenticator implements AuthenticationE
      */
     public function authenticate(Request $request): Passport
     {
-        $client = $this->clientRegistry->getClient('amazon');
+        $client = $this->clientRegistry->getClient('discord');
         $accessToken = $this->fetchAccessToken($client);
 
         return new SelfValidatingPassport(
             new UserBadge($accessToken->getToken(), function () use ($accessToken, $client) {
-                /** @var AmazonResourceOwner $authUser */
+                /** @var DiscordResourceOwner $authUser */
                 $authUser = $client->fetchUserFromToken($accessToken);
 
                 /** @var string $userId */

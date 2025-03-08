@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\GoogleAuthenticator;
+use App\Web\Security\DiscordAuthenticator;
 use App\Web\Security\User;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -19,8 +19,8 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 /**
  * @internal
  */
-#[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorOnAuthentificationTest extends TestCase
+#[CoversClass(DiscordAuthenticator::class)]
+class DiscordAuthenticatorOnAuthentificationTest extends TestCase
 {
     public function testOnAuthenticationSuccessNotATrainer(): void
     {
@@ -33,7 +33,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $authenticator = $this->getGoogleAuthenticator([
+        $authenticator = $this->getDiscordAuthenticator([
             '/success-but-not-a-trainer',
         ]);
 
@@ -61,7 +61,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $authenticator = $this->getGoogleAuthenticator([
+        $authenticator = $this->getDiscordAuthenticator([
             '/success-but-not-a-trainer',
             '/success-trainer',
         ]);
@@ -80,7 +80,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 
     public function testOnAuthenticationFailure(): void
     {
-        $authenticator = $this->getGoogleAuthenticator([]);
+        $authenticator = $this->getDiscordAuthenticator([]);
 
         $response = $authenticator->onAuthenticationFailure(
             $this->createMock(Request::class),
@@ -96,9 +96,9 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
     /**
      * @param string[] $routes
      */
-    private function getGoogleAuthenticator(
+    private function getDiscordAuthenticator(
         array $routes = []
-    ): GoogleAuthenticator {
+    ): DiscordAuthenticator {
         $router = $this->createMock(RouterInterface::class);
         $router
             ->expects($this->exactly(count($routes)))
@@ -106,7 +106,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturnOnConsecutiveCalls(...$routes)
         ;
 
-        return new GoogleAuthenticator(
+        return new DiscordAuthenticator(
             $this->createMock(ClientRegistry::class),
             $router,
             '',
