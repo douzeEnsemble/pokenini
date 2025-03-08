@@ -7,7 +7,6 @@ namespace App\Tests\Web\Unit\Security;
 use App\Web\Security\FakeAuthenticator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -31,39 +30,13 @@ class FakeAuthenticatorTest extends TestCase
 
         $this->assertTrue(
             $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_fakecheck'])
+                new Request([], [], ['_route' => 'app_web_connect_fake_check'])
             )
         );
         $this->assertFalse(
             $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_googlecheck'])
+                new Request([], [], ['_route' => 'app_web_connect_google_check'])
             )
         );
-    }
-
-    public function testStart(): void
-    {
-        $router = $this->createMock(RouterInterface::class);
-        $router
-            ->expects($this->once())
-            ->method('generate')
-            ->with('app_web_home_index')
-            ->willReturn('/home')
-        ;
-
-        $authenticator = new FakeAuthenticator(
-            $router,
-            'listAdmin',
-            'listTrainer',
-            'listCollector',
-            true,
-        );
-
-        $request = new Request();
-
-        /** @var RedirectResponse $response */
-        $response = $authenticator->start($request);
-
-        $this->assertEquals('/home', $response->getTargetUrl());
     }
 }

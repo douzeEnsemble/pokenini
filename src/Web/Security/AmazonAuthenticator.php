@@ -12,9 +12,8 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
-use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 
-class AmazonAuthenticator extends OAuth2Authenticator implements AuthenticationEntryPointInterface
+class AmazonAuthenticator extends OAuth2Authenticator
 {
     use AuthenticatorTrait;
 
