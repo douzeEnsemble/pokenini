@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\GoogleAuthenticator;
+use App\Web\Security\DiscordAuthenticator;
 use App\Web\Security\User;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
@@ -19,12 +19,12 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
 /**
  * @internal
  */
-#[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
+#[CoversClass(DiscordAuthenticator::class)]
+class DiscordAuthenticatorAuthenticateClosedTest extends TestCase
 {
     public function testAuthenticateUser(): void
     {
-        $authenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getDiscordAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121',
@@ -47,7 +47,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 
     public function testAuthenticateTrainer(): void
     {
-        $authenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getDiscordAuthenticator(
             '1313131313',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,1313131313',
@@ -70,7 +70,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 
     public function testAuthenticateCollector(): void
     {
-        $authenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getDiscordAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121,1212121212000000000000012',
@@ -93,7 +93,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 
     public function testAuthenticateAdmin(): void
     {
-        $authenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getDiscordAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313',
             '2121212121',
@@ -116,7 +116,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 
     public function testAuthenticateAdminTrainer(): void
     {
-        $authenticator = $this->getGoogleAuthenticator(
+        $authenticator = $this->getDiscordAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,',
@@ -159,7 +159,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
             1212121212000000000000012,
             LIST;
 
-        $authenticator = $this->getGoogleAuthenticator($listAdmin, $listTrainer, $listCollector);
+        $authenticator = $this->getDiscordAuthenticator($listAdmin, $listTrainer, $listCollector);
 
         $request = $this->createMock(Request::class);
 
@@ -176,7 +176,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    private function getGoogleAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): GoogleAuthenticator
+    private function getDiscordAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): DiscordAuthenticator
     {
         $oauth2Client = $this->createMock(OAuth2ClientInterface::class);
         $oauth2Client
@@ -204,7 +204,7 @@ class GoogleAuthenticatorAuthenticateClosedTest extends TestCase
 
         $router = $this->createMock(RouterInterface::class);
 
-        return new GoogleAuthenticator(
+        return new DiscordAuthenticator(
             $clientRegistry,
             $router,
             $listAdmin,

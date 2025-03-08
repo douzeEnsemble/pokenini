@@ -29,7 +29,7 @@ class GoogleAuthenticator extends OAuth2Authenticator implements AuthenticationE
 
     public function supports(Request $request): ?bool
     {
-        return 'app_web_connect_googlecheck' === $request->attributes->get('_route');
+        return 'app_web_connect_google_check' === $request->attributes->get('_route');
     }
 
     /**

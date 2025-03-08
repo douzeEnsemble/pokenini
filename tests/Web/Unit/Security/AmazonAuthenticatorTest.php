@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\GoogleAuthenticator;
+use App\Web\Security\AmazonAuthenticator;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -15,8 +15,8 @@ use Symfony\Component\Routing\RouterInterface;
 /**
  * @internal
  */
-#[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorTest extends TestCase
+#[CoversClass(AmazonAuthenticator::class)]
+class AmazonAuthenticatorTest extends TestCase
 {
     public function testSupports(): void
     {
@@ -24,7 +24,7 @@ class GoogleAuthenticatorTest extends TestCase
 
         $router = $this->createMock(RouterInterface::class);
 
-        $authenticator = new GoogleAuthenticator(
+        $authenticator = new AmazonAuthenticator(
             $clientRegistry,
             $router,
             'listAdmin',
@@ -35,7 +35,7 @@ class GoogleAuthenticatorTest extends TestCase
 
         $this->assertTrue(
             $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_google_check'])
+                new Request([], [], ['_route' => 'app_web_connect_amazon_check'])
             )
         );
         $this->assertFalse(
@@ -57,7 +57,7 @@ class GoogleAuthenticatorTest extends TestCase
             ->willReturn('/home')
         ;
 
-        $authenticator = new GoogleAuthenticator(
+        $authenticator = new AmazonAuthenticator(
             $clientRegistry,
             $router,
             'listAdmin',

@@ -1,7 +1,7 @@
 knpu_oauth2_client:
     clients:
         google:
-            type: "google"
+            type: google
             client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
             client_secret: '%env(OAUTH_GOOGLE_CLIENT_SECRET)%'
             redirect_route: app_web_connect_google_check
@@ -14,4 +14,12 @@ knpu_oauth2_client:
             client_secret: '%env(OAUTH_AMAZON_CLIENT_SECRET)%'
             redirect_route: app_web_connect_amazon_check
             redirect_params: {}
-            
+        
+        # https://discord.com/developers/docs/topics/oauth2
+        discord:
+            type: discord
+            client_id: '%env(OAUTH_DISCORD_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_DISCORD_CLIENT_SECRET)%'
+            redirect_route: app_web_connect_discord_check
+            redirect_params: {}
+        

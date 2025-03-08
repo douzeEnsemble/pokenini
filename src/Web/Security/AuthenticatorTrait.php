@@ -13,7 +13,7 @@ trait AuthenticatorTrait
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?RedirectResponse
     {
         /** @var User $user */
         $user = $token->getUser();
