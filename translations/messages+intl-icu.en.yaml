@@ -56,6 +56,12 @@ home:
         not_connected: 
             description: "You're not logged in. Log in to make the most of the app."
             action: "Log in"
+        connected: 
+            description: |
+                Hello there, "{id}" ... it's a bit weird to call you that, right?
+                
+                I'll call you "young trainer", that's better. Thanks for being here <3
+
 
 stats:
     total: "Total"

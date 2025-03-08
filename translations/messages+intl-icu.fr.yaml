@@ -53,6 +53,11 @@ home:
         not_connected: 
             description: "Tu n'es pas connecté. Connecte-toi pour profiter pleinement de l'application"
             action: "Se connecter"
+        connected: 
+            description: |
+                Salut, "{id}" ... c'est un peu bizarre de s'appeler comme ça, non ?
+                
+                Je vais t'appeler "jeune dresseur", c'est mieux. Merci d'être là <3
     menu:
         election: 
             title: "C'est quoi ton préféré ?"
