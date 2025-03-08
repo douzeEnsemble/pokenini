@@ -32,7 +32,7 @@ class OuterRoomTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -45,7 +45,7 @@ class OuterRoomTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 
@@ -58,7 +58,7 @@ class OuterRoomTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->loginUser(new User('121212'), 'web');
+        $client->loginUser(new User('121212', 'TestProvider'), 'web');
 
         $crawler = $client->request('GET', '/fr/outerroom');
 

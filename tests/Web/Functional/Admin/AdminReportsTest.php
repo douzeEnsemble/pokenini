@@ -22,7 +22,7 @@ class AdminReportsTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addAdminRole();
         $client->loginUser($user, 'web');
 

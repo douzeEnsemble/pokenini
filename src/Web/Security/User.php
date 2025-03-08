@@ -11,7 +11,10 @@ class User implements UserInterface
     /** @var string[] */
     private array $roles = ['ROLE_USER'];
 
-    public function __construct(private readonly string $identifier) {}
+    public function __construct(
+        private readonly string $identifier,
+        private readonly string $providerName,
+    ) {}
 
     public function getRoles(): array
     {
@@ -54,6 +57,11 @@ class User implements UserInterface
     public function getId(): string
     {
         return $this->getUserIdentifier();
+    }
+
+    public function getProviderName(): string
+    {
+        return $this->providerName;
     }
 
     public function isATrainer(): bool

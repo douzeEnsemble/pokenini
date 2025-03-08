@@ -32,7 +32,7 @@ class UserProviderTest extends TestCase
     {
         $provider = new UserProvider();
 
-        $user = new User('douze');
+        $user = new User('douze', 'TestProvider');
 
         $freshUser = $provider->refreshUser($user);
 

@@ -22,7 +22,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -45,7 +45,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -68,7 +68,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -91,7 +91,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -114,7 +114,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -137,7 +137,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -160,7 +160,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -183,7 +183,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -206,7 +206,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -229,7 +229,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -252,7 +252,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();
@@ -275,7 +275,7 @@ class TrainerPageFiltersTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('8764532');
+        $user = new User('8764532', 'TestProvider');
         $user->addTrainerRole();
         $user->addCollectorRole();
         $user->addAdminRole();

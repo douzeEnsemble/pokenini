@@ -24,7 +24,7 @@ class AmazonAuthenticatorOnAuthentificationTest extends TestCase
 {
     public function testOnAuthenticationSuccessNotATrainer(): void
     {
-        $user = new User('1');
+        $user = new User('1', 'TestProvider');
 
         $token = $this->createMock(TokenInterface::class);
         $token
@@ -51,7 +51,7 @@ class AmazonAuthenticatorOnAuthentificationTest extends TestCase
 
     public function testOnAuthenticationSuccessTrainer(): void
     {
-        $user = new User('1');
+        $user = new User('1', 'TestProvider');
         $user->addTrainerRole();
 
         $token = $this->createMock(TokenInterface::class);

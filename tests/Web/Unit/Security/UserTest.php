@@ -16,16 +16,17 @@ class UserTest extends TestCase
 {
     public function testConstructor(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertEquals('12', $user->getUserIdentifier());
         $this->assertEquals('12', $user->getId());
+        $this->assertEquals('TestProvider', $user->getProviderName());
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
     }
 
     public function testAddAdminRole(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addAdminRole();
@@ -35,7 +36,7 @@ class UserTest extends TestCase
 
     public function testAddTrainerRole(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addTrainerRole();
@@ -45,7 +46,7 @@ class UserTest extends TestCase
 
     public function testAddCollectorRole(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addCollectorRole();
@@ -55,7 +56,7 @@ class UserTest extends TestCase
 
     public function testAddTrainerAndAdminRole(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addTrainerRole();
@@ -66,7 +67,7 @@ class UserTest extends TestCase
 
     public function testAddTrainerAndCollectorRole(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addTrainerRole();
@@ -77,7 +78,7 @@ class UserTest extends TestCase
 
     public function testAddTrainerRoleTwice(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addTrainerRole();
@@ -88,7 +89,7 @@ class UserTest extends TestCase
 
     public function testAddAdminRoleTwice(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addAdminRole();
@@ -99,7 +100,7 @@ class UserTest extends TestCase
 
     public function testAddCollectorRoleTwice(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $this->assertEquals(['ROLE_USER'], $user->getRoles());
 
         $user->addCollectorRole();
@@ -110,7 +111,7 @@ class UserTest extends TestCase
 
     public function testIsATrainer(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertFalse($user->isATrainer());
 
@@ -121,7 +122,7 @@ class UserTest extends TestCase
 
     public function testIsACollector(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertFalse($user->isACollector());
 
@@ -132,7 +133,7 @@ class UserTest extends TestCase
 
     public function testIsAnAdmin(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertFalse($user->isAnAdmin());
 
@@ -143,7 +144,7 @@ class UserTest extends TestCase
 
     public function testIsATrainerAndAnAdmin(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertFalse($user->isATrainer());
         $this->assertFalse($user->isAnAdmin());
@@ -159,7 +160,7 @@ class UserTest extends TestCase
 
     public function testIsATrainerAndACollector(): void
     {
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
 
         $this->assertFalse($user->isATrainer());
         $this->assertFalse($user->isACollector());

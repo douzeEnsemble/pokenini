@@ -23,7 +23,7 @@ class ToggleActionsTest extends AbstractBrowserTestCase
     {
         $client = $this->getNewClient();
 
-        $user = new User('109903422692691643666');
+        $user = new User('109903422692691643666', 'TestProvider');
         $user->addAdminRole();
         $this->loginUser($client, $user);
 

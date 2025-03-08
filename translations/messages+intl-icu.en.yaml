@@ -193,6 +193,7 @@ trainer:
             value: "Value"
         body:
             id: "Identifier"
+            provider: "Provider"
     dex:
         title: "Customize your albums"
         see: "See"

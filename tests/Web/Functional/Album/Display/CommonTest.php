@@ -39,7 +39,7 @@ class CommonTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 

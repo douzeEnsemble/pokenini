@@ -38,7 +38,7 @@ class FakeAuthenticator extends OAuth2Authenticator implements AuthenticationEnt
 
         return new SelfValidatingPassport(
             new UserBadge($identifier, function () use ($identifier) {
-                return $this->loadUserFromLists($identifier);
+                return $this->loadUserFromLists($identifier, 'FaKe');
             })
         );
     }

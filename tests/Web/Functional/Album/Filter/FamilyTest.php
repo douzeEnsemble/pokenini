@@ -76,7 +76,7 @@ class FamilyTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('789465465489');
+        $user = new User('789465465489', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
@@ -109,7 +109,7 @@ class FamilyTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $user = new User('12');
+        $user = new User('12', 'TestProvider');
         $user->addTrainerRole();
         $client->loginUser($user, 'web');
 
