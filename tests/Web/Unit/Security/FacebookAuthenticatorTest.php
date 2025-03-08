@@ -1,0 +1,46 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Web\Unit\Security;
+
+use App\Web\Security\FacebookAuthenticator;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\RouterInterface;
+
+/**
+ * @internal
+ */
+#[CoversClass(FacebookAuthenticator::class)]
+class FacebookAuthenticatorTest extends TestCase
+{
+    public function testSupports(): void
+    {
+        $clientRegistry = $this->createMock(ClientRegistry::class);
+
+        $router = $this->createMock(RouterInterface::class);
+
+        $authenticator = new FacebookAuthenticator(
+            $clientRegistry,
+            $router,
+            'listAdmin',
+            'listTrainer',
+            'listCollector',
+            true,
+        );
+
+        $this->assertTrue(
+            $authenticator->supports(
+                new Request([], [], ['_route' => 'app_web_connect_facebook_check'])
+            )
+        );
+        $this->assertFalse(
+            $authenticator->supports(
+                new Request([], [], ['_route' => 'app_web_connect_check'])
+            )
+        );
+    }
+}
