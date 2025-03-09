@@ -4,51 +4,15 @@ declare(strict_types=1);
 
 namespace App\Web\Security;
 
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
-use League\OAuth2\Client\Provider\GoogleUser;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
-use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
-use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
-
-class GoogleAuthenticator extends OAuth2Authenticator
+class GoogleAuthenticator extends AbstractAuthenticator
 {
-    use AuthenticatorTrait;
-
-    public function __construct(
-        private readonly ClientRegistry $clientRegistry,
-        private readonly RouterInterface $router,
-        private readonly string $listAdmin,
-        private readonly string $listTrainer,
-        private readonly string $listCollector,
-        private readonly bool $isInvitationRequired,
-    ) {}
-
-    public function supports(Request $request): ?bool
+    public function getProviderCode(): string
     {
-        return 'app_web_connect_google_check' === $request->attributes->get('_route');
+        return 'google';
     }
 
-    /**
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     */
-    public function authenticate(Request $request): Passport
+    public function getProviderName(): string
     {
-        $client = $this->clientRegistry->getClient('google');
-        $accessToken = $this->fetchAccessToken($client);
-
-        return new SelfValidatingPassport(
-            new UserBadge($accessToken->getToken(), function () use ($accessToken, $client) {
-                /** @var GoogleUser $authUser */
-                $authUser = $client->fetchUserFromToken($accessToken);
-
-                /** @var string $userId */
-                $userId = $authUser->getId();
-
-                return $this->loadUserFromLists($userId, 'Google');
-            })
-        );
+        return 'Google';
     }
 }
