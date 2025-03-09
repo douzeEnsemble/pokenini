@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/connect/g')]
-class GoogleController extends AbstractController
+class GoogleController extends AbstractController implements ConnectControllerInterface
 {
     #[Route('', methods: ['GET'])]
     public function goto(ClientRegistry $clientRegistry): Response

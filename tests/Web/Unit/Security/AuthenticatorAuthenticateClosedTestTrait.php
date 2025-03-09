@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\FacebookAuthenticator;
 use App\Web\Security\User;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Client\OAuth2ClientInterface;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
 use League\OAuth2\Client\Provider\GoogleUser;
 use League\OAuth2\Client\Token\AccessToken;
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
@@ -19,12 +17,11 @@ use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPasspor
 /**
  * @internal
  */
-#[CoversClass(FacebookAuthenticator::class)]
-class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
+trait AuthenticatorAuthenticateClosedTestTrait
 {
-    public function testAuthenticateUser(): void
+    public function testClosedAuthenticateUser(): void
     {
-        $authenticator = $this->getFacebookAuthenticator(
+        $authenticator = $this->getAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121',
@@ -45,9 +42,9 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    public function testAuthenticateTrainer(): void
+    public function testClosedAuthenticateTrainer(): void
     {
-        $authenticator = $this->getFacebookAuthenticator(
+        $authenticator = $this->getAuthenticator(
             '1313131313',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,1313131313',
@@ -68,9 +65,9 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    public function testAuthenticateCollector(): void
+    public function testClosedAuthenticateCollector(): void
     {
-        $authenticator = $this->getFacebookAuthenticator(
+        $authenticator = $this->getAuthenticator(
             '1313131313',
             '2121212121,1313131313',
             '2121212121,1212121212000000000000012',
@@ -91,9 +88,9 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    public function testAuthenticateAdmin(): void
+    public function testClosedAuthenticateAdmin(): void
     {
-        $authenticator = $this->getFacebookAuthenticator(
+        $authenticator = $this->getAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313',
             '2121212121',
@@ -114,9 +111,9 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    public function testAuthenticateAdminTrainer(): void
+    public function testClosedAuthenticateAdminTrainer(): void
     {
-        $authenticator = $this->getFacebookAuthenticator(
+        $authenticator = $this->getAuthenticator(
             '1313131313,1212121212000000000000012',
             '2121212121,1313131313,1212121212000000000000012',
             '2121212121,',
@@ -137,7 +134,7 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    public function testAuthenticateAdminTrainerWithEndlines(): void
+    public function testClosedAuthenticateAdminTrainerWithEndlines(): void
     {
         $listAdmin = <<<'LIST'
             toto,
@@ -159,7 +156,7 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
             1212121212000000000000012,
             LIST;
 
-        $authenticator = $this->getFacebookAuthenticator($listAdmin, $listTrainer, $listCollector);
+        $authenticator = $this->getAuthenticator($listAdmin, $listTrainer, $listCollector);
 
         $request = $this->createMock(Request::class);
 
@@ -176,7 +173,7 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
         $this->assertEquals('1212121212000000000000012', $user->getUserIdentifier());
     }
 
-    private function getFacebookAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): FacebookAuthenticator
+    private function getAuthenticator(string $listAdmin, string $listTrainer, string $listCollector): OAuth2Authenticator
     {
         $oauth2Client = $this->createMock(OAuth2ClientInterface::class);
         $oauth2Client
@@ -204,7 +201,8 @@ class FacebookAuthenticatorAuthenticateClosedTest extends TestCase
 
         $router = $this->createMock(RouterInterface::class);
 
-        return new FacebookAuthenticator(
+        /** @var OAuth2Authenticator */
+        return new ($this->getAuthenticatorClassName())(
             $clientRegistry,
             $router,
             $listAdmin,
