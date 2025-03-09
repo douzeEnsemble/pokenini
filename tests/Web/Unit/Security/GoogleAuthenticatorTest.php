@@ -5,42 +5,21 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Security;
 
 use App\Web\Security\GoogleAuthenticator;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * @internal
  */
 #[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorTest extends TestCase
+class GoogleAuthenticatorTest extends AbstractAuthenticatorTesting
 {
-    public function testSupports(): void
+    protected function getAuthenticatorClassName(): string
     {
-        $clientRegistry = $this->createMock(ClientRegistry::class);
+        return GoogleAuthenticator::class;
+    }
 
-        $router = $this->createMock(RouterInterface::class);
-
-        $authenticator = new GoogleAuthenticator(
-            $clientRegistry,
-            $router,
-            'listAdmin',
-            'listTrainer',
-            'listCollector',
-            true,
-        );
-
-        $this->assertTrue(
-            $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_google_check'])
-            )
-        );
-        $this->assertFalse(
-            $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_check'])
-            )
-        );
+    protected function getAuthenticatorProviderCode(): string
+    {
+        return 'google';
     }
 }

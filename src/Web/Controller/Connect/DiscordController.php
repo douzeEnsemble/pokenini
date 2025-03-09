@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/connect/dd')]
-class DiscordController extends AbstractController
+class DiscordController extends AbstractController implements ConnectControllerInterface
 {
     #[Route('', methods: ['GET'])]
     public function goto(ClientRegistry $clientRegistry): Response

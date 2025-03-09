@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Web\Unit\Security;
 
-use App\Web\Security\GoogleAuthenticator;
 use App\Web\Security\User;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
+use KnpU\OAuth2ClientBundle\Security\Authenticator\OAuth2Authenticator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,8 +17,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 /**
  * @internal
  */
-#[CoversClass(GoogleAuthenticator::class)]
-class GoogleAuthenticatorOnAuthentificationTest extends TestCase
+trait AuthenticatorOnAuthentificationTestTrait
 {
     public function testOnAuthenticationSuccessNotATrainer(): void
     {
@@ -33,7 +30,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $authenticator = $this->getGoogleAuthenticator([
+        $authenticator = $this->getOnAuthenticationAuthenticator([
             '/success-but-not-a-trainer',
         ]);
 
@@ -61,7 +58,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturn($user)
         ;
 
-        $authenticator = $this->getGoogleAuthenticator([
+        $authenticator = $this->getOnAuthenticationAuthenticator([
             '/success-but-not-a-trainer',
             '/success-trainer',
         ]);
@@ -80,7 +77,7 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
 
     public function testOnAuthenticationFailure(): void
     {
-        $authenticator = $this->getGoogleAuthenticator([]);
+        $authenticator = $this->getOnAuthenticationAuthenticator([]);
 
         $response = $authenticator->onAuthenticationFailure(
             $this->createMock(Request::class),
@@ -96,9 +93,9 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
     /**
      * @param string[] $routes
      */
-    private function getGoogleAuthenticator(
+    private function getOnAuthenticationAuthenticator(
         array $routes = []
-    ): GoogleAuthenticator {
+    ): OAuth2Authenticator {
         $router = $this->createMock(RouterInterface::class);
         $router
             ->expects($this->exactly(count($routes)))
@@ -106,7 +103,8 @@ class GoogleAuthenticatorOnAuthentificationTest extends TestCase
             ->willReturnOnConsecutiveCalls(...$routes)
         ;
 
-        return new GoogleAuthenticator(
+        /** @var OAuth2Authenticator */
+        return new ($this->getAuthenticatorClassName())(
             $this->createMock(ClientRegistry::class),
             $router,
             '',
