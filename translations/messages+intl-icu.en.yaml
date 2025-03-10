@@ -173,10 +173,15 @@ calculate:
 
 connect:
     disclaimer: |
-        I use the connection only to identify.
-        I do not keep ANY data other than the identifier given by the supplier.
+        I use the connection solely for identification purposes.
+        The email is of no use to me, so it doesn't matter.
+        I do not retain ANY data other than the identifier provided by the provider.
+
+        Choose your preferred identification service.
+        You will be redirected to their site to log in.
     help: |
-        I only support logging in via Google. If you want more let me know
+        Each service allows you to have a different account on Pokénini.
+
 trainer:
     welcome: |
         Hello, young trainer.

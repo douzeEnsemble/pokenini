@@ -177,14 +177,15 @@ calculate:
 
 connect:
     disclaimer: |
-        I use the connection solely for identification purposes.
-        The email is of no use to me, so it doesn't matter.
-        I do not retain ANY data other than the identifier provided by the provider.
+        J'utilise la connexion uniquement pour l'identification (savoir qui tu es).
+        L'email ne me sert à rien, je ne le regarde même pas.
+        Je ne conserve aucune donnée autre que l'identifiant fourni par le service.
 
-        Choose your preferred identification service.
-        You will be redirected to their site to log in.
+        Choisis ton service d'identification préféré.
+        Tu seras redirigé vers leur site pour te connecter.
     help: |
-        Each service allows you to have a different account on Pokénini.
+        Chaque service te permet d'avoir un compte différent sur Pokénini.
+
 
 trainer:
     welcome: |
