@@ -32,3 +32,14 @@ knpu_oauth2_client:
             redirect_params: {}
             graph_api_version: v2.12
         
+        # https://docs.passage.id/complete/hosted-quickstart
+        passage:
+            type: passage
+            client_id: '%env(OAUTH_PASSAGE_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_PASSAGE_CLIENT_SECRET)%'
+            redirect_route: app_web_connect_passage_check
+            redirect_params: {}
+            sub_domain: 'pokenini'
+            
+
+            

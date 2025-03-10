@@ -32,6 +32,7 @@ security:
         - App\Web\Security\DiscordAuthenticator
         - App\Web\Security\FacebookAuthenticator
         - App\Web\Security\GoogleAuthenticator
+        - App\Web\Security\PassageAuthenticator
 
   access_control:
     - { path: ^/api, roles: ROLE_API }

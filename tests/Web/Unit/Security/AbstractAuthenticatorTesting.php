@@ -19,4 +19,6 @@ abstract class AbstractAuthenticatorTesting extends TestCase
     abstract protected function getAuthenticatorClassName(): string;
 
     abstract protected function getAuthenticatorProviderCode(): string;
+
+    abstract protected function getAuthenticatorProviderName(): string;
 }
