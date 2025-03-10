@@ -5,42 +5,26 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Security;
 
 use App\Web\Security\DiscordAuthenticator;
-use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * @internal
  */
 #[CoversClass(DiscordAuthenticator::class)]
-class DiscordAuthenticatorTest extends TestCase
+class DiscordAuthenticatorTest extends AbstractAuthenticatorTesting
 {
-    public function testSupports(): void
+    protected function getAuthenticatorClassName(): string
     {
-        $clientRegistry = $this->createMock(ClientRegistry::class);
+        return DiscordAuthenticator::class;
+    }
 
-        $router = $this->createMock(RouterInterface::class);
+    protected function getAuthenticatorProviderCode(): string
+    {
+        return 'discord';
+    }
 
-        $authenticator = new DiscordAuthenticator(
-            $clientRegistry,
-            $router,
-            'listAdmin',
-            'listTrainer',
-            'listCollector',
-            true,
-        );
-
-        $this->assertTrue(
-            $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_discord_check'])
-            )
-        );
-        $this->assertFalse(
-            $authenticator->supports(
-                new Request([], [], ['_route' => 'app_web_connect_check'])
-            )
-        );
+    protected function getAuthenticatorProviderName(): string
+    {
+        return 'Discord';
     }
 }
