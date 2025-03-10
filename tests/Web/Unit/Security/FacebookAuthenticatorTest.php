@@ -22,4 +22,9 @@ class FacebookAuthenticatorTest extends AbstractAuthenticatorTesting
     {
         return 'facebook';
     }
+
+    protected function getAuthenticatorProviderName(): string
+    {
+        return 'Facebook';
+    }
 }

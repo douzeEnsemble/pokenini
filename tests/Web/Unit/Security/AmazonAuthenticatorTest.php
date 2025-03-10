@@ -22,4 +22,9 @@ class AmazonAuthenticatorTest extends AbstractAuthenticatorTesting
     {
         return 'amazon';
     }
+
+    protected function getAuthenticatorProviderName(): string
+    {
+        return 'Amazon';
+    }
 }

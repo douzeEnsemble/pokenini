@@ -22,4 +22,9 @@ class GoogleAuthenticatorTest extends AbstractAuthenticatorTesting
     {
         return 'google';
     }
+
+    protected function getAuthenticatorProviderName(): string
+    {
+        return 'Google';
+    }
 }
