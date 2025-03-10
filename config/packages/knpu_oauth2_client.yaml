@@ -39,7 +39,7 @@ knpu_oauth2_client:
             client_secret: '%env(OAUTH_PASSAGE_CLIENT_SECRET)%'
             redirect_route: app_web_connect_passage_check
             redirect_params: {}
-            sub_domain: 'pokenini'
+            sub_domain: '%env(OAUTH_PASSAGE_SUB_DOMAIN)%'
             
 
             
