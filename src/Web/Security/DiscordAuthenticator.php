@@ -6,12 +6,12 @@ namespace App\Web\Security;
 
 class DiscordAuthenticator extends AbstractAuthenticator
 {
-    public function getProviderCode(): string
+    protected function getProviderCode(): string
     {
         return 'discord';
     }
 
-    public function getProviderName(): string
+    protected function getProviderName(): string
     {
         return 'Discord';
     }

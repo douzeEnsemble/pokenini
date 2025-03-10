@@ -6,12 +6,12 @@ namespace App\Web\Security;
 
 class GoogleAuthenticator extends AbstractAuthenticator
 {
-    public function getProviderCode(): string
+    protected function getProviderCode(): string
     {
         return 'google';
     }
 
-    public function getProviderName(): string
+    protected function getProviderName(): string
     {
         return 'Google';
     }

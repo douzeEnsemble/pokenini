@@ -6,12 +6,12 @@ namespace App\Web\Security;
 
 class FacebookAuthenticator extends AbstractAuthenticator
 {
-    public function getProviderCode(): string
+    protected function getProviderCode(): string
     {
         return 'facebook';
     }
 
-    public function getProviderName(): string
+    protected function getProviderName(): string
     {
         return 'Facebook';
     }
