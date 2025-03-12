@@ -30,7 +30,6 @@ security:
       custom_authenticators:
         - App\Web\Security\AmazonAuthenticator
         - App\Web\Security\DiscordAuthenticator
-        - App\Web\Security\FacebookAuthenticator
         - App\Web\Security\GoogleAuthenticator
         - App\Web\Security\PassageAuthenticator
 
