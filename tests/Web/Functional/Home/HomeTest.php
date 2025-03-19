@@ -45,7 +45,9 @@ class HomeTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-election a.disabled');
         $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-album a.disabled');
     }
 
     public function testHomeAsAdmin(): void
@@ -76,7 +78,9 @@ class HomeTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-election a.disabled');
         $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-album a.disabled');
     }
 
     public function testNonConnectedHome(): void
@@ -94,7 +98,9 @@ class HomeTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertCountFilter($crawler, 1, '.home-menu-item.home-menu-item-election a.disabled');
         $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
+        $this->assertCountFilter($crawler, 1, '.home-menu-item.home-menu-item-album a.disabled');
 
         $this->assertCountFilter($crawler, 0, '.home-item');
         $this->assertCountFilter($crawler, 0, '.dex_is_premium');
@@ -124,7 +130,9 @@ class HomeTest extends WebTestCase
 
         $this->assertCountFilter($crawler, 2, '.home-menu-item');
         $this->assertEquals('/fr/election/dex', $crawler->filter('.home-menu-item.home-menu-item-election a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-election a.disabled');
         $this->assertEquals('/fr/album/dex', $crawler->filter('.home-menu-item.home-menu-item-album a')->attr('href'));
+        $this->assertCountFilter($crawler, 0, '.home-menu-item.home-menu-item-album a.disabled');
     }
 
     public function testHomeEnglish(): void
