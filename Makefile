@@ -55,6 +55,7 @@ certs:
 .PHONY: build
 build: ## Builds the Docker images
 	$(DOCKER_COMP) build
+
 .PHONY: rebuild
 rebuild: ## Re-builds the Docker images (build with no cache)
 	${DOCKER_COMP} build --no-cache
@@ -231,7 +232,8 @@ integration: ## Execute all integration tests
 integration: newman
 
 .PHONY: newman
-newman: newman_prepare newman_execute## Execute newman
+newman: ## Execute newman
+newman: newman_prepare newman_execute
 
 .PHONY: newman_prepare
 newman_prepare:
@@ -260,7 +262,7 @@ measures: ## Execute all measures tools
 measures: clear_build coverage infection_api infection_web
 
 .PHONY: clear_build
-clear_build: # Clear build directory
+clear_build: ## Clear build directory
 	rm -Rf build/*
 
 build/coverage/coverage-xml: ## Generate coverage report
@@ -333,17 +335,17 @@ dependency_check:
 	@bin/dependency-check.sh ${NVD_API_KEY}
 
 ## —— Tools 🔧 ———————————————————————————————————————————————————————————————
-tools/php-cs-fixer/vendor/bin/php-cs-fixer:
+tools/php-cs-fixer/vendor/bin/php-cs-fixer: ## Install php-cs-fixer
 	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
 
-tools/phpmd/vendor/bin/phpmd:
+tools/phpmd/vendor/bin/phpmd: ## Install phpmd
 	@$(COMPOSER) install --working-dir=tools/phpmd
 
-tools/psalm/vendor/bin/psalm:
+tools/psalm/vendor/bin/psalm: ## Install psalm
 	@$(COMPOSER) install --working-dir=tools/psalm
 
-tools/phpstan/vendor/bin/phpstan:
+tools/phpstan/vendor/bin/phpstan: ## Install phpstan
 	@$(COMPOSER) install --working-dir=tools/phpstan
 
-tools/infection/vendor/bin/infection:
+tools/infection/vendor/bin/infection: ## Install infection
 	@$(COMPOSER) install --working-dir=tools/infection
