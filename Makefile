@@ -17,6 +17,11 @@ PHP      = $(PHP_CONT) php
 COMPOSER = $(PHP_CONT) composer
 SYMFONY  = $(PHP_CONT) bin/console
 
+MKCERT := $(shell command -v mkcert 2> /dev/null)
+
+KEY_FILE := ./docker/apache/ssl/cert-key.pem
+CERT_FILE := ./docker/apache/ssl/cert.pem
+
 # Misc
 .DEFAULT_GOAL = help
 
@@ -30,11 +35,6 @@ help: ## Outputs this help screen
 	touch .env
 .env.dev.local: ## Create .env.dev.local files (not phony to check the file)
 	cp .env.dev .env.dev.local
-
-MKCERT := $(shell command -v mkcert 2> /dev/null)
-
-KEY_FILE := ./docker/apache/ssl/cert-key.pem
-CERT_FILE := ./docker/apache/ssl/cert.pem
 
 .PHONY: certs
 certs: ## Create ssl files
