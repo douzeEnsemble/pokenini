@@ -79,6 +79,10 @@ stop: ## Stop the project
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) bash
 
+.PHONY: logs
+logs: ## Containers logs
+	@$(DOCKER_COMP) logs -f -n 0
+
 .PHONY: mocks_restart
 mocks_restart: ## Restart mocks
 	$(DOCKER_COMP) restart api.int.moco
@@ -137,7 +141,6 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --working-dir=tools/phpstan
 	@$(COMPOSER) update --working-dir=tools/infection
 	@$(COMPOSER) update --working-dir=tools/jsonlint
-
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 .PHONY: sf
