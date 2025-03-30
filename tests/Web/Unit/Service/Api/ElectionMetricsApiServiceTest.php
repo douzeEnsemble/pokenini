@@ -150,6 +150,10 @@ class ElectionMetricsApiServiceTest extends TestCase
         string $electionSlug,
     ): ElectionMetricsApiService {
         $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects($this->exactly(2))
+            ->method('info')
+        ;
 
         $client = $this->createMock(HttpClientInterface::class);
 
@@ -160,7 +164,7 @@ class ElectionMetricsApiServiceTest extends TestCase
 
         $response = $this->createMock(ResponseInterface::class);
         $response
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('getContent')
             ->willReturn($json)
         ;

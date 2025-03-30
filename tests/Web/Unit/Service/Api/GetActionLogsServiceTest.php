@@ -49,6 +49,10 @@ class GetActionLogsServiceTest extends TestCase
     private function getService(): GetActionLogsService
     {
         $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects($this->exactly(2))
+            ->method('info')
+        ;
 
         $client = $this->createMock(HttpClientInterface::class);
 
@@ -56,7 +60,7 @@ class GetActionLogsServiceTest extends TestCase
 
         $response = $this->createMock(ResponseInterface::class);
         $response
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('getContent')
             ->willReturn($json)
         ;

@@ -27,6 +27,14 @@
         "RoundingFamily": {
             "ignore": [
                 "App\\Web\\Helper\\TotalRoundCountHelper::calculate",
+            ],
+            "ignoreSourceCodeByRegex": [
+                "\\$this->logger->info.*",
+            ]
+        },
+        "ArrayItem": {
+            "ignoreSourceCodeByRegex": [
+                "\\$this->logger->info.*",
             ]
         },
         "global-ignore": [
@@ -36,7 +44,8 @@
             "App\\Web\\Controller\\Connect\\*Controller::check",
         ],
         "global-ignoreSourceCodeByRegex": [
-            "\\$query .= <<<'SUBSQL'",
+            "\\$query .= <<<'SUBSQL'.*",
+            
         ]
     },
     "tmpDir": "/var/www/html/var/cache/infection",
