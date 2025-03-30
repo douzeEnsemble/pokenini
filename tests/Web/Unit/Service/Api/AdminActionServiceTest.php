@@ -54,19 +54,23 @@ class AdminActionServiceTest extends TestCase
 
     private function getService(string $suffix): AdminActionService
     {
-        $logger = $this->createMock(LoggerInterface::class);
-
-        $client = $this->createMock(HttpClientInterface::class);
-
         $json = <<<JSON
             {
                 "suffix": "{$suffix}"
             }
             JSON;
 
+        $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects($this->exactly(2))
+            ->method('info')
+        ;
+
+        $client = $this->createMock(HttpClientInterface::class);
+
         $response = $this->createMock(ResponseInterface::class);
         $response
-            ->expects($this->once())
+            ->expects($this->exactly(2))
             ->method('getContent')
             ->willReturn($json)
         ;

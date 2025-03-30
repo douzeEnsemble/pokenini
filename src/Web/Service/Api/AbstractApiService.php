@@ -28,7 +28,12 @@ abstract class AbstractApiService implements ApiServiceInterface
         string $endpointUrl,
         array $options = []
     ): ResponseInterface {
-        return $this->client->request(
+        $this->logger->info(
+            "Requesting {$method} {$endpointUrl}",
+            $options
+        );
+
+        $response = $this->client->request(
             $method,
             "{$this->appApiUrl}$endpointUrl",
             array_merge(
@@ -44,6 +49,15 @@ abstract class AbstractApiService implements ApiServiceInterface
                 $options
             ),
         );
+
+        $this->logger->info(
+            "Response status code: {$response->getStatusCode()}",
+            [
+                'response' => $response->getContent(),
+            ]
+        );
+
+        return $response;
     }
 
     /**
