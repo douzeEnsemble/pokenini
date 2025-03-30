@@ -257,10 +257,10 @@ newman_execute:
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 .PHONY: measures
 measures: ## Execute all measures tools
-measures: clear-build coverage infection_api infection_web
+measures: clear_build coverage infection_api infection_web
 
-.PHONY: clear-build
-clear-build: # Clear build directory
+.PHONY: clear_build
+clear_build: # Clear build directory
 	rm -Rf build/*
 
 build/coverage/coverage-xml: ## Generate coverage report
