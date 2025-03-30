@@ -8,6 +8,7 @@ use App\Web\DTO\ActionLogData;
 use App\Web\Service\Api\GetActionLogsService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -47,6 +48,8 @@ class GetActionLogsServiceTest extends TestCase
 
     private function getService(): GetActionLogsService
     {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents('/var/www/html/tests/resources/Web/unit/service/api/action_logs.json');
@@ -80,6 +83,7 @@ class GetActionLogsServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetActionLogsService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

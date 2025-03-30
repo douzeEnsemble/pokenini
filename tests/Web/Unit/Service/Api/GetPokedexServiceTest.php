@@ -8,6 +8,7 @@ use App\Web\Service\Api\GetPokedexService;
 use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -285,6 +286,8 @@ class GetPokedexServiceTest extends TestCase
         string $json,
         array $queryParams,
     ): GetPokedexService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $response = $this->createMock(ResponseInterface::class);
@@ -319,6 +322,7 @@ class GetPokedexServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetPokedexService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

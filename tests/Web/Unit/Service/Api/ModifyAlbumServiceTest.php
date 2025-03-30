@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\ModifyAlbumService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
@@ -62,9 +63,12 @@ class ModifyAlbumServiceTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $service = new ModifyAlbumService(
+            $logger,
             $client,
             'https://api.domain',
             new ArrayAdapter(),
@@ -86,6 +90,8 @@ class ModifyAlbumServiceTest extends TestCase
         string $suffix,
         string $body
     ): ModifyAlbumService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $client
@@ -110,6 +116,7 @@ class ModifyAlbumServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new ModifyAlbumService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

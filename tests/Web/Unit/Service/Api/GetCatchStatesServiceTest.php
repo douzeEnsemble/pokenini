@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\GetCatchStatesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -76,6 +77,8 @@ class GetCatchStatesServiceTest extends TestCase
 
     private function getService(): GetCatchStatesService
     {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents('/var/www/html/tests/resources/Web/unit/service/api/catch_states.json');
@@ -109,6 +112,7 @@ class GetCatchStatesServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetCatchStatesService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

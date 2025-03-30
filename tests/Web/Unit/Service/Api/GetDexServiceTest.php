@@ -8,6 +8,7 @@ use App\Web\Service\Api\GetDexService;
 use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -198,6 +199,8 @@ class GetDexServiceTest extends TestCase
         string $json,
         string $endpoint,
     ): GetDexService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $response = $this->createMock(ResponseInterface::class);
@@ -229,6 +232,7 @@ class GetDexServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetDexService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,
