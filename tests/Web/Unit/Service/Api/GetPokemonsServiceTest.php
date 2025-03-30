@@ -8,6 +8,7 @@ use App\Web\Service\Api\GetPokemonsService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -128,6 +129,8 @@ class GetPokemonsServiceTest extends TestCase
         string $filtersStr = '',
         array $filters = [],
     ): GetPokemonsService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $dir = '/var/www/html/tests/resources/Web/unit/service/api';
@@ -173,6 +176,7 @@ class GetPokemonsServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetPokemonsService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

@@ -8,6 +8,7 @@ use App\Web\DTO\ElectionVote;
 use App\Web\Service\Api\ElectionVoteApiService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -91,6 +92,8 @@ class ElectionVoteApiServiceTest extends TestCase
         array $winnersSlugs,
         array $losersSlugs,
     ): ElectionVoteApiService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_vote_{$trainerId}_{$dexSlug}_{$electionSlug}.json");
@@ -131,6 +134,7 @@ class ElectionVoteApiServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new ElectionVoteApiService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

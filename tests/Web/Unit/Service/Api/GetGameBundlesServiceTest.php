@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\GetGameBundlesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -33,6 +34,8 @@ class GetGameBundlesServiceTest extends TestCase
 
     private function getService(): GetGameBundlesService
     {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents('/var/www/html/tests/resources/Web/unit/service/api/game_bundles.json');
@@ -66,6 +69,7 @@ class GetGameBundlesServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new GetGameBundlesService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

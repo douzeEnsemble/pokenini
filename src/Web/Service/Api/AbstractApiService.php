@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Web\Service\Api;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -11,6 +12,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 abstract class AbstractApiService implements ApiServiceInterface
 {
     public function __construct(
+        protected readonly LoggerInterface $logger,
         protected readonly HttpClientInterface $client,
         protected readonly string $appApiUrl,
         protected readonly CacheInterface $cache,

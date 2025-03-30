@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\ElectionMetricsApiService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -148,6 +149,8 @@ class ElectionMetricsApiServiceTest extends TestCase
         string $dexSlug,
         string $electionSlug,
     ): ElectionMetricsApiService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $dir = '/var/www/html/tests/resources/Web/unit/service/api';
@@ -189,6 +192,7 @@ class ElectionMetricsApiServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new ElectionMetricsApiService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,

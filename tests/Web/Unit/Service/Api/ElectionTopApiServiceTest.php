@@ -7,6 +7,7 @@ namespace App\Tests\Web\Unit\Service\Api;
 use App\Web\Service\Api\ElectionTopApiService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -43,6 +44,8 @@ class ElectionTopApiServiceTest extends TestCase
         string $electionSlug,
         int $count,
     ): ElectionTopApiService {
+        $logger = $this->createMock(LoggerInterface::class);
+
         $client = $this->createMock(HttpClientInterface::class);
 
         $json = (string) file_get_contents("/var/www/html/tests/resources/Web/unit/service/api/election_top_{$count}_{$trainerId}_{$dexSlug}_{$electionSlug}.json");
@@ -76,6 +79,7 @@ class ElectionTopApiServiceTest extends TestCase
         $this->cache = new ArrayAdapter();
 
         return new ElectionTopApiService(
+            $logger,
             $client,
             'https://api.domain',
             $this->cache,
