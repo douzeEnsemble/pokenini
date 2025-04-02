@@ -7,6 +7,7 @@ namespace App\Web\Service\Api;
 use App\Web\Cache\KeyMaker;
 use App\Web\Service\Trait\CacheRegisterTrait;
 use App\Web\Utils\JsonDecoder;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class GetDexService extends AbstractApiService
 {
@@ -49,10 +50,10 @@ class GetDexService extends AbstractApiService
      */
     private function getDexWithParam(string $trainerId, string $queryParams = ''): array
     {
-        $key = KeyMaker::getDexKeyForTrainer($trainerId, $queryParams);
+        $key = KeyMaker::getDexKeyForTrainer($trainerId);
 
         /** @var string $json */
-        $json = $this->cache->get($key, function () use ($trainerId, $queryParams) {
+        $json = $this->cache->get($key, function (ItemInterface $item) use ($trainerId, $queryParams) {
             return $this->requestContent(
                 'GET',
                 "/dex/{$trainerId}/list".($queryParams ? '?'.$queryParams : ''),
