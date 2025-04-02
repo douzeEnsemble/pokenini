@@ -78,9 +78,9 @@ class KeyMaker
         return self::CACHE_KEY_REPORTS;
     }
 
-    public static function getDexKeyForTrainer(string $trainerId, string $alt = ''): string
+    public static function getDexKeyForTrainer(string $trainerId): string
     {
-        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId.($alt ? self::CACHE_KEY_SEPARATOR.$alt : '');
+        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId;
     }
 
     public static function getElectionDexKey(string $alt = ''): string
