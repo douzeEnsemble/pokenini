@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\Controller\Debug;
 
 use App\Api\Entity\Pokemon;
+use App\Api\Service\CollectionsAvailabilitiesService;
 use App\Api\Service\GameBundlesAvailabilitiesService;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Api\Service\GamesAvailabilitiesService;
@@ -36,6 +37,7 @@ class DebugPokemonController extends AbstractDebugController
         GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
         GameBundlesAvailabilitiesService $gameBundlesAvailabilitiesService,
         GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
+        CollectionsAvailabilitiesService $collectionsAvailabilitiesService,
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
     ): Response {
@@ -43,6 +45,7 @@ class DebugPokemonController extends AbstractDebugController
         $gamesShiniesAvailabilitiesService->cleanCacheFromPokemon($pokemon);
         $gameBundlesAvailabilitiesService->cleanCacheFromPokemon($pokemon);
         $gameBundlesShiniesAvailabilitiesService->cleanCacheFromPokemon($pokemon);
+        $collectionsAvailabilitiesService->cleanCacheFromPokemon($pokemon);
 
         return new Response();
     }
