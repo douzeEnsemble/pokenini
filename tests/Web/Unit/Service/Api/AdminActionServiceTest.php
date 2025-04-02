@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -18,7 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(AdminActionService::class)]
 class AdminActionServiceTest extends TestCase
 {
-    private ArrayAdapter $cache;
+    private TagAwareAdapter $cache;
 
     public function testUpdate(): void
     {
@@ -33,7 +34,7 @@ class AdminActionServiceTest extends TestCase
             $this->getService('update/start')->update('start')
         );
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     public function testCalculate(): void
@@ -49,7 +50,7 @@ class AdminActionServiceTest extends TestCase
             $this->getService('calculate/start')->calculate('start')
         );
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     private function getService(string $suffix): AdminActionService
@@ -94,7 +95,7 @@ class AdminActionServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
 
         return new AdminActionService(
             $logger,

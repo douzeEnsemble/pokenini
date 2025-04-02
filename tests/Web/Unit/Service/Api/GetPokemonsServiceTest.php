@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -19,7 +20,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(GetPokemonsService::class)]
 class GetPokemonsServiceTest extends TestCase
 {
-    private ArrayAdapter $cache;
+    private TagAwareAdapter $cache;
 
     #[DataProvider('providerGet')]
     public function testGet(
@@ -51,7 +52,7 @@ class GetPokemonsServiceTest extends TestCase
         $pokemons = $electionList->items;
         $this->assertCount($count, $pokemons);
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     public function testGetWithFilters(): void
@@ -84,7 +85,7 @@ class GetPokemonsServiceTest extends TestCase
         $pokemons = $electionList->items;
         $this->assertCount(5, $pokemons);
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     /**
@@ -177,7 +178,7 @@ class GetPokemonsServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
 
         return new GetPokemonsService(
             $logger,

@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -18,7 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(ElectionTopApiService::class)]
 class ElectionTopApiServiceTest extends TestCase
 {
-    private ArrayAdapter $cache;
+    private TagAwareAdapter $cache;
 
     public function testGet(): void
     {
@@ -26,7 +27,7 @@ class ElectionTopApiServiceTest extends TestCase
 
         $this->assertCount(5, $items);
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     public function testGetBis(): void
@@ -35,7 +36,7 @@ class ElectionTopApiServiceTest extends TestCase
 
         $this->assertCount(10, $items);
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     private function getService(
@@ -80,7 +81,7 @@ class ElectionTopApiServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
 
         return new ElectionTopApiService(
             $logger,
