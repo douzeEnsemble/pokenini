@@ -96,9 +96,7 @@ class DexCacheInvalidatorServiceTest extends TestCase
         $this->assertArrayHasKey('dex_456', $values);
         $this->assertArrayHasKey('dex_789', $values);
 
-        /** @var string[] $register */
-        $register = $cache->getItem('register_dex')->get();
-        $this->assertCount(1, $register);
+        $this->assertEquals([1 => 'dex_456'], $cache->getItem('register_dex')->get());
     }
 
     public function testInvalidateByTrainerIdWithHomeDex(): void
