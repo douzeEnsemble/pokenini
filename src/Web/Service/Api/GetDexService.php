@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace App\Web\Service\Api;
 
 use App\Web\Cache\KeyMaker;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use App\Web\Utils\JsonDecoder;
 use Symfony\Contracts\Cache\ItemInterface;
 
 class GetDexService extends AbstractApiService
 {
-    use CacheRegisterTrait;
-
     /**
      * @return string[][]
      */
@@ -54,13 +51,16 @@ class GetDexService extends AbstractApiService
 
         /** @var string $json */
         $json = $this->cache->get($key, function (ItemInterface $item) use ($trainerId, $queryParams) {
+            $item->tag([
+                KeyMaker::getDexKey(),
+                'trainer#'.$trainerId,
+            ]);
+
             return $this->requestContent(
                 'GET',
                 "/dex/{$trainerId}/list".($queryParams ? '?'.$queryParams : ''),
             );
         });
-
-        $this->registerCache(KeyMaker::getDexKey(), $key);
 
         /** @var string[][] */
         return JsonDecoder::decode($json);

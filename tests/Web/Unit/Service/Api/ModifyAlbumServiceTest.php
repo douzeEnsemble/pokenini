@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -17,7 +18,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[CoversClass(ModifyAlbumService::class)]
 class ModifyAlbumServiceTest extends TestCase
 {
-    private ArrayAdapter $cache;
+    private TagAwareAdapter $cache;
 
     public function testModifyPatch(): void
     {
@@ -36,7 +37,7 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     public function testModifyPut(): void
@@ -56,7 +57,7 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->assertEmpty($this->cache->getValues());
+        $this->assertEmpty($this->cache->getItems());
     }
 
     public function testModifyPost(): void
@@ -71,7 +72,7 @@ class ModifyAlbumServiceTest extends TestCase
             $logger,
             $client,
             'https://api.domain',
-            new ArrayAdapter(),
+            new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter()),
             'web',
             'douze',
         );
@@ -113,7 +114,7 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->cache = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
 
         return new ModifyAlbumService(
             $logger,

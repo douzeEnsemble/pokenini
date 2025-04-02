@@ -10,6 +10,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -20,7 +21,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(CacheRegisterTrait::class)]
 class GetDexServiceTest extends TestCase
 {
-    private ArrayAdapter $cache;
+    private TagAwareAdapter $cache;
 
     public function testGet(): void
     {
@@ -61,8 +62,20 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithUnreleased('123')->getWithUnreleased('123')),
         );
 
+        $dexCacheItem = $this->cache->getItem('dex_123');
+
+        $this->assertSame(
+            [
+                'tags' => [
+                    'dex' => 'dex',
+                    'trainer#123' => 'trainer#123',
+                ],
+            ],
+            $dexCacheItem->getMetadata(),
+        );
+
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123')->get();
+        $value = $dexCacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -72,12 +85,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
-            [
-                'dex_123',
-            ],
-            $this->cache->getItem('register_dex')->get(),
-        );
+        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithPremium(): void
@@ -94,8 +102,20 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithPremium('123')->getWithPremium('123')),
         );
 
+        $dexCacheItem = $this->cache->getItem('dex_123');
+
+        $this->assertSame(
+            [
+                'tags' => [
+                    'dex' => 'dex',
+                    'trainer#123' => 'trainer#123',
+                ],
+            ],
+            $dexCacheItem->getMetadata(),
+        );
+
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123')->get();
+        $value = $dexCacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -105,12 +125,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
-            [
-                'dex_123',
-            ],
-            $this->cache->getItem('register_dex')->get(),
-        );
+        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithUnreleasedAndPremium(): void
@@ -128,8 +143,20 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithUnreleasedAndPremium('123')->getWithUnreleasedAndPremium('123')),
         );
 
+        $dexCacheItem = $this->cache->getItem('dex_123');
+
+        $this->assertSame(
+            [
+                'tags' => [
+                    'dex' => 'dex',
+                    'trainer#123' => 'trainer#123',
+                ],
+            ],
+            $dexCacheItem->getMetadata(),
+        );
+
         /** @var string $value */
-        $value = $this->cache->getItem('dex_123')->get();
+        $value = $dexCacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -139,12 +166,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
-            [
-                'dex_123',
-            ],
-            $this->cache->getItem('register_dex')->get(),
-        );
+        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     private function getService(string $trainerId): GetDexService
@@ -233,7 +255,9 @@ class GetDexServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new ArrayAdapter();
+        $itemsPool = new ArrayAdapter();
+        $tagsPool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($itemsPool, $tagsPool);
 
         return new GetDexService(
             $logger,
