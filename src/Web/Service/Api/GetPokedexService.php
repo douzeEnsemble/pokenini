@@ -5,13 +5,11 @@ declare(strict_types=1);
 namespace App\Web\Service\Api;
 
 use App\Web\Cache\KeyMaker;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use App\Web\Utils\JsonDecoder;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class GetPokedexService extends AbstractApiService
 {
-    use CacheRegisterTrait;
-
     /**
      * @param string[]|string[][] $filters
      *
@@ -25,7 +23,12 @@ class GetPokedexService extends AbstractApiService
         $key = KeyMaker::getPokedexKey($dexSlug, $trainerId, $filters);
 
         /** @var string $json */
-        $json = $this->cache->get($key, function () use ($dexSlug, $trainerId, $filters) {
+        $json = $this->cache->get($key, function (ItemInterface $item) use ($dexSlug, $trainerId, $filters) {
+            $item->tag([
+                KeyMaker::getAlbumKey(),
+                KeyMaker::getTrainerIdKey($trainerId),
+            ]);
+
             $url = "/album/{$trainerId}/{$dexSlug}";
 
             return $this->requestContent(
@@ -36,8 +39,6 @@ class GetPokedexService extends AbstractApiService
                 ],
             );
         });
-
-        $this->registerCache(KeyMaker::getAlbumKey(), $key);
 
         /** @var string[][] */
         return JsonDecoder::decode($json);

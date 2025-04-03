@@ -7,6 +7,7 @@ namespace App\Web\Cache;
 class KeyMaker
 {
     private const string CACHE_KEY_SEPARATOR = '_';
+    private const string CACHE_KEY_ID_SEPARATOR = '#';
 
     private const string CACHE_KEY_CACHE_REGISTER = 'register';
 
@@ -22,6 +23,7 @@ class KeyMaker
     private const string CACHE_KEY_FORMS_VARIANT = 'forms_variant';
     private const string CACHE_KEY_ALBUM = 'album';
     private const string CACHE_KEY_REPORTS = 'reports';
+    private const string CACHE_KEY_TRAINER = 'trainer';
 
     public static function getDexKey(): string
     {
@@ -118,5 +120,10 @@ class KeyMaker
     public static function getRegisterTypeKey(string $type): string
     {
         return self::CACHE_KEY_CACHE_REGISTER.self::CACHE_KEY_SEPARATOR.$type;
+    }
+
+    public static function getTrainerIdKey(string $trainerId): string
+    {
+        return self::CACHE_KEY_TRAINER.self::CACHE_KEY_ID_SEPARATOR.$trainerId;
     }
 }

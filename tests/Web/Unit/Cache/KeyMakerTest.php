@@ -140,4 +140,10 @@ class KeyMakerTest extends TestCase
         $this->assertEquals('register_a', KeyMaker::getRegisterTypeKey('a'));
         $this->assertEquals('register_bb', KeyMaker::getRegisterTypeKey('bb'));
     }
+
+    public function testGetTrainerIdKey(): void
+    {
+        $this->assertEquals('trainer#123', KeyMaker::getTrainerIdKey('123'));
+        $this->assertEquals('trainer#1654da64faeg54a6f4a8', KeyMaker::getTrainerIdKey('1654da64faeg54a6f4a8'));
+    }
 }
