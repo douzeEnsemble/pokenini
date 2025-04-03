@@ -53,7 +53,7 @@ class GetDexService extends AbstractApiService
         $json = $this->cache->get($key, function (ItemInterface $item) use ($trainerId, $queryParams) {
             $item->tag([
                 KeyMaker::getDexKey(),
-                'trainer#'.$trainerId,
+                KeyMaker::getTrainerIdKey($trainerId),
             ]);
 
             return $this->requestContent(

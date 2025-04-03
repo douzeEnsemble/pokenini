@@ -47,18 +47,23 @@ class GetPokedexServiceTest extends TestCase
         $this->assertCount(41, $pokedex['pokemons']);
         $this->assertArrayHasKey('report', $pokedex);
 
+        $cacheItem = $this->cache->getItem('album_lite_123');
+
         /** @var string $value */
-        $value = $this->cache->getItem('album_lite_123')->get();
+        $value = $cacheItem->get();
+        
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
-        $register = $this->cache->getItem('register_album')->get();
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'album_lite_123',
+                'album' => 'album',
+                'trainer#123' => 'trainer#123',
             ],
-            $register
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetTwice(): void
@@ -85,18 +90,23 @@ class GetPokedexServiceTest extends TestCase
         $this->assertCount(41, $pokedex['pokemons']);
         $this->assertArrayHasKey('report', $pokedex);
 
+        $cacheItem = $this->cache->getItem('album_lite_123');
+
         /** @var string $value */
-        $value = $this->cache->getItem('album_lite_123')->get();
+        $value = $cacheItem->get();
+
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
-        $register = $this->cache->getItem('register_album')->get();
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'album_lite_123',
+                'album' => 'album',
+                'trainer#123' => 'trainer#123',
             ],
-            $register
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithFilters(): void
@@ -132,18 +142,23 @@ class GetPokedexServiceTest extends TestCase
         $this->assertCount(2, $pokedex['pokemons']);
         $this->assertArrayHasKey('report', $pokedex);
 
+        $cacheItem = $this->cache->getItem('album_lite_123_catch_statesyes');
+
         /** @var string $value */
-        $value = $this->cache->getItem('album_lite_123_catch_statesyes')->get();
+        $value = $cacheItem->get();
+
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
-        $register = $this->cache->getItem('register_album')->get();
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'album_lite_123_catch_statesyes',
+                'album' => 'album',
+                'trainer#123' => 'trainer#123',
             ],
-            $register
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithMultiplesFilters(): void
@@ -209,20 +224,23 @@ class GetPokedexServiceTest extends TestCase
         $this->assertArrayHasKey('pokemons', $pokedexLastTime);
         $this->assertArrayHasKey('report', $pokedexLastTime);
 
+        $cacheItem = $this->cache->getItem('album_lite_123_catch_statesmaybe_catch_statesmaybenot_any_typeswater_any_typesfire_any_typesgrass');
+
         /** @var string $value */
-        $value = $this->cache->getItem(
-            'album_lite_123_catch_statesmaybe_catch_statesmaybenot_any_typeswater_any_typesfire_any_typesgrass'
-        )->get();
+        $value = $cacheItem->get();
+        
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
-        $register = $this->cache->getItem('register_album')->get();
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'album_lite_123_catch_statesmaybe_catch_statesmaybenot_any_typeswater_any_typesfire_any_typesgrass',
+                'album' => 'album',
+                'trainer#123' => 'trainer#123',
             ],
-            $register
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithMultiplesNegativeFilters(): void
@@ -264,18 +282,23 @@ class GetPokedexServiceTest extends TestCase
         $this->assertCount(41, $pokedex['pokemons']);
         $this->assertArrayHasKey('report', $pokedex);
 
+        $cacheItem = $this->cache->getItem('album_lite_123_catch_states!yes_game_bundle_availabilities!swordshield');
+
         /** @var string $value */
-        $value = $this->cache->getItem('album_lite_123_catch_states!yes_game_bundle_availabilities!swordshield')->get();
+        $value = $cacheItem->get();
+        
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
-        $register = $this->cache->getItem('register_album')->get();
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'album_lite_123_catch_states!yes_game_bundle_availabilities!swordshield',
+                'album' => 'album',
+                'trainer#123' => 'trainer#123',
             ],
-            $register
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     /**
