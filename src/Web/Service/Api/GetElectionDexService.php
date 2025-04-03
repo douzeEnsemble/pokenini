@@ -5,27 +5,17 @@ declare(strict_types=1);
 namespace App\Web\Service\Api;
 
 use App\Web\Cache\KeyMaker;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use App\Web\Utils\JsonDecoder;
+use Symfony\Contracts\Cache\ItemInterface;
 
 class GetElectionDexService extends AbstractApiService
 {
-    use CacheRegisterTrait;
-
     /**
      * @return string[][]
      */
     public function get(): array
     {
-        return $this->getDexWithParam('');
-    }
-
-    /**
-     * @return string[][]
-     */
-    public function getWithUnreleased(): array
-    {
-        return $this->getDexWithParam('include_unreleased_dex=1');
+        return $this->getDexWithParam([]);
     }
 
     /**
@@ -33,7 +23,9 @@ class GetElectionDexService extends AbstractApiService
      */
     public function getWithPremium(): array
     {
-        return $this->getDexWithParam('include_premium_dex=1');
+        return $this->getDexWithParam([
+            'include_premium_dex' => '1',
+        ]);
     }
 
     /**
@@ -41,25 +33,33 @@ class GetElectionDexService extends AbstractApiService
      */
     public function getWithUnreleasedAndPremium(): array
     {
-        return $this->getDexWithParam('include_unreleased_dex=1&include_premium_dex=1');
+        return $this->getDexWithParam([
+            'include_unreleased_dex' => '1',
+            'include_premium_dex' => '1',
+        ]);
     }
 
     /**
      * @return string[][]
      */
-    private function getDexWithParam(string $queryParams = ''): array
+    private function getDexWithParam(array $queryParams = []): array
     {
         $key = KeyMaker::getElectionDexKey($queryParams);
 
+        $urlQueryParams = http_build_query($queryParams);
+
         /** @var string $json */
-        $json = $this->cache->get($key, function () use ($queryParams) {
+        $json = $this->cache->get($key, function (ItemInterface $item) use ($urlQueryParams) {
+            $item->tag([
+                KeyMaker::getDexKey(),
+                KeyMaker::getElectionDexKey(),
+            ]);
+
             return $this->requestContent(
                 'GET',
-                '/dex/can_hold_election'.($queryParams ? '?'.$queryParams : ''),
+                '/dex/can_hold_election'.($urlQueryParams ? '?'.$urlQueryParams : ''),
             );
         });
-
-        $this->registerCache(KeyMaker::getDexKey(), $key);
 
         /** @var string[][] */
         return JsonDecoder::decode($json);
