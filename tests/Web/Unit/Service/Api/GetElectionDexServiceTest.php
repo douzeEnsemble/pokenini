@@ -34,32 +34,10 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($this->getService()->get()),
         );
 
-        /** @var string $value */
-        $value = $this->cache->getItem('election_dex')->get();
-
-        /** @var string[][] */
-        $jsonData = json_decode($value, true);
-
-        $this->assertEquals(
-            $expectedSlugs,
-            self::extractSlugs($jsonData),
-        );
-    }
-
-    public function testGetWithUnreleased(): void
-    {
-        $expectedSlugs = [
-            'homeshiny',
-            'redgreenblueyellowshiny',
-        ];
-
-        $this->assertEquals(
-            $expectedSlugs,
-            self::extractSlugs($this->getServiceWithUnreleased()->getWithUnreleased()),
-        );
+        $cacheItem = $this->cache->getItem('election_dex');
 
         /** @var string $value */
-        $value = $this->cache->getItem('election_dex_include_unreleased_dex=1')->get();
+        $value = $cacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -69,11 +47,12 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'election_dex_include_unreleased_dex=1',
+                'dex' => 'dex',
+                'election_dex' => 'election_dex',
             ],
-            $this->cache->getItem('register_dex')->get(),
+            $cacheItem->getMetadata()['tags'],
         );
     }
 
@@ -89,8 +68,10 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithPremium()->getWithPremium()),
         );
 
+        $cacheItem = $this->cache->getItem('election_dex_include_premium_dex=1');
+
         /** @var string $value */
-        $value = $this->cache->getItem('election_dex_include_premium_dex=1')->get();
+        $value = $cacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -100,12 +81,15 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'election_dex_include_premium_dex=1',
+                'dex' => 'dex',
+                'election_dex' => 'election_dex',
             ],
-            $this->cache->getItem('register_dex')->get(),
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithUnreleasedAndPremium(): void
@@ -122,8 +106,10 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithUnreleasedAndPremium()->getWithUnreleasedAndPremium()),
         );
 
+        $cacheItem = $this->cache->getItem('election_dex_include_unreleased_dex=1_include_premium_dex=1');
+
         /** @var string $value */
-        $value = $this->cache->getItem('election_dex_include_unreleased_dex=1&include_premium_dex=1')->get();
+        $value = $cacheItem->get();
 
         /** @var string[][] */
         $jsonData = json_decode($value, true);
@@ -133,12 +119,15 @@ class GetElectionDexServiceTest extends TestCase
             self::extractSlugs($jsonData),
         );
 
-        $this->assertEquals(
+        $this->assertSame(
             [
-                'election_dex_include_unreleased_dex=1&include_premium_dex=1',
+                'dex' => 'dex',
+                'election_dex' => 'election_dex',
             ],
-            $this->cache->getItem('register_dex')->get(),
+            $cacheItem->getMetadata()['tags'],
         );
+
+        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     private function getService(): GetElectionDexService

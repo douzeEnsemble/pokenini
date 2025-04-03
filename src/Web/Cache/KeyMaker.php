@@ -83,9 +83,11 @@ class KeyMaker
         return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId;
     }
 
-    public static function getElectionDexKey(string $alt = ''): string
+    public static function getElectionDexKey(array $queryParams = []): string
     {
-        return self::CACHE_KEY_ELECTION_DEX.($alt ? self::CACHE_KEY_SEPARATOR.$alt : '');
+        $cacheKeySuffixe = http_build_query($queryParams, '', self::CACHE_KEY_SEPARATOR);
+
+        return self::CACHE_KEY_ELECTION_DEX.($cacheKeySuffixe ? self::CACHE_KEY_SEPARATOR.$cacheKeySuffixe : '');
     }
 
     /**
