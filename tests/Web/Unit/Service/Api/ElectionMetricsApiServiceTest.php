@@ -19,6 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(ElectionMetricsApiService::class)]
 class ElectionMetricsApiServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -49,7 +50,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             $items
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testGetBis(): void
@@ -80,7 +81,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             $items
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testGetWithFilters(): void
@@ -111,7 +112,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             $items
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testGetWithFiltersBis(): void
@@ -142,7 +143,7 @@ class ElectionMetricsApiServiceTest extends TestCase
             $items
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     private function getService(
@@ -194,7 +195,8 @@ class ElectionMetricsApiServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new ElectionMetricsApiService(
             $logger,

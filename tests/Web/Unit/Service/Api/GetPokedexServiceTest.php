@@ -21,6 +21,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(CacheRegisterTrait::class)]
 class GetPokedexServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -347,7 +348,8 @@ class GetPokedexServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetPokedexService(
             $logger,

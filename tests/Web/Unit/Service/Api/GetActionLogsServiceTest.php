@@ -20,6 +20,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(GetActionLogsService::class)]
 class GetActionLogsServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -44,7 +45,7 @@ class GetActionLogsServiceTest extends TestCase
             $this->assertInstanceOf(ActionLogData::class, $actionLogs[$key]);
         }
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     private function getService(): GetActionLogsService
@@ -85,7 +86,8 @@ class GetActionLogsServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetActionLogsService(
             $logger,

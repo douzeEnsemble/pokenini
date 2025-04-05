@@ -19,6 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(AdminActionService::class)]
 class AdminActionServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testUpdate(): void
@@ -34,7 +35,7 @@ class AdminActionServiceTest extends TestCase
             $this->getService('update/start')->update('start')
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testCalculate(): void
@@ -50,7 +51,7 @@ class AdminActionServiceTest extends TestCase
             $this->getService('calculate/start')->calculate('start')
         );
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     private function getService(string $suffix): AdminActionService
@@ -95,7 +96,8 @@ class AdminActionServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new AdminActionService(
             $logger,
