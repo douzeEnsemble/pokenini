@@ -9,8 +9,6 @@ class KeyMaker
     private const string CACHE_KEY_SEPARATOR = '_';
     private const string CACHE_KEY_ID_SEPARATOR = '#';
 
-    private const string CACHE_KEY_CACHE_REGISTER = 'register';
-
     private const string CACHE_KEY_DEX = 'dex';
     private const string CACHE_KEY_ELECTION_DEX = 'election_dex';
     private const string CACHE_KEY_CATCH_STATES = 'catch_states';
@@ -85,6 +83,9 @@ class KeyMaker
         return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId;
     }
 
+    /**
+     * @param string[] $queryParams
+     */
     public static function getElectionDexKey(array $queryParams = []): string
     {
         $cacheKeySuffixe = http_build_query($queryParams, '', self::CACHE_KEY_SEPARATOR);
@@ -115,11 +116,6 @@ class KeyMaker
         }
 
         return $prefix.$strFilters;
-    }
-
-    public static function getRegisterTypeKey(string $type): string
-    {
-        return self::CACHE_KEY_CACHE_REGISTER.self::CACHE_KEY_SEPARATOR.$type;
     }
 
     public static function getTrainerIdKey(string $trainerId): string

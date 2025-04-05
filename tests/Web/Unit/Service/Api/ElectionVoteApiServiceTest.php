@@ -74,8 +74,8 @@ class ElectionVoteApiServiceTest extends TestCase
                 '5465465',
                 $electionVote,
             )
-        ;        
-        
+        ;
+
         $this->assertEmpty($this->cachePool->getValues());
     }
 

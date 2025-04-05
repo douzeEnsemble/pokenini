@@ -40,6 +40,8 @@ class GetElectionDexService extends AbstractApiService
     }
 
     /**
+     * @param string[] $queryParams
+     *
      * @return string[][]
      */
     private function getDexWithParam(array $queryParams = []): array

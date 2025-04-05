@@ -13,6 +13,8 @@ class AlbumCacheInvalidatorService extends AbstractCacheInvalidatorService
         $key = KeyMaker::getPokedexKey($dexSlug, $trainerId);
 
         $this->cache->delete($key);
-        $this->unregisterCache(KeyMaker::getAlbumKey(), $key);
+        $this->cache->invalidateTags([
+            KeyMaker::getTrainerIdKey($trainerId),
+        ]);
     }
 }

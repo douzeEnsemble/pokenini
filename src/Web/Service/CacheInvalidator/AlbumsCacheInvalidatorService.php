@@ -10,6 +10,6 @@ class AlbumsCacheInvalidatorService extends AbstractCacheInvalidatorService
 {
     public function invalidate(): void
     {
-        $this->invalidateCacheByType(KeyMaker::getAlbumKey());
+        $this->cache->invalidateTags([KeyMaker::getAlbumKey()]);
     }
 }

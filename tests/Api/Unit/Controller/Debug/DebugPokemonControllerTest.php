@@ -6,6 +6,7 @@ namespace App\Tests\Api\Unit\Controller\Debug;
 
 use App\Api\Controller\Debug\DebugPokemonController;
 use App\Api\Entity\Pokemon;
+use App\Api\Service\CollectionsAvailabilitiesService;
 use App\Api\Service\GameBundlesAvailabilitiesService;
 use App\Api\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Api\Service\GamesAvailabilitiesService;
@@ -55,6 +56,13 @@ class DebugPokemonControllerTest extends TestCase
             ->with($pokemon)
         ;
 
+        $collectionsAvailabilitiesService = $this->createMock(CollectionsAvailabilitiesService::class);
+        $collectionsAvailabilitiesService
+            ->expects($this->once())
+            ->method('cleanCacheFromPokemon')
+            ->with($pokemon)
+        ;
+
         $controller = new DebugPokemonController(new Serializer());
 
         $controller->pokemonCaches(
@@ -62,6 +70,7 @@ class DebugPokemonControllerTest extends TestCase
             $gamesShiniesAvailabilitiesService,
             $gameBundlesAvailabilitiesService,
             $gameBundlesShiniesAvailabilitiesService,
+            $collectionsAvailabilitiesService,
             $pokemon
         );
     }

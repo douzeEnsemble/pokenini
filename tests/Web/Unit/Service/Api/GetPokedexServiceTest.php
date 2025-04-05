@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetPokedexService;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -18,7 +17,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  * @internal
  */
 #[CoversClass(GetPokedexService::class)]
-#[CoversClass(CacheRegisterTrait::class)]
 class GetPokedexServiceTest extends TestCase
 {
     private ArrayAdapter $cachePool;
@@ -52,7 +50,7 @@ class GetPokedexServiceTest extends TestCase
 
         /** @var string $value */
         $value = $cacheItem->get();
-        
+
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
@@ -63,8 +61,6 @@ class GetPokedexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetTwice(): void
@@ -106,8 +102,6 @@ class GetPokedexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithFilters(): void
@@ -158,8 +152,6 @@ class GetPokedexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithMultiplesFilters(): void
@@ -229,7 +221,7 @@ class GetPokedexServiceTest extends TestCase
 
         /** @var string $value */
         $value = $cacheItem->get();
-        
+
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
@@ -240,8 +232,6 @@ class GetPokedexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     public function testGetWithMultiplesNegativeFilters(): void
@@ -287,7 +277,7 @@ class GetPokedexServiceTest extends TestCase
 
         /** @var string $value */
         $value = $cacheItem->get();
-        
+
         $this->assertNotEmpty($value);
         $this->assertJson($value);
 
@@ -298,8 +288,6 @@ class GetPokedexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_album'));
     }
 
     /**
