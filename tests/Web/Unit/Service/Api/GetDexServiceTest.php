@@ -61,7 +61,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithUnreleased('123')->getWithUnreleased('123')),
         );
 
-        $dexCacheItem = $this->cache->getItem('dex_123');
+        $dexCacheItem = $this->cache->getItem('dex_123_include_unreleased_dex=1');
 
         $this->assertSame(
             [
@@ -99,7 +99,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithPremium('123')->getWithPremium('123')),
         );
 
-        $dexCacheItem = $this->cache->getItem('dex_123');
+        $dexCacheItem = $this->cache->getItem('dex_123_include_premium_dex=1');
 
         $this->assertSame(
             [
@@ -138,7 +138,7 @@ class GetDexServiceTest extends TestCase
             self::extractSlugs($this->getServiceWithUnreleasedAndPremium('123')->getWithUnreleasedAndPremium('123')),
         );
 
-        $dexCacheItem = $this->cache->getItem('dex_123');
+        $dexCacheItem = $this->cache->getItem('dex_123_include_unreleased_dex=1_include_premium_dex=1');
 
         $this->assertSame(
             [

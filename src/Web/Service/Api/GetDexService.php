@@ -15,7 +15,7 @@ class GetDexService extends AbstractApiService
      */
     public function get(string $trainerId): array
     {
-        return $this->getDexWithParam($trainerId, '');
+        return $this->getDexWithParam($trainerId, []);
     }
 
     /**
@@ -23,7 +23,9 @@ class GetDexService extends AbstractApiService
      */
     public function getWithUnreleased(string $trainerId): array
     {
-        return $this->getDexWithParam($trainerId, 'include_unreleased_dex=1');
+        return $this->getDexWithParam($trainerId, [
+            'include_unreleased_dex' => '1',
+        ]);
     }
 
     /**
@@ -31,7 +33,9 @@ class GetDexService extends AbstractApiService
      */
     public function getWithPremium(string $trainerId): array
     {
-        return $this->getDexWithParam($trainerId, 'include_premium_dex=1');
+        return $this->getDexWithParam($trainerId, [
+            'include_premium_dex' => '1',
+        ]);
     }
 
     /**
@@ -39,18 +43,25 @@ class GetDexService extends AbstractApiService
      */
     public function getWithUnreleasedAndPremium(string $trainerId): array
     {
-        return $this->getDexWithParam($trainerId, 'include_unreleased_dex=1&include_premium_dex=1');
+        return $this->getDexWithParam($trainerId, [
+            'include_unreleased_dex' => '1',
+            'include_premium_dex' => '1',
+        ]);
     }
 
     /**
+     * @param string[] $queryParams
+     *
      * @return string[][]
      */
-    private function getDexWithParam(string $trainerId, string $queryParams = ''): array
+    private function getDexWithParam(string $trainerId, array $queryParams = []): array
     {
-        $key = KeyMaker::getDexKeyForTrainer($trainerId);
+        $key = KeyMaker::getDexKeyForTrainer($trainerId, $queryParams);
+
+        $urlQueryParams = http_build_query($queryParams);
 
         /** @var string $json */
-        $json = $this->cache->get($key, function (ItemInterface $item) use ($trainerId, $queryParams) {
+        $json = $this->cache->get($key, function (ItemInterface $item) use ($trainerId, $urlQueryParams) {
             $item->tag([
                 KeyMaker::getDexKey(),
                 KeyMaker::getTrainerIdKey($trainerId),
@@ -58,7 +69,7 @@ class GetDexService extends AbstractApiService
 
             return $this->requestContent(
                 'GET',
-                "/dex/{$trainerId}/list".($queryParams ? '?'.$queryParams : ''),
+                "/dex/{$trainerId}/list".($urlQueryParams ? '?'.$urlQueryParams : ''),
             );
         });
 
