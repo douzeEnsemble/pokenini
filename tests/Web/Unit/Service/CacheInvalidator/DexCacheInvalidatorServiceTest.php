@@ -9,6 +9,7 @@ use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 /**
  * @internal
@@ -19,7 +20,9 @@ class DexCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+        
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('dex_123', fn () => 'whatever');
         $cache->get('dex_456', fn () => 'whatever');
@@ -29,15 +32,16 @@ class DexCacheInvalidatorServiceTest extends TestCase
         $service = new DexCacheInvalidatorService($cache);
         $service->invalidate();
 
-        $values = $cache->getValues();
-        $this->assertCount(2, $values);
-        $this->assertArrayHasKey('douze', $values);
-        $this->assertArrayHasKey('dex_789', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertTrue($cache->hasItem('dex_789'));
+        $this->assertFalse($cache->hasItem('register_dex'));
+        $this->assertFalse($cache->hasItem('dex_123'));
+        $this->assertFalse($cache->hasItem('dex_456'));
     }
 
     public function testInvalidateMock(): void
     {
-        $cache = $this->createMock(ArrayAdapter::class);
+        $cache = $this->createMock(TagAwareAdapter::class);
         $cache
             ->expects($this->once())
             ->method('get')
@@ -60,7 +64,7 @@ class DexCacheInvalidatorServiceTest extends TestCase
 
     public function testInvalidateMockNotArray(): void
     {
-        $cache = $this->createMock(ArrayAdapter::class);
+        $cache = $this->createMock(TagAwareAdapter::class);
         $cache
             ->expects($this->once())
             ->method('get')
@@ -79,7 +83,9 @@ class DexCacheInvalidatorServiceTest extends TestCase
 
     public function testInvalidateByTrainerId(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+        
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('dex_123', fn () => 'whatever');
         $cache->get('dex_456', fn () => 'whatever');
@@ -90,18 +96,25 @@ class DexCacheInvalidatorServiceTest extends TestCase
         $service->invalidateByTrainerId('unknown');
         $service->invalidateByTrainerId('123');
 
-        $values = $cache->getValues();
-        $this->assertCount(4, $values);
-        $this->assertArrayHasKey('douze', $values);
-        $this->assertArrayHasKey('dex_456', $values);
-        $this->assertArrayHasKey('dex_789', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertTrue($cache->hasItem('dex_456'));
+        $this->assertTrue($cache->hasItem('dex_789'));
+        $this->assertTrue($cache->hasItem('register_dex'));
+        $this->assertFalse($cache->hasItem('dex_123'));
 
-        $this->assertEquals([1 => 'dex_456'], $cache->getItem('register_dex')->get());
+        $this->assertEquals(
+            [
+                1 => 'dex_456',
+            ], 
+            $cache->getItem('register_dex')->get()
+        );
     }
 
     public function testInvalidateByTrainerIdWithHomeDex(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+        
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('dex_123', fn () => 'whatever');
         $cache->get('dex_123#includeprivatedex', fn () => 'whatever');
@@ -113,19 +126,24 @@ class DexCacheInvalidatorServiceTest extends TestCase
         $service->invalidateByTrainerId('unknown');
         $service->invalidateByTrainerId('123');
 
-        $values = $cache->getValues();
-        $this->assertCount(4, $values);
-        $this->assertArrayNotHasKey('dex_123', $values);
-        $this->assertArrayNotHasKey('dex_123includeprivatedex', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertTrue($cache->hasItem('dex_456'));
+        $this->assertTrue($cache->hasItem('dex_789'));
+        $this->assertTrue($cache->hasItem('register_dex'));
+        $this->assertFalse($cache->hasItem('dex_123'));
+        $this->assertFalse($cache->hasItem('dex_123#includeprivatedex'));
 
-        /** @var string[] $register */
-        $register = $cache->getItem('register_dex')->get();
-        $this->assertCount(1, $register);
+        $this->assertEquals(
+            [
+                2 => 'dex_456',
+            ], 
+            $cache->getItem('register_dex')->get()
+        );
     }
 
     public function testInvalidateByTrainerIdMock(): void
     {
-        $cache = $this->createMock(ArrayAdapter::class);
+        $cache = $this->createMock(TagAwareAdapter::class);
         $cache
             ->expects($this->exactly(3))
             ->method('get')
