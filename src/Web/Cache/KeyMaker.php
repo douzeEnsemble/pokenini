@@ -78,9 +78,15 @@ class KeyMaker
         return self::CACHE_KEY_REPORTS;
     }
 
-    public static function getDexKeyForTrainer(string $trainerId): string
+    /**
+     * @param string[] $queryParams
+     */
+    public static function getDexKeyForTrainer(string $trainerId, array $queryParams = []): string
     {
-        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId;
+        $cacheKeySuffixe = http_build_query($queryParams, '', self::CACHE_KEY_SEPARATOR);
+
+        return self::CACHE_KEY_DEX.self::CACHE_KEY_SEPARATOR.$trainerId
+            .($cacheKeySuffixe ? self::CACHE_KEY_SEPARATOR.$cacheKeySuffixe : '');
     }
 
     /**
