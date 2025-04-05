@@ -26,11 +26,6 @@
                 <file name="tests/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
-        <DocblockTypeContradiction>
-            <errorLevel type="suppress">
-                <file name="src/Web/Service/Trait/CacheRegisterTrait.php" />
-            </errorLevel>
-        </DocblockTypeContradiction>
         <MoreSpecificImplementedParamType>
             <errorLevel type="suppress">
                 <file name="tests/Api/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />

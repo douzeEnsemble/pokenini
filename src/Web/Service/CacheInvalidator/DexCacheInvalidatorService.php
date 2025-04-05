@@ -10,7 +10,9 @@ class DexCacheInvalidatorService extends AbstractCacheInvalidatorService
 {
     public function invalidate(): void
     {
-        $this->invalidateCacheByType(KeyMaker::getDexKey());
+        $this->cache->invalidateTags([
+            KeyMaker::getDexKey(),
+        ]);
     }
 
     public function invalidateByTrainerId(string $trainerId): void
@@ -18,14 +20,8 @@ class DexCacheInvalidatorService extends AbstractCacheInvalidatorService
         $key = KeyMaker::getDexKeyForTrainer($trainerId);
 
         $this->cache->delete($key);
-        $this->unregisterCache(KeyMaker::getDexKey(), $key);
-
-        $dex = $this->getRegisteredCache(KeyMaker::getDexKey());
-        foreach ($dex as $dexKey) {
-            if (str_contains($dexKey, $key)) {
-                $this->cache->delete($dexKey);
-                $this->unregisterCache(KeyMaker::getDexKey(), $dexKey);
-            }
-        }
+        $this->cache->invalidateTags([
+            KeyMaker::getTrainerIdKey($trainerId),
+        ]);
     }
 }

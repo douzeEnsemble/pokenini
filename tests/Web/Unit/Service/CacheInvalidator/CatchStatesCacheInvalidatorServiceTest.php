@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\CacheInvalidator;
 
 use App\Web\Service\CacheInvalidator\CatchStatesCacheInvalidatorService;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
@@ -15,7 +14,6 @@ use Symfony\Component\Cache\Adapter\TagAwareAdapter;
  * @internal
  */
 #[CoversClass(CatchStatesCacheInvalidatorService::class)]
-#[CoversClass(CacheRegisterTrait::class)]
 class CatchStatesCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void

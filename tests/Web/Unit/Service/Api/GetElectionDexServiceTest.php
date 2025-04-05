@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetElectionDexService;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -18,7 +17,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  * @internal
  */
 #[CoversClass(GetElectionDexService::class)]
-#[CoversClass(CacheRegisterTrait::class)]
 class GetElectionDexServiceTest extends TestCase
 {
     private ArrayAdapter $cachePool;
@@ -89,8 +87,6 @@ class GetElectionDexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithUnreleasedAndPremium(): void
@@ -127,8 +123,6 @@ class GetElectionDexServiceTest extends TestCase
             ],
             $cacheItem->getMetadata()['tags'],
         );
-
-        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     private function getService(): GetElectionDexService
@@ -140,18 +134,6 @@ class GetElectionDexServiceTest extends TestCase
         return $this->getMockService(
             $json,
             'dex/can_hold_election',
-        );
-    }
-
-    private function getServiceWithUnreleased(): GetElectionDexService
-    {
-        $json = (string) file_get_contents(
-            '/var/www/html/tests/resources/Web/unit/service/api/election_dex_unreleased.json'
-        );
-
-        return $this->getMockService(
-            $json,
-            'dex/can_hold_election?include_unreleased_dex=1',
         );
     }
 

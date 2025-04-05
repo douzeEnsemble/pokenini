@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Web\Unit\Service\Api;
 
 use App\Web\Service\Api\GetDexService;
-use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -18,7 +17,6 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
  * @internal
  */
 #[CoversClass(GetDexService::class)]
-#[CoversClass(CacheRegisterTrait::class)]
 class GetDexServiceTest extends TestCase
 {
     private ArrayAdapter $cachePool;
@@ -85,8 +83,6 @@ class GetDexServiceTest extends TestCase
             $expectedSlugs,
             self::extractSlugs($jsonData),
         );
-
-        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithPremium(): void
@@ -125,8 +121,6 @@ class GetDexServiceTest extends TestCase
             $expectedSlugs,
             self::extractSlugs($jsonData),
         );
-
-        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     public function testGetWithUnreleasedAndPremium(): void
@@ -166,8 +160,6 @@ class GetDexServiceTest extends TestCase
             $expectedSlugs,
             self::extractSlugs($jsonData),
         );
-
-        $this->assertFalse($this->cache->hasItem('register_dex'));
     }
 
     private function getService(string $trainerId): GetDexService
