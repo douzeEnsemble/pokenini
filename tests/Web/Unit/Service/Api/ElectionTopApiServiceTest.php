@@ -19,6 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(ElectionTopApiService::class)]
 class ElectionTopApiServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -27,7 +28,7 @@ class ElectionTopApiServiceTest extends TestCase
 
         $this->assertCount(5, $items);
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testGetBis(): void
@@ -36,7 +37,7 @@ class ElectionTopApiServiceTest extends TestCase
 
         $this->assertCount(10, $items);
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     private function getService(
@@ -81,7 +82,8 @@ class ElectionTopApiServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new ElectionTopApiService(
             $logger,

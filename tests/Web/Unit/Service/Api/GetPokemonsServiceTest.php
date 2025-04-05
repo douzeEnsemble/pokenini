@@ -20,6 +20,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(GetPokemonsService::class)]
 class GetPokemonsServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     #[DataProvider('providerGet')]
@@ -178,7 +179,8 @@ class GetPokemonsServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetPokemonsService(
             $logger,

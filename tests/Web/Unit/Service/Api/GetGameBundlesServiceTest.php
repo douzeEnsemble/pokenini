@@ -19,6 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(GetGameBundlesService::class)]
 class GetGameBundlesServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -71,7 +72,8 @@ class GetGameBundlesServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetGameBundlesService(
             $logger,

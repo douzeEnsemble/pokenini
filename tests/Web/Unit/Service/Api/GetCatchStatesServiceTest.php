@@ -19,6 +19,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(GetCatchStatesService::class)]
 class GetCatchStatesServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -114,7 +115,8 @@ class GetCatchStatesServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetCatchStatesService(
             $logger,

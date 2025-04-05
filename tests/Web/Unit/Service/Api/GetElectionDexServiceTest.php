@@ -21,6 +21,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 #[CoversClass(CacheRegisterTrait::class)]
 class GetElectionDexServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testGet(): void
@@ -216,7 +217,8 @@ class GetElectionDexServiceTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new GetElectionDexService(
             $logger,

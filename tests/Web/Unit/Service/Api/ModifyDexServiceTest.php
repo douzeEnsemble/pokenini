@@ -18,6 +18,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[CoversClass(ModifyDexService::class)]
 class ModifyDexServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testModify(): void
@@ -34,7 +35,7 @@ class ModifyDexServiceTest extends TestCase
             )
         ;
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     private function getService(
@@ -64,7 +65,8 @@ class ModifyDexServiceTest extends TestCase
             )
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new ModifyDexService(
             $logger,

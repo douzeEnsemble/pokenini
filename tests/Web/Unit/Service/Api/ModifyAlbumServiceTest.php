@@ -18,6 +18,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 #[CoversClass(ModifyAlbumService::class)]
 class ModifyAlbumServiceTest extends TestCase
 {
+    private ArrayAdapter $cachePool;
     private TagAwareAdapter $cache;
 
     public function testModifyPatch(): void
@@ -37,7 +38,7 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testModifyPut(): void
@@ -57,7 +58,7 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->assertEmpty($this->cache->getItems());
+        $this->assertEmpty($this->cachePool->getValues());
     }
 
     public function testModifyPost(): void
@@ -114,7 +115,8 @@ class ModifyAlbumServiceTest extends TestCase
             )
         ;
 
-        $this->cache = new TagAwareAdapter(new ArrayAdapter(), new ArrayAdapter());
+        $this->cachePool = new ArrayAdapter();
+        $this->cache = new TagAwareAdapter($this->cachePool, new ArrayAdapter());
 
         return new ModifyAlbumService(
             $logger,
