@@ -9,6 +9,7 @@ use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 /**
  * @internal
@@ -19,7 +20,9 @@ class AlbumCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+        
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('album_home_123', fn () => 'whatever');
         $cache->get('album_home_456', fn () => 'whatever');
@@ -29,20 +32,22 @@ class AlbumCacheInvalidatorServiceTest extends TestCase
         $service->invalidate('unknown', '123');
         $service->invalidate('home', '123');
 
-        $values = $cache->getValues();
-        $this->assertCount(3, $values);
-        $this->assertArrayHasKey('douze', $values);
-        $this->assertArrayHasKey('album_home_456', $values);
-        $this->assertArrayHasKey('register_album', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertTrue($cache->hasItem('album_home_456'));
+        $this->assertTrue($cache->hasItem('register_album'));
+        $this->assertFalse($cache->hasItem('album_home_123'));
 
-        /** @var string[] $register */
-        $register = $cache->getItem('register_album')->get();
-        $this->assertCount(1, $register);
+        $this->assertEquals(
+            [
+                1 => 'album_home_456',
+            ], 
+            $cache->getItem('register_album')->get()
+        );
     }
 
     public function testInvalidateMock(): void
     {
-        $cache = $this->createMock(ArrayAdapter::class);
+        $cache = $this->createMock(TagAwareAdapter::class);
         $cache
             ->expects($this->exactly(2))
             ->method('get')

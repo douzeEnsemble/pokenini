@@ -9,6 +9,7 @@ use App\Web\Service\Trait\CacheRegisterTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
+use Symfony\Component\Cache\Adapter\TagAwareAdapter;
 
 /**
  * @internal
@@ -19,7 +20,9 @@ class FormsCacheInvalidatorServiceTest extends TestCase
 {
     public function testInvalidate(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+        
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('forms_category', fn () => 'whatever');
         $cache->get('forms_regional', fn () => 'whatever');
@@ -29,14 +32,18 @@ class FormsCacheInvalidatorServiceTest extends TestCase
         $service = new FormsCacheInvalidatorService($cache);
         $service->invalidate();
 
-        $values = $cache->getValues();
-        $this->assertCount(1, $values);
-        $this->assertArrayHasKey('douze', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertFalse($cache->hasItem('forms_category'));
+        $this->assertFalse($cache->hasItem('forms_regional'));
+        $this->assertFalse($cache->hasItem('forms_special'));
+        $this->assertFalse($cache->hasItem('forms_variant'));
     }
 
     public function testInvalidateWithAMissingOne(): void
     {
-        $cache = new ArrayAdapter();
+        $cachePool = new ArrayAdapter();
+        $cache = new TagAwareAdapter($cachePool, new ArrayAdapter());
+
         $cache->get('douze', fn () => 'DouZe');
         $cache->get('forms_category', fn () => 'whatever');
         $cache->get('forms_regional', fn () => 'whatever');
@@ -45,8 +52,10 @@ class FormsCacheInvalidatorServiceTest extends TestCase
         $service = new FormsCacheInvalidatorService($cache);
         $service->invalidate();
 
-        $values = $cache->getValues();
-        $this->assertCount(1, $values);
-        $this->assertArrayHasKey('douze', $values);
+        $this->assertTrue($cache->hasItem('douze'));
+        $this->assertFalse($cache->hasItem('forms_category'));
+        $this->assertFalse($cache->hasItem('forms_regional'));
+        $this->assertFalse($cache->hasItem('forms_special'));
+        $this->assertFalse($cache->hasItem('forms_variant'));
     }
 }

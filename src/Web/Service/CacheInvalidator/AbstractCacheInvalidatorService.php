@@ -6,14 +6,14 @@ namespace App\Web\Service\CacheInvalidator;
 
 use App\Web\Cache\KeyMaker;
 use App\Web\Service\Trait\CacheRegisterTrait;
-use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\TagAwareCacheInterface;
 
 class AbstractCacheInvalidatorService
 {
     use CacheRegisterTrait;
 
     public function __construct(
-        protected readonly CacheInterface $cache,
+        protected readonly TagAwareCacheInterface $cache,
     ) {}
 
     protected function invalidateCacheByType(string $type): void
