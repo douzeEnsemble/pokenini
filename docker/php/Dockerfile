@@ -40,6 +40,9 @@ RUN apt-get update \
 
 RUN docker-php-ext-install ctype iconv
 
+RUN apt-get update \
+    && apt-get install -y git
+
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 ## > Install PHP extensions

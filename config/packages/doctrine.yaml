@@ -3,6 +3,8 @@ doctrine:
         url: '%env(resolve:POSTGRESQL_ADDON_URI)%'
         charset: utf8
         server_version: "14"
+        profiling_collect_backtrace: '%kernel.debug%'
+        use_savepoints: true
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -15,6 +17,8 @@ doctrine:
             softdeleteable:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
                 enabled: false
+        identity_generation_preferences:
+            Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
         auto_mapping: true
         mappings:
             App:
@@ -23,6 +27,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Api/Entity'
                 prefix: 'App\Api\Entity'
                 alias: App
+
 when@test:
     doctrine:
         dbal:
@@ -33,6 +38,7 @@ when@prod:
     doctrine:
         orm:
             auto_generate_proxy_classes: false
+            proxy_dir: '%kernel.build_dir%/doctrine/orm/Proxies'
             query_cache_driver:
                 type: pool
                 pool: doctrine.system_cache_pool

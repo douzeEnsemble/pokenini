@@ -58,6 +58,7 @@
         "hautelook/alice-bundle": "2.14.*",
         "phpunit/phpunit": "^11.4.2",
         "qossmic/deptrac": "^2.0",
+        "runtime/frankenphp-symfony": "^0.2.0",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
         "symfony/debug-bundle": "7.2.*",
@@ -127,7 +128,7 @@
         "symfony": {
             "allow-contrib": false,
             "require": "7.2.*",
-            "docker": false
+            "docker": true
         },
         "google/apiclient-services": [
             "Sheets"

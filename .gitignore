@@ -24,8 +24,7 @@ coverage.xml
 
 ###> phpunit/phpunit ###
 /phpunit.xml
-.phpunit.result.cache
-.phpunit.cache
+/.phpunit.cache/
 ###< phpunit/phpunit ###
 .deptrac.cache
 
@@ -49,3 +48,8 @@ tools/*/vendor
 ###> qossmic/deptrac ###
 /.deptrac.cache
 ###< qossmic/deptrac ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
