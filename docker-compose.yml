@@ -1,27 +1,32 @@
 services:
-  php:
+  web:
     build:
       context: .
-      dockerfile: ./docker/php/Dockerfile
-    expose:
-      - 9000
-    volumes:
-      - .:/var/www/html
-
-  apache:
-    build:
-      context: .
-      dockerfile: ./docker/apache/Dockerfile
+      dockerfile: ./docker/frankenphp/Dockerfile
+    restart: unless-stopped
+    environment:
+      SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
+      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      MERCURE_URL: ${CADDY_MERCURE_URL:-http://php/.well-known/mercure}
+      MERCURE_PUBLIC_URL: ${CADDY_MERCURE_PUBLIC_URL:-https://${SERVER_NAME:-localhost}:${HTTPS_PORT:-443}/.well-known/mercure}
+      MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
     ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - php
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: ${HTTP3_PORT:-443}
+        protocol: udp
     volumes:
-      - .:/var/www/html
-      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
-      - ./docker/apache/ssl:/usr/local/apache2/ssl/
+      - caddy_data:/data
+      - caddy_config:/config
 
   database:
     image: postgres:${POSTGRES_VERSION:-14}-alpine
@@ -91,4 +96,5 @@ volumes:
   db_data_test:
 ###< doctrine/doctrine-bundle ###
   redis:
-
+  caddy_data:
+  caddy_config:
