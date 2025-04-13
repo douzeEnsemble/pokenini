@@ -158,6 +158,10 @@ cc: ## Clear the cache
 	@$(SYMFONY) cache:clear --env=test
 
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
+.PHONY: test
+test:
+	$(PHP) vendor/bin/phpunit tests/Web/Browser/Admin/RedirectActionsTest.php --stop-on-failure --stop-on-error
+
 .PHONY: tests
 tests: ## Execute all tests
 tests: tests_api tests_web

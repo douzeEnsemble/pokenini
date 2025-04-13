@@ -39,10 +39,12 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
         $session->set('_security_'.$firewallContext, serialize($token));
         $session->save();
 
-        $client->request('GET', '/');
+        $client->request('GET', '/', [], [], [
+            'HTTP_X-TEST-USER' => $user,
+        ]);
 
         $cookie = new Cookie($session->getName(), $session->getId(), null, null, '127.0.0.1');
-
+        
         $client->getCookieJar()->set($cookie);
     }
 }

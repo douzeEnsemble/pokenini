@@ -1,6 +1,8 @@
 services:
   php:
-    image: ${IMAGES_PREFIX:-}app-php
+    build:
+      context: .
+      target: frankenphp_dev
     restart: unless-stopped
     environment:
       SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
@@ -15,7 +17,15 @@ services:
       # The two next lines can be removed after initial installation
       SYMFONY_VERSION: ${SYMFONY_VERSION:-}
       STABILITY: ${STABILITY:-stable}
+      FRANKENPHP_WORKER_CONFIG: watch
+      MERCURE_EXTRA_DIRECTIVES: demo
+      # See https://xdebug.org/docs/all_settings#mode
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
+      APP_ENV: "${APP_ENV:-dev}"
     volumes:
+      - ./:/app
+      - ./frankenphp/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./frankenphp/conf.d/20-app.dev.ini:/usr/local/etc/php/app.conf.d/20-app.dev.ini:ro
       - caddy_data:/data
       - caddy_config:/config
     ports:
@@ -31,6 +41,9 @@ services:
       - target: 443
         published: ${HTTP3_PORT:-443}
         protocol: udp
+    tty: true
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
@@ -53,6 +66,8 @@ services:
       - database_data:/var/lib/postgresql/data:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432"
 ###< doctrine/doctrine-bundle ###
 
   redis:
@@ -63,6 +78,45 @@ services:
     command: redis-server --requirepass douze
     volumes:
       - redis:/data
+
+  api.test.moco:
+    build:
+      context: docker/moco/Api/test
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Api:/var/moco:ro
+
+  api.int.moco:
+    build:
+      context: docker/moco/Api/int
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Api:/var/moco:ro
+
+  web.test.moco:
+    build:
+      context: docker/moco/Web/test
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+
+  web.dev.moco:
+    build:
+      context: docker/moco/Web/dev
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+     - target: 8080
+       published: 8082
 
 volumes:
   caddy_data:
