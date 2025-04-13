@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Functional\Home;
+namespace App\Tests\Web\Functional\Election;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Controller\ElectionDexController;

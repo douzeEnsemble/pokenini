@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Web\Unit\Helper;
+declare(strict_types=1);
+
+namespace App\Tests\Web\Unit\Helper;
 
 use App\Web\Helper\TotalRoundCountHelper;
 use PHPUnit\Framework\Attributes\CoversClass;
