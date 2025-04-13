@@ -127,7 +127,7 @@
         "symfony": {
             "allow-contrib": false,
             "require": "7.2.*",
-            "docker": false
+            "docker": true
         },
         "google/apiclient-services": [
             "Sheets"
