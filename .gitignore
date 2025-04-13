@@ -46,6 +46,5 @@ dependency-check/
 
 
 tools/*/vendor
-###> qossmic/deptrac ###
+
 /.deptrac.cache
-###< qossmic/deptrac ###
