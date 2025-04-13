@@ -145,6 +145,7 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --working-dir=tools/phpstan
 	@$(COMPOSER) update --working-dir=tools/infection
 	@$(COMPOSER) update --working-dir=tools/jsonlint
+	@$(COMPOSER) update --working-dir=tools/deptract
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 .PHONY: sf
@@ -231,7 +232,8 @@ phpstan: tools/phpstan/vendor/bin/phpstan
 
 .PHONY: deptrac
 deptrac: ## Execute deptrac analyse
-	@$(PHP) ./vendor/bin/deptrac analyse
+deptrac: tools/deptrac/vendor/bin/deptrac
+	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 .PHONY: integration
@@ -356,3 +358,6 @@ tools/phpstan/vendor/bin/phpstan: ## Install phpstan
 
 tools/infection/vendor/bin/infection: ## Install infection
 	@$(COMPOSER) install --working-dir=tools/infection
+
+tools/deptrac/vendor/bin/deptrac: ## Install deptrac
+	@$(COMPOSER) install --working-dir=tools/deptrac

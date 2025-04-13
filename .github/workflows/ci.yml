@@ -82,10 +82,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install
-        uses: ./.github/actions/local-composer
+        uses: ./.github/actions/local-tools-composer
+        with:
+          dir: deptrac
       - name: Run
-        run: |
-          ./vendor/bin/deptrac analyse
+        run: ./tools/deptrac/vendor/bin/deptrac analyse
 
   phpunit:
     name: Tests / PHPUnit
