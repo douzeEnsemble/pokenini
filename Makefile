@@ -79,8 +79,8 @@ stop: ## Stop the project
 hardstop: ## Stop the project and remove all volumes and images
 	$(DOCKER_COMP) down --remove-orphans --volumes --rmi all
 
-.PHONY: sh
-sh: ## Connect to the PHP FPM container
+.PHONY: bash
+bash: ## Connect to the PHP FPM container
 	@$(PHP_CONT) bash
 
 .PHONY: logs
