@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Web\Browser\Trainer;
+namespace App\Tests\Web\Browser\Election;
 
 use App\Tests\Web\Browser\AbstractBrowserTestCase;
 use App\Tests\Web\Common\Traits\TestNavTrait;
