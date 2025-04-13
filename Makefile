@@ -75,6 +75,10 @@ install: .env .env.dev.local certs
 stop: ## Stop the project
 	$(DOCKER_COMP) down --remove-orphans
 
+.PHONY: hardstop
+hardstop: ## Stop the project and remove all volumes and images
+	$(DOCKER_COMP) down --remove-orphans --volumes --rmi all
+
 .PHONY: sh
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) bash
