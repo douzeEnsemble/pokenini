@@ -371,3 +371,9 @@ tools/deptrac/vendor/bin/deptrac: ## Install deptrac
 
 tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 	@$(COMPOSER) install --working-dir=tools/phpinsights
+
+
+## —— Image 🐳 ———————————————————————————————————————————————————————————————
+img-build: ## Build Docker image
+	docker build --target php_prod -f ./docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
+	docker push ghcr.io/douzeensemble/pokenini:latest
