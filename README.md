@@ -82,6 +82,28 @@ make sh
 tools/phpstan/vendor/bin/phpstan --generate-baseline --memory-limit=-1
 ```
 
+### Docker Image build
+
+```shell
+docker login --username RenaudDouze --password ghp_token ghcr.io
+```
+
+```shell
+docker build --target php_prod -f ./docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
+docker push ghcr.io/douzeensemble/pokenini:latest
+```
+or
+
+```shell
+make img-build
+```
+
+### Restore Postgresl dump (pg_dump)
+
+```shell
+cat postgresql_database.dump | docker compose exec -iT database pg_restore -U app -d app --no-privileges --no-owner -x
+```
+
 ## Labels, games and dex
 
 ```
