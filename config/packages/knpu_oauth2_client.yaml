@@ -1,5 +1,7 @@
 knpu_oauth2_client:
     clients:
+        # https://developers.google.com/identity/protocols/oauth2?hl=fr
+        # https://console.cloud.google.com/apis/credentials?authuser=2&hl=fr&project=pokenini-app
         google:
             type: google
             client_id: '%env(OAUTH_GOOGLE_CLIENT_ID)%'
@@ -8,6 +10,7 @@ knpu_oauth2_client:
             redirect_params: {}
 
         # https://developer.amazon.com/docs/login-with-amazon/documentation-overview.html
+        # https://developer.amazon.com/loginwithamazon/console/site/lwa/overview.html
         amazon:
             type: amazon
             client_id: '%env(OAUTH_AMAZON_CLIENT_ID)%'
@@ -16,6 +19,7 @@ knpu_oauth2_client:
             redirect_params: {}
         
         # https://discord.com/developers/docs/topics/oauth2
+        # https://discord.com/developers/applications
         discord:
             type: discord
             client_id: '%env(OAUTH_DISCORD_CLIENT_ID)%'
@@ -24,6 +28,7 @@ knpu_oauth2_client:
             redirect_params: {}
         
         # https://docs.passage.id/complete/hosted-quickstart
+        # https://console.passage.id/
         passage:
             type: passage
             client_id: '%env(OAUTH_PASSAGE_CLIENT_ID)%'
