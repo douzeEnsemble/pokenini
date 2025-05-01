@@ -20,7 +20,3 @@ runs:
     - name: Run tool's composer install
       shell: bash
       run: composer install --no-interaction --prefer-dist --working-dir=tools/${{ inputs.dir }} --optimize-autoloader --no-dev
-
-    - name: List
-      shell: bash
-      run: ls -Al . tools/${{ inputs.dir }}/vendor
