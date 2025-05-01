@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install
-        uses: ./.github/actions/local-tools-composer
+        uses: ./.github/actions/tools-composer
         with:
           dir: php-cs-fixer
       - name: Run
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install
-        uses: ./.github/actions/local-tools-composer
+        uses: ./.github/actions/tools-composer
         with:
           dir: phpmd
       - name: Run
@@ -54,7 +54,7 @@ jobs:
       - name: Install
         uses: ./.github/actions/local-tools-composer
         with:
-          dir: psalm
+          dir: psalm      
       - name: Run
         run: ./tools/psalm/vendor/bin/psalm --show-info=false --root=.
 
@@ -82,7 +82,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install
-        uses: ./.github/actions/local-tools-composer
+        uses: ./.github/actions/tools-composer
         with:
           dir: deptrac
       - name: Run
