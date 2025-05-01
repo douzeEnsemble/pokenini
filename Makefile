@@ -139,15 +139,15 @@ vendor: ## Install vendors according to the current composer.lock file
 
 .PHONY: updates
 updates: ## Updates all composer
-	@$(COMPOSER) update
-	@$(COMPOSER) update --working-dir=tools/php-cs-fixer
-	@$(COMPOSER) update --working-dir=tools/phpmd
-	@$(COMPOSER) update --working-dir=tools/psalm
-	@$(COMPOSER) update --working-dir=tools/phpstan
-	@$(COMPOSER) update --working-dir=tools/infection
-	@$(COMPOSER) update --working-dir=tools/jsonlint
-	@$(COMPOSER) update --working-dir=tools/deptrac
-	@$(COMPOSER) update --working-dir=tools/phpinsights
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/php-cs-fixer 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpmd 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/psalm 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpstan 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpinsights 
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 .PHONY: sf

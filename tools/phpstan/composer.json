@@ -14,6 +14,6 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "ext-zip": "*",
-        "phpstan/phpstan": "^1.12"
+        "phpstan/phpstan": "^1.12.25"
     }
 }
