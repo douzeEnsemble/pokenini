@@ -19,4 +19,4 @@ runs:
 
     - name: Run composer install
       shell: bash
-      run: composer install -n --prefer-dist --working-dir=tools/${{ inputs.dir }}
+      run: composer install --no-interaction --prefer-dist --working-dir=tools/${{ inputs.dir }} --optimize-autoloader --no-dev

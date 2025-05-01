@@ -352,25 +352,25 @@ dependency_check:
 
 ## —— Tools 🔧 ———————————————————————————————————————————————————————————————
 tools/php-cs-fixer/vendor/bin/php-cs-fixer: ## Install php-cs-fixer
-	@$(COMPOSER) install --working-dir=tools/php-cs-fixer
+	@$(COMPOSER) install --working-dir=tools/php-cs-fixer --optimize-autoloader --no-dev
 
 tools/phpmd/vendor/bin/phpmd: ## Install phpmd
-	@$(COMPOSER) install --working-dir=tools/phpmd
+	@$(COMPOSER) install --working-dir=tools/phpmd --optimize-autoloader --no-dev
 
 tools/psalm/vendor/bin/psalm: ## Install psalm
-	@$(COMPOSER) install --working-dir=tools/psalm
+	@$(COMPOSER) install --working-dir=tools/psalm --optimize-autoloader --no-dev
 
 tools/phpstan/vendor/bin/phpstan: ## Install phpstan
-	@$(COMPOSER) install --working-dir=tools/phpstan
+	@$(COMPOSER) install --working-dir=tools/phpstan --optimize-autoloader --no-dev
 
 tools/infection/vendor/bin/infection: ## Install infection
-	@$(COMPOSER) install --working-dir=tools/infection
+	@$(COMPOSER) install --working-dir=tools/infection --optimize-autoloader --no-dev
 
 tools/deptrac/vendor/bin/deptrac: ## Install deptrac
-	@$(COMPOSER) install --working-dir=tools/deptrac
+	@$(COMPOSER) install --working-dir=tools/deptrac --optimize-autoloader --no-dev
 
 tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
-	@$(COMPOSER) install --working-dir=tools/phpinsights
+	@$(COMPOSER) install --working-dir=tools/phpinsights --optimize-autoloader --no-dev
 
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
