@@ -56,7 +56,7 @@ jobs:
         with:
           dir: psalm
       - name: Run
-        run: ./tools/psalm/vendor/bin/psalm --show-info=false
+        run: ./tools/psalm/vendor/bin/psalm --show-info=false --root=.
 
   phpstan:
     name: Tests / PHPStan
