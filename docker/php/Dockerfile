@@ -115,11 +115,11 @@ ENV APP_ENV=prod
 ENV XDEBUG_MODE=off
 
 ## < Composer stuff
-COPY --chown=www-data --link composer.* symfony.* ./
+COPY --chown=www-data composer.* symfony.* ./
 RUN set -eux; \
 	composer install --no-cache --prefer-dist --no-dev --no-autoloader --no-scripts --no-progress
 
-COPY --chown=www-data --link . ./
+COPY --chown=www-data . ./
 RUN mv .env.prod .env && chown www-data:www-data .env
 
 RUN set -eux; \
