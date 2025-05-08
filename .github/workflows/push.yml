@@ -20,17 +20,6 @@ jobs:
       attestations: write
       id-token: write
     steps:
-      - name: Set up Docker
-        uses: docker/setup-docker-action@v4
-        with:
-          daemon-config: |
-            {
-              "debug": true,
-              "features": {
-                "containerd-snapshotter": true
-              }
-            }
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
