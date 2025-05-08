@@ -49,6 +49,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           platforms: linux/amd64,linux/arm64
+      
+      - name: Run
+        run: ls -la
 
       - name: Build and push Docker image
         id: push
