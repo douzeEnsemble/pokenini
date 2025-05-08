@@ -1,5 +1,7 @@
 FROM php:8.3-fpm AS php_base
 
+RUN groupadd -r www-data && useradd -r -g www-data www-data
+
 ## < Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
@@ -106,8 +108,6 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN set -eux;
 
 EXPOSE 8080
-
-RUN groupadd -r www-data && useradd -r -g www-data www-data
 
 USER www-data
 
