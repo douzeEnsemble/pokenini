@@ -107,8 +107,6 @@ RUN set -eux;
 
 EXPOSE 8080
 
-RUN groupadd -r www-data && useradd -r -g www-data www-data
-
 USER www-data
 
 ENV APP_ENV=prod
