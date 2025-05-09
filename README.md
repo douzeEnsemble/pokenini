@@ -104,6 +104,10 @@ make img-build
 cat postgresql_database.dump | docker compose exec -iT database pg_restore -U app -d app --no-privileges --no-owner -x
 ```
 
+```shell
+cat postgresql_database.dump | docker exec -i $(docker ps --filter name=pokenini-release_database --format "{{.ID}}") pg_restore -U app -d app --no-privileges --no-owner -x
+```
+
 ## Labels, games and dex
 
 ```
