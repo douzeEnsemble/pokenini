@@ -8,6 +8,7 @@ use App\Web\Twig\AppExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * @internal
@@ -36,6 +37,27 @@ class AppExtensionTest extends TestCase
         $this->assertEquals('ksort', $ksortFilterCallable[1]);
     }
 
+    public function testGetFunctions(): void
+    {
+        $extension = new AppExtension();
+
+        $functions = $extension->getFunctions();
+
+        $this->assertCount(1, $functions);
+
+        /** @var TwigFunction $versionFunction */
+        $versionFunction = $functions[0];
+
+        $this->assertInstanceOf(TwigFunction::class, $versionFunction);
+        $this->assertEquals('version', $versionFunction->getName());
+
+        /** @var mixed[] $versionFunctionCallable */
+        $versionFunctionCallable = $versionFunction->getCallable();
+        $this->assertCount(2, $versionFunctionCallable);
+        $this->assertInstanceOf(AppExtension::class, $versionFunctionCallable[0]);
+        $this->assertEquals('getVersion', $versionFunctionCallable[1]);
+    }
+
     public function testKsort(): void
     {
         $extension = new AppExtension();
@@ -53,6 +75,21 @@ class AppExtensionTest extends TestCase
                 'c' => 3,
             ],
             $extension->ksort($data)
+        );
+    }
+
+    public function testVersion(): void
+    {
+        $extension = new AppExtension();
+
+        $this->assertSame(
+            '0.0.toto',
+            $extension->getVersion('non_existent_file'),
+        );
+
+        $this->assertSame(
+            '1.2.12',
+            $extension->getVersion(),
         );
     }
 }

@@ -6,6 +6,7 @@ namespace App\Web\Twig;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension
 {
@@ -13,6 +14,13 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('ksort', [$this, 'ksort']),
+        ];
+    }
+
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('version', [$this, 'getVersion']),
         ];
     }
 
@@ -26,5 +34,12 @@ class AppExtension extends AbstractExtension
         ksort($array, $flags);
 
         return $array;
+    }
+
+    public function getVersion(string $filename = 'version'): string
+    {
+        $version = file_get_contents(__DIR__.'/../../../resources/metadata/'.$filename);
+
+        return false === $version ? '0.0.toto' : $version;
     }
 }
