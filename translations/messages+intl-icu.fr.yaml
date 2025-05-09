@@ -293,6 +293,7 @@ footer:
     legals: "Mentions Légales"
     policy: "Politique de confidentialité"
     cookies: "Cookies"
+    version: "Version"
 
 error:
     unknown:

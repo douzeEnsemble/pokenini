@@ -288,6 +288,8 @@ footer:
     legals: "Legal Notice"
     policy: "Privacy Policy"
     cookies: "Cookies"
+    version: "Version"
+
 error:
     unknown:
         text: |
