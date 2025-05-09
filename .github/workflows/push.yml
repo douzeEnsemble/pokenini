@@ -50,6 +50,12 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
 
+      - name: Get tag and release status
+        id: get_tag
+        run: |
+          echo "TAG=${GITHUB_REF#refs/tags/}${{ env.IMAGE_TAG_SUFFIXE}}" > ./resources/metadata/version
+          cat ./resources/metadata/version
+
       - name: Build and push Docker image
         id: push
         uses: docker/build-push-action@v6
