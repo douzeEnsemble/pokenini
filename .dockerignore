@@ -23,6 +23,7 @@ clevercloud/
 docs/
 fixtures/
 resources/
+!resources/metadata
 public/bundles/
 tests/
 tools/
