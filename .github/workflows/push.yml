@@ -44,12 +44,12 @@ jobs:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         with:
-          platforms: linux/arm64
+          platforms: linux/amd64,linux/arm64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
-          platforms: linux/arm64
+          platforms: linux/amd64,linux/arm64
 
       - name: Get tag and release status
         run: |
@@ -64,7 +64,7 @@ jobs:
           file: ./docker/php/Dockerfile
           target: php_prod
           push: true
-          platforms: linux/arm64
+          platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=pokenini:buildcache
