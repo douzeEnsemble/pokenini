@@ -6,13 +6,13 @@ namespace App\Tests\Web\Functional\Common;
 
 use App\Tests\Web\Common\Traits\TestNavTrait;
 use App\Web\Security\User;
+use PHPUnit\Framework\Attributes\CoversNothing;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
- *
- * @coversNothing
  */
+#[CoversNothing]
 class FooterTest extends WebTestCase
 {
     use TestNavTrait;
