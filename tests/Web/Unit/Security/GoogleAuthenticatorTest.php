@@ -13,16 +13,19 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(GoogleAuthenticator::class)]
 class GoogleAuthenticatorTest extends AbstractAuthenticatorTesting
 {
+    #[\Override]
     protected function getAuthenticatorClassName(): string
     {
         return GoogleAuthenticator::class;
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderCode(): string
     {
         return 'google';
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderName(): string
     {
         return 'Google';

@@ -16,6 +16,7 @@ class DexUpdater extends AbstractUpdater
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:P'];
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         return [
@@ -38,6 +39,7 @@ class DexUpdater extends AbstractUpdater
         ];
     }
 
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         $sqlParameters = [

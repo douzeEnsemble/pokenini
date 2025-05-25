@@ -14,6 +14,7 @@ abstract class AbstractTestCaseCommand extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

@@ -48,6 +48,7 @@ class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString('1817 pokémons updated', $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:pokemons';

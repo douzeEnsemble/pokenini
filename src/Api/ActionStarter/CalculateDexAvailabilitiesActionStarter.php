@@ -9,11 +9,13 @@ use App\Api\Message\CalculateDexAvailabilities;
 
 final class CalculateDexAvailabilitiesActionStarter extends AbstractActionStarter
 {
+    #[\Override]
     protected function getMessageClass(): string
     {
         return CalculateDexAvailabilities::class;
     }
 
+    #[\Override]
     protected function instanciate(string $identifier): ActionMessageInterface
     {
         return new CalculateDexAvailabilities($identifier);

@@ -100,6 +100,7 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertTrue($this->hasPokemonAvailabilities('game_bundle_shiny', 'bulbasaur'));
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:pokemon_availabilities';

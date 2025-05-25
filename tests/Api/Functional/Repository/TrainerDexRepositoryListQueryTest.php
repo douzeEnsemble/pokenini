@@ -20,6 +20,7 @@ class TrainerDexRepositoryListQueryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountTrainerDexTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

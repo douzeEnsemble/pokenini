@@ -59,6 +59,7 @@ class DexUpdaterTest extends AbstractTestUpdater
         $this->assertTrue($rubySapphireEmeraldAfter['is_released']);
     }
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var DexUpdater */

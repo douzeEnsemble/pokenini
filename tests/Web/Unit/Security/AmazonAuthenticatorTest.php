@@ -13,16 +13,19 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AmazonAuthenticator::class)]
 class AmazonAuthenticatorTest extends AbstractAuthenticatorTesting
 {
+    #[\Override]
     protected function getAuthenticatorClassName(): string
     {
         return AmazonAuthenticator::class;
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderCode(): string
     {
         return 'amazon';
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderName(): string
     {
         return 'Amazon';

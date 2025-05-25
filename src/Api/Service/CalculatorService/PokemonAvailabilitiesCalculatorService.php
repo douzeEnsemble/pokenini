@@ -15,6 +15,7 @@ class PokemonAvailabilitiesCalculatorService extends AbstractCalculatorService
         private readonly GameBundlesShinyCalculator $gameBundlesShinyCalculator,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->gameBundlesCalculator->execute();

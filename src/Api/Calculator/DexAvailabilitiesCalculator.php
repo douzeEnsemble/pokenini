@@ -18,6 +18,7 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
         private readonly DexAvailabilityCalculator $dexAvailabilityCalculator,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->init();

@@ -22,6 +22,7 @@ class AlbumReportServiceTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountGameBundleAvailabilityTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

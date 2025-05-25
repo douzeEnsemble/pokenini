@@ -211,6 +211,7 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertEquals(17, $this->getPokemonDeletedCount());
     }
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var PokemonsUpdater */

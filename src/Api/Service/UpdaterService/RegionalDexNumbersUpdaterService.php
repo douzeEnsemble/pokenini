@@ -13,6 +13,7 @@ class RegionalDexNumbersUpdaterService extends AbstractUpdaterService
         private readonly RegionalDexNumbersUpdater $regionalDexNumbersUpdater
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->regionalDexNumbersUpdater->execute();

@@ -28,6 +28,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCas
     use CountActionLogTrait;
     use GetActionLogTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

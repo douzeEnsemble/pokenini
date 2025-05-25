@@ -23,6 +23,7 @@ class FakeAuthenticator extends OAuth2Authenticator
         private readonly bool $isInvitationRequired,
     ) {}
 
+    #[\Override]
     public function supports(Request $request): ?bool
     {
         return 'app_web_connect_fake_check' === $request->attributes->get('_route');
@@ -31,6 +32,7 @@ class FakeAuthenticator extends OAuth2Authenticator
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function authenticate(Request $request): Passport
     {
         $identifier = $request->query->getString('t');

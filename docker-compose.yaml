@@ -8,6 +8,8 @@ services:
       - 9000
     volumes:
       - .:/var/www/html
+    environment:
+      - PHP_CS_FIXER_IGNORE_ENV=1
     tty: true
 
   apache:

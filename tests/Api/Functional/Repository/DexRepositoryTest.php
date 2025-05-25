@@ -22,6 +22,7 @@ class DexRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountDexTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

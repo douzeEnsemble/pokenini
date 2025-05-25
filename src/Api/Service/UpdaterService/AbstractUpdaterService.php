@@ -10,6 +10,7 @@ abstract class AbstractUpdaterService implements UpdaterServiceInterface
 {
     protected Report $report;
 
+    #[\Override]
     public function getReport(): Report
     {
         return $this->report;

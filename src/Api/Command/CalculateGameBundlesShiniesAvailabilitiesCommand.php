@@ -22,6 +22,7 @@ class CalculateGameBundlesShiniesAvailabilitiesCommand extends AbstractCalculate
         parent::__construct($translator, $entityManager, $actionStarter, $calculatorService);
     }
 
+    #[\Override]
     protected function configure(): void
     {
         $this
@@ -29,6 +30,7 @@ class CalculateGameBundlesShiniesAvailabilitiesCommand extends AbstractCalculate
         ;
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:game_bundles_shinies_availabilities';

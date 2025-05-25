@@ -67,6 +67,7 @@ class UpdateLabelsCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString('18 types updated', $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:labels';

@@ -21,6 +21,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
     protected string $sheetName;
     protected string $tableName;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

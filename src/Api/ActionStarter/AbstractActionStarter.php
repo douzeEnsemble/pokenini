@@ -14,6 +14,7 @@ abstract class AbstractActionStarter implements ActionStarterInterface
         private readonly EntityManagerInterface $entityManager
     ) {}
 
+    #[\Override]
     public function start(): ActionMessageInterface
     {
         $actionLog = new ActionLog(

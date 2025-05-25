@@ -30,6 +30,7 @@ abstract class AbstractUpdater implements UpdaterInterface
         protected readonly string $spreadsheetId
     ) {}
 
+    #[\Override]
     public function execute(?string $sheetName = null): void
     {
         $this->statictic = new Statistic($this->statisticName);
@@ -47,6 +48,7 @@ abstract class AbstractUpdater implements UpdaterInterface
         }
     }
 
+    #[\Override]
     public function getStatistic(): Statistic
     {
         return $this->statictic;

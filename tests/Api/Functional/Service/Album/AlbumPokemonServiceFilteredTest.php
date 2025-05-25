@@ -23,6 +23,7 @@ class AlbumPokemonServiceFilteredTest extends KernelTestCase
     use CountGameBundleAvailabilityTrait;
     use PokemonListTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

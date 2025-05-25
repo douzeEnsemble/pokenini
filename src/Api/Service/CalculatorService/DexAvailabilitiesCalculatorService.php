@@ -15,6 +15,7 @@ class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
         private readonly CacheInterface $cache
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->cache->clear();

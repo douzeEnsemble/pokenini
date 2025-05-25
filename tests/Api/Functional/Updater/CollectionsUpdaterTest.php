@@ -22,6 +22,7 @@ class CollectionsUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Collection';
     protected string $tableName = 'collection';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var CollectionsUpdater */

@@ -13,6 +13,7 @@ class GameBundlesShiniesAvailabilitiesCalculatorService extends AbstractCalculat
         private readonly GameBundlesShiniesAvailabilitiesCalculator $calculator
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->calculator->execute();

@@ -20,6 +20,7 @@ class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
     protected string $sheetName = 'form / Special form';
     protected string $tableName = 'special_form';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var SpecialFormsUpdater */

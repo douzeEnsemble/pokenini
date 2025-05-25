@@ -16,6 +16,7 @@ class User implements UserInterface
         private readonly string $providerName,
     ) {}
 
+    #[\Override]
     public function getRoles(): array
     {
         return $this->roles;
@@ -43,12 +44,14 @@ class User implements UserInterface
     }
 
     // @codeCoverageIgnoreStart
+    #[\Override]
     public function eraseCredentials(): void
     {
         // nothing sensitive
     }
     // @codeCoverageIgnoreEnd
 
+    #[\Override]
     public function getUserIdentifier(): string
     {
         return $this->identifier;

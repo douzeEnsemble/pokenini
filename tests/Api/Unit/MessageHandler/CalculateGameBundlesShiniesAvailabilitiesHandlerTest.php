@@ -26,6 +26,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(ActionEnderTrait::class)]
 class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
+    #[\Override]
     public function getServiceClass(): string
     {
         return GameBundlesShiniesAvailabilitiesCalculatorService::class;
@@ -34,6 +35,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestC
     /**
      * @param GameBundlesShiniesAvailabilitiesCalculatorService $calculatorService
      */
+    #[\Override]
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,
@@ -44,6 +46,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestC
         );
     }
 
+    #[\Override]
     public function getMessage(): AbstractActionMessage
     {
         return new CalculateGameBundlesShiniesAvailabilities('12');

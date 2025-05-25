@@ -61,6 +61,7 @@ class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString('8 collections updated', $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:games_collections_and_dex';

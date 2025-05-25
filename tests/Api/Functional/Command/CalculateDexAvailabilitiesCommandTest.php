@@ -81,6 +81,7 @@ class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'bulbasaur'));
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:dex_availabilities';

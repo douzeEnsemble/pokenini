@@ -21,6 +21,7 @@ class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var RegionalDexNumbersUpdater */
@@ -30,6 +31,7 @@ class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
     /**
      * There is no "deleted_at" field in the table.
      */
+    #[\Override]
     protected function getTableDeletedAtCount(): int
     {
         return 0;

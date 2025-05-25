@@ -19,6 +19,7 @@ class FormsUpdaterService extends AbstractUpdaterService
         private readonly VariantFormsUpdater $variantFormsUpdater
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->categoryFormsUpdater->execute();

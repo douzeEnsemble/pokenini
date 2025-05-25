@@ -16,6 +16,7 @@ abstract class AbstractCalculator implements CalculatorInterface
         $this->statictic = new Statistic($this->statisticName);
     }
 
+    #[\Override]
     public function getStatistic(): Statistic
     {
         return $this->statictic;

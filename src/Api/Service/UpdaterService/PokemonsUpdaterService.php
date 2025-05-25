@@ -13,6 +13,7 @@ class PokemonsUpdaterService extends AbstractUpdaterService
         private readonly PokemonsUpdater $pokemonsUpdater
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->pokemonsUpdater->execute();

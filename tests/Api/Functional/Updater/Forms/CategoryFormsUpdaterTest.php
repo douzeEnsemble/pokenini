@@ -20,6 +20,7 @@ class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
     protected string $sheetName = 'form / Category form';
     protected string $tableName = 'category_form';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var CategoryFormsUpdater */

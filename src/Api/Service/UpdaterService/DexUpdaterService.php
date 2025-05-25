@@ -11,6 +11,7 @@ class DexUpdaterService extends AbstractUpdaterService
 {
     public function __construct(private readonly DexUpdater $dexUpdater) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->dexUpdater->execute();

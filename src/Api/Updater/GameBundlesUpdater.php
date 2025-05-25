@@ -16,6 +16,7 @@ class GameBundlesUpdater extends AbstractUpdater
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:E'];
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         return [
@@ -27,6 +28,7 @@ class GameBundlesUpdater extends AbstractUpdater
         ];
     }
 
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         $sqlParameters = [

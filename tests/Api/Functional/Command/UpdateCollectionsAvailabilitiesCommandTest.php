@@ -49,6 +49,7 @@ class UpdateCollectionsAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString("968 collections' availabilities updated", $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:collections_availabilities';

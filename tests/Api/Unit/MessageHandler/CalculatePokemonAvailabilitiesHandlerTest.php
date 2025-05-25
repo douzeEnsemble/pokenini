@@ -26,6 +26,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(ActionEnderTrait::class)]
 class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
+    #[\Override]
     public function getServiceClass(): string
     {
         return PokemonAvailabilitiesCalculatorService::class;
@@ -34,6 +35,7 @@ class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHan
     /**
      * @param PokemonAvailabilitiesCalculatorService $calculatorService
      */
+    #[\Override]
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,
@@ -44,6 +46,7 @@ class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHan
         );
     }
 
+    #[\Override]
     public function getMessage(): AbstractActionMessage
     {
         return new CalculatePokemonAvailabilities('12');
