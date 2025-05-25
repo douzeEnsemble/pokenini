@@ -24,6 +24,7 @@ docs/
 fixtures/
 resources/
 !resources/metadata
+!resources/sql
 public/bundles/
 tests/
 tools/
