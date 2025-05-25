@@ -18,6 +18,7 @@ class LabelsUpdaterService extends AbstractUpdaterService
         private readonly TypesUpdater $typesUpdater,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->catchStatesUpdater->execute();

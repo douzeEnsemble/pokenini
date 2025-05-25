@@ -10,6 +10,7 @@ abstract class AbstractCalculatorService implements CalculatorServiceInterface
 {
     protected Report $report;
 
+    #[\Override]
     public function getReport(): Report
     {
         return $this->report;

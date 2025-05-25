@@ -18,11 +18,13 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
         throw new \RuntimeException('Not use in this project');
     }
 
+    #[\Override]
     public function refreshUser(UserInterface $user): UserInterface
     {
         if (!$user instanceof User) {
@@ -32,6 +34,7 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
         return $user;
     }
 
+    #[\Override]
     public function supportsClass(string $class): bool
     {
         return User::class === $class;
@@ -40,6 +43,7 @@ class UserProvider implements UserProviderInterface, PasswordUpgraderInterface
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
         // nothing

@@ -24,6 +24,7 @@ class CollectionsAvailabilitiesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Collections Availability';
     protected string $tableName = 'collection_availability';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var CollectionsAvailabilitiesUpdater */
@@ -33,6 +34,7 @@ class CollectionsAvailabilitiesUpdaterTest extends AbstractTestUpdater
     /**
      * There is no "deleted_at" field in the table.
      */
+    #[\Override]
     protected function getTableDeletedAtCount(): int
     {
         return 0;

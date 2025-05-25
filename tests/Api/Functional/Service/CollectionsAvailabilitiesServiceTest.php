@@ -21,6 +21,7 @@ class CollectionsAvailabilitiesServiceTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountCollectionAvailabilityTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

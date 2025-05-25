@@ -25,6 +25,7 @@ class FormsTest extends KernelTestCase
     use DataTrait;
     use PokemonListTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

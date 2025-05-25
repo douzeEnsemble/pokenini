@@ -23,6 +23,7 @@ class GenericTest extends KernelTestCase
     use GetPokedexTrait;
     use DataTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

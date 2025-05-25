@@ -13,6 +13,7 @@ class GamesShiniesAvailabilitiesUpdaterService extends AbstractUpdaterService
         private readonly GamesShiniesAvailabilitiesUpdater $updater
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->updater->execute();

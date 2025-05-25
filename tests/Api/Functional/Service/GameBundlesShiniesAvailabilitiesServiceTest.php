@@ -21,6 +21,7 @@ class GameBundlesShiniesAvailabilitiesServiceTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountGameBundleShinyAvailabilityTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

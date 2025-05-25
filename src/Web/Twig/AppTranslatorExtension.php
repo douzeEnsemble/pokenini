@@ -12,6 +12,7 @@ class AppTranslatorExtension extends AbstractExtension
 {
     public function __construct(private readonly TranslatorInterface $translator) {}
 
+    #[\Override]
     public function getFilters(): array
     {
         return [

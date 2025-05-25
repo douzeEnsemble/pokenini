@@ -32,6 +32,7 @@ abstract class AbstractUpdateCommand extends Command
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $message = $this->actionStarter->start();

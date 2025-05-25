@@ -22,6 +22,7 @@ class CalculatePokemonAvailabilitiesCommand extends AbstractCalculateCommand
         parent::__construct($translator, $entityManager, $actionStarter, $calculatorService);
     }
 
+    #[\Override]
     protected function configure(): void
     {
         $this
@@ -29,6 +30,7 @@ class CalculatePokemonAvailabilitiesCommand extends AbstractCalculateCommand
         ;
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:pokemon_availabilities';

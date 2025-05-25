@@ -24,6 +24,7 @@ class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var GamesAvailabilitiesUpdater */
@@ -33,6 +34,7 @@ class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
     /**
      * There is no "deleted_at" field in the table.
      */
+    #[\Override]
     protected function getTableDeletedAtCount(): int
     {
         return 0;

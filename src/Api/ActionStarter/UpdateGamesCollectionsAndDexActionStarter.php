@@ -9,11 +9,13 @@ use App\Api\Message\UpdateGamesCollectionsAndDex;
 
 final class UpdateGamesCollectionsAndDexActionStarter extends AbstractActionStarter
 {
+    #[\Override]
     protected function getMessageClass(): string
     {
         return UpdateGamesCollectionsAndDex::class;
     }
 
+    #[\Override]
     protected function instanciate(string $identifier): ActionMessageInterface
     {
         return new UpdateGamesCollectionsAndDex($identifier);

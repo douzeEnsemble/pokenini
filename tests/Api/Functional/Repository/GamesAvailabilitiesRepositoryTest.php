@@ -27,6 +27,7 @@ class GamesAvailabilitiesRepositoryTest extends KernelTestCase
     private GamesAvailabilitiesRepository $gamesAvailabilitiesRepo;
     private PokemonsRepository $pokemonsRepo;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

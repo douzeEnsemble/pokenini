@@ -20,6 +20,7 @@ class RegionalFormsUpdaterTest extends AbstractTestFormsUpdater
     protected string $sheetName = 'form / Regional form';
     protected string $tableName = 'regional_form';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var RegionalFormsUpdater */

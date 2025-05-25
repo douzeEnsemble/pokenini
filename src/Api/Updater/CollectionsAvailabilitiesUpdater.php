@@ -48,6 +48,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     /**
      * @return string[]
      */
+    #[\Override]
     protected function getHeader(): array
     {
         $collections = $this->getCollections();
@@ -76,6 +77,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     /**
      * @return string[]
      */
+    #[\Override]
     protected function getRecordsCellsRanges(): array
     {
         $rowCount = $this->spreadsheetService->getSheetRowCount($this->spreadsheetId, $this->sheetName);
@@ -98,6 +100,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
         return $ranges;
     }
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         $collections = $this->getCollections();
@@ -110,6 +113,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
         );
     }
 
+    #[\Override]
     protected function getRecords(array $header, string $range): array
     {
         $values = $this->getRecordsData($range);
@@ -124,6 +128,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     /**
      * @param string[] $header
      */
+    #[\Override]
     protected function handleCellRange(array $header, string $cellRange): void
     {
         $records = $this->getRecords($header, $cellRange);
@@ -138,6 +143,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     /**
      * @param bool[][]|string[][] $records
      */
+    #[\Override]
     protected function upsertRecords(array $records): void
     {
         $sqlValues = [];
@@ -175,6 +181,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     }
 
     // @codeCoverageIgnoreStart
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         throw new \RuntimeException(
@@ -183,6 +190,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     }
     // @codeCoverageIgnoreEnd
 
+    #[\Override]
     protected function removeExistingRecords(): void
     {
         $tableName = $this->tableName;

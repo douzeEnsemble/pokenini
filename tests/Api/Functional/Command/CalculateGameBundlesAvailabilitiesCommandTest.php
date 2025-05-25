@@ -69,6 +69,7 @@ class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseComm
         $this->assertStringContainsString("11 bundles' availabilities calculated", $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:game_bundles_availabilities';

@@ -20,6 +20,7 @@ class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountPokemonAvailabilitiesTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

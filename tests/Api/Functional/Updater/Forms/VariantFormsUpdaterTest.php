@@ -20,6 +20,7 @@ class VariantFormsUpdaterTest extends AbstractTestFormsUpdater
     protected string $sheetName = 'form / Variant form';
     protected string $tableName = 'variant_form';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var VariantFormsUpdater */

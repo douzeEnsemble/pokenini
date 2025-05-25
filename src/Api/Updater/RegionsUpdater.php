@@ -16,6 +16,7 @@ class RegionsUpdater extends AbstractUpdater
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:D'];
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         return [
@@ -26,6 +27,7 @@ class RegionsUpdater extends AbstractUpdater
         ];
     }
 
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         $sqlParameters = [

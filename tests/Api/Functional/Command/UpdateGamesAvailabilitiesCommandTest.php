@@ -49,6 +49,7 @@ class UpdateGamesAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString("68970 games' availabilities updated", $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:games_availabilities';

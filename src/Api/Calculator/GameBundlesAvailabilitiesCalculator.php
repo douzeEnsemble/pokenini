@@ -14,6 +14,7 @@ class GameBundlesAvailabilitiesCalculator extends AbstractCalculator
         private readonly GameBundlesAvailabilitiesRepository $repository,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->init();

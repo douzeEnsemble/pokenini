@@ -17,6 +17,7 @@ class GamesUpdaterService extends AbstractUpdaterService
         private readonly GamesUpdater $gamesUpdater,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->gameGenerationsUpdater->execute();

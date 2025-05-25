@@ -22,6 +22,7 @@ class GamesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Game';
     protected string $tableName = 'game';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var GamesUpdater */

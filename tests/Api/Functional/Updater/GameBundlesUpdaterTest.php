@@ -21,6 +21,7 @@ class GameBundlesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Game Bundle';
     protected string $tableName = 'game_bundle';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var GameBundlesUpdater */

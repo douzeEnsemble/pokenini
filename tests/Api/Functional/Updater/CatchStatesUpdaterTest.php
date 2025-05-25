@@ -22,6 +22,7 @@ class CatchStatesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Catch state';
     protected string $tableName = 'catch_state';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var CatchStatesUpdater */

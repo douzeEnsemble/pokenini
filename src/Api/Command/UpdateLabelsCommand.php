@@ -22,6 +22,7 @@ final class UpdateLabelsCommand extends AbstractUpdateCommand
         parent::__construct($translator, $entityManager, $actionStarter, $updaterService);
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:labels';

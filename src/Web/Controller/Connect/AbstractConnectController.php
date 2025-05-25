@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 abstract class AbstractConnectController extends AbstractController implements ConnectControllerInterface
 {
     #[Route('', methods: ['GET'])]
+    #[\Override]
     public function goto(ClientRegistry $clientRegistry): Response
     {
         return $clientRegistry
@@ -20,6 +21,7 @@ abstract class AbstractConnectController extends AbstractController implements C
 
     // @codeCoverageIgnoreStart
     #[Route('/c', methods: ['GET'])]
+    #[\Override]
     public function check(): void
     {
         // noting, all done by the authenticator

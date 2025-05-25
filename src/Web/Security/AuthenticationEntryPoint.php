@@ -23,6 +23,7 @@ class AuthenticationEntryPoint implements AuthenticationEntryPointInterface
      *
      * {@inheritDoc}
      */
+    #[\Override]
     public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new RedirectResponse(

@@ -20,6 +20,7 @@ class ElectionUpdateEloServiceTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use GetTrainerPokemonEloTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

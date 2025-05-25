@@ -22,6 +22,7 @@ final class UpdateGamesAvailabilitiesCommand extends AbstractUpdateCommand
         parent::__construct($translator, $entityManager, $actionStarter, $updaterService);
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:games_availabilities';

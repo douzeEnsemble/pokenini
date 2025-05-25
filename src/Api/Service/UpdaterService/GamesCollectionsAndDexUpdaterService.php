@@ -14,6 +14,7 @@ class GamesCollectionsAndDexUpdaterService extends AbstractUpdaterService
         private readonly CollectionsUpdaterService $collectionsUpdaterService,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->gamesUpdaterService->execute();

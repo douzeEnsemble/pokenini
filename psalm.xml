@@ -24,6 +24,7 @@
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <file name="tests/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
+                <file name="tests/Api/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <MoreSpecificImplementedParamType>
@@ -75,6 +76,11 @@
                 <file name="tests/Web/Unit/DTO/ElectionMetricsTest.php" />
                 <file name="tests/Web/Unit/DTO/ElectionPokemonsListTest.php" />
             </errorLevel>
-        </InvalidArgument>        
+        </InvalidArgument>    
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <file name="tests/Api/Functional/Controller/AbstractTestControllerApi.php" />
+            </errorLevel>
+        </MissingOverrideAttribute>        
     </issueHandlers>
 </psalm>

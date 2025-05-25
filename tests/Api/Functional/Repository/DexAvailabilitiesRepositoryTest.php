@@ -23,6 +23,7 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountDexAvailabilityTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

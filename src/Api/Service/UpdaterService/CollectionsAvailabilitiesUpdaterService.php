@@ -13,6 +13,7 @@ class CollectionsAvailabilitiesUpdaterService extends AbstractUpdaterService
         private readonly CollectionsAvailabilitiesUpdater $updater
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->updater->execute();

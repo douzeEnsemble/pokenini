@@ -10,6 +10,7 @@ class CatchStates extends Constraint
 {
     public string $message = '"{{ string }}" is not a valid catch state';
 
+    #[\Override]
     public function validatedBy(): string
     {
         return static::class.'Validator';

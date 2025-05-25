@@ -48,6 +48,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     /**
      * @return string[]
      */
+    #[\Override]
     protected function getRecordsCellsRanges(): array
     {
         $rowCount = $this->spreadsheetService->getSheetRowCount($this->spreadsheetId, $this->sheetName);
@@ -73,6 +74,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     /**
      * @return string[]
      */
+    #[\Override]
     protected function getHeader(): array
     {
         $regions = $this->getRegions();
@@ -98,6 +100,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         return $values[0];
     }
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         $regions = $this->getRegions();
@@ -111,6 +114,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         );
     }
 
+    #[\Override]
     protected function getRecords(array $header, string $range): array
     {
         $values = $this->getRecordsData($range);
@@ -125,6 +129,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     /**
      * @param string[] $header
      */
+    #[\Override]
     protected function handleCellRange(array $header, string $cellRange): void
     {
         $records = $this->getRecords($header, $cellRange);
@@ -139,6 +144,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     /**
      * @param bool[][]|string[][] $records
      */
+    #[\Override]
     protected function upsertRecords(array $records): void
     {
         $sqlValues = [];
@@ -176,6 +182,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
 
     // @codeCoverageIgnoreStart
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         throw new \RuntimeException(
@@ -184,6 +191,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
     // @codeCoverageIgnoreEnd
 
+    #[\Override]
     protected function removeExistingRecords(): void
     {
         $tableName = $this->tableName;

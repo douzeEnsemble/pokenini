@@ -77,6 +77,7 @@ class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends AbstractTestC
         );
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:game_bundles_shinies_availabilities';

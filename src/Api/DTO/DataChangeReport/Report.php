@@ -18,6 +18,7 @@ final class Report implements \JsonSerializable
         $this->detail = array_merge($this->detail, $report->detail);
     }
 
+    #[\Override]
     public function jsonSerialize(): mixed
     {
         $data = [];

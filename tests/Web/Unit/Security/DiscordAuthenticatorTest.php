@@ -13,16 +13,19 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(DiscordAuthenticator::class)]
 class DiscordAuthenticatorTest extends AbstractAuthenticatorTesting
 {
+    #[\Override]
     protected function getAuthenticatorClassName(): string
     {
         return DiscordAuthenticator::class;
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderCode(): string
     {
         return 'discord';
     }
 
+    #[\Override]
     protected function getAuthenticatorProviderName(): string
     {
         return 'Discord';

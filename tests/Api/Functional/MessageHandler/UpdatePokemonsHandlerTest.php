@@ -28,6 +28,7 @@ class UpdatePokemonsHandlerTest extends KernelTestCase
     use CountActionLogTrait;
     use GetActionLogTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

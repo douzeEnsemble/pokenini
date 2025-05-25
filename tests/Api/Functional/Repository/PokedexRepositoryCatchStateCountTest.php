@@ -23,6 +23,7 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use GetPokedexTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

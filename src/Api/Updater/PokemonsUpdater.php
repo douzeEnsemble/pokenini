@@ -16,6 +16,7 @@ class PokemonsUpdater extends AbstractUpdater
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:AC'];
 
+    #[\Override]
     protected function getExpectedHeader(): array
     {
         return [
@@ -51,6 +52,7 @@ class PokemonsUpdater extends AbstractUpdater
         ];
     }
 
+    #[\Override]
     protected function upsertRecord(array $record): void
     {
         $newRecord = $this->transformRecord($record);

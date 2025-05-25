@@ -8,6 +8,7 @@ abstract class AbstractActionMessage implements ActionMessageInterface
 {
     public function __construct(public readonly string $actionId) {}
 
+    #[\Override]
     public function getActionId(): string
     {
         return $this->actionId;

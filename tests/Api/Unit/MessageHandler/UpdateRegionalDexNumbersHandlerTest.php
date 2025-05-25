@@ -26,6 +26,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(ActionEnderTrait::class)]
 class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 {
+    #[\Override]
     public function getServiceClass(): string
     {
         return RegionalDexNumbersUpdaterService::class;
@@ -34,6 +35,7 @@ class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
     /**
      * @param RegionalDexNumbersUpdaterService $updaterService
      */
+    #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
@@ -44,6 +46,7 @@ class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
         );
     }
 
+    #[\Override]
     public function getMessage(): AbstractActionMessage
     {
         return new UpdateRegionalDexNumbers('12');

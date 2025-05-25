@@ -16,6 +16,7 @@ class GameBundlesShinyCalculator extends AbstractCalculator
         private readonly PokemonAvailabilitiesRepository $repository,
     ) {}
 
+    #[\Override]
     public function execute(): void
     {
         $this->init();

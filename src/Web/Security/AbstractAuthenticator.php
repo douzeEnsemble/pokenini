@@ -25,6 +25,7 @@ abstract class AbstractAuthenticator extends OAuth2Authenticator
         private readonly bool $isInvitationRequired,
     ) {}
 
+    #[\Override]
     public function supports(Request $request): ?bool
     {
         return 'app_web_connect_'.$this->getProviderCode().'_check' === $request->attributes->get('_route');
@@ -33,6 +34,7 @@ abstract class AbstractAuthenticator extends OAuth2Authenticator
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
+    #[\Override]
     public function authenticate(Request $request): Passport
     {
         $client = $this->clientRegistry->getClient($this->getProviderCode());

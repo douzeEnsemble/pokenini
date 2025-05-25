@@ -22,6 +22,7 @@ class TypesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Type';
     protected string $tableName = 'type';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var TypesUpdater */

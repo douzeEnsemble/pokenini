@@ -22,6 +22,7 @@ class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
         parent::__construct($translator, $entityManager, $actionStarter, $calculatorService);
     }
 
+    #[\Override]
     protected function configure(): void
     {
         $this
@@ -29,6 +30,7 @@ class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
         ;
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:calculate:dex_availabilities';

@@ -49,6 +49,7 @@ class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString('4419 regional dex numbers updated', $commandTester->getDisplay());
     }
 
+    #[\Override]
     protected function getCommandName(): string
     {
         return 'app:update:regional_dex_numbers';

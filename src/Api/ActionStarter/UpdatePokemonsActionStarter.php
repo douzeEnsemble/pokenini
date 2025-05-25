@@ -9,11 +9,13 @@ use App\Api\Message\UpdatePokemons;
 
 final class UpdatePokemonsActionStarter extends AbstractActionStarter
 {
+    #[\Override]
     protected function getMessageClass(): string
     {
         return UpdatePokemons::class;
     }
 
+    #[\Override]
     protected function instanciate(string $identifier): ActionMessageInterface
     {
         return new UpdatePokemons($identifier);

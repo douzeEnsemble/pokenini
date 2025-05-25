@@ -22,6 +22,7 @@ class PokemonsRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountPokemonTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

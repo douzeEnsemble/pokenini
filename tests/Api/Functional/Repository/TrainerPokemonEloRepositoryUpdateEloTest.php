@@ -19,6 +19,7 @@ class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use GetTrainerPokemonEloTrait;
 
+    #[\Override]
     public function setUp(): void
     {
         self::bootKernel();

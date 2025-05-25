@@ -21,6 +21,7 @@ class RegionsUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Region';
     protected string $tableName = 'region';
 
+    #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var RegionsUpdater */

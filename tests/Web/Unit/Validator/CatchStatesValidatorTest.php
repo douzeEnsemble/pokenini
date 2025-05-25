@@ -84,6 +84,7 @@ class CatchStatesValidatorTest extends ConstraintValidatorTestCase
         $this->validator->validate(new \DateTime(), new CatchStates());
     }
 
+    #[\Override]
     protected function createValidator(): CatchStatesValidator
     {
         $getService = $this->createMock(GetCatchStatesService::class);

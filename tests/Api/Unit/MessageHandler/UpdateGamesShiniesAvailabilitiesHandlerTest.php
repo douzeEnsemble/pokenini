@@ -26,6 +26,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(ActionEnderTrait::class)]
 class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
 {
+    #[\Override]
     public function getServiceClass(): string
     {
         return GamesShiniesAvailabilitiesUpdaterService::class;
@@ -34,6 +35,7 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHand
     /**
      * @param GamesShiniesAvailabilitiesUpdaterService $updaterService
      */
+    #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
@@ -44,6 +46,7 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends AbstractTestUpdateHand
         );
     }
 
+    #[\Override]
     public function getMessage(): AbstractActionMessage
     {
         return new UpdateGamesShiniesAvailabilities('12');
