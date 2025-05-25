@@ -37,7 +37,7 @@ services:
         protocol: tcp
 
   redis:
-    image: redis:7.0-alpine
+    image: redis:8.0-alpine
     restart: always
     ports:
       - '6379:6379'
