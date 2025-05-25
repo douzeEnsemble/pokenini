@@ -1,6 +1,6 @@
 {
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-apcu": "*",
         "ext-ctype": "*",
         "ext-dom": "*",
@@ -14,6 +14,6 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "ext-zip": "*",
-        "vimeo/psalm": "^5.26.1"
+        "vimeo/psalm": "6.11.0"
     }
 }

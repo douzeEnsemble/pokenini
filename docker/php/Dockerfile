@@ -1,4 +1,4 @@
-FROM php:8.3-fpm AS php_base
+FROM php:8.4-fpm AS php_base
 
 COPY ./docker/php/php.ini-development /usr/local/etc/php/php.ini
 
