@@ -45,7 +45,7 @@ services:
       - '6379:6379'
     command: redis-server --requirepass douze
     volumes:
-      - redis:/data
+      - redis_data:/data
 
   api.test.moco:
     build:
@@ -91,5 +91,5 @@ volumes:
   db_data:
   db_data_test:
 ###< doctrine/doctrine-bundle ###
-  redis:
+  redis_data:
 
