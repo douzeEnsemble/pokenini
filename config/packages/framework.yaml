@@ -18,6 +18,7 @@ framework:
         cookie_samesite: lax
         storage_factory_id: session.storage.factory.native
         cookie_lifetime: "%env(SESSION_TTL)%"
+        gc_maxlifetime: "%env(SESSION_TTL)%"
 
 when@dev:
     framework:
