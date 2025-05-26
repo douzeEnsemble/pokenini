@@ -1,6 +1,6 @@
 FROM php:8.4-fpm AS php_base
 
-COPY ./docker/php/php.ini-development /usr/local/etc/php/php.ini
+COPY ./docker/php/conf.d /usr/local/etc/php/conf.d
 
 ## < Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -93,8 +93,6 @@ RUN apt-get clean && \
 ## > Install chromedriver
 
 FROM php_base AS php_prod
-
-COPY ./docker/php/php.ini-production /usr/local/etc/php/php.ini
 
 ## < Install nginx
 RUN apt-get update && apt-get install -y \
