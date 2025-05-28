@@ -41,8 +41,10 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
 
         $client->request('GET', '/');
 
-        $cookie = new Cookie($session->getName(), $session->getId(), null, null, '127.0.0.1');
+        $sessionCookie = new Cookie($session->getName(), $session->getId(), null, null, '127.0.0.1', false, true);
+        $client->getCookieJar()->set($sessionCookie);
 
-        $client->getCookieJar()->set($cookie);
+        $trackerCookie = new Cookie('tarteaucitron', '!matomocloud=true', null, null, '127.0.0.1', false, false);
+        $client->getCookieJar()->set($trackerCookie);
     }
 }
