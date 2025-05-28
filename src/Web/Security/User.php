@@ -81,4 +81,21 @@ class User implements UserInterface
     {
         return in_array('ROLE_ADMIN', $this->getRoles());
     }
+
+    public function getProfile(): string
+    {
+        if ($this->isAnAdmin()) {
+            return 'admin';
+        }
+
+        if ($this->isACollector()) {
+            return 'collector';
+        }
+
+        if ($this->isATrainer()) {
+            return 'trainer';
+        }
+
+        return 'user';
+    }
 }
