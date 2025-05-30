@@ -242,6 +242,22 @@ phpinsights: ## Execute phpinsights
 phpinsights: tools/phpinsights/vendor/bin/phpinsights
 	@$(PHP) tools/phpinsights/vendor/bin/phpinsights
 
+DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:2.2.2-alpine
+docker-compose-linter: ## Run Docker Compose linter
+	$(DOCKERCOMPOSE_LINTER_CMD) -r .
+.PHONY: docker-compose-linter
+docker-compose-fixer: ## Run Docker Compose fixer
+	$(DOCKERCOMPOSE_LINTER_CMD)  -r . --fix
+.PHONY: docker-compose-fixer
+
+DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:3.3.0
+dotenv-linter: ## Run DotEnv linter
+	$(DOTENV_LINTER_CMD) -r
+.PHONY: dotenv-linter
+dotenv-fixer: ## Run DotEnv fixer
+	$(DOTENV_LINTER_CMD) fix -r --no-backup
+.PHONY: dotenv-linter
+
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 .PHONY: integration
 integration: ## Execute all integration tests
@@ -371,7 +387,6 @@ tools/deptrac/vendor/bin/deptrac: ## Install deptrac
 
 tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 	@$(COMPOSER) install --working-dir=tools/phpinsights --optimize-autoloader --no-dev
-
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image

@@ -1,5 +1,3 @@
-# Reference: https://docs.github.com/en/actions/use-cases-and-examples/publishing-packages/publishing-docker-images#publishing-images-to-github-packages
-
 name: Create and publish a Docker image
 
 on:
@@ -7,6 +5,7 @@ on:
     types: [released, prereleased]
 
 env:
+  PROJECT_NAME: pokenini
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   IMAGE_TAG_SUFFIXE: ${{ github.event.release.prerelease && '-prerelease' || '-release' }}
@@ -67,5 +66,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=pokenini:latest${{ env.IMAGE_TAG_SUFFIXE }}
+          cache-from: type=registry,ref={{ env.PROJECT_NAME }}:latest${{ env.IMAGE_TAG_SUFFIXE }}
           cache-to: type=inline

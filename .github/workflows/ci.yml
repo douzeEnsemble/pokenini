@@ -20,6 +20,31 @@ env:
   PHP_CS_FIXER_IGNORE_ENV: 1
 
 jobs:
+  docker-compose-lint:
+    name: Quality / Docker Compose Linter
+    runs-on: ubuntu-latest
+    container:
+      image: zavoloklom/dclint:2.2.2-alpine
+      volumes:
+        - ${{ github.workspace }}:/app
+    steps:
+    - uses: actions/checkout@v3
+    - run: /bin/dclint -r .
+
+  dotenv-lint:
+    name: Quality / DotEnv Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: dotenv-linter
+        uses: dotenv-linter/action-dotenv-linter@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          fail_on_error: true
+          dotenv_linter_flags: --recursive
+
   phpcsfixer:
     name: Quality / PHP-CS-Fixer
     runs-on: ubuntu-latest
