@@ -283,10 +283,7 @@ newman_prepare:
 
 .PHONY: newman_execute
 newman_execute:
-	$(DOCKER) run --rm --name pokenini-newman \
-		--network=pokenini_default \
-		-v ./tests/Api/Integration:/etc/newman \
-		-t postman/newman:alpine run collection.json
+	$(DOCKER_COMP) up newman --no-recreate --menu=false
 
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 .PHONY: measures

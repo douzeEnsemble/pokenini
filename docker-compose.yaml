@@ -45,6 +45,13 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-app}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
       - POSTGRES_USER=${POSTGRES_USER:-app}
+ 
+  newman:
+    image: postman/newman:6-alpine
+    volumes:
+      - ./tests/Api/Integration:/etc/newman
+    working_dir: /etc/newman
+    entrypoint: newman run collection.json
 
   php:
     build:
@@ -81,7 +88,7 @@ services:
         MOCO_VERSION: 1.5.0
     volumes:
       - ./tests/resources/moco/Web/:/var/moco:ro
-
+ 
 volumes:
   ###> doctrine/doctrine-bundle ###
   db_data:
