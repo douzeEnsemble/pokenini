@@ -20,6 +20,31 @@ env:
   PHP_CS_FIXER_IGNORE_ENV: 1
 
 jobs:
+  docker-compose-lint:
+    name: Quality / Docker Compose Linter
+    runs-on: ubuntu-latest
+    container:
+      image: zavoloklom/dclint:2.2.2-alpine
+      volumes:
+        - ${{ github.workspace }}:/app
+    steps:
+    - uses: actions/checkout@v3
+    - run: /bin/dclint -r .
+
+  dotenv-lint:
+    name: Quality / DotEnv Linter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: dotenv-linter
+        uses: dotenv-linter/action-dotenv-linter@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-check
+          fail_on_error: true
+          dotenv_linter_flags: --recursive
+
   phpcsfixer:
     name: Quality / PHP-CS-Fixer
     runs-on: ubuntu-latest
@@ -139,10 +164,7 @@ jobs:
           docker compose exec php curl http://web:douze@apache/api/album/7b52009b64fd0a2a49e6d8a939753077792b0554/ultrasunultramoon
       - name: Run
         run: |
-          docker run --rm --name pokenini-newman \
-            --network=pokenini_default \
-            -v ./tests/Api/Integration:/etc/newman \
-            -t postman/newman:alpine run collection.json
+          docker compose up newman --no-recreate --menu=false
 
   measures:
     name: Measures
