@@ -1,22 +1,15 @@
+name: Pokénini
+
 services:
-  php:
-    build:
-      context: .
-      dockerfile: ./docker/php/Dockerfile
-      target: php_dev
-    expose:
-      - 9000
-    volumes:
-      - .:/var/www/html
-    environment:
-      - PHP_CS_FIXER_IGNORE_ENV=1
-    tty: true
+
+  adminer:
+    image: adminer:5.3.0
+    ports:
+      - '127.0.0.1:8082:8080'
+    restart: always
 
   apache:
     image: httpd:2.4
-    ports:
-      - 80:80
-      - 443:443
     depends_on:
       - php
     volumes:
@@ -24,34 +17,9 @@ services:
       - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
       - ./docker/apache/ssl:/usr/local/apache2/ssl/
-
-  database:
-    image: postgres:${POSTGRES_VERSION:-14}-alpine
-    environment:
-      - POSTGRES_DB=${POSTGRES_DB:-app}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
-      - POSTGRES_USER=${POSTGRES_USER:-app}
-    volumes:
-      - db_data:/var/lib/postgresql/data
     ports:
-      - target: 5432
-        published: 5451
-        protocol: tcp
-
-  redis:
-    image: redis:8.0-alpine
-    restart: always
-    command: redis-server --requirepass douze
-    volumes:
-      - redis_data:/data
-
-  api.test.moco:
-    build:
-      context: docker/moco/Api/test
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Api:/var/moco:ro
+      - '127.0.0.1:80:80'
+      - '127.0.0.1:443:443'
 
   api.int.moco:
     build:
@@ -61,13 +29,42 @@ services:
     volumes:
       - ./tests/resources/moco/Api:/var/moco:ro
 
-  web.test.moco:
+  api.test.moco:
     build:
-      context: docker/moco/Web/test
+      context: docker/moco/Api/test
       args:
         MOCO_VERSION: 1.5.0
     volumes:
-      - ./tests/resources/moco/Web/:/var/moco:ro
+      - ./tests/resources/moco/Api:/var/moco:ro
+
+  database:
+    image: postgres:${POSTGRES_VERSION:-14}-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: php_dev
+    volumes:
+      - .:/var/www/html
+    environment:
+      - PHP_CS_FIXER_IGNORE_ENV=1
+    expose:
+      - '9000'
+    tty: true
+
+  redis:
+    image: redis:8.0-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --requirepass douze
+    restart: always
 
   web.dev.moco:
     build:
@@ -77,17 +74,20 @@ services:
     volumes:
       - ./tests/resources/moco/Web/:/var/moco:ro
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-     - target: 8080
-       published: 8082
+  web.test.moco:
+    build:
+      context: docker/moco/Web/test
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
 
 volumes:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   db_data:
-  db_data_test:
-###< doctrine/doctrine-bundle ###
+  db_data_test: 
+  ###< doctrine/doctrine-bundle ###
+
   redis_data:
+
 
