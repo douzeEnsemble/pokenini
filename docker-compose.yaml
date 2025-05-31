@@ -21,22 +21,6 @@ services:
       - '127.0.0.1:80:80'
       - '127.0.0.1:443:443'
 
-  api.int.moco:
-    build:
-      context: docker/moco/Api/int
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Api:/var/moco:ro
-
-  api.test.moco:
-    build:
-      context: docker/moco/Api/test
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Api:/var/moco:ro
-
   database:
     image: postgres:${POSTGRES_VERSION:-14}-alpine
     volumes:
@@ -45,6 +29,42 @@ services:
       - POSTGRES_DB=${POSTGRES_DB:-app}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
       - POSTGRES_USER=${POSTGRES_USER:-app}
+
+  moco.api.int:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Api:/var/moco:ro
+    command: "/var/moco/int.moco.json"
+
+  moco.api.test:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Api/:/var/moco:ro
+    command: "/var/moco/test.moco.json"
+
+  moco.web.dev:
+    build:
+      context: ./docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+    command: "/var/moco/dev.moco.json"
+
+  moco.web.test:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Web/:/var/moco:ro
+    command: "/var/moco/test.moco.json"
  
   newman:
     image: postman/newman:6-alpine
@@ -72,22 +92,6 @@ services:
       - redis_data:/data
     command: redis-server --requirepass douze
     restart: always
-
-  web.dev.moco:
-    build:
-      context: docker/moco/Web/dev
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Web/:/var/moco:ro
-
-  web.test.moco:
-    build:
-      context: docker/moco/Web/test
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Web/:/var/moco:ro
  
 volumes:
   ###> doctrine/doctrine-bundle ###
