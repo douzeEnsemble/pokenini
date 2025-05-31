@@ -79,7 +79,6 @@ stop: ## Stop the project
 destruct: ## Destruct the project
 	$(DOCKER_COMP) down --remove-orphans --volumes database --volumes redis --rmi all
 
-
 .PHONY: bash
 bash: ## Connect to the PHP FPM container
 	@$(PHP_CONT) bash
@@ -90,10 +89,10 @@ logs: ## Containers logs
 
 .PHONY: mocks_restart
 mocks_restart: ## Restart mocks
-	$(DOCKER_COMP) restart api.int.moco
-	$(DOCKER_COMP) restart api.test.moco
-	$(DOCKER_COMP) restart web.dev.moco
-	$(DOCKER_COMP) restart web.test.moco
+	$(DOCKER_COMP) restart moco.api.int
+	$(DOCKER_COMP) restart moco.api.test
+	$(DOCKER_COMP) restart moco.web.dev
+	$(DOCKER_COMP) restart moco.web.test
 
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 .PHONY: data
@@ -198,7 +197,11 @@ tests_browser_web: ## Execute browser tests for Web module
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 .PHONY: quality
 quality: ## Execute all quality analyses
-quality: phpcsfixer phpmd psalm phpstan deptrac
+quality: infra_quality code_quality
+
+.PHONY: code_quality
+code_quality: ## Execute all code quality analyses
+code_quality: phpcsfixer phpmd psalm phpstan deptrac
 
 .PHONY: phpcsfixer
 phpcsfixer: ## Execute PHP CS Fixer "Check"
@@ -242,6 +245,10 @@ phpinsights: ## Execute phpinsights
 phpinsights: tools/phpinsights/vendor/bin/phpinsights
 	@$(PHP) tools/phpinsights/vendor/bin/phpinsights
 
+.PHONY: infra_quality
+infra_quality: ## Execute all infra quality analyses
+infra_quality: docker-compose-linter dockerfile-linter dotenv-linter
+
 DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:2.2.2-alpine
 docker-compose-linter: ## Run Docker Compose linter
 	$(DOCKERCOMPOSE_LINTER_CMD) -r .
@@ -249,6 +256,12 @@ docker-compose-linter: ## Run Docker Compose linter
 docker-compose-fixer: ## Run Docker Compose fixer
 	$(DOCKERCOMPOSE_LINTER_CMD)  -r . --fix
 .PHONY: docker-compose-fixer
+
+dockerfile-linter: ## Run Dockerfile linter
+		@find docker -name 'Dockerfile' | while read -r dockerfile; do \
+		docker run -t --rm -v ${PWD}:/app hadolint/hadolint:2.12.0-alpine hadolint "/app/$$dockerfile"; \
+	done
+.PHONY: dockerfile-linter
 
 DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:3.3.0
 dotenv-linter: ## Run DotEnv linter
