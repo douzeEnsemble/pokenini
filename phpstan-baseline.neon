@@ -286,6 +286,11 @@ parameters:
 			path: tests/Api/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php
 
 		-
+			message: "#^Parameter \\#1 \\$constraint of method PHPUnit\\\\Framework\\\\MockObject\\\\InvocationStubber\\:\\:method\\(\\) expects PHPUnit\\\\Framework\\\\Constraint\\\\Constraint\\|PHPUnit\\\\Framework\\\\MockObject\\\\Runtime\\\\PropertyHook\\|non\\-empty\\-string, string given\\.$#"
+			count: 1
+			path: tests/Web/Unit/Controller/AdminActionControllerTest.php
+
+		-
 			message: "#^Parameter \\#1 \\$values of class App\\\\Web\\\\DTO\\\\ElectionMetrics constructor expects array\\<float\\|int\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 7
 			path: tests/Web/Unit/DTO/ElectionMetricsTest.php
