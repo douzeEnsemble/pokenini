@@ -54,5 +54,4 @@ jobs:
       - name: Lint Dockerfiles
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: "./docker"
           recursive: true
