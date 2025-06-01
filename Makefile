@@ -87,8 +87,8 @@ bash: ## Connect to the PHP FPM container
 logs: ## Containers logs
 	@$(DOCKER_COMP) logs -f -n 0
 
-.PHONY: mocks_restart
-mocks_restart: ## Restart mocks
+.PHONY: mocks-restart
+mocks-restart: ## Restart mocks
 	$(DOCKER_COMP) restart moco.api.int
 	$(DOCKER_COMP) restart moco.api.test
 	$(DOCKER_COMP) restart moco.web.dev
@@ -97,10 +97,10 @@ mocks_restart: ## Restart mocks
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 .PHONY: data
 data: ## Initialize data
-data: init_db data_app
+data: init-db data-app
 
-.PHONY: init_db
-init_db: ## Initialize database data
+.PHONY: init-db
+init-db: ## Initialize database data
 	$(SYMFONY) doctrine:database:drop --force --if-exists --env=dev
 	$(SYMFONY) doctrine:database:create --env=dev
 	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=dev
@@ -111,8 +111,8 @@ init_db: ## Initialize database data
 	$(SYMFONY) doctrine:database:create --env=int
 	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=int
 
-.PHONY: data_app
-data_app: ## Initialize app data
+.PHONY: data-app
+data-app: ## Initialize app data
 	$(SYMFONY) app:update:labels
 	$(SYMFONY) app:update:games_collections_and_dex
 	$(SYMFONY) app:update:pokemons
@@ -162,55 +162,55 @@ cc: ## Clear the cache
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 .PHONY: tests
 tests: ## Execute all tests
-tests: tests_api tests_web
+tests: tests-api tests-web
 
-.PHONY: tests_api
-tests_api: ## Execute unit test for Api module
+.PHONY: tests-api
+tests-api: ## Execute unit test for Api module
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/Api
 
-.PHONY: tests_web
-tests_web: ## Execute unit test for Web module
+.PHONY: tests-web
+tests-web: ## Execute unit test for Web module
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/Web
 
 .PHONY: rebuild
-tests_unit_api: ## Execute unit tests for Api module
+tests-unit-api: ## Execute unit tests for Api module
 	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Unit
 
-.PHONY: tests_unit_web
-tests_unit_web: ## Execute unit tests for Web module
+.PHONY: tests-unit-web
+tests-unit-web: ## Execute unit tests for Web module
 	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Unit
 
-.PHONY: tests_functional_api
-tests_functional_api: ## Execute functional tests for Api module
+.PHONY: tests-functional-api
+tests-functional-api: ## Execute functional tests for Api module
 	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Functional
 
-.PHONY: tests_functional_web
-tests_functional_web: ## Execute functional tests for Web module
+.PHONY: tests-functional-web
+tests-functional-web: ## Execute functional tests for Web module
 	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Functional
 
-.PHONY: tests_browser_web
-tests_browser_web: ## Execute browser tests for Web module
+.PHONY: tests-browser-web
+tests-browser-web: ## Execute browser tests for Web module
 	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Browser
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 .PHONY: quality
 quality: ## Execute all quality analyses
-quality: infra_quality code_quality
+quality: infra-quality code-quality
 
-.PHONY: code_quality
-code_quality: ## Execute all code quality analyses
-code_quality: phpcsfixer phpmd psalm phpstan deptrac
+.PHONY: code-quality
+code-quality: ## Execute all code quality analyses
+code-quality: phpcsfixer phpmd psalm phpstan deptrac
 
 .PHONY: phpcsfixer
 phpcsfixer: ## Execute PHP CS Fixer "Check"
 phpcsfixer: tools/php-cs-fixer/vendor/bin/php-cs-fixer
 	@$(PHP) tools/php-cs-fixer/vendor/bin/php-cs-fixer check --diff
 
-.PHONY: phpcsfixer_fix
-phpcsfixer_fix: ## Execute PHP CS Fixer "Fix"
-phpcsfixer_fix: tools/php-cs-fixer/vendor/bin/php-cs-fixer
+.PHONY: phpcsfixer-fix
+phpcsfixer-fix: ## Execute PHP CS Fixer "Fix"
+phpcsfixer-fix: tools/php-cs-fixer/vendor/bin/php-cs-fixer
 	@$(PHP) tools/php-cs-fixer/vendor/bin/php-cs-fixer fix
 
 .PHONY: phpmd
@@ -224,9 +224,9 @@ psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP_CONT) rm -Rf var/cache/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false
 
-.PHONY: psalm_fix
-psalm_fix: ## Execute psalm auto fixing
-psalm_fix: tools/psalm/vendor/bin/psalm
+.PHONY: psalm-fix
+psalm-fix: ## Execute psalm auto fixing
+psalm-fix: tools/psalm/vendor/bin/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm --alter --issues=UnnecessaryVarAnnotation,UnusedVariable,PossiblyUnusedMethod,MissingParamType
 
 .PHONY: phpstan
@@ -245,9 +245,9 @@ phpinsights: ## Execute phpinsights
 phpinsights: tools/phpinsights/vendor/bin/phpinsights
 	@$(PHP) tools/phpinsights/vendor/bin/phpinsights
 
-.PHONY: infra_quality
-infra_quality: ## Execute all infra quality analyses
-infra_quality: docker-compose-linter dockerfile-linter dotenv-linter
+.PHONY: infra-quality
+infra-quality: ## Execute all infra quality analyses
+infra-quality: docker-compose-linter dockerfile-linter dotenv-linter
 
 DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:2.2.2-alpine
 docker-compose-linter: ## Run Docker Compose linter
@@ -278,10 +278,10 @@ integration: newman
 
 .PHONY: newman
 newman: ## Execute newman
-newman: newman_prepare newman_execute
+newman: newman-prepare newman-execute
 
-.PHONY: newman_prepare
-newman_prepare:
+.PHONY: newman-prepare
+newman-prepare:
 	@$(SYMFONY) --env=int app:update:labels
 	@$(SYMFONY) --env=int app:update:games_collections_and_dex
 	@$(SYMFONY) --env=int app:update:pokemons
@@ -294,17 +294,17 @@ newman_prepare:
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 	@$(SYMFONY) --env=int app:calculate:pokemon_availabilities
 
-.PHONY: newman_execute
-newman_execute:
+.PHONY: newman-execute
+newman-execute:
 	$(DOCKER_COMP) up newman --no-recreate --menu=false
 
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 .PHONY: measures
 measures: ## Execute all measures tools
-measures: clear_build coverage infection_api infection_web
+measures: clear-build coverage infection-api infection-web
 
-.PHONY: clear_build
-clear_build: ## Clear build directory
+.PHONY: clear-build
+clear-build: ## Clear build directory
 	rm -Rf build/*
 
 build/coverage/coverage-xml: ## Generate coverage report
@@ -321,33 +321,33 @@ coverage: ## Execute PHPUnit Coverage to check the score
 coverage: build/coverage/coverage-xml
 	@$(PHP_CONT) php tests/tools/coverage.php coverage.xml 100 true
 
-.PHONY: coverage_html
-coverage_html: ## Execute PHPUnit Coverage in HTML
+.PHONY: coverage-html
+coverage-html: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit \
             --exclude-group="browser-testing" \
 			--coverage-html=build/coverage/coverage-html
 
-.PHONY: clear_infection_cache
-clear_infection_cache: 
+.PHONY: clear-infection-cache
+clear-infection-cache: 
 	@$(PHP_CONT) rm -Rf var/cache/infection
 
 .PHONY: infection
 infection: ## Execute all Infection testing
-infection: clear_infection_cache infection_api infection_web
+infection: clear-infection-cache infection-api infection-web
 
-.PHONY: infection_api
-infection_api: ## Execute Infection (Mutation testing) for API module
-infection_api: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear_infection_cache
+.PHONY: infection-api
+infection-api: ## Execute Infection (Mutation testing) for API module
+infection-api: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear-infection-cache
 	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
 		--filter=src/Api
 
-.PHONY: infection_web
-infection_web: ## Execute Infection (Mutation testing) for API module
-infection_web: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear_infection_cache
+.PHONY: infection-web
+infection-web: ## Execute Infection (Mutation testing) for API module
+infection-web: build/coverage/coverage-xml tools/infection/vendor/bin/infection clear-infection-cache
 	@$(PHP) tools/infection/vendor/bin/infection --threads=4 --no-progress \
 		--skip-initial-tests --coverage=build/coverage \
 		--min-msi=100 --min-covered-msi=100 \
@@ -356,24 +356,24 @@ infection_web: build/coverage/coverage-xml tools/infection/vendor/bin/infection 
 ## —— Security 🛡️ ———————————————————————————————————————————————————————————————
 .PHONY: security
 security: ## Execute all security commands
-security: composer_audit security_checker
+security: composer-audit security-checker
 
-.PHONY: composer_audit
-composer_audit: ## Execute Composer Audit
+.PHONY: composer-audit
+composer-audit: ## Execute Composer Audit
 	@$(COMPOSER) audit
 
 bin/local-php-security-checker: ## Download the file if needed
 	wget https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64 -O bin/local-php-security-checker
 	chmod a+x bin/local-php-security-checker
 
-.PHONY: security_checker
-security_checker: ## Execute Security Checker
-security_checker: bin/local-php-security-checker
+.PHONY: security-checker
+security-checker: ## Execute Security Checker
+security-checker: bin/local-php-security-checker
 	bin/local-php-security-checker
 
-.PHONY: dependency_check
-dependency_check: ## Execute OWASP Dependency Check
-dependency_check: 
+.PHONY: dependency-check
+dependency-check: ## Execute OWASP Dependency Check
+dependency-check: 
 	@bin/dependency-check.sh ${NVD_API_KEY}
 
 ## —— Tools 🔧 ———————————————————————————————————————————————————————————————
