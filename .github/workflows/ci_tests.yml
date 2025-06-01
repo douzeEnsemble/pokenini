@@ -1,4 +1,4 @@
-name: CI Code Quality
+name: CI Tests
 
 on:
   push:
@@ -20,79 +20,9 @@ env:
   PHP_CS_FIXER_IGNORE_ENV: 1
 
 jobs:
-  phpcsfixer:
-    name: PHP-CS-Fixer
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        uses: ./.github/actions/tools-composer
-        with:
-          dir: php-cs-fixer
-      - name: Run
-        run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer check --diff
-
-  phpmd:
-    name: PHPMD
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        uses: ./.github/actions/tools-composer
-        with:
-          dir: phpmd
-      - name: Run
-        run: ./tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
-
-  psalm:
-    name: Psalm
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        uses: ./.github/actions/local-tools-composer
-        with:
-          dir: psalm      
-      - name: Run
-        run: ./tools/psalm/vendor/bin/psalm --show-info=false --root=.
-
-  phpstan:
-    name: Tests / PHPStan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        uses: ./.github/actions/local-tools-composer
-        with:
-          dir: phpstan
-      - name: Initialize
-        run: |
-          ./tools/phpstan/vendor/bin/phpstan clear-result-cache
-      - name: Run
-        run: |
-          ./tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
-
-  deptrac:
-    name: Tests / Deptrac
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install
-        uses: ./.github/actions/tools-composer
-        with:
-          dir: deptrac
-      - name: Run
-        run: ./tools/deptrac/vendor/bin/deptrac analyse
-
   phpunit:
-    name: Tests / PHPUnit
+    name: PHPUnit
     runs-on: ubuntu-latest
-    needs: [phpcsfixer, phpmd, psalm, phpstan]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -106,9 +36,8 @@ jobs:
           docker compose exec -T php php vendor/bin/phpunit tests/Web/ --exclude-group="time-testing"
 
   integration:
-    name: Integration / Newman
+    name: Newman
     runs-on: ubuntu-latest
-    needs: [phpcsfixer, phpmd, psalm, phpstan]
     env:
       APP_ENV: int
     steps:
