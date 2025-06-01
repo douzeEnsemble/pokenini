@@ -15,8 +15,10 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
 {
     protected static function getNewClient(): Client
     {
-        return static::createPantherClient(
-            ['browser' => static::CHROME],
+        $client = static::createPantherClient(
+            [
+                'browser' => static::CHROME,
+            ],
             [],
             [
                 'capabilities' => [
@@ -24,6 +26,10 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
                 ],
             ]
         );
+
+        $client->getCookieJar()->clear();
+
+        return $client;
     }
 
     protected function loginUser(Client $client, User $user): void
@@ -41,10 +47,13 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
 
         $client->request('GET', '/');
 
+        $cookieJar = $client->getCookieJar();
+        $cookieJar->clear();
+
         $sessionCookie = new Cookie($session->getName(), $session->getId(), null, null, '127.0.0.1', false, true);
-        $client->getCookieJar()->set($sessionCookie);
+        $cookieJar->set($sessionCookie);
 
         $trackerCookie = new Cookie('tarteaucitron', '!matomocloud=true', null, null, '127.0.0.1', false, false);
-        $client->getCookieJar()->set($trackerCookie);
+        $cookieJar->set($trackerCookie);
     }
 }
