@@ -21,7 +21,7 @@ env:
 
 jobs:
   docker-compose-lint:
-    name: Infra Quality / Docker Compose Linter
+    name: Docker Compose Linter
     runs-on: ubuntu-latest
     container:
       image: zavoloklom/dclint:2.2.2-alpine
@@ -32,7 +32,7 @@ jobs:
     - run: /bin/dclint -r .
 
   dotenv-lint:
-    name: Infra Quality / DotEnv Linter
+    name: DotEnv Linter
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -46,7 +46,7 @@ jobs:
           dotenv_linter_flags: --recursive
 
   dockerfile-lint:
-    name: Infra Quality / Dockerfile Linter
+    name: Dockerfile Linter
     runs-on: ubuntu-latest
     steps:
       - name: Check out code

@@ -21,7 +21,7 @@ env:
 
 jobs:
   phpcsfixer:
-    name: Code Quality / PHP-CS-Fixer
+    name: PHP-CS-Fixer
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,7 +34,7 @@ jobs:
         run: ./tools/php-cs-fixer/vendor/bin/php-cs-fixer check --diff
 
   phpmd:
-    name: Code Quality / PHPMD
+    name: PHPMD
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,7 +47,7 @@ jobs:
         run: ./tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
 
   psalm:
-    name: Code Quality / Psalm
+    name: Psalm
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
