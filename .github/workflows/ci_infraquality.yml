@@ -37,7 +37,7 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
-      - name: dotenv-linter
+      - name: Lint .env* files
         uses: dotenv-linter/action-dotenv-linter@v2
         with:
           github_token: ${{ secrets.github_token }}
