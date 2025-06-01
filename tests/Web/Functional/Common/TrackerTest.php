@@ -36,7 +36,7 @@ class TrackerTest extends WebTestCase
             $crawler->outerHtml()
         );
         $this->assertStringContainsString(
-            "_paq.push(['setUserId', '8764532']);",
+            "_paq.push(['setUserId', '159bb9b6d090a313087d2f26135970c2db49ee72']);",
             $crawler->outerHtml()
         );
     }
@@ -59,7 +59,7 @@ class TrackerTest extends WebTestCase
             $crawler->outerHtml()
         );
         $this->assertStringContainsString(
-            "_paq.push(['setUserId', '4568465464']);",
+            "_paq.push(['setUserId', '13dde860e25a0f972170570d25f48e10cacd5cb3']);",
             $crawler->outerHtml()
         );
     }
@@ -82,7 +82,7 @@ class TrackerTest extends WebTestCase
             $crawler->outerHtml()
         );
         $this->assertStringContainsString(
-            "_paq.push(['setUserId', 'daz5d4az6d4a6z4d6az5d']);",
+            "_paq.push(['setUserId', '88f4a8011adfd1868148addb265ef2683fdf40d8']);",
             $crawler->outerHtml()
         );
     }

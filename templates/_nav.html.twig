@@ -47,6 +47,12 @@
                     </a>
                     {% endif %}
                 </li>
+                <li class="nav-item cookie-manager">
+                    <button class="nav-link">
+                        <i class="bi bi-cookie"></i>
+                        {{ 'nav.cookie-manager'|trans }}
+                    </a>
+                </li>
                 <li class="nav-item lang-switch">
                     {% set langTarget = locale == 'fr' ? 'en' : 'fr' %}
                     {% set routeParameters = currentRouteParameters|merge({
