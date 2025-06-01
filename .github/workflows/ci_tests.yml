@@ -13,6 +13,12 @@ on:
       DOCKERHUB_TOKEN:
         description: 'Docker Hub token'
         required: true
+  workflow_run:
+    workflows: 
+      - CI Code Quality
+      - CI Infra Quality
+    types:
+      - completed
 
 env: 
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
