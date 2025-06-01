@@ -25,7 +25,7 @@ tarteaucitron.init({
     {#- /* Show cookie icon to manage cookies */ -#}
     "showIcon": false,
     {#- /* Position of the icon between BottomRight, BottomLeft, TopRight and TopLeft */ -#}
-    "iconPosition": "BottomRight",
+    "iconPosition": "TopRight",
     {#- /* Show a Warning if an adblocker is detected */ -#}
     "adblocker": false,
     {#- /* Show the deny all button */ -#}
@@ -81,7 +81,7 @@ tarteaucitron.user.matomoFullTracking = true;
 tarteaucitron.user.matomocloudMore = function () {
     {% if app.user %}
     _paq.push(['setCustomDimension', customDimensionId = 1, customDimensionValue = '{{ app.user.profile }}']);
-    _paq.push(['setUserId', '{{ app.user.id }}']);
+    _paq.push(['setUserId', '{{ app.user.id|sha1 }}']);
     {% endif %}
     _paq.push(['trackPageView']);
 };

@@ -20,6 +20,7 @@ nav:
     share: "Lien de partage"
     is_private: "Album privé"
     open-offcanvas: "Ouvrir le panneau latéral"
+    cookie-manager: "Gère tes cookies"
 
 title:
     home: "Accueil"

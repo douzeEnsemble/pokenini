@@ -15,6 +15,7 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFilter('ksort', [$this, 'ksort']),
+            new TwigFilter('sha1', [$this, 'sha1']),
         ];
     }
 
@@ -36,6 +37,11 @@ class AppExtension extends AbstractExtension
         ksort($array, $flags);
 
         return $array;
+    }
+
+    public function sha1(string $value): string
+    {
+        return sha1($value);
     }
 
     public function getVersion(string $filename = 'version'): string

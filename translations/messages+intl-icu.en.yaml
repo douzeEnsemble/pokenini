@@ -20,6 +20,7 @@ nav:
     share: "Share link"
     is_private: "Private album"
     open-offcanvas: "Open the sidebar"
+    cookie-manager: "Cookie manager"
 
 title:
     home: "Home"
