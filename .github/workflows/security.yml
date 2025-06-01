@@ -8,14 +8,14 @@ on:
 
 jobs:
   composer-audit:
-    name: Security / Composer Audit
+    name: Composer Audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: composer audit
 
   symfonycorp-security-checker:
-    name: Security / SymfonyCorp Checker
+    name: SymfonyCorp Checker
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
