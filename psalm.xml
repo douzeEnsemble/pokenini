@@ -25,6 +25,7 @@
             <errorLevel type="suppress">
                 <file name="tests/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
                 <file name="tests/Api/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
+                <file name="tests/Web/Unit/Controller/AdminActionControllerTest.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <MoreSpecificImplementedParamType>
