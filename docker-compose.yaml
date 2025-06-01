@@ -1,7 +1,6 @@
 name: Pokénini
 
 services:
-
   adminer:
     image: adminer:5.3.0
     ports:
@@ -65,13 +64,13 @@ services:
     volumes:
       - ./tests/resources/moco/Web/:/var/moco:ro
     command: "/var/moco/test.moco.json"
- 
+
   newman:
     image: postman/newman:6-alpine
     volumes:
       - ./tests/Api/Integration:/etc/newman
-    working_dir: /etc/newman
     entrypoint: newman run collection.json
+    working_dir: /etc/newman
 
   php:
     build:
@@ -92,11 +91,12 @@ services:
       - redis_data:/data
     command: redis-server --requirepass douze
     restart: always
- 
+
 volumes:
   ###> doctrine/doctrine-bundle ###
   db_data:
-  db_data_test: 
+  db_data_test:
+
   ###< doctrine/doctrine-bundle ###
 
   redis_data:
