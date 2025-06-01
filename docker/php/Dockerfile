@@ -73,6 +73,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         unzip=6.0-28 \
         wget=1.21.3-1+deb12u1 \
         chromium=137.0.7151.55-3~deb12u1 \ 
+        chromium-driver=137.0.7151.55-3~deb12u1 \ 
         libgconf-2-4=3.2.6-8 \
         libfontconfig-dev=2.14.1-4 \
         libfreetype6=2.12.1+dfsg-5+deb12u4 \
