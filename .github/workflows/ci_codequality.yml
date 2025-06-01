@@ -60,7 +60,7 @@ jobs:
         run: ./tools/psalm/vendor/bin/psalm --show-info=false --root=.
 
   phpstan:
-    name: Tests / PHPStan
+    name: PHPStan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -77,7 +77,7 @@ jobs:
           ./tools/phpstan/vendor/bin/phpstan analyse --memory-limit=-1
 
   deptrac:
-    name: Tests / Deptrac
+    name: Deptrac
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
