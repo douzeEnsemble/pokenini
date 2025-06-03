@@ -56,6 +56,17 @@ services:
       - ./tests/resources/moco/Web/:/var/moco:ro
     command: "/var/moco/dev.moco.json"
 
+  moco.web.matomo:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    ports:
+      - 127.0.0.1:8888:80
+    volumes:
+      - ./tests/resources/moco/Matomo/:/var/moco:ro
+    command: "/var/moco/moco.json"
+
   moco.web.test:
     build:
       context: docker/moco
