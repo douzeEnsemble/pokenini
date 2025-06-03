@@ -65,6 +65,9 @@ RUN pecl install xdebug \
 
 ## < Install chromedriver
 ENV PANTHER_NO_SANDBOX=1
+ENV PANTHER_NO_REDUCED_MOTION=1
+ENV PANTHER_ERROR_SCREENSHOT_DIR=/var/www/html/var/screenshots
+ENV PANTHER_DEVTOOLS=disabled
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
 ENV GNUPGHOME=/usr/local/share/gnupg
 
