@@ -24,10 +24,11 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
                 'capabilities' => [
                     'acceptInsecureCerts' => true,
                 ],
+                'chromedriver_arguments' => [
+                    '--ignore-certificate-errors',
+                ],
             ]
         );
-
-        $client->getCookieJar()->clear();
 
         return $client;
     }
@@ -45,10 +46,9 @@ abstract class AbstractBrowserTestCase extends PantherTestCase
         $session->set('_security_'.$firewallContext, serialize($token));
         $session->save();
 
-        $client->request('GET', '/');
-
         $cookieJar = $client->getCookieJar();
-        $cookieJar->clear();
+
+        $client->request('GET', '/');
 
         $sessionCookie = new Cookie($session->getName(), $session->getId(), null, null, '127.0.0.1', false, true);
         $cookieJar->set($sessionCookie);
