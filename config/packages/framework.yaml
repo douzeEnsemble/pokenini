@@ -20,6 +20,10 @@ framework:
         cookie_lifetime: "%env(SESSION_TTL)%"
         gc_maxlifetime: "%env(SESSION_TTL)%"
 
+    property_info:
+        enabled: false
+        with_constructor_extractor: false
+
 when@dev:
     framework:
         test: true
