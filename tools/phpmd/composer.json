@@ -1,4 +1,5 @@
 {
+    "type": "tools",
     "require": {
         "php": ">=8.4",
         "ext-apcu": "*",

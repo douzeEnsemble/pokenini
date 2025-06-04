@@ -1,4 +1,5 @@
 {
+    "type": "tools",
     "require": {
         "nunomaduro/phpinsights": "^2.13.1"
     },

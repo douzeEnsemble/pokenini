@@ -1,4 +1,5 @@
 {
+    "type": "tools",
     "require": {
         "seld/jsonlint": "^1.11"
     }
