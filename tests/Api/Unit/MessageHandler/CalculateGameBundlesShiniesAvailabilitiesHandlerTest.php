@@ -14,6 +14,7 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\GameBundlesShiniesAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -22,8 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesHandler::class)]
 #[UsesClass(GameBundlesShiniesAvailabilitiesCalculatorService::class)]
 #[UsesClass(CalculateGameBundlesShiniesAvailabilities::class)]
-#[CoversClass(CalculateHandlerTrait::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     #[\Override]

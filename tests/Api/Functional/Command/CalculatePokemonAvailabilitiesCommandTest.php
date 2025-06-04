@@ -18,6 +18,7 @@ use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Api\Common\Traits\HasserTrait\HasPokemonAvailabilitiesTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -29,7 +30,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(CalculatePokemonAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;

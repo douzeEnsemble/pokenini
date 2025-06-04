@@ -14,6 +14,7 @@ use App\Api\Message\UpdateRegionalDexNumbers;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountRegionalDexNumberTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -24,7 +25,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(UpdateRegionalDexNumbers::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
 {
     use CountRegionalDexNumberTrait;

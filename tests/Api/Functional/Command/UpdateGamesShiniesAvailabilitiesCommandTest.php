@@ -14,6 +14,7 @@ use App\Api\Message\UpdateGamesShiniesAvailabilities;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -24,7 +25,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(UpdateGamesShiniesAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameShinyAvailabilityTrait;

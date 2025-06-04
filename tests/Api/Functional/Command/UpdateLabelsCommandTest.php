@@ -14,6 +14,7 @@ use App\Api\Message\UpdateLabels;
 use App\Tests\Api\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Api\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 
 /**
  * @internal
@@ -24,7 +25,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AbstractActionStarter::class)]
 #[CoversClass(UpdateLabels::class)]
 #[CoversClass(AbstractActionMessage::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateLabelsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;

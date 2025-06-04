@@ -10,6 +10,7 @@ use App\Api\Repository\Trait\FiltersTrait;
 use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -17,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(PokedexRepository::class)]
-#[CoversClass(FiltersTrait::class)]
+#[CoversTrait(FiltersTrait::class)]
 class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

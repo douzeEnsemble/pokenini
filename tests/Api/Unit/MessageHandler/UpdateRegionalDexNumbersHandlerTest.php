@@ -14,6 +14,7 @@ use App\Api\Service\UpdaterService\RegionalDexNumbersUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -22,8 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdateRegionalDexNumbersHandler::class)]
 #[UsesClass(RegionalDexNumbersUpdaterService::class)]
 #[UsesClass(UpdateRegionalDexNumbers::class)]
-#[CoversClass(CalculateHandlerTrait::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 {
     #[\Override]
