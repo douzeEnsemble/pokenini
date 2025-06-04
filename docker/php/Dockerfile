@@ -156,12 +156,12 @@ RUN mkdir -p /var/log/supervisor && \
     chmod -R 755 /var/log/supervisor && \
     chown -R supervisoruser:supervisoruser /var/log/supervisor
 
-USER www-data
-
 COPY ./docker/web/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 ## > Setup Supervisor
+
+USER www-data
 
 ## < Cleanup
 RUN rm index.nginx-debian.html .env \
