@@ -10,11 +10,12 @@ RUN docker-php-ext-install opcache
 RUN pecl install redis \
 	&& docker-php-ext-enable redis
 
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libmemcached-dev=1.1.4-1 \
-        libssl-dev=3.0.16-1~deb12u1 \
-        zlib1g-dev=1:1.2.13.dfsg-1 \
+        libmemcached-dev \
+        libssl-dev \
+        zlib1g-dev \
 	&& pecl install memcached-3.2.0 \
 	&& docker-php-ext-enable memcached \
     && apt-get clean \
@@ -23,23 +24,26 @@ RUN apt-get update \
 RUN pecl install apcu \
     && docker-php-ext-enable apcu
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        libpq-dev=15.13-0+deb12u1 \
+        libpq-dev \
     && docker-php-ext-install pdo_pgsql pgsql \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libzip-dev=1.7.3-1+b1 \ 
-        zlib1g-dev=1:1.2.13.dfsg-1 \
+        libzip-dev\ 
+        zlib1g-dev \
     && docker-php-ext-install zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libicu-dev=72.1-3 \
+        libicu-dev \
     && docker-php-ext-install intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -71,21 +75,22 @@ ENV PANTHER_DEVTOOLS=disabled
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
 ENV GNUPGHOME=/usr/local/share/gnupg
 
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        gpg=2.2.40-1.1 \
-        unzip=6.0-28 \
-        wget=1.21.3-1+deb12u1 \
-        chromium=137.0.7151.55-3~deb12u1 \ 
-        chromium-driver=137.0.7151.55-3~deb12u1 \ 
-        libgconf-2-4=3.2.6-8 \
-        libfontconfig-dev=2.14.1-4 \
-        libfreetype6=2.12.1+dfsg-5+deb12u4 \
-        libx11-6=2:1.8.4-2+deb12u2 \
-        libxext6=2:1.3.4-1+b1 \
-        libxrender1=1:0.9.10-1.1 \
-        libxtst6=2:1.2.3-1.1 \
-        dirmngr=2.2.40-1.1 \
-        gpg-agent=2.2.40-1.1 \
+        gpg \
+        unzip \
+        wget \
+        chromium \ 
+        chromium-driver \ 
+        libgconf-2-4 \
+        libfontconfig-dev \
+        libfreetype6 \
+        libx11-6 \
+        libxext6 \
+        libxrender1 \
+        libxtst6 \
+        dirmngr \
+        gpg-agent \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
