@@ -149,6 +149,7 @@ RUN rm index.nginx-debian.html .env \
 ## > Cleanup
 
 ## < Setup Supervisor
+# hadolint ignore=DL3002
 USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
