@@ -143,27 +143,26 @@ RUN set -eux; \
 	sync;
 ## > Composer stuff
 
+## < Cleanup
+RUN rm index.nginx-debian.html .env \
+    && touch .env
+## > Cleanup
+
 ## < Setup Supervisor
 USER root
 
-RUN apt-get update && apt-get install -y --no-install-recommends \ 
-    supervisor=4.2.5-1 \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        supervisor=4.2.5-1 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -r -s /bin/false supervisoruser
+
 RUN mkdir -p /var/log/supervisor && \
-    chmod -R 755 /var/log/supervisor && \
-    chown -R supervisoruser:supervisoruser /var/log/supervisor
+chmod -R 755 /var/log/supervisor && \
+chown -R supervisoruser:supervisoruser /var/log/supervisor
 
 COPY ./docker/web/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 ## > Setup Supervisor
-
-USER www-data
-
-## < Cleanup
-RUN rm index.nginx-debian.html .env \
-    && touch .env
-## > Cleanup
