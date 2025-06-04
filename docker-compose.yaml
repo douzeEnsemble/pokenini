@@ -61,10 +61,10 @@ services:
       context: docker/moco
       args:
         MOCO_VERSION: 1.5.0
-    ports:
-      - 127.0.0.1:8888:80
     volumes:
       - ./tests/resources/moco/Matomo/:/var/moco:ro
+    ports:
+      - '127.0.0.1:8888:80'
     command: "/var/moco/moco.json"
 
   moco.web.test:
