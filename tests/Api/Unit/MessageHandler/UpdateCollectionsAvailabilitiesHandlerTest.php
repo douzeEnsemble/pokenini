@@ -14,6 +14,7 @@ use App\Api\Service\UpdaterService\CollectionsAvailabilitiesUpdaterService;
 use App\Api\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -22,8 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(UpdateCollectionsAvailabilitiesHandler::class)]
 #[UsesClass(CollectionsAvailabilitiesUpdaterService::class)]
 #[UsesClass(UpdateCollectionsAvailabilities::class)]
-#[CoversClass(CalculateHandlerTrait::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class UpdateCollectionsAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
 {
     #[\Override]

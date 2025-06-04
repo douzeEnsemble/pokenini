@@ -11,13 +11,14 @@ use App\Tests\Api\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Api\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @internal
  */
 #[CoversClass(PokedexRepository::class)]
-#[CoversClass(FiltersTrait::class)]
+#[CoversTrait(FiltersTrait::class)]
 class CollectionsTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;

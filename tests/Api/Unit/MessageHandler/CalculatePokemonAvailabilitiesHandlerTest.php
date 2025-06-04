@@ -14,6 +14,7 @@ use App\Api\Service\CalculatorService\CalculatorServiceInterface;
 use App\Api\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\UsesClass;
 
 /**
@@ -22,8 +23,8 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[CoversClass(CalculatePokemonAvailabilitiesHandler::class)]
 #[UsesClass(PokemonAvailabilitiesCalculatorService::class)]
 #[UsesClass(CalculatePokemonAvailabilities::class)]
-#[CoversClass(CalculateHandlerTrait::class)]
-#[CoversClass(ActionEnderTrait::class)]
+#[CoversTrait(CalculateHandlerTrait::class)]
+#[CoversTrait(ActionEnderTrait::class)]
 class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     #[\Override]
