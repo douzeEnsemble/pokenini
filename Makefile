@@ -401,4 +401,5 @@ tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image
 	docker build --target php_prod -f ./docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
+img-push: ## Push Docker image
 	docker push ghcr.io/douzeensemble/pokenini:latest
