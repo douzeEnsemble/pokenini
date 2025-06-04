@@ -1,4 +1,5 @@
 {
+    "type": "tools",
     "require": {
         "deptrac/deptrac": "^3.0.0"
     }
