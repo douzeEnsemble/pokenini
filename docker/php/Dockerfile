@@ -1,5 +1,9 @@
 FROM php:8.4-fpm AS php_base
 
+WORKDIR /var/www/html
+
+EXPOSE 9000
+
 COPY ./docker/php/conf.d /usr/local/etc/php/conf.d
 
 ## < Install PHP extensions
@@ -109,24 +113,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN (echo "y" | /usr/local/bin/phive install --global bdi) \
     && bdi detect /usr/local/bin/
+
 ## > Install chromedriver
 
 FROM php_base AS php_prod
-
-## < Install nginx
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        nginx=1.22.1-9+deb12u2 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./docker/nginx/app.conf /etc/nginx/conf.d/app.conf
-RUN rm /etc/nginx/sites-enabled/default
-## > Install nginx
-
-WORKDIR /var/www/html
-
-EXPOSE 8080
 
 USER www-data
 
@@ -149,26 +139,6 @@ RUN set -eux; \
 ## > Composer stuff
 
 ## < Cleanup
-RUN rm index.nginx-debian.html .env \
+RUN rm .env \
     && touch .env
 ## > Cleanup
-
-## < Setup Supervisor
-# hadolint ignore=DL3002
-USER root
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        supervisor=4.2.5-1 \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN useradd -r -s /bin/false supervisoruser
-
-RUN mkdir -p /var/log/supervisor && \
-chmod -R 755 /var/log/supervisor && \
-chown -R supervisoruser:supervisoruser /var/log/supervisor
-
-COPY ./docker/web/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-## > Setup Supervisor

@@ -7,19 +7,6 @@ services:
       - '127.0.0.1:8082:8080'
     restart: always
 
-  apache:
-    image: httpd:2.4
-    depends_on:
-      - php
-    volumes:
-      - .:/var/www/html
-      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
-      - ./docker/apache/ssl:/usr/local/apache2/ssl/
-    ports:
-      - '127.0.0.1:80:80'
-      - '127.0.0.1:443:443'
-
   database:
     image: postgres:${POSTGRES_VERSION:-14}-alpine
     volumes:
@@ -92,8 +79,6 @@ services:
       - .:/var/www/html
     environment:
       - PHP_CS_FIXER_IGNORE_ENV=1
-    expose:
-      - '9000'
     tty: true
 
   redis:
@@ -102,6 +87,29 @@ services:
       - redis_data:/data
     command: redis-server --requirepass douze
     restart: always
+
+  # apache:
+  #   image: httpd:2.4
+  #   depends_on:
+  #     - php
+  #   volumes:
+  #     - .:/var/www/html
+  #     - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+  #     - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+  #     - ./docker/apache/ssl:/usr/local/apache2/ssl/
+  #   ports:
+  #     - '127.0.0.1:80:80'
+  #     - '127.0.0.1:443:443'
+
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - '127.0.0.1:80:8080'
+      - '127.0.0.1:443:8080'
 
 volumes:
   ###> doctrine/doctrine-bundle ###
