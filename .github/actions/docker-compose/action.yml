@@ -17,10 +17,6 @@ runs:
     - name: Pull images
       shell: bash
       run: docker compose pull --ignore-pull-failures || true
-      
-    - name: Generate mock ssl certificates files
-      shell: bash
-      run: mv ./docker/apache/ssl.test ./docker/apache/ssl
 
     - name: Start services
       shell: bash
