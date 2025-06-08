@@ -23,24 +23,24 @@
     <issueHandlers>
         <ArgumentTypeCoercion>
             <errorLevel type="suppress">
-                <file name="tests/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
-                <file name="tests/Api/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
-                <file name="tests/Web/Unit/Controller/AdminActionControllerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
+                <file name="tests/src/Web/Unit/Controller/AdminActionControllerTest.php" />
             </errorLevel>
         </ArgumentTypeCoercion>
         <MoreSpecificImplementedParamType>
             <errorLevel type="suppress">
-                <file name="tests/Api/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateGamesAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateLabelsHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdatePokemonsHandlerTest.php" />
-                <file name="tests/Api/Unit/MessageHandler/UpdateRegionalDexNumbersHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateGamesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateLabelsHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdatePokemonsHandlerTest.php" />
+                <file name="tests/src/Api/Unit/MessageHandler/UpdateRegionalDexNumbersHandlerTest.php" />
             </errorLevel>
         </MoreSpecificImplementedParamType>
         <PropertyNotSetInConstructor errorLevel="suppress" />
@@ -69,18 +69,18 @@
         </UndefinedInterfaceMethod>  
         <InvalidArgument>
             <errorLevel type="suppress">
-                <file name="tests/Api/Unit/DTO/ElectionVoteTest.php" />
-                <file name="tests/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php" />
-                <file name="tests/Api/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php" />
-                <file name="tests/Api/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php" />
-                <file name="tests/Web/Unit/DTO/ElectionVoteTest.php" />
-                <file name="tests/Web/Unit/DTO/ElectionMetricsTest.php" />
-                <file name="tests/Web/Unit/DTO/ElectionPokemonsListTest.php" />
+                <file name="tests/src/Api/Unit/DTO/ElectionVoteTest.php" />
+                <file name="tests/src/Api/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php" />
+                <file name="tests/src/Api/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php" />
+                <file name="tests/src/Api/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php" />
+                <file name="tests/src/Web/Unit/DTO/ElectionVoteTest.php" />
+                <file name="tests/src/Web/Unit/DTO/ElectionMetricsTest.php" />
+                <file name="tests/src/Web/Unit/DTO/ElectionPokemonsListTest.php" />
             </errorLevel>
         </InvalidArgument>    
         <MissingOverrideAttribute>
             <errorLevel type="suppress">
-                <file name="tests/Api/Functional/Controller/AbstractTestControllerApi.php" />
+                <file name="tests/src/Api/Functional/Controller/AbstractTestControllerApi.php" />
             </errorLevel>
         </MissingOverrideAttribute>        
     </issueHandlers>

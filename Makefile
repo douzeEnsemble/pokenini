@@ -167,32 +167,32 @@ tests: tests-api tests-web
 .PHONY: tests-api
 tests-api: ## Execute unit test for Api module
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
-	$(PHP) vendor/bin/phpunit tests/Api
+	$(PHP) vendor/bin/phpunit tests/src/Api
 
 .PHONY: tests-web
 tests-web: ## Execute unit test for Web module
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
-	$(PHP) vendor/bin/phpunit tests/Web
+	$(PHP) vendor/bin/phpunit tests/src/Web
 
 .PHONY: rebuild
 tests-unit-api: ## Execute unit tests for Api module
-	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Unit
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Api/Unit
 
 .PHONY: tests-unit-web
 tests-unit-web: ## Execute unit tests for Web module
-	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Unit
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Web/Unit
 
 .PHONY: tests-functional-api
 tests-functional-api: ## Execute functional tests for Api module
-	@$(PHP_CONT) vendor/bin/phpunit tests/Api/Functional
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Api/Functional
 
 .PHONY: tests-functional-web
 tests-functional-web: ## Execute functional tests for Web module
-	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Functional
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Web/Functional
 
 .PHONY: tests-browser-web
 tests-browser-web: ## Execute browser tests for Web module
-	@$(PHP_CONT) vendor/bin/phpunit tests/Web/Browser
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Web/Browser
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 .PHONY: quality

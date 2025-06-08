@@ -66,7 +66,7 @@ services:
   newman:
     image: postman/newman:6-alpine
     volumes:
-      - ./tests/Api/Integration:/etc/newman
+      - ./tests/src/Api/Integration:/etc/newman
     entrypoint: newman run collection.json
     working_dir: /etc/newman
 
