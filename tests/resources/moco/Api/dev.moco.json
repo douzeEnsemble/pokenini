@@ -8,7 +8,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/catch_states.json"
+      "file": "/var/moco/responses/catch_states.json"
     }
   },
   {
@@ -20,7 +20,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/types.json"
+      "file": "/var/moco/responses/types.json"
     }
   },
   {
@@ -32,7 +32,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/category_forms.json"
+      "file": "/var/moco/responses/category_forms.json"
     }
   },
   {
@@ -44,7 +44,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/regional_forms.json"
+      "file": "/var/moco/responses/regional_forms.json"
     }
   },
   {
@@ -56,7 +56,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/special_forms.json"
+      "file": "/var/moco/responses/special_forms.json"
     }
   },
   {
@@ -68,7 +68,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/variant_forms.json"
+      "file": "/var/moco/responses/variant_forms.json"
     }
   },
   {
@@ -80,7 +80,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/game_bundles.json"
+      "file": "/var/moco/responses/game_bundles.json"
     }
   },
   {
@@ -92,7 +92,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/collections.json"
+      "file": "/var/moco/responses/collections.json"
     }
   },
   {
@@ -104,7 +104,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/f86cbe805674d85f7806b175b70647a6a9334631.json"
+      "file": "/var/moco/responses/dexes/f86cbe805674d85f7806b175b70647a6a9334631.json"
     }
   },
   {
@@ -116,7 +116,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/b6589fc6ab0dc82cf12099d1c2d40ab994e8410c.json"
+      "file": "/var/moco/responses/dexes/b6589fc6ab0dc82cf12099d1c2d40ab994e8410c.json"
     }
   },
   {
@@ -128,7 +128,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/356a192b7913b04c54574d18c28d46e6395428ab.json"
+      "file": "/var/moco/responses/dexes/356a192b7913b04c54574d18c28d46e6395428ab.json"
     }
   },
   {
@@ -140,7 +140,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/3cae633f6e04077b2abf2144b79a0ce4698d8690.json"
+      "file": "/var/moco/responses/dexes/3cae633f6e04077b2abf2144b79a0ce4698d8690.json"
     }
   },
   {
@@ -152,7 +152,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/da4b9237bacccdf19c0760cab7aec4a8359010b0.json"
+      "file": "/var/moco/responses/dexes/da4b9237bacccdf19c0760cab7aec4a8359010b0.json"
     }
   },
   {
@@ -167,7 +167,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/159bb9b6d090a313087d2f26135970c2db49ee72.json"
+      "file": "/var/moco/responses/dexes/159bb9b6d090a313087d2f26135970c2db49ee72.json"
     }
   },
   {
@@ -179,7 +179,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/0a286c2c78b485e1bcecf68febbda17084d0b2be.json"
+      "file": "/var/moco/responses/dexes/0a286c2c78b485e1bcecf68febbda17084d0b2be.json"
     }
   },
   {
@@ -194,7 +194,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/d033e22ae348aeb5660fc2140aec35850c4da997_premium.json"
+      "file": "/var/moco/responses/dexes/d033e22ae348aeb5660fc2140aec35850c4da997_premium.json"
     }
   },
   {
@@ -206,7 +206,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/d033e22ae348aeb5660fc2140aec35850c4da997.json"
+      "file": "/var/moco/responses/dexes/d033e22ae348aeb5660fc2140aec35850c4da997.json"
     }
   },
   {
@@ -220,7 +220,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/dexes/default.json"
+      "file": "/var/moco/responses/dexes/default.json"
     }
   },
   {
@@ -236,7 +236,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny_gamebundleshinyavailabilities0swordshield.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny_gamebundleshinyavailabilities0swordshield.json"
     }
   },
   {
@@ -252,7 +252,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundlesshinyavailabilities0unknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundlesshinyavailabilities0unknown.json"
     }
   },
   {
@@ -265,7 +265,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/f86cbe805674d85f7806b175b70647a6a9334631/demo.json"
+      "file": "/var/moco/responses/album/f86cbe805674d85f7806b175b70647a6a9334631/demo.json"
     }
   },
   {
@@ -281,7 +281,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_catchstatesyes.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_catchstatesyes.json"
     }
   },
   {
@@ -297,7 +297,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_familybulbasaur.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_familybulbasaur.json"
     }
   },
   {
@@ -310,7 +310,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo.json"
     }
   },
   {
@@ -327,7 +327,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyesfamilycharmander.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyesfamilycharmander.json"
     }
   },
   {
@@ -344,7 +344,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatestobreedfamilybulbasaur.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatestobreedfamilybulbasaur.json"
     }
   },
   {
@@ -360,7 +360,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesunknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesunknown.json"
     }
   },
   {
@@ -376,7 +376,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyes.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyes.json"
     }
   },
   {
@@ -392,7 +392,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesno.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesno.json"
     }
   },
   {
@@ -408,7 +408,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstates!no.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstates!no.json"
     }
   },
   {
@@ -424,7 +424,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familybulbasaur.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familybulbasaur.json"
     }
   },
   {
@@ -440,7 +440,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familysquirtle.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familysquirtle.json"
     }
   },
   {
@@ -456,7 +456,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familymimejr.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familymimejr.json"
     }
   },
   {
@@ -472,7 +472,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familyunknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familyunknown.json"
     }
   },
   {
@@ -488,7 +488,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familynidoranf.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familynidoranf.json"
     }
   },
   {
@@ -505,7 +505,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0megaspecialforms1gigantamax.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0megaspecialforms1gigantamax.json"
     }
   },
   {
@@ -522,7 +522,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
     }
   },
   {
@@ -539,7 +539,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0nullspecialforms1mega.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0nullspecialforms1mega.json"
     }
   },
   {
@@ -555,7 +555,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
     }
   },
   {
@@ -571,7 +571,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_categoryforms0starter.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_categoryforms0starter.json"
     }
   },
   {
@@ -587,7 +587,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0mega.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0mega.json"
     }
   },
   {
@@ -604,7 +604,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_regionalforms0paldeanvariantforms0alternate.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_regionalforms0paldeanvariantforms0alternate.json"
     }
   },
   {
@@ -620,7 +620,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0null.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0null.json"
     }
   },
   {
@@ -636,7 +636,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0unknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0unknown.json"
     }
   },
   {
@@ -652,7 +652,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_anytypes0fire.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_anytypes0fire.json"
     }
   },
   {
@@ -671,7 +671,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0nullsecondarytypes1firesecondarytypes2water.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0nullsecondarytypes1firesecondarytypes2water.json"
     }
   },
   {
@@ -689,7 +689,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0firesecondarytypes1water.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0firesecondarytypes1water.json"
     }
   },
   {
@@ -706,7 +706,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_secondarytypes0poisonsecondarytypes1flying.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_secondarytypes0poisonsecondarytypes1flying.json"
     }
   },
   {
@@ -722,7 +722,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fire.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fire.json"
     }
   },
   {
@@ -738,7 +738,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0unknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0unknown.json"
     }
   },
   {
@@ -754,7 +754,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0unknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0unknown.json"
     }
   },
   {
@@ -771,7 +771,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshieldoriginalgamebundle1xy.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshieldoriginalgamebundle1xy.json"
     }
   },
   {
@@ -787,7 +787,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshield.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshield.json"
     }
   },
   {
@@ -803,7 +803,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0swordshield.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0swordshield.json"
     }
   },
   {
@@ -819,7 +819,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0unknown.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0unknown.json"
     }
   },
   {
@@ -832,7 +832,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo.json"
     }
   },
   {
@@ -845,7 +845,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
     }
   },
   {
@@ -858,7 +858,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
     }
   },
   {
@@ -871,7 +871,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/159bb9b6d090a313087d2f26135970c2db49ee72/goldsilvercrystal.json"
+      "file": "/var/moco/responses/album/159bb9b6d090a313087d2f26135970c2db49ee72/goldsilvercrystal.json"
     }
   },
   {
@@ -884,7 +884,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo.json"
+      "file": "/var/moco/responses/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo.json"
     }
   },
   {
@@ -897,7 +897,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo.json"
+      "file": "/var/moco/responses/album/default/demo.json"
     }
   },
   {
@@ -913,7 +913,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list3_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo_list3_catchstatesno.json"
     }
   },
   {
@@ -926,7 +926,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list3.json"
+      "file": "/var/moco/responses/album/default/demo_list3.json"
     }
   },
   {
@@ -942,7 +942,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list5_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo_list5_catchstatesno.json"
     }
   },
   {
@@ -955,7 +955,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list5.json"
+      "file": "/var/moco/responses/album/default/demo_list5.json"
     }
   },
   {
@@ -971,7 +971,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list7_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo_list7_catchstatesno.json"
     }
   },
   {
@@ -984,7 +984,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_list7.json"
+      "file": "/var/moco/responses/album/default/demo_list7.json"
     }
   },
   {
@@ -1000,7 +1000,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_notemplate_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo_notemplate_catchstatesno.json"
     }
   },
   {
@@ -1013,7 +1013,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_notemplate.json"
+      "file": "/var/moco/responses/album/default/demo_notemplate.json"
     }
   },
   {
@@ -1029,7 +1029,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_unknowntemplate_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo_unknowntemplate_catchstatesno.json"
     }
   },
   {
@@ -1042,7 +1042,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo_unknowntemplate.json"
+      "file": "/var/moco/responses/album/default/demo_unknowntemplate.json"
     }
   },
   {
@@ -1058,7 +1058,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo-lite_catchstatesno.json"
+      "file": "/var/moco/responses/album/default/demo-lite_catchstatesno.json"
     }
   },
   {
@@ -1071,7 +1071,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo-lite.json"
+      "file": "/var/moco/responses/album/default/demo-lite.json"
     }
   },
   {
@@ -1084,7 +1084,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/demo-lite-shiny.json"
+      "file": "/var/moco/responses/album/default/demo-lite-shiny.json"
     }
   },
   {
@@ -1097,7 +1097,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/virgin.json"
+      "file": "/var/moco/responses/album/default/virgin.json"
     }
   },
   {
@@ -1110,7 +1110,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/redgreenblueyellow.json"
+      "file": "/var/moco/responses/album/default/redgreenblueyellow.json"
     }
   },
   {
@@ -1123,7 +1123,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal.json"
     }
   },
   {
@@ -1136,7 +1136,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/goldsilvercrystal.json"
+      "file": "/var/moco/responses/album/default/goldsilvercrystal.json"
     }
   },
   {
@@ -1149,7 +1149,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/rubysapphireemerald.json"
+      "file": "/var/moco/responses/album/default/rubysapphireemerald.json"
     }
   },
   {
@@ -1162,7 +1162,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/fireredleafgreen.json"
+      "file": "/var/moco/responses/album/default/fireredleafgreen.json"
     }
   },
   {
@@ -1175,7 +1175,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/diamondpearlplatinium.json"
+      "file": "/var/moco/responses/album/default/diamondpearlplatinium.json"
     }
   },
   {
@@ -1188,7 +1188,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/heartgoldsoulsilver.json"
+      "file": "/var/moco/responses/album/default/heartgoldsoulsilver.json"
     }
   },
   {
@@ -1201,7 +1201,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite.json"
     }
   },
   {
@@ -1214,7 +1214,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/blackwhite.json"
+      "file": "/var/moco/responses/album/default/blackwhite.json"
     }
   },
   {
@@ -1227,7 +1227,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/black2white2.json"
+      "file": "/var/moco/responses/album/default/black2white2.json"
     }
   },
   {
@@ -1240,7 +1240,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/xy.json"
+      "file": "/var/moco/responses/album/default/xy.json"
     }
   },
   {
@@ -1253,7 +1253,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/omegarubyalphasapphire.json"
+      "file": "/var/moco/responses/album/default/omegarubyalphasapphire.json"
     }
   },
   {
@@ -1266,7 +1266,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/sunmoon.json"
+      "file": "/var/moco/responses/album/default/sunmoon.json"
     }
   },
   {
@@ -1279,7 +1279,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/ultrasunultramoon.json"
+      "file": "/var/moco/responses/album/default/ultrasunultramoon.json"
     }
   },
   {
@@ -1292,7 +1292,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/letsgopikachuletsgoeevee.json"
+      "file": "/var/moco/responses/album/default/letsgopikachuletsgoeevee.json"
     }
   },
   {
@@ -1305,7 +1305,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/homepogo.json"
+      "file": "/var/moco/responses/album/default/homepogo.json"
     }
   },
   {
@@ -1318,7 +1318,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/swordshield.json"
+      "file": "/var/moco/responses/album/default/swordshield.json"
     }
   },
   {
@@ -1331,7 +1331,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/brillantdiamondshiningpearl.json"
+      "file": "/var/moco/responses/album/default/brillantdiamondshiningpearl.json"
     }
   },
   {
@@ -1344,7 +1344,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/legendarceus.json"
+      "file": "/var/moco/responses/album/default/legendarceus.json"
     }
   },
   {
@@ -1370,7 +1370,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/mega.json"
+      "file": "/var/moco/responses/album/default/mega.json"
     }
   },
   {
@@ -1383,7 +1383,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/all.json"
+      "file": "/var/moco/responses/album/default/all.json"
     }
   },
   {
@@ -1396,7 +1396,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/allshinies.json"
+      "file": "/var/moco/responses/album/default/allshinies.json"
     }
   },
   {
@@ -1409,7 +1409,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
     }
   },
   {
@@ -1422,7 +1422,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
     }
   },
   {
@@ -1435,7 +1435,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/home.json"
+      "file": "/var/moco/responses/album/default/home.json"
     }
   },
   {
@@ -1448,7 +1448,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/homeot.json"
+      "file": "/var/moco/responses/album/default/homeot.json"
     }
   },
   {
@@ -1461,7 +1461,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/homeshiny.json"
+      "file": "/var/moco/responses/album/default/homeshiny.json"
     }
   },
   {
@@ -1474,7 +1474,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo.json"
     }
   },
   {
@@ -1487,7 +1487,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/homepokemongo.json"
+      "file": "/var/moco/responses/album/default/homepokemongo.json"
     }
   },
   {
@@ -1500,7 +1500,7 @@
       }
     },
     "response": {
-      "file": "/var/moco/album/default/alpha.json"
+      "file": "/var/moco/responses/album/default/alpha.json"
     }
   },
   {
@@ -1871,7 +1871,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/reports.json"
+      "file": "/var/moco/responses/reports.json"
     }
   },
   {
@@ -1887,7 +1887,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/action_logs.json"
+      "file": "/var/moco/responses/action_logs.json"
     }
   },
   {
@@ -1908,7 +1908,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_topick_demolite_12.json"
+      "file": "/var/moco/responses/pokemons_topick_demolite_12.json"
     }
   },
   {
@@ -1929,7 +1929,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_topick_demoliteshiny_12.json"
+      "file": "/var/moco/responses/pokemons_topick_demoliteshiny_12.json"
     }
   },
   {
@@ -1950,7 +1950,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/pokemons_topick_swordshield_12.json"
+      "file": "/var/moco/responses/pokemons_topick_swordshield_12.json"
     }
   },
   {
@@ -1973,7 +1973,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
+          "template": "/var/moco/responses/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
         }
       }
     }
@@ -1998,7 +1998,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_tovote_mega_12-${random(1, 9, '#')}.json"
+          "template": "/var/moco/responses/pokemons_tovote_mega_12-${random(1, 9, '#')}.json"
         }
       }
     }
@@ -2023,7 +2023,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_tovote_mega_11left.json"
+          "template": "/var/moco/responses/pokemons_tovote_mega_11left.json"
         }
       }
     }
@@ -2048,7 +2048,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_tovote_mega_3left.json"
+          "template": "/var/moco/responses/pokemons_tovote_mega_3left.json"
         }
       }
     }
@@ -2073,7 +2073,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_tovote_mega_1left.json"
+          "template": "/var/moco/responses/pokemons_tovote_mega_1left.json"
         }
       }
     }
@@ -2098,7 +2098,7 @@
       "status": "200",
       "file": {
         "name": {
-          "template": "/var/moco/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
+          "template": "/var/moco/responses/pokemons_topick_mega_12-${random(1, 9, '#')}.json"
         }
       }
     }
@@ -2116,7 +2116,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_vote.json"
+      "file": "/var/moco/responses/election_vote.json"
     }
   },
   {
@@ -2137,7 +2137,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_swordshield__top_5.json"
+      "file": "/var/moco/responses/election_swordshield__top_5.json"
     }
   },
   {
@@ -2158,7 +2158,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_swordshield_favorite_top_5.json"
+      "file": "/var/moco/responses/election_swordshield_favorite_top_5.json"
     }
   },
   {
@@ -2179,7 +2179,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demolite__top_5.json"
+      "file": "/var/moco/responses/election_demolite__top_5.json"
     }
   },
   {
@@ -2200,7 +2200,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demolite_favorite_top_5.json"
+      "file": "/var/moco/responses/election_demolite_favorite_top_5.json"
     }
   },
   {
@@ -2221,7 +2221,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demoliteshiny__top_5.json"
+      "file": "/var/moco/responses/election_demoliteshiny__top_5.json"
     }
   },
   {
@@ -2241,7 +2241,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega__top_5.json"
+      "file": "/var/moco/responses/election_mega__top_5.json"
     }
   },
   {
@@ -2261,7 +2261,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demolite__metrics.json"
+      "file": "/var/moco/responses/election_demolite__metrics.json"
     }
   },
   {
@@ -2281,7 +2281,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demolite_favorite_metrics.json"
+      "file": "/var/moco/responses/election_demolite_favorite_metrics.json"
     }
   },
   {
@@ -2301,7 +2301,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_demoliteshiny__metrics.json"
+      "file": "/var/moco/responses/election_demoliteshiny__metrics.json"
     }
   },
   {
@@ -2321,7 +2321,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_pick_metrics.json"
+      "file": "/var/moco/responses/election_mega_pick_metrics.json"
     }
   },
   {
@@ -2341,7 +2341,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_vote_metrics.json"
+      "file": "/var/moco/responses/election_mega_vote_metrics.json"
     }
   },
   {
@@ -2361,7 +2361,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_11left_metrics.json"
+      "file": "/var/moco/responses/election_mega_11left_metrics.json"
     }
   },
   {
@@ -2381,7 +2381,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_3left_metrics.json"
+      "file": "/var/moco/responses/election_mega_3left_metrics.json"
     }
   },
   {
@@ -2401,7 +2401,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega_1left_metrics.json"
+      "file": "/var/moco/responses/election_mega_1left_metrics.json"
     }
   },
   {
@@ -2421,7 +2421,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_mega__metrics.json"
+      "file": "/var/moco/responses/election_mega__metrics.json"
     }
   },
   {
@@ -2441,7 +2441,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_swordshield__metrics.json"
+      "file": "/var/moco/responses/election_swordshield__metrics.json"
     }
   },
   {
@@ -2461,7 +2461,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_swordshield_favorite_metrics.json"
+      "file": "/var/moco/responses/election_swordshield_favorite_metrics.json"
     }
   },
   {
@@ -2480,7 +2480,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_dex_include_premium_dex1.json"
+      "file": "/var/moco/responses/election_dex_include_premium_dex1.json"
     }
   },
   {
@@ -2496,7 +2496,7 @@
     },
     "response": {
       "status": "200",
-      "file": "/var/moco/election_dex.json"
+      "file": "/var/moco/responses/election_dex.json"
     }
   }
 ]

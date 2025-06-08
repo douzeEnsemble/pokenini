@@ -55,7 +55,7 @@ class ActionCalculateTest extends WebTestCase
         $this->assertSelectorTextSame(
             '.admin-item-calculate_dex_availabilities .alert',
             'HTTP/1.1 500 Internal Server Error returned for'
-                .' "http://moco.web.test/istration/calculate/dex_availabilities".'
+                .' "http://moco.web.api.test/istration/calculate/dex_availabilities".'
         );
     }
 
@@ -80,7 +80,7 @@ class ActionCalculateTest extends WebTestCase
         $this->assertSelectorTextSame(
             '.admin-item-calculate_dex_availabilities .alert',
             'HTTP/1.1 500 Internal Server Error returned for'
-                .' "http://moco.web.test/istration/calculate/dex_availabilities".'
+                .' "http://moco.web.api.test/istration/calculate/dex_availabilities".'
         );
 
         $crawler = $client->request('GET', '/fr/istration');

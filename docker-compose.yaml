@@ -16,16 +16,34 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
       - POSTGRES_USER=${POSTGRES_USER:-app}
 
-  moco.api.int:
+  moco.api.sheets.int:
     build:
       context: docker/moco
       args:
         MOCO_VERSION: 1.5.0
     volumes:
-      - ./tests/resources/moco/Api:/var/moco:ro
+      - ./tests/resources/moco/Sheets:/var/moco:ro
     command: "/var/moco/int.moco.json"
 
-  moco.api.test:
+  moco.api.sheets.test:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Sheets/:/var/moco:ro
+    command: "/var/moco/test.moco.json"
+
+  moco.web.api.dev:
+    build:
+      context: ./docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Api/:/var/moco:ro
+    command: "/var/moco/dev.moco.json"
+
+  moco.web.api.test:
     build:
       context: docker/moco
       args:
@@ -34,16 +52,7 @@ services:
       - ./tests/resources/moco/Api/:/var/moco:ro
     command: "/var/moco/test.moco.json"
 
-  moco.web.dev:
-    build:
-      context: ./docker/moco
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Web/:/var/moco:ro
-    command: "/var/moco/dev.moco.json"
-
-  moco.web.matomo:
+  moco.web.matomo.gbl:
     build:
       context: docker/moco
       args:
@@ -53,15 +62,6 @@ services:
     ports:
       - '127.0.0.1:8888:80'
     command: "/var/moco/moco.json"
-
-  moco.web.test:
-    build:
-      context: docker/moco
-      args:
-        MOCO_VERSION: 1.5.0
-    volumes:
-      - ./tests/resources/moco/Web/:/var/moco:ro
-    command: "/var/moco/test.moco.json"
 
   newman:
     image: postman/newman:6-alpine
