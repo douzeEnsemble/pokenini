@@ -36,10 +36,10 @@ jobs:
         uses: ./.github/actions/docker-compose
       - name: Run Api
         run: |
-          docker compose exec -T php php vendor/bin/phpunit tests/Api/ --exclude-group="time-testing"
+          docker compose exec -T php php vendor/bin/phpunit tests/src/Api/ --exclude-group="time-testing"
       - name: Run Web
         run: |
-          docker compose exec -T php php vendor/bin/phpunit tests/Web/ --exclude-group="time-testing"
+          docker compose exec -T php php vendor/bin/phpunit tests/src/Web/ --exclude-group="time-testing"
 
   integration:
     name: Newman
