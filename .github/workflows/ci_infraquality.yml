@@ -1,6 +1,10 @@
 name: CI Infra Quality
 
 on:
+  push:
+    branches:
+      - main
+  pull_request: ~
   workflow_call:
     secrets:
       DOCKERHUB_USERNAME:
@@ -9,11 +13,6 @@ on:
       DOCKERHUB_TOKEN:
         description: 'Docker Hub token'
         required: true
-  workflow_run:
-    workflows: 
-      - Security
-    types:
-      - completed
 
 env: 
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
