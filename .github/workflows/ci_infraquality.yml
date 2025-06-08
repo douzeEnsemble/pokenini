@@ -1,10 +1,6 @@
 name: CI Infra Quality
 
 on:
-  push:
-    branches:
-      - main
-  pull_request: ~
   workflow_call:
     secrets:
       DOCKERHUB_USERNAME:
