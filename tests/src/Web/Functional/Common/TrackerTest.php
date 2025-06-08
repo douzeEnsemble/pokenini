@@ -119,7 +119,7 @@ class TrackerTest extends WebTestCase
     {
         $this->assertStringContainsString('tarteaucitron.user.matomoId = 3;', $crawler->outerHtml());
         $this->assertStringContainsString(
-            "tarteaucitron.user.matomoHost = 'http://moco.web.matomo/';",
+            "tarteaucitron.user.matomoHost = 'http://moco.web.matomo.gbl/';",
             $crawler->outerHtml()
         );
     }

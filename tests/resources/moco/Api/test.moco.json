@@ -1,1109 +1,2708 @@
 [
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ"
+      "uri": "/catch_states",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/spreadsheets.json"
+      "file": "/var/moco/responses/catch_states.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Catch state'!A1:E1"
+      "uri": "/types",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Catch%20state%27%21A1%3AE1.json"
+      "file": "/var/moco/responses/types.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Catch state'!A2:E"
+      "uri": "/forms/category",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Catch%20state%27%21A2%3AE.json"
+      "file": "/var/moco/responses/category_forms.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A1:P1"
+      "uri": "/forms/regional",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A1%3AP1.json"
+      "file": "/var/moco/responses/regional_forms.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A2:P"
+      "uri": "/forms/special",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A2%3AP.json"
+      "file": "/var/moco/responses/special_forms.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Generation'!A1:B1"
+      "uri": "/forms/variant",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Generation%27%21A1%3AB1.json"
+      "file": "/var/moco/responses/variant_forms.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Generation'!A2:B"
+      "uri": "/game_bundles",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Generation%27%21A2%3AB.json"
+      "file": "/var/moco/responses/game_bundles.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Pok%C3%A9mons'!A1:AC1"
+      "uri": "/collections",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/collections.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Pok%C3%A9mons'!A2:AC"
+      "uri": "/dex/f86cbe805674d85f7806b175b70647a6a9334631/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/dexes/f86cbe805674d85f7806b175b70647a6a9334631.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:AC1"
+      "uri": "/dex/b6589fc6ab0dc82cf12099d1c2d40ab994e8410c/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/dexes/b6589fc6ab0dc82cf12099d1c2d40ab994e8410c.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:B1"
+      "uri": "/dex/356a192b7913b04c54574d18c28d46e6395428ab/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AB1.json"
+      "file": "/var/moco/responses/dexes/356a192b7913b04c54574d18c28d46e6395428ab.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:C1"
+      "uri": "/dex/3cae633f6e04077b2abf2144b79a0ce4698d8690/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AC1.json"
+      "file": "/var/moco/responses/dexes/3cae633f6e04077b2abf2144b79a0ce4698d8690.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:D1"
+      "uri": "/dex/da4b9237bacccdf19c0760cab7aec4a8359010b0/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/dexes/da4b9237bacccdf19c0760cab7aec4a8359010b0.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:E1"
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "queries": {
+        "include_unreleased_dex": "1",
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AE1.json"
+      "file": "/var/moco/responses/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_unreleased_and_premium.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:I1"
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AI1.json"
+      "file": "/var/moco/responses/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_premium.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:M1"
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "queries": {
+        "include_unreleased_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AM1.json"
+      "file": "/var/moco/responses/dexes/159bb9b6d090a313087d2f26135970c2db49ee72_unreleased.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:O1"
+      "uri": "/dex/159bb9b6d090a313087d2f26135970c2db49ee72/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AO1.json"
+      "file": "/var/moco/responses/dexes/159bb9b6d090a313087d2f26135970c2db49ee72.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:P1"
+      "uri": "/dex/0a286c2c78b485e1bcecf68febbda17084d0b2be/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AP1.json"
+      "file": "/var/moco/responses/dexes/0a286c2c78b485e1bcecf68febbda17084d0b2be.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:AA1"
+      "uri": "/dex/6c33064427a5b419ca8eb3f7d11a0807f66cab22/list",
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AAA1.json"
+      "file": "/var/moco/responses/dexes/6c33064427a5b419ca8eb3f7d11a0807f66cab22_premium.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A2:AA2"
+      "uri": "/dex/6c33064427a5b419ca8eb3f7d11a0807f66cab22/list",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A2%3AAA2.json"
+      "file": "/var/moco/responses/dexes/6c33064427a5b419ca8eb3f7d11a0807f66cab22.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A2:AM2"
+      "uri": {
+        "match": "/dex/[\\w\\d]*/list"
+      },
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A2%3AAM2.json"
+      "file": "/var/moco/responses/dexes/default.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A2:L2"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny"
+      },
+      "queries": {
+        "game_bundle_shiny_availabilities[0]": "swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A2%3AL2.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny_gamebundleshinyavailabilities0swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Category form'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny"
+      },
+      "queries": {
+        "game_bundle_shiny_availabilities[0]": "!swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Category%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demoshiny_gamebundleshinyavailabilities0!swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Category form'!A1:D1"
+      "uri": {
+        "match": "/album/f86cbe805674d85f7806b175b70647a6a9334631/demo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Category%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/f86cbe805674d85f7806b175b70647a6a9334631/demo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Category form'!A2:D"
+      "uri": {
+        "match": "/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo"
+      },
+      "queries": {
+        "catch_states[0]": "yes"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Category%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_catchstatesyes.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Category form'!A2:D"
+      "uri": {
+        "match": "/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Category%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Regional form'!A1:D1"
+      "uri": {
+        "match": "/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo"
+      },
+      "queries": {
+        "families[0]": "bulbasaur"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Regional%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo_familybulbasaur.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional form'!A1:D1"
+      "uri": {
+        "match": "/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Regional%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/demo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Regional form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "yes",
+        "families[0]": "charmander"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Regional%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyesfamilycharmander.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "tobreed",
+        "families[0]": "bulbasaur"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Regional%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatestobreedfamilybulbasaur.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Special form'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Special%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesunknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Special form'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "yes"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Special%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesyes.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Special form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Special%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Special form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "catch_states[0]": "!no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Special%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_catchstates!no.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Variant form'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "families[0]": "bulbasaur"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Variant%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familybulbasaur.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Variant form'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "families[0]": "squirtle"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Variant%20form%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familysquirtle.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / Variant form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "families[0]": "mime-jr"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Variant%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familymimejr.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Variant form'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "families[0]": "Nidoran ♀"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20Variant%20form%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familynidoranf.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / another_list'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "families[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20another_list%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_familyunknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / another_list'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "mega",
+        "special_forms[1]": "gigantamax"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20another_list%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0megaspecialforms1gigantamax.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / different_columns_order'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "",
+        "special_forms[1]": "mega"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20different_columns_order%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / different_columns_order'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "null",
+        "special_forms[1]": "mega"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20different_columns_order%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0nullspecialforms1mega.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / empty_data'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[1]": "mega"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20empty_data%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0specialforms1mega.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / empty_data'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "category_forms[0]": "starter"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20empty_data%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_categoryforms0starter.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / zero_data'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "regional_forms[0]": "paldean",
+        "variant_forms[0]": "alternate"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27form%20%2F%20zero_data%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_regionalforms0paldeanvariantforms0alternate.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'form / zero_data'!A2:D"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "null"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 400,
-      "file": "/var/moco/test/values_%27form%20%2F%20zero_data%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0null.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / different_columns_order'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20different_columns_order%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0unknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / different_columns_order'!A2:AC"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "special_forms[0]": "mega"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20different_columns_order%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_specialforms0mega.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / new_and_existing'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "any_types[0]": "fire"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20new_and_existing%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_anytypes0fire.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / new_and_existing'!A2:AC"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "primary_types[0]": "fighting",
+        "secondary_types[0]": "null",
+        "secondary_types[1]": "fire",
+        "secondary_types[2]": "water"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20new_and_existing%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0nullsecondarytypes1firesecondarytypes2water.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / only_existing'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "primary_types[0]": "fighting",
+        "secondary_types[0]": "fire",
+        "secondary_types[1]": "water"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20only_existing%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fightingsecondarytypes0firesecondarytypes1water.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / only_existing'!A2:AC"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "secondary_types[0]": "poison",
+        "secondary_types[1]": "flying"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20only_existing%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_secondarytypes0poisonsecondarytypes1flying.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / only_new'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "secondary_types[0]": "poison",
+        "secondary_types[1]": "flying"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20only_new%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_secondarytypes0poisonsecondarytypes1flying.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / only_new'!A2:AC"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "primary_types[0]": "fire"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20only_new%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0fire.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / update_regional_form'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "primary_types[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_regional_form%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_primarytypes0unknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / update_regional_form'!A2:AC"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "original_game_bundles[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_regional_form%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0unknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "original_game_bundles[0]": "swordshield",
+        "original_game_bundles[1]": "xy"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshieldoriginalgamebundle1xy.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:B1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "original_game_bundles[0]": "swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AB1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_originalgamebundle0swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:C1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "game_bundle_availabilities[0]": "swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:D1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "game_bundle_availabilities[0]": "!swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0!swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:E1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "game_bundle_availabilities[0]": "unknown"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AE1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_gamebundleavailabilities0unknown.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:I1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "collection_availabilities[0]": "pogoshadow"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AI1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_collectionavailabilities0pogoshadow.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:M1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "queries": {
+        "collection_availabilities[0]": "!pogoshadow"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AM1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo_collectionavailabilities0!pogoshadow.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:O1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AO1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/demo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:P1"
+      "uri": {
+        "match": "/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AP1.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A2:AM2"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A2%3AAM2.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A2:L2"
+      "uri": {
+        "match": "/album/159bb9b6d090a313087d2f26135970c2db49ee72/goldsilvercrystal"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A2%3AL2.json"
+      "file": "/var/moco/responses/album/159bb9b6d090a313087d2f26135970c2db49ee72/goldsilvercrystal.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Pokémons'!A1:AC1"
+      "uri": {
+        "match": "/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/159bb9b6d090a313087d2f26135970c2db49ee72/homepokemongo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Pokémons'!A2:AC"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/default/demo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A3:AM102"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist3"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A3%3AAM102.json"
+      "file": "/var/moco/responses/album/default/demo_list3_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A103:AM202"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist3"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A103%3AAM202.json"
+      "file": "/var/moco/responses/album/default/demo_list3.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A203:AM302"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist5"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A203%3AAM302.json"
+      "file": "/var/moco/responses/album/default/demo_list5_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A303:AM402"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist5"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A303%3AAM402.json"
+      "file": "/var/moco/responses/album/default/demo_list5.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A403:AM502"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist7"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A403%3AAM502.json"
+      "file": "/var/moco/responses/album/default/demo_list7_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A503:AM602"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolist7"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A503%3AAM602.json"
+      "file": "/var/moco/responses/album/default/demo_list7.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A603:AM702"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demonotemplate"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A603%3AAM702.json"
+      "file": "/var/moco/responses/album/default/demo_notemplate_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A703:AM802"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demonotemplate"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A703%3AAM802.json"
+      "file": "/var/moco/responses/album/default/demo_notemplate.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A803:AM902"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demounknowntemplate"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A803%3AAM902.json"
+      "file": "/var/moco/responses/album/default/demo_unknowntemplate_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A903:AM1002"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demounknowntemplate"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A903%3AAM1002.json"
+      "file": "/var/moco/responses/album/default/demo_unknowntemplate.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1003:AM1102"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolite"
+      },
+      "queries": {
+        "catch_states[0]": "no"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1003%3AAM1102.json"
+      "file": "/var/moco/responses/album/default/demo-lite_catchstatesno.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1103:AM1202"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demolite"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1103%3AAM1202.json"
+      "file": "/var/moco/responses/album/default/demo-lite.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1203:AM1302"
+      "uri": {
+        "match": "/album/[\\w\\d]*/demoliteshiny"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1203%3AAM1302.json"
+      "file": "/var/moco/responses/album/default/demo-lite-shiny.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1303:AM1402"
+      "uri": {
+        "match": "/album/[\\w\\d]*/mega"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1303%3AAM1402.json"
+      "file": "/var/moco/responses/album/default/mega.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1403:AM1502"
+      "uri": {
+        "match": "/album/[\\w\\d]*/virgin"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1403%3AAM1502.json"
+      "file": "/var/moco/responses/album/default/virgin.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1503:AM1602"
+      "uri": {
+        "match": "/album/[\\w\\d]*/redgreenblueyellow"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1503%3AAM1602.json"
+      "file": "/var/moco/responses/album/default/redgreenblueyellow.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1603:AM1702"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1603%3AAM1702.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1703:AM1802"
+      "uri": {
+        "match": "/album/[\\w\\d]*/goldsilvercrystal"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1703%3AAM1802.json"
+      "file": "/var/moco/responses/album/default/goldsilvercrystal.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A1803:AM1817"
+      "uri": {
+        "match": "/album/[\\w\\d]*/rubysapphireemerald"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1803%3AAM1817.json"
+      "file": "/var/moco/responses/album/default/rubysapphireemerald.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Availability'!A2:AM2"
+      "uri": {
+        "match": "/album/[\\w\\d]*/fireredleafgreen"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Availability%27%21A2%3AAM2.json"
+      "file": "/var/moco/responses/album/default/fireredleafgreen.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game'!A1:D1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/diamondpearlplatinium"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/default/diamondpearlplatinium.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game'!A2:D"
+      "uri": {
+        "match": "/album/[\\w\\d]*/heartgoldsoulsilver"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/default/heartgoldsoulsilver.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A1:E1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A1%3AE1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A2:E"
+      "uri": {
+        "match": "/album/[\\w\\d]*/blackwhite"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A2%3AE.json"
+      "file": "/var/moco/responses/album/default/blackwhite.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:L1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/black2white2"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A1%3AL1.json"
+      "file": "/var/moco/responses/album/default/black2white2.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:L1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/xy"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27wrong_sheet%27%21A1%3AL1.json"
+      "file": "/var/moco/responses/album/default/xy.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A1:L1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/omegarubyalphasapphire"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A1%3AL1.json"
+      "file": "/var/moco/responses/album/default/omegarubyalphasapphire.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A2:L101"
+      "uri": {
+        "match": "/album/[\\w\\d]*/sunmoon"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A2%3AL101.json"
+      "file": "/var/moco/responses/album/default/sunmoon.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A102:L201"
+      "uri": {
+        "match": "/album/[\\w\\d]*/ultrasunultramoon"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A102%3AL201.json"
+      "file": "/var/moco/responses/album/default/ultrasunultramoon.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A202:L301"
+      "uri": {
+        "match": "/album/[\\w\\d]*/letsgopikachuletsgoeevee"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A202%3AL301.json"
+      "file": "/var/moco/responses/album/default/letsgopikachuletsgoeevee.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A302:L401"
+      "uri": {
+        "match": "/album/[\\w\\d]*/pokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A302%3AL401.json"
+      "file": "/var/moco/responses/album/default/homepogo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A402:L501"
+      "uri": {
+        "match": "/album/[\\w\\d]*/swordshield"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A402%3AL501.json"
+      "file": "/var/moco/responses/album/default/swordshield.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A502:L601"
+      "uri": {
+        "match": "/album/[\\w\\d]*/brillantdiamondshiningpearl"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A502%3AL601.json"
+      "file": "/var/moco/responses/album/default/brillantdiamondshiningpearl.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A602:L701"
+      "uri": {
+        "match": "/album/[\\w\\d]*/legendarceus"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A602%3AL701.json"
+      "file": "/var/moco/responses/album/default/legendarceus.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A702:L801"
+      "uri": {
+        "match": "/album/[\\w\\d]*/douze"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A702%3AL801.json"
+      "status": "404"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A802:L901"
+      "uri": {
+        "match": "/6c33064427a5b419ca8eb3f7d11a0807f66cab22/album/home"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A802%3AL901.json"
+      "file": "/var/moco/responses/album/6c33064427a5b419ca8eb3f7d11a0807f66cab22/home.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A902:L1001"
+      "uri": {
+        "match": "/7b52009b64fd0a2a49e6d8a939753077792b0554/album/home"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A902%3AL1001.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Regional Dex Number'!A1002:L1006"
+      "uri": {
+        "match": "/album/[\\w\\d]*/home"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A1002%3AL1006.json"
+      "file": "/var/moco/responses/album/default/home.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Region'!A1:D1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/homeot"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Region%27%21A1%3AD1.json"
+      "file": "/var/moco/responses/album/default/homeot.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Region'!A2:D"
+      "uri": {
+        "match": "/album/[\\w\\d]*/homeshiny"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Region%27%21A2%3AD.json"
+      "file": "/var/moco/responses/album/default/homeshiny.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A1:AC1"
+      "uri": {
+        "match": "/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20family_link%27%21A1%3AAC1.json"
+      "file": "/var/moco/responses/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A2:AC"
+      "uri": {
+        "match": "/album/[\\w\\d]*/homepokemongo"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20family_link%27%21A2%3AAC.json"
+      "file": "/var/moco/responses/album/default/homepokemongo.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A3:AM102"
+      "uri": {
+        "match": "/album/[\\w\\d]*/alpha"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Shinies%20Availability%27%21A3%3AAM102.json"
+      "file": "/var/moco/responses/album/default/alpha.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A103:AM123"
+      "uri": {
+        "match": "/album/[\\w\\d]*/all"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Shinies%20Availability%27%21A103%3AAM123.json"
+      "file": "/var/moco/responses/album/default/all.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A2:AM2"
+      "uri": {
+        "match": "/album/[\\w\\d]*/allshinies"
+      },
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Games%20Shinies%20Availability%27%21A2%3AAM2.json"
+      "file": "/var/moco/responses/album/default/allshinies.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Type'!A1:E1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/squirtle"
+      },
+      "method": "patch",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Type%27%21A1%3AE1.json"
+      "status": "401"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Type'!A2:E"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/wartortle"
+      },
+      "method": "patch",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Type%27%21A2%3AE.json"
+      "status": "403"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / update_type'!A1:AC1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/blastoise"
+      },
+      "method": "patch",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_type%27%21A1%3AAC1.json"
+      "status": "500"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / update_type'!A2:AC"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/[\\w-]*"
+      },
+      "method": "patch",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "no|toevolve|tobreed|totransfer|totrade|yes"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_type%27%21A2%3AAC.json"
+      "status": "200"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Collections Availability'!A1:I1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/squirtle"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A1%3AI1.json"
+      "status": "401"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Collections Availability'!A2:I101"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/wartortle"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A2%3AI101.json"
+      "status": "403"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Collections Availability'!A102:I122"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/blastoise"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "tobreed"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Collections%20Availability%27%21A102%3AI122.json"
+      "status": "500"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Collection'!A1:D1"
+      "uri": {
+        "match": "/album/[\\w\\d]*/[\\w-]*/[\\w-]*"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "no|toevolve|tobreed|totransfer|totrade|yes"
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Collection%27%21A1%3AD1.json"
+      "status": "201"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Collection'!A2:D"
+      "uri": {
+        "match": "/istration/update/labels"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
     },
     "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27Collection%27%21A2%3AD.json"
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/games_collections_and_dex"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/pokemons"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/games_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/games_shinies_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/regional_dex_numbers"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/update/collections_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/game_bundles_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/game_bundles_shinies_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/collections_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/dex_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "500"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/istration/calculate/pokemon_availabilities"
+      },
+      "method": "post",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/6c33064427a5b419ca8eb3f7d11a0807f66cab22/redgreenblueyellow"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "\\{(\"is_private\": ?(?:true|false),? ?)?(\"is_on_home\": ?(?:true|false))?\\}"
+      }
+    },
+    "response": {
+      "status": "500"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/[\\w\\d]*/[\\w-]*/[\\w-]*"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "\\{(\"is_private\": ?(?:true|false),? ?)?(\"is_on_home\": ?(?:true|false))?\\}"
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/[\\w\\d]*/[\\w-]*"
+      },
+      "method": "put",
+      "headers": {
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      },
+      "text": {
+        "match": "\\{(\"is_private\": ?(?:true|false),? ?)?(\"is_on_home\": ?(?:true|false))?\\}"
+      }
+    },
+    "response": {
+      "status": "201"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/reports"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/reports.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/action_logs"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/action_logs.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_demolite_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_demolite_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": "",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_demoliteshiny_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_mega_favorite_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "vote",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_tovote_mega_vote_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_tovote_mega_lastpage_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_tovote_mega_lastone_12.json"
+    }
+  }, 
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_mega_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_swordshield_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/pokemons/to_choose"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite",
+        "count": "12"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/pokemons_topick_swordshield_12.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/vote"
+      },
+      "method": "post",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_vote.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_swordshield__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_swordshield_favorite_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demolite__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demolite_favorite_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demoliteshiny__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega__top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_favorite_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "vote",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_vote_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_lastpage_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/top"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone",
+        "count": "5"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_lastone_top_5.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demolite__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "demolite",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demolite_favorite_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "demoliteshiny",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_demoliteshiny__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_favorite_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "vote"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_vote_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastpage"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_lastpage_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "mega",
+        "election_slug": "lastone"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_mega_lastone_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": ""
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_swordshield__metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/election/metrics"
+      },
+      "queries": {
+        "dex_slug": "swordshield",
+        "election_slug": "favorite"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_swordshield_favorite_metrics.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "queries": {
+        "include_premium_dex": "1",
+        "include_unreleased_dex": "1"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_dex_include_premium_dex1_include_unreleased_dex1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "queries": {
+        "include_premium_dex": "1"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_dex_include_premium_dex1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": {
+        "match": "/dex/can_hold_election"
+      },
+      "method": "get",
+      "headers": {
+        "accept": "application/json",
+        "Authorization": "Basic d2ViOiQyeSQxMyRtUlV1R3g5LmM1Tzhhc1NTN05ycE9PamVOWGJhVU4wVDExM2xQYUJQYlA0b0xzU1R2Uk01dQ=="
+      }
+    },
+    "response": {
+      "status": "200",
+      "file": "/var/moco/responses/election_dex.json"
     }
   }
 ]

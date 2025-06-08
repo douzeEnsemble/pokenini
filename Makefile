@@ -89,10 +89,10 @@ logs: ## Containers logs
 
 .PHONY: mocks-restart
 mocks-restart: ## Restart mocks
-	$(DOCKER_COMP) restart moco.api.int
-	$(DOCKER_COMP) restart moco.api.test
-	$(DOCKER_COMP) restart moco.web.dev
-	$(DOCKER_COMP) restart moco.web.test
+	$(DOCKER_COMP) restart moco.api.sheets.int
+	$(DOCKER_COMP) restart moco.api.sheets.test
+	$(DOCKER_COMP) restart moco.web.api.dev
+	$(DOCKER_COMP) restart moco.web.api.test
 
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 .PHONY: data
